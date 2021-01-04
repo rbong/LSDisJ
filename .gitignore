@@ -10,6 +10,12 @@
 *.map
 *.o
 
+# user media
+*.lsdfnt
+*.lsdpal
+*.kit
+*.png
+
 # save
 *.sav
 
