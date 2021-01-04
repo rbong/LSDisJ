@@ -17,6 +17,7 @@ FXFLAGS := \
 # Special targets
 
 .PHONY: all clean disassemble
+.INTERMEDIATE: mgbdis/disassembly/game.asm
 
 # Targets
 
