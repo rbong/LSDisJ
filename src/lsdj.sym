@@ -1,37 +1,105 @@
-00:0000 rst_00
-00:0008 rst_08
-00:0010 rst_10
-00:0018 rst_18
-00:0020 rst_20
-00:0028 rst_28
-00:0030 rst_30
-00:0038 rst_38
+; Most RSTs are unused
+00:0000 RST_00
+00:0001 .data:0007
+00:0008 RST_08
+00:0008 .data:0008
+00:0010 RST_10
+00:0018 RST_18
+00:0020 RST_20
+00:0020 .data:0008
+00:0028 RST_28
+00:0028 .data:0008
+00:0030 RST_30
+00:0030 .data:0008
+00:0038 RST_38
+00:003c .data:0004
+
 00:0040 VBlankInterrupt
+00:0043 .data:0005
 00:0048 LCDCInterrupt
+00:004f .data:0001
 00:0050 TimerOverflowInterrupt
+00:0053 .data:0005
 00:0058 SerialTransferCompleteInterrupt
+00:005b .data:0005
 00:0060 JoypadTransitionInterrupt
+00:0061 jump_00_0061
+00:0061 .code:0008
+00:0066 ._jump_01_731b
+00:0069 .data:0097
+
 00:0100 Boot
+
 00:0104 HeaderLogo
 00:0134 HeaderTitle
 00:013f HeaderManufacturerCode
+; Game supports CGB functions, but works on old gameboys also.
 00:0143 HeaderCGBFlag
 00:0144 HeaderNewLicenseeCode
+; No SGB functions (Normal Gameboy or CGB only game)
 00:0146 HeaderSGBFlag
+; MBC5+RAM+BATTERY, ROM Size: 1 MB, RAM Size: 128 KB
 00:0147 HeaderCartridgeType
 00:0148 HeaderROMSize
 00:0149 HeaderRAMSize
+; Destination is Japenese
 00:014a HeaderDestinationCode
 00:014b HeaderOldLicenseeCode
 00:014c HeaderMaskROMVersion
+; Checksums automatically calculated with rgbfix
 00:014d HeaderComplementCheck
 00:014e HeaderGlobalChecksum
 
 00:0150 jump_header_end
 00:015f jump_clear_wram1_loop
 00:016b jump_clear_hram_loop
-00:017a jump_init_registers
-00:019c jump_start_serial_transfer
+00:017a ._init_registers
+00:019c ._start_serial_transfer
+00:01ac .data:01e5
+00:04d9 ._exec_code_from_1b_7393
+
+00:07fe .data:00dc
+00:08da .wav_instr_play_type_labels
+00:08da .text:0024
+00:08fe .data:0099
+
+00:0a48 note_labels
+00:0a48 .text:0005
+00:0a4d .text:0036
+00:0a71 .text:0036
+00:0a95 .text:0036
+00:0ab9 .text:0036
+00:0add .text:0036
+00:0b01 .text:0036
+00:0b25 .text:0036
+00:0b49 .text:0036
+00:0b6d .text:0034
+00:0b8f .data:00d9
+
+00:0f80 ._call_1b_7393
+00:0f8c ._call_01_47fc
+00:0f8f ._call_01_7801
+00:0fb5 ._call_01_452f
+00:0fbe ._call_00_3975
+00:0fd7 ._call_01_4152
+00:100d ._call_01_429c
+00:1010 ._call_01_45bb
+00:101c ._call_1c_4057
+00:102e ._call_01_44f8
+00:1040 ._call_1c_47b1
+
+00:107b ._call_07_6a6a
+00:10f2 ._call_02_6d1b
+00:110e ._call_01_4863
+00:115f ._call_01_48cf
+00:1186 ._call_1f_49d5
+00:11c1 ._call_02_7b04
+00:1234 _call_04_4582
+00:125d ._call_05_4517
+00:1286 ._call_05_4517
+00:12be ._call_1d_4f32
+
+00:1466 .data:0008
 
 00:1480 call_setup_sound
 00:1492 jump_get_sound_en_dmg
@@ -40,15 +108,108 @@
 00:14a5 jump_get_sound_en_cgb
 00:14a9 jump_disable_sound
 
+00:14cb ._call_01_6ea5
+00:14d9 ._call_1c_40f2
+00:150a ._call_1d_5d43
+00:1559 ._call_06_50e8
+00:157e ._call_01_4b54
+00:158f ._call_01_4c08
+00:1592 ._call_01_7221
+00:15a8 ._call_01_7239
+
+00:1dea .data:0002
+
+00:1fff ._call_02_5d38
+00:207c ._call_02_7b04
+
+00:20a0 ._call_02_7b04_1
+00:20a3 ._call_02_7b04_2
+
+00:2084 .data:0005
+
+00:22ca ._call_02_6fa0
+00:22da ._call_01_6ea5
+
+00:2361 ._call_02_4e02
+
+00:248f ._call_02_6f8d
+00:24ae ._call_1b_5b96
+00:24da _call_02_541e
+
+00:2567 ._call_1c_63b5
+
+00:2676 ._call_01_50dc
+00:269f ._call_05_4000
+00:26b4 ._call_1e_4000
+00:2730 ._call_04_48f4
+00:273f ._call_1d_4124
+00:274e ._call_06_5d91
+00:275d ._call_07_449f
+00:277b ._call_03_4dc9
+00:278d ._call_06_4d70
+00:279c ._call_1b_5c33
+00:27ab ._call_1d_632f
+00:27bd ._call_06_425c
+00:27cc ._call_1c_58ad
+00:27db ._call_1b_48ff
+
+00:283a ._call_1f_62aa
+00:2849 ._call_1d_435f
+00:2858 ._call_05_4ade
+00:2867 ._call_06_5f28
+00:2876 ._call_07_452e
+00:28a7 ._call_04_7908
+00:28aa ._call_04_7af4
+00:28be ._call_04_7b6b
+
+00:29bc ._call_02_5ef3
+00:29dd ._call_1f_7645
+00:2a6e ._call_02_5ef3
+00:2aca ._call_02_5ef3
+00:2ad8 ._call_1f_7645
+00:2b8a ._call_02_5ef3
+00:2c04 ._call_02_5ef3
+00:2c1b ._call_1f_7645
+
+00:2caa ._call_04_558d
+00:2cba ._call_1d_4585
+00:2cca ._call_06_606c
+00:2cda ._call_07_49b3
+00:2cea ._call_05_4de6
+00:2cfa ._call_03_5470
+00:2d0a ._call_1b_506f
+00:2d1a ._call_06_551d
+00:2d2a ._call_1b_5f2f
+00:2d3a ._call_1d_6f27
+00:2d4d ._call_06_43d7
+00:2d5d ._call_1c_5abc
+00:2d6d _call_1b_4a19
+
+00:2dc5 .data:0003
+
+00:2e14 channel_labels
+00:2e14 .text:0010
+
+00:2e74 .data:000c
+
+00:2f26 .data:000f
+
 00:3390 call_key1_en
 
 00:33df call_disable_lcdc
 00:33e3 jump_wait_for_vblank_1
 00:33e9 jump_wait_for_vblank_2
 
+00:342e .data:000a
+
+00:34ea .data:0011
+
 00:3771 call_write_bytes
 00:3785 jump_set_mem_loop
 00:3788 jump_set_mem_loop_check
+
+00:3ec4 .bank_00_padding
+00:3ec4 .data:013c
 
 01:484d jump_handle_dmg
 01:4861 jump_handle_dmg_end
