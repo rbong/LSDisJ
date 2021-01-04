@@ -1,0 +1,28 @@
+# disassembly
+*.asm
+*.inc
+
+# build
+*.2bpp
+*.bkp
+*.gb
+*.gbc
+*.map
+*.o
+
+# save
+*.sav
+
+# hex files
+*.hex
+
+# visual studio
+*.exe
+*.ilk
+*.obj
+*.pdb
+*.sln
+*.suo
+
+# macOS
+*.DS_Store
