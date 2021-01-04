@@ -1,5 +1,7 @@
 # Options
 
+CHECK := true
+
 DIS := mgbdis/mgbdis.py
 DISFLAGS :=
 
@@ -43,7 +45,9 @@ src/lsdj.o: src/lsdj.asm $(wildcard src/bank_*.asm) $(wildcard src/*.inc)
 lsdj.gb: src/lsdj.o
 	$(LD) $(LDFLAGS) -o lsdj.gb src/lsdj.o
 	$(FX) $(FXFLAGS) lsdj.gb
+ifeq ($(CHECK),true)
 	md5sum -c lsdj.gb.md5
+endif
 
 clean:
 	rm -f lsdj.gb src/*.asm src/*.inc src/lsdj.map src/lsdj.o
