@@ -25,3 +25,8 @@ make
 # Remove everything
 make clean
 ```
+
+## External Links
+
+  - [LSDPatcher](https://github.com/jkotlinski/lsdpatch) (can be used to patch kits, palettes, and fonts)
+  - [Emulicious](https://emulicious.net/) (can be used for debugging)
