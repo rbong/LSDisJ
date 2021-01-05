@@ -49,11 +49,11 @@ src/lsdj.gb:
 mgbdis/disassembly/game.asm: src/lsdj.gb src/lsdj.sym
 	$(DIS) $(DISFLAGS) --output-dir mgbdis/disassembly --overwrite src/lsdj.gb
 
-src/lsdj.asm: mgbdis/disassembly/game.asm $(IMAGE_TARGETS)
+src/lsdj.asm: mgbdis/disassembly/game.asm
 	cp -r mgbdis/disassembly/*.asm mgbdis/disassembly/*.inc mgbdis/disassembly/gfx src
 	mv src/game.asm src/lsdj.asm
 
-src/lsdj.o: src/lsdj.asm $(wildcard src/bank_*.asm) $(wildcard src/*.inc)
+src/lsdj.o: src/lsdj.asm $(wildcard src/bank_*.asm) $(wildcard src/*.inc) $(IMAGE_TARGETS)
 	$(ASM) $(ASFLAGS) -i src -o src/lsdj.o src/lsdj.asm
 
 lsdj.gb: src/lsdj.o
