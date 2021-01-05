@@ -11,10 +11,21 @@ ASFLAGS := -L
 LD := rgblink
 LDFLAGS := -w -m src/lsdj.map
 
+GFX := rgbgfx
+GFXFLAGS :=
+
 FX := rgbfix
 FXFLAGS := \
 	--validate \
 	--pad-value 0xFF
+
+# Helper variables
+
+IMAGE_TARGETS = \
+	src/gfx/font_1_content.2bpp \
+	src/gfx/font_2_content.2bpp \
+	src/gfx/font_3_content.2bpp \
+	src/gfx/tileset.2bpp
 
 # Special targets
 
@@ -32,11 +43,14 @@ src/lsdj.gb:
 	# https://www.littlesounddj.com/lsd/latest/rom_images/
 	exit 1
 
+%.2bpp: %.png
+	$(GFX) $(GFXFLAGS) -o $@ $<
+
 mgbdis/disassembly/game.asm: src/lsdj.gb src/lsdj.sym
 	$(DIS) $(DISFLAGS) --output-dir mgbdis/disassembly --overwrite src/lsdj.gb
 
-src/lsdj.asm: mgbdis/disassembly/game.asm
-	cp mgbdis/disassembly/*.asm mgbdis/disassembly/*.inc src
+src/lsdj.asm: mgbdis/disassembly/game.asm $(IMAGE_TARGETS)
+	cp -r mgbdis/disassembly/*.asm mgbdis/disassembly/*.inc mgbdis/disassembly/gfx src
 	mv src/game.asm src/lsdj.asm
 
 src/lsdj.o: src/lsdj.asm $(wildcard src/bank_*.asm) $(wildcard src/*.inc)

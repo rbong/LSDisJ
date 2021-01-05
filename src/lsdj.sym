@@ -253,10 +253,14 @@
 1b:5685 data_palette_6_name
 
 1e:433c tileset
+1e:433c .image:0300:w64
 
 1e:46be font_3_content
+1e:46be .image:0470:w64
 1e:5554 font_1_content
+1e:5554 .image:0470:w64
 1e:63ea font_2_content
+1e:63ea .image:0470:w64
 
 20:4000 kit_20
 21:4000 kit_21
