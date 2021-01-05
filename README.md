@@ -30,3 +30,4 @@ make clean
 
   - [LSDPatcher](https://github.com/jkotlinski/lsdpatch) (can be used to patch kits, palettes, and fonts)
   - [Emulicious](https://emulicious.net/) (can be used for debugging)
+  - [Awesome Game Boy Development list](Awesome Game Boy Development) (Game Boy development resources)
