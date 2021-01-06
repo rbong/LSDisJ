@@ -84,7 +84,7 @@
 ;; 00:04d9 Exec code from 1b:7393
 
 00:07fe .data:00dc
-00:08da .wav_instr_play_type_labels
+00:08da wav_instr_play_type_strings
 00:08da .text:0024
 00:08fe .data:0099
 
@@ -249,6 +249,25 @@
 00:3ec4 .bank_00_padding
 00:3ec4 .data:013c
 
+01:4222 cart_test_strings
+01:4222 .text:000f
+01:4231 .text:0007
+01:4238 .text:0004
+01:423c .text:0006
+01:4242 .text:0012
+01:4254 .text:0010
+01:4264 .text:0008
+01:426c .text:0004
+01:4270 .text:0006
+01:4276 .text:0012
+01:4288 .text:0014
+
+01:4d6e pitch_shift_type_strings
+01:4d6e .text:0005
+01:4d73 .text:0005
+01:4d78 .text:0005
+01:4d7d .text:0005
+
 01:484d jump_handle_dmg
 01:4861 jump_handle_dmg_end
 
@@ -258,6 +277,479 @@
 01:53f8 palette_4_content
 01:5420 palette_5_content
 01:5448 palette_6_content
+
+01:6915 command_help_strings
+01:6915 .text:0030
+01:6945 .text:000a
+01:694f .text:002d
+01:697c .text:0023
+01:699f .text:003b
+01:69da .text:0048
+01:6a22 .text:0027
+01:6a49 .text:0016
+01:6a5f .text:0088
+01:6ae7 .text:0020
+01:6b07 .text:0034
+01:6b3b .text:0016
+01:6b51 .text:0062
+01:6bb3 .text:004b
+01:6bfe .text:001b
+01:6c19 .text:0059
+01:6c72 .text:005c
+01:6cce .text:001b
+01:6ce9 .text:002d
+01:6d16 .text:0068
+01:6d7e .text:0032
+01:6db0 .text:0019
+01:6dc9 .text:0008
+01:6dd1 .text:0023
+01:6df4 .text:0048
+
+01:6e3c .data:0014
+01:6e50 .data:0014
+01:6e64 .data:0012
+
+01:6e76 screen_name_strings
+01:6e76 .text:002f
+
+01:6e76 error_strings
+01:6f95 .text:0031
+01:6fd0 .text:0014
+01:6fee .text:0015
+
+01:7157 sweep_help_strings
+01:7157 .text:0049
+01:71a0 .text:002e
+01:71ce .text:0011
+
+01:754b crash_help_strings
+01:754b .text:000c
+01:7557 .text:0011
+01:7568 .text:0010
+01:7578 .text:0012
+01:758a .text:0025
+
+03:4015 instrument_strings
+03:4015 .text:0006
+03:401b .text:0005
+03:4020 .data:0004
+03:4024 .text:0005
+03:4029 .data:0004
+03:402d .text:0005
+03:4032 .data:0016
+03:4048 .text:0005
+03:404d .data:0004
+03:4051 .text:0007
+03:4058 .data:0002
+03:405a .text:0007
+03:4061 .data:0002
+03:4063 .text:0006
+03:4069 .data:0003
+03:406c .text:0006
+03:4072 .data:0003
+03:4075 .text:0008
+03:407d .data:0001
+03:407e .text:0009
+03:4087 .text:0009
+03:4090 .text:0009
+03:4099 .text:0006
+03:409f .data:001e
+03:40bd .text:0005
+03:40c2 .data:0004
+03:40c6 .text:0005
+03:40cb .data:0004
+03:40cf .text:0007
+03:40d6 .data:000b
+03:40e1 .text:0006
+03:40e7 .data:0003
+03:40ea .text:0008
+03:40f2 .data:0001
+03:40f3 .text:0009
+03:40fc .text:0009
+03:4105 .text:0006
+03:410b .data:0003
+03:410e .text:0005
+03:4113 .data:0004
+03:4117 .text:0006
+03:411d .data:0003
+03:4120 .text:0007
+03:4127 .data:0002
+03:4129 .text:0009
+03:4132 .text:0006
+03:4138 .data:0027
+03:415f .text:0005
+03:4164 .data:0004
+03:4168 .text:0005
+03:416d .data:0004
+03:4171 .text:0004
+03:4175 .data:000e
+03:4183 .text:0007
+03:418a .data:000b
+03:4195 .text:0006
+03:419b .data:0003
+03:419e .text:0009
+03:41a7 .text:0007
+03:41ae .data:000b
+03:41b9 .text:0004
+03:41bd .data:000e
+03:41cb .text:0005
+03:41d0 .data:000d
+03:41dd .text:0006
+03:41e3 .data:0003
+03:41e6 .text:0005
+03:41eb .data:0004
+03:41ef .text:0006
+03:41f5 .data:000c
+03:4201 .text:0005
+03:4206 .data:0004
+03:420a .text:0005
+03:420f .data:0004
+03:4213 .text:0005
+03:4218 .data:0016
+03:422e .text:0007
+03:4235 .data:0002
+03:4237 .text:0007
+03:423e .data:0002
+03:4240 .text:0006
+03:4246 .data:0003
+03:4249 .text:0007
+03:4250 .data:0002
+03:4252 .text:0009
+03:425b .data:0009
+03:4264 .text:0006
+03:426a .data:0003
+
+03:47aa instrument_screen_title_string
+03:47aa .text:0007
+
+03:50df instrument_type_strings
+03:50df .text:0006
+03:50e5 .text:0006
+03:50eb .text:0006
+03:50f1 .text:0006
+
+03:7cc6 instrument_param_strings
+03:7cc6 .text:0004
+03:7cca .text:0004
+03:7cce .text:0004
+03:7cd2 .text:0004
+03:7cd6 .text:0004
+03:7cda .text:0004
+03:7cde .text:0004
+03:7ce2 .text:0007
+03:7ce9 .text:0004
+03:7ced .text:0004
+03:7cf1 .text:0004
+03:7cf5 .text:0004
+03:7cf9 .text:0004
+03:7cfd .text:0004
+03:7d01 .text:0004
+03:7d05 .text:0004
+03:7d09 .text:0007
+03:7d10 .text:0004
+03:7d14 .text:0004
+03:7d18 .text:0004
+03:7d1c .text:0004
+03:7d20 .text:0004
+
+04:7a9c sync_strings_1
+04:7a9c .text:0005
+04:7aa1 .text:0005
+04:7aa6 .text:0005
+04:7aab .text:0005
+
+04:7ae5 sync_strings_2
+04:7ae5 .text:0005
+04:7aea .text:0005
+04:7aef .text:0005
+
+04:7b57 sync_strings_3
+04:7b57 .text:0005
+04:7b5c .text:0005
+04:7b61 .text:0005
+04:7b66 .text:0005
+
+06:43b4 text_to_speech_screen_strings
+06:43b4 .text:0006
+06:43ba .text:0006
+
+06:4f63 wave_screen_title_string
+06:4f63 .text:0006
+
+07:6904 digits_string
+07:6904 .text:0011
+
+07:6a51 .text:0005
+07:6a56 .text:0005
+07:6a5b .text:0005
+07:6a60 .text:0005
+07:6a65 .text:0005
+
+07:6ff4 pulse_channel_combo_strings
+07:6ff4 .text:0006
+07:6ffa .text:0006
+07:7000 .text:0006
+07:7006 .text:0006
+07:700c .text:0006
+07:7012 .text:0006
+
+07:730a keyboard_calibration_strings
+07:730a .text:0015
+07:731f .text:0013
+07:7332 .text:0011
+07:7343 .text:000b
+07:734e .text:0006
+07:7354 .text:0004
+
+1b:4098 help_page_index_strings
+1b:4098 .text:000f
+1b:40a7 .text:000a
+1b:40b1 .text:0005
+1b:40b6 .text:0005
+1b:40bb .text:0006
+1b:40c1 .text:0007
+1b:40c8 .text:0006
+1b:40ce .text:0007
+1b:40d5 .text:0005
+1b:40db .text:000e
+1b:40e9 .text:0011
+1b:40f9 .text:000e
+
+1b:4107 help_page_strings
+1b:4107 .text:00cf
+1b:41d6 .text:00aa
+1b:4280 .text:00e5
+1b:4365 .text:00e4
+1b:4449 .text:00e1
+1b:452a .text:004d
+1b:4577 .text:007d
+1b:45f4 .text:00ea
+1b:46de .text:00ec
+1b:47ca .text:0080
+
+1b:4ad9 data_keyboard_key_labels
+1b:4ad9 .text:000b
+1b:4ae4 .text:000b
+1b:4aef .text:000b
+1b:4afa .text:0006
+1b:4b00 .data:0005
+
+1b:5060 save_as_strings
+1b:5060 .text:0009
+1b:5069 .text:0006
+
+1b:55a9 save_progress_strings
+1b:55a9 .text:000a
+1b:55b3 .text:0006
+1b:55b9 .text:000f
+1b:55c8 .text:0006
+1b:55ce .text:0006
+
+1b:563f data_font_1_name
+1b:563f .text:0005
+1b:5644 data_font_2_name
+1b:5644 .text:0005
+1b:5649 data_font_3_name
+1b:5649 .text:0005
+
+1b:564e data_dmg_palette_1_name
+1b:564e .text:0005
+1b:564e data_dmg_palette_2_name
+1b:5653 .text:0005
+1b:5658 .data:0014
+
+1b:566c data_palette_1_name
+1b:566c .text:0005
+1b:5671 data_palette_2_name
+1b:5671 .text:0005
+1b:5676 data_palette_3_name
+1b:5676 .text:0005
+1b:567b data_palette_4_name
+1b:567b .text:0005
+1b:5680 data_palette_5_name
+1b:5680 .text:0005
+1b:5685 data_palette_6_name
+1b:5685 .text:0005
+
+1b:5908 project_screen_param_strings
+1b:58de .text:0007
+1b:58e5 .text:0007
+1b:58ec .text:0007
+1b:58f3 .text:0007
+1b:58fa .text:0007
+1b:5901 .text:0007
+1b:5908 .text:000c
+1b:5914 .text:000c
+1b:5920 .text:000e
+
+1b:5b72 prelisten_strings
+1b:5b72 .text:0004
+1b:5b76 .text:0004
+1b:5b7a .text:0004
+
+1b:5c1f stat_strings
+1b:5c1f .text:0009
+1b:5c28 .text:000b
+
+1b:5e51 project_screen_option_strings
+1b:5e51 .text:0007
+1b:5e58 .text:000b
+1b:5e63 .text:0006
+1b:5e69 .text:0007
+1b:5e70 .text:0005
+1b:5e75 .text:0005
+1b:5e7a .text:0012
+1b:5e8c .text:000b
+1b:5e97 .text:0005
+1b:5e9c .text:0010
+1b:5eac .text:0011
+1b:5ebd .text:000f
+1b:5ecc .text:000d
+1b:5ed9 .text:0006
+1b:5edf .text:000d
+
+1c:534e loading_progress_strings
+1c:534e .text:000d
+1c:535b .text:0006
+
+1c:5970 file_screen_strings
+1c:5970 .text:0005
+1c:5975 .text:0005
+1c:597a .text:0006
+1c:5980 .text:0011
+1c:5991 .text:0003
+1c:5994 .text:0003
+
+1c:616f erase_file_strings
+1c:616f .text:000d
+1c:617c .text:0010
+1c:618c .text:0011
+1c:619d .text:0004
+1c:61a1 .text:0003
+1c:61a4 .text:0008
+1c:61ac .text:0007
+1c:61b3 .text:0004
+
+1d:433d groove_screen_strings
+1d:433d .text:0008
+1d:4345 .text:000e
+1d:4353 .text:0003
+1d:4356 .text:0004
+1d:435a .text:0005
+
+1d:5ff2 resync_type_strings
+1d:5ff2 .text:0007
+1d:5ff9 .text:0007
+1d:6000 .text:0007
+
+1d:60e6 filter_type_strings
+1d:60e6 .text:0006
+1d:60ec .text:0006
+1d:60f2 .text:0006
+1d:60f8 .text:0006
+1d:60fe .text:0006
+1d:6104 .text:0006
+
+1d:6320 distortion_type_strings
+1d:6320 .text:0005
+1d:6325 .text:0005
+1d:632a .text:0005
+
+1d:6713 wave_screen_strings
+1d:6713 .text:0007
+1d:671a .text:0007
+1d:6721 .text:0007
+1d:6728 .text:0005
+1d:672d .text:0006
+1d:6733 .text:0009
+1d:673c .text:0003
+1d:673f .text:0007
+1d:6746 .text:0006
+1d:674c .text:0007
+1d:6753 .text:0006
+1d:6759 .text:0007
+1d:6760 .text:0003
+1d:6763 .text:0003
+
+1d:6c98 hand_drawn_waves_warning_strings
+1d:6c98 .text:000a
+1d:6ca2 .text:000b
+1d:6cad .text:0007
+1d:6cb4 .text:0004
+1d:6cb8 .text:0003
+
+1e:433c tileset
+1e:433c .image:0300:w64
+
+1e:46be font_3_content
+1e:46be .image:00470:w64
+1e:5554 font_1_content
+1e:5554 .image:00470:w64
+1e:63ea font_2_content
+1e:63ea .image:00470:w64
+
+1f:403e table_play_type_strings
+1f:403e .text:0005
+1f:4043 .text:0005
+1f:4048 .text:0005
+
+1f:4095 .text:0004
+
+1f:40e2 kit_loop_type_strings
+1f:40e2 .text:0004
+1f:40e6 .text:0004
+1f:40ea .text:0004
+
+1f:434a instrument_length_strings
+1f:434a .text:0006
+1f:4350 .text:0004
+
+1f:4426 noise_instrument_param_strings
+1f:4426 .text:0006
+1f:442c .text:0004
+1f:4430 .text:0007
+1f:4437 .text:0007
+
+1f:46c4 .text:0004
+1f:46c8 .text:0004
+1f:46cc .text:0004
+1f:46d0 .text:0004
+
+1f:6184 dedup_song_strings
+1f:6184 .text:000b
+1f:618f .text:0009
+1f:6198 .text:000b
+1f:61a3 .text:0003
+1f:61a6 .text:000b
+1f:61b1 .text:0003
+1f:61b4 .text:0004
+
+1f:6268 dedup_instruments_strings
+1f:6268 .text:000b
+1f:6273 .text:0009
+1f:627c .text:000b
+1f:6287 .text:0003
+1f:628a .text:000b
+1f:6295 .text:0003
+1f:6298 .text:000b
+1f:62a3 .text:0003
+1f:62a6 .text:0004
+
+1f:7633 song_screen_instrument_window_strings
+1f:7633 .text:0005
+1f:7638 .text:0002
+1f:763a .text:0002
+1f:763c .text:0005
+1f:7641 .text:0004
+
+1f:7955 type_speech_string
+1f:7955 .text:000e
+
+; Memory
+
+00:cbb7 GB_MODEL
+
+; Kits
 
 08:4000 kit_1
 08:4000 .data:4000
@@ -297,36 +789,6 @@
 19:4000 .data:4000
 1a:4000 kit_19
 1a:4000 .data:4000
-
-1b:563f data_font_1_name
-1b:563f .text:4
-1b:5644 data_font_2_name
-1b:5644 .text:4
-1b:5649 data_font_3_name
-1b:5649 .text:4
-
-1b:566c data_palette_1_name
-1b:566c .text:4
-1b:5671 data_palette_2_name
-1b:5671 .text:4
-1b:5676 data_palette_3_name
-1b:5676 .text:4
-1b:567b data_palette_4_name
-1b:567b .text:4
-1b:5680 data_palette_5_name
-1b:5680 .text:4
-1b:5685 data_palette_6_name
-1b:5685 .text:4
-
-1e:433c tileset
-1e:433c .image:0300:w64
-
-1e:46be font_3_content
-1e:46be .image:0470:w64
-1e:5554 font_1_content
-1e:5554 .image:0470:w64
-1e:63ea font_2_content
-1e:63ea .image:0470:w64
 
 20:4000 kit_20
 20:4000 .data:4000
@@ -392,5 +854,3 @@
 3e:4000 .data:4000
 3f:4000 kit_51
 3f:4000 .data:4000
-
-00:cbb7 GB_MODEL
