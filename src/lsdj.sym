@@ -261,15 +261,24 @@
 1a:4000 .data:4000
 
 1b:563f data_font_1_name
+1b:563f .text:4
 1b:5644 data_font_2_name
+1b:5644 .text:4
 1b:5649 data_font_3_name
+1b:5649 .text:4
 
 1b:566c data_palette_1_name
+1b:566c .text:4
 1b:5671 data_palette_2_name
+1b:5671 .text:4
 1b:5676 data_palette_3_name
+1b:5676 .text:4
 1b:567b data_palette_4_name
+1b:567b .text:4
 1b:5680 data_palette_5_name
+1b:5680 .text:4
 1b:5685 data_palette_6_name
+1b:5685 .text:4
 
 1e:433c tileset
 1e:433c .image:0300:w64
