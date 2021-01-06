@@ -1,31 +1,31 @@
-; Most RSTs are unused
-00:0000 RST_00
+;; 00:0000 Most RSTs are unused
+00:0000 rst_00
 00:0001 .data:0007
-00:0008 RST_08
+00:0008 rst_08
 00:0008 .data:0008
-00:0010 RST_10
-00:0018 RST_18
-00:0020 RST_20
+00:0010 rst_10
+00:0018 rst_18
+00:0020 rst_20
 00:0020 .data:0008
-00:0028 RST_28
+00:0028 rst_28
 00:0028 .data:0008
-00:0030 RST_30
+00:0030 rst_30
 00:0030 .data:0008
-00:0038 RST_38
+00:0038 rst_38
 00:003c .data:0004
 
-00:0040 VBlankInterrupt
+00:0040 vblank_interrupt
 00:0043 .data:0005
-00:0048 LCDCInterrupt
+00:0048 lcdc_interrupt
 00:004f .data:0001
-00:0050 TimerOverflowInterrupt
+00:0050 timer_overflow_interrupt
 00:0053 .data:0005
-00:0058 SerialTransferCompleteInterrupt
+00:0058 serial_transfer_complete_interrupt
 00:005b .data:0005
-00:0060 JoypadTransitionInterrupt
+00:0060 joypad_transition_interrupt
 00:0061 jump_00_0061
 00:0061 .code:0008
-00:0066 ._jump_01_731b
+;; 00:0066 Jumps to 01:731b
 00:0069 .data:0097
 
 00:0100 Boot
@@ -33,30 +33,30 @@
 00:0104 HeaderLogo
 00:0134 HeaderTitle
 00:013f HeaderManufacturerCode
-; Game supports CGB functions, but works on old gameboys also.
+;; 00:0143 Game supports CGB functions, but works on old gameboys also.
 00:0143 HeaderCGBFlag
 00:0144 HeaderNewLicenseeCode
-; No SGB functions (Normal Gameboy or CGB only game)
+;; 00:0146 No SGB functions (Normal Gameboy or CGB only game)
 00:0146 HeaderSGBFlag
-; MBC5+RAM+BATTERY, ROM Size: 1 MB, RAM Size: 128 KB
+;; 00:0147 MBC5+RAM+BATTERY, ROM Size: 1 MB, RAM Size: 128 KB
 00:0147 HeaderCartridgeType
 00:0148 HeaderROMSize
 00:0149 HeaderRAMSize
-; Destination is Japenese
+;; 00:014a Destination is Japenese
 00:014a HeaderDestinationCode
 00:014b HeaderOldLicenseeCode
 00:014c HeaderMaskROMVersion
-; Checksums automatically calculated with rgbfix
+;; 00:014d Checksums automatically calculated with rgbfix
 00:014d HeaderComplementCheck
 00:014e HeaderGlobalChecksum
 
 00:0150 jump_header_end
 00:015f jump_clear_wram1_loop
 00:016b jump_clear_hram_loop
-00:017a ._init_registers
-00:019c ._start_serial_transfer
+;; 00:017a Init registers
+;; 00:019c Start serial transfer
 00:01ac .data:01e5
-00:04d9 ._exec_code_from_1b_7393
+;; 00:04d9 Exec code from 1b:7393
 
 00:07fe .data:00dc
 00:08da .wav_instr_play_type_labels
@@ -76,28 +76,28 @@
 00:0b6d .text:0034
 00:0b8f .data:00d9
 
-00:0f80 ._call_1b_7393
-00:0f8c ._call_01_47fc
-00:0f8f ._call_01_7801
-00:0fb5 ._call_01_452f
-00:0fbe ._call_00_3975
-00:0fd7 ._call_01_4152
-00:100d ._call_01_429c
-00:1010 ._call_01_45bb
-00:101c ._call_1c_4057
-00:102e ._call_01_44f8
-00:1040 ._call_1c_47b1
+;; 00:0f80 Calls 1b:7393
+;; 00:0f8c Calls 01:47fc
+;; 00:0f8f Calls 01:7801
+;; 00:0fb5 Calls 01:452f
+;; 00:0fbe Calls 00:3975
+;; 00:0fd7 Calls 01:4152
+;; 00:100d Calls 01:429c
+;; 00:1010 Calls 01:45bb
+;; 00:101c Calls 1c:4057
+;; 00:102e Calls 01:44f8
+;; 00:1040 Calls 1c:47b1
 
-00:107b ._call_07_6a6a
-00:10f2 ._call_02_6d1b
-00:110e ._call_01_4863
-00:115f ._call_01_48cf
-00:1186 ._call_1f_49d5
-00:11c1 ._call_02_7b04
-00:1234 _call_04_4582
-00:125d ._call_05_4517
-00:1286 ._call_05_4517
-00:12be ._call_1d_4f32
+;; 00:107b Calls 07:6a6a
+;; 00:10f2 Calls 02:6d1b
+;; 00:110e Calls 01:4863
+;; 00:115f Calls 01:48cf
+;; 00:1186 Calls 1f:49d5
+;; 00:11c1 Calls 02:7b04
+;; 00:1234 Calls 04:4582
+;; 00:125d Calls 05:4517
+;; 00:1286 Calls 05:4517
+;; 00:12be Calls 1d:4f32
 
 00:1466 .data:0008
 
@@ -108,82 +108,82 @@
 00:14a5 jump_get_sound_en_cgb
 00:14a9 jump_disable_sound
 
-00:14cb ._call_01_6ea5
-00:14d9 ._call_1c_40f2
-00:150a ._call_1d_5d43
-00:1559 ._call_06_50e8
-00:157e ._call_01_4b54
-00:158f ._call_01_4c08
-00:1592 ._call_01_7221
-00:15a8 ._call_01_7239
+;; 00:14cb Call 01:6ea5
+;; 00:14d9 Call 1c:40f2
+;; 00:150a Call 1d:5d43
+;; 00:1559 Call 06:50e8
+;; 00:157e Call 01:4b54
+;; 00:158f Call 01:4c08
+;; 00:1592 Call 01:7221
+;; 00:15a8 Call 01:7239
 
 00:1dea .data:0002
 
-00:1fff ._call_02_5d38
-00:207c ._call_02_7b04
+;; 00:1fff  Call 02:5d38
+;; 00:207c  Call 02:7b04
 
-00:20a0 ._call_02_7b04_1
-00:20a3 ._call_02_7b04_2
+;; 00:20a0  Call 02:7b04
+;; 00:20a3  Call 02:7b04
 
 00:2084 .data:0005
 
-00:22ca ._call_02_6fa0
-00:22da ._call_01_6ea5
+;; 00:22ca  Call 02:6fa0
+;; 00:22da  Call 01:6ea5
 
-00:2361 ._call_02_4e02
+;; 00:2361  Call 02:4e02
 
-00:248f ._call_02_6f8d
-00:24ae ._call_1b_5b96
-00:24da _call_02_541e
+;; 00:248f  Call 02:6f8d
+;; 00:24ae  Call 1b:5b96
+;; 00:24da  Call 02:541e
 
-00:2567 ._call_1c_63b5
+;; 00:2567  Call 1c:63b5
 
-00:2676 ._call_01_50dc
-00:269f ._call_05_4000
-00:26b4 ._call_1e_4000
-00:2730 ._call_04_48f4
-00:273f ._call_1d_4124
-00:274e ._call_06_5d91
-00:275d ._call_07_449f
-00:277b ._call_03_4dc9
-00:278d ._call_06_4d70
-00:279c ._call_1b_5c33
-00:27ab ._call_1d_632f
-00:27bd ._call_06_425c
-00:27cc ._call_1c_58ad
-00:27db ._call_1b_48ff
+;; 00:2676  Call 01:50dc
+;; 00:269f  Call 05:4000
+;; 00:26b4  Call 1e:4000
+;; 00:2730  Call 04:48f4
+;; 00:273f  Call 1d:4124
+;; 00:274e  Call 06:5d91
+;; 00:275d  Call 07:449f
+;; 00:277b  Call 03:4dc9
+;; 00:278d  Call 06:4d70
+;; 00:279c  Call 1b:5c33
+;; 00:27ab  Call 1d:632f
+;; 00:27bd  Call 06:425c
+;; 00:27cc  Call 1c:58ad
+;; 00:27db  Call 1b:48ff
 
-00:283a ._call_1f_62aa
-00:2849 ._call_1d_435f
-00:2858 ._call_05_4ade
-00:2867 ._call_06_5f28
-00:2876 ._call_07_452e
-00:28a7 ._call_04_7908
-00:28aa ._call_04_7af4
-00:28be ._call_04_7b6b
+;; 00:283a  Call 1f:62aa
+;; 00:2849  Call 1d:435f
+;; 00:2858  Call 05:4ade
+;; 00:2867  Call 06:5f28
+;; 00:2876  Call 07:452e
+;; 00:28a7  Call 04:7908
+;; 00:28aa  Call 04:7af4
+;; 00:28be  Call 04:7b6b
 
-00:29bc ._call_02_5ef3
-00:29dd ._call_1f_7645
-00:2a6e ._call_02_5ef3
-00:2aca ._call_02_5ef3
-00:2ad8 ._call_1f_7645
-00:2b8a ._call_02_5ef3
-00:2c04 ._call_02_5ef3
-00:2c1b ._call_1f_7645
+;; 00:29bc  Call 02:5ef3
+;; 00:29dd  Call 1f:7645
+;; 00:2a6e  Call 02:5ef3
+;; 00:2aca  Call 02:5ef3
+;; 00:2ad8  Call 1f:7645
+;; 00:2b8a  Call 02:5ef3
+;; 00:2c04  Call 02:5ef3
+;; 00:2c1b  Call 1f:7645
 
-00:2caa ._call_04_558d
-00:2cba ._call_1d_4585
-00:2cca ._call_06_606c
-00:2cda ._call_07_49b3
-00:2cea ._call_05_4de6
-00:2cfa ._call_03_5470
-00:2d0a ._call_1b_506f
-00:2d1a ._call_06_551d
-00:2d2a ._call_1b_5f2f
-00:2d3a ._call_1d_6f27
-00:2d4d ._call_06_43d7
-00:2d5d ._call_1c_5abc
-00:2d6d _call_1b_4a19
+;; 00:2caa  Call 04:558d
+;; 00:2cba  Call 1d:4585
+;; 00:2cca  Call 06:606c
+;; 00:2cda  Call 07:49b3
+;; 00:2cea  Call 05:4de6
+;; 00:2cfa  Call 03:5470
+;; 00:2d0a  Call 1b:506f
+;; 00:2d1a  Call 06:551d
+;; 00:2d2a  Call 1b:5f2f
+;; 00:2d3a  Call 1d:6f27
+;; 00:2d4d  Call 06:43d7
+;; 00:2d5d  Call 1c:5abc
+;; 00:2d6d  Call 1b:4a19
 
 00:2dc5 .data:0003
 
