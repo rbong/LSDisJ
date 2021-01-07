@@ -144,72 +144,72 @@
 
 00:1dea .data:0002
 
-;; 00:1fff  Call 02:5d38
-;; 00:207c  Call 02:7b04
+;; 00:1fff Call 02:5d38
+;; 00:207c Call 02:7b04
 
-;; 00:20a0  Call 02:7b04
-;; 00:20a3  Call 02:7b04
+;; 00:20a0 Call 02:7b04
+;; 00:20a3 Call 02:7b04
 
 00:2084 .data:0005
 
-;; 00:22ca  Call 02:6fa0
-;; 00:22da  Call 01:6ea5
+;; 00:22ca Call 02:6fa0
+;; 00:22da Call 01:6ea5
 
-;; 00:2361  Call 02:4e02
+;; 00:2361 Call 02:4e02
 
-;; 00:248f  Call 02:6f8d
-;; 00:24ae  Call 1b:5b96
-;; 00:24da  Call 02:541e
+;; 00:248f Call 02:6f8d
+;; 00:24ae Call 1b:5b96
+;; 00:24da Call 02:541e
 
-;; 00:2567  Call 1c:63b5
+;; 00:2567 Call 1c:63b5
 
-;; 00:2676  Call 01:50dc
-;; 00:269f  Call 05:4000
-;; 00:26b4  Call 1e:4000
-;; 00:2730  Call 04:48f4
-;; 00:273f  Call 1d:4124
-;; 00:274e  Call 06:5d91
-;; 00:275d  Call 07:449f
+;; 00:2676 Call 01:50dc
+;; 00:269f Call 05:4000
+;; 00:26b4 Call 1e:4000
+;; 00:2730 Call 04:48f4
+;; 00:273f Call 1d:4124
+;; 00:274e Call 06:5d91
+;; 00:275d Call 07:449f
 ;; 00:276c Call 05:48bd
-;; 00:277b  Call 03:4dc9
-;; 00:278d  Call 06:4d70
-;; 00:279c  Call 1b:5c33
-;; 00:27ab  Call 1d:632f
-;; 00:27bd  Call 06:425c
-;; 00:27cc  Call 1c:58ad
-;; 00:27db  Call 1b:48ff
+;; 00:277b Call 03:4dc9
+;; 00:278d Call 06:4d70
+;; 00:279c Call 1b:5c33
+;; 00:27ab Call 1d:632f
+;; 00:27bd Call 06:425c
+;; 00:27cc Call 1c:58ad
+;; 00:27db Call 1b:48ff
 
-;; 00:283a  Call 1f:62aa
-;; 00:2849  Call 1d:435f
-;; 00:2858  Call 05:4ade
-;; 00:2867  Call 06:5f28
-;; 00:2876  Call 07:452e
-;; 00:28a7  Call 04:7908
-;; 00:28aa  Call 04:7af4
-;; 00:28be  Call 04:7b6b
+;; 00:283a Call 1f:62aa
+;; 00:2849 Call 1d:435f
+;; 00:2858 Call 05:4ade
+;; 00:2867 Call 06:5f28
+;; 00:2876 Call 07:452e
+;; 00:28a7 Call 04:7908
+;; 00:28aa Call 04:7af4
+;; 00:28be Call 04:7b6b
 
-;; 00:29bc  Call 02:5ef3
-;; 00:29dd  Call 1f:7645
-;; 00:2a6e  Call 02:5ef3
-;; 00:2aca  Call 02:5ef3
-;; 00:2ad8  Call 1f:7645
-;; 00:2b8a  Call 02:5ef3
-;; 00:2c04  Call 02:5ef3
-;; 00:2c1b  Call 1f:7645
+;; 00:29bc Call 02:5ef3
+;; 00:29dd Call 1f:7645
+;; 00:2a6e Call 02:5ef3
+;; 00:2aca Call 02:5ef3
+;; 00:2ad8 Call 1f:7645
+;; 00:2b8a Call 02:5ef3
+;; 00:2c04 Call 02:5ef3
+;; 00:2c1b Call 1f:7645
 
-;; 00:2caa  Call 04:558d
-;; 00:2cba  Call 1d:4585
-;; 00:2cca  Call 06:606c
-;; 00:2cda  Call 07:49b3
-;; 00:2cea  Call 05:4de6
-;; 00:2cfa  Call 03:5470
-;; 00:2d0a  Call 1b:506f
-;; 00:2d1a  Call 06:551d
-;; 00:2d2a  Call 1b:5f2f
-;; 00:2d3a  Call 1d:6f27
-;; 00:2d4d  Call 06:43d7
-;; 00:2d5d  Call 1c:5abc
-;; 00:2d6d  Call 1b:4a19
+;; 00:2caa Call 04:558d
+;; 00:2cba Call 1d:4585
+;; 00:2cca Call 06:606c
+;; 00:2cda Call 07:49b3
+;; 00:2cea Call 05:4de6
+;; 00:2cfa Call 03:5470
+;; 00:2d0a Call 1b:506f
+;; 00:2d1a Call 06:551d
+;; 00:2d2a Call 1b:5f2f
+;; 00:2d3a Call 1d:6f27
+;; 00:2d4d Call 06:43d7
+;; 00:2d5d Call 1c:5abc
+;; 00:2d6d Call 1b:4a19
 
 00:2dc5 .data:0003
 
