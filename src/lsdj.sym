@@ -81,7 +81,7 @@
 
 00:01ac .data:01e5
 
-;; 00:04d9 Exec code from 1b:7393
+;; 00:04d9 Exec dynamic instructions from call_init_samples
 
 00:07fe .data:00dc
 00:08da wav_instr_play_type_strings
@@ -101,7 +101,7 @@
 00:0b6d .text:0034
 00:0b8f .data:00d9
 
-;; 00:0f80 Calls 1b:7393
+;; 00:0f80 Calls call_init_samples at 1b:7393
 ;; 00:0f8c Calls 01:47fc
 ;; 00:0f8f Calls 01:7801
 ;; 00:0fb5 Calls 01:452f
@@ -598,6 +598,9 @@
 
 07:755c .data:0aa4
 
+;; 1b:4000 Unknown dynamically-executed code related to samples
+1b:4000 dynamic_call_samples
+
 1b:4058 .data:0040
 
 1b:4098 help_page_index_strings
@@ -716,6 +719,26 @@
 1b:5edf .text:000d
 
 1b:6c9b .data:0038
+
+1b:7393 call_init_samples
+;; 1b:7393 This function initializes some unknown dynamically-executed code and data related to samples
+;; 1b:739d Write all of 1b:7451 into d000
+;; 1b:73ae Copy code from 4000-401b plus extra instructions to memory 16 times
+1b:73b2 .jump_copy_16x_loop
+;; 1b:73ba Initialize "copy from" address
+1b:73c3 .jump_copy_loop
+;; 1b:73c3 Copy byte
+;; 1b:73d5 Increment "copy to" address
+;; 1b:73eb Increment "copy from" address
+;; 1b:7401 Jump back if not done copying
+;; 1b:741b Skip these instructions if on last loop
+;; 1b:7423 Copy "inc c" instruction and increment "copy to" address.
+1b:7431 .jump_copy_inc_c_instruction_end
+;; 1b:7431 Copy "inc e" instruction and increment "copy to" address
+1b:743f .jump_copy_inc_e_instruction_end
+;; 1b:743f Increment loop counter and jump back
+1b:7445 .jump_copy_16x_loop_end
+;; 1b:7445 Copy "ret" instruction and clean up
 
 1b:7451 .data:0baf
 
@@ -906,6 +929,9 @@
 ; Memory
 
 00:cbb7 GB_MODEL
+
+;; 01:d480 Unknown dynamically-generated code related to samples
+01:d480 DYNAMIC_SAMPLE_CODE
 
 ; Kits
 
