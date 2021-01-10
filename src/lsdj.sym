@@ -240,12 +240,12 @@
 
 00:34ea .data:0011
 
-;; 00:3771 This subroutine writes SP+6 bytes from address SP+4 into address SP+2
+;; 00:3771 This subroutine writes SP+4 bytes from address SP+2 into address SP
 00:3771 call_write_bytes
 ;; 00:3772 Load stack into registers
 00:3785 jump_set_mem_loop
 00:3788 jump_set_mem_loop_check
-;; 00:378e Return SP+2 in DE
+;; 00:378e Return SP in DE
 
 ;; 00:37db This subroutine multiplies the bytes in SP and stores the result in E
 00:37db call_multiply_sp
