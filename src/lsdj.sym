@@ -247,8 +247,39 @@
 00:3788 jump_set_mem_loop_check
 ;; 00:378e Return SP+2 in DE
 
+;; 00:37db This subroutine multiplies the bytes in SP and stores the result in E
+00:37db call_multiply_sp
+
+;; 00:37e7 This subroutine sets DE to (SP + (SP+1)) * ((SP+2) | (SP+3))
+00:37e7 call_multiply_sum_or_sp
+
+;; 00:37f8 This subroutine multiplies C by E and stores the result in L
+00:37fb call_multiply_c_e
+;; 00:37fb This subroutine sets H to (B + C) * (D | E) and L to C * (D | E)
+00:37fb call_multiply_sum_or
+
+00:3811 call_set_background_palettes
+;; 00:3811 This function sets background palettes (not to be confused with LSDj palettes)
+;; 00:3811 It sets palettes to the bytes stored at the address at SP+2, offset by the background palette index
+;; 00:3811 It sets palettes up to (SP+1) * 4 and starts at (SP) * 4
+;; 00:3815 BC = *(SP+2)
+;; 00:3818 DE = *(SP)
+;; 00:381c D = (D + E) * 4
+;; 00:3822 E *= 4
+00:3827 .jump_loop
+;; 00:3827 Wait for VRAM access to be safe
+;; 00:382d Set background palette index
+;; 00:3830 Set background palette value
+;; 00:3833 Loop
+
+
 00:3ec4 .bank_00_padding
 00:3ec4 .data:013c
+
+01:4000 call_set_object_palettes
+;; 01:4000 This function sets object palettes
+;; 01:4000 See call_set_background_palettes
+01:4016 .jump_loop
 
 01:4115 .data:0010
 
@@ -267,6 +298,15 @@
 
 01:472b .data:0005
 
+01:47fc call_set_lsdj_palette
+;; 01:47fc This subroutine sets the background/object palettes to the colors in the currently selected LSDj palette
+;; 01:47fc This subroutine sets the background/object palettes to the colors in the currently selected LSDj palette
+;; 01:4806 Disable LCDC
+;; 01:480c Set background colors to values starting at (CURRENT_PALETTE_NUM) * 0x28 + 0x5380
+;; 01:480c Each palette is 0x28 long and palettes start at 0x5380
+;; 01:4834 Set object palettes
+;; 01:4842 Cleanup
+
 01:4d6e pitch_shift_type_strings
 01:4d6e .text:0005
 01:4d73 .text:0005
@@ -275,8 +315,11 @@
 
 01:4da0 .data:0008
 
-01:484d jump_handle_dmg
-01:4861 jump_handle_dmg_end
+01:484d .jump_handle_dmg
+;; 01:484d Set normal (11 10 01 00) or inverted (00 01 10 11) palette
+01:485a .jump_set_normal_dmg_palette
+01:485c .jump_set_dmg_palette
+01:4861 .jump_handle_dmg_end
 
 01:51d0 .data:01b0
 
@@ -929,6 +972,8 @@
 ; Memory
 
 00:cbb7 GB_MODEL
+
+00:c53c CURRENT_PALETTE_NUM
 
 ;; 01:d480 Unknown dynamically-generated code related to samples
 01:d480 DYNAMIC_SAMPLE_CODE
