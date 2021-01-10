@@ -55,9 +55,9 @@
 ;; 00:0151 A is used to detect GB model, B is unused
 ;; 00:0155 Init stack address
 ;; 00:0158 Clear WRAM1
-00:015f jump_clear_wram1_loop
+00:015f .jump_clear_wram1_loop
 ;; 00:0166 Clear HRAM
-00:016b jump_clear_hram_loop
+00:016b .jump_clear_hram_loop
 ;; 00:016f Retrieve and store boot values from earlier
 
 ;; 00:017a Start initializing registers
@@ -127,11 +127,11 @@
 00:1466 .data:0008
 
 00:1480 call_setup_sound
-00:1492 jump_get_sound_en_dmg
-00:149d jump_dmg_sound_off
-00:149e jump_dmg_sound_on
-00:14a5 jump_get_sound_en_cgb
-00:14a9 jump_disable_sound
+00:1492 .jump_get_sound_en_dmg
+00:149d .jump_dmg_sound_off
+00:149e .jump_dmg_sound_on
+00:14a5 .jump_get_sound_en_cgb
+00:14a9 .jump_disable_sound
 
 ;; 00:14cb Call 01:6ea5
 ;; 00:14d9 Call 1c:40f2
