@@ -102,7 +102,7 @@
 00:0b8f .data:00d9
 
 ;; 00:0f80 Calls call_init_samples at 1b:7393
-;; 00:0f8c Calls 01:47fc
+;; 00:0f8c Calls call_set_lsdj_palette 01:47fc
 ;; 00:0f8f Calls 01:7801
 ;; 00:0fb5 Calls 01:452f
 ;; 00:0fbe Calls 00:3975
