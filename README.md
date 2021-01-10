@@ -16,6 +16,9 @@ This targets the latest stable version at the time of writing, `8.5.1`.
 # Install
 git clone --recursive https://github.com/rbong/LSDisJ
 
+# Update
+git pull && git submodule update
+
 # Create src/lsdj.asm
 make disassemble
 
