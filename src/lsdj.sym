@@ -103,7 +103,7 @@
 
 ;; 00:0f80 Calls call_init_samples at 1b:7393
 ;; 00:0f8c Calls call_set_lsdj_palette 01:47fc
-;; 00:0f8f Calls 01:7801
+;; 00:0f8f Calls call_clear_oam_vram 01:7801
 ;; 00:0fb5 Calls 01:452f
 ;; 00:0fbe Calls 00:3975
 ;; 00:0fd7 Calls 01:4152
@@ -393,6 +393,41 @@
 01:7568 .text:0010
 01:7578 .text:0012
 01:758a .text:0025
+
+01:7801 call_clear_oam_vram
+;; 01:7801 This subroutine sets OAM and the first 0x30 bytes of VRAM to 0
+;; 01:7805 Set current OAM address to the start of OAM memory (0xfe00) +2
+01:780d .jump_set_oam_loop
+;; 01:780d Set value at SP to word at current OAM address
+;; 01:7814 Set value at SP+1 to OAM value (0)
+;; 01:781b Set value at SP+2 to 0x0000
+;; 01:7820 Check if the end of OAM memory (0xfebf) has been reached
+;; 01:782f Check if value at SP+1 is 0x0000 (always true) and exit loop
+01:783b .jump_set_oam
+;; 01:783b Write 0 to the current OAM address
+;; 01:784b Increment and loop
+01:7853 .jump_set_oam_end
+01:7856 .jump_init_set_vram_loop
+;; 01:7856 Set current VRAM address to the start of VRAM memory (0x8000)
+01:785e .jump_set_vram_loop
+;; 01:785e Set value at SP to word at current OAM address
+;; 01:7865 Set value at SP+1 to OAM value (0)
+;; 01:786c Set value at SP+2 to 0x0000
+;; 01:7871 Check if the last address has been reached (only sets first 0x30 addresses)
+;; 01:7880 Check if value at SP+1 is 0x0000 (always true) and exit loop
+01:788c .jump_set_vram
+;; 01:788c Write 0 to the current VRAM address
+;; 01:789c Increment and loop
+01:78a4 .jump_set_vram_end
+01:78a7 .jump_set_sprites
+;; 01:78a7 Set sprites at y pos 0x68 and x pos 0x90 through 0xa0 to sprites 0 through 2
+;; 01:78a7 Since the sprites are cleared, it's currently unknown what this does
+;; 01:790f Cleanup
+
+01:79b9 call_oam_vram_safe_write
+;; 01:79b9 This subroutine sets the address at SP to the value at SP+2 when OAM is not in use and VRAM is safe to use, trying again if it fails
+01:79c0 .jump_wait_for_oam_vram
+;; 01:79c9 OAM used by system while writing or not safe to write to VRAM, try again
 
 01:79ce .data:0632
 
@@ -974,6 +1009,11 @@
 00:cbb7 GB_MODEL
 
 00:c53c CURRENT_PALETTE_NUM
+
+;; 00:c8f5 Used to store reference to an address inside OAM/VRAM
+00:c8f5 OAM_VRAM_ADDRESS
+;; 00:c8f6 Used to store a value to write to OAM/VRAM
+00:c8f6 OAM_VRAM_VALUE
 
 ;; 01:d480 Unknown dynamically-generated code related to samples
 01:d480 DYNAMIC_SAMPLE_CODE
