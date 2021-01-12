@@ -1006,6 +1006,9 @@
 
 ; Memory
 
+;; 00:c33f Indicates if sound was on at startup for DMG
+00:c3ff DMG_SOUND_ON
+
 00:cbb7 GB_MODEL
 
 00:c53c CURRENT_PALETTE_NUM
