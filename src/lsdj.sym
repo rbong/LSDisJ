@@ -126,6 +126,11 @@
 
 00:1466 .data:0008
 
+01:146e call_clear_bg_map_data
+;; 01:146e This subroutine clears the section in working memory reserved for background map tile data
+;; 01:146e Memory ranges from 0xd800 through 0xd968, 0x0168 bytes
+;; 01:1476 0xd800 is BG_MAP_CHUNK_0_DATA_START
+
 00:1480 call_setup_sound
 00:1492 .jump_get_sound_en_dmg
 00:149d .jump_dmg_sound_off
