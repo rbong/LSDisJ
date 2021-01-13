@@ -142,6 +142,8 @@
 ;; 00:1592 Call 01:7221
 ;; 00:15a8 Call 01:7239
 
+00:1616 call_00_1616
+
 00:1dea .data:0002
 
 ;; 00:1fff Call 02:5d38
@@ -220,6 +222,8 @@
 
 00:2f26 .data:000f
 
+00:2f63 call_00_2f63
+
 ;; 00:3390 This subroutine enables the speed switch (CGB only)
 00:3390 call_key1_en
 ;; 00:3394 Already set, return early
@@ -295,6 +299,8 @@
 01:4270 .text:0006
 01:4276 .text:0012
 01:4288 .text:0014
+
+01:452f call_01_452f
 
 01:472b .data:0005
 
@@ -386,6 +392,8 @@
 01:71ce .text:0011
 
 01:7315 .data:0006
+
+01:731b jump_01_731b
 
 01:754b crash_help_strings
 01:754b .text:000c
