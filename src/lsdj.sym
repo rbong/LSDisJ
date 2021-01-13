@@ -278,6 +278,10 @@
 00:3788 .jump_set_mem_loop_check
 ;; 00:378e Return SP in DE
 
+00:37b5 call_repeat_byte_b
+;; 00:37b5 This subroutine writes byte B to address HL through HL + DE
+;; 00:37b5 DE must at least be 1, otherwise B will be written to address HL + 0x10000 inclusive
+
 ;; 00:37db This subroutine multiplies the bytes in SP and stores the result in E
 00:37db call_multiply_sp
 
