@@ -144,6 +144,17 @@
 
 00:1616 call_00_1616
 
+00:19d7 call_copy_bg_map_line_2x
+;; 00:19d7 This subroutine copies 2 lines of background map tiles from the address at HL to the target address at DE
+;; 00:19d7 Each background map tile is one byte, each line is 32 bytes, however only 20 tiles are visible
+;; 00:19d7 Invisible tiles are skipped by this subroutine at the target address
+;; 00:19d7 After this function is complete, HL will be increased by 40 and DE will be increased by 64
+;; 00:19d7 Background tile memory is from 0x9800 through 0x9fff
+;; 00:19d7 Copy first line starts here
+;; 00:1a12 Skip invisible tiles on first line
+;; 00:1a16 Copy second line
+;; 00:1a51 Skip invisible tiles on second line
+
 00:1dea .data:0002
 
 ;; 00:1fff Call 02:5d38
