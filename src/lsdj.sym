@@ -473,6 +473,27 @@
 ;; 01:78a7 Since the sprites are cleared, it's currently unknown what this does
 ;; 01:790f Cleanup
 
+01:7926 call_copy_bg_map_attr_palette_nums
+;; 01:7926 This subroutine copies the palette number background map attributes from the address stored at SP to VRAM
+;; 01:7926 Only the top 2 bits of the bytes will be used, so only 4 background colors are possible
+;; 01:7926 Each background map attribute is one byte, each line is 32 bytes, however only 20 attributes are visible
+;; 01:7926 There are 18 lines in total
+;; 01:7926 Only visible attributes will be read from SP, in total 360 bytes
+;; 01:7927 Set DE to address stored at SP
+;; 01:792c Set HL to the start of BG map attributes
+;; 01:792f Set B to the line counter (18 lines is 0x12 in hex)
+01:7931 .jump_loop
+;; 01:7931 Save line counter for later
+;; 01:7932 Set C to the row counter (20 attributes is 0x14 in hex)
+01:7934 .jump_row_loop
+;; 01:7934 Set B to the upper 2 bytes of the value at address DE
+01:793e .jump_wait_for_hblank
+;; 01:7944 Write the value to VRAM
+;; 01:7945 Retry if H-Blank period missed
+;; 01:794b Increment and loop
+;; 01:7950 Skip invisible attributes (final 12 attributes out of 32)
+;; 01:7954 Get line counter which was earlier pushed
+
 01:79b9 call_oam_vram_safe_write
 ;; 01:79b9 This subroutine sets the address at SP to the value at SP+2 when OAM is not in use and VRAM is safe to use, trying again if it fails
 01:79c0 .jump_wait_for_oam_vram
