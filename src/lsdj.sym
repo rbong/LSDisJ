@@ -368,6 +368,21 @@
 01:485c .jump_set_dmg_palette
 01:4861 .jump_handle_dmg_end
 
+01:5134 .jump_handle_phrase_screen
+01:513c .jump_handle_groove_screen
+01:5144 .jump_handle_chain_screen
+01:514c .jump_handle_song_screen
+01:5154 .jump_handle_table_screen
+01:515c .jump_handle_instrument_screen
+01:5164 .jump_handle_crash_screen
+01:5167 .jump_handle_synth_screen
+01:516f .jump_handle_project_screen
+01:5177 .jump_handle_wave_editor_screen
+01:517f .jump_handle_talk_screen
+01:5187 .jump_handle_word_screen
+01:518f .jump_handle_file_screen
+01:5197 .jump_handle_help_screen
+
 01:51d0 .data:01b0
 
 01:5380 palette_1_content
@@ -1084,6 +1099,22 @@
 00:9800 BG_MAP_ATTR_CHUNK_0_START
 00:98c0 BG_MAP_ATTR_CHUNK_1_START
 00:9980 BG_MAP_ATTR_CHUNK_2_START
+
+;; 00:c3fe 0x01: phrase screen
+;; 00:c3fe 0x02: groove screen
+;; 00:c3fe 0x03: chain screen
+;; 00:c3fe 0x04: song screen
+;; 00:c3fe 0x05: table screen
+;; 00:c3fe 0x06: instrument screen
+;; 00:c3fe 0x07: crash screen
+;; 00:c3fe 0x08: synth screen
+;; 00:c3fe 0x09: project screen
+;; 00:c3fe 0x0a: wave editor screen
+;; 00:c3fe 0x0b: talk screen
+;; 00:c3fe 0x0c: word screen
+;; 00:c3fe 0x0d: file screen
+;; 00:c3fe 0x0e: help screen
+00:c3fe CURRENT_SCREEN
 
 ;; 00:c33f Indicates if sound was on at startup for DMG
 00:c3ff DMG_SOUND_ON
