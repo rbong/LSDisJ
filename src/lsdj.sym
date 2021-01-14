@@ -65,7 +65,7 @@
 ;; 00:017f Reset LCDC status
 
 ;; 00:0181 Reset window position
-;; 00:0181 $07 is the left edge of the screen
+;; 00:0181 0x07 is the left edge of the screen
 
 ;; 00:0187 Reset palettes
 ;; 00:0187 0xe4 is "11 10 01 00" in binary
