@@ -11,7 +11,7 @@
 00:0028 .data:0008
 00:0030 rst_30
 00:0030 .data:0008
-00:0038 rst_38
+00:0038 rst_trigger_crash
 00:003c .data:0004
 
 00:0040 vblank_interrupt
@@ -148,6 +148,12 @@
 ;; 00:15a8 Call 01:7239
 
 00:1616 call_00_1616
+
+00:160d call_handle_exception
+;; 00:160d This subroutine should be called whenever an assertion fails
+;; 00:160d This will lead to showing the crash screen
+;; 00:160d If an exception is already being handled, this does nothing
+;; 00:1615 calls rst_trigger_crash at 0x38
 
 00:19d7 call_copy_bg_map_attr_line_2x
 ;; 00:19d7 This subroutine copies 2 lines of background map attributes from the address at HL to the target address at DE
@@ -1118,6 +1124,9 @@
 
 ;; 00:c33f Indicates if sound was on at startup for DMG
 00:c3ff DMG_SOUND_ON
+
+;; 00:c5c7 Set to 1 when handling an exception
+00:c5c7 IS_HANDLING_EXCEPTION
 
 00:cbb7 GB_MODEL
 
