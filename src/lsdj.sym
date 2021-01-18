@@ -181,7 +181,8 @@
 ;; 00:160d This subroutine should be called whenever an assertion fails
 ;; 00:160d This will lead to showing the crash screen
 ;; 00:160d If an exception is already being handled, this does nothing
-;; 00:160d "ld b, b" does nothing, used for breakpoints
+;; 00:160d -
+;; 00:160d Does nothing, used for breakpoints
 ;; 00:1615 calls rst_trigger_crash at 0x38
 
 00:1616 call_trigger_breakpoint
@@ -224,7 +225,8 @@
 ;; 00:19d7 Invisible attributes are skipped by this subroutine at the target address
 ;; 00:19d7 After this function is complete, HL will be increased by 40 and DE will be increased by 64
 ;; 00:19d7 Background map attribute memory is from 0x9800 through 0x9fff
-;; 00:19d7 Copy first line starts here
+;; 00:19d7 -
+;; 00:19d7 Copy first line
 ;; 00:1a12 Skip invisible attributes on first line
 ;; 00:1a16 Copy second line
 ;; 00:1a51 Skip invisible attributes on second line
@@ -343,15 +345,15 @@
 
 00:3365 call_00_3365
 
-;; 00:3390 This subroutine enables the speed switch (CGB only)
 00:3390 call_key1_en
+;; 00:3390 This subroutine enables the speed switch (CGB only)
 ;; 00:3394 Already set, return early
 ;; 00:3398 Prepare to enable speed switch
 ;; 00:33a1 Enable speed switch
 ;; 00:33a7 Restore state
 
-;; 00:33df This subroutine disables the LCD controller when safe
 00:33df call_disable_lcdc
+;; 00:33df This subroutine disables the LCD controller when safe
 ;; 00:33e3 Wait for scanline to get into a safe position
 ;; 00:33e3 0x90 is the blank period
 00:33e3 .jump_wait_for_vblank_1
@@ -371,8 +373,8 @@
 
 00:375f call_00_375f
 
-;; 00:3771 This subroutine writes SP+4 bytes from address SP+2 into address SP
 00:3771 call_write_bytes
+;; 00:3771 This subroutine writes SP+4 bytes from address SP+2 into address SP
 ;; 00:3772 Load stack into registers
 00:3785 .jump_set_mem_loop
 00:3788 .jump_set_mem_loop_check
@@ -391,14 +393,14 @@
 ;; 00:37bd Returns the address stored at SP in DE
 ;; 00:37bd See also call_repeat_byte_b at 00:37b5
 
-;; 00:37db This subroutine multiplies the bytes in SP and stores the result in E
 00:37db call_multiply_sp
+;; 00:37db This subroutine multiplies the bytes in SP and stores the result in E
 
-;; 00:37e7 This subroutine sets DE to (SP + (SP+1)) * ((SP+2) | (SP+3))
 00:37e7 call_multiply_sum_or_sp
+;; 00:37e7 This subroutine sets DE to (SP + (SP+1)) * ((SP+2) | (SP+3))
 
-;; 00:37f8 This subroutine multiplies C by E and stores the result in L
 00:37fb call_multiply_c_e
+;; 00:37f8 This subroutine multiplies C by E and stores the result in L
 ;; 00:37fb This subroutine sets H to (B + C) * (D | E) and L to C * (D | E)
 00:37fb call_multiply_sum_or
 
@@ -459,7 +461,6 @@
 01:472b .data:0005
 
 01:47fc call_set_lsdj_palette
-;; 01:47fc This subroutine sets the background/object palettes to the colors in the currently selected LSDj palette
 ;; 01:47fc This subroutine sets the background/object palettes to the colors in the currently selected LSDj palette
 ;; 01:4806 Disable LCDC
 ;; 01:480c Set background colors to values starting at (CURRENT_PALETTE_NUM) * 0x28 + 0x5380
