@@ -155,6 +155,17 @@
 ;; 00:160d If an exception is already being handled, this does nothing
 ;; 00:1615 calls rst_trigger_crash at 0x38
 
+00:1699 call_read_external_ram
+;; 00:1699 This subroutine reads a byte from external RAM
+;; 00:1699 The external RAM bank number is set with the value at SP
+;; 00:1699 The byte address is selected with the address stored at SP+1
+;; 00:1699 The byte will be returned in E
+;; 00:169c External RAM bank cannot be greater than or equal to 0x10
+;; 00:16a5 Set external RAM bank number
+;; 00:16a8 Enable external RAM
+;; 00:16ad Read byte
+;; 00:16b0 Disable external RAM
+
 00:19d7 call_copy_bg_map_attr_line_2x
 ;; 00:19d7 This subroutine copies 2 lines of background map attributes from the address at HL to the target address at DE
 ;; 00:19d7 Each background map attribute is one byte, each line is 32 bytes, however only 20 attributes are visible
