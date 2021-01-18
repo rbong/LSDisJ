@@ -4,7 +4,9 @@
 00:0008 rst_08
 00:0008 .data:0008
 00:0010 rst_10
+;; 00:0011 Does nothing, used for breakpoints
 00:0018 rst_18
+;; 00:001e Does nothing, used for breakpoints
 00:0020 rst_20
 00:0020 .data:0008
 00:0028 rst_28
@@ -12,6 +14,7 @@
 00:0030 rst_30
 00:0030 .data:0008
 00:0038 rst_trigger_crash
+;; 00:0039 Does nothing, used for breakpoints
 00:003c .data:0004
 
 00:0040 vblank_interrupt
@@ -179,7 +182,11 @@
 ;; 00:160d This subroutine should be called whenever an assertion fails
 ;; 00:160d This will lead to showing the crash screen
 ;; 00:160d If an exception is already being handled, this does nothing
+;; 00:160d "ld b, b" does nothing, used for breakpoints
 ;; 00:1615 calls rst_trigger_crash at 0x38
+
+00:1616 call_trigger_breakpoint
+;; 00:1616 This subroutine does nothing, the "ld b, b" instruction can be used for breakpoints
 
 00:1699 call_read_external_ram
 ;; 00:1699 This subroutine reads a byte from external RAM
@@ -448,6 +455,9 @@
 ;; 01:4834 Set object palettes
 ;; 01:4842 Cleanup
 
+;; 01:4c02 Does nothing, used for breakpoints
+;; 01:4c06 Does nothing, used for breakpoints
+
 01:4d6e pitch_shift_type_strings
 01:4d6e .text:0005
 01:4d73 .text:0005
@@ -611,6 +621,10 @@
 01:79ce .data:0632
 
 02:42e5 .data:0200
+
+;; 02:469a Does nothing, used for breakpoints
+
+;; 02:46b3 Does nothing, used for breakpoints
 
 02:6d6c .data:006c
 02:6dd8 .data:006c
