@@ -83,10 +83,14 @@
 
 ;; 00:04d9 Exec dynamic instructions from call_init_samples
 
+00:07b4 call_00_07b4
+
 00:07fe .data:00dc
 00:08da wav_instr_play_type_strings
 00:08da .text:0024
 00:08fe .data:0099
+
+00:09e2 call_00_09e2
 
 00:0a48 note_labels
 00:0a48 .text:0005
@@ -100,6 +104,26 @@
 00:0b49 .text:0036
 00:0b6d .text:0034
 00:0b8f .data:00d9
+
+00:0cb9 call_00_0cb9
+
+00:0d20 call_00_0d20
+
+00:0dca call_00_0dca
+
+00:0df5 call_00_0df5
+
+00:0e26 call_00_0e26
+
+00:0e5b call_00_0e5b
+
+00:0e91 call_00_0e91
+
+00:0eca call_00_0eca
+
+00:0f03 call_00_0f03
+
+00:0f30 call_00_0f30
 
 ;; 00:0f80 Calls call_init_samples at 1b:7393
 ;; 00:0f8c Calls call_set_lsdj_palette at 01:47fc
@@ -123,6 +147,8 @@
 ;; 00:125d Calls 05:4517
 ;; 00:1286 Calls 05:4517
 ;; 00:12be Calls 1d:4f32
+
+00:13d9 call_00_13d9
 
 00:1466 .data:0008
 
@@ -166,6 +192,8 @@
 ;; 00:16ad Read byte
 ;; 00:16b0 Disable external RAM
 
+00:16c9 call_00_16c9
+
 00:1741 call_write_external_ram
 ;; 00:1741 This subroutine writes a byte to external RAM
 ;; 00:1741 The external RAM bank number is set with the value at SP
@@ -175,6 +203,14 @@
 ;; 00:174d Enable external RAM
 ;; 00:1752 Write byte
 ;; 00:1754 Disable external RAM
+
+00:1759 call_00_1759
+
+00:1779 call_00_1779
+
+00:1860 call_00_1860
+
+00:194b call_00_194b
 
 00:19d7 call_copy_bg_map_attr_line_2x
 ;; 00:19d7 This subroutine copies 2 lines of background map attributes from the address at HL to the target address at DE
@@ -204,6 +240,12 @@
 ;; 00:1a8f Reached 0x9a00, high byte of VRAM address should increment
 
 00:1dea .data:0002
+
+00:1f05 call_00_1f05
+
+00:1f2f call_00_1f2f
+
+00:1f8a call_00_1f8a
 
 ;; 00:1fff Call 02:5d38
 ;; 00:207c Call 02:7b04
@@ -272,6 +314,8 @@
 ;; 00:2d5d Call 1c:5abc
 ;; 00:2d6d Call 1b:4a19
 
+00:2d74 call_00_2d74
+
 00:2dc5 .data:0003
 
 00:2e14 channel_labels
@@ -282,6 +326,16 @@
 00:2f26 .data:000f
 
 00:2f63 call_00_2f63
+
+00:2f96 call_00_2f96
+
+00:32e8 call_00_32e8
+
+00:32f6 call_00_32f6
+
+00:3305 call_00_3305
+
+00:3365 call_00_3365
 
 ;; 00:3390 This subroutine enables the speed switch (CGB only)
 00:3390 call_key1_en
@@ -303,12 +357,24 @@
 
 00:34ea .data:0011
 
+00:3616 call_00_3616
+
+00:3685 call_00_3685
+
+00:3691 call_00_3691
+
+00:375f call_00_375f
+
 ;; 00:3771 This subroutine writes SP+4 bytes from address SP+2 into address SP
 00:3771 call_write_bytes
 ;; 00:3772 Load stack into registers
 00:3785 .jump_set_mem_loop
 00:3788 .jump_set_mem_loop_check
 ;; 00:378e Return SP in DE
+
+00:3791 call_00_3791
+
+00:37d0 call_00_37d0
 
 00:37b5 call_repeat_byte_b
 ;; 00:37b5 This subroutine writes byte B to address HL through HL + DE
@@ -344,6 +410,7 @@
 ;; 00:3830 Set background palette value
 ;; 00:3833 Loop
 
+00:3906 call_00_3906
 
 00:3ec4 .bank_00_padding
 00:3ec4 .data:013c
