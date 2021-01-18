@@ -132,7 +132,6 @@
 ;; 00:0f8c Calls call_set_lsdj_palette at 01:47fc
 ;; 00:0f8f Calls call_clear_oam_vram at 01:7801
 ;; 00:0fb5 Calls 01:452f
-;; 00:0fbe Calls 00:3975
 ;; 00:0fd7 Calls 01:4152
 ;; 00:100d Calls 01:429c
 ;; 00:1010 Calls 01:45bb
@@ -418,6 +417,10 @@
 ;; 00:3833 Loop
 
 00:3906 call_00_3906
+
+00:3975 call_set_default_ram_values
+;; 00:3975 This subroutine sets RAM addresses used to their default values
+;; 00:3b0d Set the default screen to the project screen
 
 00:3ec4 .bank_00_padding
 00:3ec4 .data:013c
