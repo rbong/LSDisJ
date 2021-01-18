@@ -429,7 +429,12 @@
 
 01:4115 .data:0010
 
+00:4152 call_01_4152
+
 01:4222 cart_test_strings
+
+01:429c call_01_429c
+
 01:4222 .text:000f
 01:4231 .text:0007
 01:4238 .text:0004
@@ -442,7 +447,11 @@
 01:4276 .text:0012
 01:4288 .text:0014
 
+01:44f8 call_01_44f8
+
 01:452f call_01_452f
+
+01:45bb call_01_45bb
 
 01:472b .data:0005
 
@@ -454,6 +463,8 @@
 ;; 01:480c Each palette is 0x28 long and palettes start at 0x5380
 ;; 01:4834 Set object palettes
 ;; 01:4842 Cleanup
+
+01:48cf call_01_48cf
 
 ;; 01:4c02 Does nothing, used for breakpoints
 ;; 01:4c06 Does nothing, used for breakpoints
@@ -849,6 +860,8 @@
 07:6a60 .text:0005
 07:6a65 .text:0005
 
+07:6a6a call_07_6a6a
+
 07:67f2 .data:0100
 
 07:6ff4 pulse_channel_combo_strings
@@ -1019,6 +1032,8 @@
 
 1c:47a3 .data:000e
 
+1c:47b1 call_1c_47b1
+
 1c:4c11 .data:0009
 
 1c:5092 .data:0006
@@ -1063,6 +1078,8 @@
 1d:435a .text:0005
 
 1d:454b .data:0003
+
+1d:4f32 call_1d_4f32
 
 1d:50ca .data:02a0
 
@@ -1160,6 +1177,8 @@
 1f:46c8 .text:0004
 1f:46cc .text:0004
 1f:46d0 .text:0004
+
+1f:49d5 call_1f_49d5
 
 1f:6184 dedup_song_strings
 1f:6184 .text:000b
