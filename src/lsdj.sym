@@ -217,6 +217,16 @@
 
 00:1860 call_00_1860
 
+00:1984 call_hl
+;; 00:1984 This subroutine calls HL
+
+00:1985 call_far_call_sp
+;; 00:1985 This subroutine calls the subroutine at the address stored at SP+1 at the bank stored at SP
+
+00:19a6 call_far_call_sp_set_bank
+;; 00:19a6 This subroutine calls the subroutine at the address stored at SP+1 at the bank stored at SP
+;; 00:19a6 After the call, the bank will be set to the byte stored at SP+3
+
 00:194b call_00_194b
 
 00:19d7 call_copy_bg_map_attr_line_2x
@@ -1264,6 +1274,9 @@
 00:c8f5 OAM_VRAM_ADDRESS
 ;; 00:c8f6 Used to store a value to write to OAM/VRAM
 00:c8f6 OAM_VRAM_VALUE
+
+;; 00:ff8e Used to backup the previously used bank number
+00:ff8e LAST_BANK
 
 ;; 01:d800 This section of memory is reserved for the current background map attribute data to write to VRAM
 ;; 01:d800 Background map attribute data continues through address 0xd968
