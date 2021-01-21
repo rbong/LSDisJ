@@ -36,7 +36,7 @@
 00:0104 HeaderLogo
 00:0134 HeaderTitle
 00:013f HeaderManufacturerCode
-;; 00:0143 Game supports CGB functions, but works on old gameboys also.
+;; 00:0143 Game supports CGB functions, but works on old gameboys also
 00:0143 HeaderCGBFlag
 00:0144 HeaderNewLicenseeCode
 ;; 00:0146 No SGB functions (Normal Gameboy or CGB only game)
@@ -1030,7 +1030,7 @@
 ;; 1b:73eb Increment "copy from" address
 ;; 1b:7401 Jump back if not done copying
 ;; 1b:741b Skip these instructions if on last loop
-;; 1b:7423 Copy "inc c" instruction and increment "copy to" address.
+;; 1b:7423 Copy "inc c" instruction and increment "copy to" address
 1b:7431 .jump_copy_inc_c_instruction_end
 ;; 1b:7431 Copy "inc e" instruction and increment "copy to" address
 1b:743f .jump_copy_inc_e_instruction_end
