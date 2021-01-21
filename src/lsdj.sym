@@ -480,6 +480,12 @@
 
 01:48cf call_01_48cf
 
+01:484d .jump_handle_dmg
+;; 01:484d Set normal (11 10 01 00) or inverted (00 01 10 11) palette
+01:485a .jump_set_normal_dmg_palette
+01:485c .jump_set_dmg_palette
+01:4861 .jump_handle_dmg_end
+
 ;; 01:4c02 Does nothing, used for breakpoints
 ;; 01:4c06 Does nothing, used for breakpoints
 
@@ -490,12 +496,6 @@
 01:4d7d .text:0005
 
 01:4da0 .data:0008
-
-01:484d .jump_handle_dmg
-;; 01:484d Set normal (11 10 01 00) or inverted (00 01 10 11) palette
-01:485a .jump_set_normal_dmg_palette
-01:485c .jump_set_dmg_palette
-01:4861 .jump_handle_dmg_end
 
 01:5134 .jump_handle_phrase_screen
 01:513c .jump_handle_groove_screen
