@@ -128,27 +128,27 @@
 
 00:0f30 call_00_0f30
 
-;; 00:0f80 Calls call_init_samples at 1b:7393
-;; 00:0f8c Calls call_set_lsdj_palette at 01:47fc
-;; 00:0f8f Calls call_clear_oam_vram at 01:7801
-;; 00:0fb5 Calls 01:452f
-;; 00:0fd7 Calls 01:4152
-;; 00:100d Calls 01:429c
-;; 00:1010 Calls 01:45bb
-;; 00:101c Calls 1c:4057
-;; 00:102e Calls 01:44f8
-;; 00:1040 Calls 1c:47b1
+;; 00:0f80 Call call_init_samples at 1b:7393
+;; 00:0f8c Call call_set_lsdj_palette at 01:47fc
+;; 00:0f8f Call call_clear_oam_vram at 01:7801
+;; 00:0fb5 Call 01:452f
+;; 00:0fd7 Call 01:4152
+;; 00:100d Call 01:429c
+;; 00:1010 Call 01:45bb
+;; 00:101c Call 1c:4057
+;; 00:102e Call 01:44f8
+;; 00:1040 Call 1c:47b1
 
-;; 00:107b Calls 07:6a6a
-;; 00:10f2 Calls 02:6d1b
-;; 00:110e Calls 01:4863
-;; 00:115f Calls 01:48cf
-;; 00:1186 Calls 1f:49d5
-;; 00:11c1 Calls 02:7b04
-;; 00:1234 Calls 04:4582
-;; 00:125d Calls 05:4517
-;; 00:1286 Calls 05:4517
-;; 00:12be Calls 1d:4f32
+;; 00:107b Call 07:6a6a
+;; 00:10f2 Call 02:6d1b
+;; 00:110e Call 01:4863
+;; 00:115f Call 01:48cf
+;; 00:1186 Call 1f:49d5
+;; 00:11c1 Call 02:7b04
+;; 00:1234 Call 04:4582
+;; 00:125d Call 05:4517
+;; 00:1286 Call 05:4517
+;; 00:12be Call 1d:4f32
 
 00:13d9 call_00_13d9
 
