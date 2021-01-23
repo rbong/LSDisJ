@@ -132,12 +132,14 @@
 ;; 00:0f8c Call call_set_lsdj_palette at 01:47fc
 ;; 00:0f8f Call call_clear_oam_vram at 01:7801
 ;; 00:0fb5 Call 01:452f
+;; 00:0fc1 Call 1e:7a0c
 ;; 00:0fd7 Call 01:4152
 ;; 00:100d Call 01:429c
 ;; 00:1010 Call 01:45bb
 ;; 00:101c Call 1c:4057
 ;; 00:102e Call 01:44f8
 ;; 00:1040 Call 1c:47b1
+;; 00:104e Call 01:76a3 then set bank to 00
 
 ;; 00:107b Call 07:6a6a
 ;; 00:10f2 Call 02:6d1b
@@ -226,6 +228,7 @@
 00:19a6 call_far_call_sp_set_bank
 ;; 00:19a6 This subroutine calls the subroutine at the address stored at SP+1 at the bank stored at SP
 ;; 00:19a6 After the call, the bank will be set to the byte stored at SP+3
+;; 00:19a6 TODO: determine what banks this is called with
 
 00:194b call_00_194b
 
@@ -449,6 +452,7 @@
 01:4222 cart_test_strings
 
 01:429c call_01_429c
+;; 01:42ad Call 07:66f9
 
 01:4222 .text:000f
 01:4231 .text:0007
@@ -486,8 +490,16 @@
 01:485c .jump_set_dmg_palette
 01:4861 .jump_handle_dmg_end
 
+01:493b call_01_493b
+
+01:49ab call_01_49ab
+
+;; 01:4aad Call 01:6f8b
+
 ;; 01:4c02 Does nothing, used for breakpoints
 ;; 01:4c06 Does nothing, used for breakpoints
+
+01:4cf4 call_01_4cf4
 
 01:4d6e pitch_shift_type_strings
 01:4d6e .text:0005
@@ -495,7 +507,19 @@
 01:4d78 .text:0005
 01:4d7d .text:0005
 
+01:4d82 call_01_4d82
+
 01:4da0 .data:0008
+
+01:4da8 call_01_4da8
+
+01:4fad call_01_4fad
+
+;; 01:4e1a Call 1c:6272
+
+01:502c call_01_502c
+
+;; 01:50ca Call 03:4dc9
 
 01:5134 .jump_handle_phrase_screen
 01:513c .jump_handle_groove_screen
@@ -528,6 +552,8 @@
 01:5448 .data:0028
 
 01:5470 .data:1248
+
+01:66b8 call_01_66b8
 
 01:6915 command_help_strings
 01:6915 .text:0030
@@ -564,9 +590,22 @@
 01:6e76 .text:002f
 
 01:6e76 error_strings
+
+01:6f8b call_01_6f8b
+
 01:6f95 .text:0031
+
+01:6fc6 call_01_6fc6
+
 01:6fd0 .text:0014
+
+01:6fe4 call_01_6fe4
+
 01:6fee .text:0015
+
+01:7003 call_01_7003
+
+01:700d call_01_700d
 
 ;; 01:712f Assumed to be jump table
 01:712f .data:0028
@@ -575,6 +614,8 @@
 01:7157 .text:0049
 01:71a0 .text:002e
 01:71ce .text:0011
+
+01:71e0 call_01_71e0
 
 01:7315 .data:0006
 
@@ -586,6 +627,14 @@
 01:7568 .text:0010
 01:7578 .text:0012
 01:758a .text:0025
+
+01:76a3 call_01_76a3
+
+;; 01:770d Call 1e:7a0c
+;; 01:77a9 Call 07:5d3c
+;; 01:77c7 Call 1c:4a46
+;; 01:77d3 Call 1b:72f6
+;; 01:77ef Call 07:670b
 
 01:7801 call_clear_oam_vram
 ;; 01:7801 This subroutine sets OAM and the first 0x30 bytes of VRAM to 0
@@ -647,12 +696,18 @@
 
 02:42e5 .data:0200
 
+02:456d call_02_456d
+
 ;; 02:469a Does nothing, used for breakpoints
 
 ;; 02:46b3 Does nothing, used for breakpoints
 
+;; 02:64ef Call 07:5d3c
+
 02:6d6c .data:006c
 02:6dd8 .data:006c
+
+02:7770 call_02_7770
 
 02:7e69 .data:0010
 
@@ -750,22 +805,90 @@
 
 03:426d .data:00ca
 
+;; 03:447e Call 01:4d82
+
 03:4517 .data:0010
+
+;; 03:458c Call 1f:404d
+
+;; 03:4776 Call 05:4000
+;; 03:4783 Call 01:6781
 
 03:47aa instrument_screen_title_string
 03:47aa .text:0007
 
 03:47e4 .text:000f
 
+;; 03:494f Call 1f:4000
+
+;; 03:49b4 Call 1f:404d
+
+;; 03:49f1 Call 1f:404d
+
+;; 03:4a38 Call 1f:404d
+
+;; 03:4a7f Call 1f:404d
+
 03:4afa .data:0003
 
 03:4bbb .data:001b
+
+;; 03:4c85 Call 01:4cf4
+
+;; 03:4d3b Call 01:4cf4
+
+;; 03:4db0 Call 01:4cf4
+
+;; 03:4de2 Call 1f:77f2
+
+;; 03:4f0e Call 01:4622
+
+;; 03:4faa TODO: determine which subroutine this calls by default
+;; 03:4fc3 Call 1f:41f1
+;; 03:4fca Call 1f:46d4
+;; 03:4fd1 Call 1f:4354
+;; 03:4fd8 Call 1f:446b
+;; 03:4fe6 Call 1f:7645
 
 03:50df instrument_type_strings
 03:50df .text:0006
 03:50e5 .text:0006
 03:50eb .text:0006
 03:50f1 .text:0006
+
+;; 03:52a8 Call 01:50dc
+
+;; 03:534c Call 1f:4159
+
+;; 03:5382 Call 1f:4159
+
+;; 03:5424 Call 1f:4159
+
+;; 03:545e Call 1f:4159
+
+;; 03:79ae Call 1b:4d5c
+
+;; 03:7a6c Call 01:50dc
+
+;; 03:7a96 Call 01:50dc
+
+;; 03:7ac7 Call 01:50dc
+
+;; 03:7af8 Call 01:50dc
+
+;; 03:7b51 Call 05:439f
+;; 03:7b5e Call 00:265a then set bank to 04
+;; 03:7b77 Call 05:43d0
+;; 03:7b84 Call 00:265a then set bank to 04
+;; 03:7b9d Call 05:4330
+;; 03:7baa Call 00:265a then set bank to 04
+;; 03:7bc5 Call 05:4370
+;; 03:7bea Call 00:265a then set bank to 04
+;; 03:7c34 Call 01:4fad
+;; 03:7c45 Call 01:502c
+;; 03:7c68 Call 02:7770
+;; 03:7c90 Call 02:7b04
+;; 03:7ca3 Call 01:4da8
 
 03:7cc6 instrument_param_strings
 03:7cc6 .text:0004
@@ -793,6 +916,8 @@
 
 03:7d24 .data:02dc
 
+;; 04:4001 Call 1f:6969
+
 04:4011 .data:000a
 
 04:412b .data:001b
@@ -803,9 +928,84 @@
 
 04:48e8 .data:0004
 
+;; 04:48a9 Call 1f:6b7e
+
+;; 04:4908 Call 01:6781
+;; 04:4916 Call 06:5a23
+
+;; 04:4b73 Call 1f:6b0f
+;; 04:4c6c Call 1f:7645
+;; 04:4c7a Call 1e:4000
+;; 04:4c8e Call 1f:62aa
+
 04:4ca0 .data:0003
 
 04:4f51 .data:0050
+
+;; 04:4ffc Call 01:4622
+;; 04:500f Call 01:4730
+
+;; 04:51c7 Call 02:7b04
+;; 04:520f Call 02:7b04
+
+;; 04:522e Call 01:4622
+
+;; 04:5278 Call 01:71e0
+
+;; 04:587d Call 01:4622
+;; 04:58cf Call 01:71e0
+
+;; 04:5986 Call 01:700d
+
+;; 04:59f1 Call 1f:7257
+
+;; 04:5a2d Call 1f:7257
+
+;; 04:5aa6 Call 1f:7257
+
+;; 04:5b72 Call 1f:7257
+
+;; 04:5dc7 Call 1f:6b0f
+
+;; 04:5f91 Call 01:700d
+
+;; 04:625e Call 1f:6b0f
+
+;; 04:642d Call 01:700d
+
+;; 04:6752 Call 1f:6b0f
+
+;; 04:6950 Call 01:700d
+
+;; 04:6c83 Call 1f:6b0f
+
+;; 04:6e85 Call 01:700d
+
+;; 04:6fbe Call 1f:6513
+;; 04:6fe7 Call 1f:651d
+
+;; 04:7424 Call 1f:6527 then set bank to 01
+
+;; 04:74a3 Call 1f:7257
+;; 04:74d2 Call 02:7770
+;; 04:7511 Call 02:7b04
+;; 04:753a Call 05:4330
+;; 04:7547 Call 00:265a then set bank to 04
+
+;; 04:75ad Call 05:43d0
+;; 04:75ba Call 00:265a then set bank to 07
+;; 04:75e3 Call 05:439f
+;; 04:75f0 Call 00:265a then set bank to 07
+
+;; 04:765d Call 05:4370
+;; 04:766a Call 05:4370
+;; 04:7674 Call 00:265a then set bank to 07
+;; 04:7687 Call 05:4370
+;; 04:76d0 Call 00:265a then set bank to 04
+
+;; 04:770e Call 1f:6527 then set bank to 00
+
+;; 04:7805 Call 1f:6527 then set bank to 00
 
 04:7a03 .data:0004
 
@@ -828,19 +1028,79 @@
 
 04:7daf .data:0251
 
+05:4000 call_05_4000
+
 05:4269 .data:000d
+
+05:4330 call_05_4330
+
+05:4370 call_05_4370
+
+05:439f call_05_439f
+
+05:43d0 call_05_43d0
+
+05:43ed call_05_43ed
 
 05:4435 .data:0012
 
-06:43b4 text_to_speech_screen_strings
-06:43b4 .text:0006
-06:43ba .text:0006
+;; 05:48cc Call 01:6781
+
+;; 05:4a78 Call 1f:7645
+
+;; 05:4fe1 Call 01:700d
+
+;; 05:52cc Call 01:700d
+
+;; 05:55f0 Call 01:700d
+
+;; 05:5912 Call 01:700d
+
+;; 05:5c4d Call 01:700d
+
+;; 05:6020 Call 02:7770
+
+;; 05:6048 Call 02:7b04
+
+;; 05:6063 Call 05:439f
+;; 05:6070 Call 00:265a then set bank to 01
+
+;; 05:61c3 Call 05:43d0
+;; 05:61d0 Call 00:265a then set bank to 01
+
+;; 05:61ef Call 05:4330
+;; 05:61fc Call 00:265a then set bank to 05
+
+;; 05:65de Call 1c:6272
+
+;; 05:6912 Call 01:66b8
 
 05:6aee .data:1512
 
 06:4022 .data:0004
 
+;; 06:425f Call 01:6781
+
+;; 06:42c0 Call 1f:7645
+
+06:43b4 text_to_speech_screen_strings
+06:43b4 .text:0006
+06:43ba .text:0006
+
+;; 06:48b1 Call 05:4330
+;; 06:48be Call 00:265a then set bank to 04
+;; 06:48d9 Call 05:439f
+;; 06:48e6 Call 00:265a then set bank to 04
+;; 06:4901 Call 05:43d0
+;; 06:490e Call 00:265a then set bank to 04
+;; 06:492e Call 02:7770
+;; 06:4956 Call 02:7b04
+
 06:49ad .data:0010
+
+;; 06:4db5 Call 01:6781
+
+;; 06:4f41 Call 05:4000
 
 06:4f52 .data:0011
 
@@ -849,24 +1109,93 @@
 
 06:50d7 .data:0011
 
+;; 06:5699 Call 02:7770
+
+;; 06:56c1 Call 02:7b04
+;; 06:56e1 Call 05:4330
+;; 06:56ee Call 00:265a then set bank to 07
+;; 06:5723 Call 05:43ed
+;; 06:5730 Call 00:265a then set bank to 07
+;; 06:5750 Call 05:43d0
+;; 06:575d Call 00:265a then set bank to 07
+
 06:596e .data:0006
 
 06:5a4f .data:0003
 
+;; 06:5da0 Call 01:6781
+
+;; 06:5f09 Call 1f:7645
+
 06:5f24 .data:0004
+
+;; 06:6185 Call 01:4863
+
+;; 06:70e0 Call 01:6f8b
+;; 06:711c Call 02:7770
+;; 06:715b Call 02:7b04
+
+;; 06:71c5 Call 01:6fe4
+;; 06:71de Call 05:4370
+;; 06:71eb Call 00:265a then set bank to 04
+;; 06:7219 Call 05:4330
+;; 06:7226 Call 00:265a then set bank to 04
+;; 06:724f Call 05:439f
+;; 06:725c Call 00:265a then set bank to 07
+;; 06:7285 Call 05:43d0
+;; 06:7292 Call 00:265a then set bank to 07
+
+;; 06:759e Call 1c:6272
+
+;; 06:770e Call 01:66b8
 
 06:7844 .data:07bc
 
 07:4039 .data:000c
 
+;; 07:4239 Call 01:6f8b
+
+;; 07:4426 Call 01:66b8
+
+;; 07:44a0 Call 01:6781
+;; 07:44b7 Call 1f:7645
+;; 07:44cb Call 05:4000
+
 07:4970 .data:0003
+
+;; 07:4aad Call 01:48cf
+
+;; 07:4faa Call 05:439f
+;; 07:4fb7 Call 00:265a then set bank to 07
+;; 07:4fe0 Call 05:43d0
+;; 07:4fed Call 00:265a then set bank to 07
+
+;; 07:52c5 Call 02:6c3a
+;; 07:52de Call 02:7b04
+;; 07:52ec Call 02:7b04
+;; 07:5333 Call 02:6c25
+;; 07:5347 Call 02:7b04
+
+;; 07:53a5 Call 01:6fc6
+;; 07:53ed Call 05:4370
+;; 07:53fa Call 00:265a then set bank to 04
 
 07:5d87 .data:0400
 
+07:5d3c call_07_5d3c
+
 07:6326 .data:0002
+
+;; 07:64ca Call 01:7003
+
+07:66f9 call_07_66f9
 
 07:6904 digits_string
 07:6904 .text:0011
+
+;; 07:691b Call 01:4622
+
+;; 07:69c8 Call 01:71e0
 
 07:6a51 .text:0005
 07:6a56 .text:0005
@@ -875,6 +1204,8 @@
 07:6a65 .text:0005
 
 07:6a6a call_07_6a6a
+
+;; 07:6e3d Call 02:456d
 
 07:67f2 .data:0100
 
@@ -885,6 +1216,10 @@
 07:7006 .text:0006
 07:700c .text:0006
 07:7012 .text:0006
+
+07:7223 call_07_7223
+
+;; 07:7231 Call 01:66b8
 
 07:730a keyboard_calibration_strings
 07:730a .text:0015
@@ -927,6 +1262,12 @@
 1b:46de .text:00ec
 1b:47ca .text:0080
 
+;; 1b:4900 Call 01:50dc
+
+;; 1b:4968 Call 00:265aa then set bank to 04
+
+;; 1b:4d6f Call 01:4622
+
 1b:4a05 .data:0014
 
 1b:4ad9 data_keyboard_key_labels
@@ -936,9 +1277,19 @@
 1b:4afa .text:0006
 1b:4b00 .data:0005
 
+1b:4d5c call_1b_4d5c
+
 1b:5060 save_as_strings
 1b:5060 .text:0009
 1b:5069 .text:0006
+
+;; 1b:5224 Call 1c:5098
+
+;; 1b:5321 Call 01:4730
+
+;; 1b:53d6 Call 00:265a then set bank to 03
+
+;; 1b:5590 Call 00:265a then set bank to 03
 
 1b:55a9 save_progress_strings
 1b:55a9 .text:000a
@@ -999,6 +1350,8 @@
 1b:5c1f .text:0009
 1b:5c28 .text:000b
 
+;; 1b:5c48 Call 01:6781
+
 1b:5e51 project_screen_option_strings
 1b:5e51 .text:0007
 1b:5e58 .text:000b
@@ -1016,7 +1369,61 @@
 1b:5ed9 .text:0006
 1b:5edf .text:000d
 
+;; 1b:5f0a Call 01:50dc
+
+;; 1b:5f1b Call 05:4000 (same address as dynamic_call_samples)
+
+;; 1b:5fed Call 05:43d0
+;; 1b:5ffa Call 00:265a then set bank to 05
+
+;; 1b:6028 Call 05:4370
+;; 1b:6035 Call 00:265a then set bank to 04
+
+;; 1b:60b3 Call 07:5d3c
+
+;; 1b:61c5 Call call_set_lsdj_palette at 01:47fc
+
+;; 1b:6287 Call call_set_lsdj_palette at 01:47fc
+;; 1b:62c2 Call 07:5d3c
+
+;; 1b:642c Call 1e:7a0c
+;; 1b:6452 Call 07:5d3c
+
+;; 1b:6522 Call 07:5d3c
+
+;; 1b:65a2 Call 1e:7a0c
+
+;; 1b:682f Call 1c:47b1
+
+;; 1b:68ac Call 07:5d3c
+;; 1b:68f9 Call 1f:60e4
+;; 1b:690f Call 1c:5098
+;; 1b:68d3 Call 1c:5098
+;; 1b:6935 Call 1f:61b8
+;; 1b:6950 Call 00:265a then set bank to 04
+;; 1b:696c Call 1c:5098
+;; 1b:697a Call 07:7223
+;; 1b:698a Call 00:265a then set bank to 04
+
+;; 1b:69bc Call 1c:5689
+;; 1b:69ca Call 00:265a then set bank to 04
+
+;; 1b:6b07 Call 1c:5098
+;; 1b:6b50 Call 1c:47b1
+;; 1b:6b5e Call 01:429c
+;; 1b:6b7d Call 1c:4a46
+
+;; 1b:6bc8 Call 01:76a3
+;; 1b:6be8 Call 01:50dc
+;; 1b:6bf6 Call 00:265a
+;; 1b:6c04 Call 05:4000 (same address as dynamic_call_samples)
+;; 1b:6c35 Call 01:50dc
+;; 1b:6c46 Call 05:4000 (same address as dynamic_call_samples)
+;; 1b:6c73 Call 02:7b04
+
 1b:6c9b .data:0038
+
+1b:72f6 call_1b_72f6
 
 1b:7393 call_init_samples
 ;; 1b:7393 This function initializes some unknown dynamically-executed code and data related to samples
@@ -1052,11 +1459,20 @@
 
 1c:5092 .data:0006
 
+;; 1c:5203 Call 00:265a then set bank to 01
+
+;; 1c:526d Call 01:429c
+
+;; 1c:531c Call 04:76a3
+;; 1c:5337 Call 00:265a then set bank to 01
+
 1c:534e loading_progress_strings
 1c:534e .text:000d
 1c:535b .text:0006
 
 1c:589e .data:000f
+
+;; 1c:58ae Call 01:6781
 
 1c:5970 file_screen_strings
 1c:5970 .text:0005
@@ -1065,6 +1481,16 @@
 1c:5980 .text:0011
 1c:5991 .text:0003
 1c:5994 .text:0003
+
+;; 1c:5af8 Call 02:7770
+
+;; 1c:5bec Call 01:50dc
+
+;; 1c:5d56 Call 1b:4d5c
+
+;; 1c:5ee3 Call 01:50dc
+
+;; 1c:5f1e Call 00:265a then set bank to 07
 
 1c:616f erase_file_strings
 1c:616f .text:000d
@@ -1078,11 +1504,17 @@
 
 1c:61b7 .data:0097
 
+1c:6272 call_1c_6272
+
 1c:64e1 .data:0062
 
 1c:6678 .data:1988
 
 1d:4058 .data:0002
+
+;; 1d:4127 Call 01:6781
+
+;; 1d:431f Call 1f:7645
 
 1d:433d groove_screen_strings
 1d:433d .text:0008
@@ -1092,6 +1524,16 @@
 1d:435a .text:0005
 
 1d:454b .data:0003
+
+;; 1d:4c07 Call 02:7770
+
+;; 1d:4c2f Call 02:7b04
+;; 1d:4c4a Call 05:439f
+;; 1d:4c57 Call 00:265a and set bank to 05
+
+;; 1d:4de8 Call 1c:6272
+
+;; 1d:4e6e Call 01:50dc
 
 1d:4f32 call_1d_4f32
 
@@ -1119,6 +1561,14 @@
 1d:6325 .text:0005
 1d:632a .text:0005
 
+;; 1d:636a Call 01:6781
+
+;; 1d:638f Call 1f:6745
+
+;; 1d:6702 Call 05:4000
+
+;; 1d:6cbc Call 00:265a then set bank to 01
+
 1d:6713 wave_screen_strings
 1d:6713 .text:0007
 1d:671a .text:0007
@@ -1142,7 +1592,17 @@
 1d:6cb4 .text:0004
 1d:6cb8 .text:0003
 
+;; 1d:7995 Call 02:7770
+;; 1d:79bd Call 02:7b04
+;; 1d:79dd Call 05:43d0
+;; 1d:79ff Call 05:4330
+;; 1d:7a21 Call 05:43ed
+
+;; 1d:7aa9 Call 1c:6272
+
 1d:7b6a .data:0496
+
+1e:4000 call_1e_4000
 
 1e:42da .data:0062
 
@@ -1161,6 +1621,8 @@
 1e:63ea .image:00470:w64
 1e:685a .data:11b2
 
+1e:7a0c call_1e_7a0c
+
 1e:7af0 .data:0510
 
 1f:403e table_play_type_strings
@@ -1177,9 +1639,16 @@
 
 1f:41ea .data:0007
 
+1f:41f1 call_1f_41f1
+
+;; 1f:42b2 Call 01:4cf4
+;; 1f:42cd Call 01:4d82
+
 1f:434a instrument_length_strings
 1f:434a .text:0006
 1f:4350 .text:0004
+
+1f:4354 call_1f_4354
 
 1f:4426 noise_instrument_param_strings
 1f:4426 .text:0006
@@ -1187,12 +1656,41 @@
 1f:4430 .text:0007
 1f:4437 .text:0007
 
+1f:446b call_1f_446b
+
+;; 1f:4598 Call 03:4b4b
+
+;; 1f:469f Call 01:4cf4
+
+;; 1f:476c Call 01:4cf4
+;; 1f:4787 Call 01:4d82
+
+;; 1f:4824 Call 03:4aa1
+;; 1f:4832 Call 03:4b13
+;; 1f:4840 Call 03:4acd
+
 1f:46c4 .text:0004
 1f:46c8 .text:0004
 1f:46cc .text:0004
 1f:46d0 .text:0004
 
+1f:46d4 call_1f_46d4
+
 1f:49d5 call_1f_49d5
+
+;; 1f:4b11 Call 01:48cf
+;; 1f:4b4b Call 01:6f8b
+
+;; 1f:4cb8 Call 01:4730
+
+;; 1f:51b6 Call 01:49ab
+
+;; 1f:52f5 Call 01:4863
+
+;; 1f:5879 Call 01:493b
+;; 1f:58be Call 01:49ab
+
+1f:60e4 call_1f_60e4
 
 1f:6184 dedup_song_strings
 1f:6184 .text:000b
@@ -1202,6 +1700,8 @@
 1f:61a6 .text:000b
 1f:61b1 .text:0003
 1f:61b4 .text:0004
+
+1f:61b8 call_1f_61b8
 
 1f:6268 dedup_instruments_strings
 1f:6268 .text:000b
@@ -1214,9 +1714,29 @@
 1f:62a3 .text:0003
 1f:62a6 .text:0004
 
+1f:62aa call_1f_62aa
+
 1f:63b1 .data:001e
 
+;; 1f:64f3 Call 04:48f4
+;; 1f:6501 Call 1e:4000
+
+1f:6513 call_1f_6513
+
+1f:651d call_1f_651d
+
+1f:6527 call_1f_6527
+
+;; 1f:6900 Call 1c:6272
+;; 1f:691e Call 04:48f4
+
+1f:6969 call_1f_6969
+
+1f:6b0f call_1f_6b0f
+
 1f:6b79 .data:0005
+
+1f:6b7e call_1f_6b7e
 
 1f:7633 song_screen_instrument_window_strings
 1f:7633 .text:0005
@@ -1225,8 +1745,28 @@
 1f:763c .text:0005
 1f:7641 .text:0004
 
+1f:7645 call_1f_7645
+
+;; 1f:766b Call 00:265a then set bank to 04
+
+1f:77f2 call_1f_77f2
+
+;; 1f:77fa Call 01:50dc
+;; 1f:7808 Call 1f:7645
+;; 1f:781b Call 03:476d
+
 1f:7955 type_speech_string
 1f:7955 .text:000e
+
+;; 1f:7aa1 Call 1b:4d5c
+
+;; 1f:7b40 Call 05:43d0
+;; 1f:7b5d Call 05:439f
+;; 1f:7b7a Call 05:4370
+;; 1f:7b97 Call 05:4330
+
+;; 1f:7faa Call 02:7770
+;; 1f:7fd2 Call 02:7b04
 
 1f:7feb .data:0015
 
