@@ -93,6 +93,8 @@
 00:08da .text:0024
 00:08fe .data:0099
 
+00:0997 call_00_0997
+
 00:09e2 call_00_09e2
 
 00:0a48 note_labels
