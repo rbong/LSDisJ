@@ -403,14 +403,14 @@
 00:3665 _divsint
 ;; 00:3665 gbdk 2.95 libc/asm/gbz80/div.s:__divsint
 ;; 00:3665 Divide ints.
-;; 00:3665 Args: dividend (2 bytes), divisor (2 bytes)
+;; 00:3665 Args: dividend (word), divisor (word)
 ;; 00:3665 Result: DE
 ;; 00:3665 See: div16_mod16
 
 00:3676 _modsint
 ;; 00:3676 gbdk 2.95 libc/asm/gbz80/div.s:__modsint
 ;; 00:3676 Perform modulus on ints.
-;; 00:3676 Args: dividend (2 bytes), divisor (2 bytes)
+;; 00:3676 Args: dividend (word), divisor (word)
 ;; 00:3676 Result: DE
 ;; 00:3676 See: div16_mod16
 
@@ -431,14 +431,14 @@
 00:369c _divuint
 ;; 00:369c gbdk 2.95 libc/asm/gbz80/div.s:__divuint
 ;; 00:369c Divide unsigned ints.
-;; 00:369c Args: dividend (2 bytes), divisor (2 bytes)
+;; 00:369c Args: dividend (word), divisor (word)
 ;; 00:369c Result: DE
 ;; 00:369c See: divu16_modu16
 
 00:36ad _moduint
 ;; 00:36ad gbdk 2.95 libc/asm/gbz80/div.s:__moduint
 ;; 00:36ad Perform modulus on unsigned ints.
-;; 00:36ad Args: dividend (2 bytes), divisor (2 bytes)
+;; 00:36ad Args: dividend (word), divisor (word)
 ;; 00:36ad Result: DE
 ;; 00:36ad See: divu16_modu16
 
@@ -517,16 +517,50 @@
 ;; 00:37bd Returns the address stored at SP in DE
 ;; 00:37bd See also call_repeat_byte_b at 00:37b5
 
-00:37db call_multiply_sp
-;; 00:37db This subroutine multiplies the bytes in SP and stores the result in E
+00:37db _mulschar_muluchar
+;; 00:37db gbdk 2.95 libc/asm/gbz80/mul.s:__mulschar/__muluchar
+;; 00:37db Multiply chars.
+;; 00:37db Args: multiplicand, multiplier
+;; 00:37db Result: DE
+;; 00:37db See: mul8_mulu8
 
-00:37e7 call_multiply_sum_or_sp
-;; 00:37e7 This subroutine sets DE to (SP + (SP+1)) * ((SP+2) | (SP+3))
+00:37e7 _mulsint_muluint
+;; 00:37e7 gbdk 2.95 libc/asm/gbz80/mul.s:__mulsint/__muluint
+;; 00:37e7 Multiply ints.
+;; 00:37e7 Args: multiplicand (word), multiplier (word)
+;; 00:37e7 Result: DE
+;; 00:37e7 See: mul16_mulu16
 
-00:37fb call_multiply_c_e
-;; 00:37f8 This subroutine multiplies C by E and stores the result in L
-;; 00:37fb This subroutine sets H to (B + C) * (D | E) and L to C * (D | E)
-00:37fb call_multiply_sum_or
+00:37f8 mul8_mulu8
+;; 00:37f8 gbdk 2.95 libc/asm/gbz80/mul.s:.mul8/.mulu8
+;; 00:37f8
+;; 00:37f8 8-bit multiplication.
+;; 00:37f8
+;; 00:37f8 Entry conditions:
+;; 00:37f8   C = dividend
+;; 00:37f8   E = divisor
+;; 00:37f8
+;; 00:37f8 Exit conditions:
+;; 00:37f8   DE = product
+;; 00:37f8
+;; 00:37f8 Registers used: AF, BC, DE, HL
+
+00:37fb mul16_mulu16
+;; 00:37fb gbdk 2.95 libc/asm/gbz80/mul.s:.mul16/.mulu16
+;; 00:37fb
+;; 00:37fb 16-bit multiplication.
+;; 00:37fb
+;; 00:37fb Entry conditions:
+;; 00:37fb   BC = dividend
+;; 00:37fb   DE = divisor
+;; 00:37fb
+;; 00:37fb Exit conditions:
+;; 00:37fb   DE = product (least significant word)
+;; 00:37fb
+;; 00:37fb Registers used: AF, BC, DE, HL
+00:3800 .mlp
+00:3807 .mlp1
+00:3810 .mend
 
 00:3811 call_set_background_palettes
 ;; 00:3811 This function sets background palettes (not to be confused with LSDj palettes)
