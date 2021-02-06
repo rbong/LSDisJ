@@ -31,6 +31,7 @@ make clean
 
 ## External Links
 
+  - [gbdk 2.95](https://sourceforge.net/projects/gbdk/files/gbdk-win32/2.95/) (version used by LSDj, with modifications)
   - [LSDPatcher](https://github.com/jkotlinski/lsdpatch) (can be used to patch kits, palettes, and fonts)
   - [Emulicious](https://emulicious.net/) (can be used for debugging)
   - [Awesome Game Boy Development list](https://github.com/gbdev/awesome-gbdev) (Game Boy development resources)
