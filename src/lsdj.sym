@@ -358,7 +358,11 @@
 
 00:3305 call_00_3305
 
-00:3365 call_00_3365
+00:3365 _rand_randw
+;; 00:3365 gbdk 2.95 libc/gb/rand.s:_rand/_randw
+;; 00:3365 Generate a random number.
+;; 00:3365 Result: DE
+;; 00:3365 Registers used: A, DE, HL
 
 00:3390 call_key1_en
 ;; 00:3390 This subroutine enables the speed switch (CGB only)
@@ -527,7 +531,10 @@
 ;; 00:37bd Returns the address stored at SP in DE
 ;; 00:37bd See also call_repeat_byte_b at 00:37b5
 
-00:37d0 call_00_37d0
+00:37d0 initrand
+;; 00:37d0 gbdk 2.95 libc/gb/rand.s:_initrand
+;; 00:37d0 Set the random seed.
+;; 00:37d0 Registers used: A, HL
 
 00:37db _mulschar_muluchar
 ;; 00:37db gbdk 2.95 libc/asm/gbz80/mul.s:__mulschar/__muluchar
@@ -1981,6 +1988,13 @@
 00:c8f5 OAM_VRAM_ADDRESS
 ;; 00:c8f6 Used to store a value to write to OAM/VRAM
 00:c8f6 OAM_VRAM_VALUE
+
+00:cbd7 RANDHI
+;; 00:cbd7 gbdk 2.95 libc/gb/rand.s:.randhi
+;; 00:cbd7 The random seed upper byte.
+00:cbd8 RANDLO
+;; 00:cbd8 gbdk 2.95 libc/gb/rand.s:.randlo
+;; 00:cbd8 The random seed lower byte.
 
 ;; 00:ff8e Used to backup the previously used bank number
 00:ff8e LAST_BANK
