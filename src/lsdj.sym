@@ -495,16 +495,28 @@
 ;; 00:3748 gbdk 2.95 libc/asm/gbz80/div.s:.divide loop separated into its own function
 00:375c .drop
 
-00:375f call_00_375f
+00:375f _strcpy
+;; 00:375f gbdk 2.95 libc/asm/gbz80/asm_string.s:_strcpy
+;; 00:375f char *strcpy(char *dest, const char *source)
+;; 00:375f Result: DE = dest
+00:3769 .strcpy_1
 
-00:3771 call_write_bytes
-;; 00:3771 This subroutine writes SP+4 bytes from address SP+2 into address SP
-;; 00:3772 Load stack into registers
-00:3785 .jump_set_mem_loop
-00:3788 .jump_set_mem_loop_check
-;; 00:378e Return SP in DE
+00:3771 _memcpy
+;; 00:3771 gbdk 2.95 libc/asm/gbz80/asm_string.s:_memcpy
+;; 00:3771 void *memcpy(void *dest, const void *source, int count)
+;; 00:3771 Result: DE = dest
+00:3785 .memcpy_1
+00:3788 .memcpy_2
 
-00:3791 call_00_3791
+00:3791 _strcmp
+;; 00:3791 gbdk 2.95 libc/asm/gbz80/asm_string.s:_strcmp
+;; 00:3791 int strcmp(const char *s1, const char *s2)
+;; 00:3791 Result: DE = 0 if equal, 1 if s1 is greater than s2, -1 if s1 is less than s2
+00:379c .strcmp_2
+00:37a3 .strcmp_1
+00:37a7 .strcmp_3
+00:37ac .strcmp_4
+00:37b4 .strcmp_5
 
 00:37d0 call_00_37d0
 
