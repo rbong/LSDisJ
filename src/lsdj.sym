@@ -588,6 +588,16 @@
 ;; 00:3830 Set background palette value
 ;; 00:3833 Loop
 
+00:38f7 copy_vram
+;; 00:38f7 gbdk 2.95 libc/gb/cpy_data.s:.copy_vram
+;; 00:38f7
+;; 00:38f7 Copy part of VRAM.
+;; 00:38f7
+;; 00:38f7 Entry conditions:
+;; 00:38f7   BC = copy from address
+;; 00:38f7   HL = copy to address
+;; 00:38f7   DE = count
+
 00:3906 call_00_3906
 
 00:3975 call_set_default_ram_values
