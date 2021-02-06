@@ -518,8 +518,6 @@
 00:37ac .strcmp_4
 00:37b4 .strcmp_5
 
-00:37d0 call_00_37d0
-
 00:37b5 call_repeat_byte_b
 ;; 00:37b5 This subroutine writes byte B to address HL through HL + DE
 ;; 00:37b5 DE must at least be 1, otherwise B will be written to address HL + 0x10000 inclusive
@@ -528,6 +526,8 @@
 ;; 00:37bd This subroutine writes the byte stored at SP+2 to the address stored at SP through to SP + (SP+3) (word at address)
 ;; 00:37bd Returns the address stored at SP in DE
 ;; 00:37bd See also call_repeat_byte_b at 00:37b5
+
+00:37d0 call_00_37d0
 
 00:37db _mulschar_muluchar
 ;; 00:37db gbdk 2.95 libc/asm/gbz80/mul.s:__mulschar/__muluchar
