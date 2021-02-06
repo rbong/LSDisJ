@@ -364,12 +364,10 @@
 ;; 00:3365 Result: DE
 ;; 00:3365 Registers used: A, DE, HL
 
-00:3390 call_key1_en
-;; 00:3390 This subroutine enables the speed switch (CGB only)
-;; 00:3394 Already set, return early
-;; 00:3398 Prepare to enable speed switch
-;; 00:33a1 Enable speed switch
-;; 00:33a7 Restore state
+00:3390 _cpu_fast
+;; 00:3390 gbdk 2.95 libc/gb/cgb.s:_cpu_fast
+;; 00:3390 Enable speed switch (CGB only).
+;; 00:3390 Registers used: AF, HL
 
 00:33df call_disable_lcdc
 ;; 00:33df This subroutine disables the LCD controller when safe
@@ -581,19 +579,18 @@
 00:3807 .mlp1
 00:3810 .mend
 
-00:3811 call_set_background_palettes
-;; 00:3811 This function sets background palettes (not to be confused with LSDj palettes)
-;; 00:3811 It sets palettes to the bytes stored at the address at SP+2, offset by the background palette index
-;; 00:3811 It sets palettes up to (SP+1) * 4 and starts at (SP) * 4
-;; 00:3815 BC = *(SP+2)
-;; 00:3818 DE = *(SP)
-;; 00:381c D = (D + E) * 4
-;; 00:3822 E *= 4
-00:3827 .jump_loop
-;; 00:3827 Wait for VRAM access to be safe
-;; 00:382d Set background palette index
-;; 00:3830 Set background palette value
-;; 00:3833 Loop
+00:3811 _set_bkg_palette
+;; 00:3811 gbdk 2.95 libc/gb/cgb.s:_set_bkg_palette
+;; 00:3811
+;; 00:3811 Set background palettes.
+;; 00:3811
+;; 00:3811 Args:
+;; 00:3811   first_palette
+;; 00:3811   nb_palettes (count)
+;; 00:3811   rgb_data (address)
+;; 00:3811
+;; 00:3811 Registers used: AF, HL
+00:3827 .set_bkg_palette_1
 
 00:38f7 copy_vram
 ;; 00:38f7 gbdk 2.95 libc/gb/cpy_data.s:.copy_vram
@@ -614,10 +611,10 @@
 00:3ec4 .bank_00_padding
 00:3ec4 .data:013c
 
-01:4000 call_set_object_palettes
-;; 01:4000 This function sets object palettes
-;; 01:4000 See call_set_background_palettes
-01:4016 .jump_loop
+01:4000 _set_sprite_palette
+;; 01:4000 gbdk 2.95 libc/gb/cgb.s:_set_sprite_palette
+;; 01:4000 See: _set_bkg_palette
+01:4016 .set_sprite_palette_1
 
 01:4115 .data:0010
 
