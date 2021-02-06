@@ -382,9 +382,118 @@
 
 00:3616 call_00_3616
 
-00:3685 call_00_3685
+00:364d _modslong_divslong_mulslong
+;; 00:364d gbdk 2.95 libc/asm/gbz80/div.s:__modslong/__divslong/__mulsong
+;; 00:364d Unsupported (?)
 
-00:3691 call_00_3691
+00:364e _divschar
+;; 00:364e gbdk 2.95 libc/asm/gbz80/div.s:__divschar
+;; 00:364e Divide chars.
+;; 00:364e Args: dividend, divisor
+;; 00:364e Result: E
+;; 00:364e See: div8_mod8
+
+00:365a _modschar
+;; 00:365a gbdk 2.95 libc/asm/gbz80/div.s:__modschar
+;; 00:365a Perform modulus on chars.
+;; 00:365a Args: dividend, divisor
+;; 00:365a Result: E
+;; 00:365a See: div8_mod8
+
+00:3665 _divsint
+;; 00:3665 gbdk 2.95 libc/asm/gbz80/div.s:__divsint
+;; 00:3665 Divide ints.
+;; 00:3665 Args: dividend (2 bytes), divisor (2 bytes)
+;; 00:3665 Result: DE
+;; 00:3665 See: div16_mod16
+
+00:3676 _modsint
+;; 00:3676 gbdk 2.95 libc/asm/gbz80/div.s:__modsint
+;; 00:3676 Perform modulus on ints.
+;; 00:3676 Args: dividend (2 bytes), divisor (2 bytes)
+;; 00:3676 Result: DE
+;; 00:3676 See: div16_mod16
+
+00:3685 _divuchar
+;; 00:3685 gbdk 2.95 libc/asm/gbz80/div.s:__divuchar
+;; 00:3685 Divide unsigned chars.
+;; 00:3685 Args: dividend, divisor
+;; 00:3685 Result: E
+;; 00:3685 See: divu8_modu8
+
+00:3691 _moduchar
+;; 00:3691 gbdk 2.95 libc/asm/gbz80/div.s:__moduchar
+;; 00:3691 Perform modulus on unsigned chars.
+;; 00:3691 Args: dividend, divisor
+;; 00:3691 Result: E
+;; 00:3691 See: divu8_modu8
+
+00:369c _divuint
+;; 00:369c gbdk 2.95 libc/asm/gbz80/div.s:__divuint
+;; 00:369c Divide unsigned ints.
+;; 00:369c Args: dividend (2 bytes), divisor (2 bytes)
+;; 00:369c Result: DE
+;; 00:369c See: divu16_modu16
+
+00:36ad _moduint
+;; 00:36ad gbdk 2.95 libc/asm/gbz80/div.s:__moduint
+;; 00:36ad Perform modulus on unsigned ints.
+;; 00:36ad Args: dividend (2 bytes), divisor (2 bytes)
+;; 00:36ad Result: DE
+;; 00:36ad See: divu16_modu16
+
+00:36bc div8_mod8
+;; 00:36bc gbdk 2.95 libc/asm/gbz80/div.s:.div8/.mod8
+;; 00:36bc
+;; 00:36bc 8-bit division.
+;; 00:36bc
+;; 00:36bc Entry conditions:
+;; 00:36bc   C = dividend
+;; 00:36bc   E = divisor
+;; 00:36bc
+;; 00:36bc Exit conditions:
+;; 00:36bc   C = quotient
+;; 00:36bc   E = remainder
+;; 00:36bc   If divisor is non-zero, carry=0
+;; 00:36bc   If divisor is 0, carry=1 and both quotient and remainder are 0
+;; 00:36bc
+;; 00:36bc Registers used: AF, BC, DE, HL
+
+00:36c4 div16_mod16
+;; 00:36c4 gbdk 2.95 libc/asm/gbz80/div.s:.div16/.mod16
+;; 00:36c4
+;; 00:36c4 16-bit division.
+;; 00:36c4
+;; 00:36c4 Entry conditions:
+;; 00:36c4   BC = dividend
+;; 00:36c4   DE = divisor
+;; 00:36c4
+;; 00:36c4 Exit conditions:
+;; 00:36c4   BC = quotient
+;; 00:36c4   DE = remainder
+;; 00:36c4
+;; 00:36c4 See: div8_mod8
+00:36d2 .chkde
+00:36dc .dodiv
+00:36e4 .dodiv_1
+00:36ef .dorem
+
+00:36fa divu8_modu8
+;; 00:36fa gbdk 2.95 libc/asm/gbz80/div.s:.divu8/.modu8
+;; 00:36fa 8-bit unsigned division.
+;; 00:36fa See: div8
+
+00:36fd divu16_modu16
+;; 00:36fd gbdk 2.95 libc/asm/gbz80/div.s:.divu16/.modu16
+;; 00:36fd 16-bit unsigned division.
+;; 00:36fd See: div16
+00:3708 .divide
+;; 00:370e Instead of looping, as in gbdk 2.95, call a function 16 times
+;; 00:373e libc/asm/gbz80/div.s:.nodrop (without loop counter)
+
+00:3748 call_divide_loop
+;; 00:3748 gbdk 2.95 libc/asm/gbz80/div.s:.divide loop separated into its own function
+00:375c .drop
 
 00:375f call_00_375f
 
