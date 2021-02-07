@@ -2006,15 +2006,16 @@
 
 ; Memory
 
+00:9800 BG_MAP_ATTR_CHUNK_0_START
 ;; 00:9800 This section of memory contains the actual background map tiles in VRAM
 ;; 00:9800 Background map tile memory continues through 0x9a40
 ;; 00:9800 Each tile is one byte, each chunk is 6 lines, each line is 32 tiles
 ;; 00:9800 Lines have 0xd bytes of offscreen tiles at the end
 ;; 00:9800 Not to be confused with BG_MAP_ATTR_CHUNK_*_DATA_START, which contains the data to write to these addresses
-00:9800 BG_MAP_ATTR_CHUNK_0_START
 00:98c0 BG_MAP_ATTR_CHUNK_1_START
 00:9980 BG_MAP_ATTR_CHUNK_2_START
 
+00:c3fe CURRENT_SCREEN
 ;; 00:c3fe 0x01: phrase screen
 ;; 00:c3fe 0x02: groove screen
 ;; 00:c3fe 0x03: chain screen
@@ -2029,37 +2030,36 @@
 ;; 00:c3fe 0x0c: word screen
 ;; 00:c3fe 0x0d: file screen
 ;; 00:c3fe 0x0e: help screen
-00:c3fe CURRENT_SCREEN
 
-;; 00:c33f Indicates if sound was on at startup for DMG
 00:c3ff DMG_SOUND_ON
+;; 00:c33f Indicates if sound was on at startup for DMG
 
-;; 00:c5c7 Set to 1 when handling an exception
 00:c5c7 IS_HANDLING_EXCEPTION
+;; 00:c5c7 Set to 1 when handling an exception
 
 00:c53c CURRENT_PALETTE_NUM
 
-;; 00:c5c4 Used to determine which part of the background map attributes to copy next
 00:c5c4 CURRENT_BG_MAP_ATTR_CHUNK_INDEX
+;; 00:c5c4 Used to determine which part of the background map attributes to copy next
 
-;; 00:c8f5 Used to store reference to an address inside OAM/VRAM
 00:c8f5 OAM_VRAM_ADDRESS
-;; 00:c8f6 Used to store a value to write to OAM/VRAM
+;; 00:c8f5 Used to store reference to an address inside OAM/VRAM
 00:c8f6 OAM_VRAM_VALUE
+;; 00:c8f6 Used to store a value to write to OAM/VRAM
 
+00:cbb7 CPU
 ;; 00:cbb7 gbdk 2.95 libc/gb/crt0.s:__cpu
 ;; 00:cbb7 GB type (GB, PGB, CGB)
-00:cbb7 CPU
-;; 00:cbb8 GB type 2 (used to check for GBA)
 00:cbb8 CPU_2
+;; 00:cbb8 GB type 2 (used to check for GBA)
 
+00:cbb9 MODE
 ;; 00:cbb9 gbdk 2.95 libc/gb/crt0.s:.mode
 ;; 00:cbb9 Current mode
-00:cbb9 MODE
 
+00:cbbc IO_STATUS
 ;; 00:cbbc gbdk 2.95 libc/gb/crt0.s:__io_status
 ;; 00:cbbc Current status of serial IO.
-00:cbbc IO_STATUS
 
 00:cbd7 RANDHI
 ;; 00:cbd7 gbdk 2.95 libc/gb/rand.s:.randhi
@@ -2070,15 +2070,16 @@
 
 ;; 00:ff8e Used to backup the previously used bank number
 00:ff8e LAST_BANK
+;; 00:ff8e Used to backup the previously used bank number
 
+01:d800 BG_MAP_ATTR_CHUNK_0_DATA_START
 ;; 01:d800 This section of memory is reserved for the current background map attribute data to write to VRAM
 ;; 01:d800 Background map attribute data continues through address 0xd968
-01:d800 BG_MAP_ATTR_CHUNK_0_DATA_START
 01:d878 BG_MAP_ATTR_CHUNK_1_DATA_START
 01:d8f0 BG_MAP_ATTR_CHUNK_2_DATA_START
 
-;; 01:d480 Unknown dynamically-generated code related to samples
 01:d480 DYNAMIC_SAMPLE_CODE
+;; 01:d480 Unknown dynamically-generated code related to samples
 
 ; Kits
 
