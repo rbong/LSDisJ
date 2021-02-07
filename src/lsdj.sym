@@ -613,6 +613,41 @@
 ;; 00:3811 Registers used: AF, HL
 00:3827 .set_bkg_palette_1
 
+00:3882 delay
+;; 00:3882 gbdk 2.95 libc/gb/delay.s:.delay
+;; 00:3882
+;; 00:3882 Wait for a given period of time.
+;; 00:3882
+;; 00:3882 Entry conditions:
+;; 00:3882   DE = milliseconds (1 to 65536, 0 = 65536)
+;; 00:3882
+;; 00:3882 Registers used: AF, DE
+00:3888 .ldlp
+00:388a .delay_1
+00:388c .delay_2
+00:388e .delay_3
+00:3890 .delay_4
+00:3892 .delay_5
+00:389a .delay_6
+00:389c .delay_7
+00:389e .delay_8
+00:389f dly
+00:38a5 .dlp
+00:38a7 .dly_1
+00:38a9 .dly_2
+00:38ab .dly_3
+00:38ad .dly_4
+00:38af .dly_5
+00:38b6 .dly_6
+00:38b8 .dly_7
+00:38ba .dly_8
+
+00:38bc _delay
+;; 00:38bc gbdk 2.95 libc/gb/delay.s:_delay
+;; 00:38bc Wait for a given period of time.
+;; 00:38bc Args: milliseconds (word)
+;; 00:38bc See: delay
+
 00:38f7 copy_vram
 ;; 00:38f7 gbdk 2.95 libc/gb/cpy_data.s:.copy_vram
 ;; 00:38f7
