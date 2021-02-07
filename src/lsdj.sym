@@ -53,36 +53,24 @@
 00:014d HeaderComplementCheck
 00:014e HeaderGlobalChecksum
 
-00:0150 jump_header_end
-;; 00:0151 Save registers for later
-;; 00:0151 A is used to detect GB model, B is unused
-;; 00:0155 Init stack address
-;; 00:0158 Clear WRAM1
-00:015f .jump_clear_wram1_loop
-;; 00:0166 Clear HRAM
-00:016b .jump_clear_hram_loop
-;; 00:016f Retrieve and store boot values from earlier
+00:0150 code_start
+;; 00:0150 gbdk 2.95 libc/gb/crt0.s:.code_start (with modifications)
+;; 00:0152 Store CPU type 2 in E
+;; 00:0155 Initialize stack at 0xe0000 instead of 0xc000 in gbdk
+00:015f .code_start_1
+;; 00:0166 Clear from 0xff80 to 0xffff
+00:016b .code_start_2
+;; 00:0173 Store CPU type 2
+;; 00:0187 Skip copying refresh_OAM routine to HIRAM and installing interrupt routines
+;; 00:0198 V-Blank on, don't enable serial I/O yet
+;; 00:019c Don't turn sound off yet
+;; 00:01a7 Skip erasing the malloc list and gsinit
 
-;; 00:017a Start initializing registers
-;; 00:017b Reset scroll Y/X
-;; 00:017f Reset LCDC status
-
-;; 00:0181 Reset window position
-;; 00:0181 0x07 is the left edge of the screen
-
-;; 00:0187 Reset palettes
-;; 00:0187 0xe4 is "11 10 01 00" in binary
-;; 00:0187 0x1b is "00 01 10 11" in binary
-
-;; 00:0191 Reset LCD controller
-;; 00:0191 0xc0 sets bits 6 and 7
-;; 00:0191 This turns on the LCDC and sets the window tilemap to 0x9c00
-
-;; 00:019c Start serial transfer
-;; 00:019c 0x66 is the initial value sent
-;; 00:019c 0x80 starts the transfer
-
-00:01ac .data:01e5
+00:01ac .data:0034
+00:01e0 .data:01b1
+00:01e0 MODE_TABLE
+;; 00:01e0 gbdk 2.95 libc/gb/crt0.s:.MODE_TABLE
+;; 00:01e0 Jump table for modes
 
 ;; 00:04d9 Exec dynamic instructions from call_init_samples
 
@@ -163,7 +151,7 @@
 ;; 01:146e Memory ranges from 0xd800 through 0xd968, 0x0168 bytes
 ;; 01:1476 0xd800 is BG_MAP_ATTR_CHUNK_0_DATA_START
 
-00:1480 call_setup_sound
+00:1480 _main
 00:1492 .jump_get_sound_en_dmg
 00:149d .jump_dmg_sound_off
 00:149e .jump_dmg_sound_on
@@ -369,16 +357,49 @@
 ;; 00:3390 Enable speed switch (CGB only).
 ;; 00:3390 Registers used: AF, HL
 
-00:33df call_disable_lcdc
-;; 00:33df This subroutine disables the LCD controller when safe
-;; 00:33e3 Wait for scanline to get into a safe position
-;; 00:33e3 0x90 is the blank period
-00:33e3 .jump_wait_for_vblank_1
-00:33e9 .jump_wait_for_vblank_2
-;; 00:33ef Disable LCDC
-;; 00:33ef 0x7f disables every bit but 7
+00:33cf set_mode
+;; 00:33cf gbdk 2.95 libc/gb/crt0.s:.set_mode
+;; 00:33cf Sets the current mode. Will jump to the initialization routine.
+;; 00:33cf Entry conditions: L = mode
+;; 00:33cf Registers used: A, BC, HL
 
-00:342e .data:000a
+00:33df display_off
+;; 00:33df gbdk 2.95 libc/gb/crt0.s:.display_off
+;; 00:33df Turns off the screen.
+;; 00:33df Registers used: A
+00:33e3 .display_off_1
+00:33e9 .display_off_2
+
+00:33f6 serial_io
+;; 00:33f6 gbdk 2.95 libc/gb/crt0.s:.serial_io (with modifications)
+;; 00:33f6 Serial interrupt handler.
+00:3408 .serial_io_10
+00:3416 .serial_io_11
+00:3418 .serial_io_12
+;; 00:3418 Skip using external clock and replying with idle byte
+00:341b .serial_io_99
+;; 00:341f TODO: document return handler at 00:167f
+
+00:3422 _mode
+;; 00:3422 gbdk 2.95 libc/gb/crt0.s:_mode
+;; 00:3422 Sets the current mode.
+;; 00:3422 Args: mode
+;; 00:3427 Use jr instead of call to jump directly back
+
+00:3429 _get_mode
+;; 00:3429 gbdk 2.95 libc/gb/crt0.s:_get_mode
+;; 00:3429 Gets the current mode.
+;; 00:3429 Result: E
+;; 00:3429 Registers used: E, HL
+
+00:342e _enable_interrupts
+;; 00:342e gbdk 2.95 libc/gb/crt0.s:_enable_interrupts
+
+00:3430 _disable_interrupts
+;; 00:3430 gbdk 2.95 libc/gb/crt0.s:_disable_interrupts
+
+00:3432 _reset
+;; 00:3432 gbdk 2.95 libc/gb/crt0.s:.reset/_reset
 
 00:34ea .data:0011
 
@@ -1974,7 +1995,19 @@
 ;; 00:c5c7 Set to 1 when handling an exception
 00:c5c7 IS_HANDLING_EXCEPTION
 
-00:cbb7 GB_MODEL
+;; 00:cbb7 gbdk 2.95 libc/gb/crt0.s:__cpu
+;; 00:cbb7 GB type (GB, PGB, CGB)
+00:cbb7 CPU
+;; 00:cbb8 GB type 2 (used to check for GBA)
+00:cbb8 CPU_2
+
+;; 00:cbb9 gbdk 2.95 libc/gb/crt0.s:.mode
+;; 00:cbb9 Current mode
+00:cbb9 MODE
+
+;; 00:cbbc gbdk 2.95 libc/gb/crt0.s:__io_status
+;; 00:cbbc Current status of serial IO.
+00:cbbc IO_STATUS
 
 00:c53c CURRENT_PALETTE_NUM
 
