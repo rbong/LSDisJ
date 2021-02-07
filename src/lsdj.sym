@@ -727,7 +727,10 @@
 ;; 00:38f7   HL = copy to address
 ;; 00:38f7   DE = count
 
-00:3906 call_00_3906
+00:3906 _get_bkg_tiles
+;; 00:3906 gbdk 2.95 libc/gb/get_bk_t.s:_get_bkg_tiles
+;; 00:3906 Get background tiles.
+;; 00:3906 Registers used: A, DE, HL
 
 00:3975 call_set_default_ram_values
 ;; 00:3975 This subroutine sets RAM addresses used to their default values
