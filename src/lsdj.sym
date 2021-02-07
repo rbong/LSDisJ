@@ -613,6 +613,12 @@
 ;; 00:3811 Registers used: AF, HL
 00:3827 .set_bkg_palette_1
 
+00:383c vbl
+;; 00:383c gbdk 2.95 libc/gb/drawing.s:.vbl
+
+00:3847 lcd
+;; 00:3847 gbdk 2.95 libc/gb/drawing.s:.lcd
+
 00:3882 delay
 ;; 00:3882 gbdk 2.95 libc/gb/delay.s:.delay
 ;; 00:3882
