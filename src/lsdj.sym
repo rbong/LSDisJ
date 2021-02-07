@@ -1419,6 +1419,7 @@
 
 07:6904 digits_string
 07:6904 .text:0011
+;; 07:6904 gbdk 2.95 libc/gb/digits.c:digits
 
 ;; 07:691b Call 01:4622
 
