@@ -2037,6 +2037,16 @@
 ;; 00:c5c7 Set to 1 when handling an exception
 00:c5c7 IS_HANDLING_EXCEPTION
 
+00:c53c CURRENT_PALETTE_NUM
+
+;; 00:c5c4 Used to determine which part of the background map attributes to copy next
+00:c5c4 CURRENT_BG_MAP_ATTR_CHUNK_INDEX
+
+;; 00:c8f5 Used to store reference to an address inside OAM/VRAM
+00:c8f5 OAM_VRAM_ADDRESS
+;; 00:c8f6 Used to store a value to write to OAM/VRAM
+00:c8f6 OAM_VRAM_VALUE
+
 ;; 00:cbb7 gbdk 2.95 libc/gb/crt0.s:__cpu
 ;; 00:cbb7 GB type (GB, PGB, CGB)
 00:cbb7 CPU
@@ -2050,16 +2060,6 @@
 ;; 00:cbbc gbdk 2.95 libc/gb/crt0.s:__io_status
 ;; 00:cbbc Current status of serial IO.
 00:cbbc IO_STATUS
-
-00:c53c CURRENT_PALETTE_NUM
-
-;; 00:c5c4 Used to determine which part of the background map attributes to copy next
-00:c5c4 CURRENT_BG_MAP_ATTR_CHUNK_INDEX
-
-;; 00:c8f5 Used to store reference to an address inside OAM/VRAM
-00:c8f5 OAM_VRAM_ADDRESS
-;; 00:c8f6 Used to store a value to write to OAM/VRAM
-00:c8f6 OAM_VRAM_VALUE
 
 00:cbd7 RANDHI
 ;; 00:cbd7 gbdk 2.95 libc/gb/rand.s:.randhi
