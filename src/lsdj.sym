@@ -340,11 +340,74 @@
 
 00:2f96 call_00_2f96
 
-00:32e8 call_00_32e8
+00:3218 font_copy_uncompressed
+;; 00:3218 gbdk 2.95 libc/gb/font.ms:font_copy_uncompressed
+;; 00:3218
+;; 00:3218 Copy uncompressed 16 byte tiles.
+;; 00:3218 Uses the current fg_colour and bg_colour fields.
+;; 00:3218
+;; 00:3218 Entry conditions:
+;; 00:3218   BC = copy from address
+;; 00:3218   HL = copy to address (must be aligned to UWORD boundary)
+;; 00:3218   DE = count (cells * 8)
+;; 00:3218
+;; 00:3218 Registers used: A, BC, DE, HL
+00:3223 .font_copy_uncompressed_4
+00:3228 .font_copy_uncompressed_1
+00:3231 .font_copy_uncompressed_1_b
+00:3245 .font_copy_uncompressed_2
 
-00:32f6 call_00_32f6
+00:324e font_load
+;; 00:324e gbdk 2.95 libc/gb/font.ms:font_load
+;; 00:324e Load a font.
+;; 00:324e Entry conditions: HL = font to load
+;; 00:324e Registers used: A, B, DE, HL
+00:3257 .font_load_find_slot
+00:3269 .font_load_found
+00:328d .font_load_exit
 
-00:3305 call_00_3305
+00:3296 font_copy_current
+;; 00:3296 gbdk 2.95 libc/gb/font.ms:font_copy_current (with modifications)
+;; 00:3296 Copy the tiles from the current font into VRAM.
+;; 00:3296 Registers used: A, BC, DE, HL
+;; 00:3296 See: font_copy_uncompressed
+00:32c2 .font_copy_current_copy
+;; 00:32d8 Compressed fonts are not supported, jump straight to font_copy_uncompressed
+
+00:32db font_set
+;; 00:32db gbdk 2.95 libc/gb/font.ms:font_set
+;; 00:32db Set the current font.
+;; 00:32db Entry conditions: HL = font
+;; 00:32db Registers used: A, HL
+
+00:32e8 _font_load
+;; 00:32e8 gbdk 2.95 libc/gb/font.ms:_font_load
+;; 00:32e8 Load a font.
+;; 00:32e8 Args: font (word)
+;; 00:32e8 See: font_load
+
+00:32f6 _font_set
+;; 00:32f6 gbdk 2.95 libc/gb/font.ms:_font_set
+;; 00:32f6 Set the current font.
+;; 00:32f6 Args: font (word)
+;; 00:32f6 See: font_set
+
+00:3305 _font_init
+;; 00:3305 gbdk 2.95 libc/gb/font.ms:_font_init (with modifications)
+;; 00:3305 Initialize the font system.
+;; 00:3305 Registers used: A, HL
+00:3314 .font_init_1
+;; 00:3322 Skip calling .cls
+
+00:3341 tmode
+;; 00:3341 gbdk 2.95 libc/gb/font.ms:.tmode (with modifications)
+;; 00:3341 Enter text mode.
+;; 00:3341 Registers used: A
+;; 00:3348 Skip removing interrupts since they're unused
+00:334b .tmode_1
+
+00:3358 tmode_out
+;; 00:3358 gbdk 2.95 libc/gb/font.ms:.tmode_out
 
 00:3365 _rand_randw
 ;; 00:3365 gbdk 2.95 libc/gb/rand.s:_rand/_randw
@@ -2061,6 +2124,13 @@
 ;; 00:cbbc gbdk 2.95 libc/gb/crt0.s:__io_status
 ;; 00:cbbc Current status of serial IO.
 
+00:cbd5 CURX
+;; 00:cbd5 gbdk 2.95 libc/gb/font.ms:.curx
+;; 00:cbd5 Current cursor X position.
+00:cbd6 CURY
+;; 00:cbd6 gbdk 2.95 libc/gb/font.ms:.cury
+;; 00:cbd6 Current cursor Y position.
+
 00:cbd7 RANDHI
 ;; 00:cbd7 gbdk 2.95 libc/gb/rand.s:.randhi
 ;; 00:cbd7 The random seed upper byte.
@@ -2068,7 +2138,20 @@
 ;; 00:cbd8 gbdk 2.95 libc/gb/rand.s:.randlo
 ;; 00:cbd8 The random seed lower byte.
 
-;; 00:ff8e Used to backup the previously used bank number
+00:cbd9 FG_COLOUR
+;; 00:cbd9 gbdk 2.95 libc/gb/font.ms:.fg_colour
+00:cbda BG_COLOUR
+;; 00:cbda gbdk 2.95 libc/gb/font.ms:.bg_colour
+
+00:cbc3 FONT_TABLE
+;; 00:cbc3 gbdk 2.95 libc/gb/font.ms:font_table
+
+00:cbbf FONT_CURRENT
+;; 00:cbbf gbdk 2.95 libc/gb/font.ms:font_current
+00:cbc2 FONT_FIRST_FREE_TILE
+;; 00:cbc2 gbdk 2.95 libc/gb/font.ms:font_first_free_tile
+;; 00:cbc2 Cached copy of first free tile.
+
 00:ff8e LAST_BANK
 ;; 00:ff8e Used to backup the previously used bank number
 
