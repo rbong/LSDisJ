@@ -727,10 +727,42 @@
 ;; 00:38f7   HL = copy to address
 ;; 00:38f7   DE = count
 
-00:3906 _get_bkg_tiles
-;; 00:3906 gbdk 2.95 libc/gb/get_bk_t.s:_get_bkg_tiles
-;; 00:3906 Get background tiles.
+00:3906 _set_bkg_tiles
+;; 00:3906 gbdk 2.95 libc/gb/set_bk_t.s:_set_bkg_tiles
+;; 00:3906 Set background tiles.
 ;; 00:3906 Registers used: A, DE, HL
+
+00:391a set_xy_wtt
+;; 00:391a gbdk 2.95 libc/gb/set_xy_t.s:.set_xy_wtt
+;; 00:391a Store window tile table.
+;; 00:391a
+;; 00:391a Entry conditions:
+;; 00:391a   BC = store at address
+;; 00:391a   D = X
+;; 00:391a   E = Y
+;; 00:391a   H = width
+;; 00:391a   L = height
+;; 00:391a
+;; 00:391a Registers used: A, BC, DE, HL
+00:3926 .set_xy_wtt_1
+
+00:392b set_xy_btt
+;; 00:392b gbdk 2.95 libc/gb/set_xy_t.s:.set_xy_btt
+;; 00:392b Store background tile table.
+;; 00:392b See: set_xy_wtt
+00:3937 .set_xy_btt_1
+;; 00:3937 Skip jump to the next instruction
+
+00:393a set_xy_tt
+;; 00:393a gbdk 2.95 libc/gb/set_xy_t.s:.set_xy_tt (with modifications)
+;; 00:393a Store tile table.
+;; 00:393a See: set_xy_wtt, set_xy_btt
+00:3942 .set_xy_tt_1
+00:3946 .set_xy_tt_2
+00:394e .set_xy_tt_3
+;; 00:394e Interrupts are briefly enabled unlike gbdk
+;; 00:394e This makes LSDj palette changes more reliable
+00:3974 .set_xy_tt_4
 
 00:3975 call_set_default_ram_values
 ;; 00:3975 This subroutine sets RAM addresses used to their default values
@@ -2080,6 +2112,11 @@
 ;; 00:9800 Not to be confused with BG_MAP_ATTR_CHUNK_*_DATA_START, which contains the data to write to these addresses
 00:98c0 BG_MAP_ATTR_CHUNK_1_START
 00:9980 BG_MAP_ATTR_CHUNK_2_START
+
+00:9C00 BG_MAP_ATTR_CHUNK_0_START_ALT
+;; 00:9C00 Alternate location for background map tiles if LCDC bit 3 is set.
+00:9cc0 BG_MAP_ATTR_CHUNK_1_START_ALT
+00:9c80 BG_MAP_ATTR_CHUNK_2_START_ALT
 
 00:c3fe CURRENT_SCREEN
 ;; 00:c3fe 0x01: phrase screen
