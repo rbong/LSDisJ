@@ -717,6 +717,36 @@
 ;; 00:38bc Args: milliseconds (word)
 ;; 00:38bc See: delay
 
+00:38c5 init_vram
+;; 00:38c5 gbdk 2.95 libc/gb/init_tt.s:.init_vram
+;; 00:38c5
+;; 00:38c5 Fill part of the VRAM with a value.
+;; 00:38c5
+;; 00:38c5 Entry conditions:
+;; 00:38c5   B = value
+;; 00:38c5   DE = size
+;; 00:38c5   HL = address
+;; 00:38c5
+;; 00:38c5 Registers used: A, B, DE, HL
+
+00:38d3 init_wtt
+;; 00:38d3 gbdk 2.95 libc/gb/init_tt.s:.init_wtt
+;; 00:38d3 Fill window tile table with a value.
+;; 00:38d3 Entry conditions: B = value
+;; 00:38d3 Registers used: A, B, DE, HL
+00:38de .init_wtt_1
+
+00:38e3 init_btt
+;; 00:38e3 gbdk 2.95 libc/gb/init_tt.s:.init_btt
+;; 00:38e3 Fill background tile table with a value.
+;; 00:38e3 See: init_wtt
+00:38ee .init_btt_1
+
+00:38f1 init_tt
+;; 00:38f1 gbdk 2.95 libc/gb/init_tt.s:.init_tt
+;; 00:38f1 Fill a tile table with a value.
+;; 00:38f1 See: init_wtt, init_btt
+
 00:38f7 copy_vram
 ;; 00:38f7 gbdk 2.95 libc/gb/cpy_data.s:.copy_vram
 ;; 00:38f7
