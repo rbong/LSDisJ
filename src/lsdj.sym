@@ -420,6 +420,16 @@
 ;; 00:3390 Enable speed switch (CGB only).
 ;; 00:3390 Registers used: AF, HL
 
+00:33ab send_byte
+;; 00:33ab gbdk 2.95 libc/gb/serial.s:.send_byte/_send_byte
+;; 00:33ab Send the byte in IO_OUT to the serial port.
+;; 00:33ab Registers used: A
+
+00:33be receive_byte
+;; 00:33be gbdk 2.95 libc/gb/serial.s:.receive_byte/_receive_byte
+;; 00:33be Receive byte from the serial port in IO_IN.
+;; 00:33be Registers used: A
+
 00:33cf set_mode
 ;; 00:33cf gbdk 2.95 libc/gb/crt0.s:.set_mode
 ;; 00:33cf Sets the current mode. Will jump to the initialization routine.
@@ -2211,8 +2221,16 @@
 ;; 00:cbb9 gbdk 2.95 libc/gb/crt0.s:.mode
 ;; 00:cbb9 Current mode
 
+00:cbba IO_OUT
+;; 00:cbba gbdk 2.95 libc/gb/global.s:__io_out
+;; 00:cbba IO out byte.
+
+00:cbbb IO_IN
+;; 00:cbbb gbdk 2.95 libc/gb/global.s:__io_in
+;; 00:cbbb IO in byte.
+
 00:cbbc IO_STATUS
-;; 00:cbbc gbdk 2.95 libc/gb/crt0.s:__io_status
+;; 00:cbbc gbdk 2.95 libc/gb/global.s:__io_status
 ;; 00:cbbc Current status of serial IO.
 
 00:cbd5 CURX
