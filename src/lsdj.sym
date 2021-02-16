@@ -682,6 +682,27 @@
 00:3847 lcd
 ;; 00:3847 gbdk 2.95 libc/gb/drawing.s:.lcd
 
+00:3854 jpad
+;; 00:3854 gbdk 2.95 libc/gb/pad.s:.jpad (with modifications)
+;; 00:3854
+;; 00:3854 Get keypad button status.
+;; 00:3854
+;; 00:3854 Exit conditions:
+;; 00:3854   E = status (buttons held)
+;; 00:3854       0x80: Start
+;; 00:3854       0x40: Select
+;; 00:3854       0x20: B
+;; 00:3854       0x10: A
+;; 00:3854       0x08: Down
+;; 00:3854       0x04: Up
+;; 00:3854       0x02: Left
+;; 00:3854       0x01: Right
+;; 00:3854
+;; 00:3854 Registers used: A, E
+;; 00:3880 Use E for return status instead of A like in gbdk
+;; 00:3880 The _joypad subroutine handles this in gbdk
+;; 00:3880 This is a little faster
+
 00:3882 delay
 ;; 00:3882 gbdk 2.95 libc/gb/delay.s:.delay
 ;; 00:3882
