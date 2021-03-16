@@ -1,14 +1,9 @@
-# disassembly
-*.asm
-*.inc
+# build files
+build/
 
-# build
-*.2bpp
-*.bkp
+# ROMs
 *.gb
 *.gbc
-*.map
-*.o
 
 # user media
 *.lsdfnt

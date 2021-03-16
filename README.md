@@ -1,12 +1,12 @@
 # LSDisJ
 
 Disassembly of [Little Sound DJ](https://www.littlesounddj.com/lsd/index.php).
-This targets the latest stable version at the time of writing, `8.5.1`.
+This currently only targets the latest stable version at the time of writing, `8.5.1`.
 
 ## Prerequisites
 
   - [Git](https://git-scm.com/downloads)
-  - [LSDj 8.5.1](https://www.littlesounddj.com/lsd/latest/rom_images/) (download to `path/to/LSDisJ/src/lsdj.gb`)
+  - [LSDj 8.5.1](https://www.littlesounddj.com/lsd/latest/rom_images/) (download to `path/to/LSDisJ/src/lsdj-8.5.1.gb`)
   - [Python](https://www.python.org/)
   - [rgbds](https://github.com/gbdev/rgbds)
 
@@ -19,10 +19,7 @@ git clone --recursive https://github.com/rbong/LSDisJ
 # Update
 git pull && git submodule update
 
-# Create src/lsdj.asm
-make disassemble
-
-# Recompile lsdj.gb
+# Create build/8.5.1/src/lsdj.asm
 make
 
 # Remove everything

@@ -2,66 +2,63 @@
 
 CHECK := true
 
+VERSION := 8.5.1
+
+ROM := src/lsdj-$(VERSION).gb
+
 DIS := mgbdis/mgbdis.py
 DISFLAGS :=
 
-ASM := rgbasm
-ASFLAGS := -L
-
-LD := rgblink
-LDFLAGS := -w -m src/lsdj.map
-
-GFX := rgbgfx
-GFXFLAGS :=
-
-FX := rgbfix
-FXFLAGS := \
-	--validate \
-	--pad-value 0xFF
-
 # Helper variables
 
-IMAGE_TARGETS = \
-	src/gfx/font_1_content.2bpp \
-	src/gfx/font_2_content.2bpp \
-	src/gfx/font_3_content.2bpp \
-	src/gfx/tileset.2bpp
+SYM = $(patsubst %.gb,%.sym,$(ROM))
+CHECKSUMS = $(ROM).md5
 
 # Special targets
 
-.PHONY: all clean disassemble
-.INTERMEDIATE: mgbdis/disassembly/game.asm
+.PHONY: default clean
+.PRECIOUS: \
+	build/%/src \
+	build/%/lsdj.sym \
+	build/%/lsdj.gb.md5 \
+	build/%/Makefile
 
 # Targets
 
-all: lsdj.gb
+default: build/$(VERSION)
 
-disassemble: src/lsdj.asm
-
-src/lsdj.gb:
-	# Please download LSDj 8.5.1 and save it to src/lsdj.gb:
+%.gb:
+	# ROM not found.
+	# If you are trying to disassemble and official ROM, please download and save it to "$@":
 	# https://www.littlesounddj.com/lsd/latest/rom_images/
 	exit 1
 
-%.2bpp: %.png
-	$(GFX) $(GFXFLAGS) -o $@ $<
+%.sym:
+	# Symbol file not found.
+	# Without a symbol file, the disassembly will not contain notation.
+	# Make sure there is a corresponding "$(SYM)" file for "$(ROM)".
+	exit 1
 
-mgbdis/disassembly/game.asm: src/lsdj.gb src/lsdj.sym
-	$(DIS) $(DISFLAGS) --output-dir mgbdis/disassembly --overwrite src/lsdj.gb
+%.md5:
+	# Do nothing if checksums don't exist
 
-src/lsdj.asm: mgbdis/disassembly/game.asm
-	cp -r mgbdis/disassembly/*.asm mgbdis/disassembly/*.inc mgbdis/disassembly/gfx src
-	mv src/game.asm src/lsdj.asm
+build:
+	mkdir -p build
 
-src/lsdj.o: src/lsdj.asm $(wildcard src/bank_*.asm) $(wildcard src/*.inc) $(IMAGE_TARGETS)
-	$(ASM) $(ASFLAGS) -i src -o src/lsdj.o src/lsdj.asm
+build/%/src: $(ROM) $(SYM)
+	$(DIS) $(DISFLAGS) --output-dir "$@" --overwrite "$<"
+	# Get rid of the mgbdis Makefile, we have our own
+	rm -rf "$@/Makefile"
+	# Rename the main assembly file to be more descriptive
+	mv "$@"/game.asm "$@"/lsdj.asm
 
-lsdj.gb: src/lsdj.o
-	$(LD) $(LDFLAGS) -o lsdj.gb src/lsdj.o
-	$(FX) $(FXFLAGS) lsdj.gb
+build/%: build/%/src template/Makefile $(SYM) $(CHECKSUMS)
+	cp template/Makefile "$@"
+	cp "$(SYM)" build/"$(VERSION)"/lsdj.sym
+	test -e "$(CHECKSUMS)" && cp "$(CHECKSUMS)" build/"$(VERSION)"/lsdj.gb.md5
 ifeq ($(CHECK),true)
-	md5sum -c lsdj.gb.md5
+	cd "$@" && make
 endif
 
 clean:
-	rm -f lsdj.gb src/*.asm src/*.inc src/lsdj.map src/lsdj.o
+	rm -rf build/
