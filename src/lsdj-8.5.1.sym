@@ -147,8 +147,12 @@
 00:1466 .data:0008
 
 00:146e call_clear_bg_map_attr_data
-;; 00:146e This subroutine clears the section in working memory reserved for background map attribute data
-;; 00:146e Memory ranges from 0xd800 through 0xd968, 0x0168 bytes
+;; 00:146e Clear memory reserved for background map attribute data.
+;; 00:146e
+;; 00:146e Exit conditions:
+;; 00:146e   Memory will be cleared from 0xd800 through 0xd968.
+;; 00:146e
+;; 00:146e Registers used: AF, DE, HL
 ;; 00:1476 0xd800 is BG_MAP_ATTR_CHUNK_0_DATA_START
 
 00:1480 _main
@@ -170,21 +174,31 @@
 00:1616 call_00_1616
 
 00:160d call_handle_exception
-;; 00:160d This subroutine should be called whenever an assertion fails
-;; 00:160d This will lead to showing the crash screen
-;; 00:160d If an exception is already being handled, this does nothing
+;; 00:160d This subroutine should be called whenever an assertion fails.
+;; 00:160d This will lead to showing the crash screen.
+;; 00:160d If an exception is already being handled, this does nothing.
+;; 00:160d
+;; 00:160d TODO: document more after analyzing rst_trigger_crash.
 ;; 00:160d -
 ;; 00:160d Does nothing, used for breakpoints
 ;; 00:1615 calls rst_trigger_crash at 0x38
 
 00:1616 call_trigger_breakpoint
-;; 00:1616 This subroutine does nothing, the "ld b, b" instruction can be used for breakpoints
+;; 00:1616 Does nothing.
+;; 00:1616 "ld b, b" can be used for debugger breakpoints.
 
 00:1699 call_read_external_ram
-;; 00:1699 This subroutine reads a byte from external RAM
-;; 00:1699 The external RAM bank number is set with the value at SP
-;; 00:1699 The byte address is selected with the address stored at SP+1
-;; 00:1699 The byte will be returned in E
+;; 00:1699 Reads a byte from external RAM.
+;; 00:1699
+;; 00:1699 Args: bank, address (word)
+;; 00:1699
+;; 00:1699 Exit conditions:
+;; 00:1699   E = the byte at the address
+;; 00:1699
+;; 00:1699 Exit conditions:
+;; 00:1699   The external RAM register (0x0000) will be set to 0
+;; 00:1699
+;; 00:1699 Registers used: A, DE, HL
 ;; 00:169c External RAM bank cannot be greater than or equal to 0x10
 ;; 00:16a5 Set external RAM bank number
 ;; 00:16a8 Enable external RAM
@@ -194,10 +208,14 @@
 00:16c9 call_00_16c9
 
 00:1741 call_write_external_ram
-;; 00:1741 This subroutine writes a byte to external RAM
-;; 00:1741 The external RAM bank number is set with the value at SP
-;; 00:1741 The target address is set with the address stored at at SP+1
-;; 00:1741 The target byte is stored at SP+3
+;; 00:1741 Write a byte to external RAM.
+;; 00:1741
+;; 00:1741 Args: bank, address (word), byte
+;; 00:1741
+;; 00:1741 Exit conditions:
+;; 00:1741   The external RAM register (0x0000) will be set to 0
+;; 00:1741
+;; 00:1741 Registers used: A, DE, HL
 ;; 00:174a Set the external RAM bank number
 ;; 00:174d Enable external RAM
 ;; 00:1752 Write byte
@@ -210,24 +228,37 @@
 00:1860 call_00_1860
 
 00:1984 call_hl
-;; 00:1984 This subroutine calls HL
+;; 00:1984 Jump to HL.
 
 00:1985 call_far_call
-;; 00:1985 This subroutine calls the subroutine at the address stored at SP+1 at the bank stored at SP
+;; 00:1985 Call a subroutine in another bank.
+;; 00:1985 Args: bank, address (word)
+;; 00:1985 Registers used: A, HL
 
 00:19a6 call_far_call_set_bank
-;; 00:19a6 This subroutine calls the subroutine at the address stored at SP+1 at the bank stored at SP
-;; 00:19a6 After the call, the bank will be set to the byte stored at SP+3
-;; 00:19a6 TODO: determine what banks this is called with
+;; 00:19a6 Call a subroutine in another bank, then set the bank.
+;; 00:19a6
+;; 00:19a6 Args: bank, address (word), new_bank
+;; 00:19a6
+;; 00:19a6 Exit conditions:
+;; 00:19a6   The far call bank register (0x2000) will be set to new_bank
+;; 00:19a6
+;; 00:19a6 Registers used: A, HL
+;; 00:19a6
+;; 00:19a6 TODO: comment on calls to this subroutine
 
 00:194b call_00_194b
 
 00:19d7 call_copy_bg_map_attr_line_2x
-;; 00:19d7 This subroutine copies 2 lines of background map attributes from the address at HL to the target address at DE
-;; 00:19d7 Each background map attribute is one byte, each line is 32 bytes, however only 20 attributes are visible
-;; 00:19d7 Invisible attributes are skipped by this subroutine at the target address
-;; 00:19d7 After this function is complete, HL will be increased by 40 and DE will be increased by 64
-;; 00:19d7 Background map attribute memory is from 0x9800 through 0x9fff
+;; 00:19d7 Copy 2 lines of background map attributes to an address.
+;; 00:19d7 Each line is 32 bytes, so 64 bytes in total will be copied.
+;; 00:19d7 There are only 20 visible attributes per line, so the last 12 bytes will be skipped.
+;; 00:19d7
+;; 00:19d7 Entry conditions:
+;; 00:19d7   HL = source_address
+;; 00:19d7   DE = target_address
+;; 00:19d7
+;; 00:19d7 Registers used: A, DE, HL
 ;; 00:19d7 -
 ;; 00:19d7 Copy first line
 ;; 00:1a12 Skip invisible attributes on first line
@@ -235,9 +266,13 @@
 ;; 00:1a51 Skip invisible attributes on second line
 
 00:1a56 call_copy_bg_map_attr_chunk
-;; 00:1a56 This subroutine copies the current background map attributes to VRAM
-;; 00:1a56 Lines are taken from 0xd800 through 0xd968
-;; 00:1a56 The subroutine cycles between three 6-line chunks (thirds of the screen) each time it is called
+;; 00:1a56 Copy the current background map attributes to VRAM.
+;; 00:1a56 This cycles between three 6-line chunks (thirds of the screen) each time it is called.
+;; 00:1a56
+;; 00:1a56 Entry conditions:
+;; 00:1a56   Background map attributes should be stored at 0xd800 through 0xd968
+;; 00:1a56
+;; 00:1a56 Registers: A, DE, HL
 ;; 00:1a60 Copy background map chunk 0 starts here
 ;; 00:1a60 Index is incremented to 1
 ;; 00:1a61 0xd800 is BG_MAP_ATTR_CHUNK_0_DATA_START
@@ -615,13 +650,14 @@
 00:37b4 .strcmp_5
 
 00:37b5 call_mem_fill
-;; 00:37b5 This subroutine writes byte B to address HL through HL + DE
-;; 00:37b5 DE must at least be 1, otherwise B will be written to address HL + 0x10000 inclusive
+;; 00:37b5 Write a repeating byte to memory.
+;; 00:37b5 Entry conditions: HL = address, B = byte, DE = size
+;; 00:37b5 Registers used: A, B, DE, HL
 
 00:37bd _call_mem_fill
-;; 00:37bd This subroutine writes the byte stored at SP+2 to the address stored at SP through to SP + (SP+3) (word at address)
-;; 00:37bd Returns the address stored at SP in DE
-;; 00:37bd See also call_mem_fill at 00:37b5
+;; 00:37bd Write a repeating byte to memory.
+;; 00:37bd Args: address (word), byte, size
+;; 00:37bd Registers used: A, HL
 
 00:37d0 initrand
 ;; 00:37d0 gbdk 2.95 libc/gb/rand.s:_initrand
@@ -826,7 +862,8 @@
 00:3974 .set_xy_tt_4
 
 00:3975 call_set_default_ram_values
-;; 00:3975 This subroutine sets RAM addresses used to their default values
+;; 00:3975 Set RAM addresses used to their default values.
+;; 00:3975 Registers used: A, DE, HL
 ;; 00:3b0d Set the default screen to the project screen
 
 00:3ec4 .bank_00_padding
@@ -867,20 +904,29 @@
 01:472b .data:0005
 
 01:47fc call_set_lsdj_palette
-;; 01:47fc This subroutine sets the background/object palettes to the colors in the currently selected LSDj palette
+;; 01:47fc Set the background/object palettes to the colors in the currently selected LSDj palette.
+;; 01:47fc
+;; 01:47fc Entry conditions:
+;; 01:47fc   CURRENT_PALETTE_NUM (0xc53c) should be set
+;; 01:47fc
+;; 01:47fc Exit conditions:
+;; 01:47fc   Background palette and object palette will be set
+;; 01:47fc   LCDC will be enabled
+;; 01:47fc
+;; 01:47fc Registers used: AF, HL
 ;; 01:4806 Disable LCDC
 ;; 01:480c Set background colors to values starting at (CURRENT_PALETTE_NUM) * 0x28 + 0x5380
 ;; 01:480c Each palette is 0x28 long and palettes start at 0x5380
 ;; 01:4834 Set object palettes
 ;; 01:4842 Cleanup
 
-01:48cf call_01_48cf
-
 01:484d .jump_handle_dmg
 ;; 01:484d Set normal (11 10 01 00) or inverted (00 01 10 11) palette
 01:485a .jump_set_normal_dmg_palette
 01:485c .jump_set_dmg_palette
 01:4861 .jump_handle_dmg_end
+
+01:48cf call_01_48cf
 
 01:493b call_01_493b
 
@@ -1029,7 +1075,13 @@
 ;; 01:77ef Call 07:670b
 
 01:7801 call_clear_oam_vram
-;; 01:7801 This subroutine sets OAM and the first 0x30 bytes of VRAM to 0
+;; 01:7801 Clear used portion of OAM and VRAM.
+;; 01:7801
+;; 01:7801 Exit conditions:
+;; 01:7801   OAM and the first 0x30 bytes of VRAM will be set to 0
+;; 01:7801   Interrupts will be enabled
+;; 01:7801
+;; 01:7801 Registers used: A, HL
 ;; 01:7805 Set current OAM address to the start of OAM memory (0xfe00) +2
 01:780d .jump_set_oam_loop
 ;; 01:780d Set value at SP to word at current OAM address
@@ -1059,11 +1111,16 @@
 ;; 01:790f Cleanup
 
 01:7926 call_copy_bg_map_attr_palette_nums
-;; 01:7926 This subroutine copies the palette number background map attributes from the address stored at SP to VRAM
-;; 01:7926 Only the top 2 bits of the bytes will be used, so only 4 background colors are possible
-;; 01:7926 Each background map attribute is one byte, each line is 32 bytes, however only 20 attributes are visible
-;; 01:7926 There are 18 lines in total
-;; 01:7926 Only visible attributes will be read from SP, in total 360 bytes
+;; 01:7926 Copy background map attributes into VRAM.
+;; 01:7926
+;; 01:7926 Args:
+;; 01:7926   address = Should contain 360 bytes (20 columns and 18 lines).
+;; 01:7926             Only the top 2 bits of each byte will be read (4 colors).
+;; 01:7926
+;; 01:7926 Exit conditions:
+;; 01:7926   VRAM will be populated with the bytes at the address.
+;; 01:7926
+;; 01:7926 Registers used: A, DE, HL
 ;; 01:7927 Set DE to address stored at SP
 ;; 01:792c Set HL to the start of BG map attributes
 ;; 01:792f Set B to the line counter (18 lines is 0x12 in hex)
@@ -1080,7 +1137,9 @@
 ;; 01:7954 Get line counter which was earlier pushed
 
 01:79b9 call_oam_vram_safe_write
-;; 01:79b9 This subroutine sets the address at SP to the value at SP+2 when OAM is not in use and VRAM is safe to use, trying again if it fails
+;; 01:79b9 Write a byte to OAM/VRAM when both are safe to use.
+;; 01:79b9 Args: address (word), byte
+;; 01:79b9 Registers used: A, E, HL
 01:79c0 .jump_wait_for_oam_vram
 ;; 01:79c9 OAM used by system while writing or not safe to write to VRAM, try again
 
@@ -1819,7 +1878,8 @@
 1b:72f6 call_1b_72f6
 
 1b:7393 call_init_samples
-;; 1b:7393 This function initializes some unknown dynamically-executed code and data related to samples
+;; 1b:7393 Initialize unknown dynamically-executed code and data related to samples.
+;; 1b:7393 TODO: document this further
 ;; 1b:739d Write all of 1b:7451 into d000
 ;; 1b:73ae Copy code from 4000-401b plus extra instructions to memory 16 times
 1b:73b2 .jump_copy_16x_loop
