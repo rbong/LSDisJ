@@ -621,7 +621,7 @@
 00:37bd _call_mem_fill
 ;; 00:37bd This subroutine writes the byte stored at SP+2 to the address stored at SP through to SP + (SP+3) (word at address)
 ;; 00:37bd Returns the address stored at SP in DE
-;; 00:37bd See also call_repeat_byte_b at 00:37b5
+;; 00:37bd See also call_mem_fill at 00:37b5
 
 00:37d0 initrand
 ;; 00:37d0 gbdk 2.95 libc/gb/rand.s:_initrand
