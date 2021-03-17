@@ -212,10 +212,10 @@
 00:1984 call_hl
 ;; 00:1984 This subroutine calls HL
 
-00:1985 call_far_call_sp
+00:1985 call_far_call
 ;; 00:1985 This subroutine calls the subroutine at the address stored at SP+1 at the bank stored at SP
 
-00:19a6 call_far_call_sp_set_bank
+00:19a6 call_far_call_set_bank
 ;; 00:19a6 This subroutine calls the subroutine at the address stored at SP+1 at the bank stored at SP
 ;; 00:19a6 After the call, the bank will be set to the byte stored at SP+3
 ;; 00:19a6 TODO: determine what banks this is called with
