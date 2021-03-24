@@ -2239,6 +2239,57 @@
 00:9cc0 BG_MAP_ATTR_CHUNK_1_START_ALT
 00:9c80 BG_MAP_ATTR_CHUNK_2_START_ALT
 
+00:c0a0 MOD_PU1_FLAG
+;; 00:c0a0 The high byte enables mute/pan on the pulse 1 channel
+00:c0a1 MOD_PU2_FLAG
+;; 00:c0a1 The high byte enables mute/pan on the pulse 2 channel
+00:c0a2 MOD_WAV_FLAG
+;; 00:c0a2 The high byte enables mute/pan on the wave channel
+00:c0a3 MOD_NOI_FLAG
+;; 00:c0a3 The high byte enables mute/pan on the noise channel
+00:c0a4 MOD_PU1_TYPE
+;; 00:c0a4 Sets mute (0), left pan (1), or right pan (2) for the pulse 1 channel
+00:c0a5 MOD_PU2_TYPE
+;; 00:c0a5 Sets mute (0), left pan (1), or right pan (2) for the pulse 2 channel
+00:c0a6 MOD_WAV_TYPE
+;; 00:c0a6 Sets mute (0), left pan (1), or right pan (2) for the wave channel
+00:c0a7 MOD_NOI_TYPE
+;; 00:c0a7 Sets mute (0), left pan (1), or right pan (2) for the noise channel
+
+00:c0cc CURRENT_PU1_NOTE
+00:c0cd CURRENT_PU2_NOTE
+00:c0ce CURRENT_WAV_NOTE
+00:c0cf CURRENT_NOI_NOTE
+
+00:c160 PU1_NOTE_COUNTDOWN
+;; 00:c160 Counts down the time the current note has been playing on the pulse 1 channel. Resets to 0 when the next note starts
+00:c161 PU2_NOTE_COUNTDOWN
+;; 00:c161 Counts down the time the current note has been playing on the pulse 2 channel. Resets to 0 when the next note starts
+00:c162 WAV_NOTE_COUNTDOWN
+;; 00:c162 Counts down the time the current note has been playing on the wave channel. Resets to 0 when the next note starts
+00:c163 NOI_NOTE_COUNTDOWN
+;; 00:c163 Counts down the time the current note has been playing on the noise channel. Resets to 0 when the next note starts
+
+00:c16c CURRENT_PU1_PHRASE_ROW
+00:c16d CURRENT_PU2_PHRASE_ROW
+00:c16e CURRENT_WAV_PHRASE_ROW
+00:c16f CURRENT_NOI_PHRASE_ROW
+
+00:c17c CURRENT_PU1_CHAIN_ROW
+00:c17d CURRENT_PU2_CHAIN_ROW
+00:c17e CURRENT_WAV_CHAIN_ROW
+00:c17f CURRENT_NOI_CHAIN_ROW
+
+00:c200 CURRENT_PU1_SONG_ROW
+00:c201 CURRENT_PU2_SONG_ROW
+00:c202 CURRENT_WAV_SONG_ROW
+00:c203 CURRENT_NOI_SONG_ROW
+
+00:c210 CURRENT_PU1_INSTR
+00:c211 CURRENT_PU2_INSTR
+00:c212 CURRENT_WAV_INSTR
+00:c213 CURRENT_NOI_INSTR
+
 00:c3fe CURRENT_SCREEN
 ;; 00:c3fe 0x01: phrase screen
 ;; 00:c3fe 0x02: groove screen
@@ -2258,6 +2309,85 @@
 00:c3ff DMG_SOUND_ON
 ;; 00:c33f Indicates if sound was on at startup for DMG
 
+00:c403 KEY_DELAY_COUNTER
+;; 00:c403 Counts down key delay while a button is pressed
+00:c404 KEY_REPEAT_COUNTER
+;; 00:c404 Counts down key repeat while a button is pressed
+
+00:c410 CURSOR_MODE
+;; 00:c410 0x02: normal mode
+;; 00:c410 0x04: select mode
+
+00:c411 CURRENT_PHRASE
+;; 00:c411 Current phrase opened on the song screen
+
+00:c412 PHRASE_CURSOR_COL
+00:c413 PHRASE_CURSOR_ROW
+00:c414 CURRENT_GROOVE_SCREEN
+00:c415 CURRENT_CHAIN_SCREEN
+00:c416 CHAIN_CURSOR_COL
+00:c417 CHAIN_CURSOR_ROW
+00:c418 CURRENT_TABLE_SCREEN
+00:c419 SONG_SCREEN_SCROLL
+00:c41a SONG_CURSOR_COL
+00:c41b SONG_CURSOR_ROW
+00:c424 INSTR_CURSOR_ROW
+00:c425 INSTR_CURSOR_COL
+00:c426 SPEECH_CURSOR_POS
+00:c427 CURRENT_WAV_FRAME_SCREEN
+00:c428 WAV_CURSOR_COL
+00:c429 WAV_CURSOR_BLINK
+
+00:c42a INSTR_NAME_LETTER_POS
+00:c42b INSTR_NAME_CURSOR_COL
+00:c42c INSTR_NAME_CURSOR_ROW
+
+00:c43f CURRENT_SYNTH_SCREEN
+00:c440 SYNTH_CURSOR_POS
+
+00:c44b DEFAULT_PU1_NOTE
+;; 00:c44b The default note to use for empty pulse 1 channel rows on the phrase screen
+00:c44c DEFAULT_PU2_NOTE
+;; 00:c44c The default note to use for empty pulse 2 channel rows on the phrase screen
+00:c44d DEFAULT_WAV_NOTE
+;; 00:c44d The default note to use for empty wave channel rows on the phrase screen
+00:c44e DEFAULT_NOI_NOTE
+;; 00:c44e The default note to use for empty noise channel rows on the phrase screen
+00:c44f DEFAULT_CMD
+;; 00:c44f The default command to use for empty rows
+
+00:c460 DEFAULT_PU1_INSTR
+;; 00:c460 The default instrument number to use for empty rows on the pulse 1 phrase screen
+00:c461 DEFAULT_PU2_INSTR
+;; 00:c461 The default instrument number to use for empty rows on the pulse 2 phrase screen
+00:c462 DEFAULT_WAV_INSTR
+;; 00:c462 The default instrument number to use for empty rows on the wave phrase screen
+00:c463 DEFAULT_NOI_INSTR
+;; 00:c463 The default instrument number to use for empty rows on the noise phrase screen
+
+00:c46b CURSOR_BUTTON_HOLD
+
+00:c453 DEFAULT_PU1_SONG_CHAIN
+;; 00:c453 The default chain number to use for empty pulse 1 channel rows on the song screen
+00:c454 DEFAULT_PU2_SONG_CHAIN
+;; 00:c454 The default chain number to use for empty pulse 2 channel rows on the song screen
+00:c455 DEFAULT_WAV_SONG_CHAIN
+;; 00:c455 The default chain number to use for empty wave channel rows on the song screen
+00:c456 DEFAULT_NOI_SONG_CHAIN
+;; 00:c456 The default chain number to use for empty noise channel rows on the song screen
+00:c457 DEFAULT_PU1_CHAIN_PHRASE
+;; 00:c457 The default phrase number to use for empty rows on the chain screen for the pulse 1 channel
+00:c458 DEFAULT_PU2_CHAIN_PHRASE
+;; 00:c458 The default phrase number to use for empty rows on the chain screen for the pulse 2 channel
+00:c459 DEFAULT_WAV_CHAIN_PHRASE
+;; 00:c459 The default phrase number to use for empty rows on the chain screen for the wave channel
+00:c45a DEFAULT_NOI_CHAIN_PHRASE
+;; 00:c45a The default phrase number to use for empty rows on the chain screen for the noise channel
+
+00:c502 CURRENT_WAV_FRAME
+00:c506 SYNTH_KIT_FLAG
+;; 00:c506 0x00: kit, 0x01: synth
+
 00:c5c7 IS_HANDLING_EXCEPTION
 ;; 00:c5c7 Set to 1 when handling an exception
 
@@ -2270,6 +2400,36 @@
 ;; 00:c8f5 Used to store reference to an address inside OAM/VRAM
 00:c8f6 OAM_VRAM_VALUE
 ;; 00:c8f6 Used to store a value to write to OAM/VRAM
+
+00:c926 SCREEN_COL
+;; 00:c926 The current screen column
+00:c927 SCREEN_ROW
+;; 00:c927 The current screen row in use
+00:c928 SCREEN_TOP_RIGHT_COL
+;; 00:c928 The current column that the top right screen is lined up with
+00:c929 TOP_RIGHT_SCREEN_TYPE
+;; 00:c929 The current screen used on the top right
+;; 00:c929 0x00: WAVE screen
+;; 00:c929 0x01: SYNTH screen
+
+00:c96c DEFAULT_TABLE_TSP
+;; 00:c96c The default transpose value to use for empty rows on the table screen
+00:c969 TABLE_CURSOR_ROW
+00:c96A TABLE_CURSOR_COL
+00:c96b DEFAULT_TABLE_VOL
+;; 00:c96b The default volume value to use for empty rows on the table screen
+
+00:c96d HELP_PAGE
+00:c96e HELP_CURSOR_ROW
+
+00:c977 DEFAULT_PU1_TSP
+;; 00:c977 The default transpose value to use for empty rows on the chain screen for the pulse 1 channel
+00:c978 DEFAULT_PU2_TSP
+;; 00:c978 The default transpose value to use for empty rows on the chain screen for the pulse 2 channel
+00:c979 DEFAULT_WAV_TSP
+;; 00:c979 The default transpose value to use for empty rows on the chain screen for the wave channel
+00:c97a DEFAULT_NOI_TSP
+;; 00:c97a The default transpose value to use for empty rows on the chain screen for the noise channel
 
 00:cbb7 CPU
 ;; 00:cbb7 gbdk 2.95 libc/gb/crt0.s:__cpu
@@ -2293,6 +2453,14 @@
 ;; 00:cbbc gbdk 2.95 libc/gb/global.s:__io_status
 ;; 00:cbbc Current status of serial IO.
 
+00:cbbf FONT_CURRENT
+;; 00:cbbf gbdk 2.95 libc/gb/font.ms:font_current
+00:cbc2 FONT_FIRST_FREE_TILE
+;; 00:cbc2 gbdk 2.95 libc/gb/font.ms:font_first_free_tile
+;; 00:cbc2 Cached copy of first free tile.
+00:cbc3 FONT_TABLE
+;; 00:cbc3 gbdk 2.95 libc/gb/font.ms:font_table
+
 00:cbd5 CURX
 ;; 00:cbd5 gbdk 2.95 libc/gb/font.ms:.curx
 ;; 00:cbd5 Current cursor X position.
@@ -2311,15 +2479,6 @@
 ;; 00:cbd9 gbdk 2.95 libc/gb/font.ms:.fg_colour
 00:cbda BG_COLOUR
 ;; 00:cbda gbdk 2.95 libc/gb/font.ms:.bg_colour
-
-00:cbc3 FONT_TABLE
-;; 00:cbc3 gbdk 2.95 libc/gb/font.ms:font_table
-
-00:cbbf FONT_CURRENT
-;; 00:cbbf gbdk 2.95 libc/gb/font.ms:font_current
-00:cbc2 FONT_FIRST_FREE_TILE
-;; 00:cbc2 gbdk 2.95 libc/gb/font.ms:font_first_free_tile
-;; 00:cbc2 Cached copy of first free tile.
 
 00:ff8e LAST_BANK
 ;; 00:ff8e Used to backup the previously used bank number
