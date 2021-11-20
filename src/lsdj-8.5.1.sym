@@ -244,8 +244,6 @@
 ;; 00:19a6   The far call bank register (0x2000) will be set to new_bank
 ;; 00:19a6
 ;; 00:19a6 Registers used: A, HL
-;; 00:19a6
-;; 00:19a6 TODO: comment on calls to this subroutine
 
 00:194b call_00_194b
 
