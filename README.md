@@ -32,6 +32,7 @@ make clean
 
   - [Pan Docs](https://gbdev.io/pandocs/) (GameBoy development reference, can be used to look up registers, etc.)
   - [gbdk 2.95](https://sourceforge.net/projects/gbdk/files/gbdk-win32/2.95/) (GameBoy development library used by LSDj, with modifications)
+    - [gbdk mirror and HTML documentation](https://github.com/rbong/gbdk)
   - [Awesome Game Boy Development list](https://github.com/gbdev/awesome-gbdev) (Game Boy development resources)
 
 ### Development Utilities
