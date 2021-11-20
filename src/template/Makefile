@@ -1,6 +1,6 @@
 # Options
 
-CHECK := true
+VERIFY := true
 
 ASM := rgbasm
 ASFLAGS := -L
@@ -42,7 +42,7 @@ src/lsdj.o: src/lsdj.asm $(wildcard src/bank_*.asm) $(wildcard src/*.inc) $(IMAG
 lsdj.gb: src/lsdj.o
 	$(LD) $(LDFLAGS) -o "$@" "$<"
 	$(FX) $(FXFLAGS) "$@"
-ifeq ($(CHECK),true)
+ifeq ($(VERIFY),true)
 	md5sum -c lsdj.gb.md5 < "$@"
 endif
 

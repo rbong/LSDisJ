@@ -1,6 +1,7 @@
 # Options
 
 CHECK := true
+REBUILD := true
 
 VERSION := 8.5.1
 
@@ -16,7 +17,7 @@ CHECKSUMS = $(ROM).md5
 
 # Special targets
 
-.PHONY: default clean
+.PHONY: default check clean
 .PRECIOUS: \
 	build/%/src \
 	build/%/lsdj.sym \
@@ -42,6 +43,11 @@ default: build/$(VERSION)
 %.md5:
 	# Do nothing if checksums don't exist
 
+check: $(ROM) $(CHECKSUMS)
+ifeq ($(CHECK),true)
+	md5sum -c "$(CHECKSUMS)" < "$(ROM)"
+endif
+
 build/%/Makefile: src/template/Makefile
 	mkdir -p "build/$*"
 	cp src/template/Makefile "build/$*/Makefile"
@@ -54,11 +60,11 @@ build/%/src: $(ROM) $(SYM)
 	# Rename the main assembly file to be more descriptive
 	mv "$@"/game.asm "$@"/lsdj.asm
 
-build/%: build/%/Makefile build/%/src $(SYM) $(CHECKSUMS)
+build/%: check build/%/Makefile build/%/src $(ROM) $(SYM)
 	mkdir -p "build/$*"
 	cp "$(SYM)" build/"$*"/lsdj.sym
-	test -e "$(CHECKSUMS)" && cp "$(CHECKSUMS)" build/"$*"/lsdj.gb.md5
-ifeq ($(CHECK),true)
+	md5sum < "$(ROM)" > build/"$*"/lsdj.gb.md5
+ifeq ($(REBUILD),true)
 	cd "$@" && make
 endif
 
