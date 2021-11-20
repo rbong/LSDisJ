@@ -42,20 +42,22 @@ default: build/$(VERSION)
 %.md5:
 	# Do nothing if checksums don't exist
 
-build:
-	mkdir -p build
+build/%/Makefile: src/template/Makefile
+	mkdir -p "build/$*"
+	cp src/template/Makefile "build/$*/Makefile"
 
 build/%/src: $(ROM) $(SYM)
+	mkdir -p "build/$*"
 	$(DIS) $(DISFLAGS) --output-dir "$@" --overwrite "$<"
 	# Get rid of the mgbdis Makefile, we have our own
 	rm -rf "$@/Makefile"
 	# Rename the main assembly file to be more descriptive
 	mv "$@"/game.asm "$@"/lsdj.asm
 
-build/%: build/%/src template/Makefile $(SYM) $(CHECKSUMS)
-	cp template/Makefile "$@"
-	cp "$(SYM)" build/"$(VERSION)"/lsdj.sym
-	test -e "$(CHECKSUMS)" && cp "$(CHECKSUMS)" build/"$(VERSION)"/lsdj.gb.md5
+build/%: build/%/Makefile build/%/src $(SYM) $(CHECKSUMS)
+	mkdir -p "build/$*"
+	cp "$(SYM)" build/"$*"/lsdj.sym
+	test -e "$(CHECKSUMS)" && cp "$(CHECKSUMS)" build/"$*"/lsdj.gb.md5
 ifeq ($(CHECK),true)
 	cd "$@" && make
 endif
