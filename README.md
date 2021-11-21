@@ -31,6 +31,7 @@ make clean
 ### Reference
 
   - [Pan Docs](https://gbdev.io/pandocs/) (GameBoy development reference, can be used to look up registers, etc.)
+  - [rgbasm Language Documentation](https://rgbds.gbdev.io/docs/v0.5.1/rgbasm.5) (can be used to look up assembly syntax, expressions, instructions)
   - [gbdk 2.95 source](https://github.com/rbong/gbdk/tree/master/gbdk-2.95) (GameBoy development library used by LSDj, with modifications)
   - [gbdk 2.95 docs](https://rbong.github.io/gbdk/gbdk-doc-2.95/html/index.html)
   - [Awesome Game Boy Development list](https://github.com/gbdev/awesome-gbdev) (Game Boy development resources)
