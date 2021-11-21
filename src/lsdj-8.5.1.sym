@@ -973,6 +973,8 @@
 
 01:4ac1 call_01_4ac1
 
+01:4b01 call_01_4b01
+
 01:4b54 call_01_4b54
 
 01:4cf4 call_01_4cf4
@@ -2280,6 +2282,8 @@
 ;; 1f:4b4b Call 01:6f8b
 
 ;; 1f:4cb8 Call 01:4730
+
+;; 1f:4f89 Call 01:4b01
 
 ;; 1f:51b6 Call 01:49ab
 
