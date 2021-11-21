@@ -8,7 +8,7 @@ VERSION := 8.5.1
 ROM := src/lsdj-$(VERSION).gb
 
 DIS := mgbdis/mgbdis.py
-DISFLAGS :=
+DISFLAGS := --disable-auto-ldh
 
 # Helper variables
 
