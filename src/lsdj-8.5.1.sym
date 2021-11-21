@@ -876,7 +876,17 @@
 
 01:4152 call_01_4152
 
-01:4222 cart_test_strings
+01:4222 cart_test_title_string
+01:4231 cart_test_rom_string
+01:4238 cart_test_rom_ok_string
+01:423c cart_test_rom_fail_string
+01:4242 cart_test_rom_error_1_string
+01:4254 cart_test_rom_error_2_string
+01:4264 cart_test_sram_string
+01:426c cart_test_sram_ok_string
+01:4270 cart_test_sram_fail_string
+01:4276 cart_test_sram_error_1_string
+01:4288 cart_test_sram_error_2_string
 
 01:429c call_01_429c
 ;; 01:42ad Call 07:66f9
