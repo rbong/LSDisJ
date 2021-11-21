@@ -103,7 +103,7 @@
 00:0d20 call_00_0d20
 
 00:0dca call_far_jump
-;; 00:0dca Jump to a label in another bank.
+;; 00:0dca Jump to an address in another bank.
 ;; 00:0dca Args: bank, address (word)
 ;; 00:0dca Registers used: A, HL
 00:0de7 jump_far_jump_return
