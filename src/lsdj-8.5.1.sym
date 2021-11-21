@@ -318,6 +318,12 @@
 
 00:21b7 call_00_21b7
 
+00:2295 call_sum_bank
+;; 00:2295 Get the sum of the ROM in the currently selected bank.
+;; 00:2295 Entry conditions: 0x2000 = bank
+;; 00:2295 Exit conditions: DE = sum
+;; 00:2295 Registers used: A, DE, HL
+
 ;; 00:22ca Call 02:6fa0
 ;; 00:22da Call 01:6ea5
 
