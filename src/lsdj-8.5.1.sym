@@ -102,11 +102,12 @@
 
 00:0d20 call_00_0d20
 
-00:0dca call_far_jump
-;; 00:0dca Jump to an address in another bank.
+00:0dca call_banked_call_old
+;; 00:0dca Call a subroutine in another bank.
+;; 00:0dca This version of call_banked_call uses extra instructions.
 ;; 00:0dca Args: bank, address (word)
 ;; 00:0dca Registers used: A, HL
-00:0de7 jump_far_jump_return
+00:0de7 call_banked_call_old_return
 ;; 00:0de7 Doesn't appear to actually do anything with register B or E
 
 00:0df5 call_00_0df5
@@ -232,15 +233,15 @@
 
 00:1860 call_00_1860
 
-00:1984 call_hl
+00:1984 call_jump_hl
 ;; 00:1984 Jump to HL.
 
-00:1985 call_far_call
+00:1985 call_banked_call
 ;; 00:1985 Call a subroutine in another bank.
 ;; 00:1985 Args: bank, address (word)
 ;; 00:1985 Registers used: A, HL
 
-00:19a6 call_far_call_set_bank
+00:19a6 call_banked_call_set_bank
 ;; 00:19a6 Call a subroutine in another bank, then set the bank.
 ;; 00:19a6
 ;; 00:19a6 Args: bank, address (word), new_bank
@@ -2493,8 +2494,8 @@
 00:cbda BG_COLOUR
 ;; 00:cbda gbdk 2.95 libc/gb/font.ms:.bg_colour
 
-00:ff8e LAST_BANK
-;; 00:ff8e Used to backup the previously used bank number
+00:ff8e CURRENT_BANK
+;; 00:ff8e Used to store the current bank number for banked calls.
 
 01:d800 BG_MAP_ATTR_CHUNK_0_DATA_START
 ;; 01:d800 This section of memory is reserved for the current background map attribute data to write to VRAM
