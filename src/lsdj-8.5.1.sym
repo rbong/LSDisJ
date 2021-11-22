@@ -140,7 +140,7 @@
 ;; 00:0f8f Call call_clear_oam_vram at 01:7801
 ;; 00:0fb5 Call 01:452f
 ;; 00:0fc1 Call 1e:7a0c
-;; 00:0fd7 Call 01:4152
+;; 00:0fd7 Call call_cart_test at 01:4152
 ;; 00:100d Call 01:429c
 ;; 00:1010 Call 01:45bb
 ;; 00:101c Call 1c:4057
