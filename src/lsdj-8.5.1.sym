@@ -316,7 +316,13 @@
 
 00:2084 .data:0005
 
-00:21b7 call_00_21b7
+00:21b7 call_rom_test
+;; 00:21b7 Check the ROM image for integrity by recalculating the global checksum.
+;; 00:21b7
+;; 00:21b7 Exit conditions:
+;; 00:21b7   Current bank (0x2000) = 0x3f
+;; 00:21b7
+;; 00:21b7 Registers used: A, DE, HL
 
 00:2295 call_sum_bank
 ;; 00:2295 Get the sum of the ROM in the currently selected bank.
@@ -902,7 +908,7 @@
 01:4115 .data:0010
 
 01:4152 call_01_4152
-;; 01:4175 Call 00:21b7
+;; 01:4175 Call call_rom_test at 00:21b7
 
 01:4222 cart_test_title_string
 01:4231 cart_test_rom_string
