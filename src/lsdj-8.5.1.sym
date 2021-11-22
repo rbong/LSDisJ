@@ -211,8 +211,6 @@
 ;; 00:1699
 ;; 00:1699 Exit conditions:
 ;; 00:1699   E = the byte at the address
-;; 00:1699
-;; 00:1699 Exit conditions:
 ;; 00:1699   The external RAM register (0x0000) will be set to 0
 ;; 00:1699
 ;; 00:1699 Registers used: A, DE, HL
