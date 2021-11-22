@@ -117,7 +117,7 @@
 ;; 00:0df5 Args: bank, address (word), new_bank
 ;; 00:0df5
 ;; 00:0df5 Exit conditions:
-;; 00:0df5   The far call bank register (0x2000) will be set to new_bank
+;; 00:0df5   The bank register (0x2000) will be set to new_bank
 ;; 00:0df5
 ;; 00:0df5 Registers used: A, HL
 00:0e16 call_banked_call_set_bank_old_return
@@ -258,7 +258,7 @@
 ;; 00:19a6 Args: bank, address (word), new_bank
 ;; 00:19a6
 ;; 00:19a6 Exit conditions:
-;; 00:19a6   The far call bank register (0x2000) will be set to new_bank
+;; 00:19a6   The bank register (0x2000) will be set to new_bank
 ;; 00:19a6
 ;; 00:19a6 Registers used: A, HL
 
