@@ -418,6 +418,12 @@
 ;; 00:3000   The data at the source address will be written to the target address up until the 0x00 byte is encountered.
 ;; 00:3000
 ;; 00:3000 Registers used: A, DE, HL
+;; 00:300e TODO: determine what address 0xc577 is
+;; 00:3014 TODO: determine what value/address 0xff8c is
+00:301d .jump_write_bg_attr_data_loop
+00:3028 .jump_write_bg_attr_data
+00:303f .jump_write_bg_attr_data_continue
+00:3042 .jump_write_bg_attr_data_end
 
 00:3218 font_copy_uncompressed
 ;; 00:3218 gbdk 2.95 libc/gb/font.ms:font_copy_uncompressed
