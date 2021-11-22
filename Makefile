@@ -18,7 +18,9 @@ SYM := src/lsdj-$(VERSION).sym
 # Disassembly program
 DIS := mgbdis/mgbdis.py
 # Disassembly flags
-DISFLAGS := --disable-auto-ldh
+DISFLAGS := --disable-auto-ldh \
+						--disable-makefile \
+						--overwrite
 
 # Helper variables
 
@@ -72,11 +74,10 @@ build/%/Makefile: src/template/Makefile
 
 build/%/src/lsdj.asm: $(ROM) $(SYM)
 	mkdir -p "build/$*"
-	$(DIS) $(DISFLAGS) --output-dir "build/$*/src" --overwrite "$<"
-	# Get rid of the mgbdis Makefile, we have our own
-	rm -rf "build/$*/src/Makefile"
-	# Rename the main assembly file to be more descriptive
-	mv "build/$*/src/game.asm" "$@"
+	$(DIS) $(DISFLAGS) \
+		--output-dir "build/$*/src" \
+		--game-asm "lsdj.asm" \
+		"$<"
 
 build/%/lsdj.sym: $(SYM)
 	mkdir -p "build/$*"
