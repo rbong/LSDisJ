@@ -1,15 +1,23 @@
 # Options
 
+# Check the hash of the ROM before disassembling
 CHECK := true
+# Rebuild after disassembling
 REBUILD := true
 
+# Specify the version to build
 VERSION := 8.5.1
 
+# Path to the ROM file
 ROM := src/lsdj-$(VERSION).gb
+# Path to the checksum file
 CHECKSUM := src/lsdj-$(VERSION).gb.md5
+# Path to the symbols file
 SYM := src/lsdj-$(VERSION).sym
 
+# Disassembly program
 DIS := mgbdis/mgbdis.py
+# Disassembly flags
 DISFLAGS := --disable-auto-ldh
 
 # Helper variables

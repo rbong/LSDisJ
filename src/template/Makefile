@@ -1,17 +1,26 @@
 # Options
 
+# Verify the ROM is correct after building
 VERIFY := true
 
+# Assembler program
 ASM := rgbasm
+# Assembler flags
 ASFLAGS := -L
 
+# Linker program
 LD := rgblink
+# Linker flags
 LDFLAGS := -w -m src/lsdj.map
 
+# Image converter program
 GFX := rgbgfx
+# Image converter flags
 GFXFLAGS :=
 
+# ROM checksum fixer program
 FIX := rgbfix
+# ROM checksum fixer flags
 FIXFLAGS := \
 	--validate \
 	--pad-value 0xFF
