@@ -319,6 +319,7 @@
 ;; 00:21b7
 ;; 00:21b7 Exit conditions:
 ;; 00:21b7   Current bank (0x2000) = 0x3f
+;; 00:21b7   E = success
 ;; 00:21b7
 ;; 00:21b7 Registers used: A, DE, HL
 
@@ -327,6 +328,13 @@
 ;; 00:2295 Entry conditions: 0x2000 = bank
 ;; 00:2295 Exit conditions: DE = sum
 ;; 00:2295 Registers used: A, DE, HL
+
+00:22a6 call_sram_test_address
+;; 00:22a6 Test the integrity of a single SRAM address.
+;; 00:22a6 Exit conditions: E = success
+;; 00:22a6 Registers used: A, E, HL
+;; 00:22a6 -
+;; 00:22a6 TODO: dig deeper into this function
 
 ;; 00:22ca Call 02:6fa0
 ;; 00:22da Call 01:6ea5
@@ -922,10 +930,37 @@
 ;; 01:4000 See: _set_bkg_palette
 01:4016 .set_sprite_palette_1
 
+01:402b call_sram_random_test
+;; 01:402b Test SRAM by generating random numbers.
+;; 01:402b Exit conditions: E = success
+;; 01:402b Registers used: A, DE, HL
+;; 01:402b -
+;; 01:402b TODO: dig deeper into this function.
+; Avoid labelling values as functions
+;; 01:4051:r_op $4000
+;; 01:40b5:r_op $4000
+
 01:4115 .data:0010
 
-01:4152 call_01_4152
+01:4125 call_sram_test
+;; 01:4125 Test SRAM integrity.
+;; 01:4125 Exit conditions: E = success
+;; 01:4125 Registers used: A, E, HL
+;; 01:4125 -
+;; 01:4125 TODO: dig deeper into this function.
+;; 01:4133:r_op $4000
+
+01:4152 call_cart_test
+;; 01:4152 Run the cart test.
+;; 01:4152 Prints messages to the screen, and performs ROM/SRAM tests.
+;; 01:4152 Registers used: A, HL, DE
 ;; 01:4175 Call call_rom_test at 00:21b7
+01:4195 .jump_rom_test_fail
+01:41c0 .jump_rom_test_fail_halt
+01:41c3 .jump_sram_test
+01:41f2 .jump_sram_test_fail
+01:421d .jump_sram_test_fail_halt
+01:4220 .jump_cart_test_end
 
 01:4222 cart_test_title_string
 01:4231 cart_test_rom_string
