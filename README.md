@@ -6,7 +6,9 @@ This currently only targets the latest stable version at the time of writing, `8
 ## Prerequisites
 
   - [Git](https://git-scm.com/downloads)
-  - [LSDj 8.5.1](https://www.littlesounddj.com/lsd/latest/rom_images/) (download to `path/to/LSDisJ/src/lsdj-8.5.1.gb`)
+  - [LSDj 8.5.1](https://www.littlesounddj.com/lsd/latest/rom_images/stable/lsdj8_5_1-stable.zip)
+    - Read [the LSDj license](https://www.littlesounddj.com/lsd/latest/rom_images/LICENSE.txt)
+    - Extract and move the ROM to `src/lsdj-8.5.1.gb`
   - [Python](https://www.python.org/)
   - [rgbds](https://github.com/gbdev/rgbds)
 
