@@ -6,67 +6,89 @@ REBUILD := true
 VERSION := 8.5.1
 
 ROM := src/lsdj-$(VERSION).gb
+CHECKSUM := src/lsdj-$(VERSION).gb.md5
+SYM := src/lsdj-$(VERSION).sym
 
 DIS := mgbdis/mgbdis.py
 DISFLAGS := --disable-auto-ldh
 
 # Helper variables
 
-SYM = $(patsubst %.gb,%.sym,$(ROM))
-CHECKSUMS = $(ROM).md5
+DIS_TARGET_PREREQS = build/$(VERSION)/src/lsdj.asm \
+										 build/$(VERSION)/Makefile \
+										 build/$(VERSION)/lsdj.sym \
+										 build/$(VERSION)/lsdj.gb.md5
+
+ifeq ($(CHECK),true)
+	DIS_TARGET_PREREQS := check $(DIS_TARGET_PREREQS)
+endif
+
+ifeq ($(REBUILD),true)
+	DIS_TARGET_PREREQS += rebuild
+endif
 
 # Special targets
 
-.PHONY: default check clean
-.PRECIOUS: \
-	build/%/src \
-	build/%/lsdj.sym \
-	build/%/lsdj.gb.md5 \
-	build/%/Makefile
+.PHONY: default check disassemble clean rebuild
+.PRECIOUS: build/**
 
-# Targets
-
-default: build/$(VERSION)
+# Placeholder targets
 
 %.gb:
-	# ROM not found.
-	# If you are trying to disassemble and official ROM, please download and save it to "$@":
+	# ROM file not found at "$@".
+	# ROMs can be downloaded here:
 	# https://www.littlesounddj.com/lsd/latest/rom_images/
-	exit 1
-
-%.sym:
-	# Symbol file not found.
-	# Without a symbol file, the disassembly will not contain notation.
-	# Make sure there is a corresponding "$(SYM)" file for "$(ROM)".
+	# After downloading, extract the ROM and save it to "$@".
+	# You can also specify a ROM file with "make ROM=path/to/rom.gb".
 	exit 1
 
 %.md5:
-	# Do nothing if checksums don't exist
+	# Checksum file not found at "$@".
+	# You can specify the checksum file with "make CHECKSUM=path/to/checksum.gb.md5".
+	# You can also skip checking the file hash with "make CHECK=false".
+	# To generate the checksum file, use "md5sum < path/to/rom.gb > path/to/checksum.gb.md5".
+	exit 1
 
-check: $(ROM) $(CHECKSUMS)
-ifeq ($(CHECK),true)
-	md5sum -c "$(CHECKSUMS)" < "$(ROM)"
-endif
+%.sym:
+	# Symbols file not found at "$@".
+	# Without a symbols file, the disassembly will not contain labels.
+	# You can specify the symbols file with "make SYM=path/to/symbols.sym".
+	# You can also generate an empty symbols file with "touch path/to/symbols.sym".
+	exit 1
+
+# Build targets
 
 build/%/Makefile: src/template/Makefile
 	mkdir -p "build/$*"
-	cp src/template/Makefile "build/$*/Makefile"
+	cp "$^" "$@"
 
-build/%/src: $(ROM) $(SYM)
+build/%/src/lsdj.asm: $(ROM) $(SYM)
 	mkdir -p "build/$*"
-	$(DIS) $(DISFLAGS) --output-dir "$@" --overwrite "$<"
+	$(DIS) $(DISFLAGS) --output-dir "build/$*/src" --overwrite "$<"
 	# Get rid of the mgbdis Makefile, we have our own
-	rm -rf "$@/Makefile"
+	rm -rf "build/$*/src/Makefile"
 	# Rename the main assembly file to be more descriptive
-	mv "$@"/game.asm "$@"/lsdj.asm
+	mv "build/$*/src/game.asm" "$@"
 
-build/%: check build/%/Makefile build/%/src $(ROM) $(SYM)
+build/%/lsdj.sym: $(SYM)
 	mkdir -p "build/$*"
-	cp "$(SYM)" build/"$*"/lsdj.sym
-	md5sum < "$(ROM)" > build/"$*"/lsdj.gb.md5
-ifeq ($(REBUILD),true)
-	cd "$@" && make
-endif
+	cp "$^" "build/$*/lsdj.sym"
+
+build/%/lsdj.gb.md5: $(ROM)
+	mkdir -p "build/$*"
+	md5sum < "$^" > "build/$*/lsdj.gb.md5"
+
+# Phony targets
+
+default: disassemble
+
+check: $(ROM) $(CHECKSUM)
+	md5sum -c "$(CHECKSUM)" < "$(ROM)"
+
+disassemble: $(DIS_TARGET_PREREQS)
+
+rebuild: build/$(VERSION)/Makefile
+	cd "build/$(VERSION)" && $(MAKE)
 
 clean:
 	rm -rf build/
