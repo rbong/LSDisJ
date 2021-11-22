@@ -404,7 +404,20 @@
 
 00:2f96 call_00_2f96
 
-00:3000 call_00_3000
+00:3000 call_write_bg_map_attr_data
+;; 00:3000 Write background map attribute data to memory.
+;; 00:3000 If the target address is not in the memory range used for background map attributes, throws an exception.
+;; 00:3000 This range starts at BG_MAP_ATTR_CHUNK_0_DATA_START.
+;; 00:3000
+;; 00:3000 Args: source_address
+;; 00:3000
+;; 00:3000 Entry conditions:
+;; 00:3000   *(BG_MAP_ATTR_TARGET (word)) = target_address (must be between 0xd800 through 0xd968)
+;; 00:3000
+;; 00:3000 Exit conditions:
+;; 00:3000   The data at the source address will be written to the target address up until the 0x00 byte is encountered.
+;; 00:3000
+;; 00:3000 Registers used: A, DE, HL
 
 00:3218 font_copy_uncompressed
 ;; 00:3218 gbdk 2.95 libc/gb/font.ms:font_copy_uncompressed
@@ -2562,6 +2575,11 @@
 
 00:c5c4 CURRENT_BG_MAP_ATTR_CHUNK_INDEX
 ;; 00:c5c4 Used to determine which part of the background map attributes to copy next
+
+00:c5c9 BG_MAP_ATTR_TARGET
+;; 00:c5c9 Used to store the next target address to write BG map attribute data into
+;; 00:c5c9 Must be within the BG map data range (0xd800 through 0xd968)
+00:c5ca BG_MAP_ATTR_TARGET_HI
 
 00:c8f5 OAM_VRAM_ADDRESS
 ;; 00:c8f5 Used to store reference to an address inside OAM/VRAM
