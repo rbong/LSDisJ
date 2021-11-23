@@ -1222,6 +1222,18 @@
 ;; 01:78a7 Since the sprites are cleared, it's currently unknown what this does
 ;; 01:790f Cleanup
 
+01:7914 call_clear_cart_ram
+;; 01:7914 This function clears cart RAM for the currently selected bank.
+;; 01:7914
+;; 01:7914 Entry conditions:
+;; 01:7914   Set the RAM bank (0x4000) to select which RAM bank is cleared.
+;; 01:7914
+;; 01:7914 Exit conditions:
+;; 01:7914   The RAM bank (0xa000 through 0xbfff) will be set to 0.
+;; 01:7914
+;; 01:7914 Registers used: A, HL
+01:7917 .jump_clear_ramp_loop
+
 01:7926 call_copy_bg_map_attr_palette_nums
 ;; 01:7926 Copy background map attributes into VRAM.
 ;; 01:7926
