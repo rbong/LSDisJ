@@ -712,7 +712,7 @@
 
 00:37bd _call_mem_fill
 ;; 00:37bd Write a repeating byte to memory.
-;; 00:37bd Args: address (word), byte, size
+;; 00:37bd Args: address (word), byte, size (word)
 ;; 00:37bd Registers used: A, HL
 
 00:37d0 initrand
