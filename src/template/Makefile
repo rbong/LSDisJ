@@ -36,6 +36,7 @@ IMAGE_TARGETS = \
 # Special targets
 
 .PHONY: default clean
+.PRECIOUS: lsdj.gb
 
 # Build targets
 
