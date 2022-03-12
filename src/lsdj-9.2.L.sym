@@ -1,0 +1,35 @@
+; This disassembly is only partially complete.
+
+;; 00:0000 Most RSTs are unused
+00:0000 rst_00
+00:0001 .data:0007
+00:0008 rst_08
+00:0008 .data:0008
+00:0010 rst_10
+;; 00:0011 Does nothing, used for breakpoints
+00:0018 rst_18
+;; 00:001e Does nothing, used for breakpoints
+00:0020 rst_20
+00:0020 .data:0008
+00:0028 rst_28
+00:0028 .data:0008
+00:0030 rst_30
+00:0030 .data:0008
+00:0038 rst_trigger_crash
+;; 00:0039 Does nothing, used for breakpoints
+00:003c .data:0004
+
+1e:432a tileset
+1e:432a .image:0300:w64
+
+1e:462a .data:0082
+
+1e:46ac font_3_content
+1e:46ac .image:00470:w64
+1e:4b1c .data:0a26
+1e:5542 font_1_content
+1e:5542 .image:00470:w64
+1e:59b2 .data:0a26
+1e:63d8 font_2_content
+1e:63d8 .image:00470:w64
+1e:6848 .data:11b2
