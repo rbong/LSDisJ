@@ -60,6 +60,7 @@
 ;; 00:0152 Store CPU type 2 in E
 ;; 00:0155 Initialize stack at 0xe0000 instead of 0xc000 in gbdk
 00:015f .code_start_1
+;; 00:0166 Skip clearing from 0xfe00 to 0xfeff
 ;; 00:0166 Clear from 0xff80 to 0xffff
 00:016b .code_start_2
 ;; 00:0173 Store CPU type 2
