@@ -19,6 +19,22 @@
 ;; 00:003c Does nothing, used for breakpoints
 00:003c .data:0004
 
+00:0040 vblank_interrupt
+00:0045 .data:0003
+00:0048 lcdc_interrupt
+00:0049 .data:0007
+00:0050 timer_overflow_interrupt
+00:0053 .data:0005
+00:0058 serial_transfer_complete_interrupt
+00:005b .data:0005
+00:0060 joypad_transition_interrupt
+00:0061 jump_00_0061
+00:0061 .code:0008
+;; 00:0066 Jumps to 01:7954
+00:0069 .data:0097
+
+01:7954 jump_01_7954
+
 1e:432a tileset
 1e:432a .image:0300:w64
 
