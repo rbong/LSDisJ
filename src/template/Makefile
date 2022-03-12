@@ -38,6 +38,13 @@ IMAGE_TARGETS = \
 .PHONY: default clean
 .PRECIOUS: lsdj.gb
 
+# Phony targets
+
+default: lsdj.gb
+
+clean:
+	rm -f src/*.o src/gfx/*.2bpp src/lsdj.map lsdj.gb
+
 # Build targets
 
 %.2bpp: %.png
@@ -52,10 +59,3 @@ lsdj.gb: src/lsdj.o
 ifeq ($(VERIFY),true)
 	md5sum -c lsdj.gb.md5 < "$@"
 endif
-
-# Phony targets
-
-default: lsdj.gb
-
-clean:
-	rm -f src/*.o src/gfx/*.2bpp src/lsdj.map lsdj.gb

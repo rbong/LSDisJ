@@ -44,6 +44,21 @@ endif
 .PHONY: default check disassemble clean rebuild
 .PRECIOUS: build/**
 
+# Phony targets
+
+default: disassemble
+
+check: $(ROM) $(CHECKSUM)
+	md5sum -c "$(CHECKSUM)" < "$(ROM)"
+
+disassemble: $(DIS_TARGET_PREREQS)
+
+rebuild: build/$(VERSION)/Makefile
+	cd "build/$(VERSION)" && $(MAKE)
+
+clean:
+	rm -rf build/
+
 # Placeholder targets
 
 %.gb:
@@ -95,18 +110,3 @@ build/%/lsdj.sym: $(SYM)
 build/%/lsdj.gb.md5: $(ROM)
 	mkdir -p "build/$*"
 	md5sum < "$^" > "build/$*/lsdj.gb.md5"
-
-# Phony targets
-
-default: disassemble
-
-check: $(ROM) $(CHECKSUM)
-	md5sum -c "$(CHECKSUM)" < "$(ROM)"
-
-disassemble: $(DIS_TARGET_PREREQS)
-
-rebuild: build/$(VERSION)/Makefile
-	cd "build/$(VERSION)" && $(MAKE)
-
-clean:
-	rm -rf build/
