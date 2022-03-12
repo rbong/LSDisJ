@@ -85,6 +85,7 @@
 00:081c .data:0015
 00:0831 wav_instr_play_type_strings
 00:0831 .text:0024
+00:0855 .data:00a2
 
 00:349e display_off
 ;; 00:349e gbdk 2.95 libc/gb/crt0.s:.display_off
