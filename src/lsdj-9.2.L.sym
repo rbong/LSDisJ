@@ -6,9 +6,9 @@
 00:0008 rst_08
 00:0008 .data:0008
 00:0010 rst_10
-;; 00:0011 Does nothing, used for breakpoints
+;; 00:0018 Does nothing, used for breakpoints
 00:0018 rst_18
-;; 00:001e Does nothing, used for breakpoints
+;; 00:0020 Does nothing, used for breakpoints
 00:0020 rst_20
 00:0020 .data:0008
 00:0028 rst_28
@@ -16,7 +16,7 @@
 00:0030 rst_30
 00:0030 .data:0008
 00:0038 rst_trigger_crash
-;; 00:0039 Does nothing, used for breakpoints
+;; 00:003c Does nothing, used for breakpoints
 00:003c .data:0004
 
 1e:432a tileset
