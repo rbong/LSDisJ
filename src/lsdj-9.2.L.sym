@@ -97,6 +97,14 @@
 
 00:0b43 call_00_0b43
 
+00:0bed call_banked_call_old
+;; 00:0bed Call a subroutine in another bank.
+;; 00:0bed This version of call_banked_call uses extra instructions.
+;; 00:0bed Args: bank, address (word)
+;; 00:0bed Registers used: A, HL
+00:0c0a call_banked_call_old_return
+;; 00:0c0a Doesn't appear to actually do anything with register B or E
+
 00:349e display_off
 ;; 00:349e gbdk 2.95 libc/gb/crt0.s:.display_off
 ;; 00:349e Turns off the screen.
@@ -123,6 +131,9 @@
 
 00:ff80 REFRESH_OAM
 ;; 00:ff80 gbdk 2.95 libc/gb/global.s:refresh_OAM
+
+00:ff8e CURRENT_BANK
+;; 00:ff8e Used to store the current bank number for banked calls.
 
 01:7954 jump_01_7954
 
