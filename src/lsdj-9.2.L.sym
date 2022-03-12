@@ -55,6 +55,15 @@
 00:014d HeaderComplementCheck
 00:014e HeaderGlobalChecksum
 
+00:349e display_off
+;; 00:349e gbdk 2.95 libc/gb/crt0.s:.display_off
+;; 00:349e Turns off the screen.
+;; 00:349e Registers used: A
+;; 00:349e -
+;; 00:349e The labels in this subroutine are not local since they are possibly referenced elsewhere
+00:34a2 _display_off_1
+00:34a8 _display_off_2
+
 00:34b5 start_refresh_oam
 ;; 00:34b5 gbdk 2.95 libc/gb/crt0.s:.start_refresh_OAM (with modifications)
 ;; 00:34b5
