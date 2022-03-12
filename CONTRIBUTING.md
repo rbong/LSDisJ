@@ -60,3 +60,23 @@ Simple/short subroutines can condense sections down to one line:
 ;; 00:0000 Registers used: AF, B, DE
 00:0000 call_subroutine
 ```
+
+## Internal Tools
+
+### Prerequisites
+
+  - [Python](https://www.python.org/)
+
+### Setup
+
+```bash
+pip3 install .
+```
+
+### Usage
+
+Search for bytes from one ROM in another:
+
+```bash
+python3 -m lsdisj.grep src/lsdj-8.5.1.gb:01:4200 src/lsdj-9.2.L.gb:01:0000
+```
