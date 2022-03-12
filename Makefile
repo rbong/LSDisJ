@@ -14,6 +14,8 @@ ROM := src/lsdj-$(VERSION).gb
 CHECKSUM := src/lsdj-$(VERSION).gb.md5
 # Path to the symbols file
 SYM := src/lsdj-$(VERSION).sym
+# Path to the include file
+INC := src/lsdj-$(VERSION).inc
 
 # Disassembly program
 DIS := mgbdis/mgbdis.py
@@ -66,17 +68,24 @@ endif
 	# You can also generate an empty symbols file with "touch path/to/symbols.sym".
 	exit 1
 
+%.inc:
+	# Include file not found at "$@".
+	# You can specify the include file with "make INC=path/to/include.inc".
+	# You can also generate an empty include file with "touch $@".
+	exit 1
+
 # Build targets
 
 build/%/Makefile: src/template/Makefile
 	mkdir -p "build/$*"
 	cp "$^" "$@"
 
-build/%/src/lsdj.asm: $(ROM) $(SYM)
+build/%/src/lsdj.asm: $(ROM) $(SYM) $(INC)
 	mkdir -p "build/$*"
 	$(DIS) $(DISFLAGS) \
 		--output-dir "build/$*/src" \
 		--game-asm "lsdj.asm" \
+		--include "$(INC)" \
 		"$<"
 
 build/%/lsdj.sym: $(SYM)
