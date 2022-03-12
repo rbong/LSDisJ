@@ -1,3 +1,5 @@
+; This disassembly is only partially complete.
+
 ;; 00:0000 Most RSTs are unused
 00:0000 rst_00
 00:0001 .data:0007
