@@ -6,7 +6,7 @@ CHECK := true
 REBUILD := true
 
 # Specify the version to build
-VERSION := 8.5.1
+VERSION := 9.2.L
 
 # Path to the ROM file
 ROM := src/lsdj-$(VERSION).gb
