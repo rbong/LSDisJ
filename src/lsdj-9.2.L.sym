@@ -87,6 +87,16 @@
 00:0831 .text:0024
 00:0855 .data:00a2
 
+00:08f7 call_00_08f7
+
+00:0942 call_00_0942
+
+00:09a8 .data:d8
+
+00:0ad1 call_00_0ad1
+
+00:0b43 call_00_0b43
+
 00:349e display_off
 ;; 00:349e gbdk 2.95 libc/gb/crt0.s:.display_off
 ;; 00:349e Turns off the screen.
