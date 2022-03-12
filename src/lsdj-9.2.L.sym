@@ -80,6 +80,12 @@
 ;; 00:01e0 gbdk 2.95 libc/gb/crt0.s:.MODE_TABLE
 ;; 00:01e0 Jump table for modes
 
+00:07d2 call_00_7d2
+
+00:081c .data:0015
+00:0831 wav_instr_play_type_strings
+00:0831 .text:0024
+
 00:349e display_off
 ;; 00:349e gbdk 2.95 libc/gb/crt0.s:.display_off
 ;; 00:349e Turns off the screen.
