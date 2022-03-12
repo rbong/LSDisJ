@@ -74,6 +74,12 @@
 ;; 00:01aa Don't turn sound off yet
 ;; 00:01b5 Skip erasing the malloc list and gsinit
 
+00:01ba .data:0026
+00:01e0 .data:01b1
+00:01e0 MODE_TABLE
+;; 00:01e0 gbdk 2.95 libc/gb/crt0.s:.MODE_TABLE
+;; 00:01e0 Jump table for modes
+
 00:349e display_off
 ;; 00:349e gbdk 2.95 libc/gb/crt0.s:.display_off
 ;; 00:349e Turns off the screen.
