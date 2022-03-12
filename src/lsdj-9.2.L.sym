@@ -55,6 +55,24 @@
 00:014d HeaderComplementCheck
 00:014e HeaderGlobalChecksum
 
+00:34b5 start_refresh_oam
+;; 00:34b5 gbdk 2.95 libc/gb/crt0.s:.start_refresh_OAM (with modifications)
+;; 00:34b5
+;; 00:34b5 Copies OAM data to OAM RAM.
+;; 00:34b5
+;; 00:34b5 Exit conditions:
+;; 00:34b5   The value at address HL will be cleared.
+;; 00:34b5
+;; 00:34b5 Registers used: A
+;; 00:34b5:r_op _OAM
+00:34bb .start_refresh_oam_1
+
+00:34c0 end_refresh_oam
+00:34c0 jump_00_34c0
+
+00:ff80 REFRESH_OAM
+;; 00:ff80 gbdk 2.95 libc/gb/global.s:refresh_OAM
+
 01:7954 jump_01_7954
 
 1e:432a tileset
