@@ -33,6 +33,28 @@
 ;; 00:0066 Jumps to 01:7954
 00:0069 .data:0097
 
+00:0100 Boot
+
+00:0104 HeaderLogo
+00:0134 HeaderTitle
+00:013f HeaderManufacturerCode
+;; 00:0143 Game supports CGB functions, but works on old gameboys also
+00:0143 HeaderCGBFlag
+00:0144 HeaderNewLicenseeCode
+;; 00:0146 No SGB functions (Normal Gameboy or CGB only game)
+00:0146 HeaderSGBFlag
+;; 00:0147 MBC5+RAM+BATTERY, ROM Size: 1 MB, RAM Size: 128 KB
+00:0147 HeaderCartridgeType
+00:0148 HeaderROMSize
+00:0149 HeaderRAMSize
+;; 00:014a Destination is Japanese
+00:014a HeaderDestinationCode
+00:014b HeaderOldLicenseeCode
+00:014c HeaderMaskROMVersion
+;; 00:014d Checksums automatically calculated with rgbfix
+00:014d HeaderComplementCheck
+00:014e HeaderGlobalChecksum
+
 01:7954 jump_01_7954
 
 1e:432a tileset
