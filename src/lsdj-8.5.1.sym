@@ -144,7 +144,7 @@
 ;; 00:0fb5 Call 01:452f
 ;; 00:0fc1 Call 1e:7a0c
 ;; 00:0fd7 Call call_cart_test at 01:4152
-;; 00:100d Call call_reset_cart_ram at 01:429c
+;; 00:100d Call call_reset_external_ram at 01:429c
 ;; 00:1010 Call 01:45bb
 ;; 00:101c Call 1c:4057
 ;; 00:102e Call 01:44f8
@@ -977,8 +977,8 @@
 01:4276 cart_test_sram_error_1_string
 01:4288 cart_test_sram_error_2_string
 
-01:429c call_reset_cart_ram
-;; 01:429c Reset cart RAM values to their defaults.
+01:429c call_reset_external_ram
+;; 01:429c Reset external RAM values to their defaults.
 ;; 01:429c Registers used: A, DE, HL
 ;; 01:42a0 Enable reading/writing cart RAM
 ;; 01:42a5 Select RAM bank 0
@@ -2089,7 +2089,7 @@
 
 ;; 1b:6b07 Call 1c:5098
 ;; 1b:6b50 Call 1c:47b1
-;; 1b:6b5e Call call_reset_cart_ram at 01:429c
+;; 1b:6b5e Call call_reset_external_ram at 01:429c
 ;; 1b:6b7d Call 1c:4a46
 
 ;; 1b:6bc8 Call 01:76a3
@@ -2147,7 +2147,7 @@
 
 ;; 1c:5203 Call 00:265a then set bank to 01
 
-;; 1c:526d Call call_reset_cart_ram at 01:429c
+;; 1c:526d Call call_reset_external_ram at 01:429c
 
 ;; 1c:531a Call 01:76a3
 ;; 1c:5337 Call 00:265a then set bank to 01
