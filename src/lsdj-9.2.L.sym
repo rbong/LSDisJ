@@ -117,6 +117,54 @@
 ;; 00:0c18 Registers used: A, HL
 00:0c39 call_banked_call_set_bank_old_return
 
+00:0c49 call_00_0c49
+
+00:0c7e call_00_0c7e
+
+00:0cb4 call_00_0cb4
+
+00:0ced call_00_0ced
+
+00:0d3b call_00_0d3b
+
+00:0d7a call_00_0d7a
+
+00:0dca call_00_0dca
+
+00:1261 call_00_1261
+
+00:155d call_00_155d
+
+00:1ce0 call_00_1ce0
+
+00:1f8c call_00_1f8c
+
+00:2c79 call_00_2c79
+
+00:2e22 call_00_2e22
+
+00:313e call_00_313e
+
+00:3155 call_00_3155
+
+00:3183 call_00_3183
+
+00:31bc call_00_31bc
+
+00:31d3 call_00_31d3
+
+00:31ea call_00_31ea
+
+00:3201 call_00_3201
+
+00:3380 call_00_3380
+
+00:338e call_00_338e
+
+00:339d call_00_339d
+
+00:3442 call_00_3442
+
 00:349e display_off
 ;; 00:349e gbdk 2.95 libc/gb/crt0.s:.display_off
 ;; 00:349e Turns off the screen.
@@ -140,6 +188,25 @@
 
 00:34c0 end_refresh_oam
 00:34c0 jump_00_34c0
+00:34c0 call_00_34c0
+
+00:36e0 call_00_36e0
+
+00:3718 call_00_3718
+
+00:3724 call_00_3724
+
+00:372f call_00_372f
+
+00:3740 call_00_3740
+
+00:374f call_00_374f
+
+00:375b call_00_375b
+
+00:38b1 call_00_38b1
+
+00:38db call_00_38db
 
 00:ff80 REFRESH_OAM
 ;; 00:ff80 gbdk 2.95 libc/gb/global.s:refresh_OAM
