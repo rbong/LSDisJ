@@ -159,13 +159,103 @@
 
 00:3201 call_00_3201
 
-00:3380 call_00_3380
+00:32b0 font_copy_uncompressed
+;; 00:32b0 gbdk 2.95 libc/gb/font.ms:font_copy_uncompressed
+;; 00:32b0
+;; 00:32b0 Copy uncompressed 16 byte tiles.
+;; 00:32b0 Uses the current fg_colour and bg_colour fields.
+;; 00:32b0
+;; 00:32b0 Entry conditions:
+;; 00:32b0   BC = copy from address
+;; 00:32b0   HL = copy to address (must be aligned to UWORD boundary)
+;; 00:32b0   DE = count (cells * 8)
+;; 00:32b0
+;; 00:32b0 Registers used: A, BC, DE, HL
+00:32bb .font_copy_uncompressed_4
+00:32c0 .font_copy_uncompressed_1
+00:32c9 .font_copy_uncompressed_1_b
+00:32dd .font_copy_uncompressed_2
 
-00:338e call_00_338e
+00:32e6 font_load
+;; 00:32e6 gbdk 2.95 libc/gb/font.ms:font_load
+;; 00:32e6 Load a font.
+;; 00:32e6 Entry conditions: HL = font to load
+;; 00:32e6 Registers used: A, B, DE, HL
+00:32ef .font_load_find_slot
+00:3301 .font_load_found
+00:3325 .font_load_exit
 
-00:339d call_00_339d
+00:332e font_copy_current
+;; 00:332e gbdk 2.95 libc/gb/font.ms:font_copy_current (with modifications)
+;; 00:332e Copy the tiles from the current font into VRAM.
+;; 00:332e Registers used: A, BC, DE, HL
+;; 00:332e See: font_copy_uncompressed
+00:335a .font_copy_current_copy
+;; 00:3370 Compressed fonts are not supported, jump straight to font_copy_uncompressed
+
+00:3373 font_set
+;; 00:3373 gbdk 2.95 libc/gb/font.ms:font_set
+;; 00:3373 Set the current font.
+;; 00:3373 Entry conditions: HL = font
+;; 00:3373 Registers used: A, HL
+
+00:3380 _font_load
+;; 00:3380 gbdk 2.95 libc/gb/font.ms:_font_load
+;; 00:3380 Load a font.
+;; 00:3380 Args: font (word)
+;; 00:3380 See: font_load
+
+00:338e _font_set
+;; 00:338e gbdk 2.95 libc/gb/font.ms:_font_set
+;; 00:338e Set the current font.
+;; 00:338e Args: font (word)
+;; 00:338e See: font_set
+
+00:339d _font_init
+;; 00:339d gbdk 2.95 libc/gb/font.ms:_font_init (with modifications)
+;; 00:339d Initialize the font system.
+;; 00:339d Registers used: A, HL
+00:33ac .font_init_1
+;; 00:33ba Skip calling .cls
+
+00:33d8 tmode
+;; 00:33d8 gbdk 2.95 libc/gb/font.ms:.tmode (with modifications)
+;; 00:33d8 Enter text mode.
+;; 00:33d8 Registers used: A
+;; 00:33df Skip removing interrupts since they're unused
+00:33e2 .tmode_1
+
+00:33ef tmode_out
+;; 00:33ef gbdk 2.95 libc/gb/font.ms:.tmode_out
+
+00:33fc _rand_randw
+;; 00:33fc gbdk 2.95 libc/gb/rand.s:_rand/_randw
+;; 00:33fc Generate a random number.
+;; 00:33fc Result: DE
+;; 00:33fc Registers used: A, DE, HL
+
+00:3427 _cpu_fast
+;; 00:3427 gbdk 2.95 libc/gb/cgb.s:_cpu_fast
+;; 00:3427 Enable speed switch (CGB only).
+;; 00:3427 Registers used: AF, HL
 
 00:3442 call_00_3442
+
+00:346a send_byte
+;; 00:346a gbdk 2.95 libc/gb/serial.s:.send_byte/_send_byte
+;; 00:346a Send the byte in IO_OUT to the serial port.
+;; 00:346a Registers used: A
+
+00:347d receive_byte
+;; 00:347d gbdk 2.95 libc/gb/serial.s:.receive_byte/_receive_byte
+;; 00:347d Receive byte from the serial port in IO_IN.
+;; 00:347d Registers used: A
+
+00:348e set_mode
+;; 00:348e gbdk 2.95 libc/gb/crt0.s:.set_mode
+;; 00:348e Sets the current mode. Will jump to the initialization routine.
+;; 00:348e Entry conditions: L = mode
+;; 00:348e Registers used: A, BC, HL
 
 00:349e display_off
 ;; 00:349e gbdk 2.95 libc/gb/crt0.s:.display_off
@@ -187,23 +277,179 @@
 ;; 00:34b5 Registers used: A
 ;; 00:34b5:r_op _OAM
 00:34bb .start_refresh_oam_1
-
 00:34c0 end_refresh_oam
-00:34c0 call_00_34c0
+
+00:34c0 serial_io
+;; 00:34c0 gbdk 2.95 libc/gb/crt0.s:.serial_io (with modifications)
+;; 00:34c0 Serial interrupt handler.
+00:34d2 .serial_io_10
+00:34e0 .serial_io_11
+00:34e2 .serial_io_12
+;; 00:34e2 Skip using external clock and replying with idle byte
+00:34e5 .serial_io_99
+;; 00:34e9 TODO: document return handler at 00:167f
+
+00:34ec _mode
+;; 00:34ec gbdk 2.95 libc/gb/crt0.s:_mode
+;; 00:34ec Sets the current mode.
+;; 00:34ec Args: mode
+;; 00:34f1 Use jr instead of call to jump directly back
+
+00:34f3 _get_mode
+;; 00:34f3 gbdk 2.95 libc/gb/crt0.s:_get_mode
+;; 00:34f3 Gets the current mode.
+;; 00:34f3 Result: E
+;; 00:34f3 Registers used: E, HL
+
+00:34f8 _enable_interrupts
+;; 00:34f8 gbdk 2.95 libc/gb/crt0.s:_enable_interrupts
+
+00:34fa _disable_interrupts
+;; 00:34fa gbdk 2.95 libc/gb/crt0.s:_disable_interrupts
+
+00:34fc _reset
+;; 00:34fc gbdk 2.95 libc/gb/crt0.s:.reset/_reset
 
 00:36e0 call_00_36e0
 
-00:3718 call_00_3718
+00:3717 _modslong_divslong_mulslong
 
-00:3724 call_00_3724
+00:3718 _divschar
+;; 00:3718 gbdk 2.95 libc/asm/gbz80/div.s:__divschar
+;; 00:3718 Divide chars.
+;; 00:3718 Args: dividend, divisor
+;; 00:3718 Result: E
+;; 00:3718 See: div8_mod8
 
-00:372f call_00_372f
+00:3724 _modschar
+;; 00:3724 gbdk 2.95 libc/asm/gbz80/div.s:__modschar
+;; 00:3724 Perform modulus on chars.
+;; 00:3724 Args: dividend, divisor
+;; 00:3724 Result: E
+;; 00:3724 See: div8_mod8
 
-00:3740 call_00_3740
+00:372f _divsint
+;; 00:372f gbdk 2.95 libc/asm/gbz80/div.s:__divsint
+;; 00:372f Divide ints.
+;; 00:372f Args: dividend (word), divisor (word)
+;; 00:372f Result: DE
+;; 00:372f See: div16_mod16
 
-00:374f call_00_374f
+00:3740 _modsint
+;; 00:3740 gbdk 2.95 libc/asm/gbz80/div.s:__modsint
+;; 00:3740 Perform modulus on ints.
+;; 00:3740 Args: dividend (word), divisor (word)
+;; 00:3740 Result: DE
+;; 00:3740 See: div16_mod16
 
-00:375b call_00_375b
+00:374f _divuchar
+;; 00:374f gbdk 2.95 libc/asm/gbz80/div.s:__divuchar
+;; 00:374f Divide unsigned chars.
+;; 00:374f Args: dividend, divisor
+;; 00:374f Result: E
+;; 00:374f See: divu8_modu8
+
+00:375b _moduchar
+;; 00:375b gbdk 2.95 libc/asm/gbz80/div.s:__moduchar
+;; 00:375b Perform modulus on unsigned chars.
+;; 00:375b Args: dividend, divisor
+;; 00:375b Result: E
+;; 00:375b See: divu8_modu8
+
+00:3766 _divuint
+;; 00:3766 gbdk 2.95 libc/asm/gbz80/div.s:__divuint
+;; 00:3766 Divide unsigned ints.
+;; 00:3766 Args: dividend (word), divisor (word)
+;; 00:3766 Result: DE
+;; 00:3766 See: divu16_modu16
+
+00:3777 _moduint
+;; 00:3777 gbdk 2.95 libc/asm/gbz80/div.s:__moduint
+;; 00:3777 Perform modulus on unsigned ints.
+;; 00:3777 Args: dividend (word), divisor (word)
+;; 00:3777 Result: DE
+;; 00:3777 See: divu16_modu16
+
+00:3786 div8_mod8
+;; 00:3786 gbdk 2.95 libc/asm/gbz80/div.s:.div8/.mod8
+;; 00:3786
+;; 00:3786 8-bit division.
+;; 00:3786
+;; 00:3786 Entry conditions:
+;; 00:3786   C = dividend
+;; 00:3786   E = divisor
+;; 00:3786
+;; 00:3786 Exit conditions:
+;; 00:3786   C = quotient
+;; 00:3786   E = remainder
+;; 00:3786   If divisor is non-zero, carry=0
+;; 00:3786   If divisor is 0, carry=1 and both quotient and remainder are 0
+;; 00:3786
+;; 00:3786 Registers used: AF, BC, DE, HL
+
+00:378e div16_mod16
+;; 00:378e gbdk 2.95 libc/asm/gbz80/div.s:.div16/.mod16
+;; 00:378e
+;; 00:378e 16-bit division.
+;; 00:378e
+;; 00:378e Entry conditions:
+;; 00:378e   BC = dividend
+;; 00:378e   DE = divisor
+;; 00:378e
+;; 00:378e Exit conditions:
+;; 00:378e   BC = quotient
+;; 00:378e   DE = remainder
+;; 00:378e
+;; 00:378e See: div8_mod8
+00:379c .chkde
+00:37a6 .dodiv
+00:37ae .dodiv_1
+00:37b9 .dorem
+
+00:37c4 divu8_modu8
+;; 00:37c4 gbdk 2.95 libc/asm/gbz80/div.s:.divu8/.modu8
+;; 00:37c4 8-bit unsigned division.
+;; 00:37c4 See: div8
+
+00:37c7 divu16_modu16
+;; 00:37c7 gbdk 2.95 libc/asm/gbz80/div.s:.divu16/.modu16 (with modifications)
+;; 00:37c7 16-bit unsigned division.
+;; 00:37c7 See: div16
+00:37d2 .divide
+;; 00:37d8 Instead of looping, as in gbdk 2.95, call a function 16 times
+;; 00:3808 libc/asm/gbz80/div.s:.nodrop (without loop counter)
+
+00:3812 call_divide_loop
+;; 00:3812 gbdk 2.95 libc/asm/gbz80/div.s:.divide loop separated into its own function
+00:3826 .drop
+
+00:3829 initrand
+;; 00:3829 gbdk 2.95 libc/gb/rand.s:_initrand
+;; 00:3829 Set the random seed.
+;; 00:3829 Registers used: A, HL
+
+00:3834 _strcpy
+;; 00:3834 gbdk 2.95 libc/asm/gbz80/asm_string.s:_strcpy
+;; 00:3834 char *strcpy(char *dest, const char *source)
+;; 00:3834 Result: DE = dest
+00:383e .strcpy_1
+
+00:3846 _memcpy
+;; 00:3846 gbdk 2.95 libc/asm/gbz80/asm_string.s:_memcpy
+;; 00:3846 void *memcpy(void *dest, const void *source, int count)
+;; 00:3846 Result: DE = dest
+00:385a .memcpy_1
+00:385d .memcpy_2
+
+00:3866 _strcmp
+;; 00:3866 gbdk 2.95 libc/asm/gbz80/asm_string.s:_strcmp
+;; 00:3866 int strcmp(const char *s1, const char *s2)
+;; 00:3866 Result: DE = 0 if equal, 1 if s1 is greater than s2, -1 if s1 is less than s2
+00:3871 .strcmp_2
+00:3878 .strcmp_1
+00:387c .strcmp_3
+00:3881 .strcmp_4
+00:3889 .strcmp_5
 
 00:388a call_mem_fill
 ;; 00:388a Write a repeating byte to memory.
@@ -215,11 +461,217 @@
 ;; 00:3892 Args: address (word), byte, size (word)
 ;; 00:3892 Registers used: A, HL
 
-00:38b1 call_00_38b1
+00:38a5 _mulschar_muluchar
+;; 00:38a5 gbdk 2.95 libc/asm/gbz80/mul.s:__mulschar/__muluchar
+;; 00:38a5 Multiply chars.
+;; 00:38a5 Args: multiplicand, multiplier
+;; 00:38a5 Result: DE
+;; 00:38a5 See: mul8_mulu8
 
-00:38db call_00_38db
+00:38b1 _mulsint_muluint
+;; 00:38b1 gbdk 2.95 libc/asm/gbz80/mul.s:__mulsint/__muluint
+;; 00:38b1 Multiply ints.
+;; 00:38b1 Args: multiplicand (word), multiplier (word)
+;; 00:38b1 Result: DE
+;; 00:38b1 See: mul16_mulu16
 
-00:39e4 call_00_39e4
+00:38c2 mul8_mulu8
+;; 00:38c2 gbdk 2.95 libc/asm/gbz80/mul.s:.mul8/.mulu8
+;; 00:38c2
+;; 00:38c2 8-bit multiplication.
+;; 00:38c2
+;; 00:38c2 Entry conditions:
+;; 00:38c2   C = dividend
+;; 00:38c2   E = divisor
+;; 00:38c2
+;; 00:38c2 Exit conditions:
+;; 00:38c2   DE = product
+;; 00:38c2
+;; 00:38c2 Registers used: AF, BC, DE, HL
+
+00:38c5 mul16_mulu16
+;; 00:38c5 gbdk 2.95 libc/asm/gbz80/mul.s:.mul16/.mulu16
+;; 00:38c5
+;; 00:38c5 16-bit multiplication.
+;; 00:38c5
+;; 00:38c5 Entry conditions:
+;; 00:38c5   BC = dividend
+;; 00:38c5   DE = divisor
+;; 00:38c5
+;; 00:38c5 Exit conditions:
+;; 00:38c5   DE = product (least significant word)
+;; 00:38c5
+;; 00:38c5 Registers used: AF, BC, DE, HL
+00:38ca .mlp
+00:38d1 .mlp1
+00:38da .mend
+
+00:38db _set_bkg_palette
+;; 00:38db gbdk 2.95 libc/gb/cgb.s:_set_bkg_palette
+;; 00:38db
+;; 00:38db Set background palettes.
+;; 00:38db
+;; 00:38db Args:
+;; 00:38db   first_palette
+;; 00:38db   nb_palettes (count)
+;; 00:38db   rgb_data (address)
+;; 00:38db
+;; 00:38db Registers used: AF, HL
+00:38f1 .set_bkg_palette_1
+
+00:3906 vbl
+;; 00:3906 gbdk 2.95 libc/gb/drawing.s:.vbl
+
+00:3911 lcd
+;; 00:3911 gbdk 2.95 libc/gb/drawing.s:.lcd
+
+00:391e jpad
+;; 00:391e gbdk 2.95 libc/gb/pad.s:.jpad (with modifications)
+;; 00:391e
+;; 00:391e Get keypad button status.
+;; 00:391e
+;; 00:391e Exit conditions:
+;; 00:391e   E = status (buttons held)
+;; 00:391e       0x80: Start
+;; 00:391e       0x40: Select
+;; 00:391e       0x20: B
+;; 00:391e       0x10: A
+;; 00:391e       0x08: Down
+;; 00:391e       0x04: Up
+;; 00:391e       0x02: Left
+;; 00:391e       0x01: Right
+;; 00:391e
+;; 00:391e Registers used: A, E
+;; 00:394a Use E for return status instead of A like in gbdk
+;; 00:394a The _joypad subroutine handles this in gbdk
+;; 00:394a This is a little faster
+
+00:394c delay
+;; 00:394c gbdk 2.95 libc/gb/delay.s:.delay
+;; 00:394c
+;; 00:394c Wait for a given period of time.
+;; 00:394c
+;; 00:394c Entry conditions:
+;; 00:394c   DE = milliseconds (1 to 65536, 0 = 65536)
+;; 00:394c
+;; 00:394c Registers used: AF, DE
+00:3952 .ldlp
+00:3954 .delay_1
+00:3956 .delay_2
+00:3958 .delay_3
+00:395a .delay_4
+00:395c .delay_5
+00:3964 .delay_6
+00:3966 .delay_7
+00:3968 .delay_8
+00:3969 dly
+00:396f .dlp
+00:3971 .dly_1
+00:3973 .dly_2
+00:3975 .dly_3
+00:3977 .dly_4
+00:3979 .dly_5
+00:3980 .dly_6
+00:3982 .dly_7
+00:3984 .dly_8
+
+00:3986 _delay
+;; 00:3986 gbdk 2.95 libc/gb/delay.s:_delay
+;; 00:3986 Wait for a given period of time.
+;; 00:3986 Args: milliseconds (word)
+;; 00:3986 See: delay
+
+00:398f init_vram
+;; 00:398f gbdk 2.95 libc/gb/init_tt.s:.init_vram
+;; 00:398f
+;; 00:398f Fill part of the VRAM with a value.
+;; 00:398f
+;; 00:398f Entry conditions:
+;; 00:398f   B = value
+;; 00:398f   DE = size
+;; 00:398f   HL = address
+;; 00:398f
+;; 00:398f Registers used: A, B, DE, HL
+
+00:399d init_wtt
+;; 00:399d gbdk 2.95 libc/gb/init_tt.s:.init_wtt
+;; 00:399d Fill window tile table with a value.
+;; 00:399d Entry conditions: B = value
+;; 00:399d Registers used: A, B, DE, HL
+;; 00:39a3:r_op _SCRN0
+00:39a8 .init_wtt_1
+;; 00:39a8:r_op _SCRN1
+
+00:39ad init_btt
+;; 00:39ad gbdk 2.95 libc/gb/init_tt.s:.init_btt
+;; 00:39ad Fill background tile table with a value.
+;; 00:39ad See: init_wtt
+;; 00:39b3:r_op _SCRN0
+00:39b8 .init_btt_1
+;; 00:39b8:r_op _SCRN1
+
+00:39bb init_tt
+;; 00:39bb gbdk 2.95 libc/gb/init_tt.s:.init_tt
+;; 00:39bb Fill a tile table with a value.
+;; 00:39bb See: init_wtt, init_btt
+
+00:39c1 copy_vram
+;; 00:39c1 gbdk 2.95 libc/gb/cpy_data.s:.copy_vram
+;; 00:39c1
+;; 00:39c1 Copy part of VRAM.
+;; 00:39c1
+;; 00:39c1 Entry conditions:
+;; 00:39c1   BC = copy from address
+;; 00:39c1   HL = copy to address
+;; 00:39c1   DE = count
+
+00:39d0 _set_bkg_tiles
+;; 00:39d0 gbdk 2.95 libc/gb/set_bk_t.s:_set_bkg_tiles
+;; 00:39d0 Set background tiles.
+;; 00:39d0 Registers used: A, DE, HL
+
+00:39e4 set_xy_wtt
+;; 00:39e4 gbdk 2.95 libc/gb/set_xy_t.s:.set_xy_wtt
+;; 00:39e4 Store window tile table.
+;; 00:39e4
+;; 00:39e4 Entry conditions:
+;; 00:39e4   BC = store at address
+;; 00:39e4   D = X
+;; 00:39e4   E = Y
+;; 00:39e4   H = width
+;; 00:39e4   L = height
+;; 00:39e4
+;; 00:39e4 Registers used: A, BC, DE, HL
+;; 00:39eb:r_op _SCRN0
+00:39f0 .set_xy_wtt_1
+;; 00:39f0:r_op _SCRN1
+
+00:39f5 set_xy_btt
+;; 00:39f5 gbdk 2.95 libc/gb/set_xy_t.s:.set_xy_btt
+;; 00:39f5 Store background tile table.
+;; 00:39f5 See: set_xy_wtt
+;; 00:39fc:r_op _SCRN0
+00:3a01 .set_xy_btt_1
+;; 00:3a01 Skip jump to the next instruction
+;; 00:3a01:r_op _SCRN1
+
+00:3a04 set_xy_tt
+;; 00:3a04 gbdk 2.95 libc/gb/set_xy_t.s:.set_xy_tt (with modifications)
+;; 00:3a04 Store tile table.
+;; 00:3a04 See: set_xy_wtt, set_xy_btt
+00:3a0c .set_xy_tt_1
+00:3a10 .set_xy_tt_2
+00:3a18 .set_xy_tt_3
+;; 00:3a20 TODO: document changes
+00:3a35 .set_xy_tt_4
+
+00:3a36 call_set_default_ram_values
+;; 00:3a36 Set RAM addresses used to their default values.
+;; 00:3a36 Registers used: A, DE, HL
+;; 00:3bce Set the default screen to the project screen
+
+00:3de7 .bank_00_padding
+00:3de7 .data:0219
 
 01:4487 call_01_4487
 
@@ -257,6 +709,11 @@
 
 01:7c94 call_01_7c94
 
+01:7ee1 _set_sprite_palette
+;; 01:7ee1 gbdk 2.95 libc/gb/cgb.s:_set_sprite_palette
+;; 01:7ee1 See: _set_bkg_palette
+01:7ef7 .set_sprite_palette_1
+
 02:6465 call_02_6465
 
 02:65bb call_02_65bb
@@ -291,6 +748,10 @@
 07:4788 call_07_4788
 
 07:4adb call_07_4adb
+
+07:66fe digits_string
+07:66fe .text:0011
+;; 07:66fe gbdk 2.95 libc/gb/digits.c:digits
 
 07:7059 call_07_7059
 
@@ -394,6 +855,67 @@
 1f:7087 call_1f_7087
 
 ; Memory
+
+00:c402 CURRENT_SCREEN
+;; 00:c402 0x01: phrase screen
+;; 00:c402 0x02: groove screen
+;; 00:c402 0x03: chain screen
+;; 00:c402 0x04: song screen
+;; 00:c402 0x05: table screen
+;; 00:c402 0x06: instrument screen
+;; 00:c402 0x07: crash screen
+;; 00:c402 0x08: synth screen
+;; 00:c402 0x09: project screen
+;; 00:c402 0x0a: wave editor screen
+;; 00:c402 0x0b: talk screen
+;; 00:c402 0x0c: word screen
+;; 00:c402 0x0d: file screen
+;; 00:c402 0x0e: help screen
+
+00:cbd8 CPU
+;; 00:cbd8 gbdk 2.95 libc/gb/crt0.s:__cpu
+;; 00:cbd8 GB type (GB, PGB, CGB)
+00:cbd9 CPU_2
+;; 00:cbd9 GB type 2 (used to check for GBA)
+
+00:cbda MODE
+;; 00:cbda gbdk 2.95 libc/gb/crt0.s:.mode
+;; 00:cbda Current mode
+
+00:cbdb IO_OUT
+;; 00:cbdb gbdk 2.95 libc/gb/global.s:__io_out
+;; 00:cbdb IO out byte.
+
+00:cbdd IO_STATUS
+;; 00:cbdd gbdk 2.95 libc/gb/global.s:__io_status
+;; 00:cbdd Current status of serial IO.
+
+00:cbe0 FONT_CURRENT
+;; 00:cbe0 gbdk 2.95 libc/gb/font.ms:font_current
+00:cbe3 FONT_FIRST_FREE_TILE
+;; 00:cbe3 gbdk 2.95 libc/gb/font.ms:font_first_free_tile
+;; 00:cbe3 Cached copy of first free tile.
+00:cbe4 FONT_TABLE
+;; 00:cbe4 gbdk 2.95 libc/gb/font.ms:font_table
+
+00:cbf6 CURX
+;; 00:cbf6 gbdk 2.95 libc/gb/font.ms:.curx
+;; 00:cbf6 Current cursor X position.
+00:cbf7 CURY
+;; 00:cbf7 gbdk 2.95 libc/gb/font.ms:.cury
+;; 00:cbf7 Current cursor Y position.
+
+00:cbf8 RANDHI
+;; 00:cbf8 gbdk 2.95 libc/gb/rand.s:.randhi
+;; 00:cbf8 The random seed upper byte.
+00:cbf9 RANDLO
+;; 00:cbf9 gbdk 2.95 libc/gb/rand.s:.randlo
+;; 00:cbf9 The random seed lower byte.
+
+00:cbfa FG_COLOUR
+;; 00:cbfa gbdk 2.95 libc/gb/font.ms:.fg_colour
+00:cbfb BG_COLOUR
+;; 00:cbfb gbdk 2.95 libc/gb/font.ms:.bg_colour
 
 00:ff80 REFRESH_OAM
 ;; 00:ff80 gbdk 2.95 libc/gb/global.s:refresh_OAM
