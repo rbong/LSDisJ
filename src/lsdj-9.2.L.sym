@@ -217,7 +217,61 @@
 
 00:38db call_00_38db
 
+00:39e4 call_00_39e4
+
+01:4487 call_01_4487
+
+01:4811 call_01_4811
+
+01:4848 call_01_4848
+
+01:4d67 call_01_4d67
+
+01:4dd3 call_01_4dd3
+
+01:4e43 call_01_4e43
+
+01:4eb3 call_01_4eb3
+
+01:4f59 call_01_4f59
+
+01:4f99 call_01_4f99
+
+01:4fec call_01_4fec
+
+01:518c call_01_518c
+
+01:522d call_01_522d
+
+01:546e call_01_546e
+
+01:6d3b call_01_6d3b
+
+01:7869 call_01_7869
+
+01:7881 call_01_7881
+
 01:7954 jump_01_7954
+
+01:7c94 call_01_7c94
+
+02:6465 call_02_6465
+
+02:65bb call_02_65bb
+
+02:6631 call_02_6631
+
+03:47b9 call_03_47b9
+
+04:5b4e call_04_5b4e
+
+05:4040 call_05_4040
+
+06:431d call_06_431d
+
+06:5aa1 call_06_5aa1
+
+06:7235 call_06_7235
 
 06:7655 note_labels
 06:7655 .text:0005
@@ -231,6 +285,70 @@
 06:7756 .text:0036
 06:777a .text:0034
 06:779c .data:0021
+
+07:4788 call_07_4788
+
+07:4adb call_07_4adb
+
+07:7059 call_07_7059
+
+1b:4e8a call_1b_4e8a
+
+1b:53e8 call_1b_53e8
+
+1b:5dbf call_1b_5dbf
+
+1b:6b7a call_1b_6b7a
+
+1b:754f call_1b_754f
+
+1c:40f2 call_1c_40f2
+
+1c:4e10 call_1c_4e10
+
+1c:59e6 call_1c_59e6
+
+1c:60e2 call_1c_60e2
+
+1c:6194 call_1c_6194
+
+1c:6239 call_1c_6239
+
+1c:6281 call_1c_6281
+
+1c:6343 call_1c_6343
+
+1c:6384 call_1c_6384
+
+1c:6495 call_1c_6495
+
+1c:64c1 call_1c_64c1
+
+1c:64ee call_1c_64ee
+
+1c:6a20 call_1c_6a20
+
+1c:6a9a call_1c_6a9a
+
+1c:6bd7 call_1c_6bd7
+
+1c:6f75 call_1c_6f75
+
+1c:717c call_1c_717c
+
+1c:72bf call_1c_72bf
+
+1d:423d call_1d_423d
+
+1d:43f7 call_1d_43f7
+
+1d:4d5f call_1d_4d5f
+
+1d:603c call_1d_603c
+
+1d:713f call_1d_713f
+
+1e:4000 call_1e_4000
 
 1e:432a tileset
 1e:432a .image:0300:w64
@@ -246,6 +364,32 @@
 1e:63d8 font_2_content
 1e:63d8 .image:00470:w64
 1e:6848 .data:11b2
+
+1e:7aa0 call_1e_7aa0
+
+1f:44dd call_1f_44dd
+
+1f:4a64 call_1f_4a64
+
+1f:4b8c call_1f_4b8c
+
+1f:4bbb call_1f_4bbb
+
+1f:6278 call_1f_6278
+
+1f:65f1 call_1f_65f1
+
+1f:6612 call_1f_6612
+
+1f:6633 call_1f_6633
+
+1f:6bac call_1f_6bac
+
+1f:6bc2 call_1f_6bc2
+
+1f:6cd7 call_1f_6cd7
+
+1f:7087 call_1f_7087
 
 ; Memory
 
