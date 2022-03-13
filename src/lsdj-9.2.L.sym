@@ -203,6 +203,16 @@
 
 00:375b call_00_375b
 
+00:388a call_mem_fill
+;; 00:388a Write a repeating byte to memory.
+;; 00:388a Entry conditions: HL = address, B = byte, DE = size
+;; 00:388a Registers used: A, B, DE, HL
+
+00:3892 _call_mem_fill
+;; 00:3892 Write a repeating byte to memory.
+;; 00:3892 Args: address (word), byte, size (word)
+;; 00:3892 Registers used: A, HL
+
 00:38b1 call_00_38b1
 
 00:38db call_00_38db
