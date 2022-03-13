@@ -187,7 +187,6 @@
 00:34bb .start_refresh_oam_1
 
 00:34c0 end_refresh_oam
-00:34c0 jump_00_34c0
 00:34c0 call_00_34c0
 
 00:36e0 call_00_36e0
