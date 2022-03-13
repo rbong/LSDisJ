@@ -208,12 +208,6 @@
 
 00:38db call_00_38db
 
-00:ff80 REFRESH_OAM
-;; 00:ff80 gbdk 2.95 libc/gb/global.s:refresh_OAM
-
-00:ff8e CURRENT_BANK
-;; 00:ff8e Used to store the current bank number for banked calls.
-
 01:7954 jump_01_7954
 
 06:7655 note_labels
@@ -243,3 +237,11 @@
 1e:63d8 font_2_content
 1e:63d8 .image:00470:w64
 1e:6848 .data:11b2
+
+; Memory
+
+00:ff80 REFRESH_OAM
+;; 00:ff80 gbdk 2.95 libc/gb/global.s:refresh_OAM
+
+00:ff8e CURRENT_BANK
+;; 00:ff8e Used to store the current bank number for banked calls.
