@@ -965,18 +965,6 @@
 01:421d .jump_sram_test_fail_halt
 01:4220 .jump_cart_test_end
 
-01:4222 cart_test_title_string
-01:4231 cart_test_rom_string
-01:4238 cart_test_rom_ok_string
-01:423c cart_test_rom_fail_string
-01:4242 cart_test_rom_error_1_string
-01:4254 cart_test_rom_error_2_string
-01:4264 cart_test_sram_string
-01:426c cart_test_sram_ok_string
-01:4270 cart_test_sram_fail_string
-01:4276 cart_test_sram_error_1_string
-01:4288 cart_test_sram_error_2_string
-
 01:429c call_reset_external_ram
 ;; 01:429c Reset external RAM values to their defaults.
 ;; 01:429c Registers used: A, DE, HL
@@ -1005,16 +993,27 @@
 ;; 01:44ef Disable reading/writing cart RAM
 ;; 01:44f4 Cleanup
 
+01:4222 cart_test_title_string
 01:4222 .text:000f
+01:4231 cart_test_rom_string
 01:4231 .text:0007
+01:4238 cart_test_rom_ok_string
 01:4238 .text:0004
+01:423c cart_test_rom_fail_string
 01:423c .text:0006
+01:4242 cart_test_rom_error_1_string
 01:4242 .text:0012
+01:4254 cart_test_rom_error_2_string
 01:4254 .text:0010
+01:4264 cart_test_sram_string
 01:4264 .text:0008
+01:426c cart_test_sram_ok_string
 01:426c .text:0004
+01:4270 cart_test_sram_fail_string
 01:4270 .text:0006
+01:4276 cart_test_sram_error_1_string
 01:4276 .text:0012
+01:4288 cart_test_sram_error_2_string
 01:4288 .text:0014
 
 01:44f8 call_01_44f8
@@ -1163,18 +1162,19 @@
 01:6e76 screen_name_strings
 01:6e76 .text:002f
 
-01:6e76 error_strings
-
 01:6f8b call_01_6f8b
 
+01:6f95 out_of_memory_error_string
 01:6f95 .text:0031
 
 01:6fc6 call_01_6fc6
 
+01:6fd0 add_chain_error_string
 01:6fd0 .text:0014
 
 01:6fe4 call_01_6fe4
 
+01:6fee add_phrase_error_string
 01:6fee .text:0015
 
 01:7003 call_01_7003
@@ -1188,6 +1188,7 @@
 01:7157 .text:0049
 01:71a0 .text:002e
 01:71ce .text:0011
+01:71df .data:0001
 
 01:71e0 call_01_71e0
 
@@ -1915,7 +1916,7 @@
 1b:40c1 .text:0007
 1b:40c8 .text:0006
 1b:40ce .text:0007
-1b:40d5 .text:0005
+1b:40d5 .text:0006
 1b:40db .text:000e
 1b:40e9 .text:0011
 1b:40f9 .text:000e
@@ -1974,37 +1975,37 @@
 1b:55c8 .text:0006
 1b:55ce .text:0006
 
-1b:563f data_font_1_name
+1b:563f font_1_name
 1b:563f .text:0005
-1b:5644 data_font_2_name
+1b:5644 font_2_name
 1b:5644 .text:0005
-1b:5649 data_font_3_name
+1b:5649 font_3_name
 1b:5649 .text:0005
 
-1b:564e data_dmg_palette_1_name
+1b:564e dmg_palette_1_name
 1b:564e .text:0005
-1b:564e data_dmg_palette_2_name
+1b:5653 dmg_palette_2_name
 1b:5653 .text:0005
 1b:5658 .data:0014
 
-1b:566c data_palette_1_name
+1b:566c palette_1_name
 1b:566c .text:0005
-1b:5671 data_palette_2_name
+1b:5671 palette_2_name
 1b:5671 .text:0005
-1b:5676 data_palette_3_name
+1b:5676 palette_3_name
 1b:5676 .text:0005
-1b:567b data_palette_4_name
+1b:567b palette_4_name
 1b:567b .text:0005
-1b:5680 data_palette_5_name
+1b:5680 palette_5_name
 1b:5680 .text:0005
-1b:5685 data_palette_6_name
+1b:5685 palette_6_name
 1b:5685 .text:0005
 
 1b:5688 .data:0028
 
 1b:5786 .data:0003
 
-1b:5908 project_screen_param_strings
+1b:58de project_screen_param_strings
 1b:58de .text:0007
 1b:58e5 .text:0007
 1b:58ec .text:0007
@@ -2189,8 +2190,7 @@
 1c:61a4 .text:0008
 1c:61ac .text:0007
 1c:61b3 .text:0004
-
-1c:61b7 .data:0097
+1c:61b7 .text:0003
 
 1c:6272 call_1c_6272
 
