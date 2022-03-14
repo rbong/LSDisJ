@@ -143,6 +143,9 @@
 
 00:2c79 call_00_2c79
 
+00:2cc5 channel_labels
+00:2cc5 .text:0010
+
 00:2e22 call_00_2e22
 
 00:313e call_00_313e
@@ -675,6 +678,29 @@
 
 01:4487 call_01_4487
 
+01:4557 cart_test_title_string
+01:4557 .text:000f
+01:4566 cart_test_rom_string
+01:4566 .text:0007
+01:456d cart_test_rom_ok_string
+01:456d .text:0004
+01:4571 cart_test_rom_fail_string
+01:4571 .text:0006
+01:4577 cart_test_rom_error_1_string
+01:4577 .text:0012
+01:4589 cart_test_rom_error_2_string
+01:4589 .text:0010
+01:4599 cart_test_sram_string
+01:4599 .text:0008
+01:45a1 cart_test_sram_ok_string
+01:45a1 .text:0004
+01:45a5 cart_test_sram_fail_string
+01:45a5 .text:0006
+01:45ab cart_test_sram_error_1_string
+01:45ab .text:0012
+01:45bd cart_test_sram_error_2_string
+01:45bd .text:0014
+
 01:4811 call_01_4811
 
 01:4848 call_01_4848
@@ -695,17 +721,102 @@
 
 01:518c call_01_518c
 
+01:51ee .data:0006
+
+01:51f4 pitch_shift_type_strings
+01:51f4 .text:0005
+01:51f9 .text:0005
+01:51fe .text:0005
+01:5203 .text:0005
+
 01:522d call_01_522d
 
 01:546e call_01_546e
 
 01:6d3b call_01_6d3b
 
+01:6f87 command_help_strings
+01:6f87 .text:0030
+01:6fb7 .text:000a
+01:6fc1 .text:0023
+01:6fe4 .text:003b
+01:701f .text:0048
+01:7067 .text:0027
+01:708e .text:0016
+01:70a4 .text:0088
+01:712c .text:0020
+01:714c .text:0034
+01:7180 .text:0016
+01:7196 .text:0062
+01:71f8 .text:004b
+01:7243 .text:001b
+01:725e .text:00b5
+01:7313 .text:001b
+01:732e .text:002d
+01:735b .text:006a
+01:73c5 .text:0032
+01:73f7 .text:0023
+01:741a .text:0008
+01:7422 .text:0023
+01:7445 .text:0048
+
+01:748d .data:0014
+01:74a1 .data:0014
+
+01:74b5 screen_name_strings
+01:74b5 .text:002f
+
+01:74e4 instrument_screen_title_string
+01:74e4 .text:0007
+
+01:74eb wave_screen_title_string
+01:74eb .text:006
+
+01:75c6 call_01_75c6
+
+01:75d0 out_of_memory_error_string
+01:75d0 .text:0038
+
+01:7601 call_01_7601
+
+01:760b add_chain_error_string
+01:760b .text:0014
+
+01:761f call_01_761f
+
+01:7629 add_phrase_error_string
+01:7629 .text:0015
+
+01:763e call_01_763e
+
+01:7648 max_marks_error_string
+01:7648 .text:000d
+
+01:7655 call_01_7655
+
+;; 01:7777 Assumed to be jump table
+01:7777 .data:0028
+
+01:779f sweep_help_strings
+01:779f .text:0049
+01:77e8 .text:002e
+01:7816 .text:0011
+01:7827 .data:0001
+
+01:7828 call_01_7828
+
 01:7869 call_01_7869
 
 01:7881 call_01_7881
 
 01:7954 jump_01_7954
+
+01:7b88 crash_help_strings
+01:7b88 .text:000c
+01:7b94 .text:0011
+01:7ba5 .text:0010
+01:7bb5 .text:0012
+01:7bc7 .text:0025
 
 01:7c94 call_01_7c94
 
@@ -720,17 +831,68 @@
 
 02:6631 call_02_6631
 
+;; 03:4015 Possibly instrument label data
+03:4015 .data:00e3
+
 03:47b9 call_03_47b9
+
+03:4fe3 instrument_type_strings
+03:4fe3 .text:0006
+03:4fe9 .text:0006
+03:4fef .text:0006
+03:4ff5 .text:0006
+
+03:7a39 instrument_param_strings
+03:7a39 .text:0004
+03:7a3d .text:0004
+03:7a41 .text:0004
+03:7a45 .text:0004
+03:7a49 .text:0004
+03:7a4d .text:0005
+03:7a52 .text:0004
+03:7a56 .text:0004
+03:7a5a .text:0004
+03:7a5e .text:0004
+03:7a62 .text:0004
+03:7a66 .text:0004
+03:7a6a .text:0005
+03:7a6f .text:0004
+
+03:7a73 bank_03_padding
+03:7a73 .data:058d
 
 04:5b4e call_04_5b4e
 
 05:4040 call_05_4040
+
+06:42fb text_to_speech_screen_strings
+06:42fb .text:006
+06:4301 .text:005
 
 06:431d call_06_431d
 
 06:5aa1 call_06_5aa1
 
 06:7235 call_06_7235
+
+06:73c6 sync_strings_1
+06:73c6 .text:0005
+06:73cb .text:0005
+06:73d0 .text:0005
+06:73d5 .text:0005
+
+06:740f sync_strings_2
+06:740f .text:005
+06:7414 .text:005
+06:7419 .text:005
+
+06:741e call_06_741e
+
+06:7481 sync_strings_3
+06:7481 .text:005
+06:7486 .text:005
+06:748b .text:005
+06:7490 .text:005
 
 06:7655 note_labels
 06:7655 .text:0005
@@ -753,13 +915,140 @@
 07:66fe .text:0011
 ;; 07:66fe gbdk 2.95 libc/gb/digits.c:digits
 
+07:684b .text:0005
+07:6850 .text:0005
+07:6855 .text:0005
+07:685a .text:0005
+07:685f .text:0005
+
+07:6864 call_07_6864
+
+07:6dee pulse_channel_combo_strings
+07:6dee .text:0006
+07:6df4 .text:0006
+07:6dfa .text:0006
+07:6e00 .text:0006
+07:6e06 .text:0006
+07:6e0c .text:0006
+
 07:7059 call_07_7059
+
+07:7140 keyboard_calibration_strings
+07:7140 .text:0015
+07:7155 .text:0013
+07:7168 .text:0011
+07:7179 .text:000b
+07:7184 .text:0006
+07:718a .text:0004
+
+1b:4098 help_page_index_strings
+1b:4098 .text:000f
+1b:40a7 .text:000a
+1b:40b1 .text:0005
+1b:40b6 .text:0006
+1b:40bc .text:0007
+1b:40c3 .text:0006
+1b:40c9 .text:0007
+1b:40d0 .text:0006
+1b:40d6 .text:000e
+1b:40e4 .text:000a
+1b:40ee .text:0012
+1b:4100 .text:000e
+
+1b:410e help_page_strings
+1b:410e .text:00ff
+1b:420d .text:003b
+1b:4248 .text:00c6
+1b:430e .text:00ff
+1b:440d .text:000d
+1b:441a .text:00ff
+1b:4519 .text:0010
+1b:4529 .text:00ea
+1b:4613 .text:006c
+1b:467f .text:00b0
+1b:472f .text:00fc
+1b:482b .text:00ff
+1b:492a .text:0047
+1b:4971 .text:0087
+
+1b:4c6a data_keyboard_key_labels
+1b:4c6a .text:000b
+1b:4c75 .text:000b
+1b:4c80 .text:000b
+1b:4c8b .text:0006
+1b:4c91 .data:0005
 
 1b:4e8a call_1b_4e8a
 
+1b:5117 save_as_strings
+1b:5117 .text:0009
+1b:5120 .text:0006
+
+1b:52d8 save_progress_strings
+1b:52d8 .text:000a
+1b:52e2 .text:0006
+1b:52e8 .text:000f
+1b:52f7 .text:0006
+1b:52fd .text:0006
+
 1b:53e8 call_1b_53e8
 
+1b:5707 font_1_name
+1b:5707 .text:0005
+1b:570c font_2_name
+1b:570c .text:0005
+1b:5711 font_3_name
+1b:5711 .text:0005
+
+1b:5716 dmg_palette_1_name
+1b:5716 .text:0005
+1b:571b dmg_palette_2_name
+1b:571b .text:0005
+1b:5720 dmg_palette_3_name
+1b:5720 .text:0005
+1b:5725 dmg_palette_4_name
+1b:5725 .text:0005
+
+1b:572a .data:000f
+
+1b:5739 palette_1_name
+1b:5739 .text:0005
+1b:573e palette_2_name
+1b:573e .text:0005
+1b:5743 palette_3_name
+1b:5743 .text:0005
+1b:5748 palette_4_name
+1b:5748 .text:0005
+1b:574d palette_5_name
+1b:574d .text:0005
+1b:5752 palette_6_name
+1b:5752 .text:0005
+1b:5757 palette_7_name
+1b:5757 .text:0005
+
+1b:575c .data:0026
+
+1b:59b7 project_screen_param_strings
+1b:59b7 .text:0007
+1b:59be .text:0007
+1b:59c5 .text:0007
+1b:59cc .text:0007
+1b:59d3 .text:0007
+1b:59da .text:0007
+1b:59e1 .text:000c
+1b:59ed .text:000c
+1b:59f9 .text:000e
+
+1b:5b56 prelisten_strings
+1b:5b56 .text:0004
+1b:5b5a .text:0004
+1b:5b5e .text:0004
+
 1b:5dbf call_1b_5dbf
+
+1b:5c03 stat_strings
+1b:5c03 .text:0009
+1b:5c0c .text:000b
 
 1b:6b7a call_1b_6b7a
 
@@ -769,7 +1058,30 @@
 
 1c:4e10 call_1c_4e10
 
+1c:534e loading_progress_strings
+1c:534e .text:000d
+1c:535b .text:0006
+
+1c:589a file_screen_strings
+1c:589a .text:0005
+1c:589f .text:0005
+1c:58a4 .text:0006
+1c:58aa .text:0011
+1c:58bb .text:0003
+1c:58be .text:0003
+
 1c:59e6 call_1c_59e6
+
+1c:602f erase_file_strings
+1c:602f .text:000d
+1c:603c .text:0010
+1c:604c .text:0011
+1c:605d .text:0004
+1c:6061 .text:0003
+1c:6064 .text:0008
+1c:606c .text:0007
+1c:6073 .text:0004
+1c:6077 .text:0003
 
 1c:60e2 call_1c_60e2
 
@@ -809,6 +1121,32 @@
 
 1d:603c call_1d_603c
 
+1d:62fc resync_type_strings
+1d:62fc .text:0007
+1d:6303 .text:0007
+1d:630a .text:0007
+1d:6311 .text:0007
+
+1d:63f7 filter_type_strings
+1d:63f7 .text:0006
+1d:63fd .text:0006
+1d:6403 .text:0006
+1d:6409 .text:0006
+1d:640f .text:0006
+1d:6415 .text:0006
+
+1d:65ba distortion_type_strings
+1d:65ba .text:0005
+1d:65bf .text:0005
+1d:65c4 .text:0005
+
+1d:6de4 hand_drawn_waves_warning_strings
+1d:6de4 .text:000a
+1d:6dee .text:000b
+1d:6df9 .text:0007
+1d:6e00 .text:0004
+1d:6e04 .text:0003
+
 1d:713f call_1d_713f
 
 1e:4000 call_1e_4000
@@ -830,7 +1168,36 @@
 
 1e:7aa0 call_1e_7aa0
 
+1f:408d .text:0005
+1f:4092 .text:0005
+1f:4097 .data:0001
+1f:4098 .text:0004
+
+1f:4113 kit_loop_type_strings
+1f:4113 .text:0004
+1f:4117 .text:0004
+1f:411b .text:0004
+
+1f:438f instrument_length_strings
+1f:438f .text:0006
+1f:4395 .text:0004
+
+1f:4399 call_1f_4399
+
+1f:44a3 noise_instrument_param_strings
+1f:44a3 .text:0006
+1f:44a9 .text:0004
+1f:44ad .text:0005
+1f:44b2 .text:0005
+
 1f:44dd call_1f_44dd
+
+1f:473e .text:0004
+1f:4742 .text:0004
+1f:4746 .text:0004
+1f:474a .text:0004
+
+1f:474e call_1f_474e
 
 1f:4a64 call_1f_4a64
 
@@ -839,6 +1206,30 @@
 1f:4bbb call_1f_4bbb
 
 1f:6278 call_1f_6278
+
+1f:6318 dedup_song_strings
+1f:6318 .text:000b
+1f:6323 .text:0009
+1f:632c .text:000b
+1f:6337 .text:0003
+1f:633a .text:000b
+1f:6345 .text:0003
+1f:6348 .text:0004
+
+1f:634c call_1f_634c
+
+1f:63e8 dedup_instruments_strings
+1f:63e8 .text:000b
+1f:63f3 .text:0009
+1f:63fc .text:000b
+1f:6407 .text:0003
+1f:640a .text:000b
+1f:6415 .text:0003
+1f:6418 .text:000b
+1f:6423 .text:0003
+1f:6426 .text:0004
+
+1f:642a call_1f_642a
 
 1f:65f1 call_1f_65f1
 
@@ -852,7 +1243,21 @@
 
 1f:6cd7 call_1f_6cd7
 
+1f:6fd7 .data:0008
+
+1f:6fdf song_screen_instrument_window_strings
+1f:6fdf .text:0005
+1f:6fe4 .text:0002
+1f:6fe6 .text:0002
+1f:6fe8 .text:0005
+1f:6fed .text:0004
+
 1f:7087 call_1f_7087
+
+1f:71be type_speech_string
+1f:71be .text:000e
+
+1f:71cc call_1f_71cc
 
 ; Memory
 
