@@ -674,7 +674,7 @@
 ;; 00:36fa See: div8
 
 00:36fd divu16_modu16
-;; 00:36fd gbdk 2.95 libc/asm/gbz80/div.s:.divu16/.modu16
+;; 00:36fd gbdk 2.95 libc/asm/gbz80/div.s:.divu16/.modu16 (with modifications)
 ;; 00:36fd 16-bit unsigned division.
 ;; 00:36fd See: div16
 00:3708 .divide
