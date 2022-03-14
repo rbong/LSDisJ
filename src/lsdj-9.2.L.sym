@@ -30,7 +30,8 @@
 00:0060 joypad_transition_interrupt
 00:0061 jump_00_0061
 00:0061 .code:0008
-;; 00:0066 Jumps to 01:7954
+;; 00:0061:r_op BANK(jump_01_7954)
+;; 00:0066:l_op jump_01_7954
 00:0069 .data:0097
 
 00:0100 Boot
@@ -131,22 +132,323 @@
 
 00:0dca call_00_0dca
 
+;; 00:0dd6:r_op BANK(call_1b_6b7a)
+;; 00:0ddd:r_op BANK(call_1b_6b7a)
+;; 00:0ddf:l_op call_1b_6b7a
+;; 00:0de2:r_op BANK(call_01_4cf1)
+;; 00:0de9:r_op BANK(call_01_4cf1)
+;; 00:0deb:l_op call_01_4cf1
+;; 00:0dee Assume the bank of call_01_48r8 is the same as call_01_4cf1
+;; 00:0dee:l_op call_01_4848
+
+;; 00:0e10 Assume the bank of call_01_4487 is the same as call_01_4cf1
+;; 00:0e10:l_op call_01_4487
+;; 00:0e46 Assume the bank of call_01_45d1 is the same as call_01_4cf1
+;; 00:0e46:l_op call_01_45d1
+
+;; 00:0e49 Assume the bank of call_01_48d4 is the same as call_01_4cf1
+;; 00:0e49:l_op call_01_48d4
+
+;; 00:0e4c:r_op BANK(call_1c_4057)
+;; 00:0e53:r_op BANK(call_1c_4057)
+;; 00:0e55:l_op call_1c_4057
+
+;; 00:0e5e:r_op BANK(call_01_4811)
+;; 00:0e65:r_op BANK(call_01_4811)
+;; 00:0e67:l_op call_01_4811
+
+;; 00:0e70:r_op BANK(call_1c_47b1)
+;; 00:0e77:r_op BANK(call_1c_47b1)
+;; 00:0e79:l_op call_1c_47b1
+
+;; 00:0eaf:r_op BANK(call_07_6864)
+;; 00:0eb6:r_op BANK(call_07_6864)
+;; 00:0eb8:l_op call_07_6864
+
+;; 00:0f4f:r_op BANK(call_02_6e87)
+;; 00:0f56:r_op BANK(call_02_6e87)
+;; 00:0f65:l_op call_02_6e87
+
+;; 00:0f73:r_op BANK(call_01_4cfb)
+;; 00:0f7a:r_op BANK(call_01_4cfb)
+;; 00:0f81:l_op call_01_4cfb
+
+;; 00:0fc4:r_op BANK(call_01_4d67)
+;; 00:0fcb:r_op BANK(call_01_4d67)
+;; 00:0fd2:l_op call_01_4d67
+
+;; 00:0ff0:r_op BANK(call_1f_4a25)
+;; 00:0ff7:r_op BANK(call_1f_4a25)
+;; 00:0ff9:l_op call_1f_4a25
+
+;; 00:102b:r_op BANK(call_02_7b9b)
+;; 00:1032:r_op BANK(call_02_7b9b)
+;; 00:1034:l_op call_02_7b9b
+
+;; 00:1090:r_op BANK(call_04_49c5)
+;; 00:1097:r_op BANK(call_04_49c5)
+;; 00:10a7:l_op call_04_49c5
+
+;; 00:10af:r_op BANK(call_05_43b7)
+;; 00:10b6:r_op BANK(call_05_43b7)
+;; 00:10d0:l_op call_05_43b7
+
+;; 00:10d8:r_op BANK(call_05_43b7)
+;; 00:10df:r_op BANK(call_05_43b7)
+;; 00:10f9:l_op call_05_43b7
+
+;; 00:1128:r_op BANK(call_1d_4d5f)
+;; 00:112f:r_op BANK(call_1d_4d5f)
+;; 00:1131:l_op call_1d_4d5f
+
 00:1261 call_00_1261
 
 00:12cf _main
+;; 00:131f:r_op BANK(call_1c_40f2)
+;; 00:1326:r_op BANK(call_1c_40f2)
+;; 00:1328:l_op call_1c_40f2
+
+;; 00:1350:r_op BANK(call_1d_603c)
+;; 00:1357:r_op BANK(call_1d_603c)
+;; 00:1359:l_op call_1d_603c
+
+;; 00:13ab:r_op BANK(call_01_4fec)
+;; 00:13b2:r_op BANK(call_01_4fec)
+;; 00:13b4:l_op call_01_4fec
+
+;; 00:13c5 Assume the bank of call_01_50a0 is the same ass call_01_4fec
+;; 00:13c5:l_op call_01_50a0
+
+;; 00:13c8 Assume the bank of call_01_7869 is the same ass call_01_4fec
+;; 00:13c8:l_op call_01_7869
+
+;; 00:13de Assume the bank of call_01_7881 is the same ass call_01_4fec
+;; 00:13de:l_op call_01_7881
+
+00:14ca call_00_14ca
 
 00:155d call_00_155d
 
+00:1644 call_00_1644
+
+00:172f call_00_172f
+
+00:17bb call_00_17bb
+
+00:1c33 call_00_1c33
+
+00:1c71 call_00_1c71
+
+00:1cb6 call_00_1cb6
+
 00:1ce0 call_00_1ce0
 
+00:1d23 call_00_1d23
+
+;; 00:1d99:r_op BANK(call_02_5f28)
+;; 00:1da0:r_op BANK(call_02_5f28)
+;; 00:1da2:l_op call_02_5f28
+
+;; 00:1e16:r_op BANK(call_02_7b9b)
+;; 00:1e1d:r_op BANK(call_02_7b9b)
+;; 00:1e1f:l_op call_02_7b9b
+
+;; 00:1e3a:r_op BANK(call_02_7b9b)
+;; 00:1e41:r_op BANK(call_02_7b9b)
+;; 00:1e43:l_op call_02_7b9b
+;; 00:1e46:l_op call_02_7b9b
+
 00:1f8c call_00_1f8c
+
+00:207b call_00_207b
+
+;; 00:2096:r_op BANK(call_02_7030)
+;; 00:209d:r_op BANK(call_02_7030)
+;; 00:209f:l_op call_02_7030
+
+;; 00:2273:r_op BANK(call_02_701d)
+;; 00:227a:r_op BANK(call_02_701d)
+;; 00:227f:l_op call_02_701d
+
+;; 00:228b:r_op BANK(call_1b_5b7a)
+;; 00:2292:r_op BANK(call_1b_5b7a)
+;; 00:229e:l_op call_1b_5b7a
+
+;; 00:22c1:r_op BANK(call_02_5534)
+;; 00:22c8:r_op BANK(call_02_5534)
+;; 00:22ca:l_op call_02_5534
+
+;; 00:235f:r_op BANK(call_1c_72bf)
+;; 00:2366:r_op BANK(call_1c_72bf)
+;; 00:2368:l_op call_1c_72bf
+
+;; 00:249e:r_op BANK(call_01_6cef)
+;; 00:24a5:r_op BANK(call_01_6cef)
+;; 00:24a7:l_op call_01_6cef
+
+;; 00:24c7:r_op BANK(call_05_4040)
+;; 00:24ce:r_op BANK(call_05_4040)
+;; 00:24d0:l_op call_05_4040
+
+;; 00:24dc:r_op BANK(call_1e_4000)
+;; 00:24e3:r_op BANK(call_1e_4000)
+;; 00:24e5:l_op call_1e_4000
+
+;; 00:2546:r_op BANK(call_04_4ce5)
+;; 00:254d:r_op BANK(call_04_4ce5)
+;; 00:254f:l_op call_04_4ce5
+
+;; 00:2555:r_op BANK(call_1d_4202)
+;; 00:255c:r_op BANK(call_1d_4202)
+;; 00:255e:l_op call_1d_4202
+
+;; 00:2564:r_op BANK(call_06_58e8)
+;; 00:256b:r_op BANK(call_06_58e8)
+;; 00:256d:l_op call_06_58e8
+
+;; 00:2573:r_op BANK(call_07_4552)
+;; 00:257a:r_op BANK(call_07_4552)
+;; 00:257c:l_op call_07_4552
+
+;; 00:2582:r_op BANK(call_05_4762)
+;; 00:2589:r_op BANK(call_05_4762)
+;; 00:258b:l_op call_05_4762
+
+;; 00:2591:r_op BANK(call_03_4e06)
+;; 00:2598:r_op BANK(call_03_4e06)
+;; 00:259a:l_op call_03_4e06
+
+;; 00:25a3:r_op BANK(call_06_4ec2)
+;; 00:25aa:r_op BANK(call_06_4ec2)
+;; 00:25ac:l_op call_06_4ec2
+
+;; 00:25b2:r_op BANK(call_1b_5c17)
+;; 00:25b9:r_op BANK(call_1b_5c17)
+;; 00:25bb:l_op call_1b_5c17
+
+;; 00:25c1:r_op BANK(call_1d_68b2)
+;; 00:25c8:r_op BANK(call_1d_68b2)
+;; 00:25ca:l_op call_1d_68b2
+
+;; 00:25d3:r_op BANK(call_06_41a2)
+;; 00:25da:r_op BANK(call_06_41a2)
+;; 00:25dc:l_op call_06_41a2
+
+;; 00:25e2:r_op BANK(call_1c_57bb)
+;; 00:25e9:r_op BANK(call_1c_57bb)
+;; 00:25eb:l_op call_1c_57bb
+
+;; 00:25f1:r_op BANK(call_1b_4a62)
+;; 00:25f8:r_op BANK(call_1b_4a62)
+;; 00:25fa:l_op call_1b_4a62
+
+;; 00:264f:r_op BANK(call_1f_642a)
+;; 00:2656:r_op BANK(call_1f_642a)
+;; 00:2658:l_op call_1f_642a
+
+;; 00:265e:r_op BANK(call_1d_423d)
+;; 00:2665:r_op BANK(call_1d_423d)
+;; 00:2667:l_op call_1d_423d
+
+;; 00:266d:r_op BANK(call_05_4967)
+;; 00:2674:r_op BANK(call_05_4967)
+;; 00:2676:l_op call_05_4967
+
+;; 00:267c:r_op BANK(call_06_5a03)
+;; 00:2683:r_op BANK(call_06_5a03)
+;; 00:2685:l_op call_06_5a03
+
+;; 00:268b:r_op BANK(call_07_4788)
+;; 00:2692:r_op BANK(call_07_4788)
+;; 00:2694:l_op call_07_4788
+
+;; 00:26bc:r_op BANK(call_06_7235)
+;; 00:26c3:r_op BANK(call_06_7235)
+;; 00:26c5:l_op call_06_7235
+;; 00:26c8:l_op call_06_741e
+
+;; 00:27a8:r_op BANK(call_02_6171)
+;; 00:27af:r_op BANK(call_02_6171)
+;; 00:27c1:l_op call_02_6171
+
+;; 00:27d9:r_op BANK(call_1f_6ff1)
+;; 00:27e0:r_op BANK(call_1f_6ff1)
+;; 00:27e2:l_op call_1f_6ff1
+
+;; 00:28d4:r_op BANK(call_1f_6ff1)
+;; 00:28db:r_op BANK(call_1f_6ff1)
+;; 00:28dd:l_op call_1f_6ff1
+
+;; 00:2a12:r_op BANK(call_1f_6ff1)
+;; 00:2a19:r_op BANK(call_1f_6ff1)
+;; 00:2a1b:l_op call_1f_6ff1
+
+;; 00:2a69:r_op BANK(call_04_5b4e)
+;; 00:2a70:r_op BANK(call_04_5b4e)
+;; 00:2a72:l_op call_04_5b4e
+
+;; 00:2a79:r_op BANK(call_1d_43f7)
+;; 00:2a80:r_op BANK(call_1d_43f7)
+;; 00:2a82:l_op call_1d_43f7
+
+;; 00:2a89:r_op BANK(call_06_5aa1)
+;; 00:2a90:r_op BANK(call_06_5aa1)
+;; 00:2a92:l_op call_06_5aa1
+
+;; 00:2a99:r_op BANK(call_07_4adb)
+;; 00:2aa0:r_op BANK(call_07_4adb)
+;; 00:2aa2:l_op call_07_4adb
+
+;; 00:2aa9:r_op BANK(call_05_4b5d)
+;; 00:2ab0:r_op BANK(call_05_4b5d)
+;; 00:2ab2:l_op call_05_4b5d
+
+;; 00:2ab9:r_op BANK(call_03_53fd)
+;; 00:2ac0:r_op BANK(call_03_53fd)
+;; 00:2ac2:l_op call_03_53fd
+
+;; 00:2ac9:r_op BANK(call_1b_53e8)
+;; 00:2ad0:r_op BANK(call_1b_53e8)
+;; 00:2ad2:l_op call_1b_53e8
+
+;; 00:2ad9:r_op BANK(call_06_5029)
+;; 00:2ae0:r_op BANK(call_06_5029)
+;; 00:2ae2:l_op call_06_5029
+
+;; 00:2ae9:r_op BANK(call_1b_5dbf)
+;; 00:2af0:r_op BANK(call_1b_5dbf)
+;; 00:2af2:l_op call_1b_5dbf
+
+;; 00:2af9:r_op BANK(call_1d_713f)
+;; 00:2b00:r_op BANK(call_1d_713f)
+;; 00:2b02:l_op call_1d_713f
+
+;; 00:2b0c:r_op BANK(call_06_431d)
+;; 00:2b13:r_op BANK(call_06_431d)
+;; 00:2b15:l_op call_06_431d
+
+;; 00:2b1c:r_op BANK(call_1c_59e6)
+;; 00:2b23:r_op BANK(call_1c_59e6)
+;; 00:2b25:l_op call_1c_59e6
+
+;; 00:2b2c:r_op BANK(call_1b_4bc3)
+;; 00:2b33:r_op BANK(call_1b_4bc3)
+;; 00:2b35:l_op call_1b_4bc3
+
+00:2c57 call_00_2c57
 
 00:2c79 call_00_2c79
 
 00:2cc5 channel_labels
 00:2cc5 .text:0010
 
+00:2d31 call_00_2d31
+
+00:2de6 call_00_2de6
+
 00:2e22 call_00_2e22
+
+00:2f26 call_00_2f26
 
 00:313e call_00_313e
 
@@ -678,6 +980,8 @@
 
 01:4487 call_01_4487
 
+01:45d1 call_01_45d1
+
 01:4557 cart_test_title_string
 01:4557 .text:000f
 01:4566 cart_test_rom_string
@@ -705,6 +1009,12 @@
 
 01:4848 call_01_4848
 
+01:48d4 call_01_48d4
+
+01:4cf1 call_01_4cf1
+
+01:4cfb call_01_4cfb
+
 01:4d67 call_01_4d67
 
 01:4dd3 call_01_4dd3
@@ -719,6 +1029,8 @@
 
 01:4fec call_01_4fec
 
+01:50a0 call_01_50a0
+
 01:518c call_01_518c
 
 01:51ee .data:0006
@@ -732,6 +1044,8 @@
 01:522d call_01_522d
 
 01:546e call_01_546e
+
+01:6cef call_01_6cef
 
 01:6d3b call_01_6d3b
 
@@ -825,22 +1139,40 @@
 ;; 01:7ee1 See: _set_bkg_palette
 01:7ef7 .set_sprite_palette_1
 
+02:5534 call_02_5534
+
+02:5f28 call_02_5f28
+
+02:6171 call_02_6171
+
 02:6465 call_02_6465
 
 02:65bb call_02_65bb
 
 02:6631 call_02_6631
 
+02:6e87 call_02_6e87
+
+02:701d call_02_701d
+
+02:7030 call_02_7030
+
+02:7b9b call_02_7b9b
+
 ;; 03:4015 Possibly instrument label data
 03:4015 .data:00e3
 
 03:47b9 call_03_47b9
+
+03:4e06 call_03_4e06
 
 03:4fe3 instrument_type_strings
 03:4fe3 .text:0006
 03:4fe9 .text:0006
 03:4fef .text:0006
 03:4ff5 .text:0006
+
+03:53fd call_03_53fd
 
 03:7a39 instrument_param_strings
 03:7a39 .text:0004
@@ -861,15 +1193,37 @@
 03:7a73 bank_03_padding
 03:7a73 .data:058d
 
+04:49c5 call_04_49c5
+
+04:4ce5 call_04_4ce5
+
 04:5b4e call_04_5b4e
 
 05:4040 call_05_4040
+
+05:43b7 call_05_43b7
+
+05:4762 call_05_4762
+
+05:4967 call_05_4967
+
+05:4b5d call_05_4b5d
+
+06:41a2 call_06_41a2
 
 06:42fb text_to_speech_screen_strings
 06:42fb .text:006
 06:4301 .text:005
 
 06:431d call_06_431d
+
+06:4ec2 call_06_4ec2
+
+06:5029 call_06_5029
+
+06:58e8 call_06_58e8
+
+06:5a03 call_06_5a03
 
 06:5aa1 call_06_5aa1
 
@@ -906,6 +1260,8 @@
 06:7756 .text:0036
 06:777a .text:0034
 06:779c .data:0021
+
+07:4552 call_07_4552
 
 07:4788 call_07_4788
 
@@ -970,6 +1326,10 @@
 1b:482b .text:00ff
 1b:492a .text:0047
 1b:4971 .text:0087
+
+1b:4a62 call_1b_4a62
+
+1b:4bc3 call_1b_4bc3
 
 1b:4c6a data_keyboard_key_labels
 1b:4c6a .text:000b
@@ -1044,23 +1404,35 @@
 1b:5b5a .text:0004
 1b:5b5e .text:0004
 
+1b:5b7a call_1b_5b7a
+
 1b:5dbf call_1b_5dbf
 
 1b:5c03 stat_strings
 1b:5c03 .text:0009
 1b:5c0c .text:000b
 
+1b:5c17 call_1b_5c17
+
 1b:6b7a call_1b_6b7a
 
 1b:754f call_1b_754f
 
+1c:4047 .data:0010
+
+1c:4057 call_1c_4057
+
 1c:40f2 call_1c_40f2
+
+1c:47b1 call_1c_47b1
 
 1c:4e10 call_1c_4e10
 
 1c:534e loading_progress_strings
 1c:534e .text:000d
 1c:535b .text:0006
+
+1c:57bb call_1c_57bb
 
 1c:589a file_screen_strings
 1c:589a .text:0005
@@ -1113,6 +1485,8 @@
 
 1c:72bf call_1c_72bf
 
+1d:4202 call_1d_4202
+
 1d:423d call_1d_423d
 
 1d:43f7 call_1d_43f7
@@ -1139,6 +1513,8 @@
 1d:65ba .text:0005
 1d:65bf .text:0005
 1d:65c4 .text:0005
+
+1d:68b2 call_1d_68b2
 
 1d:6de4 hand_drawn_waves_warning_strings
 1d:6de4 .text:000a
@@ -1199,6 +1575,8 @@
 
 1f:474e call_1f_474e
 
+1f:4a25 call_1f_4a25
+
 1f:4a64 call_1f_4a64
 
 1f:4b8c call_1f_4b8c
@@ -1251,6 +1629,8 @@
 1f:6fe6 .text:0002
 1f:6fe8 .text:0005
 1f:6fed .text:0004
+
+1f:6ff1 call_1f_6ff1
 
 1f:7087 call_1f_7087
 
