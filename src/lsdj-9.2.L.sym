@@ -106,23 +106,29 @@
 00:0c0a call_banked_call_old_return
 ;; 00:0c0a Doesn't appear to actually do anything with register B or E
 
-00:0c18 call_banked_call_set_bank_old
-;; 00:0c18 Call a subroutine in another bank, then set the bank.
-;; 00:0c18 This version of call_banked_call_set_bank uses extra instructions.
-;; 00:0c18
-;; 00:0c18 Args: bank, address (word), new_bank
-;; 00:0c18
-;; 00:0c18 Exit conditions:
-;; 00:0c18   The bank register (0x2000) will be set to new_bank
-;; 00:0c18
+00:0c18 call_banked_call_arg_old
+;; 00:0c18 Call a subroutine in another bank with an argument.
+;; 00:0c18 This version of call_banked_call_arg uses extra instructions.
+;; 00:0c18 Args: bank, address (word), arg
 ;; 00:0c18 Registers used: A, HL
-00:0c39 call_banked_call_set_bank_old_return
+00:0c39 call_banked_call_arg_old_return
 
-00:0c49 call_00_0c49
+00:0c49 call_banked_call_arg_2_old
+;; 00:0c49 Call a subroutine in another bank with two byte arguments.
+;; 00:0c49 Args: bank, address (word), arg1, arg2
+;; 00:0c49 Registers used: A, HL
+00:0c6f call_banked_call_arg_2_old_return
 
-00:0c7e call_00_0c7e
+00:0c7e call_banked_call_arg_2_old_dup
+;; 00:0c7e Duplicate of call_banked_call_arg_2.
+00:0ca4 call_banked_call_arg_2_old_dup_return
+;; 00:0ca4 Doesn't appear to actually do anything with register B or E
 
-00:0cb4 call_00_0cb4
+00:0cb4 call_banked_call_arg_3_old
+;; 00:0cb4 Call a subroutine in another bank with three byte arguments.
+;; 00:0cb4 Args: bank, address (word), arg1, arg2, arg3
+;; 00:0cb4 Registers used: A, HL
+00:0cde call_banked_call_arg_3_old_return
 
 00:0ced call_00_0ced
 
@@ -232,6 +238,19 @@
 00:1644 call_00_1644
 
 00:172f call_00_172f
+
+00:1768 call_jump_hl
+;; 00:1768 Jump to the address stored in HL.
+
+00:1769 call_banked_call
+;; 00:1769 Call a subroutine in another bank.
+;; 00:1769 Args: bank, address (word)
+;; 00:1769 Registers used: A, HL
+
+00:178a call_banked_call_arg
+;; 00:178a Call a subroutine in another bank with an argument.
+;; 00:178a Args: bank, address (word), arg
+;; 00:178a Registers used: A, HL
 
 00:17bb call_00_17bb
 
