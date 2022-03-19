@@ -6,7 +6,9 @@ VERIFY := true
 # Assembler program
 ASM := rgbasm
 # Assembler flags
-ASFLAGS := -L
+ASFLAGS := \
+  -L \
+	--pad-value 0xFF
 
 # Linker program
 LD := rgblink
@@ -23,7 +25,7 @@ FIX := rgbfix
 # ROM checksum fixer flags
 FIXFLAGS := \
 	--validate \
-	--pad-value 0xFF
+	--p 0xFF
 
 # Helper variables
 
