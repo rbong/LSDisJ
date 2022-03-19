@@ -301,6 +301,8 @@
 ;; 00:2366:r_op BANK(call_1c_72bf)
 ;; 00:2368:l_op call_1c_72bf
 
+00:2490 call_00_2490
+
 ;; 00:249e:r_op BANK(call_01_6cef)
 ;; 00:24a5:r_op BANK(call_01_6cef)
 ;; 00:24a7:l_op call_01_6cef
@@ -999,6 +1001,10 @@
 
 01:4487 call_01_4487
 
+;; 01:44aa:r_op LOW(call_00_1f8c)
+;; 01:44ac:r_op HIGH(call_00_1f8c)
+;; 01:44af:r_op BANK(call_00_1f8c)
+
 01:45d1 call_01_45d1
 
 01:4557 cart_test_title_string
@@ -1024,11 +1030,21 @@
 01:45bd cart_test_sram_error_2_string
 01:45bd .text:0014
 
+01:493b call_01_493b
+
+01:4a49 call_01_4a49
+
+;; 01:45e2:r_op LOW(call_07_63ff)
+;; 01:45e4:r_op HIGH(call_07_63ff)
+;; 01:45e7:r_op BANK(call_07_63ff)
+
 01:4811 call_01_4811
 
 01:4848 call_01_4848
 
 01:48d4 call_01_48d4
+
+01:4c61 call_01_4c61
 
 01:4cf1 call_01_4cf1
 
@@ -1041,6 +1057,10 @@
 01:4e43 call_01_4e43
 
 01:4eb3 call_01_4eb3
+
+;; 01:4f45:r_op LOW(call_01_75c6)
+;; 01:4f47:r_op HIGH(call_01_75c6)
+;; 01:4f4a:r_op BANK(call_01_75c6)
 
 01:4f59 call_01_4f59
 
@@ -1060,13 +1080,39 @@
 01:51fe .text:0005
 01:5203 .text:0005
 
+01:5208 call_01_5208
+
 01:522d call_01_522d
 
+01:5253 call_01_5253
+
+;; 01:52ce:r_op LOW(call_1c_717c)
+;; 01:52d0:r_op HIGH(call_1c_717c)
+;; 01:52d3:r_op BANK(call_1c_717c)
+
+01:5331 call_01_5331
+
 01:546e call_01_546e
+
+;; 01:54ad:r_op LOW(call_1f_4b8c)
+;; 01:54af:r_op HIGH(call_1f_4b8c)
+;; 01:54b4:r_op BANK(call_1f_4b8c)
+
+01:551b call_01_551b
+
+;; 01:55b9:r_op LOW(call_03_4e06)
+;; 01:55bb:r_op HIGH(call_03_4e06)
+;; 01:55be:r_op BANK(call_03_4e06)
 
 01:6cef call_01_6cef
 
 01:6d3b call_01_6d3b
+
+01:6d5c call_01_6d5c
+
+;; 01:6e77:r_op LOW(call_1c_4057)
+;; 01:6e79:r_op HIGH(call_1c_4057)
+;; 01:6e7e:r_op BANK(call_1c_4057)
 
 01:6f87 command_help_strings
 01:6f87 .text:0030
@@ -1104,6 +1150,8 @@
 
 01:74eb wave_screen_title_string
 01:74eb .text:006
+
+01:7500 call_01_7500
 
 01:75c6 call_01_75c6
 
@@ -1153,10 +1201,32 @@
 
 01:7c94 call_01_7c94
 
+;; 01:7cfe:r_op LOW(call_1e_7aa0)
+;; 01:7d00:r_op HIGH(call_1e_7aa0)
+;; 01:7d03:r_op BANK(call_1e_7aa0)
+
+;; 01:7da2:r_op LOW(call_07_5d9a)
+;; 01:7da4:r_op HIGH(call_07_5d9a)
+;; 01:7da7:r_op BANK(call_07_5d9a)
+
+;; 01:7dc0:r_op LOW(call_1c_4a46)
+;; 01:7dc2:r_op HIGH(call_1c_4a46)
+;; 01:7dc5:r_op BANK(call_1c_4a46)
+
+;; 01:7dce:r_op LOW(call_1c_6f75)
+;; 01:7dd0:r_op HIGH(call_1c_6f75)
+;; 01:7dd3:r_op BANK(call_1c_6f75)
+
+;; 01:7de5:r_op LOW(call_07_6505)
+;; 01:7de7:r_op HIGH(call_07_6505)
+;; 01:7dea:r_op BANK(call_07_6505)
+
 01:7ee1 _set_sprite_palette
 ;; 01:7ee1 gbdk 2.95 libc/gb/cgb.s:_set_sprite_palette
 ;; 01:7ee1 See: _set_bkg_palette
 01:7ef7 .set_sprite_palette_1
+
+02:4679 call_02_4679
 
 02:5534 call_02_5534
 
@@ -1170,20 +1240,146 @@
 
 02:6631 call_02_6631
 
+;; 02:663d:r_op LOW(call_07_5d9a)
+;; 02:663f:r_op HIGH(call_07_5d9a)
+;; 02:6642:r_op BANK(call_07_5d9a)
+
+02:6d31 call_02_6d31
+
+02:6d46 call_02_6d46
+
 02:6e87 call_02_6e87
 
 02:701d call_02_701d
 
 02:7030 call_02_7030
 
+02:77e6 call_02_77e6
+
 02:7b9b call_02_7b9b
 
 ;; 03:4015 Possibly instrument label data
 03:4015 .data:00e3
 
+;; 03:4266:r_op LOW(call_01_522d)
+;; 03:4268:r_op HIGH(call_01_522d)
+;; 03:4270:r_op BANK(call_01_522d)
+
+;; 03:432a:r_op call_01_7500
+;; 03:432e:r_op BANK(call_01_7500)
+
+;; 03:436e:r_op LOW(call_1f_4b8c)
+;; 03:4370:r_op HIGH(call_1f_4b8c)
+;; 03:4373:r_op BANK(call_1f_4b8c)
+
+;; 03:43ca:r_op LOW(call_1f_409c)
+;; 03:43cc:r_op HIGH(call_1f_409c)
+;; 03:43cf:r_op BANK(call_1f_409c)
+
+03:45d0 call_03_45d0
+
+;; 03:45d9:r_op call_05_4040
+;; 03:45dd:r_op BANK(call_05_4040)
+
+;; 03:45e6:r_op LOW(call_01_6d5c)
+;; 03:45e8:r_op HIGH(call_01_6d5c)
+;; 03:45eb:r_op BANK(call_01_6d5c)
+
+03:45fc call_03_45fc
+
+;; 03:4631:r_op LOW(call_01_6cef)
+;; 03:4633:r_op HIGH(call_01_6cef)
+;; 03:4636:r_op BANK(call_01_6cef)
+
+03:4644 call_03_4644
+
+;; 03:468f:r_op LOW(call_01_6cef)
+;; 03:4691:r_op HIGH(call_01_6cef)
+;; 03:4694:r_op BANK(call_01_6cef)
+
 03:47b9 call_03_47b9
 
+;; 03:4825:r_op LOW(call_1f_4000)
+;; 03:4827:r_op HIGH(call_1f_4000)
+;; 03:482a:r_op BANK(call_1f_4000)
+
+;; 03:4847:r_op LOW(call_1f_409c)
+;; 03:4849:r_op HIGH(call_1f_409c)
+;; 03:484c:r_op BANK(call_1f_409c)
+
+;; 03:4894:r_op LOW(call_1f_4000)
+;; 03:4896:r_op HIGH(call_1f_4000)
+;; 03:4899:r_op BANK(call_1f_4000)
+
+;; 03:48b6:r_op LOW(call_1f_409c)
+;; 03:48b8:r_op HIGH(call_1f_409c)
+;; 03:48bb:r_op BANK(call_1f_409c)
+
+;; 03:48ef:r_op LOW(call_1f_409c)
+;; 03:48f1:r_op HIGH(call_1f_409c)
+;; 03:48f4:r_op BANK(call_1f_409c)
+
+;; 03:493d:r_op LOW(call_1f_409c)
+;; 03:493f:r_op HIGH(call_1f_409c)
+;; 03:4942:r_op BANK(call_1f_409c)
+
+;; 03:4975:r_op LOW(call_1f_409c)
+;; 03:4977:r_op HIGH(call_1f_409c)
+;; 03:497a:r_op BANK(call_1f_409c)
+
+;; 03:49a4:r_op LOW(call_1f_409c)
+;; 03:49a6:r_op HIGH(call_1f_409c)
+;; 03:49a9:r_op BANK(call_1f_409c)
+
+03:49b4 call_03_49b4
+
+03:49e0 call_03_49e0
+
+03:4a26 call_03_4a26
+
+03:4a63 call_03_4a63
+
+;; 03:4bad:r_op LOW(call_01_5208)
+;; 03:4baf:r_op HIGH(call_01_5208)
+
+;; 03:4bb4:r_op LOW(call_01_518c)
+;; 03:4bb6:r_op HIGH(call_01_518c)
+
+;; 03:4bc0 Assume the bank of call_01_518c is the same as call_01_5208
+;; 03:4bc0:r_op BANK(call_01_5208)
+;; 03:4bc4 Call either call_01_518c or call_01_5208
+
+;; 03:4c6a:r_op LOW(call_01_518c)
+;; 03:4c6c:r_op HIGH(call_01_518c)
+;; 03:4c76:r_op BANK(call_01_518c)
+
+;; 03:4cdf:r_op LOW(call_01_518c)
+;; 03:4ce1:r_op HIGH(call_01_518c)
+;; 03:4ceb:r_op BANK(call_01_518c)
+
+03:4cf8 call_03_4cf8
+
+03:4d34 call_03_4d34
+
+;; 03:4df7:r_op call_1b_754f
+;; 03:4dfb:r_op BANK(call_1b_754f)
+
+;; 03:4e1f:r_op LOW(call_1f_7087)
+;; 03:4e21:r_op HIGH(call_1f_7087)
+;; 03:4e24:r_op BANK(call_1f_7087)
+
+;; 03:4e36:r_op call_1f_4929
+;; 03:4e3a:r_op BANK(call_1f_4929)
+
+;; 03:4ecd:r_op LOW(call_01_493b)
+;; 03:4ecf:r_op HIGH(call_01_493b)
+;; 03:4ed8:r_op BANK(call_01_493b)
+
 03:4e06 call_03_4e06
+
+;; 03:4f9a:r_op LOW(call_1f_6ff1)
+;; 03:4f9c:r_op HIGH(call_1f_6ff1)
+;; 03:4f9f:r_op BANK(call_1f_6ff1)
 
 03:4fe3 instrument_type_strings
 03:4fe3 .text:0006
@@ -1191,7 +1387,84 @@
 03:4fef .text:0006
 03:4ff5 .text:0006
 
+;; 03:517e:r_op LOW(call_01_6cef)
+;; 03:5180:r_op HIGH(call_01_6cef)
+;; 03:5185:r_op BANK(call_01_6cef)
+
+;; 03:51c6:r_op call_1f_418a
+;; 03:51ca:r_op BANK(call_1f_418a)
+
+;; 03:51fe:r_op call_1f_418a
+;; 03:5202:r_op BANK(call_1f_418a)
+
+;; 03:523b:r_op call_1f_418a
+;; 03:523f:r_op BANK(call_1f_418a)
+
+;; 03:5275:r_op call_1f_418a
+;; 03:5279:r_op BANK(call_1f_418a)
+
 03:53fd call_03_53fd
+
+;; 03:5409:r_op LOW(call_1f_71cc)
+;; 03:540b:r_op HIGH(call_1f_71cc)
+;; 03:540e:r_op BANK(call_1f_71cc)
+
+;; 03:582e:r_op call_1f_4157
+;; 03:5832:r_op BANK(call_1f_4157)
+
+;; 03:5848:r_op call_1f_4169
+;; 03:584c:r_op BANK(call_1f_4169)
+
+;; 03:58c7:r_op call_1f_4157
+;; 03:58cb:r_op BANK(call_1f_4157)
+
+;; 03:58e1:r_op call_1f_4169
+;; 03:58e5:r_op BANK(call_1f_4169)
+
+;; 03:76ea:r_op LOW(call_1b_4e8a)
+;; 03:76ec:r_op HIGH(call_1b_4e8a)
+;; 03:76ef:r_op BANK(call_1b_4e8a)
+
+;; 03:7798:r_op call_05_6936
+;; 03:77a1:r_op BANK(call_05_6936)
+
+;; 03:7833:r_op call_1f_4000
+;; 03:7837:r_op BANK(call_1f_4000)
+
+;; 03:7854:r_op call_1f_409c
+;; 03:7858:r_op BANK(call_1f_409c)
+
+;; 03:78c0:r_op call_05_426a
+;; 03:78c4:r_op BANK(call_05_426a)
+
+;; 03:78e6:r_op call_05_4287
+;; 03:78ea:r_op BANK(call_05_4287)
+
+;; 03:790c:r_op call_05_4233
+;; 03:7910:r_op BANK(call_05_4233)
+
+;; 03:7934:r_op call_05_4253
+;; 03:7938:r_op BANK(call_05_4253)
+
+;; 03:79ac:r_op LOW(call_01_546e)
+;; 03:79ae:r_op HIGH(call_01_546e)
+;; 03:79b1:r_op BANK(call_01_546e)
+
+;; 03:79bd:r_op LOW(call_01_551b)
+;; 03:79bf:r_op HIGH(call_01_551b)
+;; 03:79c2:r_op BANK(call_01_551b)
+
+;; 03:79e0:r_op LOW(call_02_77e6)
+;; 03:79e2:r_op HIGH(call_02_77e6)
+;; 03:79e5:r_op BANK(call_02_77e6)
+
+;; 03:7a08:r_op LOW(call_02_7b9b)
+;; 03:7a0a:r_op HIGH(call_02_7b9b)
+;; 03:7a0d:r_op BANK(call_02_7b9b)
+
+;; 03:7a1b:r_op LOW(call_01_5253)
+;; 03:7a1d:r_op HIGH(call_01_5253)
+;; 03:7a20:r_op BANK(call_01_5253)
 
 03:7a39 instrument_param_strings
 03:7a39 .text:0004
@@ -1212,23 +1485,309 @@
 03:7a73 bank_03_padding
 03:7a73 .data:058d
 
+04:4000 call_04_4000
+
+;; 04:4001:r_op call_06_752b
+;; 04:4010:r_op BANK(call_06_752b)
+
+;; 04:401c:r_op LOW(call_1f_6bac)
+;; 04:401e:r_op HIGH(call_1f_6bac)
+;; 04:4021:r_op BANK(call_1f_6bac)
+
+04:41f0 call_04_41f0
+
+;; 04:42d0:r_op LOW(call_1f_4a64)
+;; 04:42d2:r_op HIGH(call_1f_4a64)
+;; 04:42d7:r_op BANK(call_1f_4a64)
+
+;; 04:4362:r_op LOW(call_01_493b)
+;; 04:4364:r_op HIGH(call_01_493b)
+;; 04:436c:r_op BANK(call_01_493b)
+
+;; 04:43ac:r_op LOW(call_01_7828)
+;; 04:43ae:r_op HIGH(call_01_7828)
+;; 04:43b1:r_op BANK(call_01_7828)
+
 04:49c5 call_04_49c5
+
+;; 04:4c9a:r_op LOW(call_1f_6cd7)
+;; 04:4c9c:r_op HIGH(call_1f_6cd7)
+;; 04:4c9f:r_op BANK(call_1f_6cd7)
+
+04:4caa call_04_4caa
 
 04:4ce5 call_04_4ce5
 
+;; 04:4d0a:r_op LOW(call_01_6d5c)
+;; 04:4d0c:r_op HIGH(call_01_6d5c)
+;; 04:4d0f:r_op BANK(call_01_6d5c)
+
+;; 04:4d18:r_op call_06_55d0
+;; 04:4d1c:r_op BANK(call_06_55d0)
+
+;; 04:4f92:r_op LOW(call_1f_6bc2)
+;; 04:4f94:r_op HIGH(call_1f_6bc2)
+;; 04:4f9a:r_op BANK(call_1f_6bc2)
+
+;; 04:50b8:r_op LOW(call_1f_6ff1)
+;; 04:50ba:r_op HIGH(call_1f_6ff1)
+;; 04:50bd:r_op BANK(call_1f_6ff1)
+
+;; 04:50c6:r_op LOW(call_1e_4000)
+;; 04:50c8:r_op HIGH(call_1e_4000)
+;; 04:50cb:r_op BANK(call_1e_4000)
+
+;; 04:54bd:r_op LOW(call_01_493b)
+;; 04:54bf:r_op HIGH(call_01_493b)
+;; 04:54c7:r_op BANK(call_01_493b)
+
+;; 04:54d0:r_op LOW(call_01_4a49)
+;; 04:54d2:r_op HIGH(call_01_4a49)
+;; 04:54da:r_op BANK(call_01_4a49)
+
+;; 04:5550:r_op LOW(call_1f_4a64)
+;; 04:5552:r_op HIGH(call_1f_4a64)
+;; 04:5557:r_op BANK(call_1f_4a64)
+
+;; 04:5577:r_op call_05_73f6
+;; 04:557b:r_op BANK(call_05_73f6)
+
+;; 04:55c9:r_op LOW(call_1f_4b8c)
+;; 04:55cb:r_op HIGH(call_1f_4b8c)
+;; 04:55d0:r_op BANK(call_1f_4b8c)
+
+;; 04:55e5:r_op LOW(call_01_5331)
+;; 04:55e7:r_op HIGH(call_01_5331)
+;; 04:55f5:r_op BANK(call_01_5331)
+
+;; 04:55fe:r_op call_05_73f6
+;; 04:5602:r_op BANK(call_05_73f6)
+
+;; 04:576c:r_op LOW(call_02_7b9b)
+;; 04:576e:r_op HIGH(call_02_7b9b)
+;; 04:5771:r_op BANK(call_02_7b9b)
+
+;; 04:5783:r_op LOW(call_01_493b)
+;; 04:5785:r_op HIGH(call_01_493b)
+;; 04:578f:r_op BANK(call_01_493b)
+
+;; 04:57cf:r_op LOW(call_01_7828)
+;; 04:57d1:r_op HIGH(call_01_7828)
+;; 04:57d4:r_op BANK(call_01_7828)
+
+;; 04:5bc8:r_op call_05_73f6
+;; 04:5bcc:r_op BANK(call_05_73f6)
+
 04:5b4e call_04_5b4e
 
+;; 04:5dd9:r_op LOW(call_1f_4a64)
+;; 04:5ddb:r_op HIGH(call_1f_4a64)
+;; 04:5de0:r_op BANK(call_1f_4a64)
+
+;; 04:5e59:r_op LOW(call_01_7655)
+;; 04:5e5b:r_op HIGH(call_01_7655)
+;; 04:5e63:r_op BANK(call_01_7655)
+
+;; 04:5ecb:r_op LOW(call_1f_6e7d)
+;; 04:5ecd:r_op HIGH(call_1f_6e7d)
+;; 04:5ed0:r_op BANK(call_1f_6e7d)
+
+;; 04:5f0f:r_op LOW(call_1f_6e7d)
+;; 04:5f11:r_op HIGH(call_1f_6e7d)
+;; 04:5f14:r_op BANK(call_1f_6e7d)
+
+;; 04:5f82:r_op LOW(call_1f_6e7d)
+;; 04:5f84:r_op HIGH(call_1f_6e7d)
+;; 04:5f87:r_op BANK(call_1f_6e7d)
+
+;; 04:5fca:r_op LOW(call_02_6e87)
+;; 04:5fcc:r_op HIGH(call_02_6e87)
+;; 04:5fdd:r_op BANK(call_02_6e87)
+
+;; 04:6048:r_op LOW(call_1f_6e7d)
+;; 04:604a:r_op HIGH(call_1f_6e7d)
+;; 04:604d:r_op BANK(call_1f_6e7d)
+
+;; 04:6095:r_op LOW(call_02_6e87)
+;; 04:6097:r_op HIGH(call_02_6e87)
+;; 04:60a4:r_op BANK(call_02_6e87)
+
+;; 04:6237:r_op LOW(call_1f_6bc2)
+;; 04:6239:r_op HIGH(call_1f_6bc2)
+;; 04:623f:r_op BANK(call_1f_6bc2)
+
+;; 04:63ed:r_op LOW(call_01_7655)
+;; 04:63ef:r_op HIGH(call_01_7655)
+;; 04:63f7:r_op BANK(call_01_7655)
+
+;; 04:6663:r_op LOW(call_1f_6bc2)
+;; 04:6665:r_op HIGH(call_1f_6bc2)
+;; 04:666f:r_op BANK(call_1f_6bc2)
+
+;; 04:6820:r_op LOW(call_01_7655)
+;; 04:6822:r_op HIGH(call_01_7655)
+;; 04:682a:r_op BANK(call_01_7655)
+
+;; 04:6b0e:r_op LOW(call_1f_6bc2)
+;; 04:6b10:r_op HIGH(call_1f_6bc2)
+;; 04:6b16:r_op BANK(call_1f_6bc2)
+
+;; 04:6cf9:r_op LOW(call_01_7655)
+;; 04:6cfb:r_op HIGH(call_01_7655)
+;; 04:6d03:r_op BANK(call_01_7655)
+
+;; 04:6fd4:r_op LOW(call_1f_6bc2)
+;; 04:6fd6:r_op HIGH(call_1f_6bc2)
+;; 04:6fde:r_op BANK(call_1f_6bc2)
+
+;; 04:71c2:r_op LOW(call_01_7655)
+;; 04:71c4:r_op HIGH(call_01_7655)
+;; 04:71cc:r_op BANK(call_01_7655)
+
+;; 04:731b:r_op LOW(call_1f_65f1)
+;; 04:731d:r_op HIGH(call_1f_65f1)
+;; 04:7320:r_op BANK(call_1f_65f1)
+
+;; 04:7344:r_op LOW(call_1f_6612)
+;; 04:7346:r_op HIGH(call_1f_6612)
+;; 04:7349:r_op BANK(call_1f_6612)
+
+;; 04:7388:r_op LOW(call_02_6e87)
+;; 04:738a:r_op HIGH(call_02_6e87)
+;; 04:7398:r_op BANK(call_02_6e87)
+
+;; 04:7407:r_op LOW(call_02_6e87)
+;; 04:7409:r_op HIGH(call_02_6e87)
+;; 04:7416:r_op BANK(call_02_6e87)
+
+;; 04:777e:r_op LOW(call_1f_6633)
+;; 04:7780:r_op HIGH(call_1f_6633)
+;; 04:7789:r_op BANK(call_1f_6633)
+
+;; 04:77f8:r_op LOW(call_1f_6e7d)
+;; 04:77fa:r_op HIGH(call_1f_6e7d)
+;; 04:77fd:r_op BANK(call_1f_6e7d)
+
+;; 04:7827:r_op LOW(call_02_77e6)
+;; 04:7829:r_op HIGH(call_02_77e6)
+;; 04:782c:r_op BANK(call_02_77e6)
+
+;; 04:7866:r_op LOW(call_02_7b9b)
+;; 04:7868:r_op HIGH(call_02_7b9b)
+;; 04:786b:r_op BANK(call_02_7b9b)
+
+;; 04:788f:r_op call_05_4233
+;; 04:7893:r_op BANK(call_05_4233)
+
+;; 04:7902:r_op call_05_4287
+;; 04:7906:r_op BANK(call_05_4287)
+
+;; 04:7938:r_op call_05_426a
+;; 04:793c:r_op BANK(call_05_426a)
+
+;; 04:79fd:r_op call_05_4253
+;; 04:7a01:r_op BANK(call_05_4253)
+
+;; 04:7a0a:r_op call_05_4253
+;; 04:7a0e:r_op BANK(call_05_4253)
+
+;; 04:7a33:r_op call_05_4253
+;; 04:7a37:r_op BANK(call_05_4253)
+
+;; 04:7a70:r_op LOW(call_1f_6633)
+;; 04:7a72:r_op HIGH(call_1f_6633)
+;; 04:7a79:r_op BANK(call_1f_6633)
+
+;; 04:7b4e:r_op LOW(call_1f_6633)
+;; 04:7b50:r_op HIGH(call_1f_6633)
+;; 04:7b57:r_op BANK(call_1f_6633)
+
+;; 04:7b65:r_op call_05_73b8
+;; 04:7b69:r_op BANK(call_05_73b8)
+
 05:4040 call_05_4040
+
+05:4233 call_05_4233
+
+05:4253 call_05_4253
+
+05:426a call_05_426a
+
+05:4287 call_05_4287
 
 05:43b7 call_05_43b7
 
 05:4762 call_05_4762
 
+;; 05:47b3:r_op LOW(call_01_6d5c)
+;; 05:47b5:r_op HIGH(call_01_6d5c)
+;; 05:47b8:r_op BANK(call_01_6d5c)
+
+;; 05:4912:r_op LOW(call_1f_6ff1)
+;; 05:4914:r_op HIGH(call_1f_6ff1)
+;; 05:4917:r_op BANK(call_1f_6ff1)
+
 05:4967 call_05_4967
 
 05:4b5d call_05_4b5d
 
+;; 05:4c39:r_op LOW(call_01_6cef)
+;; 05:4c3b:r_op HIGH(call_01_6cef)
+;; 05:4c3e:r_op BANK(call_01_6cef)
+
+;; 05:4d92:r_op LOW(call_01_7655)
+;; 05:4d94:r_op HIGH(call_01_7655)
+;; 05:4d9e:r_op BANK(call_01_7655)
+
+;; 05:5088:r_op LOW(call_01_7655)
+;; 05:508a:r_op HIGH(call_01_7655)
+;; 05:5092:r_op BANK(call_01_7655)
+
+;; 05:53b6:r_op LOW(call_01_7655)
+;; 05:53b8:r_op HIGH(call_01_7655)
+;; 05:53c0:r_op BANK(call_01_7655)
+
+;; 05:56d8:r_op LOW(call_01_7655)
+;; 05:56da:r_op HIGH(call_01_7655)
+;; 05:56e2:r_op BANK(call_01_7655)
+
+;; 05:5a30:r_op LOW(call_01_7655)
+;; 05:5a32:r_op HIGH(call_01_7655)
+;; 05:5a3a:r_op BANK(call_01_7655)
+
+;; 05:5e26:r_op LOW(call_02_77e6)
+;; 05:5e28:r_op HIGH(call_02_77e6)
+;; 05:5e2b:r_op BANK(call_02_77e6)
+
+;; 05:5e4e:r_op LOW(call_02_7b9b)
+;; 05:5e50:r_op HIGH(call_02_7b9b)
+;; 05:5e53:r_op BANK(call_02_7b9b)
+
+;; 05:63fe:r_op LOW(call_1c_717c)
+;; 05:6400:r_op HIGH(call_1c_717c)
+;; 05:6403:r_op BANK(call_1c_717c)
+
+05:6936 call_05_6936
+
+05:6c9e .data:04e3
+
+05:7181 call_05_7181
+
+05:721c .data:019c
+
+05:73b8 call_05_73b8
+
+05:73f6 call_05_73f6
+
 06:41a2 call_06_41a2
+
+;; 06:41a5:r_op LOW(call_01_6d5c)
+;; 06:41a7:r_op HIGH(call_01_6d5c)
+;; 06:41aa:r_op BANK(call_01_6d5c)
+
+;; 06:4222:r_op LOW(call_1f_6ff1)
+;; 06:4224:r_op HIGH(call_1f_6ff1)
+;; 06:4227:r_op BANK(call_1f_6ff1)
 
 06:42fb text_to_speech_screen_strings
 06:42fb .text:006
@@ -1236,15 +1795,170 @@
 
 06:431d call_06_431d
 
+;; 06:47ed:r_op call_05_4233
+;; 06:47f1:r_op BANK(call_05_4233)
+
+;; 06:4815:r_op call_05_426a
+;; 06:4819:r_op BANK(call_05_426a)
+
+;; 06:483d:r_op call_05_4287
+;; 06:4841:r_op BANK(call_05_4287)
+
+;; 06:486a:r_op LOW(call_02_77e6)
+;; 06:486c:r_op HIGH(call_02_77e6)
+;; 06:486f:r_op BANK(call_02_77e6)
+
+;; 06:4892:r_op LOW(call_02_7b9b)
+;; 06:4894:r_op HIGH(call_02_7b9b)
+;; 06:4897:r_op BANK(call_02_7b9b)
+
 06:4ec2 call_06_4ec2
+
+;; 06:4ece:r_op LOW(call_01_6d5c)
+;; 06:4ed0:r_op HIGH(call_01_6d5c)
+;; 06:4eca:r_op BANK(call_01_6d5c)
+
+;; 06:4edd:r_op call_05_4040
+;; 06:4ee1:r_op BANK(call_05_4040)
 
 06:5029 call_06_5029
 
+;; 06:50a6:r_op call_05_73f6
+;; 06:50aa:r_op BANK(call_05_73f6)
+
+;; 06:51c8:r_op LOW(call_02_77e6)
+;; 06:51ca:r_op HIGH(call_02_77e6)
+;; 06:51cd:r_op BANK(call_02_77e6)
+
+;; 06:51f0:r_op LOW(call_02_7b9b)
+;; 06:51f2:r_op HIGH(call_02_7b9b)
+;; 06:51f5:r_op BANK(call_02_7b9b)
+
+;; 06:5225:r_op call_05_4233
+;; 06:5229:r_op BANK(call_05_4233)
+
+;; 06:5252:r_op call_05_4287
+;; 06:5256:r_op BANK(call_05_4287)
+
+;; 06:529a:r_op call_05_73b8
+;; 06:529e:r_op BANK(call_05_73b8)
+
+;; 06:53ff:r_op LOW(call_1c_717c)
+;; 06:5401:r_op HIGH(call_1c_717c)
+;; 06:5404:r_op BANK(call_1c_717c)
+
+;; 06:54c5:r_op LOW(call_02_6e87)
+;; 06:54c7:r_op HIGH(call_02_6e87)
+;; 06:54d7:r_op BANK(call_02_6e87)
+
+06:55d0 call_06_55d0
+
+06:55ff call_06_55ff
+
+06:5654 call_06_5654
+
+06:569a call_06_569a
+
 06:58e8 call_06_58e8
+
+;; 06:590d:r_op LOW(call_01_6d5c)
+;; 06:590f:r_op HIGH(call_01_6d5c)
+;; 06:5912:r_op BANK(call_01_6d5c)
+
+;; 06:59ed:r_op LOW(call_1f_6ff1)
+;; 06:59ef:r_op HIGH(call_1f_6ff1)
+;; 06:59f2:r_op BANK(call_1f_6ff1)
 
 06:5a03 call_06_5a03
 
 06:5aa1 call_06_5aa1
+
+;; 06:5af6:r_op call_05_73f6
+;; 06:5afa:r_op BANK(call_05_73f6)
+
+;; 06:5b0b:r_op call_01_6cef
+;; 06:5b0f:r_op BANK(call_01_6cef)
+
+;; 06:5b18:r_op call_05_4040
+;; 06:5b1c:r_op BANK(call_05_4040)
+
+;; 06:5bad:r_op LOW(call_01_4eb3)
+;; 06:5baf:r_op HIGH(call_01_4eb3)
+;; 06:5bb2:r_op BANK(call_01_4eb3)
+
+;; 06:5bc6:r_op LOW(call_02_6e87)
+;; 06:5bc8:r_op HIGH(call_02_6e87)
+;; 06:5bd9:r_op BANK(call_02_6e87)
+
+;; 06:5c0f:r_op LOW(call_01_4eb3)
+;; 06:5c11:r_op HIGH(call_01_4eb3)
+;; 06:5c14:r_op BANK(call_01_4eb3)
+
+;; 06:5c28:r_op LOW(call_01_4cfb)
+;; 06:5c2a:r_op HIGH(call_01_4cfb)
+;; 06:5c32:r_op BANK(call_01_4cfb)
+
+;; 06:5c43:r_op LOW(call_1f_48c4)
+;; 06:5c45:r_op HIGH(call_1f_48c4)
+;; 06:5c5b:r_op BANK(call_1f_48c4)
+
+;; 06:67c8:r_op LOW(call_02_6e87)
+;; 06:67ca:r_op HIGH(call_02_6e87)
+;; 06:67db:r_op BANK(call_02_6e87)
+
+;; 06:6841:r_op LOW(call_1f_48c4)
+;; 06:6843:r_op HIGH(call_1f_48c4)
+;; 06:6858:r_op BANK(call_1f_48c4)
+
+;; 06:68ec:r_op LOW(call_02_6e87)
+;; 06:68ee:r_op HIGH(call_02_6e87)
+;; 06:68ff:r_op BANK(call_02_6e87)
+
+;; 06:690b:r_op call_05_73f6
+;; 06:690f:r_op BANK(call_05_73f6)
+
+;; 06:6925:r_op LOW(call_01_4eb3)
+;; 06:6927:r_op HIGH(call_01_4eb3)
+;; 06:692c:r_op BANK(call_01_4eb3)
+
+;; 06:694d:r_op LOW(call_1f_48c4)
+;; 06:694f:r_op HIGH(call_1f_48c4)
+;; 06:6965:r_op BANK(call_1f_48c4)
+
+;; 06:6999:r_op LOW(call_01_75c6)
+;; 06:699b:r_op HIGH(call_01_75c6)
+;; 06:699e:r_op BANK(call_01_75c6)
+
+;; 06:69d0:r_op LOW(call_02_77e6)
+;; 06:69d2:r_op HIGH(call_02_77e6)
+;; 06:69d5:r_op BANK(call_02_77e6)
+
+;; 06:6a67:r_op LOW(call_02_7b9b)
+;; 06:6a69:r_op HIGH(call_02_7b9b)
+;; 06:6a6c:r_op BANK(call_02_7b9b)
+
+;; 06:6a99:r_op LOW(call_01_761f)
+;; 06:6a9b:r_op HIGH(call_01_761f)
+;; 06:6a9e:r_op BANK(call_01_761f)
+
+;; 06:6aac:r_op call_05_4253
+;; 06:6ab0:r_op BANK(call_05_4253)
+
+;; 06:6ae2:r_op call_05_4233
+;; 06:6ae6:r_op BANK(call_05_4233)
+
+;; 06:6b1b:r_op call_05_426a
+;; 06:6b1f:r_op BANK(call_05_426a)
+
+;; 06:6b51:r_op call_05_4287
+;; 06:6b55:r_op BANK(call_05_4287)
+
+;; 06:6c76:r_op call_05_73b8
+;; 06:6c7a:r_op BANK(call_05_73b8)
+
+;; 06:6e35:r_op LOW(call_1c_717c)
+;; 06:6e37:r_op HIGH(call_1c_717c)
+;; 06:6e3a:r_op BANK(call_1c_717c)
 
 06:7235 call_06_7235
 
@@ -1267,6 +1981,8 @@
 06:748b .text:005
 06:7490 .text:005
 
+06:752b call_06_752b
+
 06:7655 note_labels
 06:7655 .text:0005
 06:765a .text:0036
@@ -1280,15 +1996,158 @@
 06:777a .text:0034
 06:779c .data:0021
 
+;; 07:413c:r_op call_05_73f6
+;; 07:4140:r_op BANK(call_05_73f6)
+
+;; 07:4149:r_op LOW(call_1f_4bbb)
+;; 07:414b:r_op HIGH(call_1f_4bbb)
+;; 07:414e:r_op BANK(call_1f_4bbb)
+
+;; 07:418b:r_op LOW(call_02_6e87)
+;; 07:418d:r_op HIGH(call_02_6e87)
+;; 07:4197:r_op BANK(call_02_6e87)
+
+;; 07:4213:r_op LOW(call_1f_48c4)
+;; 07:4215:r_op HIGH(call_1f_48c4)
+;; 07:4226:r_op BANK(call_1f_48c4)
+
+;; 07:4232:r_op LOW(call_01_4eb3)
+;; 07:4234:r_op HIGH(call_01_4eb3)
+;; 07:4237:r_op BANK(call_01_4eb3)
+
+;; 07:4249:r_op LOW(call_01_75c6)
+;; 07:424b:r_op HIGH(call_01_75c6)
+;; 07:4250:r_op BANK(call_01_75c6)
+
+;; 07:425e:r_op LOW(call_06_569a)
+;; 07:4260:r_op HIGH(call_06_569a)
+;; 07:426d:r_op BANK(call_06_569a)
+
+;; 07:4276:r_op LOW(call_1f_48c4)
+;; 07:4278:r_op HIGH(call_1f_48c4)
+;; 07:4289:r_op BANK(call_1f_48c4)
+
+;; 07:42a6:r_op LOW(call_1f_48c4)
+;; 07:42a8:r_op HIGH(call_1f_48c4)
+;; 07:42b8:r_op BANK(call_1f_48c4)
+
+;; 07:42c4:r_op LOW(call_1f_48c4)
+;; 07:42c6:r_op HIGH(call_1f_48c4)
+;; 07:42d6:r_op BANK(call_1f_48c4)
+
+;; 07:42df:r_op LOW(call_06_5654)
+;; 07:42e1:r_op HIGH(call_06_5654)
+;; 07:42ee:r_op BANK(call_06_5654)
+
+;; 07:42fa:r_op LOW(call_06_55ff)
+;; 07:42fc:r_op HIGH(call_06_55ff)
+;; 07:430a:r_op BANK(call_06_55ff)
+
 07:4552 call_07_4552
+
+;; 07:4553:r_op LOW(call_01_6d5c)
+;; 07:4555:r_op HIGH(call_01_6d5c)
+;; 07:4558:r_op BANK(call_01_6d5c)
+
+;; 07:4615:r_op LOW(call_1f_6ff1)
+;; 07:4617:r_op HIGH(call_1f_6ff1)
+;; 07:461a:r_op BANK(call_1f_6ff1)
+
+;; 07:4626:r_op call_05_4040
+;; 07:462a:r_op BANK(call_05_4040)
 
 07:4788 call_07_4788
 
+;; 07:4a9f:r_op call_05_73b8
+;; 07:4aa3:r_op BANK(call_05_73b8)
+
+;; 07:4ab6:r_op LOW(call_02_6d31)
+;; 07:4ab8:r_op HIGH(call_02_6d31)
+;; 07:4abb:r_op BANK(call_02_6d31)
+
+;; 07:4ac4:r_op call_05_73f6
+;; 07:4ac8:r_op BANK(call_05_73f6)
+
 07:4adb call_07_4adb
+
+;; 07:4b6f:r_op call_05_73f6
+;; 07:4b73:r_op BANK(call_05_73f6)
+
+;; 07:4bbb:r_op LOW(call_1f_4bbb)
+;; 07:4bbd:r_op HIGH(call_1f_4bbb)
+;; 07:4bc0:r_op BANK(call_1f_4bbb)
+
+;; 07:4c12:r_op LOW(call_01_4d67)
+;; 07:4c14:r_op HIGH(call_01_4d67)
+;; 07:4c1e:r_op BANK(call_01_4d67)
+
+;; 07:4c38:r_op LOW(call_1f_4bbb)
+;; 07:4c3a:r_op HIGH(call_1f_4bbb)
+;; 07:4c3f:r_op BANK(call_1f_4bbb)
+
+;; 07:5123:r_op call_05_426a
+;; 07:5127:r_op BANK(call_05_426a)
+
+;; 07:5159:r_op call_05_4287
+;; 07:515d:r_op BANK(call_05_4287)
+
+;; 07:5382:r_op LOW(call_02_6d46)
+;; 07:5384:r_op HIGH(call_02_6d46)
+;; 07:5387:r_op BANK(call_02_6d46)
+
+;; 07:539b:r_op LOW(call_02_7b9b)
+;; 07:539d:r_op HIGH(call_02_7b9b)
+;; 07:53a0:r_op BANK(call_02_7b9b)
+
+;; 07:53a9:r_op LOW(call_02_7b9b)
+;; 07:53ab:r_op HIGH(call_02_7b9b)
+;; 07:53ae:r_op BANK(call_02_7b9b)
+
+;; 07:53f0:r_op LOW(call_02_6d31)
+;; 07:53f2:r_op HIGH(call_02_6d31)
+;; 07:53f5:r_op BANK(call_02_6d31)
+
+;; 07:5421:r_op LOW(call_02_7b9b)
+;; 07:5423:r_op HIGH(call_02_7b9b)
+;; 07:5426:r_op BANK(call_02_7b9b)
+
+;; 07:5498:r_op LOW(call_01_7601)
+;; 07:549a:r_op HIGH(call_01_7601)
+;; 07:549d:r_op BANK(call_01_7601)
+
+;; 07:54b9:r_op LOW(call_02_6e87)
+;; 07:54bb:r_op HIGH(call_02_6e87)
+;; 07:54c9:r_op BANK(call_02_6e87)
+
+;; 07:54e0:r_op call_05_4253
+;; 07:54e4:r_op BANK(call_05_4253)
+
+;; 07:5668:r_op call_05_73b8
+;; 07:566c:r_op BANK(call_05_73b8)
+
+07:5d7a .data:0020
+
+07:5d9a call_07_5d9a
+
+;; 07:6353:r_op LOW(call_01_763e)
+;; 07:6355:r_op HIGH(call_01_763e)
+;; 07:6358:r_op BANK(call_01_763e)
+
+07:63ff call_07_63ff
+
+07:6505 call_07_6505
 
 07:66fe digits_string
 07:66fe .text:0011
 ;; 07:66fe gbdk 2.95 libc/gb/digits.c:digits
+
+;; 07:6715:r_op LOW(call_01_493b)
+;; 07:6717:r_op HIGH(call_01_493b)
+;; 07:6720:r_op BANK(call_01_493b)
+
+;; 07:67c2:r_op LOW(call_01_7828)
+;; 07:67c4:r_op HIGH(call_01_7828)
+;; 07:67c7:r_op BANK(call_01_7828)
 
 07:684b .text:0005
 07:6850 .text:0005
@@ -1298,6 +2157,10 @@
 
 07:6864 call_07_6864
 
+;; 07:6c37:r_op LOW(call_02_4679)
+;; 07:6c39:r_op HIGH(call_02_4679)
+;; 07:6c3c:r_op BANK(call_02_4679)
+
 07:6dee pulse_channel_combo_strings
 07:6dee .text:0006
 07:6df4 .text:0006
@@ -1305,6 +2168,17 @@
 07:6e00 .text:0006
 07:6e06 .text:0006
 07:6e0c .text:0006
+
+;; 07:6e59:r_op LOW(call_04_4caa)
+;; 07:6e5b:r_op HIGH(call_04_4caa)
+;; 07:6e66:r_op BANK(call_04_4caa)
+
+;; 07:6f58:r_op LOW(call_04_4caa)
+;; 07:6f5a:r_op HIGH(call_04_4caa)
+;; 07:6f63:r_op BANK(call_04_4caa)
+
+;; 07:7067:r_op call_01_6d3b
+;; 07:706b:r_op BANK(call_01_6d3b)
 
 07:7059 call_07_7059
 
@@ -1348,6 +2222,10 @@
 
 1b:4a62 call_1b_4a62
 
+;; 1b:4a63:r_op LOW(call_01_6cef)
+;; 1b:4a65:r_op HIGH(call_01_6cef)
+;; 1b:4a68:r_op BANK(call_01_6cef)
+
 1b:4bc3 call_1b_4bc3
 
 1b:4c6a data_keyboard_key_labels
@@ -1359,9 +2237,25 @@
 
 1b:4e8a call_1b_4e8a
 
+;; 1b:4ea0:r_op LOW(call_01_493b)
+;; 1b:4ea2:r_op HIGH(call_01_493b)
+;; 1b:4eab:r_op BANK(call_01_493b)
+
 1b:5117 save_as_strings
 1b:5117 .text:0009
 1b:5120 .text:0006
+
+;; 1b:5132:r_op LOW(call_1c_5098)
+;; 1b:5134:r_op HIGH(call_1c_5098)
+;; 1b:5137:r_op BANK(call_1c_5098)
+
+;; 1b:5173:r_op LOW(call_1c_4e10)
+;; 1b:5175:r_op HIGH(call_1c_4e10)
+;; 1b:517e:r_op BANK(call_1c_4e10)
+
+;; 1b:522f:r_op LOW(call_01_4a49)
+;; 1b:5231:r_op HIGH(call_01_4a49)
+;; 1b:523a:r_op BANK(call_01_4a49)
 
 1b:52d8 save_progress_strings
 1b:52d8 .text:000a
@@ -1433,6 +2327,140 @@
 
 1b:5c17 call_1b_5c17
 
+;; 1b:5c1a:r_op LOW(call_1c_4057)
+;; 1b:5c1c:r_op HIGH(call_1c_4057)
+;; 1b:5c1f:r_op BANK(call_1c_4057)
+
+;; 1b:5c2c:r_op LOW(call_01_6d5c)
+;; 1b:5c2e:r_op HIGH(call_01_6d5c)
+;; 1b:5c31:r_op BANK(call_01_6d5c)
+
+;; 1b:5d9a:r_op LOW(call_01_6cef)
+;; 1b:5d9c:r_op HIGH(call_01_6cef)
+;; 1b:5d9f:r_op BANK(call_01_6cef)
+
+;; 1b:5dab:r_op call_05_4040
+;; 1b:5daf:r_op BANK(call_05_4040)
+
+;; 1b:5e78:r_op call_05_4287
+;; 1b:5e7c:r_op BANK(call_05_4287)
+
+;; 1b:5ec1:r_op call_05_4253
+;; 1b:5ec5:r_op BANK(call_05_4253)
+
+;; 1b:5f5f:r_op LOW(call_07_5d9a)
+;; 1b:5f61:r_op HIGH(call_07_5d9a)
+;; 1b:5f64:r_op BANK(call_07_5d9a)
+
+;; 1b:6072:r_op LOW(call_01_4c61)
+;; 1b:6074:r_op HIGH(call_01_4c61)
+;; 1b:6077:r_op BANK(call_01_4c61)
+
+;; 1b:6091:r_op LOW(call_1e_7aa0)
+;; 1b:6093:r_op HIGH(call_1e_7aa0)
+;; 1b:6096:r_op BANK(call_1e_7aa0)
+
+;; 1b:6158:r_op LOW(call_01_4c61)
+;; 1b:615a:r_op HIGH(call_01_4c61)
+;; 1b:615d:r_op BANK(call_01_4c61)
+
+;; 1b:617a:r_op LOW(call_1e_7aa0)
+;; 1b:617c:r_op HIGH(call_1e_7aa0)
+;; 1b:617f:r_op BANK(call_1e_7aa0)
+
+;; 1b:61c4:r_op LOW(call_07_5d9a)
+;; 1b:61c6:r_op HIGH(call_07_5d9a)
+;; 1b:61c9:r_op BANK(call_07_5d9a)
+
+;; 1b:632b:r_op LOW(call_1e_7aa0)
+;; 1b:632d:r_op HIGH(call_1e_7aa0)
+;; 1b:6330:r_op BANK(call_1e_7aa0)
+
+;; 1b:635f:r_op LOW(call_07_5d9a)
+;; 1b:6361:r_op HIGH(call_07_5d9a)
+;; 1b:6364:r_op BANK(call_07_5d9a)
+
+;; 1b:642d:r_op LOW(call_07_5d9a)
+;; 1b:642f:r_op HIGH(call_07_5d9a)
+;; 1b:6432:r_op BANK(call_07_5d9a)
+
+;; 1b:64aa:r_op LOW(call_1e_7aa0)
+;; 1b:64ac:r_op HIGH(call_1e_7aa0)
+;; 1b:64af:r_op BANK(call_1e_7aa0)
+
+;; 1b:666a:r_op LOW(call_1c_47b1)
+;; 1b:666c:r_op HIGH(call_1c_47b1)
+;; 1b:666f:r_op BANK(call_1c_47b1)
+
+;; 1b:66eb:r_op LOW(call_07_5d9a)
+;; 1b:66ed:r_op HIGH(call_07_5d9a)
+;; 1b:66f0:r_op BANK(call_07_5d9a)
+
+;; 1b:6704:r_op LOW(call_1c_5098)
+;; 1b:6706:r_op HIGH(call_1c_5098)
+;; 1b:6709:r_op BANK(call_1c_5098)
+
+;; 1b:672a:r_op LOW(call_1f_6278)
+;; 1b:672c:r_op HIGH(call_1f_6278)
+;; 1b:672f:r_op BANK(call_1f_6278)
+
+;; 1b:6740:r_op LOW(call_1c_5098)
+;; 1b:6742:r_op HIGH(call_1c_5098)
+;; 1b:6745:r_op BANK(call_1c_5098)
+
+;; 1b:6766:r_op LOW(call_1f_634c)
+;; 1b:6768:r_op HIGH(call_1f_634c)
+;; 1b:676b:r_op BANK(call_1f_634c)
+
+;; 1b:679d:r_op LOW(call_1c_5098)
+;; 1b:679f:r_op HIGH(call_1c_5098)
+;; 1b:67a2:r_op BANK(call_1c_5098)
+
+;; 1b:67ab:r_op call_07_7059
+;; 1b:67af:r_op BANK(call_07_7059)
+
+;; 1b:67ed:r_op LOW(call_1c_5597)
+;; 1b:67ef:r_op HIGH(call_1c_5597)
+;; 1b:67f2:r_op BANK(call_1c_5597)
+
+;; 1b:68cd:r_op LOW(call_1c_5098)
+;; 1b:68cf:r_op HIGH(call_1c_5098)
+;; 1b:68d2:r_op BANK(call_1c_5098)
+
+;; 1b:6916:r_op LOW(call_1c_47b1)
+;; 1b:6918:r_op HIGH(call_1c_47b1)
+;; 1b:691b:r_op BANK(call_1c_47b1)
+
+;; 1b:6924:r_op LOW(call_01_45d1)
+;; 1b:6926:r_op HIGH(call_01_45d1)
+;; 1b:6929:r_op BANK(call_01_45d1)
+
+;; 1b:6943:r_op LOW(call_1c_4a46)
+;; 1b:6945:r_op HIGH(call_1c_4a46)
+;; 1b:6948:r_op BANK(call_1c_4a46)
+
+;; 1b:698e:r_op LOW(call_01_7c94)
+;; 1b:6990:r_op HIGH(call_01_7c94)
+;; 1b:6997:r_op BANK(call_01_7c94)
+
+;; 1b:69ae:r_op LOW(call_01_6cef)
+;; 1b:69b0:r_op HIGH(call_01_6cef)
+;; 1b:69b3:r_op BANK(call_01_6cef)
+
+;; 1b:69ca:r_op call_05_4040
+;; 1b:69ce:r_op BANK(call_05_4040)
+
+;; 1b:69f6:r_op LOW(call_01_6cef)
+;; 1b:69f8:r_op HIGH(call_01_6cef)
+;; 1b:69fb:r_op BANK(call_01_6cef)
+
+;; 1b:6a07:r_op call_05_4040
+;; 1b:6a0b:r_op BANK(call_05_4040)
+
+;; 1b:6a34:r_op LOW(call_02_7b9b)
+;; 1b:6a36:r_op HIGH(call_02_7b9b)
+;; 1b:6a39:r_op BANK(call_02_7b9b)
+
 1b:6b7a call_1b_6b7a
 
 1b:754f call_1b_754f
@@ -1445,13 +2473,31 @@
 
 1c:47b1 call_1c_47b1
 
+1c:4a46 call_1c_4a46
+
 1c:4e10 call_1c_4e10
+
+1c:5098 call_1c_5098
+
+;; 1c:526d:r_op LOW(call_01_45d1)
+;; 1c:526f:r_op HIGH(call_01_45d1)
+;; 1c:5272:r_op BANK(call_01_45d1)
+
+;; 1c:531a:r_op LOW(call_01_7c94)
+;; 1c:531c:r_op HIGH(call_01_7c94)
+;; 1c:531e:r_op BANK(call_01_7c94)
 
 1c:534e loading_progress_strings
 1c:534e .text:000d
 1c:535b .text:0006
 
+1c:5597 call_1c_5597
+
 1c:57bb call_1c_57bb
+
+;; 1c:57bc:r_op LOW(call_01_6d5c)
+;; 1c:57be:r_op HIGH(call_01_6d5c)
+;; 1c:57c1:r_op BANK(call_01_6d5c)
 
 1c:589a file_screen_strings
 1c:589a .text:0005
@@ -1462,6 +2508,22 @@
 1c:58be .text:0003
 
 1c:59e6 call_1c_59e6
+
+;; 1c:5a22:r_op LOW(call_02_77e6)
+;; 1c:5a24:r_op HIGH(call_02_77e6)
+;; 1c:5a27:r_op BANK(call_02_77e6)
+
+;; 1c:5ae3:r_op LOW(call_01_6cef)
+;; 1c:5ae5:r_op HIGH(call_01_6cef)
+;; 1c:5ae8:r_op BANK(call_01_6cef)
+
+;; 1c:5c56:r_op LOW(call_1b_4e8a)
+;; 1c:5c58:r_op HIGH(call_1b_4e8a)
+;; 1c:5c5b:r_op BANK(call_1b_4e8a)
+
+;; 1c:5dd5:r_op LOW(call_01_6cef)
+;; 1c:5dd7:r_op HIGH(call_01_6cef)
+;; 1c:5dda:r_op BANK(call_01_6cef)
 
 1c:602f erase_file_strings
 1c:602f .text:000d
@@ -1492,11 +2554,19 @@
 
 1c:64ee call_1c_64ee
 
+;; 1c:65e7:r_op call_06_5654
+;; 1c:65eb:r_op BANK(call_06_5654)
+
+;; 1c:6628:r_op call_06_55ff
+;; 1c:662c:r_op BANK(call_06_55ff)
+
 1c:6a20 call_1c_6a20
 
 1c:6a9a call_1c_6a9a
 
 1c:6bd7 call_1c_6bd7
+
+1c:6dea .data:0070
 
 1c:6f75 call_1c_6f75
 
@@ -1504,11 +2574,49 @@
 
 1c:72bf call_1c_72bf
 
+1d:41f6 .data:000c
+
 1d:4202 call_1d_4202
+
+;; 1d:4219:r_op LOW(call_01_6d5c)
+;; 1d:421b:r_op HIGH(call_01_6d5c)
+;; 1d:421e:r_op BANK(call_01_6d5c)
+
+;; 1d:422d:r_op LOW(call_1f_6ff1)
+;; 1d:422f:r_op HIGH(call_1f_6ff1)
+;; 1d:4232:r_op BANK(call_1f_6ff1)
 
 1d:423d call_1d_423d
 
 1d:43f7 call_1d_43f7
+
+;; 1d:4486:r_op call_05_73f6
+;; 1d:448a:r_op BANK(call_05_73f6)
+
+;; 1d:449b:r_op LOW(call_01_6cef)
+;; 1d:449d:r_op HIGH(call_01_6cef)
+;; 1d:44a2:r_op BANK(call_01_6cef)
+
+;; 1d:44ab:r_op call_05_4040
+;; 1d:44af:r_op BANK(call_05_4040)
+
+;; 1d:4a21:r_op LOW(call_02_77e6)
+;; 1d:4a23:r_op HIGH(call_02_77e6)
+;; 1d:4a26:r_op BANK(call_02_77e6)
+
+;; 1d:4a67:r_op LOW(call_02_7b9b)
+;; 1d:4a69:r_op HIGH(call_02_7b9b)
+;; 1d:4a6c:r_op BANK(call_02_7b9b)
+
+;; 1d:4a87:r_op call_05_426a
+;; 1d:4a8b:r_op BANK(call_05_426a)
+
+;; 1d:4b63:r_op call_05_73b8
+;; 1d:4b67:r_op BANK(call_05_73b8)
+
+;; 1d:4c4e:r_op LOW(call_1c_717c)
+;; 1d:4c50:r_op HIGH(call_1c_717c)
+;; 1d:4c53:r_op BANK(call_1c_717c)
 
 1d:4d5f call_1d_4d5f
 
@@ -1533,6 +2641,17 @@
 1d:65bf .text:0005
 1d:65c4 .text:0005
 
+;; 1d:68cf:r_op LOW(call_01_6d5c)
+;; 1d:68d1:r_op HIGH(call_01_6d5c)
+;; 1d:68d4:r_op BANK(call_01_6d5c)
+
+;; 1d:68e0:r_op LOW(call_1f_6ff1)
+;; 1d:68e2:r_op HIGH(call_1f_6ff1)
+;; 1d:68e5:r_op BANK(call_1f_6ff1)
+
+;; 1d:68f1:r_op call_05_4040
+;; 1d:68f5:r_op BANK(call_05_4040)
+
 1d:68b2 call_1d_68b2
 
 1d:6de4 hand_drawn_waves_warning_strings
@@ -1543,6 +2662,30 @@
 1d:6e04 .text:0003
 
 1d:713f call_1d_713f
+
+;; 1d:7226:r_op call_05_7181
+;; 1d:722a:r_op BANK(call_05_7181)
+
+;; 1d:7b9a:r_op LOW(call_02_77e6)
+;; 1d:7b9c:r_op HIGH(call_02_77e6)
+;; 1d:7b9f:r_op BANK(call_02_77e6)
+
+;; 1d:7bc2:r_op LOW(call_02_7b9b)
+;; 1d:7bc4:r_op HIGH(call_02_7b9b)
+;; 1d:7bc7:r_op BANK(call_02_7b9b)
+
+;; 1d:7be2:r_op call_05_4287
+;; 1d:7be6:r_op BANK(call_05_4287)
+
+;; 1d:7c04:r_op call_05_4233
+;; 1d:7c08:r_op BANK(call_05_4233)
+
+;; 1d:7c60:r_op call_05_4253
+;; 1d:7c64:r_op BANK(call_05_4253)
+
+;; 1d:7cfb:r_op LOW(call_1c_717c)
+;; 1d:7cfd:r_op HIGH(call_1c_717c)
+;; 1d:7d00:r_op BANK(call_1c_717c)
 
 1e:4000 call_1e_4000
 
@@ -1563,21 +2706,47 @@
 
 1e:7aa0 call_1e_7aa0
 
+1f:4000 call_1f_4000
+
 1f:408d .text:0005
 1f:4092 .text:0005
 1f:4097 .data:0001
 1f:4098 .text:0004
+
+1f:409c call_1f_409c
 
 1f:4113 kit_loop_type_strings
 1f:4113 .text:0004
 1f:4117 .text:0004
 1f:411b .text:0004
 
+1f:4157 call_1f_4157
+
+1f:4169 call_1f_4169
+
+1f:418a call_1f_418a
+
+;; 1f:42f9:r_op LOW(call_01_518c)
+;; 1f:42fb:r_op HIGH(call_01_518c)
+;; 1f:4303:r_op BANK(call_01_518c)
+
+;; 1f:4314:r_op LOW(call_01_522d)
+;; 1f:4316:r_op HIGH(call_01_522d)
+;; 1f:431e:r_op BANK(call_01_522d)
+
 1f:438f instrument_length_strings
 1f:438f .text:0006
 1f:4395 .text:0004
 
 1f:4399 call_1f_4399
+
+;; 1f:4443:r_op LOW(call_01_5208)
+;; 1f:4445:r_op HIGH(call_01_5208)
+;; 1f:444b:r_op BANK(call_01_5208)
+
+;; 1f:445c:r_op LOW(call_01_522d)
+;; 1f:445e:r_op HIGH(call_01_522d)
+;; 1f:4466:r_op BANK(call_01_522d)
 
 1f:44a3 noise_instrument_param_strings
 1f:44a3 .text:0006
@@ -1587,6 +2756,14 @@
 
 1f:44dd call_1f_44dd
 
+;; 1f:460a:r_op LOW(call_03_4a63)
+;; 1f:460c:r_op HIGH(call_03_4a63)
+;; 1f:4614:r_op BANK(call_03_4a63)
+
+;; 1f:4711:r_op LOW(call_01_518c)
+;; 1f:4713:r_op HIGH(call_01_518c)
+;; 1f:471b:r_op BANK(call_01_518c)
+
 1f:473e .text:0004
 1f:4742 .text:0004
 1f:4746 .text:0004
@@ -1594,13 +2771,86 @@
 
 1f:474e call_1f_474e
 
+;; 1f:47e6:r_op LOW(call_01_518c)
+;; 1f:47e8:r_op HIGH(call_01_518c)
+;; 1f:47f0:r_op BANK(call_01_518c)
+
+;; 1f:4801:r_op LOW(call_01_522d)
+;; 1f:4803:r_op HIGH(call_01_522d)
+;; 1f:480b:r_op BANK(call_01_522d)
+
+;; 1f:482e:r_op call_03_4cf8
+;; 1f:4832:r_op BANK(call_03_4cf8)
+
+;; 1f:483b:r_op call_03_4d34
+;; 1f:483f:r_op BANK(call_03_4d34)
+
+;; 1f:4848:r_op call_03_49b4
+;; 1f:484c:r_op BANK(call_03_49b4)
+
+;; 1f:4855:r_op call_03_4a26
+;; 1f:4859:r_op BANK(call_03_4a26)
+
+;; 1f:4862:r_op call_03_49e0
+;; 1f:4866:r_op BANK(call_03_49e0)
+
+1f:48c4 call_1f_48c4
+
+1f:4919 .data:0010
+
+1f:4929 call_1f_4929
+
 1f:4a25 call_1f_4a25
 
 1f:4a64 call_1f_4a64
 
+;; 1f:4a80:r_op LOW(call_04_41f0)
+;; 1f:4a82:r_op HIGH(call_04_41f0)
+;; 1f:4a98:r_op BANK(call_04_41f0)
+
 1f:4b8c call_1f_4b8c
 
 1f:4bbb call_1f_4bbb
+
+;; 1f:4c1a:r_op LOW(call_01_4d67)
+;; 1f:4c1c:r_op HIGH(call_01_4d67)
+;; 1f:4c24:r_op BANK(call_01_4d67)
+
+;; 1f:4c54:r_op LOW(call_01_75c6)
+;; 1f:4c56:r_op HIGH(call_01_75c6)
+;; 1f:4c59:r_op BANK(call_01_75c6)
+
+;; 1f:502d:r_op LOW(call_01_4f99)
+;; 1f:502f:r_op HIGH(call_01_4f99)
+;; 1f:5037:r_op BANK(call_01_4f99)
+
+;; 1f:528c:r_op LOW(call_01_4e43)
+;; 1f:528e:r_op HIGH(call_01_4e43)
+;; 1f:5293:r_op BANK(call_01_4e43)
+
+;; 1f:5330:r_op LOW(call_01_4f59)
+;; 1f:5332:r_op HIGH(call_01_4f59)
+;; 1f:5337:r_op BANK(call_01_4f59)
+
+;; 1f:53bd:r_op LOW(call_02_6e87)
+;; 1f:53bf:r_op HIGH(call_02_6e87)
+;; 1f:53cb:r_op BANK(call_02_6e87)
+
+;; 1f:53dd:r_op LOW(call_01_4cfb)
+;; 1f:53df:r_op HIGH(call_01_4cfb)
+;; 1f:53e9:r_op BANK(call_01_4cfb)
+
+;; 1f:53fd:r_op LOW(call_01_4f59)
+;; 1f:53ff:r_op HIGH(call_01_4f59)
+;; 1f:5407:r_op BANK(call_01_4f59)
+
+;; 1f:5963:r_op LOW(call_01_4dd3)
+;; 1f:5965:r_op HIGH(call_01_4dd3)
+;; 1f:596d:r_op BANK(call_01_4dd3)
+
+;; 1f:59df:r_op LOW(call_01_4e43)
+;; 1f:59e1:r_op HIGH(call_01_4e43)
+;; 1f:59e9:r_op BANK(call_01_4e43)
 
 1f:6278 call_1f_6278
 
@@ -1628,17 +2878,35 @@
 
 1f:642a call_1f_642a
 
+;; 1f:65cf:r_op LOW(call_04_4ce5)
+;; 1f:65d1:r_op HIGH(call_04_4ce5)
+;; 1f:65d4:r_op BANK(call_04_4ce5)
+
+;; 1f:65dd:r_op LOW(call_1e_4000)
+;; 1f:65df:r_op HIGH(call_1e_4000)
+;; 1f:65e2:r_op BANK(call_1e_4000)
+
 1f:65f1 call_1f_65f1
 
 1f:6612 call_1f_6612
 
 1f:6633 call_1f_6633
 
+;; 1f:6a9d:r_op LOW(call_1c_717c)
+;; 1f:6a9f:r_op HIGH(call_1c_717c)
+;; 1f:6aa2:r_op BANK(call_1c_717c)
+
+;; 1f:6abb:r_op LOW(call_04_4ce5)
+;; 1f:6abd:r_op HIGH(call_04_4ce5)
+;; 1f:6ac0:r_op BANK(call_04_4ce5)
+
 1f:6bac call_1f_6bac
 
 1f:6bc2 call_1f_6bc2
 
 1f:6cd7 call_1f_6cd7
+
+1f:6e7d call_1f_6e7d
 
 1f:6fd7 .data:0008
 
@@ -1653,10 +2921,52 @@
 
 1f:7087 call_1f_7087
 
+;; 1f:708f:r_op LOW(call_01_6cef)
+;; 1f:7091:r_op HIGH(call_01_6cef)
+;; 1f:7094:r_op BANK(call_01_6cef)
+
+;; 1f:709d:r_op LOW(call_1f_6ff1)
+;; 1f:709f:r_op HIGH(call_1f_6ff1)
+;; 1f:70a2:r_op BANK(call_1f_6ff1)
+
+;; 1f:70b0:r_op LOW(call_03_45d0)
+;; 1f:70b2:r_op HIGH(call_03_45d0)
+;; 1f:70b5:r_op BANK(call_03_45d0)
+
 1f:71be type_speech_string
 1f:71be .text:000e
 
 1f:71cc call_1f_71cc
+
+;; 1f:72c2:r_op LOW(call_1b_4e8a)
+;; 1f:72c4:r_op HIGH(call_1b_4e8a)
+;; 1f:72c7:r_op BANK(call_1b_4e8a)
+
+;; 1f:7316:r_op call_05_4287
+;; 1f:731a:r_op BANK(call_05_4287)
+
+;; 1f:7333:r_op call_05_426a
+;; 1f:7337:r_op BANK(call_05_426a)
+
+;; 1f:7350:r_op call_05_4253
+;; 1f:7354:r_op BANK(call_05_4253)
+
+;; 1f:736d:r_op call_05_4233
+;; 1f:7371:r_op BANK(call_05_4233)
+
+;; 1f:770c:r_op call_03_45fc
+;; 1f:7710:r_op BANK(call_03_45fc)
+
+;; 1f:771e:r_op call_03_4644
+;; 1f:7722:r_op BANK(call_03_4644)
+
+;; 1f:7738:r_op LOW(call_02_77e6)
+;; 1f:773a:r_op HIGH(call_02_77e6)
+;; 1f:773d:r_op BANK(call_02_77e6)
+
+;; 1f:775b:r_op LOW(call_02_7b9b)
+;; 1f:775d:r_op HIGH(call_02_7b9b)
+;; 1f:7760:r_op BANK(call_02_7b9b)
 
 ; Memory
 
