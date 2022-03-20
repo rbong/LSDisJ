@@ -108,8 +108,9 @@
 
 00:07d2 call_00_7d2
 
-00:081c .data:0015
-00:0831 wav_instr_play_type_strings
+00:081c .text:0015
+
+00:0831 wav_instrument_play_type_strings
 00:0831 .text:0024
 00:0855 .data:00a2
 
@@ -661,6 +662,8 @@
 00:34fc _reset
 ;; 00:34fc gbdk 2.95 libc/gb/crt0.s:.reset/_reset
 
+00:35b4 .text:0011
+
 00:36e0 call_00_36e0
 
 00:3717 _modslong_divslong_mulslong
@@ -1116,6 +1119,9 @@
 ;; 01:52d0:r_op HIGH(call_1c_717c)
 ;; 01:52d3:r_op BANK(call_1c_717c)
 
+01:52de copied_instrument_string
+01:52de .text:000d
+
 01:5331 call_01_5331
 
 01:546e call_01_546e
@@ -1124,11 +1130,20 @@
 ;; 01:54af:r_op HIGH(call_1f_4b8c)
 ;; 01:54b4:r_op BANK(call_1f_4b8c)
 
+01:54ff out_of_tables_error_string
+01:54ff .text:000f
+
+01:550e cloned_table_string
+01:550e .text:000d
+
 01:551b call_01_551b
 
 ;; 01:55b9:r_op LOW(call_03_4e06)
 ;; 01:55bb:r_op HIGH(call_03_4e06)
 ;; 01:55be:r_op BANK(call_03_4e06)
+
+01:55d4 pasted_instrument_string
+01:55d4 .text:000d
 
 01:6cef call_01_6cef
 
@@ -1175,14 +1190,20 @@
 01:74e4 .text:0007
 
 01:74eb wave_screen_title_string
-01:74eb .text:006
+01:74eb .text:0006
+
+01:74f1 synth_screen_title_string
+01:74f1 .text:0007
+
+01:74f8 groove_screen_title_string
+01:74f8 .text:0008
 
 01:7500 call_01_7500
 
 01:75c6 call_01_75c6
 
 01:75d0 out_of_memory_error_string
-01:75d0 .text:0038
+01:75d0 .text:0031
 
 01:7601 call_01_7601
 
@@ -1302,13 +1323,22 @@
 ;; 03:432a:r_op call_01_7500
 ;; 03:432e:r_op BANK(call_01_7500)
 
+03:433b out_of_synths_error_string
+03:433b .text:0032
+
 ;; 03:436e:r_op LOW(call_1f_4b8c)
 ;; 03:4370:r_op HIGH(call_1f_4b8c)
 ;; 03:4373:r_op BANK(call_1f_4b8c)
 
+03:43da out_of_tables_error_string_2
+03:43da .text:000f
+
 ;; 03:43ca:r_op LOW(call_1f_409c)
 ;; 03:43cc:r_op HIGH(call_1f_409c)
 ;; 03:43cf:r_op BANK(call_1f_409c)
+
+03:45c3 cloned_synth_string
+03:45c3 .text:000d
 
 03:45d0 call_03_45d0
 
@@ -1394,6 +1424,10 @@
 03:4cf8 call_03_4cf8
 
 03:4d34 call_03_4d34
+
+03:4dea wav_channel_instrument_type_strings
+03:4dea .text:0006
+03:4df0 .text:0006
 
 ;; 03:4df7:r_op call_1b_754f
 ;; 03:4dfb:r_op BANK(call_1b_754f)
@@ -1598,6 +1632,11 @@
 ;; 04:55fe:r_op call_05_73f6
 ;; 04:5602:r_op BANK(call_05_73f6)
 
+04:56ce cloned_instrument_string
+04:56ce .text:000d
+04:56db cloned_table_string_2
+04:56db .text:000d
+
 ;; 04:576c:r_op LOW(call_02_7b9b)
 ;; 04:576e:r_op HIGH(call_02_7b9b)
 ;; 04:5771:r_op BANK(call_02_7b9b)
@@ -1740,6 +1779,11 @@
 ;; 04:7b65:r_op call_05_73b8
 ;; 04:7b69:r_op BANK(call_05_73b8)
 
+04:7b9b cancel_select_string
+04:7b9b .text:000e
+04:7ba9 select_string
+04:7ba9 .text:0007
+
 04:7bb0 bank_04_padding
 ;; 04:7bb0:replace:0450 ; 04:7bb0
 ;; 04:7bb0:replace:0450 ds $8000 - bank_04_padding, $ff
@@ -1802,17 +1846,68 @@
 ;; 05:5e50:r_op HIGH(call_02_7b9b)
 ;; 05:5e53:r_op BANK(call_02_7b9b)
 
+05:612e cancel_select_string_2
+05:612e .text:000e
+05:613c select_string_2
+05:613c .text:0007
+
 ;; 05:63fe:r_op LOW(call_1c_717c)
 ;; 05:6400:r_op HIGH(call_1c_717c)
 ;; 05:6403:r_op BANK(call_1c_717c)
 
+05:6413 cut_string
+05:6413 .text:0004
+05:6417 copy_string
+05:6417 .text:0005
+
 05:6936 call_05_6936
 
-05:6c9e .data:04e3
+05:6c9e instrument_help_strings
+05:6c9e .text:004d
+05:6ceb .text:004d
+05:6d38 .text:004d
+05:6d85 .text:0015
+05:6d9a .text:0014
+05:6dae .text:0080
+05:6e2e .text:0012
+05:6e40 .text:002a
+05:6e6a .text:0030
+05:6e9a .text:0017
+05:6eb1 .text:0034
+05:6ee5 .text:0019
+05:6efe .text:0034
+05:6f32 .text:0012
+05:6f44 .text:0019
+05:6f5d .text:000f
+05:6f6c .text:000d
+05:6f79 .text:0023
+05:6f9c .text:0092
+05:702e .text:000b
+05:7039 .text:0010
+05:7049 .text:0013
+05:705c .text:0012
+05:706e .text:0013
+05:7081 .text:000c
+05:708d .text:001a
+05:70a7 .text:001b
+05:70c2 .text:0046
+05:7108 .text:0010
+05:7118 .text:002f
+05:7147 .text:0026
+05:716d .text:0014
 
 05:7181 call_05_7181
 
-05:721c .data:019c
+05:721c synth_help_strings
+05:721c .text:0036
+05:7252 .text:002b
+05:727d .text:005d
+05:72da .text:001b
+05:72f5 .text:000e
+05:7303 .text:0018
+05:731b .text:0039
+05:7354 .text:000f
+05:7363 .text:0055
 
 05:73b8 call_05_73b8
 
@@ -1886,9 +1981,17 @@
 ;; 06:529a:r_op call_05_73b8
 ;; 06:529e:r_op BANK(call_05_73b8)
 
+06:532d cancel_select_string_3
+06:532d .text:000e
+06:533b select_string_3
+06:533b .text:0007
+
 ;; 06:53ff:r_op LOW(call_1c_717c)
 ;; 06:5401:r_op HIGH(call_1c_717c)
 ;; 06:5404:r_op BANK(call_1c_717c)
+
+06:5411 copy_string_2
+06:5411 .text:0005
 
 ;; 06:54c5:r_op LOW(call_02_6e87)
 ;; 06:54c7:r_op HIGH(call_02_6e87)
@@ -1901,6 +2004,9 @@
 06:5654 call_06_5654
 
 06:569a call_06_569a
+
+06:583a cloned_phrase_string
+06:583a .text:000e
 
 06:58e8 call_06_58e8
 
@@ -2026,7 +2132,7 @@
 
 06:752b call_06_752b
 
-06:7655 note_labels
+06:7655 note_label_strings
 06:7655 .text:0005
 06:765a .text:0036
 06:767e .text:0036
@@ -2370,6 +2476,13 @@
 
 1b:5b7a call_1b_5b7a
 
+1b:5d4f project_screen_strings
+1b:5d4f .text:0005
+1b:5d54 .text:0005
+1b:5d59 .text:000f
+1b:5d68 .text:000d
+1b:5d75 .text:0007
+
 1b:5dbf call_1b_5dbf
 
 1b:5c03 stat_strings
@@ -2512,6 +2625,14 @@
 ;; 1b:6a36:r_op HIGH(call_02_7b9b)
 ;; 1b:6a39:r_op BANK(call_02_7b9b)
 
+1b:6a5c project_screen_strings_2
+1b:6a5c .text:0005
+1b:6a61 .text:0005
+1b:6a66 .text:0011
+1b:6a77 .text:0004
+1b:6a7b .text:0003
+1b:6a7e .text:000e
+
 1b:6b7a call_1b_6b7a
 
 1b:754f call_1b_754f
@@ -2526,9 +2647,18 @@
 
 1c:40f2 call_1c_40f2
 
+1c:43b9 empty_string
+1c:43b9 .text:0008
+
+1c:47a3 verify_string
+1c:47a3 .text:000e
+
 1c:47b1 call_1c_47b1
 
 1c:4a46 call_1c_4a46
+
+1c:4c11 empty_string_2
+1c:4c11 .text:0009
 
 1c:4e10 call_1c_4e10
 
@@ -2547,6 +2677,9 @@
 1c:535b .text:0006
 
 1c:5597 call_1c_5597
+
+1c:57ac empty_string_3
+1c:57ac .text:000f
 
 1c:57bb call_1c_57bb
 
@@ -2625,6 +2758,9 @@
 
 1c:6f75 call_1c_6f75
 
+1c:70a7 upgrading_string
+1c:70a7 .text:0010
+
 1c:717c call_1c_717c
 
 1c:72bf call_1c_72bf
@@ -2673,9 +2809,22 @@
 ;; 1d:4b63:r_op call_05_73b8
 ;; 1d:4b67:r_op BANK(call_05_73b8)
 
+1d:4b8d cancel_select_string_5
+1d:4b8d .text:000e
+1d:4b9b select_string_5
+1d:4b9b .text:0007
+
 ;; 1d:4c4e:r_op LOW(call_1c_717c)
 ;; 1d:4c50:r_op HIGH(call_1c_717c)
 ;; 1d:4c53:r_op BANK(call_1c_717c)
+
+1d:4c61 cut_string_3
+1d:4c61 .text:0004
+1d:4c65 copy_string_4
+1d:4c65 .text:0005
+
+1d:4cdf paste_string_2
+1d:4cdf .text:0006
 
 1d:4d5f call_1d_4d5f
 
@@ -2745,6 +2894,11 @@
 ;; 1d:7cfb:r_op LOW(call_1c_717c)
 ;; 1d:7cfd:r_op HIGH(call_1c_717c)
 ;; 1d:7d00:r_op BANK(call_1c_717c)
+
+1d:7d92 copied_synth_string
+1d:7d92 .text:000d
+1d:7d9f pasted_synth_string
+1d:7d9f .text:000d
 
 1d:7ddf bank_1d_padding
 ;; 1d:7ddf:replace:0221 ; 1d:7ddf
@@ -3034,6 +3188,13 @@
 ;; 1f:775b:r_op LOW(call_02_7b9b)
 ;; 1f:775d:r_op HIGH(call_02_7b9b)
 ;; 1f:7760:r_op BANK(call_02_7b9b)
+
+1f:7774 copied_word_string
+1f:7774 .text:000c
+1f:7780 cut_word_string
+1f:7780 .text:0009
+1f:7789 pasted_word_string
+1f:7789 .text:000c
 
 1f:7795 bank_1f_padding
 ;; 1f:7795:replace:086c ; 1f:7795
