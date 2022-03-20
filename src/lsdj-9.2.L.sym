@@ -1025,8 +1025,8 @@
 ;; 00:3bce Set the default screen to the project screen
 
 00:3de7 bank_00_padding
-;; 00:3de7:replace:0219 ; 00:3de7
-;; 00:3de7:replace:0219 ds $4000 - bank_00_padding, $ff
+;; 00:3de7 00:3de7
+;; 00:3de7:replace:0219 ds $4000 - @, $ff
 
 01:4487 call_01_4487
 
@@ -1274,8 +1274,8 @@
 01:7ef7 .set_sprite_palette_1
 
 01:7f0c bank_01_padding
-;; 01:7f0c:replace:00f4 ; 01:7f0c
-;; 01:7f0c:replace:00f4 ds $8000 - bank_01_padding, $ff
+;; 01:7f0c 01:7f0c
+;; 01:7f0c:replace:00f4 ds $8000 - @, $ff
 
 02:4679 call_02_4679
 
@@ -1310,8 +1310,8 @@
 02:7b9b call_02_7b9b
 
 02:7eb9 bank_02_padding
-;; 02:7eb9:replace:0147 ; 02:7eb9
-;; 02:7eb9:replace:0147 ds $8000 - bank_02_padding, $ff
+;; 02:7eb9 02:7eb9
+;; 02:7eb9:replace:0147 ds $8000 - @, $ff
 
 ;; 03:4015 Possibly instrument label data
 03:4015 .data:00e3
@@ -1551,8 +1551,8 @@
 03:7a6f .text:0004
 
 03:7a73 bank_03_padding
-;; 03:7a73:replace:058d ; 03:7a73
-;; 03:7a73:replace:058d ds $8000 - bank_03_padding, $ff
+;; 03:7a73 03:7a73
+;; 03:7a73:replace:058d ds $8000 - @, $ff
 
 04:4000 call_04_4000
 
@@ -1785,8 +1785,8 @@
 04:7ba9 .text:0007
 
 04:7bb0 bank_04_padding
-;; 04:7bb0:replace:0450 ; 04:7bb0
-;; 04:7bb0:replace:0450 ds $8000 - bank_04_padding, $ff
+;; 04:7bb0 04:7bb0
+;; 04:7bb0:replace:0450 ds $8000 - @, $ff
 
 05:4040 call_05_4040
 
@@ -1914,8 +1914,8 @@
 05:73f6 call_05_73f6
 
 05:7427 bank_05_padding
-;; 05:7427:replace:0bd9 ; 05:7427
-;; 05:7427:replace:0bd9 ds $8000 - bank_05_padding, $ff
+;; 05:7427 05:7427
+;; 05:7427:replace:0bd9 ds $8000 - @, $ff
 
 06:41a2 call_06_41a2
 
@@ -2146,8 +2146,8 @@
 06:779c .data:0021
 
 06:787b bank_06_padding
-;; 06:787b:replace:0785 ; 06:787b
-;; 06:787b:replace:0785 ds $8000 - bank_06_padding, $ff
+;; 06:787b 06:787b
+;; 06:787b:replace:0785 ds $8000 - @, $ff
 
 ;; 07:413c:r_op call_05_73f6
 ;; 07:4140:r_op BANK(call_05_73f6)
@@ -2344,8 +2344,8 @@
 07:718a .text:0004
 
 07:741a bank_07_padding
-;; 07:741a:replace:0be6 ; 07:741a
-;; 07:741a:replace:0be6 ds $8000 - bank_07_padding, $ff
+;; 07:741a 07:741a
+;; 07:741a:replace:0be6 ds $8000 - @, $ff
 
 1b:4098 help_page_index_strings
 1b:4098 .text:000f
@@ -2638,8 +2638,8 @@
 1b:754f call_1b_754f
 
 1b:7570 bank_1b_padding
-;; 1b:7570:replace:0a90 ; 1b:7570
-;; 1b:7570:replace:0a90 ds $8000 - bank_1b_padding, $ff
+;; 1b:7570 1b:7570
+;; 1b:7570:replace:0a90 ds $8000 - @, $ff
 
 1c:4047 .data:0010
 
@@ -2766,8 +2766,8 @@
 1c:72bf call_1c_72bf
 
 1c:7582 bank_1c_padding
-;; 1c:7582:replace:0a7e ; 1c:7582
-;; 1c:7582:replace:0a7e ds $8000 - bank_1c_padding, $ff
+;; 1c:7582 1c:7582
+;; 1c:7582:replace:0a7e ds $8000 - @, $ff
 
 1d:41f6 .data:000c
 
@@ -2901,8 +2901,8 @@
 1d:7d9f .text:000d
 
 1d:7ddf bank_1d_padding
-;; 1d:7ddf:replace:0221 ; 1d:7ddf
-;; 1d:7ddf:replace:0221 ds $8000 - bank_1d_padding, $ff
+;; 1d:7ddf 1d:7ddf
+;; 1d:7ddf:replace:0221 ds $8000 - @, $ff
 
 1e:4000 call_1e_4000
 
@@ -2924,8 +2924,8 @@
 1e:7aa0 call_1e_7aa0
 
 1e:7bab bank_1e_padding
-;; 1e:7bab:replace:0455 ; 1e:7bab
-;; 1e:7bab:replace:0455 ds $8000 - bank_1e_padding, $ff
+;; 1e:7bab 1e:7bab
+;; 1e:7bab:replace:0455 ds $8000 - @, $ff
 
 1f:4000 call_1f_4000
 
@@ -3197,8 +3197,8 @@
 1f:7789 .text:000c
 
 1f:7795 bank_1f_padding
-;; 1f:7795:replace:086c ; 1f:7795
-;; 1f:7795:replace:086c ds $8000 - bank_1f_padding, $ff
+;; 1f:7795 1f:7795
+;; 1f:7795:replace:086c ds $8000 - @, $ff
 
 ; Memory
 
