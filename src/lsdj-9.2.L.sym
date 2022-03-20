@@ -26,19 +26,24 @@
 ;; 00:003c:replace:0004 ds $0004, $ff
 
 00:0040 vblank_interrupt
-00:0045 .data:0003
+;; 00:0045 00:0045
+;; 00:0045:replace:0003 ds $0003, $ff
 00:0048 lcdc_interrupt
-00:0049 .data:0007
+;; 00:0049 00:0049
+;; 00:0049:replace:0007 ds $0007, $ff
 00:0050 timer_overflow_interrupt
-00:0053 .data:0005
+;; 00:0053 00:0053
+;; 00:0053:replace:0005 ds $0005, $ff
 00:0058 serial_transfer_complete_interrupt
-00:005b .data:0005
+;; 00:005b 00:005b
+;; 00:005b:replace:0005 ds $0005, $ff
 00:0060 joypad_transition_interrupt
 00:0061 jump_00_0061
 00:0061 .code:0008
 ;; 00:0061:r_op BANK(jump_01_7954)
 ;; 00:0066:l_op jump_01_7954
-00:0069 .data:0097
+;; 00:0069 00:0069
+;; 00:0069:replace:0097 ds $0097, $ff
 
 00:0100 Boot
 
