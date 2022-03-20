@@ -2,22 +2,28 @@
 
 ;; 00:0000 Most RSTs are unused
 00:0000 rst_00
-00:0001 .data:0007
+;; 00:0001 00:0001
+;; 00:0001:replace:0007 ds $0007, $ff
 00:0008 rst_08
-00:0008 .data:0008
+;; 00:0008 00:0008
+;; 00:0008:replace:0008 ds $0008, $ff
 00:0010 rst_10
-;; 00:0018 Does nothing, used for breakpoints
+;; 00:0011 Does nothing, used for breakpoints
 00:0018 rst_18
-;; 00:0020 Does nothing, used for breakpoints
+;; 00:001e Does nothing, used for breakpoints
 00:0020 rst_20
-00:0020 .data:0008
+;; 00:0020 00:0020
+;; 00:0020:replace:0008 ds $0008, $ff
 00:0028 rst_28
-00:0028 .data:0008
+;; 00:0028 00:0028
+;; 00:0028:replace:0008 ds $0008, $ff
 00:0030 rst_30
-00:0030 .data:0008
+;; 00:0030 00:0030
+;; 00:0030:replace:0008 ds $0008, $ff
 00:0038 rst_trigger_crash
-;; 00:003c Does nothing, used for breakpoints
-00:003c .data:0004
+;; 00:0039 Does nothing, used for breakpoints
+;; 00:003c 00:003c
+;; 00:003c:replace:0004 ds $0004, $ff
 
 00:0040 vblank_interrupt
 00:0045 .data:0003
