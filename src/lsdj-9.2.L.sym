@@ -100,24 +100,35 @@
 ;; 00:01aa Don't turn sound off yet
 ;; 00:01b5 Skip erasing the malloc list and gsinit
 
+00:01ba data_00_01ba
 00:01ba .data:0026
-00:01e0 .data:01b1
+
 00:01e0 MODE_TABLE
 ;; 00:01e0 gbdk 2.95 libc/gb/crt0.s:.MODE_TABLE
 ;; 00:01e0 Jump table for modes
+00:01e0 .data:0120
 
-00:07d2 call_00_7d2
-
+00:081c data_dash_letters_string
 00:081c .text:0015
 
-00:0831 wav_instrument_play_type_strings
-00:0831 .text:0024
+00:0831 data_wave_play_type_strings
+00:0831 data_manual_wave_play_type_string
+00:0831 .text:0009
+00:083a data_once_wave_play_type_string
+00:083a .text:0009
+00:0843 data_loop_wave_play_type_string
+00:0843 .text:0009
+00:084c data_pingpong_wave_play_type_string
+00:084c .text:0009
+
+00:0855 data_00_0855
 00:0855 .data:00a2
 
 00:08f7 call_00_08f7
 
 00:0942 call_00_0942
 
+00:09a8 data_00_09a8
 00:09a8 .data:d8
 
 00:0ad1 call_00_0ad1
@@ -486,8 +497,15 @@
 
 00:2c79 call_00_2c79
 
-00:2cc5 channel_labels
-00:2cc5 .text:0010
+00:2cc5 data_channel_label_strings
+00:2cc5 data_noise_channel_label_string
+00:2cc5 .text:0004
+00:2cc9 data_pulse1_channel_label_string
+00:2cc9 .text:0004
+00:2ccd data_pulse2_channel_label_string
+00:2ccd .text:0004
+00:2cd1 data_wave_channel_label_string
+00:2cd1 .text:0004
 
 00:2d31 call_00_2d31
 
@@ -662,6 +680,8 @@
 00:34fc _reset
 ;; 00:34fc gbdk 2.95 libc/gb/crt0.s:.reset/_reset
 
+00:35b4 digits
+;; 00:35b4 gbdk 2.95 libc/gb/digits.c:digits
 00:35b4 .text:0011
 
 00:36e0 call_00_36e0
@@ -1024,7 +1044,7 @@
 ;; 00:3a36 Registers used: A, DE, HL
 ;; 00:3bce Set the default screen to the project screen
 
-00:3de7 bank_00_padding
+00:3de7 data_bank_00_padding
 ;; 00:3de7 00:3de7
 ;; 00:3de7:replace:0219 ds $4000 - @, $ff
 
@@ -1101,12 +1121,17 @@
 
 01:518c call_01_518c
 
+01:51ee data_01_51ee
 01:51ee .data:0006
 
-01:51f4 pitch_shift_type_strings
+01:51f4 data_pitch_shift_type_strings
+01:51f4 data_step_pitch_shift_type_string
 01:51f4 .text:0005
+01:51f9 data_tick_pitch_shift_type_string
 01:51f9 .text:0005
+01:51fe data_drum_pitch_shift_type_string
 01:51fe .text:0005
+01:5203 data_fast_pitch_shift_type_string
 01:5203 .text:0005
 
 01:5208 call_01_5208
@@ -1119,7 +1144,7 @@
 ;; 01:52d0:r_op HIGH(call_1c_717c)
 ;; 01:52d3:r_op BANK(call_1c_717c)
 
-01:52de copied_instrument_string
+01:52de data_copied_instrument_string
 01:52de .text:000d
 
 01:5331 call_01_5331
@@ -1130,10 +1155,10 @@
 ;; 01:54af:r_op HIGH(call_1f_4b8c)
 ;; 01:54b4:r_op BANK(call_1f_4b8c)
 
-01:54ff out_of_tables_error_string
+01:54ff data_out_of_tables_error_string
 01:54ff .text:000f
 
-01:550e cloned_table_string
+01:550e data_cloned_instrument_table_string
 01:550e .text:000d
 
 01:551b call_01_551b
@@ -1142,7 +1167,7 @@
 ;; 01:55bb:r_op HIGH(call_03_4e06)
 ;; 01:55be:r_op BANK(call_03_4e06)
 
-01:55d4 pasted_instrument_string
+01:55d4 data_pasted_instrument_string
 01:55d4 .text:000d
 
 01:6cef call_01_6cef
@@ -1155,81 +1180,118 @@
 ;; 01:6e79:r_op HIGH(call_1c_4057)
 ;; 01:6e7e:r_op BANK(call_1c_4057)
 
-01:6f87 command_help_strings
+01:6f87 data_command_help_strings
+01:6f87 data_command_help_title_string
 01:6f87 .text:0030
+01:6fb7 data_command_help_too_busy_error_string
 01:6fb7 .text:000a
+01:6fc1 data_a_command_help_string
 01:6fc1 .text:0023
+01:6fe4 data_b_command_help_string
 01:6fe4 .text:003b
+01:701f data_b_table_command_help_string
 01:701f .text:0048
+01:7067 data_c_command_help_string
 01:7067 .text:0027
+01:708e data_d_command_help_string
 01:708e .text:0016
+01:70a4 data_e_command_help_string
 01:70a4 .text:0088
+01:712c data_f_pulse2_command_help_string
 01:712c .text:0020
+01:714c data_f_wave_command_help_string
 01:714c .text:0034
+01:7180 data_g_command_help_string
 01:7180 .text:0016
+01:7196 data_h_command_help_string
 01:7196 .text:0062
+01:71f8 data_h_table_command_help_string
 01:71f8 .text:004b
+01:7243 data_k_command_help_string
 01:7243 .text:001b
+01:725e data_l_command_help_string
 01:725e .text:00b5
+01:7313 data_o_command_help_string
 01:7313 .text:001b
+01:732e data_p_command_help_string
 01:732e .text:002d
+01:735b data_r_command_help_string
 01:735b .text:006a
+01:73c5 data_t_command_help_string
 01:73c5 .text:0032
+01:73f7 data_v_command_help_string
 01:73f7 .text:0023
+01:741a data_w_command_help_string
 01:741a .text:0008
+01:7422 data_w_kit_command_help_string
 01:7422 .text:0023
+01:7445 data_z_command_help_string
 01:7445 .text:0048
 
+01:748d data_01_748d
 01:748d .data:0014
+01:74a1 data_01_74a1
 01:74a1 .data:0014
 
-01:74b5 screen_name_strings
-01:74b5 .text:002f
-
-01:74e4 instrument_screen_title_string
+01:74b5 data_screen_name_strings
+01:74b5 data_live_screen_name_string
+01:74b5 .text:0005
+01:74ba data_song_screen_name_string
+01:74ba .text:0005
+01:74bf data_chain_screen_name_string
+01:74bf .text:0007
+01:74c6 data_phrase_screen_name_string
+01:74c6 .text:0008
+01:74ce data_table_screen_name_string
+01:74ce .text:0007
+01:74d5 data_project_screen_name_string
+01:74d5 .text:0009
+01:74de data_file_screen_name_string
+01:74de .text:0006
+01:74e4 data_instrument_screen_title_string
 01:74e4 .text:0007
-
-01:74eb wave_screen_title_string
+01:74eb data_wave_screen_title_string
 01:74eb .text:0006
-
-01:74f1 synth_screen_title_string
+01:74f1 data_synth_screen_title_string
 01:74f1 .text:0007
-
-01:74f8 groove_screen_title_string
+01:74f8 data_groove_screen_title_string
 01:74f8 .text:0008
 
 01:7500 call_01_7500
 
 01:75c6 call_01_75c6
 
-01:75d0 out_of_memory_error_string
+01:75d0 data_out_of_memory_error_string
 01:75d0 .text:0031
 
 01:7601 call_01_7601
 
-01:760b add_chain_error_string
+01:760b data_add_chain_error_string
 01:760b .text:0014
 
 01:761f call_01_761f
 
-01:7629 add_phrase_error_string
+01:7629 data_add_phrase_error_string
 01:7629 .text:0015
 
 01:763e call_01_763e
 
-01:7648 max_marks_error_string
+01:7648 data_max_marks_error_string
 01:7648 .text:000d
 
 01:7655 call_01_7655
 
+01:7777 data_01_7777
 ;; 01:7777 Assumed to be jump table
 01:7777 .data:0028
 
-01:779f sweep_help_strings
+01:779f data_s_command_help_strings
+01:779f data_s_kit_command_help_string
 01:779f .text:0049
+01:77e8 data_s_noise_command_help_string
 01:77e8 .text:002e
-01:7816 .text:0011
-01:7827 .data:0001
+01:7816 data_s_puse_command_help_string
+01:7816 .text:0012
 
 01:7828 call_01_7828
 
@@ -1239,12 +1301,31 @@
 
 01:7954 jump_01_7954
 
-01:7b88 crash_help_strings
+01:7b88 data_crash_help_strings
+01:7b88 data_crash_help_title_string
 01:7b88 .text:000c
+01:7b94 data_crash_help_1_string
 01:7b94 .text:0011
+01:7ba5 data_crash_help_2_string
 01:7ba5 .text:0010
+01:7bb5 data_crash_help_3_string
 01:7bb5 .text:0012
-01:7bc7 .text:0025
+01:7bc7 data_crash_help_rom_string
+01:7bc7 .text:0005
+01:7bcc data_crash_help_stk_string
+01:7bcc .text:0005
+01:7bd1 data_crash_help_ply_string
+01:7bd1 .text:0005
+01:7bd6 data_crash_help_cvw_string
+01:7bd6 .text:0005
+01:7bdb data_crash_help_cgb_string
+01:7bdb .text:0004
+01:7bdf data_crash_help_gba_string
+01:7bdf .text:0004
+01:7be3 data_crash_help_syn_string
+01:7be3 .text:0005
+01:7be8 data_crash_help_ast_string
+01:7be8 .text:0004
 
 01:7c94 call_01_7c94
 
@@ -1273,7 +1354,7 @@
 ;; 01:7ee1 See: _set_bkg_palette
 01:7ef7 .set_sprite_palette_1
 
-01:7f0c bank_01_padding
+01:7f0c data_bank_01_padding
 ;; 01:7f0c 01:7f0c
 ;; 01:7f0c:replace:00f4 ds $8000 - @, $ff
 
@@ -1309,10 +1390,11 @@
 
 02:7b9b call_02_7b9b
 
-02:7eb9 bank_02_padding
+02:7eb9 data_bank_02_padding
 ;; 02:7eb9 02:7eb9
 ;; 02:7eb9:replace:0147 ds $8000 - @, $ff
 
+03:4015 data_03_4015
 ;; 03:4015 Possibly instrument label data
 03:4015 .data:00e3
 
@@ -1323,21 +1405,21 @@
 ;; 03:432a:r_op call_01_7500
 ;; 03:432e:r_op BANK(call_01_7500)
 
-03:433b out_of_synths_error_string
+03:433b data_out_of_synths_error_string
 03:433b .text:0032
 
 ;; 03:436e:r_op LOW(call_1f_4b8c)
 ;; 03:4370:r_op HIGH(call_1f_4b8c)
 ;; 03:4373:r_op BANK(call_1f_4b8c)
 
-03:43da out_of_tables_error_string_2
+03:43da data_out_of_tables_instrument_screen_error_string
 03:43da .text:000f
 
 ;; 03:43ca:r_op LOW(call_1f_409c)
 ;; 03:43cc:r_op HIGH(call_1f_409c)
 ;; 03:43cf:r_op BANK(call_1f_409c)
 
-03:45c3 cloned_synth_string
+03:45c3 data_cloned_synth_string
 03:45c3 .text:000d
 
 03:45d0 call_03_45d0
@@ -1425,8 +1507,9 @@
 
 03:4d34 call_03_4d34
 
-03:4dea wav_channel_instrument_type_strings
+03:4dea data_wave_instrument_screen_string
 03:4dea .text:0006
+03:4df0 data_synth_instrument_screen_string
 03:4df0 .text:0006
 
 ;; 03:4df7:r_op call_1b_754f
@@ -1449,10 +1532,14 @@
 ;; 03:4f9c:r_op HIGH(call_1f_6ff1)
 ;; 03:4f9f:r_op BANK(call_1f_6ff1)
 
-03:4fe3 instrument_type_strings
+03:4fe3 data_instrument_type_strings
+03:4fe3 data_pulse_instrument_type_string
 03:4fe3 .text:0006
+03:4fe9 data_wave_instrument_type_string
 03:4fe9 .text:0006
+03:4fef data_kit_instrument_type_string
 03:4fef .text:0006
+03:4ff5 data_noise_instrument_type_string
 03:4ff5 .text:0006
 
 ;; 03:517e:r_op LOW(call_01_6cef)
@@ -1534,23 +1621,37 @@
 ;; 03:7a1d:r_op HIGH(call_01_5253)
 ;; 03:7a20:r_op BANK(call_01_5253)
 
-03:7a39 instrument_param_strings
+03:7a39 data_instrument_param_strings
+03:7a39 data_loop_on_left_instrument_param_string
 03:7a39 .text:0004
+03:7a3d data_loop_atk_left_instrument_param_string
 03:7a3d .text:0004
+03:7a41 data_loop_on_right_instrument_param_string
 03:7a41 .text:0004
+03:7a45 data_loop_atk_right_instrument_param_string
 03:7a45 .text:0004
+03:7a49 data_full_kit_speed_instrument_param_string
 03:7a49 .text:0004
+03:7a4d data_safe_noise_type_instrument_param_string
 03:7a4d .text:0005
+03:7a52 data_03_7a52
 03:7a52 .text:0004
+03:7a56 data_loop_off_left_instrument_param_string
 03:7a56 .text:0004
+03:7a5a data_03_7a5a
 03:7a5a .text:0004
+03:7a5e data_loop_off_right_instrument_param_string
 03:7a5e .text:0004
+03:7a62 data_len_all_left_instrument_param_string
 03:7a62 .text:0004
+03:7a66 data_half_kit_speed_instrument_param_string
 03:7a66 .text:0004
+03:7a6a data_free_noise_type_instrument_param_string
 03:7a6a .text:0005
+03:7a6f data_len_all_right_instrument_param_string
 03:7a6f .text:0004
 
-03:7a73 bank_03_padding
+03:7a73 data_bank_03_padding
 ;; 03:7a73 03:7a73
 ;; 03:7a73:replace:058d ds $8000 - @, $ff
 
@@ -1632,9 +1733,9 @@
 ;; 04:55fe:r_op call_05_73f6
 ;; 04:5602:r_op BANK(call_05_73f6)
 
-04:56ce cloned_instrument_string
+04:56ce data_cloned_instrument_string
 04:56ce .text:000d
-04:56db cloned_table_string_2
+04:56db data_cloned_phrase_table_string
 04:56db .text:000d
 
 ;; 04:576c:r_op LOW(call_02_7b9b)
@@ -1779,12 +1880,12 @@
 ;; 04:7b65:r_op call_05_73b8
 ;; 04:7b69:r_op BANK(call_05_73b8)
 
-04:7b9b cancel_select_string
+04:7b9b data_phrase_screen_cancel_select_string
 04:7b9b .text:000e
-04:7ba9 select_string
+04:7ba9 data_phrase_screen_select_string
 04:7ba9 .text:0007
 
-04:7bb0 bank_04_padding
+04:7bb0 data_bank_04_padding
 ;; 04:7bb0 04:7bb0
 ;; 04:7bb0:replace:0450 ds $8000 - @, $ff
 
@@ -1846,74 +1947,115 @@
 ;; 05:5e50:r_op HIGH(call_02_7b9b)
 ;; 05:5e53:r_op BANK(call_02_7b9b)
 
-05:612e cancel_select_string_2
+05:612e data_table_screen_cancel_select_string
 05:612e .text:000e
-05:613c select_string_2
+05:613c data_table_screen_select_string
 05:613c .text:0007
 
 ;; 05:63fe:r_op LOW(call_1c_717c)
 ;; 05:6400:r_op HIGH(call_1c_717c)
 ;; 05:6403:r_op BANK(call_1c_717c)
 
-05:6413 cut_string
+05:6413 data_table_screen_cut_string
 05:6413 .text:0004
-05:6417 copy_string
+05:6417 data_table_screen_copy_string
 05:6417 .text:0005
 
 05:6936 call_05_6936
 
-05:6c9e instrument_help_strings
+05:6c9e data_instrument_help_strings
+05:6c9e data_envelope_stage_1_instrument_help_string
 05:6c9e .text:004d
+05:6ceb data_envelope_stage_2_instrument_help_string
 05:6ceb .text:004d
+05:6d38 data_envelope_stage_3_instrument_help_string
 05:6d38 .text:004d
+05:6d85 data_pan_instrument_help_string
 05:6d85 .text:0015
+05:6d9a data_length_instrument_help_string
 05:6d9a .text:0014
+05:6dae data_pitch_instrument_help_string
 05:6dae .text:0080
+05:6e2e data_transpose_instrument_help_string
 05:6e2e .text:0012
+05:6e40 data_command_rate_instrument_help_string
 05:6e40 .text:002a
+05:6e6a data_table_rate_instrument_help_string
 05:6e6a .text:0030
+05:6e9a data_amplitude_instrument_help_string
 05:6e9a .text:0017
+05:6eb1 data_type_instrument_help_string
 05:6eb1 .text:0034
+05:6ee5 data_pulse_width_instrument_help_string
 05:6ee5 .text:0019
+05:6efe data_sweep_instrument_help_string
 05:6efe .text:0034
+05:6f32 data_transpose_pulse2_instrument_help_string
 05:6f32 .text:0012
+05:6f44 data_finetune_instrument_help_string
 05:6f44 .text:0019
+05:6f5d data_synth_finetune_instrument_help_string
 05:6f5d .text:000f
+05:6f6c data_synth_manual_wave_instrument_help_string
 05:6f6c .text:000d
+05:6f79 data_synth_num_instrument_help_string
 05:6f79 .text:0023
+05:6f9c data_synth_type_instrument_help_string
 05:6f9c .text:0092
+05:702e data_synth_speed_instrument_help_string
 05:702e .text:000b
+05:7039 data_synth_length_instrument_help_string
 05:7039 .text:0010
+05:7049 data_synth_loop_pos_instrument_help_string
 05:7049 .text:0013
+05:705c data_kit_num_left_instrument_help_string
 05:705c .text:0012
+05:706e data_kit_num_right_instrument_help_string
 05:706e .text:0013
+05:7081 data_kit_finetune_instrument_help_string
 05:7081 .text:000c
+05:708d data_kit_offset_instrument_help_string
 05:708d .text:001a
+05:70a7 data_kit_length_instrument_help_string
 05:70a7 .text:001b
+05:70c2 data_kit_loop_instrument_help_string
 05:70c2 .text:0046
+05:7108 data_wave_speed_instrument_help_string
 05:7108 .text:0010
+05:7118 data_kit_clip_instrument_help_string
 05:7118 .text:002f
+05:7147 data_noise_pitch_type_instrument_help_string
 05:7147 .text:0026
+05:716d data_vibrato_instrument_help_string
 05:716d .text:0014
 
 05:7181 call_05_7181
 
-05:721c synth_help_strings
+05:721c data_synth_help_strings
+05:721c data_signal_synth_help_string
 05:721c .text:0036
+05:7252 data_filter_synth_help_string
 05:7252 .text:002b
+05:727d data_distortion_synth_help_string
 05:727d .text:005d
+05:72da data_phase_synth_help_string
 05:72da .text:001b
+05:72f5 data_volume_synth_help_string
 05:72f5 .text:000e
+05:7303 data_cutoff_synth_help_string
 05:7303 .text:0018
+05:731b data_q_synth_help_string
 05:731b .text:0039
+05:7354 data_vshift_synth_help_string
 05:7354 .text:000f
+05:7363 data_limit_synth_help_string
 05:7363 .text:0055
 
 05:73b8 call_05_73b8
 
 05:73f6 call_05_73f6
 
-05:7427 bank_05_padding
+05:7427 data_bank_05_padding
 ;; 05:7427 05:7427
 ;; 05:7427:replace:0bd9 ds $8000 - @, $ff
 
@@ -1927,8 +2069,10 @@
 ;; 06:4224:r_op HIGH(call_1f_6ff1)
 ;; 06:4227:r_op BANK(call_1f_6ff1)
 
-06:42fb text_to_speech_screen_strings
+06:42fb data_text_to_speech_screen_strings
+06:42fb data_text_to_speech_word_string
 06:42fb .text:006
+06:4301 data_text_to_speech_empty_string
 06:4301 .text:005
 
 06:431d call_06_431d
@@ -1981,16 +2125,16 @@
 ;; 06:529a:r_op call_05_73b8
 ;; 06:529e:r_op BANK(call_05_73b8)
 
-06:532d cancel_select_string_3
+06:532d data_wave_screen_cancel_select_string
 06:532d .text:000e
-06:533b select_string_3
+06:533b data_wave_screen_select_string
 06:533b .text:0007
 
 ;; 06:53ff:r_op LOW(call_1c_717c)
 ;; 06:5401:r_op HIGH(call_1c_717c)
 ;; 06:5404:r_op BANK(call_1c_717c)
 
-06:5411 copy_string_2
+06:5411 data_wave_screen_copy_string
 06:5411 .text:0005
 
 ;; 06:54c5:r_op LOW(call_02_6e87)
@@ -2005,7 +2149,7 @@
 
 06:569a call_06_569a
 
-06:583a cloned_phrase_string
+06:583a data_cloned_phrase_string
 06:583a .text:000e
 
 06:58e8 call_06_58e8
@@ -2109,45 +2253,80 @@
 ;; 06:6e37:r_op HIGH(call_1c_717c)
 ;; 06:6e3a:r_op BANK(call_1c_717c)
 
+06:6cb1 data_chain_screen_cancel_select_string
+06:6cb1 .text:000e
+06:6cbf data_chain_screen_select_string
+06:6cbf .text:0007
+
+06:6e74 data_chain_screen_cut_string
+06:6e74 .text:0005
+06:6e79 data_chain_screen_copy_string
+06:6e79 .text:0005
+
+06:6f71 data_chain_screen_paste_string
+06:6f71 .text:0006
+
 06:7235 call_06_7235
 
-06:73c6 sync_strings_1
+06:73c6 data_sync_strings_1
+06:73c6 data_wait_sync_string_1
 06:73c6 .text:0005
+06:73cb data_lead_sync_string_1
 06:73cb .text:0005
+06:73d0 data_sync_string_1
 06:73d0 .text:0005
+06:73d5 data_empty_sync_string_1
 06:73d5 .text:0005
 
-06:740f sync_strings_2
+06:740f data_sync_strings_2
+06:740f data_sync_string_2
 06:740f .text:005
+06:7414 data_wait_sync_string_2
 06:7414 .text:005
+06:7419 data_empty_sync_string_2
 06:7419 .text:005
 
-06:741e call_06_741e
-
-06:7481 sync_strings_3
+06:7481 data_sync_strings_3
+06:7481 data_sync_string_3
 06:7481 .text:005
+06:7486 data_empty_sync_string_3
 06:7486 .text:005
+06:748b data_lead_sync_string_2
 06:748b .text:005
+06:7490 data_empty_sync_string_4
 06:7490 .text:005
 
 06:752b call_06_752b
 
-06:7655 note_label_strings
+06:7655 data_notes_string
 06:7655 .text:0005
-06:765a .text:0036
-06:767e .text:0036
-06:76a2 .text:0036
-06:76c6 .text:0036
-06:76ea .text:0036
-06:770e .text:0036
-06:7732 .text:0036
-06:7756 .text:0036
-06:777a .text:0034
-06:779c .data:0021
+06:765a .text:0024
+06:767e .text:0024
+06:76a2 .text:0024
+06:76c6 .text:0024
+06:76ea .text:0024
+06:770e .text:0024
+06:7732 .text:0024
+06:7756 .text:0024
+06:777a .text:0023
 
-06:787b bank_06_padding
-;; 06:787b 06:787b
-;; 06:787b:replace:0785 ds $8000 - @, $ff
+06:779d data_note_strings
+06:779d data_empty_note_string
+06:779d .text:0004
+06:77a1 data_c5_note_string
+06:77a1 .text:0004
+06:77a5 data_f5_note_string
+06:77a5 .text:0004
+06:77a9 data_c6_note_string
+06:77a9 .text:0004
+06:77ad data_c7_note_string
+06:77ad .text:0004
+06:77b1 data_c8_note_string
+06:77b1 .text:0004
+06:77b5 data_invalid_note_string_1
+06:77b5 .text:0004
+06:77b9 data_invalid_note_string_2
+06:77b9 .text:0004
 
 ;; 07:413c:r_op call_05_73f6
 ;; 07:4140:r_op BANK(call_05_73f6)
@@ -2278,6 +2457,7 @@
 ;; 07:5668:r_op call_05_73b8
 ;; 07:566c:r_op BANK(call_05_73b8)
 
+07:5d7a data_07_5d7a
 07:5d7a .data:0020
 
 07:5d9a call_07_5d9a
@@ -2290,9 +2470,9 @@
 
 07:6505 call_07_6505
 
-07:66fe digits_string
-07:66fe .text:0011
+07:66fe digits_2
 ;; 07:66fe gbdk 2.95 libc/gb/digits.c:digits
+07:66fe .text:0011
 
 ;; 07:6715:r_op LOW(call_01_493b)
 ;; 07:6717:r_op HIGH(call_01_493b)
@@ -2302,10 +2482,15 @@
 ;; 07:67c4:r_op HIGH(call_01_7828)
 ;; 07:67c7:r_op BANK(call_01_7828)
 
+07:684b data_07_684b
 07:684b .text:0005
+07:6850 data_07_6850
 07:6850 .text:0005
+07:6855 data_07_6855
 07:6855 .text:0005
+07:685a data_07_685a
 07:685a .text:0005
+07:685f data_07_685f
 07:685f .text:0005
 
 07:6864 call_07_6864
@@ -2314,12 +2499,18 @@
 ;; 07:6c39:r_op HIGH(call_02_4679)
 ;; 07:6c3c:r_op BANK(call_02_4679)
 
-07:6dee pulse_channel_combo_strings
+07:6dee data_pulse_channel_combo_strings
+07:6dee data_pulse1_pulse_channel_combo_string_1
 07:6dee .text:0006
+07:6df4 data_pulse2_pulse_channel_combo_string_1
 07:6df4 .text:0006
+07:6dfa data_pulse1_pulse2_pulse_channel_combo_string_1
 07:6dfa .text:0006
+07:6e00 data_pulse1_pulse_channel_combo_string_2
 07:6e00 .text:0006
+07:6e06 data_pulse2_pulse_channel_combo_string_2
 07:6e06 .text:0006
+07:6e0c data_pulse1_pulse2_pulse_channel_combo_string_2
 07:6e0c .text:0006
 
 ;; 07:6e59:r_op LOW(call_04_4caa)
@@ -2335,46 +2526,74 @@
 
 07:7059 call_07_7059
 
-07:7140 keyboard_calibration_strings
+07:7140 data_keyboard_calibration_strings
+07:7140 data_keyboard_calibration_title_string
 07:7140 .text:0015
+07:7155 data_keyboard_calibration_string_1
 07:7155 .text:0013
+07:7168 data_keyboard_calibration_string_2
 07:7168 .text:0011
+07:7179 data_keyboard_calibration_string_3
 07:7179 .text:000b
+07:7184 data_keyboard_calibration_fail_string
 07:7184 .text:0006
+07:718a data_keyboard_calibration_ok_string
 07:718a .text:0004
 
-07:741a bank_07_padding
+07:741a data_bank_07_padding
 ;; 07:741a 07:741a
 ;; 07:741a:replace:0be6 ds $8000 - @, $ff
 
-1b:4098 help_page_index_strings
+1b:4098 data_help_page_index_strings
+1b:4098 data_title_help_page_index_string
 1b:4098 .text:000f
+1b:40a7 data_screens_help_page_index_string
 1b:40a7 .text:000a
+1b:40b1 data_song_help_page_index_string
 1b:40b1 .text:0005
+1b:40b6 data_chain_help_page_index_string
 1b:40b6 .text:0006
+1b:40bc data_phrase_help_page_index_string
 1b:40bc .text:0007
+1b:40c3 data_instrument_help_page_index_string
 1b:40c3 .text:0006
+1b:40c9 data_groove_help_page_index_string
 1b:40c9 .text:0007
+1b:40d0 data_wave_help_page_index_string
 1b:40d0 .text:0006
+1b:40d6 data_command_list_help_page_index_string
 1b:40d6 .text:000e
+1b:40e4 data_live_mode_help_page_index_string
 1b:40e4 .text:000a
+1b:40ee data_select_help_page_index_string
 1b:40ee .text:0012
+1b:4100 data_mute_help_page_index_string
 1b:4100 .text:000e
 
-1b:410e help_page_strings
+1b:410e data_help_page_strings
+1b:410e data_song_help_page_string
 1b:410e .text:00ff
 1b:420d .text:003b
+1b:4248 data_live_help_page_string
 1b:4248 .text:00c6
+1b:430e data_chain_help_page_string
 1b:430e .text:00ff
 1b:440d .text:000d
+1b:441a data_phrase_help_page_string
 1b:441a .text:00ff
 1b:4519 .text:0010
+1b:4529 data_instrument_help_page_string
 1b:4529 .text:00ea
+1b:4613 data_groove_help_page_string
 1b:4613 .text:006c
+1b:467f data_wave_help_page_string
 1b:467f .text:00b0
+1b:472f data_command_list_help_page_string
 1b:472f .text:00fc
+1b:482b data_select_help_page_string
 1b:482b .text:00ff
 1b:492a .text:0047
+1b:4971 data_mute_help_page_string
 1b:4971 .text:0087
 
 1b:4a62 call_1b_4a62
@@ -2385,10 +2604,14 @@
 
 1b:4bc3 call_1b_4bc3
 
-1b:4c6a data_keyboard_key_labels
+1b:4c6a data_keyboard_keys_strings
+1b:4c6a data_keyboard_keys_string_1
 1b:4c6a .text:000b
+1b:4c75 data_keyboard_keys_string_2
 1b:4c75 .text:000b
+1b:4c80 data_keyboard_keys_string_3
 1b:4c80 .text:000b
+1b:4c8b data_keyboard_keys_string_4
 1b:4c8b .text:0006
 1b:4c91 .data:0005
 
@@ -2398,8 +2621,10 @@
 ;; 1b:4ea2:r_op HIGH(call_01_493b)
 ;; 1b:4eab:r_op BANK(call_01_493b)
 
-1b:5117 save_as_strings
+1b:5117 data_save_name_strings
+1b:5117 data_save_as_name_string
 1b:5117 .text:0009
+1b:5120 data_save_name_string
 1b:5120 .text:0006
 
 ;; 1b:5132:r_op LOW(call_1c_5098)
@@ -2414,79 +2639,103 @@
 ;; 1b:5231:r_op HIGH(call_01_4a49)
 ;; 1b:523a:r_op BANK(call_01_4a49)
 
-1b:52d8 save_progress_strings
+1b:52d8 data_save_progress_strings
+1b:52d8 data_save_progress_saving_string
 1b:52d8 .text:000a
+1b:52e2 data_save_progress_fail_string_1
 1b:52e2 .text:0006
+1b:52e8 data_save_progress_out_of_memory_string
 1b:52e8 .text:000f
+1b:52f7 data_save_progress_ok_string
 1b:52f7 .text:0006
+1b:52fd data_save_progress_fail_string_2
 1b:52fd .text:0006
 
 1b:53e8 call_1b_53e8
 
-1b:5707 font_1_name
+1b:5707 data_font_1_name_string
 1b:5707 .text:0005
-1b:570c font_2_name
+1b:570c data_font_2_name_string
 1b:570c .text:0005
-1b:5711 font_3_name
+1b:5711 data_font_3_name_string
 1b:5711 .text:0005
 
-1b:5716 dmg_palette_1_name
+1b:5716 data_dmg_palette_1_name_string
 1b:5716 .text:0005
-1b:571b dmg_palette_2_name
+1b:571b data_dmg_palette_2_name_string
 1b:571b .text:0005
-1b:5720 dmg_palette_3_name
+1b:5720 data_dmg_palette_3_name_string
 1b:5720 .text:0005
-1b:5725 dmg_palette_4_name
+1b:5725 data_dmg_palette_4_name_string
 1b:5725 .text:0005
 
 1b:572a .data:000f
 
-1b:5739 palette_1_name
+1b:5739 data_palette_1_name_string
 1b:5739 .text:0005
-1b:573e palette_2_name
+1b:573e data_palette_2_name_string
 1b:573e .text:0005
-1b:5743 palette_3_name
+1b:5743 data_palette_3_name_string
 1b:5743 .text:0005
-1b:5748 palette_4_name
+1b:5748 data_palette_4_name_string
 1b:5748 .text:0005
-1b:574d palette_5_name
+1b:574d data_palette_5_name_string
 1b:574d .text:0005
-1b:5752 palette_6_name
+1b:5752 data_palette_6_name_string
 1b:5752 .text:0005
-1b:5757 palette_7_name
+1b:5757 data_palette_7_name_string
 1b:5757 .text:0005
 
 1b:575c .data:0026
 
-1b:59b7 project_screen_param_strings
+1b:59b7 data_project_screen_param_strings
+1b:59b7 data_off_project_screen_param_string
 1b:59b7 .text:0007
+1b:59be data_lsdj_project_screen_param_string
 1b:59be .text:0007
+1b:59c5 data_midi_project_screen_param_string
 1b:59c5 .text:0007
+1b:59cc data_keyboard_project_screen_param_string
 1b:59cc .text:0007
+1b:59d3 data_analog_in_project_screen_param_string
 1b:59d3 .text:0007
+1b:59da data_analog_out_project_screen_param_string
 1b:59da .text:0007
+1b:59e1 data_ps2_delay_project_screen_param_string
 1b:59e1 .text:000c
+1b:59ed data_ticks_project_screen_param_string
 1b:59ed .text:000c
+1b:59f9 data_empty_project_screen_param_string
 1b:59f9 .text:000e
 
-1b:5b56 prelisten_strings
+1b:5b56 data_prelisten_strings
+1b:5b56 data_prelisten_on_string
 1b:5b56 .text:0004
+1b:5b5a data_prelisten_off_string
 1b:5b5a .text:0004
+1b:5b5e data_prelisten_na_string
 1b:5b5e .text:0004
 
 1b:5b7a call_1b_5b7a
 
-1b:5d4f project_screen_strings
+1b:5d4f data_project_screen_strings_1
+1b:5d4f data_project_screen_deep_string_1
 1b:5d4f .text:0005
+1b:5d54 data_project_screen_slim_string_1
 1b:5d54 .text:0005
+1b:5d59 data_project_screen_load_save_string
 1b:5d59 .text:000f
+1b:5d68 data_project_screen_reset_memory_string
 1b:5d68 .text:000d
+1b:5d75 data_1b_5d75
 1b:5d75 .text:0007
 
 1b:5dbf call_1b_5dbf
 
-1b:5c03 stat_strings
+1b:5c03 data_stat_strings
+1b:5c03 data_play_stat_string
 1b:5c03 .text:0009
+1b:5c0c data_worked_stat_string
 1b:5c0c .text:000b
 
 1b:5c17 call_1b_5c17
@@ -2625,39 +2874,46 @@
 ;; 1b:6a36:r_op HIGH(call_02_7b9b)
 ;; 1b:6a39:r_op BANK(call_02_7b9b)
 
-1b:6a5c project_screen_strings_2
+1b:6a5c data_project_screen_strings_2
+1b:6a5c data_project_screen_slim_string_2
 1b:6a5c .text:0005
+1b:6a61 data_project_screen_deep_string_2
 1b:6a61 .text:0005
+1b:6a66 data_project_screen_reset_cartridge_string
 1b:6a66 .text:0011
+1b:6a77 data_project_screen_reset_cartridge_yes_string
 1b:6a77 .text:0004
+1b:6a7b data_project_screen_reset_cartridge_no_string
 1b:6a7b .text:0003
+1b:6a7e data_project_screen_reset_cartridge_complete_string
 1b:6a7e .text:000e
 
 1b:6b7a call_1b_6b7a
 
 1b:754f call_1b_754f
 
-1b:7570 bank_1b_padding
+1b:7570 data_bank_1b_padding
 ;; 1b:7570 1b:7570
 ;; 1b:7570:replace:0a90 ds $8000 - @, $ff
 
+1c:4047 data_1c_4047
 1c:4047 .data:0010
 
 1c:4057 call_1c_4057
 
 1c:40f2 call_1c_40f2
 
-1c:43b9 empty_string
+1c:43b9 data_empty_string_1
 1c:43b9 .text:0008
 
-1c:47a3 verify_string
+1c:47a3 data_verify_string
 1c:47a3 .text:000e
 
 1c:47b1 call_1c_47b1
 
 1c:4a46 call_1c_4a46
 
-1c:4c11 empty_string_2
+1c:4c11 data_empty_string_2
 1c:4c11 .text:0009
 
 1c:4e10 call_1c_4e10
@@ -2754,22 +3010,26 @@
 
 1c:6bd7 call_1c_6bd7
 
+1c:6dea data_1c_6dea
 1c:6dea .data:0070
 
 1c:6f75 call_1c_6f75
 
-1c:70a7 upgrading_string
+1c:70a7 data_upgrading_string
 1c:70a7 .text:0010
 
 1c:717c call_1c_717c
 
 1c:72bf call_1c_72bf
 
-1c:7582 bank_1c_padding
+1c:7582 data_bank_1c_padding
 ;; 1c:7582 1c:7582
 ;; 1c:7582:replace:0a7e ds $8000 - @, $ff
 
-1d:41f6 .data:000c
+1d:41f6 data_1d_41f6
+1d:41f6 .text:0007
+1d:41fd data_1d_41fd
+1d:41fd .text:0005
 
 1d:4202 call_1d_4202
 
@@ -2895,12 +3155,12 @@
 ;; 1d:7cfd:r_op HIGH(call_1c_717c)
 ;; 1d:7d00:r_op BANK(call_1c_717c)
 
-1d:7d92 copied_synth_string
+1d:7d92 data_copied_synth_string
 1d:7d92 .text:000d
-1d:7d9f pasted_synth_string
+1d:7d9f data_pasted_synth_string
 1d:7d9f .text:000d
 
-1d:7ddf bank_1d_padding
+1d:7ddf data_bank_1d_padding
 ;; 1d:7ddf 1d:7ddf
 ;; 1d:7ddf:replace:0221 ds $8000 - @, $ff
 
@@ -2909,6 +3169,7 @@
 1e:432a tileset
 1e:432a .image:0300:w64
 
+1e:462a data_1e_462a
 1e:462a .data:0082
 
 1e:46ac font_3_content
@@ -2923,22 +3184,28 @@
 
 1e:7aa0 call_1e_7aa0
 
-1e:7bab bank_1e_padding
+1e:7bab data_bank_1e_padding
 ;; 1e:7bab 1e:7bab
 ;; 1e:7bab:replace:0455 ds $8000 - @, $ff
 
 1f:4000 call_1f_4000
 
+1f:408d data_instrument_table_type_strings
+1f:408d data_step_instrument_table_type_string
 1f:408d .text:0005
+1f:4092 data_tick_instrument_table_type_string
 1f:4092 .text:0005
-1f:4097 .data:0001
-1f:4098 .text:0004
+1f:4097 data_off_instrument_table_type_string
+1f:4097 .text:0005
 
 1f:409c call_1f_409c
 
-1f:4113 kit_loop_type_strings
+1f:4113 data_kit_loop_type_strings
+1f:4113 data_attack_kit_loop_type_string
 1f:4113 .text:0004
+1f:4117 data_on_kit_loop_type_string
 1f:4117 .text:0004
+1f:411b data_off_kit_loop_type_string
 1f:411b .text:0004
 
 1f:4157 call_1f_4157
@@ -2955,8 +3222,10 @@
 ;; 1f:4316:r_op HIGH(call_01_522d)
 ;; 1f:431e:r_op BANK(call_01_522d)
 
-1f:438f instrument_length_strings
+1f:438f data_instrument_length_strings
+1f:438f data_unlim_instrument_length_string
 1f:438f .text:0006
+1f:4395 data_empty_instrument_length_string
 1f:4395 .text:0004
 
 1f:4399 call_1f_4399
@@ -2969,10 +3238,14 @@
 ;; 1f:445e:r_op HIGH(call_01_522d)
 ;; 1f:4466:r_op BANK(call_01_522d)
 
-1f:44a3 noise_instrument_param_strings
+1f:44a3 data_noise_instrument_param_strings
+1f:44a3 data_unlim_noise_instrument_param_string
 1f:44a3 .text:0006
+1f:44a9 data_empty_noise_instrument_param_string
 1f:44a9 .text:0004
+1f:44ad data_safe_noise_instrument_param_string
 1f:44ad .text:0005
+1f:44b2 data_free_noise_instrument_param_string
 1f:44b2 .text:0005
 
 1f:44dd call_1f_44dd
@@ -2985,9 +3258,13 @@
 ;; 1f:4713:r_op HIGH(call_01_518c)
 ;; 1f:471b:r_op BANK(call_01_518c)
 
+1f:473e data_1f_473e
 1f:473e .text:0004
+1f:4742 data_1f_4742
 1f:4742 .text:0004
+1f:4746 data_1f_4746
 1f:4746 .text:0004
+1f:474a data_1f_474a
 1f:474a .text:0004
 
 1f:474e call_1f_474e
@@ -3017,6 +3294,7 @@
 
 1f:48c4 call_1f_48c4
 
+1f:4919 data_1f_4919
 1f:4919 .data:0010
 
 1f:4929 call_1f_4929
@@ -3075,26 +3353,42 @@
 
 1f:6278 call_1f_6278
 
-1f:6318 dedup_song_strings
+1f:6318 data_dedup_song_strings
+1f:6318 data_dedup_song_title_string
 1f:6318 .text:000b
+1f:6323 data_dedup_song_freeing_string
 1f:6323 .text:0009
+1f:632c data_dedup_song_chains_string
 1f:632c .text:000b
+1f:6337 data_1f_6337
 1f:6337 .text:0003
+1f:633a data_dedup_song_phrases_string
 1f:633a .text:000b
+1f:6345 data_1f_6345
 1f:6345 .text:0003
+1f:6348 data_dedup_song_ok_string
 1f:6348 .text:0004
 
 1f:634c call_1f_634c
 
-1f:63e8 dedup_instruments_strings
+1f:63e8 data_dedup_instruments_strings
+1f:63e8 data_dedup_instruments_title_string
 1f:63e8 .text:000b
+1f:63f3 data_dedup_instruments_freeing_string
 1f:63f3 .text:0009
+1f:63fc data_dedup_instruments_instruments_string
 1f:63fc .text:000b
+1f:6407 data_1f_6407
 1f:6407 .text:0003
+1f:640a data_dedup_instruments_tables_string
 1f:640a .text:000b
+1f:6415 data_1f_6415
 1f:6415 .text:0003
+1f:6418 data_dedup_instruments_synths_string
 1f:6418 .text:000b
+1f:6423 data_1f_6423
 1f:6423 .text:0003
+1f:6426 data_dedup_instruments_ok_string
 1f:6426 .text:0004
 
 1f:642a call_1f_642a
@@ -3129,13 +3423,21 @@
 
 1f:6e7d call_1f_6e7d
 
-1f:6fd7 .data:0008
+1f:6fd7 data_1f_6fd7
+1f:6fd7 .data:0004
+1f:6fdb data_1f_6fdb
+1f:6fdb .data:0004
 
-1f:6fdf song_screen_instrument_window_strings
+1f:6fdf data_song_screen_instrument_window_strings
+1f:6fdf data_song_screen_instrument_window_mute_string
 1f:6fdf .text:0005
+1f:6fe4 data_song_screen_instrument_window_l_string
 1f:6fe4 .text:0002
+1f:6fe6 data_song_screen_instrument_window_r_string
 1f:6fe6 .text:0002
+1f:6fe8 data_song_screen_instrument_window_channels_string
 1f:6fe8 .text:0005
+1f:6fed data_song_screen_instrument_window_empty_string
 1f:6fed .text:0004
 
 1f:6ff1 call_1f_6ff1
@@ -3154,7 +3456,7 @@
 ;; 1f:70b2:r_op HIGH(call_03_45d0)
 ;; 1f:70b5:r_op BANK(call_03_45d0)
 
-1f:71be type_speech_string
+1f:71be data_type_speech_string
 1f:71be .text:000e
 
 1f:71cc call_1f_71cc
@@ -3189,14 +3491,14 @@
 ;; 1f:775d:r_op HIGH(call_02_7b9b)
 ;; 1f:7760:r_op BANK(call_02_7b9b)
 
-1f:7774 copied_word_string
+1f:7774 data_copied_word_string
 1f:7774 .text:000c
-1f:7780 cut_word_string
+1f:7780 data_cut_word_string
 1f:7780 .text:0009
-1f:7789 pasted_word_string
+1f:7789 data_pasted_word_string
 1f:7789 .text:000c
 
-1f:7795 bank_1f_padding
+1f:7795 data_bank_1f_padding
 ;; 1f:7795 1f:7795
 ;; 1f:7795:replace:086c ds $8000 - @, $ff
 
