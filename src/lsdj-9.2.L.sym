@@ -2790,7 +2790,7 @@
 ;; 07:5668:r_op call_05_73b8
 ;; 07:566c:r_op BANK(call_05_73b8)
 
-07:56c0 data_cancel_select_string_1
+07:56c0 data_song_screen_cancel_select_string
 07:56c0 .text:000e
 07:56ce data_select_slim_clone_string
 07:56ce .text:0015
