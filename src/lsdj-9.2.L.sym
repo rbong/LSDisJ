@@ -2642,6 +2642,10 @@
 06:77b9 data_invalid_note_string_2
 06:77b9 .text:0004
 
+06:787b data_bank_06_padding
+;; 06:787b 06:787b
+;; 06:787b:replace:0785 ds $8000 - @, $ff
+
 07:403f data_07_403f
 07:403f .data:0008
 
@@ -3067,6 +3071,9 @@
 1b:59ed .text:000c
 1b:59f9 data_empty_project_screen_param_string
 1b:59f9 .text:000e
+
+1b:5b06 data_1b_5b06
+1b:5b06 .text:0003
 
 1b:5b56 data_prelisten_strings
 1b:5b56 data_prelisten_on_string
