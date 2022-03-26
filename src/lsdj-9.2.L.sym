@@ -77,8 +77,10 @@
 00:014d HeaderComplementCheck
 ;; 00:014d Checksums automatically calculated with rgbfix
 00:014d .data:0001
-00:014e HeaderGlobalChecksum
-00:014e .data:0002
+00:014e HeaderGlobalChecksum_1
+00:014e .data:0001
+00:014f HeaderGlobalChecksum_2
+00:014f .data:0001
 
 00:0150 code_start
 ;; 00:0150 gbdk 2.95 libc/gb/crt0.s:.code_start (with modifications)
