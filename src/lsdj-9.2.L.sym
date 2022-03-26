@@ -4045,9 +4045,9 @@
 ;; 00:c402 0x05: table screen
 ;; 00:c402 0x06: instrument screen
 ;; 00:c402 0x07: crash screen
-;; 00:c402 0x08: synth screen
+;; 00:c402 0x08: wave editor screen
 ;; 00:c402 0x09: project screen
-;; 00:c402 0x0a: wave editor screen
+;; 00:c402 0x0a: synth screen
 ;; 00:c402 0x0b: talk screen
 ;; 00:c402 0x0c: word screen
 ;; 00:c402 0x0d: file screen
