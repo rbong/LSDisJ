@@ -292,6 +292,9 @@
 
 00:17bb call_00_17bb
 
+00:1b58 data_00_1b58
+00:1b58 .data:0002
+
 00:1c33 call_00_1c33
 
 00:1c71 call_00_1c71
@@ -309,6 +312,9 @@
 ;; 00:1e16:r_op BANK(call_02_7b9b)
 ;; 00:1e1d:r_op BANK(call_02_7b9b)
 ;; 00:1e1f:l_op call_02_7b9b
+
+00:1e27 data_00_1e27
+00:1e27 .text:0005
 
 ;; 00:1e3a:r_op BANK(call_02_7b9b)
 ;; 00:1e41:r_op BANK(call_02_7b9b)
@@ -494,6 +500,15 @@
 ;; 00:2b33:r_op BANK(call_1b_4bc3)
 ;; 00:2b35:l_op call_1b_4bc3
 
+00:2c48 data_00_2c48
+00:2c48 .data:0004
+00:2c4c data_00_2c4c
+00:2c4c .data:0004
+00:2c50 data_00_2c50
+00:2c50 .data:0004
+00:2c54 data_00_2c54
+00:2c54 .data:0003
+
 00:2c57 call_00_2c57
 
 00:2c79 call_00_2c79
@@ -508,13 +523,36 @@
 00:2cd1 data_wave_channel_label_string
 00:2cd1 .text:0004
 
+00:2d25 data_00_2d25
+00:2d25 .data:0003
+00:2d28 data_00_2d28
+00:2d28 .data:0003
+00:2d2b data_00_2d2b
+00:2d2b .data:0003
+00:2d2e data_00_2d2e
+00:2d2e .data:0003
+
 00:2d31 call_00_2d31
+
+00:2dd7 data_00_2dd7
+00:2dd7 .data:0003
+00:2dda data_00_2dda
+00:2dda .data:0003
+00:2ddd data_00_2ddd
+00:2ddd .data:0003
+00:2de0 data_00_2de0
+00:2de0 .data:0003
+00:2de3 data_00_2de3
+00:2de3 .data:0003
 
 00:2de6 call_00_2de6
 
 00:2e22 call_00_2e22
 
 00:2f26 call_00_2f26
+
+00:2faf data_00_2faf
+00:2faf .data:0010
 
 00:313e call_00_313e
 
@@ -1049,6 +1087,17 @@
 ;; 00:3de7 00:3de7
 ;; 00:3de7:replace:0219 ds $4000 - @, $ff
 
+01:40ea data_01_40ea
+01:40ea .data:0010
+01:40fa data_01_40fa
+01:40fa .data:00d8
+01:41d2 data_01_41d2
+01:41d2 .data:00d8
+01:42aa data_01_42aa
+01:42aa .data:00d8
+01:4382 data_01_4382
+01:4382 .data:00d8
+
 01:4487 call_01_4487
 
 ;; 01:44aa:r_op LOW(call_00_1f8c)
@@ -1057,30 +1106,33 @@
 
 01:45d1 call_01_45d1
 
-01:4557 cart_test_title_string
+01:4557 data_cart_test_title_string
 01:4557 .text:000f
-01:4566 cart_test_rom_string
+01:4566 data_cart_test_rom_string
 01:4566 .text:0007
-01:456d cart_test_rom_ok_string
+01:456d data_cart_test_rom_ok_string
 01:456d .text:0004
-01:4571 cart_test_rom_fail_string
+01:4571 data_cart_test_rom_fail_string
 01:4571 .text:0006
-01:4577 cart_test_rom_error_1_string
+01:4577 data_cart_test_rom_error_1_string
 01:4577 .text:0012
-01:4589 cart_test_rom_error_2_string
+01:4589 data_cart_test_rom_error_2_string
 01:4589 .text:0010
-01:4599 cart_test_sram_string
+01:4599 data_cart_test_sram_string
 01:4599 .text:0008
-01:45a1 cart_test_sram_ok_string
+01:45a1 data_cart_test_sram_ok_string
 01:45a1 .text:0004
-01:45a5 cart_test_sram_fail_string
+01:45a5 data_cart_test_sram_fail_string
 01:45a5 .text:0006
-01:45ab cart_test_sram_error_1_string
+01:45ab data_cart_test_sram_error_1_string
 01:45ab .text:0012
-01:45bd cart_test_sram_error_2_string
+01:45bd data_cart_test_sram_error_2_string
 01:45bd .text:0014
 
 01:493b call_01_493b
+
+01:4a44 data_speech_screen_title_string
+01:4a44 .text:0005
 
 01:4a49 call_01_4a49
 
@@ -1120,6 +1172,11 @@
 
 01:50a0 call_01_50a0
 
+01:5099 data_01_5099
+01:5099 .text:0004
+01:509d data_01_509d
+01:509d .text:0003
+
 01:518c call_01_518c
 
 01:51ee data_01_51ee
@@ -1139,6 +1196,11 @@
 
 01:522d call_01_522d
 
+01:524b data_01_524b
+01:524b .text:0004
+01:524f data_01_524f
+01:524f .text:0004
+
 01:5253 call_01_5253
 
 ;; 01:52ce:r_op LOW(call_1c_717c)
@@ -1147,6 +1209,9 @@
 
 01:52de data_copied_instrument_string
 01:52de .text:000d
+
+01:532c data_01_532c
+01:532c .data:0005
 
 01:5331 call_01_5331
 
@@ -1170,6 +1235,39 @@
 
 01:55d4 data_pasted_instrument_string
 01:55d4 .text:000d
+
+01:56bf data_01_56bf
+01:56bf .data:0118
+01:57d7 data_01_57d7
+01:57d7 .data:0168
+01:593f data_01_593f
+01:593f .data:0168
+01:5aa7 data_01_5aa7
+01:5aa7 .data:0168
+01:5c0f data_01_5c0f
+01:5c0f .data:0168
+01:5d77 data_01_5d77
+01:5d77 .data:0168
+01:5edf data_01_5edf
+01:5edf .data:0168
+01:6047 data_01_6047
+01:6047 .data:0168
+01:61af data_01_61af
+01:61af .data:0168
+01:6317 data_01_6317
+01:6317 .data:0168
+01:647f data_01_647f
+01:647f .data:0168
+01:65e7 data_01_65e7
+01:65e7 .data:0168
+01:674f data_01_674f
+01:674f .data:0168
+01:68b7 data_01_68b7
+01:68b7 .data:0168
+01:6a1f data_01_6a1f
+01:6a1f .data:0168
+01:6b87 data_01_6b87
+01:6b87 .data:0168
 
 01:6cef call_01_6cef
 
@@ -1300,6 +1398,9 @@
 
 01:7881 call_01_7881
 
+01:794e data_01_794e
+01:794e .text:0006
+
 01:7954 jump_01_7954
 
 01:7b88 data_crash_help_strings
@@ -1359,9 +1460,18 @@
 ;; 01:7f0c 01:7f0c
 ;; 01:7f0c:replace:00f4 ds $8000 - @, $ff
 
+02:43d8 data_02_43d8
+02:43d8 .data:0200
+
 02:4679 call_02_4679
 
+02:47a2 data_02_47a2
+02:47a2 .data:009d
+
 02:5534 call_02_5534
+
+02:5ea4 data_02_5ea4
+02:5ea4 .data:0078
 
 02:5f28 call_02_5f28
 
@@ -1377,6 +1487,9 @@
 ;; 02:663f:r_op HIGH(call_07_5d9a)
 ;; 02:6642:r_op BANK(call_07_5d9a)
 
+02:68dc data_02_68dc
+02:68dc .data:0008
+
 02:6d31 call_02_6d31
 
 02:6d46 call_02_6d46
@@ -1391,13 +1504,31 @@
 
 02:7b9b call_02_7b9b
 
+02:7cd0 data_02_7cd0
+02:7cd0 .data:012b
+02:7dfb data_02_7dfb
+02:7dfb .data:0078
+
 02:7eb9 data_bank_02_padding
 ;; 02:7eb9 02:7eb9
 ;; 02:7eb9:replace:0147 ds $8000 - @, $ff
 
 03:4015 data_03_4015
-;; 03:4015 Possibly instrument label data
-03:4015 .data:00e3
+03:4015 .data:0010
+03:4025 data_03_4025
+03:4025 .data:0006
+03:402b data_03_402b
+03:402b .data:001b
+03:4046 data_03_4046
+03:4046 .data:0028
+03:406e data_03_406e
+03:406e .data:001b
+03:4089 data_03_4089
+03:4089 .data:0028
+03:40b1 data_03_40b1
+03:40b1 .data:0043
+03:40f4 data_03_40f4
+03:40f4 .data:0004
 
 ;; 03:4266:r_op LOW(call_01_522d)
 ;; 03:4268:r_op HIGH(call_01_522d)
@@ -1482,6 +1613,9 @@
 
 03:49e0 call_03_49e0
 
+03:4a0d data_03_4a0d
+03:4a0d .text:0003
+
 03:4a26 call_03_4a26
 
 03:4a63 call_03_4a63
@@ -1495,6 +1629,18 @@
 ;; 03:4bc0 Assume the bank of call_01_518c is the same as call_01_5208
 ;; 03:4bc0:r_op BANK(call_01_5208)
 ;; 03:4bc4 Call either call_01_518c or call_01_5208
+
+03:4ad3 data_instrument_distortion_type_strings
+03:4ad3 data_hard_instrument_distortion_type_string
+03:4ad3 .text:0006
+03:4ad9 data_soft_instrument_distortion_type_string
+03:4ad9 .text:0006
+03:4adf data_fold_instrument_distortion_type_string
+03:4adf .text:0006
+03:4ae5 data_wrap_instrument_distortion_type_string
+03:4ae5 .text:0006
+03:4aeb data_extra_instrument_distortion_type_prefix_string
+03:4aeb .text:0003
 
 ;; 03:4c6a:r_op LOW(call_01_518c)
 ;; 03:4c6c:r_op HIGH(call_01_518c)
@@ -1558,6 +1704,12 @@
 
 ;; 03:5275:r_op call_1f_418a
 ;; 03:5279:r_op BANK(call_1f_418a)
+
+03:52da data_03_52da
+03:52da .text:0004
+
+03:5395 data_03_5395
+03:5395 .text:0004
 
 03:53fd call_03_53fd
 
@@ -1667,6 +1819,11 @@
 
 04:41f0 call_04_41f0
 
+04:429e data_04_429e
+04:429e .data:0005
+04:42a3 data_04_42a3
+04:42a3 .data:0005
+
 ;; 04:42d0:r_op LOW(call_1f_4a64)
 ;; 04:42d2:r_op HIGH(call_1f_4a64)
 ;; 04:42d7:r_op BANK(call_1f_4a64)
@@ -1681,11 +1838,17 @@
 
 04:49c5 call_04_49c5
 
+04:4c10 data_04_4c10
+04:4c10 .text:0004
+
 ;; 04:4c9a:r_op LOW(call_1f_6cd7)
 ;; 04:4c9c:r_op HIGH(call_1f_6cd7)
 ;; 04:4c9f:r_op BANK(call_1f_6cd7)
 
 04:4caa call_04_4caa
+
+04:4ce1 data_04_4ce1
+04:4ce1 .text:0004
 
 04:4ce5 call_04_4ce5
 
@@ -1708,6 +1871,23 @@
 ;; 04:50c8:r_op HIGH(call_1e_4000)
 ;; 04:50cb:r_op BANK(call_1e_4000)
 
+04:50d8 data_04_50d8
+04:50d8 .data:000d
+04:50e5 data_04_50e5
+04:50e5 .data:000d
+04:50f2 data_04_50f2
+04:50f2 .data:000d
+
+04:50ff data_04_50ff
+04:50ff .text:0004
+04:5103 data_04_5103
+04:5103 .text:0003
+04:5106 data_04_5106
+04:5106 .text:0004
+
+04:548d data_04_548d
+04:548d .text:0006
+
 ;; 04:54bd:r_op LOW(call_01_493b)
 ;; 04:54bf:r_op HIGH(call_01_493b)
 ;; 04:54c7:r_op BANK(call_01_493b)
@@ -1715,6 +1895,9 @@
 ;; 04:54d0:r_op LOW(call_01_4a49)
 ;; 04:54d2:r_op HIGH(call_01_4a49)
 ;; 04:54da:r_op BANK(call_01_4a49)
+
+04:54e5 data_04_54e5
+04:54e5 .data:0050
 
 ;; 04:5550:r_op LOW(call_1f_4a64)
 ;; 04:5552:r_op HIGH(call_1f_4a64)
@@ -1892,6 +2075,11 @@
 
 05:4040 call_05_4040
 
+05:4160 data_05_4160
+05:4160 .text:0003
+05:4163 data_05_4163
+05:4163 .text:0004
+
 05:4233 call_05_4233
 
 05:4253 call_05_4253
@@ -1899,6 +2087,11 @@
 05:426a call_05_426a
 
 05:4287 call_05_4287
+
+05:42d5 data_05_42d5
+05:42d5 .data:0006
+05:42db data_05_42db
+05:42db .data:000c
 
 05:43b7 call_05_43b7
 
@@ -1961,6 +2154,9 @@
 05:6413 .text:0004
 05:6417 data_table_screen_copy_string
 05:6417 .text:0005
+
+05:66dd data_05_66dd
+05:66dd .text:0006
 
 05:6936 call_05_6936
 
@@ -2060,6 +2256,9 @@
 ;; 05:7427 05:7427
 ;; 05:7427:replace:0bd9 ds $8000 - @, $ff
 
+06:4022 data_06_4022
+06:4022 .data:0004
+
 06:41a2 call_06_41a2
 
 ;; 06:41a5:r_op LOW(call_01_6d5c)
@@ -2138,11 +2337,20 @@
 06:5411 data_wave_screen_copy_string
 06:5411 .text:0005
 
+06:549e data_06_549e
+06:549e .text:0006
+
+06:54b9 data_06_54b9
+06:54b9 .data:0002
+
 ;; 06:54c5:r_op LOW(call_02_6e87)
 ;; 06:54c7:r_op HIGH(call_02_6e87)
 ;; 06:54d7:r_op BANK(call_02_6e87)
 
 06:55d0 call_06_55d0
+
+06:55fc data_06_55fc
+06:55fc .text:0003
 
 06:55ff call_06_55ff
 
@@ -2162,6 +2370,9 @@
 ;; 06:59ed:r_op LOW(call_1f_6ff1)
 ;; 06:59ef:r_op HIGH(call_1f_6ff1)
 ;; 06:59f2:r_op BANK(call_1f_6ff1)
+
+06:59ff data_06_59ff
+06:59ff .text:0004
 
 06:5a03 call_06_5a03
 
@@ -2269,6 +2480,9 @@
 
 06:7235 call_06_7235
 
+06:732d data_06_732d
+06:732d .text:0004
+
 06:73c6 data_sync_strings_1
 06:73c6 data_wait_sync_string_1
 06:73c6 .text:0005
@@ -2296,6 +2510,9 @@
 06:748b .text:005
 06:7490 data_empty_sync_string_4
 06:7490 .text:005
+
+06:7517 data_06_7517
+06:7517 .data:0014
 
 06:752b call_06_752b
 
@@ -2328,6 +2545,12 @@
 06:77b5 .text:0004
 06:77b9 data_invalid_note_string_2
 06:77b9 .text:0004
+
+07:403f data_07_403f
+07:403f .data:0008
+
+07:4047 data_07_4047
+07:4047 .data:0004
 
 ;; 07:413c:r_op call_05_73f6
 ;; 07:4140:r_op BANK(call_05_73f6)
@@ -2376,6 +2599,12 @@
 ;; 07:42fc:r_op HIGH(call_06_55ff)
 ;; 07:430a:r_op BANK(call_06_55ff)
 
+07:4351 data_clone_chain_strings
+07:4351 data_cloned_chain_string
+07:4351 .text:000d
+07:435e data_cloned_chain_phrases_string
+07:435e .text:0015
+
 07:4552 call_07_4552
 
 ;; 07:4553:r_op LOW(call_01_6d5c)
@@ -2390,6 +2619,9 @@
 ;; 07:462a:r_op BANK(call_05_4040)
 
 07:4788 call_07_4788
+
+07:4908 data_07_4908
+07:4908 .text:0003
 
 ;; 07:4a9f:r_op call_05_73b8
 ;; 07:4aa3:r_op BANK(call_05_73b8)
@@ -2458,10 +2690,30 @@
 ;; 07:5668:r_op call_05_73b8
 ;; 07:566c:r_op BANK(call_05_73b8)
 
+07:56c0 data_cancel_select_string_1
+07:56c0 .text:000e
+07:56ce data_select_slim_clone_string
+07:56ce .text:0015
+07:56e3 data_select_deep_clone_string
+07:56e3 .text:0015
+
+07:5919 data_cut_chains_string
+07:5919 .text:000b
+07:5924 data_copied_chains_string
+07:5924 .text:000e
+
+07:5ad1 data_pasted_chains_string
+07:5ad1 .text:000e
+
 07:5d7a data_07_5d7a
 07:5d7a .data:0020
 
 07:5d9a call_07_5d9a
+
+07:5e0b data_00_5e0b
+07:5e0b .data:0200
+07:600b data_07_600b
+07:600b .data:0200
 
 ;; 07:6353:r_op LOW(call_01_763e)
 ;; 07:6355:r_op HIGH(call_01_763e)
@@ -2470,6 +2722,11 @@
 07:63ff call_07_63ff
 
 07:6505 call_07_6505
+
+07:65ec data_07_65ec
+07:65ec .data:0080
+07:666c data_07_666c
+07:666c .data:0080
 
 07:66fe digits_2
 ;; 07:66fe gbdk 2.95 libc/gb/digits.c:digits
@@ -2545,6 +2802,9 @@
 ;; 07:741a 07:741a
 ;; 07:741a:replace:0be6 ds $8000 - @, $ff
 
+1b:4058 data_1b_4058
+1b:4058 .data:0040
+
 1b:4098 data_help_page_index_strings
 1b:4098 data_title_help_page_index_string
 1b:4098 .text:000f
@@ -2602,6 +2862,9 @@
 ;; 1b:4a63:r_op LOW(call_01_6cef)
 ;; 1b:4a65:r_op HIGH(call_01_6cef)
 ;; 1b:4a68:r_op BANK(call_01_6cef)
+
+1b:4baf data_1b_4baf
+1b:4baf .data:0014
 
 1b:4bc3 call_1b_4bc3
 
@@ -2891,6 +3154,11 @@
 
 1b:6b7a call_1b_6b7a
 
+1b:6c38 data_1b_6c38
+1b:6c38 .data:03c6
+1b:6ffe data_1b_6ffe
+1b:6ffe .data:00ba
+
 1b:754f call_1b_754f
 
 1b:7570 data_bank_1b_padding
@@ -2919,6 +3187,9 @@
 
 1c:4e10 call_1c_4e10
 
+1c:5092 data_1c_5092
+1c:5092 .data:0006
+
 1c:5098 call_1c_5098
 
 ;; 1c:526d:r_op LOW(call_01_45d1)
@@ -2929,13 +3200,14 @@
 ;; 1c:531c:r_op HIGH(call_01_7c94)
 ;; 1c:531e:r_op BANK(call_01_7c94)
 
-1c:534e loading_progress_strings
+1c:534e data_loading_progress_string
 1c:534e .text:000d
+1c:535b data_loading_fail_string
 1c:535b .text:0006
 
 1c:5597 call_1c_5597
 
-1c:57ac empty_string_3
+1c:57ac data_empty_string_3
 1c:57ac .text:000f
 
 1c:57bb call_1c_57bb
@@ -2944,12 +3216,18 @@
 ;; 1c:57be:r_op HIGH(call_01_6d5c)
 ;; 1c:57c1:r_op BANK(call_01_6d5c)
 
-1c:589a file_screen_strings
+1c:589a data_file_screen_strings
+1c:589a data_file_screen_load_string
 1c:589a .text:0005
+1c:589f data_file_screen_save_string
 1c:589f .text:0005
+1c:58a4 data_file_screen_erase_string
 1c:58a4 .text:0006
+1c:58aa data_file_screen_blocks_used_string
 1c:58aa .text:0011
+1c:58bb data_1c_58bb
 1c:58bb .text:0003
+1c:58be data_1c_58be
 1c:58be .text:0003
 
 1c:59e6 call_1c_59e6
@@ -2971,14 +3249,27 @@
 ;; 1c:5dda:r_op BANK(call_01_6cef)
 
 1c:602f erase_file_strings
+1c:602d data_1c_602d
+1c:602d .data:0002
+
+1c:602f data_erase_file_strings
+1c:602f data_file_erased_string
 1c:602f .text:000d
+1c:603c data_erase_file_confirm_1_string
 1c:603c .text:0010
+1c:604c data_erase_file_confirm_2_string
 1c:604c .text:0011
+1c:605d data_erase_file_yes_string_1
 1c:605d .text:0004
+1c:6061 data_erase_file_no_string_1
 1c:6061 .text:0003
+1c:6064 data_erase_file_empty_string
 1c:6064 .text:0008
+1c:606c data_erase_file_confirm_3_string
 1c:606c .text:0007
+1c:6073 data_erase_file_yes_string_2
 1c:6073 .text:0004
+1c:6077 data_erase_file_no_string_2
 1c:6077 .text:0003
 
 1c:60e2 call_1c_60e2
@@ -3005,6 +3296,9 @@
 ;; 1c:6628:r_op call_06_55ff
 ;; 1c:662c:r_op BANK(call_06_55ff)
 
+1c:689f data_1c_689f
+1c:689f .data:0008
+
 1c:6a20 call_1c_6a20
 
 1c:6a9a call_1c_6a9a
@@ -3023,9 +3317,18 @@
 
 1c:72bf call_1c_72bf
 
+1c:73eb data_1c_73eb
+1c:73eb .data:000f
+
+1c:741d data_1c_741d
+1c:741d .data:000f
+
 1c:7582 data_bank_1c_padding
 ;; 1c:7582 1c:7582
 ;; 1c:7582:replace:0a7e ds $8000 - @, $ff
+
+1d:4058 data_1d_4058
+1d:4058 .data:0002
 
 1d:41f6 data_1d_41f6
 1d:41f6 .text:0007
@@ -3043,6 +3346,9 @@
 ;; 1d:4232:r_op BANK(call_1f_6ff1)
 
 1d:423d call_1d_423d
+
+1d:4382 data_1d_4382
+1d:4382 .text:0003
 
 1d:43f7 call_1d_43f7
 
@@ -3070,45 +3376,82 @@
 ;; 1d:4b63:r_op call_05_73b8
 ;; 1d:4b67:r_op BANK(call_05_73b8)
 
-1d:4b8d cancel_select_string_5
+1d:4b8d data_cancel_select_string_2
 1d:4b8d .text:000e
-1d:4b9b select_string_5
+1d:4b9b data_select_string
 1d:4b9b .text:0007
 
 ;; 1d:4c4e:r_op LOW(call_1c_717c)
 ;; 1d:4c50:r_op HIGH(call_1c_717c)
 ;; 1d:4c53:r_op BANK(call_1c_717c)
 
-1d:4c61 cut_string_3
+1d:4c61 data_cut_string
 1d:4c61 .text:0004
-1d:4c65 copy_string_4
+1d:4c65 data_copy_string
 1d:4c65 .text:0005
 
-1d:4cdf paste_string_2
+1d:4cdf data_paste_string
 1d:4cdf .text:0006
 
 1d:4d5f call_1d_4d5f
 
+1d:4ef7 data_1d_4ef7
+1d:4ef7 .data:0200
+1d:50f7 data_1d_50f7
+1d:50f7 .data:00a0
+
 1d:603c call_1d_603c
 
-1d:62fc resync_type_strings
+1d:60ec data_1d_60ec
+1d:60ec .data:0030
+
+1d:62fc data_resync_type_strings
+1d:62fc data_pinch_resync_type_string
 1d:62fc .text:0007
+1d:6303 data_warp_resync_type_string
 1d:6303 .text:0007
+1d:630a data_default_resync_type_string
 1d:630a .text:0007
+1d:6311 data_resync2_resync_type_string
 1d:6311 .text:0007
 
-1d:63f7 filter_type_strings
+1d:63f7 data_filter_type_strings
+1d:63f7 data_empty_filter_type_string
 1d:63f7 .text:0006
+1d:63fd data_lowpass_filter_type_string
 1d:63fd .text:0006
+1d:6403 data_highpass_filter_type_string
 1d:6403 .text:0006
+1d:6409 data_bandpass_filter_type_string
 1d:6409 .text:0006
+1d:640f data_allpass_filter_type_string
 1d:640f .text:0006
+1d:6415 data_notch_filter_type_string
 1d:6415 .text:0006
 
-1d:65ba distortion_type_strings
+1d:6490 data_1d_6490
+1d:6490 .data:0005
+1d:6495 data_1d_6495
+1d:6495 .data:0005
+1d:649a data_1d_649a
+1d:649a .data:0005
+1d:649f data_1d_649f
+1d:649f .data:0004
+1d:64a3 data_1d_64a3
+1d:64a3 .data:0003
+
+1d:65ba data_distortion_type_strings
+1d:65ba data_clip_distortion_type_string
 1d:65ba .text:0005
+1d:65bf data_fold_distortion_type_string
 1d:65bf .text:0005
+1d:65c4 data_wrap_distortion_type_string
 1d:65c4 .text:0005
+
+1d:68ac data_1d_68ac
+1d:68ac .text:0003
+1d:68af data_1d_68af
+1d:68af .text:0003
 
 ;; 1d:68cf:r_op LOW(call_01_6d5c)
 ;; 1d:68d1:r_op HIGH(call_01_6d5c)
@@ -3123,11 +3466,16 @@
 
 1d:68b2 call_1d_68b2
 
-1d:6de4 hand_drawn_waves_warning_strings
+1d:6de4 data_hand_drawn_waves_warning_strings
+1d:6de4 data_hand_drawn_waves_warning_1_string
 1d:6de4 .text:000a
+1d:6dee data_hand_drawn_waves_warning_2_string
 1d:6dee .text:000b
+1d:6df9 data_hand_drawn_waves_warning_3_string
 1d:6df9 .text:0007
+1d:6e00 data_hand_drawn_waves_warning_yes_string
 1d:6e00 .text:0004
+1d:6e04 data_hand_drawn_waves_warning_no_string
 1d:6e04 .text:0003
 
 1d:713f call_1d_713f
@@ -3167,6 +3515,9 @@
 
 1e:4000 call_1e_4000
 
+1e:42c8 data_1e_42c8
+1e:42c8 .data:0062
+
 1e:432a tileset
 1e:432a .image:0300:w64
 
@@ -3175,13 +3526,24 @@
 
 1e:46ac font_3_content
 1e:46ac .image:00470:w64
-1e:4b1c .data:0a26
+1e:4b1c data_1e_4b1c
+1e:4b1c .data:09a4
+1e:54c0 data_1e_54c0
+1e:54c0 .data:0082
 1e:5542 font_1_content
 1e:5542 .image:00470:w64
-1e:59b2 .data:0a26
+1e:59b2 data_1e_59b2
+1e:59b2 .data:04d2
+1e:5e84 data_1e_5e84
+1e:5e84 .data:04d2
+1e:6356 data_1e_6356
+1e:6356 .data:0082
 1e:63d8 font_2_content
 1e:63d8 .image:00470:w64
-1e:6848 .data:11b2
+1e:6848 data_1e_6848
+1e:6848 .data:04d2
+1e:6d1a data_1e_6d1a
+1e:6d1a .data:0ce0
 
 1e:7aa0 call_1e_7aa0
 
@@ -3201,6 +3563,9 @@
 
 1f:409c call_1f_409c
 
+1f:40c7 data_1f_40c7
+1f:40c7 .text:0003
+
 1f:4113 data_kit_loop_type_strings
 1f:4113 data_attack_kit_loop_type_string
 1f:4113 .text:0004
@@ -3214,6 +3579,9 @@
 1f:4169 call_1f_4169
 
 1f:418a call_1f_418a
+
+1f:4236 data_1f_4236
+1f:4236 .text:0007
 
 ;; 1f:42f9:r_op LOW(call_01_518c)
 ;; 1f:42fb:r_op HIGH(call_01_518c)
@@ -3302,6 +3670,13 @@
 
 1f:4a25 call_1f_4a25
 
+1f:4a01 data_1f_4a01
+1f:4a01 .data:000b
+1f:4a0c data_1f_4a0c
+1f:4a0c .data:000b
+1f:4a17 data_1f_4a17
+1f:4a17 .data:000e
+
 1f:4a64 call_1f_4a64
 
 ;; 1f:4a80:r_op LOW(call_04_41f0)
@@ -3352,6 +3727,15 @@
 ;; 1f:59e1:r_op HIGH(call_01_4e43)
 ;; 1f:59e9:r_op BANK(call_01_4e43)
 
+1f:5cb0 data_1f_5cb0
+1f:5cb0 .text:0003
+
+1f:5d61 data_1f_5d61
+1f:5d61 .text:0003
+
+1f:619a data_1f_619a
+1f:619a .data:0010
+
 1f:6278 call_1f_6278
 
 1f:6318 data_dedup_song_strings
@@ -3394,6 +3778,9 @@
 
 1f:642a call_1f_642a
 
+1f:647c data_1f_647c
+1f:647c .data:001e
+
 ;; 1f:65cf:r_op LOW(call_04_4ce5)
 ;; 1f:65d1:r_op HIGH(call_04_4ce5)
 ;; 1f:65d4:r_op BANK(call_04_4ce5)
@@ -3416,9 +3803,17 @@
 ;; 1f:6abd:r_op HIGH(call_04_4ce5)
 ;; 1f:6ac0:r_op BANK(call_04_4ce5)
 
+1f:6acd data_1f_6acd
+1f:6acd .text:0004
+1f:6ad1 data_1f_6ad1
+1f:6ad1 .text:0005
+
 1f:6bac call_1f_6bac
 
 1f:6bc2 call_1f_6bc2
+
+1f:6c2c data_1f_6c2c
+1f:6c2c .text:0004
 
 1f:6cd7 call_1f_6cd7
 
