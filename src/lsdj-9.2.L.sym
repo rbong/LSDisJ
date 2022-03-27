@@ -2219,6 +2219,9 @@
 
 05:41bf jump_table_05_41bf
 
+;; 05:4228:r_op BANK(call_05_73f6)
+;; 05:422c Banked call used for call_05_73f6 unnecessarily
+
 05:4233 call_05_4233
 
 05:4253 call_05_4253
@@ -2250,9 +2253,15 @@
 
 05:4b5d call_05_4b5d
 
+;; 05:4c28:r_op BANK(call_05_73f6)
+;; 05:4c2c Banked call used for call_05_73f6 unnecessarily
+
 ;; 05:4c39:r_op LOW(call_01_6cef)
 ;; 05:4c3b:r_op HIGH(call_01_6cef)
 ;; 05:4c3e:r_op BANK(call_01_6cef)
+
+;; 05:4c4b:r_op BANK(call_05_4040)
+;; 05:4c4f Banked call used for call_05_4040 unnecessarily
 
 05:4ed7 jump_table_05_4ed7
 
@@ -2300,6 +2309,9 @@
 ;; 05:5e50:r_op HIGH(call_02_7b9b)
 ;; 05:5e53:r_op BANK(call_02_7b9b)
 
+;; 05:5e6d:r_op BANK(call_05_426a)
+;; 05:5e71 Banked call used for call_05_426a unnecessarily
+
 ;; 05:5e7a Unused bank for call_00_2490
 
 ;; 05:5fcd:r_op BANK(call_05_4287)
@@ -2309,10 +2321,16 @@
 ;; 05:5fda Unused bank for call_00_2490
 ;; 05:5fde Banked call used for call_00_2490 unnecessarily
 
+;; 05:5ff4:r_op BANK(call_05_4233)
+;; 05:5ff8 Banked call used for call_05_4233 unnecessarily
+
 ;; 05:5ffd:r_op LOW(call_00_2490)
 ;; 05:5fff:r_op HIGH(call_00_2490)
 ;; 05:6002 Unused bank for call_00_2490
 ;; 05:6006 Banked call used for call_00_2490 unnecessarily
+
+;; 05:6105:r_op BANK(call_05_73b8)
+;; 05:6109 Banked call used for call_05_73b8 unnecessarily
 
 05:612e data_table_screen_cancel_select_string
 05:612e .text:000e
