@@ -109,37 +109,85 @@
 ;; 00:01e0 Jump table for modes
 00:01e0 .data:0120
 
-00:0300 call_00_0300
+00:0300 call_multiply_1
+;; 00:0300 Multiply register A by 1.
+;; 00:0300 Result: HL
+;; 00:0300 Registers used: A, HL
 
-00:0304 call_00_0304
+00:0304 call_multiply_2
+;; 00:0304 Multiply register A by 2.
+;; 00:0304 Result: HL
+;; 00:0304 Registers used: A, HL
 
-00:0309 call_00_0309
+00:0309 call_multiply_3
+;; 00:0309 Multiply register A by 3.
+;; 00:0309 Result: HL
+;; 00:0309 Registers used: A, HL
 
-00:0310 call_00_0310
+00:0310 call_multiply_4
+;; 00:0310 Multiply register A by 4.
+;; 00:0310 Result: HL
+;; 00:0310 Registers used: A, HL
 
-00:0316 call_00_0316
+00:0316 call_multiply_6
+;; 00:0316 Multiply register A by 6.
+;; 00:0316 Result: HL
+;; 00:0316 Registers used: A, HL
 
-00:031e call_00_031e
+00:031e call_multiply_8
+;; 00:031e Multiply register A by 8.
+;; 00:031e Result: HL
+;; 00:031e Registers used: A, HL
 
-00:0327 call_00_0327
+00:0327 call_multiply_12
+;; 00:0327 Multiply register A by 12.
+;; 00:0327 Result: HL
+;; 00:0327 Registers used: A, HL
 
-00:0330 call_00_0330
+00:0330 call_multiply_16
+;; 00:0330 Multiply register A by 16.
+;; 00:0330 Result: HL
+;; 00:0330 Registers used: A, HL
 
-00:0338 call_00_0338
+00:0338 call_multiply_20
+;; 00:0338 Multiply register A by 20.
+;; 00:0338 Result: HL
+;; 00:0338 Registers used: A, HL
 
-00:0342 call_00_0342
+00:0342 call_multiply_24
+;; 00:0342 Multiply register A by 24.
+;; 00:0342 Result: HL
+;; 00:0342 Registers used: A, HL
 
-00:034c call_00_034c
+00:034c call_multiply_28
+;; 00:034c Multiply register A by 28.
+;; 00:034c Result: HL
+;; 00:034c Registers used: A, HL
 
-00:0358 call_00_0358
+00:0358 call_multiply_32
+;; 00:0358 Multiply register A by 32.
+;; 00:0358 Result: HL
+;; 00:0358 Registers used: A, HL
 
-00:0363 call_00_0363
+00:0363 call_multiply_40
+;; 00:0363 Multiply register A by 40.
+;; 00:0363 Result: HL
+;; 00:0363 Registers used: A, HL
 
-00:036f call_00_036f
+00:036f call_multiply_48
+;; 00:036f Multiply register A by 48.
+;; 00:036f Result: HL
+;; 00:036f Registers used: A, HL
 
-00:037b call_00_037b
+00:037b call_multiply_56
+;; 00:037b Multiply register A by 56.
+;; 00:037b Result: HL
+;; 00:037b Registers used: A, HL
 
-00:0387 call_00_0387
+00:0387 call_multiply_64
+;; 00:0387 Multiply register A by 64.
+;; 00:0387 Result: HL
+;; 00:0387 Registers used: A, HL
 
 00:0391 jump_timer_overflow
 
