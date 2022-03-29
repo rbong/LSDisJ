@@ -279,8 +279,8 @@
 ;; 00:0dee Assume the bank of call_01_48r8 is the same as call_01_4cf1
 ;; 00:0dee:l_op call_01_4848
 
-;; 00:0e10 Assume the bank of call_01_4487 is the same as call_01_4cf1
-;; 00:0e10:l_op call_01_4487
+;; 00:0e10 Assume the bank of call_cart_test is the same as call_01_4cf1
+;; 00:0e10:l_op call_cart_test
 ;; 00:0e46 Assume the bank of call_01_45d1 is the same as call_01_4cf1
 ;; 00:0e46:l_op call_01_45d1
 
@@ -365,13 +365,37 @@
 ;; 00:13de Assume the bank of call_01_7881 is the same ass call_01_4fec
 ;; 00:13de:l_op call_01_7881
 
-00:1441 call_00_1441
+00:1441 call_get_kit_bank_num
+;; 00:1441 Get the kit bank for the kit number given by register A.
+;; 00:1441 Result: E
+;; 00:1441 Registers used: A, E
 
-00:144b call_00_144b
+00:144b call_handle_exception
+;; 00:144b Trigger a exception if an exception is not already in progress.
+;; 00:144b Registers used: A, HL
+;; 00:144b -
+;; 00:144b Does nothing, used for breakpoints
+;; 00:1453:l_op rst_trigger_crash
 
-00:1454 call_00_1454
+00:1454 call_trigger_breakpoint
+;; 00:1454 Does nothing.
+;; 00:1454 "ld b, b" can be used for debugger breakpoints.
 
-00:149a call_00_149a
+00:149a call_read_external_ram
+;; 00:149a Reads a byte from external RAM.
+;; 00:149a
+;; 00:149a Args: bank, address (word)
+;; 00:149a
+;; 00:149a Exit conditions:
+;; 00:149a   E = the byte at the address
+;; 00:149a   The external RAM register (0x0000) will be set to 0
+;; 00:149a
+;; 00:149a Registers used: A, DE, HL
+;; 00:149d External RAM bank cannot be greater than or equal to 0x10
+;; 00:14a6 Set external RAM bank number
+;; 00:14a9 Enable external RAM
+;; 00:14ae Read byte
+;; 00:14b1 Disable external RAM
 
 00:14b5 call_00_14b5
 
@@ -379,7 +403,19 @@
 
 00:1516 call_00_1516
 
-00:1542 call_00_1542
+00:1542 call_write_external_ram
+;; 00:1542 Write a byte to external RAM.
+;; 00:1542
+;; 00:1542 Args: bank, address (word), byte
+;; 00:1542
+;; 00:1542 Exit conditions:
+;; 00:1542   The external RAM register (0x0000) will be set to 0
+;; 00:1542
+;; 00:1542 Registers used: A, DE, HL
+;; 00:154b Set the external RAM bank number
+;; 00:154e Enable external RAM
+;; 00:1553 Write byte
+;; 00:1555 Disable external RAM
 
 00:155a call_00_155a
 
@@ -404,7 +440,12 @@
 
 00:17b0 call_00_17b0
 
-00:17bb call_00_17bb
+00:17bb call_oam_vram_safe_write
+;; 00:17bb Write a byte to OAM/VRAM when both are safe to use.
+;; 00:17bb Args: address (word), byte
+;; 00:17bb Registers used: A, E, HL
+00:17c2 .jump_wait_for_oam_vram
+;; 00:17c4:l_op STATF_OAM | STATF_BUSY
 
 00:17ca call_00_17ca
 
@@ -481,11 +522,40 @@
 
 00:1f51 call_00_1f51
 
-00:1f8c call_00_1f8c
+00:1f8c call_rom_test
+;; 00:1f8c Check the ROM image for integrity by recalculating the global checksum.
+;; 00:1f8c
+;; 00:1f8c Exit conditions:
+;; 00:1f8c   Current bank (0x2000) = 0x3f
+;; 00:1f8c   E = success
+;; 00:1f8c
+;; 00:1f8c Registers used: A, DE, HL
+00:1faa .call_rom_test_1
+00:1fd1 .call_rom_test_2
+00:1fd4 .call_rom_test_3
+00:1fdf .call_rom_test_4
+00:2007 .call_rom_test_5
+00:2034 .call_rom_test_6
+00:2035 .call_rom_test_7
+00:2056 .call_rom_test_8
+00:2057 .call_rom_test_9
+00:2060 .call_rom_test_10
+00:2064 .call_rom_test_11
 
-00:206a call_00_206a
+00:206a call_sum_bank
+;; 00:206a Get the sum of the ROM in the currently selected bank.
+;; 00:206a Entry conditions: 0x2000 = bank
+;; 00:206a Exit conditions: DE = sum
+;; 00:206a Registers used: A, DE, HL
+00:2070 .call_sum_bank_1
+00:2076 .call_sum_bank_2
 
-00:207b call_00_207b
+00:207b call_sram_test_address
+;; 00:207b Test the integrity of a single SRAM address.
+;; 00:207b Exit conditions: E = success
+;; 00:207b Registers used: A, E, HL
+00:207e .call_sram_test_address_1
+00:2090 .call_sram_test_address_2
 
 00:2092 call_00_2092
 
@@ -1327,7 +1397,28 @@
 ;; 00:3de7 00:3de7
 ;; 00:3de7:replace:0219 ds $4000 - @, $ff
 
-01:4000 call_01_4000
+01:4000 call_sram_random_test
+;; 01:4000 Test SRAM by generating random numbers.
+;; 01:4000 Exit conditions: E = success
+;; 01:4000 Registers used: A, DE, HL
+01:4015 .call_sram_random_test_1
+;; 01:4026:r_op rRAMB
+01:402a .call_sram_random_test_2
+01:403c .call_sram_random_test_3
+01:403d .call_sram_random_test_4
+01:4066 .call_sram_random_test_5
+01:406c .call_sram_random_test_6
+01:4079 .call_sram_random_test_7
+;; 01:408a:r_op rRAMB
+01:408e .call_sram_random_test_8
+01:40a0 .call_sram_random_test_9
+01:40a1 .call_sram_random_test_10
+01:40bf .call_sram_random_test_11
+01:40c0 .call_sram_random_test_12
+01:40cc .call_sram_random_test_13
+01:40d9 .call_sram_random_test_14
+01:40df .call_sram_random_test_15
+01:40e6 .call_sram_random_test_16
 
 01:40ea data_01_40ea
 01:40ea .data:0010
@@ -1340,13 +1431,31 @@
 01:4382 data_01_4382
 01:4382 .data:00d8
 
-01:445a call_01_445a
+01:445a call_sram_test
+;; 01:445a Test SRAM integrity.
+;; 01:445a Exit conditions: E = success
+;; 01:445a Registers used: A, E, HL
+;; 01:445b:r_op rRAMG
+01:4462 .call_sram_test_1
+;; 01:4468:r_op rRAMB
+01:447a .call_sram_test_2
+01:447e .call_sram_test_3
+;; 01:447e:r_op rRAMG
+01:4485 .call_sram_test_4
 
-01:4487 call_01_4487
-
-;; 01:44aa:r_op LOW(call_00_1f8c)
-;; 01:44ac:r_op HIGH(call_00_1f8c)
-;; 01:44af:r_op BANK(call_00_1f8c)
+01:4487 call_cart_test
+;; 01:4487 Run the cart test.
+;; 01:4487 Prints messages to the screen, and performs ROM/SRAM tests.
+;; 01:4487 Registers used: A, HL, DE
+;; 01:44aa:r_op LOW(call_rom_test)
+;; 01:44ac:r_op HIGH(call_rom_test)
+;; 01:44af:r_op BANK(call_rom_test)
+01:44ca .jump_rom_test_fail
+01:44f5 .jump_rom_test_fail_halt
+01:44f8 .jump_sram_test
+01:4527 .jump_sram_test_fail
+01:4552 .jump_sram_test_fail_halt
+01:4555 .jump_cart_test_end
 
 01:4557 data_cart_test_title_string
 01:4557 .text:000f
@@ -1707,7 +1816,17 @@
 ;; 01:7de7:r_op HIGH(call_07_6505)
 ;; 01:7dea:r_op BANK(call_07_6505)
 
-01:7df7 call_01_7df7
+01:7df7 call_clear_cart_ram
+;; 01:7df7 This function clears cart RAM for the currently selected bank.
+;; 01:7df7
+;; 01:7df7 Entry conditions:
+;; 01:7df7   Set the RAM bank (0x4000) to select which RAM bank is cleared.
+;; 01:7df7
+;; 01:7df7 Exit conditions:
+;; 01:7df7   The RAM bank (0xa000 through 0xbfff) will be set to 0.
+;; 01:7df7
+;; 01:7df7 Registers used: A, HL
+01:7dfa .jump_clear_ram_loop
 
 01:7e09 call_01_7e09
 
