@@ -260,7 +260,21 @@
 ;; 00:0cb4 Registers used: A, HL
 00:0cde call_banked_call_arg_3_old_return
 
-00:0ced call_00_0ced
+00:0ced call_is_kit_present
+;; 00:0ced Determine if the given kit number is present.
+;; 00:0ced
+;; 00:0ced Args: kit_num
+;; 00:0ced
+;; 00:0ced Result: E
+;; 00:0ced
+;; 00:0ced Registers used: A, E, HL
+;; 00:0d01:r_op _MAX_KIT_NUM
+00:0d0c .jump_check_kit
+;; 00:0d1c:l_op _KIT_CHECK_1
+;; 00:0d22:l_op _KIT_CHECK_2
+00:0d2b .jump_undefined_kit
+00:0d2c .jump_restore_bank
+00:0d37 .jump_return
 
 00:0d3b call_00_0d3b
 
