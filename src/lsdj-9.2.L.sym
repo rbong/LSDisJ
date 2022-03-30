@@ -1087,7 +1087,28 @@
 00:34fc _reset
 ;; 00:34fc gbdk 2.95 libc/gb/crt0.s:.reset/_reset
 
-00:3502 call_00_3502
+00:3502 call_clear_interrupt_request
+;; 00:3502 Clear an interrupt request by clearing bits in the interrupt flag register.
+;; 00:3502
+;; 00:3502 Entry conditions:
+;; 00:3502   A = bits
+;; 00:3502   Only bits enabled in the interrupt enable register (0xffff) will be cleared
+;; 00:3502
+;; 00:3502 Exit conditions:
+;; 00:3502   The interrupt flag register (0xff0f) will have the given bits cleared
+;; 00:3502   Interrupts will be enabled
+;; 00:3502
+;; 00:3502 Registers used: A, E, HL
+;; 00:350b Check if IEF_HILO should be cleared
+00:3511 .jump_skip_hilo
+;; 00:3511 Check if IEF_SERIAL should be cleared
+00:3517 .jump_skip_serial
+;; 00:3517 Check if IEF_TIMER should be cleared
+00:351d .jump_skip_timer
+;; 00:351d Check if IEF_LCDC should be cleared
+00:3523 .jump_skip_lcdc
+;; 00:3523 Check if IEF_VBLANK should be cleared
+00:3529 .jump_skip_vblank
 
 00:352d call_00_352d
 
