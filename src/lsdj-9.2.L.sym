@@ -399,27 +399,73 @@
 ;; 00:1454 Does nothing.
 ;; 00:1454 "ld b, b" can be used for debugger breakpoints.
 
-00:149a call_read_external_ram
-;; 00:149a Reads a byte from external RAM.
+00:149a call_read_low_external_ram
+;; 00:149a Reads a byte from external RAM (bank 0xf or less).
 ;; 00:149a
 ;; 00:149a Args: bank, address (word)
 ;; 00:149a
 ;; 00:149a Exit conditions:
 ;; 00:149a   E = the byte at the address
+;; 00:149a   Interrupts will be enabled
 ;; 00:149a   The external RAM register (0x0000) will be set to 0
 ;; 00:149a
 ;; 00:149a Registers used: A, DE, HL
 ;; 00:149d External RAM bank cannot be greater than or equal to 0x10
 ;; 00:14a6 Set external RAM bank number
+;; 00:14a6:l_op [rRAMB]
 ;; 00:14a9 Enable external RAM
+;; 00:14a9:r_op CART_RAM_ENABLE
+;; 00:14ab:l_op [rRAMG]
 ;; 00:14ae Read byte
 ;; 00:14b1 Disable external RAM
+;; 00:14b1:l_op [rRAMG]
 
-00:14b5 call_00_14b5
+00:14b5 call_read_external_ram
+;; 00:14b5 Reads a byte from external RAM.
+;; 00:14b5
+;; 00:14b5 Args: bank, address (word)
+;; 00:14b5
+;; 00:14b5 Exit conditions:
+;; 00:14b5   E = the byte at the address
+;; 00:14b5   The external RAM register (0x0000) will be set to 0
+;; 00:14bb:l_op [rRAMB]
+;; 00:14be:r_op CART_RAM_ENABLE
+;; 00:14c0:l_op [rRAMG]
+;; 00:14c6:l_op [rRAMG]
 
-00:14ca call_00_14ca
+00:14ca call_copy_low_external_ram_16x
+;; 00:14ca Copy 16 bytes from or to extermal RAM (bank 0xf or less).
+;; 00:14ca
+;; 00:14ca Args: bank, copy_from_addr (word), copy_to_addr (word)
+;; 00:14ca
+;; 00:14ca Exit conditions:
+;; 00:14ca   Interrupts will be enabled
+;; 00:14b5   The external RAM register (0x0000) will be set to 0
+;; 00:14ca
+;; 00:14ca Registers used: A, DE, HL
+;; 00:14ce:l_op [rRAMB]
+;; 00:14dd:r_op CART_RAM_ENABLE
+;; 00:14df:l_op [rRAMG]
+;; 00:1512:l_op [rRAMG]
 
-00:1516 call_00_1516
+00:1516 call_read_low_external_ram_offset
+;; 00:1516 Read a byte offset from the start of external RAM (0xa0000).
+;; 00:1516 The given bank must not be greater than 0xf.
+;; 00:1516 The given offset must not be greater than 0x1fff.
+;; 00:1516
+;; 00:1516 Args: bank, offset (word)
+;; 00:1516
+;; 00:1516 Exit conditions:
+;; 00:1516   E = the byte at the offset
+;; 00:1516   Interrupts will be enabled
+;; 00:1516   The external RAM register (0x0000) will be set to 0
+;; 00:1527 Check that the address is not out of range
+;; 00:1527:l_op HIGH(_SRAM)
+;; 00:152c:l_op HIGH(_SRAM + $2000)
+;; 00:1533:l_op [rRAMB]
+;; 00:1536:r_op CART_RAM_ENABLE
+;; 00:1538:l_op [rRAMG]
+;; 00:153e:l_op [rRAMG]
 
 00:1542 call_write_external_ram
 ;; 00:1542 Write a byte to external RAM.
