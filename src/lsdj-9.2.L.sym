@@ -1120,7 +1120,19 @@
 
 00:35c5 call_00_35c5
 
-00:36e0 call_00_36e0
+00:36e0 call_strlen
+;; 00:36e0 Get the length of the string given by the address.
+;; 00:36e0
+;; 00:36e0 Args: (word) address
+;; 00:36e0
+;; 00:36e0 Exit conditions:
+;; 00:36e0   DE = length
+;; 00:36e0   The address arg will be set to the address after the terminating null byte
+;; 00:36e0
+;; 00:36e0 Registers used: A, DE, HL
+00:36ea .jump_count_loop
+00:370b .jump_skip_increment_high
+00:370e .jump_return
 
 00:3717 _modslong_divslong_mulslong
 
