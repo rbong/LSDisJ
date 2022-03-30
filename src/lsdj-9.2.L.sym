@@ -278,7 +278,11 @@
 
 00:0d3b call_00_0d3b
 
-00:0d7a call_00_0d7a
+00:0d7a call_sort_pair
+;; 00:0d7a Swap the two bytes in the given addresses if the first byte is greater.
+;; 00:0d7a Args: (word) addr1, (word) addr2
+;; 00:0d7a Registers used: A, DE, HL
+00:0da7 .jump_return
 
 00:0dab call_00_0dab
 
