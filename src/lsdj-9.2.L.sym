@@ -285,6 +285,8 @@
 00:0da7 .jump_return
 
 00:0dab call_00_0dab
+;; 00:0dbb:r_op call_01_7500
+;; 00:0dbf:r_op BANK(call_01_7500)
 
 00:0dca call_00_0dca
 
@@ -294,8 +296,12 @@
 ;; 00:0de2:r_op BANK(call_01_4cf1)
 ;; 00:0de9:r_op BANK(call_01_4cf1)
 ;; 00:0deb:l_op call_01_4cf1
-;; 00:0dee Assume the bank of call_01_48r8 is the same as call_01_4cf1
+;; 00:0dee Assume the bank of call_01_4848 is the same as call_01_4cf1
 ;; 00:0dee:l_op call_01_4848
+
+;; 00:0dfa:r_op LOW(call_1e_7aa0)
+;; 00:0dfc:r_op HIGH(call_1e_7aa0)
+;; 00:0dff:r_op BANK(call_1e_7aa0)
 
 ;; 00:0e10 Assume the bank of call_cart_test is the same as call_01_4cf1
 ;; 00:0e10:l_op call_cart_test
@@ -304,6 +310,9 @@
 
 ;; 00:0e49 Assume the bank of call_01_48d4 is the same as call_01_4cf1
 ;; 00:0e49:l_op call_01_48d4
+
+;; 00:0e8b:r_op call_01_7c94
+;; 00:0e93:r_op BANK(call_01_7c94)
 
 ;; 00:0e4c:r_op BANK(call_1c_4057)
 ;; 00:0e53:r_op BANK(call_1c_4057)
