@@ -481,7 +481,8 @@
 ;; 00:1553 Write byte
 ;; 00:1555 Disable external RAM
 
-00:155a call_00_155a
+00:155a call_halt
+;; 00:155a Call the halt instruction, waiting for any interrupts
 
 00:155d call_00_155d
 
@@ -993,7 +994,8 @@
 
 00:33bc call_00_33bc
 
-00:33d7 call_00_33d7
+00:33d7 call_pass
+;; 00:33d7 Return immediately.
 
 00:33d8 tmode
 ;; 00:33d8 gbdk 2.95 libc/gb/font.ms:.tmode (with modifications)
