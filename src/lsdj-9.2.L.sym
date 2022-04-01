@@ -1693,7 +1693,17 @@
 01:52de data_copied_instrument_string
 01:52de .text:000d
 
-01:52eb call_01_52eb
+01:52eb call_copy_16_low_external_ram
+;; 01:52eb Copy 16 bytes from one location in external RAM to another.
+;; 01:52eb Bank must be 0xf or less.
+;; 01:52eb
+;; 01:52eb Args: bank, read_start_address (word), write_start_address (word)
+;; 01:52eb
+;; 01:52eb Registers used: A, DE, HL
+01:52ee .jump_loop
+01:531f .jump_increment_write_address
+01:5326 .jump_increment_count
+01:532a .jump_return
 
 01:532c data_01_532c
 01:532c .data:0005
