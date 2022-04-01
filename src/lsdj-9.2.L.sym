@@ -4452,7 +4452,8 @@
 1b:4c80 .text:000b
 1b:4c8b data_keyboard_keys_string_4
 1b:4c8b .text:0006
-1b:4c91 .data:0005
+;; 1b:4c91 1b:4c91
+;; 1b:4c91:replace:0005 db _SPECIAL_KEY, " ", _BACKSPACE_KEY, _OKAY_KEY, $00
 
 1b:4c96 call_1b_4c96
 
