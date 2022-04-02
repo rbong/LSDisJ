@@ -2387,7 +2387,19 @@
 
 03:4133 call_03_4133
 
-03:414f call_03_414f
+03:414f call_is_instrument_cursor_max
+;; 03:414f Checks if the instrument cursor row is at the max position (not including table).
+;; 03:414f
+;; 03:414f Args:
+;; 03:414f    instrument_type (pulse, wave, kit, noise)
+;; 03:414f
+;; 03:414f Result: E
+;; 03:414f
+;; 03:414f Registers used: A, DE, HL
+;; 03:4153:r_op LOW(data_max_instrument_cursor_rows)
+;; 03:4157:r_op HIGH(data_max_instrument_cursor_rows)
+03:416b .jump_false
+03:416c .jump_return
 
 03:4170 call_03_4170
 
