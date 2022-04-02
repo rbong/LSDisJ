@@ -2368,8 +2368,16 @@
 03:4089 .data:0028
 03:40b1 data_03_40b1
 03:40b1 .data:0043
-03:40f4 data_03_40f4
-03:40f4 .data:0004
+03:40f4 data_max_instrument_cursor_rows
+03:40f4 data_max_pulse_instrument_cursor_row
+;; 03:40f4 The max instrument cursor row for each type (excluding tables).
+03:40f4 .data:0001
+03:40f5 data_max_wave_instrument_cursor_row
+03:40f5 .data:0001
+03:40f6 data_max_kit_instrument_cursor_row
+03:40f6 .data:0001
+03:40f7 data_max_noise_instrument_cursor_row
+03:40f7 .data:0001
 
 03:40f8 call_03_40f8
 
