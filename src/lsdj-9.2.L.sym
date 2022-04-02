@@ -1888,7 +1888,7 @@
 01:779f .text:0049
 01:77e8 data_s_noise_command_help_string
 01:77e8 .text:002e
-01:7816 data_s_puse_command_help_string
+01:7816 data_s_pulse_command_help_string
 01:7816 .text:0012
 
 01:7828 call_01_7828
