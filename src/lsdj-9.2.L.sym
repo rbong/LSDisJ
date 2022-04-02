@@ -2924,7 +2924,7 @@
 
 04:4c14 call_04_4c14
 
-04:4c99 call_04_4c99
+04:4c99 call_banked_1f_6cd7
 
 ;; 04:4c9a:r_op LOW(call_1f_6cd7)
 ;; 04:4c9c:r_op HIGH(call_1f_6cd7)
