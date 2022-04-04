@@ -268,7 +268,7 @@
 ;; 00:0ced Result: E
 ;; 00:0ced
 ;; 00:0ced Registers used: A, E, HL
-;; 00:0d01:r_op _MAX_KIT_NUM
+;; 00:0d01:r_op _MAX_KIT_BANK
 00:0d0c .jump_check_kit
 ;; 00:0d1c:l_op _KIT_CHECK_1
 ;; 00:0d22:l_op _KIT_CHECK_2

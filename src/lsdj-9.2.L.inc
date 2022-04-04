@@ -6,7 +6,7 @@
 _KIT_CHECK_1 EQU $60
 _KIT_CHECK_2 EQU $40
 
-_MAX_KIT_NUM EQU $3f
+_MAX_KIT_BANK EQU $3f
 
 ;; Key Codes ;;
 
