@@ -216,15 +216,21 @@
 00:08f7 call_00_08f7
 
 00:0942 call_00_0942
+;; 00:097e:r_op _SRAM_INSTRUMENT_PARAMS
+;; 00:099b:r_op _SRAM_INSTRUMENT_PARAMS_BANK
 
 00:09a8 data_00_09a8
 00:09a8 .data:d8
 
 00:0a80 call_00_0a80
+;; 00:0aaa:r_op _SRAM_INSTRUMENT_PARAMS
+;; 00:0ac3:r_op _SRAM_INSTRUMENT_PARAMS_BANK
 
 00:0ad1 call_00_0ad1
 
 00:0ae5 call_00_0ae5
+;; 00:0b0f:r_op _SRAM_SONG_CHAINS
+;; 00:0b28:r_op _SRAM_SONG_CHAINS_BANK
 
 00:0b43 call_00_0b43
 
@@ -307,6 +313,14 @@
 
 ;; 00:0e10 Assume the bank of call_cart_test is the same as call_01_4cf1
 ;; 00:0e10:l_op call_cart_test
+
+;; 00:0e17:r_op _SRAM_TOTAL_TIME_DAYS
+;; 00:0e1b:r_op _SRAM_TOTAL_TIME_DAYS_BANK
+;; 00:0e28:r_op _SRAM_TOTAL_TIME_MINUTES
+;; 00:0e2c:r_op _SRAM_TOTAL_TIME_MINUTES_BANK
+;; 00:0e39:r_op _SRAM_TOTAL_TIME_HOURS
+;; 00:0e3d:r_op _SRAM_TOTAL_TIME_HOURS_BANK
+
 ;; 00:0e46 Assume the bank of call_01_45d1 is the same as call_01_4cf1
 ;; 00:0e46:l_op call_01_45d1
 
@@ -350,6 +364,9 @@
 ;; 00:0ff7:r_op BANK(call_1f_4a25)
 ;; 00:0ff9:l_op call_1f_4a25
 
+;; 00:1010:r_op _SRAM_TRANSPOSE
+;; 00:1014:r_op _SRAM_TRANSPOSE_BANK
+
 ;; 00:102b:r_op BANK(call_02_7b9b)
 ;; 00:1032:r_op BANK(call_02_7b9b)
 ;; 00:1034:l_op call_02_7b9b
@@ -370,12 +387,17 @@
 ;; 00:112f:r_op BANK(call_1d_4d5f)
 ;; 00:1131:l_op call_1d_4d5f
 
+;; 00:1164:r_op _SRAM_FILE_CHANGED
+;; 00:1168:r_op _SRAM_FILE_CHANGED_BANK
+
 00:1261 call_00_1261
 
 00:12cf _main
 ;; 00:131f:r_op BANK(call_1c_40f2)
 ;; 00:1326:r_op BANK(call_1c_40f2)
 ;; 00:1328:l_op call_1c_40f2
+;; 00:132f:r_op _SRAM_PRELISTEN
+;; 00:1333:r_op _SRAM_PRELISTEN_BANK
 
 ;; 00:1350:r_op BANK(call_1d_603c)
 ;; 00:1357:r_op BANK(call_1d_603c)
@@ -567,6 +589,8 @@
 00:1ca1 call_00_1ca1
 
 00:1cb6 call_00_1cb6
+;; 00:1cb6:r_op _SRAM_SYNC
+;; 00:1cbe:r_op _SRAM_PS2_DELAY
 
 00:1ce0 call_00_1ce0
 
@@ -644,8 +668,12 @@
 ;; 00:209f:l_op call_02_7030
 
 00:20bd call_00_20bd
+;; 00:20d1:r_op _SRAM_SONG_CHAINS
+;; 00:20ea:r_op _SRAM_SONG_CHAINS_BANK
 
 00:20f8 call_00_20f8
+;; 00:210c:r_op _SRAM_CHAIN_PHRASES
+;; 00:2125:r_op _SRAM_CHAIN_PHRASES_BANK
 
 00:2133 call_00_2133
 
@@ -1603,27 +1631,119 @@
 01:45d1 call_01_45d1
 ;; 01:45d5:r_op rRAMG
 ;; 01:45d8:r_op CART_RAM_ENABLE
-;; 01:471e:r_op rRAMG
-;; 01:4721:r_op CART_RAM_ENABLE
-;; 01:4808:r_op rRAMG
-;; 01:480b:r_op CART_RAM_DISABLE
 
 ;; 01:45e2:r_op LOW(call_07_63ff)
 ;; 01:45e4:r_op HIGH(call_07_63ff)
 ;; 01:45e7:r_op BANK(call_07_63ff)
 
+;; 01:45da:r_op rRAMB
+;; 01:45dd:r_op _SRAM_INIT_FLAG_1_BANK
+;; 01:45f0:r_op _SRAM_INIT_FLAG_1
+;; 01:45f6:r_op _SRAM_INIT_FLAG_1 + 1
+
+;; 01:4641 Assume the bank for _SRAM_INIT_FLAG_1 is the same as _SRAM_SONG_CHAINS
+;; 01:4641:r_op _SRAM_SONG_CHAINS
+
+;; 01:46bb:r_op rRAMB
+;; 01:46be Assume the banks for _SRAM_TOTAL_TIME_* are the same
+;; 01:46be:r_op _SRAM_TOTAL_TIME_DAYS_BANK
+;; 01:46c0:r_op _SRAM_TOTAL_TIME_DAYS
+;; 01:46c5:r_op _SRAM_TOTAL_TIME_HOURS
+;; 01:46ca:r_op _SRAM_TOTAL_TIME_MINUTES
+
+;; 01:46dc Assume the bank for _SRAM_LAST_USED_INSTRUMENT is the same as _SRAM_TOTAL_TIME_DAYS_BANK
+;; 01:46dc:r_op _SRAM_LAST_USED_INSTRUMENT
+
+;; 01:46e5:r_op _SRAM_TOTAL_TIME_DAYS
+;; 01:46ea:r_op _SRAM_TOTAL_TIME_HOURS
+;; 01:46ef:r_op _SRAM_TOTAL_TIME_MINUTES
+;; 01:46f6:r_op _SRAM_PRELISTEN
+;; 01:46fc:r_op rRAMB
+;; 01:46ff Wrong bank used for _SRAM_TOTAL_TIME_DAYS, _SRAM_TOTAL_TIME_HOURS, _SRAM_TOTAL_TIME_MINUTES, _SRAM_PRELISTEN
+;; 01:46ff:r_op _SRAM_PHRASE_INSTRUMENTS_BANK
+
+;; 01:470c:r_op _SRAM_PHRASE_INSTRUMENTS
+
+;; 01:471e:r_op rRAMG
+;; 01:4721:r_op CART_RAM_ENABLE
+
+;; 01:4723:r_op rRAMB
+;; 01:4726 Assume the banks are the same for _SRAM_INIT_FLAG_2, _SRAM_TEMPO, _SRAM_KEY_DELAY, _SRAM_KEY_REPEAT
+;; 01:4726:r_op _SRAM_INIT_FLAG_2_BANK
+;; 01:4728:r_op _SRAM_INIT_FLAG_2
+;; 01:472e:r_op _SRAM_INIT_FLAG_2 + 1
+;; 01:4734:r_op _SRAM_TEMPO
+;; 01:473a:r_op _SRAM_KEY_DELAY
+;; 01:4740:r_op _SRAM_KEY_REPEAT
+
+;; 01:4753 Assume the bank for _SRAM_CHAIN_PHRASES is the same as _SRAM_INIT_FLAG_2
+;; 01:4753:r_op _SRAM_CHAIN_PHRASES
+
+;; 01:47b8:r_op rRAMB
+;; 01:47bd:r_op _SRAM_INIT_FLAG_3
+;; 01:47c3:r_op _SRAM_INIT_FLAG_3 + 1
+;; 01:47bb:r_op _SRAM_INIT_FLAG_3_BANK
+
+;; 01:4801 Assume the bank for _SRAM_VERSION_FLAG is the same as _SRAM_INIT_FLAG_3
+;; 01:4801:r_op _SRAM_VERSION_FLAG
+
+;; 01:4808:r_op rRAMG
+;; 01:480b:r_op CART_RAM_DISABLE
+
 01:4811 call_01_4811
 
 01:4848 call_01_4848
 
+;; 01:4849:r_op _SRAM_INIT_FLAG_1
+;; 01:484d:r_op _SRAM_INIT_FLAG_1_BANK
+;; 01:485d:r_op _SRAM_INIT_FLAG_1 + 1
+;; 01:4861:r_op _SRAM_INIT_FLAG_1_BANK
+
+;; 01:4876:r_op _SRAM_INIT_FLAG_3
+;; 01:487a:r_op _SRAM_INIT_FLAG_3_BANK
+;; 01:488a:r_op _SRAM_INIT_FLAG_3 + 1
+;; 01:488e:r_op _SRAM_INIT_FLAG_3_BANK
+
+;; 01:48a3:r_op _SRAM_INIT_FLAG_2
+;; 01:48a7:r_op _SRAM_INIT_FLAG_2_BANK
+;; 01:48b7:r_op _SRAM_INIT_FLAG_2 + 1
+;; 01:48bb:r_op _SRAM_TABLE_COMMAND_VALUES_2_BANK
+
 01:48d4 call_01_48d4
 
+;; 01:48d8:r_op _SRAM_INIT_FLAG_1
+;; 01:48dc:r_op _SRAM_INIT_FLAG_1_BANK
+;; 01:48e9:r_op _SRAM_INIT_FLAG_1 + 1
+;; 01:48ed:r_op _SRAM_INIT_FLAG_1_BANK
+
+;; 01:48fa:r_op _SRAM_INIT_FLAG_2
+;; 01:48fe:r_op _SRAM_INIT_FLAG_2_BANK
+;; 01:490b:r_op _SRAM_INIT_FLAG_2 + 1
+;; 01:490f:r_op _SRAM_INIT_FLAG_2_BANK
+
+;; 01:491c:r_op _SRAM_INIT_FLAG_3
+;; 01:4920:r_op _SRAM_INIT_FLAG_3_BANK
+;; 01:492d:r_op _SRAM_INIT_FLAG_3 + 1
+;; 01:4931:r_op _SRAM_INIT_FLAG_3_BANK
+
 01:493b call_01_493b
+;; 01:4973:r_op _SRAM_INSTRUMENT_NAMES
+;; 01:4990:r_op _SRAM_INSTRUMENT_NAMES_BANK
+;; 01:49b4:r_op _SRAM_INSTRUMENT_NAMES_BANK
+;; 01:49dd:r_op _SRAM_INSTRUMENT_NAMES_BANK
+;; 01:4a06:r_op _SRAM_INSTRUMENT_NAMES_BANK
+;; 01:4a29:r_op _SRAM_INSTRUMENT_NAMES_BANK
 
 01:4a44 data_speech_screen_title_string
 01:4a44 .text:0005
 
 01:4a49 call_01_4a49
+;; 01:4a68:r_op _SRAM_INSTRUMENT_NAMES
+;; 01:4a8a:r_op _SRAM_INSTRUMENT_NAMES_BANK
+;; 01:4aab:r_op _SRAM_INSTRUMENT_NAMES_BANK
+;; 01:4acc:r_op _SRAM_INSTRUMENT_NAMES_BANK
+;; 01:4aed:r_op _SRAM_INSTRUMENT_NAMES_BANK
+;; 01:4b08:r_op _SRAM_INSTRUMENT_NAMES_BANK
 
 01:4b15 call_01_4b15
 
@@ -1634,14 +1754,26 @@
 01:4cf1 call_01_4cf1
 
 01:4cfb call_01_4cfb
+;; 01:4d15:r_op _SRAM_PHRASE_ALLOC
+;; 01:4d5a:r_op _SRAM_PHRASE_ALLOC_BANK
 
 01:4d67 call_01_4d67
+;; 01:4d81:r_op _SRAM_CHAIN_ALLOC
+;; 01:4da3:r_op _SRAM_CHAIN_ALLOC_BANK
 
 01:4dd3 call_01_4dd3
+;; 01:4ded:r_op _SRAM_PHRASE_ALLOC
+;; 01:4e0f:r_op _SRAM_PHRASE_ALLOC_BANK
 
 01:4e43 call_01_4e43
+;; 01:4e5d:r_op _SRAM_CHAIN_ALLOC
+;; 01:4e7f:r_op _SRAM_CHAIN_ALLOC_BANK
+;; 01:4ea6:r_op _SRAM_CHAIN_ALLOC_BANK
 
 01:4eb3 call_01_4eb3
+;; 01:4ee3:r_op _SRAM_PHRASE_ALLOC
+;; 01:4ef2:r_op _SRAM_PHRASE_ALLOC_BANK
+;; 01:4f1c:r_op _SRAM_PHRASE_ALLOC_BANK
 
 ;; 01:4f45:r_op LOW(call_01_75c6)
 ;; 01:4f47:r_op HIGH(call_01_75c6)
@@ -1650,6 +1782,8 @@
 01:4f59 call_01_4f59
 
 01:4f99 call_01_4f99
+;; 01:4fb3:r_op _SRAM_PHRASE_ALLOC
+;; 01:4fcc:r_op _SRAM_PHRASE_ALLOC_BANK
 
 01:4fec call_01_4fec
 
@@ -1659,6 +1793,32 @@
 01:509d .text:0003
 
 01:50a0 call_01_50a0
+;; 01:50a1:r_op _SRAM_WORK_TIME_MINUTES
+;; 01:50a5:r_op _SRAM_WORK_TIME_MINUTES_BANK
+;; 01:50ba:r_op _SRAM_WORK_TIME_MINUTES
+;; 01:50be:r_op _SRAM_WORK_TIME_MINUTES_BANK
+;; 01:50c7:r_op _SRAM_WORK_TIME_HOURS
+;; 01:50cb:r_op _SRAM_WORK_TIME_HOURS_BANK
+;; 01:50d9:r_op _SRAM_WORK_TIME_HOURS
+;; 01:50dd:r_op _SRAM_WORK_TIME_HOURS_BANK
+;; 01:50ec:r_op _SRAM_WORK_TIME_MINUTES
+;; 01:50f0:r_op _SRAM_WORK_TIME_MINUTES_BANK
+;; 01:50f9:r_op _SRAM_TOTAL_TIME_MINUTES
+;; 01:50fd:r_op _SRAM_TOTAL_TIME_MINUTES_BANK
+;; 01:5112:r_op _SRAM_TOTAL_TIME_MINUTES
+;; 01:5116:r_op _SRAM_TOTAL_TIME_MINUTES_BANK
+;; 01:511f:r_op _SRAM_TOTAL_TIME_HOURS
+;; 01:5123:r_op _SRAM_TOTAL_TIME_HOURS_BANK
+;; 01:5138:r_op _SRAM_TOTAL_TIME_HOURS
+;; 01:513c:r_op _SRAM_TOTAL_TIME_HOURS_BANK
+;; 01:5145:r_op _SRAM_TOTAL_TIME_DAYS
+;; 01:5149:r_op _SRAM_TOTAL_TIME_DAYS_BANK
+;; 01:5157:r_op _SRAM_TOTAL_TIME_DAYS
+;; 01:515b:r_op _SRAM_TOTAL_TIME_DAYS_BANK
+;; 01:516a:r_op _SRAM_TOTAL_TIME_HOURS
+;; 01:516e:r_op _SRAM_TOTAL_TIME_HOURS_BANK
+;; 01:517d:r_op _SRAM_TOTAL_TIME_MINUTES
+;; 01:5181:r_op _SRAM_TOTAL_TIME_MINUTES_BANK
 
 01:518c call_01_518c
 
@@ -1709,6 +1869,18 @@
 01:532c .data:0005
 
 01:5331 call_01_5331
+;; 01:5363:r_op _SRAM_TABLE_COMMANDS_1
+;; 01:5371:r_op _SRAM_TABLE_COMMAND_VALUES_1
+;; 01:5380:r_op _SRAM_TABLE_COMMANDS_2
+;; 01:538f:r_op _SRAM_TABLE_COMMAND_VALUES_2
+;; 01:539e:r_op _SRAM_TABLE_TRANSPOSE
+;; 01:53ad:r_op _SRAM_TABLE_VOLS
+;; 01:53b7:r_op _SRAM_TABLE_COMMANDS_1
+;; 01:53c1:r_op _SRAM_TABLE_COMMAND_VALUES_1
+;; 01:53cb:r_op _SRAM_TABLE_COMMANDS_2
+;; 01:53d5:r_op _SRAM_TABLE_COMMAND_VALUES_2
+;; 01:53df:r_op _SRAM_TABLE_TRANSPOSE
+;; 01:53fd TODO: determine which bank number below is used for which SRAM value above
 
 01:546e call_01_546e
 
@@ -1939,8 +2111,17 @@
 01:7c94 call_01_7c94
 ;; 01:7caa:r_op rRAMG
 ;; 01:7cad:r_op CART_RAM_ENABLE
+;; 01:7caf:r_op rRAMB
+;; 01:7cb2:r_op _SRAM_FONT_BANK
+;; 01:7cb4:r_op _SRAM_FONT
+
 ;; 01:7ccb:r_op rRAMG
 ;; 01:7cce:r_op CART_RAM_ENABLE
+;; 01:7cd0:r_op rRAMB
+;; 01:7cd3:r_op _SRAM_CLONE_TYPE_BANK
+;; 01:7cd5:r_op _SRAM_CLONE_TYPE
+;; 01:7cdd:r_op _SRAM_PALETTE_NUM
+;; 01:7ce0 Assume the bank for _SRAM_CLONE_TYPE and _SRAM_PALETTE_NUM are the same
 
 ;; 01:7cfe:r_op LOW(call_1e_7aa0)
 ;; 01:7cf9:r_op rRAMG
@@ -1950,6 +2131,20 @@
 
 ;; 01:7d1c:r_op rRAMG
 ;; 01:7d1f:r_op CART_RAM_ENABLE
+;; 01:7d21:r_op rRAMB
+;; 01:7d24:r_op _SRAM_TEMPO_BANK
+;; 01:7d26:r_op _SRAM_TEMPO
+;; 01:7d2e:r_op _SRAM_OVERCLOCK
+;; 01:7d31 Assume the bank for _SRAM_OVERCLOCK and _SRAM_TEMPO are the same
+;; 01:7d36:r_op _SRAM_TRANSPOSE
+;; 01:7d39 Assume the bank for _SRAM_TRANSPOSE and _SRAM_TEMPO are the same
+;; 01:7d42:r_op _SRAM_LAST_USED_INSTRUMENT
+;; 01:7d4a Assume the bank for _SRAM_LAST_USED_INSTRUMENT and _SRAM_TEMPO are the same
+
+;; 01:7d89:r_op _SRAM_KEY_DELAY
+;; 01:7d8c Assume the bank for _SRAM_KEY_DELAY and _SRAM_TEMPO are the same
+;; 01:7d93:r_op _SRAM_KEY_REPEAT
+;; 01:7d96 Assume the bank for _SRAM_KEY_REPEAT and _SRAM_TEMPO are the same
 
 ;; 01:7d9d:r_op rRAMG
 ;; 01:7da0:r_op CART_RAM_DISABLE
@@ -2052,6 +2247,8 @@
 02:485a call_02_485a
 
 02:487e call_02_487e
+;; 02:4897:r_op _SRAM_GROOVES
+;; 02:489b Assume bank for _SRAM_GROOVES is 0
 ;; 02:489c:l_op [rRAMB]
 ;; 02:489f:r_op CART_RAM_ENABLE
 ;; 02:48a2:l_op [rRAMG]
@@ -2061,7 +2258,9 @@
 ;; 02:48ac:l_op [rRAMB]
 
 02:48d2 call_02_48d2
+;; 02:48de:r_op _SRAM_SONG_CHAINS_BANK
 ;; 02:48e0:l_op [rRAMB]
+;; 02:48ef:r_op _SRAM_SONG_CHAINS
 ;; 02:4911:r_op CART_RAM_ENABLE
 ;; 02:4914:l_op [rRAMG]
 ;; 02:491a:r_op CART_RAM_DISABLE
@@ -2073,6 +2272,8 @@
 02:494d call_02_494d
 
 02:4b8a call_02_4b8a
+;; 02:4b9e:r_op _SRAM_CHAIN_TRANSPOSES
+;; 02:4bab:r_op _SRAM_CHAIN_TRANSPOSES_BANK
 ;; 02:4bad:l_op [rRAMB]
 ;; 02:4bb0:r_op CART_RAM_ENABLE
 ;; 02:4bb3:l_op [rRAMG]
@@ -2174,34 +2375,48 @@
 02:55e5 call_02_55e5
 
 02:5621 call_02_5621
+;; 02:564c Assume bank is set to bank for _SRAM_TABLE_TRANSPOSE
+;; 02:564c:r_op _SRAM_TABLE_TRANSPOSE
+;; 02:568e Assume bank is set to bank for _SRAM_TABLE_COMMANDS_2
+;; 02:568e:r_op _SRAM_TABLE_COMMANDS_2
 
 02:56ab call_02_56ab
 
 02:56f5 call_02_56f5
 
 02:5715 call_02_5715
+;; 02:5727 Assume bank is set to bank for _SRAM_TABLE_VOLS
+;; 02:5727:r_op _SRAM_TABLE_VOLS
 
 02:5742 call_02_5742
 
 02:5809 call_02_5809
 
 02:5847 call_02_5847
+;; 02:5859 Assume bank is set to bank for _SRAM_TABLE_TRANSPOSE
+;; 02:5859:r_op _SRAM_TABLE_TRANSPOSE
 
 02:5891 call_02_5891
 
 02:58b4 call_02_58b4
+;; 02:58be:r_op _SRAM_INSTRUMENT_PARAMS
+;; 02:58c2:r_op _SRAM_INSTRUMENT_PARAMS_BANK
 ;; 02:58c4:l_op [rRAMB]
 ;; 02:58ca:r_op CART_RAM_ENABLE
 ;; 02:58cd:l_op [rRAMG]
 ;; 02:58fa:l_op [rRAMG]
 
 02:5e46 call_02_5e46
+;; 02:5e62:r_op _SRAM_CHAIN_PHRASES
+;; 02:5e66:r_op _SRAM_CHAIN_PHRASES_BANK
 ;; 02:5e68:l_op [rRAMB]
 ;; 02:5e6b:r_op CART_RAM_ENABLE
 ;; 02:5e6e:l_op [rRAMG]
 ;; 02:5e73:l_op [rRAMG]
 
 02:5e77 call_02_5e77
+;; 02:5e8f:r_op _SRAM_SONG_CHAINS
+;; 02:5e93:r_op _SRAM_SONG_CHAINS_BANK
 ;; 02:5e95:l_op [rRAMB]
 ;; 02:5e98:r_op CART_RAM_ENABLE
 ;; 02:5e9b:l_op [rRAMG]
@@ -2229,6 +2444,8 @@
 02:6059 call_02_6059
 
 02:6099 call_02_6099
+;; 02:60f8 Assume bank is set to bank for _SRAM_SPEECH_WORDS
+;; 02:60f8:r_op _SRAM_SPEECH_WORDS
 
 02:6171 call_02_6171
 
@@ -2288,6 +2505,8 @@
 02:6dc9 call_02_6dc9
 
 02:6e87 call_02_6e87
+;; 02:6eb1:r_op _SRAM_CHAIN_PHRASES
+;; 02:6eca:r_op _SRAM_CHAIN_PHRASES_BANK
 
 02:6ed8 call_02_6ed8
 
@@ -2442,6 +2661,8 @@
 03:43e9 call_03_43e9
 
 03:4443 call_03_4443
+;; 03:44a1:r_op _SRAM_SYNTH_PARAMS
+;; 03:44c9:r_op _SRAM_SYNTH_PARAMS_BANK
 
 03:45c3 data_cloned_synth_string
 03:45c3 .text:000d
@@ -2873,6 +3094,8 @@
 04:418f call_04_418f
 
 04:41f0 call_04_41f0
+;; 04:422c:r_op _SRAM_PHRASE_INSTRUMENTS
+;; 04:424a:r_op _SRAM_PHRASE_INSTRUMENTS_BANK
 
 04:4257 call_04_4257
 
@@ -2904,6 +3127,8 @@
 04:4811 call_04_4811
 
 04:4918 call_04_4918
+;; 04:4942:r_op _SRAM_PHRASE_INSTRUMENTS
+;; 04:495a:r_op _SRAM_PHRASE_INSTRUMENTS_BANK
 
 04:4968 call_04_4968
 
@@ -2923,6 +3148,10 @@
 04:4c10 .text:0004
 
 04:4c14 call_04_4c14
+;; 04:4c55:r_op _SRAM_PHRASE_INSTRUMENTS
+;; 04:4c60:r_op _SRAM_PHRASE_INSTRUMENTS_BANK
+;; 04:4c81:r_op _SRAM_PHRASE_COMMAND_VALUES
+;; 04:4c8c:r_op _SRAM_PHRASE_COMMAND_VALUES_BANK
 
 04:4c99 call_banked_1f_6cd7
 
@@ -2945,6 +3174,12 @@
 
 ;; 04:4d18:r_op call_06_55d0
 ;; 04:4d1c:r_op BANK(call_06_55d0)
+
+;; 04:4e94:r_op _SRAM_INSTRUMENT_PARAMS + 2
+;; 04:4ea3:r_op _SRAM_INSTRUMENT_PARAMS_BANK
+
+;; 04:4f0d:r_op _SRAM_INSTRUMENT_PARAMS + 9
+;; 04:4f1c:r_op _SRAM_INSTRUMENT_PARAMS_BANK
 
 ;; 04:4f92:r_op LOW(call_1f_6bc2)
 ;; 04:4f94:r_op HIGH(call_1f_6bc2)
@@ -3273,22 +3508,36 @@
 05:42e7 call_05_42e7
 
 05:4360 call_05_4360
+;; 05:438c:r_op _SRAM_TABLE_VOLS
+;; 05:43aa:r_op _SRAM_TABLE_VOLS_BANK
 
 05:43b7 call_05_43b7
 
 05:442a call_05_442a
 
 05:4491 call_05_4491
+;; 05:44bd:r_op _SRAM_TABLE_TRANSPOSE
+;; 05:44db:r_op _SRAM_TABLE_TRANSPOSE_BANK
 
 05:44e8 call_05_44e8
+;; 05:4514:r_op _SRAM_TABLE_VOLS
+;; 05:452d:r_op _SRAM_TABLE_VOLS_BANK
 
 05:453b call_05_453b
 
 05:459e call_05_459e
+;; 05:45ca:r_op _SRAM_TABLE_TRANSPOSE
+;; 05:45e3:r_op _SRAM_TABLE_TRANSPOSE_BANK
 
 05:45f1 call_05_45f1
 
 05:4668 call_05_4668
+;; 05:4680:r_op _SRAM_TABLE_VOLS
+;; 05:468a:r_op _SRAM_TABLE_TRANSPOSE
+;; 05:4694:r_op _SRAM_TABLE_COMMANDS_1
+;; 05:469e:r_op _SRAM_TABLE_COMMANDS_2
+;; 05:46a8:r_op _SRAM_TABLE_COMMAND_VALUES_1
+;; 05:46c4 TODO: determine which bank number below is used for which SRAM value above
 
 05:472b call_05_472b
 
@@ -3373,6 +3622,17 @@
 
 ;; 05:5e7a Unused bank for call_00_2490
 ;; 05:5e7e Banked call used for call_00_2490 unnecessarily
+
+;; 05:5ebd:r_op _SRAM_TABLE_COMMANDS_1
+;; 05:5ee6:r_op _SRAM_TABLE_COMMANDS_1_BANK
+;; 05:5efb:r_op _SRAM_TABLE_COMMAND_VALUES_1
+;; 05:5f1a:r_op _SRAM_TABLE_COMMAND_VALUES_1_BANK
+
+;; 05:5f5b:r_op _SRAM_TABLE_COMMANDS_2
+;; 05:5f84:r_op _SRAM_TABLE_COMMANDS_2_BANK
+
+;; 05:5f99:r_op _SRAM_TABLE_COMMAND_VALUES_2
+;; 05:5fb8:r_op _SRAM_TABLE_COMMAND_VALUES_2_BANK
 
 ;; 05:5fcd:r_op BANK(call_05_4287)
 ;; 05:5fd1 Banked call used for call_05_4287 unnecessarily
@@ -3536,8 +3796,12 @@
 06:4026 call_06_4026
 
 06:405d call_06_405d
+;; 06:4072:r_op _SRAM_SPEECH_WORDS
+;; 06:40a5:r_op _SRAM_SPEECH_WORDS_BANK
 
 06:40b3 call_06_40b3
+;; 06:40c8:r_op _SRAM_SPEECH_WORDS
+;; 06:4101:r_op _SRAM_SPEECH_WORDS_BANK
 
 06:410e call_06_410e
 
@@ -3549,9 +3813,15 @@
 ;; 06:41a7:r_op HIGH(call_01_6d5c)
 ;; 06:41aa:r_op BANK(call_01_6d5c)
 
+;; 06:41de:r_op _SRAM_SPEECH_WORD_NAMES
+;; 06:41f9:r_op _SRAM_SPEECH_WORD_NAMES_BANK
+
 ;; 06:4222:r_op LOW(call_1f_6ff1)
 ;; 06:4224:r_op HIGH(call_1f_6ff1)
 ;; 06:4227:r_op BANK(call_1f_6ff1)
+
+;; 06:4242:r_op _SRAM_SPEECH_WORDS
+;; 06:427a:r_op _SRAM_SPEECH_WORDS_BANK
 
 06:42fb data_text_to_speech_screen_strings
 06:42fb data_text_to_speech_word_string
@@ -3706,10 +3976,18 @@
 06:55fc .text:0003
 
 06:55ff call_06_55ff
+;; 06:5629:r_op _SRAM_CHAIN_TRANSPOSES
+;; 06:5647:r_op _SRAM_CHAIN_TRANSPOSES_BANK
 
 06:5654 call_06_5654
+;; 06:5673:r_op _SRAM_CHAIN_TRANSPOSES
+;; 06:568c:r_op _SRAM_CHAIN_TRANSPOSES_BANK
 
 06:569a call_06_569a
+;; 06:5702:r_op _SRAM_PHRASE_INSTRUMENTS
+;; 06:5719:r_op _SRAM_BOOKMARKS
+;; 06:5737:r_op _SRAM_PHRASE_INSTRUMENTS
+;; 06:574e:r_op _SRAM_BOOKMARKS
 
 06:583a data_cloned_phrase_string
 06:583a .text:000e
@@ -3717,6 +3995,9 @@
 06:5848 call_06_5848
 
 06:589c call_06_589c
+;; 06:58b1:r_op _SRAM_CHAIN_PHRASES
+;; 06:58cd:r_op _SRAM_CHAIN_PHRASES_BANK
+;; 06:58db:r_op _SRAM_CHAIN_PHRASES_BANK
 
 06:58e8 call_06_58e8
 
@@ -4018,6 +4299,8 @@
 07:4084 call_07_4084
 
 07:40d0 call_07_40d0
+;; 07:410e:r_op _SRAM_SONG_CHAINS
+;; 07:412c:r_op _SRAM_SONG_CHAINS_BANK
 
 07:4139 call_07_4139
 
@@ -4167,6 +4450,8 @@
 ;; 07:516b Unused bank for call_00_2490
 ;; 07:516f Banked call used for call_00_2490 unnecessarily
 
+;; 07:5206:r_op _SRAM_SONG_CHAINS
+
 ;; 07:5382:r_op LOW(call_02_6d46)
 ;; 07:5384:r_op HIGH(call_02_6d46)
 ;; 07:5387:r_op BANK(call_02_6d46)
@@ -4214,6 +4499,7 @@
 07:56e3 .text:0015
 
 07:56f8 call_07_56f8
+;; 07:5815:r_op _SRAM_SONG_CHAINS
 
 07:5919 data_cut_chains_string
 07:5919 .text:000b
@@ -4240,8 +4526,12 @@
 07:620b call_07_620b
 
 07:623e call_07_623e
+;; 07:624d:r_op _SRAM_BOOKMARKS
+;; 07:6274:r_op _SRAM_BOOKMARKS_BANK
 
 07:62e2 call_07_62e2
+;; 07:62fb:r_op _SRAM_BOOKMARKS
+;; 07:630c:r_op _SRAM_BOOKMARKS_BANK
 
 07:633e call_07_633e
 
@@ -4250,10 +4540,14 @@
 ;; 07:6358:r_op BANK(call_01_763e)
 
 07:6377 call_07_6377
+;; 07:6399:r_op _SRAM_BOOKMARKS
+;; 07:63a8:r_op _SRAM_BOOKMARKS_BANK
 
 07:63d5 call_07_63d5
 
 07:63ff call_07_63ff
+;; 07:6407:r_op _SRAM_BOOKMARKS
+;; 07:640b Assume the bank is set to the bank for _SRAM_BOOKMARKS
 
 07:6411 call_07_6411
 
@@ -4515,6 +4809,9 @@
 ;; 1b:5231:r_op HIGH(call_01_4a49)
 ;; 1b:523a:r_op BANK(call_01_4a49)
 
+;; 1b:5257:r_op _SRAM_SPEECH_WORD_NAMES
+;; 1b:5279:r_op _SRAM_SPEECH_WORD_NAMES_BANK
+
 ;; 1b:52c6:r_op LOW(call_00_2490)
 ;; 1b:52c8:r_op HIGH(call_00_2490)
 ;; 1b:52cb Unused bank for call_00_2490
@@ -4579,12 +4876,20 @@
 1b:575c .data:0026
 
 1b:5782 call_1b_5782
+;; 1b:5788:r_op _SRAM_SYNC
+;; 1b:578c:r_op _SRAM_SYNC_BANK
 
 1b:5796 call_1b_5796
+;; 1b:57b3:r_op _SRAM_PS2_DELAY
+;; 1b:57b7:r_op _SRAM_PS2_DELAY_BANK
 
 1b:57c1 call_1b_57c1
 
 1b:582c call_1b_582c
+;; 1b:5832:r_op _SRAM_TEMPO
+;; 1b:5836:r_op _SRAM_TEMPO_BANK
+;; 1b:5845:r_op _SRAM_OVERCLOCK
+;; 1b:5849:r_op _SRAM_OVERCLOCK_BANK
 
 1b:5853 call_1b_5853
 
@@ -4643,6 +4948,11 @@
 
 1b:5b7a call_1b_5b7a
 
+;; 1b:5bd1:r_op _SRAM_WORK_TIME_HOURS
+;; 1b:5bd5:r_op _SRAM_WORK_TIME_HOURS_BANK
+;; 1b:5beb:r_op _SRAM_WORK_TIME_MINUTES
+;; 1b:5bef:r_op _SRAM_WORK_TIME_MINUTES_BANK
+
 1b:5c03 data_stat_strings
 1b:5c03 data_play_stat_string
 1b:5c03 .text:0009
@@ -4658,6 +4968,13 @@
 ;; 1b:5c2c:r_op LOW(call_01_6d5c)
 ;; 1b:5c2e:r_op HIGH(call_01_6d5c)
 ;; 1b:5c31:r_op BANK(call_01_6d5c)
+
+;; 1b:5cf9:r_op _SRAM_TOTAL_TIME_HOURS
+;; 1b:5cfd:r_op _SRAM_TOTAL_TIME_HOURS_BANK
+;; 1b:5d0d:r_op _SRAM_TOTAL_TIME_DAYS
+;; 1b:5d11:r_op _SRAM_TOTAL_TIME_DAYS_BANK
+;; 1b:5d2d:r_op _SRAM_TOTAL_TIME_MINUTES
+;; 1b:5d31:r_op _SRAM_TOTAL_TIME_MINUTES_BANK
 
 1b:5d4f data_project_screen_strings_1
 1b:5d4f data_project_screen_deep_string_1
@@ -4704,6 +5021,12 @@
 ;; 1b:5f61:r_op HIGH(call_07_5d9a)
 ;; 1b:5f64:r_op BANK(call_07_5d9a)
 
+;; 1b:6005:r_op _SRAM_CLONE_TYPE_BANK
+;; 1b:6009:r_op _SRAM_CLONE_TYPE
+
+;; 1b:6062:r_op _SRAM_PALETTE_NUM
+;; 1b:6066:r_op _SRAM_PALETTE_NUM_BANK
+
 ;; 1b:6072:r_op LOW(call_01_4c61)
 ;; 1b:6074:r_op HIGH(call_01_4c61)
 ;; 1b:6077:r_op BANK(call_01_4c61)
@@ -4712,7 +5035,16 @@
 ;; 1b:6093:r_op HIGH(call_1e_7aa0)
 ;; 1b:6096:r_op BANK(call_1e_7aa0)
 
+;; 1b:60d1:r_op _SRAM_KEY_REPEAT
+;; 1b:60d5:r_op _SRAM_KEY_REPEAT_BANK
+
+;; 1b:60f1:r_op _SRAM_PRELISTEN
+;; 1b:60f5:r_op _SRAM_PRELISTEN_BANK
+
 1b:6117 jump_table_1b_6117
+
+;; 1b:614b:r_op _SRAM_PALETTE_NUM
+;; 1b:614f:r_op _SRAM_PALETTE_NUM_BANK
 
 ;; 1b:6158:r_op LOW(call_01_4c61)
 ;; 1b:615a:r_op HIGH(call_01_4c61)
@@ -4726,6 +5058,18 @@
 ;; 1b:61c6:r_op HIGH(call_07_5d9a)
 ;; 1b:61c9:r_op BANK(call_07_5d9a)
 
+;; 1b:626e:r_op _SRAM_CLONE_TYPE
+;; 1b:6272:r_op _SRAM_CLONE_TYPE_BANK
+
+;; 1b:62b5:r_op _SRAM_KEY_REPEAT
+;; 1b:62b9:r_op _SRAM_KEY_REPEAT_BANK
+
+;; 1b:62d5:r_op _SRAM_PRELISTEN
+;; 1b:62d9:r_op _SRAM_PRELISTEN_BANK
+
+;; 1b:631b:r_op _SRAM_FONT
+;; 1b:631f:r_op _SRAM_FONT_BANK
+
 ;; 1b:632b:r_op LOW(call_1e_7aa0)
 ;; 1b:632d:r_op HIGH(call_1e_7aa0)
 ;; 1b:6330:r_op BANK(call_1e_7aa0)
@@ -4734,17 +5078,35 @@
 ;; 1b:6361:r_op HIGH(call_07_5d9a)
 ;; 1b:6364:r_op BANK(call_07_5d9a)
 
+;; 1b:63e0:r_op _SRAM_KEY_DELAY
+;; 1b:63e4:r_op _SRAM_KEY_DELAY_BANK
+
 ;; 1b:642d:r_op LOW(call_07_5d9a)
 ;; 1b:642f:r_op HIGH(call_07_5d9a)
 ;; 1b:6432:r_op BANK(call_07_5d9a)
+
+;; 1b:649a:r_op _SRAM_FONT
+;; 1b:649e:r_op _SRAM_FONT_BANK
 
 ;; 1b:64aa:r_op LOW(call_1e_7aa0)
 ;; 1b:64ac:r_op HIGH(call_1e_7aa0)
 ;; 1b:64af:r_op BANK(call_1e_7aa0)
 
+;; 1b:64e9:r_op _SRAM_KEY_DELAY
+;; 1b:64ed:r_op _SRAM_KEY_DELAY_BANK
+
 ;; 1b:666a:r_op LOW(call_1c_47b1)
 ;; 1b:666c:r_op HIGH(call_1c_47b1)
 ;; 1b:666f:r_op BANK(call_1c_47b1)
+
+;; 1b:667c:r_op _SRAM_TOTAL_TIME_DAYS
+;; 1b:6680:r_op _SRAM_TOTAL_TIME_DAYS_BANK
+
+;; 1b:668d:r_op _SRAM_TOTAL_TIME_MINUTES
+;; 1b:6691:r_op _SRAM_TOTAL_TIME_MINUTES_BANK
+
+;; 1b:669e:r_op _SRAM_TOTAL_TIME_HOURS
+;; 1b:66a2:r_op _SRAM_TOTAL_TIME_HOURS_BANK
 
 ;; 1b:66eb:r_op LOW(call_07_5d9a)
 ;; 1b:66ed:r_op HIGH(call_07_5d9a)
@@ -4795,6 +5157,15 @@
 ;; 1b:68cd:r_op LOW(call_1c_5098)
 ;; 1b:68cf:r_op HIGH(call_1c_5098)
 ;; 1b:68d2:r_op BANK(call_1c_5098)
+
+;; 1b:68e7:r_op _SRAM_TOTAL_TIME_DAYS
+;; 1b:68eb:r_op _SRAM_TOTAL_TIME_DAYS_BANK
+
+;; 1b:68f8:r_op _SRAM_TOTAL_TIME_MINUTES
+;; 1b:68fc:r_op _SRAM_TOTAL_TIME_MINUTES_BANK
+
+;; 1b:6909:r_op _SRAM_TOTAL_TIME_HOURS
+;; 1b:690d:r_op _SRAM_TOTAL_TIME_HOURS_BANK
 
 ;; 1b:6916:r_op LOW(call_1c_47b1)
 ;; 1b:6918:r_op HIGH(call_1c_47b1)
@@ -4926,6 +5297,8 @@
 1c:49d4 call_1c_49d4
 
 1c:4a46 call_1c_4a46
+;; 1c:4a49:r_op _SRAM_FILE_CHANGED
+;; 1c:4a4d:r_op _SRAM_FILE_CHANGED_BANK
 
 1c:4c11 data_empty_string_2
 1c:4c11 .text:0009
@@ -4935,8 +5308,14 @@
 1c:4d58 call_1c_4d58
 
 1c:4dd1 call_1c_4dd1
+;; 1c:4dd2:r_op _SRAM_WORK_TIME_MINUTES
+;; 1c:4dd6:r_op _SRAM_WORK_TIME_MINUTES_BANK
+;; 1c:4df0:r_op _SRAM_WORK_TIME_HOURS
+;; 1c:4df4:r_op _SRAM_WORK_TIME_HOURS_BANK
 
 1c:4e10 call_1c_4e10
+;; 1c:4f8c:r_op _SRAM_FILE_CHANGED
+;; 1c:4f90:r_op _SRAM_FILE_CHANGED_BANK
 
 1c:4fa5 call_1c_4fa5
 
@@ -4949,14 +5328,52 @@
 
 1c:50b3 call_1c_50b3
 
+;; 1c:50b6:r_op _SRAM_KEY_REPEAT
+;; 1c:50ba:r_op _SRAM_KEY_REPEAT_BANK
+;; 1c:50c6:r_op _SRAM_KEY_DELAY
+;; 1c:50ca:r_op _SRAM_KEY_DELAY_BANK
+;; 1c:50d6:r_op _SRAM_SYNC
+;; 1c:50da:r_op _SRAM_SYNC_BANK
+;; 1c:50e6:r_op _SRAM_PS2_DELAY
+;; 1c:50ea:r_op _SRAM_PS2_DELAY_BANK
+;; 1c:5147:r_op _SRAM_TOTAL_TIME_DAYS
+;; 1c:514b:r_op _SRAM_TOTAL_TIME_DAYS_BANK
+;; 1c:5164:r_op _SRAM_TOTAL_TIME_HOURS
+;; 1c:5168:r_op _SRAM_TOTAL_TIME_HOURS_BANK
+;; 1c:5186:r_op _SRAM_TOTAL_TIME_MINUTES
+;; 1c:518a:r_op _SRAM_TOTAL_TIME_MINUTES_BANK
+;; 1c:51a8:r_op _SRAM_TOTAL_TIME_CHECKSUM
+;; 1c:51ac:r_op _SRAM_TOTAL_TIME_CHECKSUM_BANK
+
 ;; 1c:5203:r_op LOW(call_00_2490)
 ;; 1c:5205:r_op HIGH(call_00_2490)
 ;; 1c:5208 Unused bank for call_00_2490
 ;; 1c:520c Banked call used for call_00_2490 unnecessarily
 
+;; 1c:521b:r_op _SRAM_TOTAL_TIME_DAYS
+;; 1c:521f:r_op _SRAM_TOTAL_TIME_DAYS_BANK
+;; 1c:5231:r_op _SRAM_TOTAL_TIME_HOURS
+;; 1c:5235:r_op _SRAM_TOTAL_TIME_HOURS_BANK
+;; 1c:5247:r_op _SRAM_TOTAL_TIME_MINUTES
+;; 1c:524b:r_op _SRAM_TOTAL_TIME_MINUTES_BANK
+;; 1c:525d:r_op _SRAM_TOTAL_TIME_CHECKSUM
+;; 1c:525d:r_op _SRAM_TOTAL_TIME_CHECKSUM_BANK
+
 ;; 1c:526d:r_op LOW(call_01_45d1)
 ;; 1c:526f:r_op HIGH(call_01_45d1)
 ;; 1c:5272:r_op BANK(call_01_45d1)
+
+;; 1c:529c:r_op _SRAM_KEY_DELAY
+;; 1c:52a0:r_op _SRAM_KEY_DELAY_BANK
+;; 1c:52ae:r_op _SRAM_KEY_REPEAT
+;; 1c:52b2:r_op _SRAM_KEY_REPEAT_BANK
+;; 1c:52c0:r_op _SRAM_SYNC
+;; 1c:52c4:r_op _SRAM_SYNC_BANK
+;; 1c:52d2:r_op _SRAM_PS2_DELAY
+;; 1c:52d6:r_op _SRAM_PS2_DELAY_BANK
+
+;; 1c:5307:r_op _SRAM_FILE_CHANGED
+;; 1c:530b:r_op _SRAM_FILE_CHANGED_BANK
 
 ;; 1c:531a:r_op LOW(call_01_7c94)
 ;; 1c:531c:r_op HIGH(call_01_7c94)
@@ -5012,6 +5429,10 @@
 1c:594a call_1c_594a
 
 1c:595f call_1c_595f
+;; 1c:5962:r_op _SRAM_WORK_TIME_HOURS
+;; 1c:5966:r_op _SRAM_WORK_TIME_HOURS_BANK
+;; 1c:59a7:r_op _SRAM_WORK_TIME_MINUTES
+;; 1c:59ab:r_op _SRAM_WORK_TIME_MINUTES_BANK
 
 1c:59e6 call_1c_59e6
 
@@ -5138,6 +5559,10 @@
 ;; 1c:6959:r_op rRAMG
 ;; 1c:695c:r_op CART_RAM_ENABLE
 ;; 1c:695e:r_op rRAMB
+;; 1c:6961:r_op _SRAM_TABLE_COMMANDS_1_BANK
+;; 1c:6963:r_op _SRAM_TABLE_COMMANDS_1
+;; 1c:6994 Assume that the banks are the same for _SRAM_TABLE_COMMANDS_1 and _SRAM_TABLE_COMMANDS_2
+;; 1c:6994:r_op _SRAM_TABLE_COMMANDS_2
 ;; 1c:69c5:r_op rRAMB
 ;; 1c:69fb:r_op rRAMG
 ;; 1c:69fe:r_op CART_RAM_DISABLE
@@ -5173,8 +5598,15 @@
 1c:6e5a call_1c_6e5a
 
 1c:6f21 call_1c_6f21
+;; 1c:6f24:r_op _SRAM_SYNTH_PARAMS
+;; 1c:6f42:r_op _SRAM_SYNTH_PARAMS_BANK
 
 1c:6f75 call_1c_6f75
+;; 1c:6f76:r_op _SRAM_VERSION_FLAG
+;; 1c:6f7a:r_op _SRAM_VERSION_FLAG_BANK
+
+;; 1c:7098:r_op _SRAM_VERSION_FLAG
+;; 1c:709c:r_op _SRAM_VERSION_FLAG_BANK
 
 1c:70a7 data_upgrading_string
 1c:70a7 .text:0010
@@ -5236,10 +5668,15 @@
 
 1d:4000 call_1d_4000
 
+;; 1d:402e:r_op _SRAM_GROOVES
+;; 1d:404b:r_op _SRAM_GROOVES_BANK
+
 1d:4058 data_1d_4058
 1d:4058 .data:0002
 
 1d:405a call_1d_405a
+;; 1d:4088:r_op _SRAM_GROOVES
+;; 1d:40a0:r_op _SRAM_GROOVES_BANK
 
 1d:40ae call_1d_40ae
 
@@ -5384,6 +5821,8 @@
 1d:6311 .text:0007
 
 1d:6318 call_1d_6318
+;; 1d:632d:r_op _SRAM_SYNTH_PARAMS
+;; 1d:634d:r_op _SRAM_SYNTH_PARAMS_BANK
 
 1d:635b call_1d_635b
 
@@ -5435,6 +5874,8 @@
 1d:65c4 .text:0005
 
 1d:65c9 call_1d_65c9
+;; 1d:65de:r_op _SRAM_SYNTH_PARAMS
+;; 1d:664b:r_op _SRAM_SYNTH_PARAMS_BANK
 
 1d:68ac data_1d_68ac
 1d:68ac .text:0003
@@ -5455,6 +5896,8 @@
 ;; 1d:68f5:r_op BANK(call_05_4040)
 
 1d:6900 call_1d_6900
+;; 1d:6928:r_op _SRAM_SYNTH_PARAMS
+;; 1d:693d:r_op _SRAM_SYNTH_PARAMS_BANK
 
 1d:6b3a call_1d_6b3a
 
@@ -5484,14 +5927,24 @@
 1d:6e18 call_1d_6e18
 
 1d:6e75 call_1d_6e75
+;; 1d:6e8a:r_op _SRAM_SYNTH_PARAMS
+;; 1d:6eb0:r_op _SRAM_SYNTH_PARAMS_BANK
 
 1d:6ebd call_1d_6ebd
+;; 1d:6ed2:r_op _SRAM_SYNTH_PARAMS
+;; 1d:6ef2:r_op _SRAM_SYNTH_PARAMS_BANK
 
 1d:6f46 call_1d_6f46
+;; 1d:6f5b:r_op _SRAM_SYNTH_PARAMS
+;; 1d:6f7b:r_op _SRAM_SYNTH_PARAMS_BANK
 
 1d:6fcb call_1d_6fcb
+;; 1d:6fe0:r_op _SRAM_SYNTH_PARAMS
+;; 1d:7000:r_op _SRAM_SYNTH_PARAMS_BANK
 
 1d:7032 call_1d_7032
+;; 1d:7047:r_op _SRAM_SYNTH_PARAMS
+;; 1d:7067:r_op _SRAM_SYNTH_PARAMS_BANK
 
 1d:7095 call_1d_7095
 
@@ -5538,9 +5991,15 @@
 ;; 1d:7c71 Unused bank for call_00_2490
 ;; 1d:7c75 Banked call used for call_00_2490 unnecessarily
 
+;; 1d:7ca4:r_op _SRAM_SYNTH_PARAMS
+;; 1d:7cbf:r_op _SRAM_SYNTH_PARAMS_BANK
+
 ;; 1d:7cfb:r_op LOW(call_1c_717c)
 ;; 1d:7cfd:r_op HIGH(call_1c_717c)
 ;; 1d:7d00:r_op BANK(call_1c_717c)
+
+;; 1d:7d40:r_op _SRAM_SYNTH_PARAMS
+;; 1d:7d6b:r_op _SRAM_SYNTH_PARAMS_BANK
 
 1d:7d92 data_copied_synth_string
 1d:7d92 .text:000d
@@ -5718,11 +6177,15 @@
 ;; 1f:4866:r_op BANK(call_03_49e0)
 
 1f:48c4 call_1f_48c4
+;; 1f:48ee:r_op _SRAM_CHAIN_PHRASES
+;; 1f:490c:r_op _SRAM_CHAIN_PHRASES_BANK
 
 1f:4919 data_1f_4919
 1f:4919 .data:0010
 
 1f:4929 call_1f_4929
+;; 1f:493c:r_op _SRAM_INSTRUMENT_ALLOC
+;; 1f:494b:r_op _SRAM_INSTRUMENT_ALLOC_BANK
 
 1f:4a01 data_1f_4a01
 1f:4a01 .data:000b
@@ -5742,10 +6205,20 @@
 1f:4ab3 call_1f_4ab3
 
 1f:4af8 call_1f_4af8
+;; 1f:4b0f:r_op _SRAM_TABLE_TRANSPOSE
+;; 1f:4b1e:r_op _SRAM_TABLE_TRANSPOSE_BANK
+;; 1f:4b37:r_op _SRAM_TABLE_COMMANDS_1
+;; 1f:4b3e:r_op _SRAM_TABLE_COMMANDS_1_BANK
+;; 1f:4b57:r_op _SRAM_TABLE_COMMANDS_2
+;; 1f:4b5e:r_op _SRAM_TABLE_COMMANDS_2_BANK
+;; 1f:4b77:r_op _SRAM_TABLE_VOLS
+;; 1f:4b7e:r_op _SRAM_TABLE_VOLS_BANK
 
 1f:4b8c call_1f_4b8c
 
 1f:4bbb call_1f_4bbb
+;; 1f:4be9:r_op _SRAM_CHAIN_ALLOC
+;; 1f:4bf8:r_op _SRAM_CHAIN_ALLOC_BANK
 
 ;; 1f:4c1a:r_op LOW(call_01_4d67)
 ;; 1f:4c1c:r_op HIGH(call_01_4d67)
@@ -5756,6 +6229,9 @@
 ;; 1f:4c59:r_op BANK(call_01_75c6)
 
 1f:4c68 call_1f_4c68
+;; 1f:4d1b:r_op _SRAM_INSTRUMENT_ALLOC
+;; 1f:4d2e:r_op _SRAM_INSTRUMENT_ALLOC_BANK
+
 ;; 1f:4e1b:r_op rRAMB
 ;; 1f:4e21:r_op rRAMG
 ;; 1f:4e24:r_op CART_RAM_ENABLE
@@ -5777,8 +6253,16 @@
 1f:4ec9 call_1f_4ec9
 
 1f:4ee4 call_1f_4ee4
+;; 1f:4f02:r_op _SRAM_PHRASE_COMMAND_VALUES
+;; 1f:4f20:r_op _SRAM_PHRASE_COMMAND_VALUES_BANK
 
 1f:4f60 call_1f_4f60
+;; 1f:4f74:r_op _SRAM_TABLE_COMMANDS_1
+;; 1f:4f7e:r_op _SRAM_TABLE_COMMAND_VALUES_1
+;; 1f:4f88:r_op _SRAM_TABLE_COMMANDS_2
+;; 1f:4f92:r_op _SRAM_TABLE_COMMAND_VALUES_2
+;; 1f:4fb0 Assume the banks are the same for _SRAM_TABLE_*
+;; 1f:4fb0:r_op _SRAM_TABLE_COMMANDS_1_BANK
 
 1f:502c call_1f_502c
 
@@ -5799,6 +6283,11 @@
 1f:511e call_1f_511e
 
 1f:5154 call_1f_5154
+;; 1f:5173:r_op _SRAM_TABLE_COMMANDS_1
+;; 1f:517d:r_op _SRAM_TABLE_COMMAND_VALUES_1
+;; 1f:5187:r_op _SRAM_TABLE_COMMANDS_2
+;; 1f:5191:r_op _SRAM_TABLE_COMMAND_VALUES_2
+;; 1f:519b:r_op _SRAM_TABLE_TRANSPOSE
 
 1f:5206 call_1f_5206
 
@@ -5845,24 +6334,50 @@
 ;; 1f:544e:r_op CART_RAM_ENABLE
 ;; 1f:5498:r_op rRAMB
 ;; 1f:54d3:r_op rRAMB
+;; 1f:54d6:r_op _SRAM_PHRASE_INSTRUMENTS_BANK
+;; 1f:54dd:r_op _SRAM_PHRASE_INSTRUMENTS
+;; 1f:54ed:r_op _SRAM_PHRASE_INSTRUMENTS
 ;; 1f:552e:r_op rRAMB
+;; 1f:5588 Assume the banks are the same for _SRAM_BOOKMARKS and _SRAM_PHRASE_INSTRUMENTS
+;; 1f:5588:r_op _SRAM_BOOKMARKS
+;; 1f:5598:r_op _SRAM_BOOKMARKS
 
 1f:55df call_1f_55df
 ;; 1f:55f3:r_op rRAMG
 ;; 1f:55f6:r_op CART_RAM_ENABLE
+;; 1f:561b:r_op _SRAM_CHAIN_PHRASES
+;; 1f:5635:r_op _SRAM_CHAIN_PHRASES
 ;; 1f:5640:r_op rRAMB
+;; 1f:5643:r_op _SRAM_CHAIN_PHRASES_BANK
+;; 1f:5680:r_op _SRAM_CHAIN_TRANSPOSES
+;; 1f:5690:r_op _SRAM_CHAIN_TRANSPOSES
 
 1f:56d7 call_1f_56d7
 ;; 1f:5709:r_op rRAMG
 ;; 1f:570c:r_op CART_RAM_ENABLE
 ;; 1f:570e:r_op rRAMB
+;; 1f:5711:r_op _SRAM_TABLE_COMMANDS_1_BANK
+;; 1f:5718:r_op _SRAM_TABLE_COMMANDS_1
+;; 1f:5732:r_op _SRAM_TABLE_COMMANDS_1
+;; 1f:5778:r_op _SRAM_TABLE_COMMAND_VALUES_1
+;; 1f:5788:r_op _SRAM_TABLE_COMMAND_VALUES_1
+;; 1f:57ce:r_op _SRAM_TABLE_COMMANDS_2
+;; 1f:57de:r_op _SRAM_TABLE_COMMANDS_2
+;; 1f:5824:r_op _SRAM_TABLE_COMMAND_VALUES_2
+;; 1f:5834:r_op _SRAM_TABLE_COMMAND_VALUES_2
+;; 1f:587a:r_op _SRAM_TABLE_VOLS
+;; 1f:588a:r_op _SRAM_TABLE_VOLS
 ;; 1f:5895:r_op rRAMB
+;; 1f:58d5:r_op _SRAM_TABLE_TRANSPOSE
+;; 1f:58e5:r_op _SRAM_TABLE_TRANSPOSE
 ;; 1f:58f0:r_op rRAMB
 
 1f:5931 call_1f_5931
+;; 1f:5934:r_op _SRAM_CHAIN_PHRASES
 ;; 1f:5938:r_op rRAMG
 ;; 1f:593b:r_op CART_RAM_ENABLE
 ;; 1f:593d:r_op rRAMB
+;; 1f:5940:r_op _SRAM_CHAIN_PHRASES_BANK
 ;; 1f:595d:r_op rRAMG
 ;; 1f:5960:r_op CART_RAM_DISABLE
 ;; 1f:59b9:r_op rRAMB
@@ -5872,9 +6387,11 @@
 ;; 1f:596d:r_op BANK(call_01_4dd3)
 
 1f:59ad call_1f_59ad
+;; 1f:59b0:r_op _SRAM_SONG_CHAINS
 ;; 1f:59b4:r_op rRAMG
 ;; 1f:59b7:r_op CART_RAM_ENABLE
 ;; 1f:59d9:r_op rRAMG
+;; 1f:59bc:r_op _SRAM_SONG_CHAINS_BANK
 ;; 1f:59dc:r_op CART_RAM_DISABLE
 
 ;; 1f:59df:r_op LOW(call_01_4e43)
@@ -5907,8 +6424,10 @@
 
 1f:5db8 call_1f_5db8
 ;; 1f:5dbb:r_op rRAMB
+;; 1f:5dbe:r_op _SRAM_PHRASE_ALLOC_BANK
 ;; 1f:5dc1:r_op rRAMG
 ;; 1f:5dc4:r_op CART_RAM_ENABLE
+;; 1f:5dce:r_op _SRAM_PHRASE_ALLOC
 ;; 1f:5dd7:r_op rRAMG
 ;; 1f:5dda:r_op CART_RAM_DISABLE
 ;; 1f:5e33:r_op rRAMG
@@ -6089,6 +6608,8 @@
 1f:6bac call_1f_6bac
 
 1f:6bc2 call_1f_6bc2
+;; 1f:6bdd:r_op _SRAM_SPEECH_WORD_NAMES
+;; 1f:6c00:r_op _SRAM_SPEECH_WORD_NAMES_BANK
 
 1f:6c2c data_1f_6c2c
 1f:6c2c .text:0004
@@ -6151,6 +6672,8 @@
 1f:71be .text:000e
 
 1f:71cc call_1f_71cc
+;; 1f:723b:r_op _SRAM_SPEECH_WORD_NAMES
+;; 1f:7259:r_op _SRAM_SPEECH_WORD_NAMES_BANK
 
 ;; 1f:72c2:r_op LOW(call_1b_4e8a)
 ;; 1f:72c4:r_op HIGH(call_1b_4e8a)
@@ -6167,6 +6690,18 @@
 
 ;; 1f:736d:r_op call_05_4233
 ;; 1f:7371:r_op BANK(call_05_4233)
+
+;; 1f:73dc:r_op _SRAM_SPEECH_WORDS
+;; 1f:73f7:r_op _SRAM_SPEECH_WORDS_BANK
+
+;; 1f:7496:r_op _SRAM_SPEECH_WORD_NAMES
+;; 1f:74b1:r_op _SRAM_SPEECH_WORD_NAMES_BANK
+
+;; 1f:75da:r_op _SRAM_SPEECH_WORDS
+;; 1f:7622:r_op _SRAM_SPEECH_WORDS_BANK
+
+;; 1f:767e:r_op _SRAM_SPEECH_WORD_NAMES
+;; 1f:76e2:r_op _SRAM_SPEECH_WORD_NAMES_BANK
 
 ;; 1f:770c:r_op call_03_45fc
 ;; 1f:7710:r_op BANK(call_03_45fc)
