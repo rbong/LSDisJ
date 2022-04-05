@@ -1,12 +1,15 @@
 # LSDisJ
 
 Disassembly of [Little Sound DJ](https://www.littlesounddj.com/lsd/index.php).
-This currently only targets the latest stable version at the time of writing, `9.2.L`.
+
+This currently supportes the last 2 stable versions at the time of writing:
+* `9.2.L` (default) (incomplete)
+* `8.5.1` (incomplete)
 
 ## Prerequisites
 
   - [Git](https://git-scm.com/downloads)
-  - [LSDj 9.2.L](https://www.littlesounddj.com/lsd/latest/rom_images/stable/lsdj9_2_L-stable.zip)
+  - An LSDj ROM, for example [version 9.2.L](https://www.littlesounddj.com/lsd/latest/rom_images/stable/lsdj9_2_L-stable.zip)
     - Read [the LSDj license](https://www.littlesounddj.com/lsd/latest/rom_images/LICENSE.txt)
     - Extract and move the ROM to `src/lsdj-9.2.L.gb`
   - [Python](https://www.python.org/)
@@ -22,6 +25,7 @@ git clone --recursive https://github.com/rbong/LSDisJ
 git pull && git submodule update
 
 # Create build/9.2.L/src/lsdj.asm
+# Same as "make VERSION=9.2.L"
 make
 
 # Remove everything
