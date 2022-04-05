@@ -4550,8 +4550,12 @@
 ;; 07:640b Assume the bank is set to the bank for _SRAM_BOOKMARKS
 
 07:6411 call_07_6411
+;; 07:641d:r_op _SRAM_BOOKMARKS
+;; 07:642e:r_op _SRAM_BOOKMARKS_BANK
 
 07:648c call_07_648c
+;; 07:6498:r_op _SRAM_BOOKMARKS
+;; 07:64a9:r_op _SRAM_BOOKMARKS_BANK
 
 07:6505 call_07_6505
 
