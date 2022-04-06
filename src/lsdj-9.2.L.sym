@@ -1691,6 +1691,10 @@
 ;; 01:480b:r_op CART_RAM_DISABLE
 
 01:4811 call_01_4811
+;; 01:4812:r_op _SRAM_FILE_INIT_FLAG
+;; 01:4816:r_op _SRAM_FILE_INIT_FLAG_BANK
+;; 01:482b:r_op _SRAM_FILE_INIT_FLAG + 1
+;; 01:482f:r_op _SRAM_FILE_INIT_FLAG_BANK
 
 01:4848 call_01_4848
 
@@ -3151,7 +3155,7 @@
 
 04:4c14 call_04_4c14
 ;; 04:4c34:r_op _SRAM_PHRASE_NOTES
-;; 04:4c47:r_op _SRAM_WAVE_FRAMES_BANK
+;; 04:4c47:r_op _SRAM_PHRASE_NOTES_BANK
 ;; 04:4c55:r_op _SRAM_PHRASE_INSTRUMENTS
 ;; 04:4c60:r_op _SRAM_PHRASE_INSTRUMENTS_BANK
 ;; 04:4c81:r_op _SRAM_PHRASE_COMMAND_VALUES
@@ -5196,8 +5200,8 @@
 ;; 1b:6926:r_op HIGH(call_01_45d1)
 ;; 1b:6929:r_op BANK(call_01_45d1)
 
-;; 1b:6936:r_op _SRAM_CURRENT_SONG
-;; 1b:693a:r_op _SRAM_CURRENT_SONG_BANK
+;; 1b:6936:r_op _SRAM_CURRENT_FILE
+;; 1b:693a:r_op _SRAM_CURRENT_FILE_BANK
 
 ;; 1b:6943:r_op LOW(call_1c_4a46)
 ;; 1b:6945:r_op HIGH(call_1c_4a46)
@@ -5278,24 +5282,28 @@
 1c:4047 .data:0010
 
 1c:4057 call_1c_4057
-;; 1c:4058:r_op _SRAM_INIT_FLAG_4
-;; 1c:405c:r_op _SRAM_INIT_FLAG_4_BANK
-;; 1c:4071:r_op _SRAM_INIT_FLAG_4 + 1
-;; 1c:4075:r_op _SRAM_INIT_FLAG_4_BANK
-;; 1c:408a:r_op _SRAM_INIT_FLAG_5
-;; 1c:408e:r_op _SRAM_INIT_FLAG_5_BANK
-;; 1c:40a3:r_op _SRAM_INIT_FLAG_5 + 1
-;; 1c:40a7:r_op _SRAM_INIT_FLAG_5_BANK
-;; 1c:40bc:r_op _SRAM_INIT_FLAG_7
-;; 1c:40c0:r_op _SRAM_INIT_FLAG_7_BANK
-;; 1c:40d5:r_op _SRAM_INIT_FLAG_7 + 1
-;; 1c:40d9:r_op _SRAM_INIT_FLAG_7_BANK
+;; 1c:4058:r_op _SRAM_INIT_FLAG_1
+;; 1c:405c:r_op _SRAM_INIT_FLAG_1_BANK + 4
+;; 1c:4071:r_op _SRAM_INIT_FLAG_1 + 1
+;; 1c:4075:r_op _SRAM_INIT_FLAG_1_BANK + 4
+;; 1c:408a:r_op _SRAM_INIT_FLAG_2
+;; 1c:408e:r_op _SRAM_INIT_FLAG_2_BANK + 4
+;; 1c:40a3:r_op _SRAM_INIT_FLAG_2 + 1
+;; 1c:40a7:r_op _SRAM_INIT_FLAG_2_BANK + 4
+;; 1c:40bc:r_op _SRAM_INIT_FLAG_3
+;; 1c:40c0:r_op _SRAM_INIT_FLAG_3_BANK + 4
+;; 1c:40d5:r_op _SRAM_INIT_FLAG_3 + 1
+;; 1c:40d9:r_op _SRAM_INIT_FLAG_3_BANK + 4
 
 1c:40f2 call_1c_40f2
-;; 1c:4129:r_op _SRAM_INIT_FLAG_8
-;; 1c:412d:r_op _SRAM_INIT_FLAG_8_BANK
-;; 1c:413d:r_op _SRAM_INIT_FLAG_8 + 1
-;; 1c:4141:r_op _SRAM_INIT_FLAG_8_BANK
+;; 1c:4101:r_op _SRAM_FILE_INIT_FLAG
+;; 1c:4105:r_op _SRAM_FILE_INIT_FLAG_BANK + 8
+;; 1c:4115:r_op _SRAM_FILE_INIT_FLAG + 1
+;; 1c:4119:r_op _SRAM_FILE_INIT_FLAG_BANK + 8
+;; 1c:4129:r_op _SRAM_INIT_FLAG_1
+;; 1c:412d:r_op _SRAM_INIT_FLAG_1_BANK + 8
+;; 1c:413d:r_op _SRAM_INIT_FLAG_1 + 1
+;; 1c:4141:r_op _SRAM_INIT_FLAG_1_BANK + 8
 
 1c:415a call_1c_415a
 
@@ -5331,10 +5339,16 @@
 1c:47a3 .text:000e
 
 1c:47b1 call_1c_47b1
-;; 1c:47b8:r_op _SRAM_INIT_FLAG_4
-;; 1c:47bc:r_op _SRAM_INIT_FLAG_4_BANK
-;; 1c:47ff:r_op _SRAM_CURRENT_SONG
-;; 1c:482c:r_op _SRAM_CURRENT_SONG_BANK
+;; 1c:47b8:r_op _SRAM_INIT_FLAG_1
+;; 1c:47bc:r_op _SRAM_INIT_FLAG_1_BANK + 4
+;; 1c:47c5:r_op _SRAM_FILE_NAMES
+;; 1c:47f2:r_op _SRAM_FILE_NAMES_BANK
+;; 1c:47ff:r_op _SRAM_CURRENT_FILE
+;; 1c:482c:r_op _SRAM_CURRENT_FILE_BANK
+;; 1c:4840:r_op _SRAM_FILE_INIT_FLAG
+;; 1c:4844:r_op _SRAM_FILE_INIT_FLAG_BANK
+;; 1c:4851:r_op _SRAM_FILE_INIT_FLAG + 1
+;; 1c:4855:r_op _SRAM_FILE_INIT_FLAG_BANK
 
 1c:4862 call_1c_4862
 
@@ -5347,19 +5361,26 @@
 1c:4a46 call_1c_4a46
 ;; 1c:4a49:r_op _SRAM_FILE_CHANGED
 ;; 1c:4a4d:r_op _SRAM_FILE_CHANGED_BANK
-;; 1c:4a59:r_op _SRAM_CURRENT_SONG
-;; 1c:4a5d:r_op _SRAM_CURRENT_SONG_BANK
+;; 1c:4a59:r_op _SRAM_CURRENT_FILE
+;; 1c:4a5d:r_op _SRAM_CURRENT_FILE_BANK
 
 1c:4c11 data_empty_string_2
 1c:4c11 .text:0009
 
 1c:4c1a call_1c_4c1a
+;; 1c:4c2b:r_op _SRAM_FILE_NAMES
+;; 1c:4c58:r_op _SRAM_FILE_NAMES_BANK
+;; 1c:4c82 Start of last file name
+;; 1c:4c82:r_op _SRAM_FILE_NAMES + (_MAX_FILES - 1) * _FILE_NAME_LENGTH
+;; 1c:4c86:r_op _SRAM_FILE_NAMES_BANK
+;; 1c:4c94:r_op _SRAM_FILE_VERSIONS
+;; 1c:4cc1:r_op _SRAM_FILE_VERSIONS_BANK
 
 1c:4d58 call_1c_4d58
-;; 1c:4d77:r_op _SRAM_CURRENT_SONG
-;; 1c:4d7b:r_op _SRAM_CURRENT_SONG_BANK
-;; 1c:4dc3:r_op _SRAM_CURRENT_SONG
-;; 1c:4dc7:r_op _SRAM_CURRENT_SONG_BANK
+;; 1c:4d77:r_op _SRAM_CURRENT_FILE
+;; 1c:4d7b:r_op _SRAM_CURRENT_FILE_BANK
+;; 1c:4dc3:r_op _SRAM_CURRENT_FILE
+;; 1c:4dc7:r_op _SRAM_CURRENT_FILE_BANK
 
 1c:4dd1 call_1c_4dd1
 ;; 1c:4dd2:r_op _SRAM_WORK_TIME_MINUTES
@@ -5372,12 +5393,16 @@
 ;; 1c:4e05:r_op _SRAM_LAST_SAVED_HOURS_BANK
 
 1c:4e10 call_1c_4e10
+;; 1c:4e2c:r_op _SRAM_FILE_NAMES
+;; 1c:4e53:r_op _SRAM_FILE_VERSIONS_BANK
 ;; 1c:4f8c:r_op _SRAM_FILE_CHANGED
 ;; 1c:4f90:r_op _SRAM_FILE_CHANGED_BANK
-;; 1c:4ebc:r_op _SRAM_CURRENT_SONG
-;; 1c:4ec0:r_op _SRAM_CURRENT_SONG_BANK
-;; 1c:4f03:r_op _SRAM_CURRENT_SONG
-;; 1c:4f07:r_op _SRAM_CURRENT_SONG_BANK
+;; 1c:4ebc:r_op _SRAM_CURRENT_FILE
+;; 1c:4ec0:r_op _SRAM_CURRENT_FILE_BANK
+;; 1c:4f03:r_op _SRAM_CURRENT_FILE
+;; 1c:4f07:r_op _SRAM_CURRENT_FILE_BANK
+;; 1c:4f46:r_op _SRAM_FILE_NAMES
+;; 1c:4f79:r_op _SRAM_FILE_VERSIONS_BANK
 
 1c:4fa5 call_1c_4fa5
 
@@ -5434,8 +5459,8 @@
 ;; 1c:52d2:r_op _SRAM_PS2_DELAY
 ;; 1c:52d6:r_op _SRAM_PS2_DELAY_BANK
 
-;; 1c:52f6:r_op _SRAM_CURRENT_SONG
-;; 1c:52fa:r_op _SRAM_CURRENT_SONG_BANK
+;; 1c:52f6:r_op _SRAM_CURRENT_FILE
+;; 1c:52fa:r_op _SRAM_CURRENT_FILE_BANK
 ;; 1c:5307:r_op _SRAM_FILE_CHANGED
 ;; 1c:530b:r_op _SRAM_FILE_CHANGED_BANK
 
@@ -5462,8 +5487,8 @@
 1c:5597 call_1c_5597
 
 1c:55f1 call_1c_55f1
-;; 1c:55ff:r_op _SRAM_CURRENT_SONG
-;; 1c:5603:r_op _SRAM_CURRENT_SONG_BANK
+;; 1c:55ff:r_op _SRAM_CURRENT_FILE
+;; 1c:5603:r_op _SRAM_CURRENT_FILE_BANK
 
 1c:57ac data_empty_string_3
 1c:57ac .text:000f
@@ -5489,12 +5514,12 @@
 1c:58be .text:0003
 
 1c:58c1 call_1c_58c1
-;; 1c:58d8:r_op _SRAM_CURRENT_SONG
-;; 1c:58dc:r_op _SRAM_CURRENT_SONG_BANK
+;; 1c:58d8:r_op _SRAM_CURRENT_FILE
+;; 1c:58dc:r_op _SRAM_CURRENT_FILE_BANK
 
 1c:590b call_1c_590b
-;; 1c:5917:r_op _SRAM_CURRENT_SONG
-;; 1c:591b:r_op _SRAM_CURRENT_SONG_BANK
+;; 1c:5917:r_op _SRAM_CURRENT_FILE
+;; 1c:591b:r_op _SRAM_CURRENT_FILE_BANK
 
 1c:594a call_1c_594a
 
@@ -5514,15 +5539,15 @@
 ;; 1c:5a24:r_op HIGH(call_02_77e6)
 ;; 1c:5a27:r_op BANK(call_02_77e6)
 
-;; 1c:5be1:r_op _SRAM_CURRENT_SONG
-;; 1c:5be5:r_op _SRAM_CURRENT_SONG_BANK
+;; 1c:5be1:r_op _SRAM_CURRENT_FILE
+;; 1c:5be5:r_op _SRAM_CURRENT_FILE_BANK
 
 ;; 1c:5ae3:r_op LOW(call_01_6cef)
 ;; 1c:5ae5:r_op HIGH(call_01_6cef)
 ;; 1c:5ae8:r_op BANK(call_01_6cef)
 
-;; 1c:5d51:r_op _SRAM_CURRENT_SONG
-;; 1c:5d55:r_op _SRAM_CURRENT_SONG_BANK
+;; 1c:5d51:r_op _SRAM_CURRENT_FILE
+;; 1c:5d55:r_op _SRAM_CURRENT_FILE_BANK
 
 ;; 1c:5c56:r_op LOW(call_1b_4e8a)
 ;; 1c:5c58:r_op HIGH(call_1b_4e8a)

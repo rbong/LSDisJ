@@ -212,6 +212,9 @@ _SPEECH_WORD_NAME_LENGTH EQU $03
 _SRAM_CHECK_1 EQU $72
 _SRAM_CHECK_2 EQU $62
 
+_SRAM_FILE_CHECK_1 EQU $6a
+_SRAM_FILE_CHECK_2 EQU $6b
+
 _INSTRUMENTS            EQU $40
 _INSTRUMENT_NAME_LENGTH EQU $05
 
@@ -227,6 +230,11 @@ _MIN_TEMPO EQU 40
 
 _SYNTH_FRAMES     EQU $10
 _SYNTH_FRAME_SIZE EQU $10
+
+_MAX_FILES        EQU $20
+_FILE_NAME_LENGTH EQU $08
+
+_BLOCKS EQU $bf
 
 ;;;;;;;;;;;;;;;;;;;;;
 ;; Memory Sections ;;
@@ -292,14 +300,13 @@ _SRAM_PHRASE_INSTRUMENTS_BANK EQU $03
 _SRAM_INIT_FLAG_3_BANK        EQU $03
 _SRAM_VERSION_FLAG_BANK       EQU $03
 
-_SRAM_CURRENT_SONG_BANK EQU $04
-_SRAM_INIT_FLAG_4_BANK  EQU $04
+_SRAM_FILE_NAMES_BANK     EQU $04
+_SRAM_FILE_VERSIONS_BANK  EQU $04
+_SRAM_FILE_INIT_FLAG_BANK EQU $04
+_SRAM_CURRENT_FILE_BANK   EQU $04
 
-_SRAM_INIT_FLAG_5_BANK EQU $05
-
-_SRAM_INIT_FLAG_7_BANK EQU $07
-
-_SRAM_INIT_FLAG_8_BANK EQU $08
+_SRAM_BLOCKS_BANK_START EQU $04
+_SRAM_BLOCKS_MAX_BANK   EQU $0f
 
 ;; SRAM Addresses ;;
 
@@ -368,11 +375,10 @@ _SRAM_INIT_FLAG_3        EQU $bff0 ; 03:bff0 - 03:bff1 (2 special bytes)
                                    ; 03:bff2 - 03:bffe (empty)
 _SRAM_VERSION_FLAG       EQU $bfff ; 03:bfff - 03:bfff
 
-_SRAM_CURRENT_SONG EQU $a140 ; 04:a140 - 04:a140
-_SRAM_INIT_FLAG_4  EQU $be78 ; 04:be78 - 04:be79 (2 special bytes)
-
-_SRAM_INIT_FLAG_5 EQU $be80 ; 05:be80 - 05:be81 (2 special bytes)
-
-_SRAM_INIT_FLAG_7 EQU $bff0 ; 07:bff0 - 07:bff1 (2 special bytes)
-
-_SRAM_INIT_FLAG_8 EQU $be78 ; 08:be78 - 08:be79 (2 special bytes)
+_SRAM_FILE_NAMES       EQU $a000 ; 04:a000 - 04:a0ff (0x20 songs x 8 chars)
+_SRAM_FILE_VERSIONS    EQU $a100 ; 04:a100 - 04:a11f (0x20 songs x 1 byte)
+                                 ; 04:a120 - 04:a13d (empty)
+_SRAM_FILE_INIT_FLAG   EQU $a13e ; 04:a13e - 04:a13f (2 special bytes)
+_SRAM_CURRENT_FILE     EQU $a140 ; 04:a140 - 04:a140
+_SRAM_BLOCK_ALLOCATION EQU $a141 ; 04:a141 - 04:a1ff (0xbf blocks)
+_SRAM_BLOCKS           EQU $a200 ; 04:a200 - 0f:bfff
