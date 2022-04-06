@@ -53,6 +53,11 @@ _PLAY_LOOP     EQU 2
 _PLAY_PINGPONG EQU 3
 _PLAY_RESYNC   EQU 4
 
+;; Speech Kits ;;
+
+_SPEECH_KIT_START EQU $12
+_SPEECH_KITS      EQU 4
+
 ;; Kit Clip Types ;;
 
 ; Any values not listed here are noise
