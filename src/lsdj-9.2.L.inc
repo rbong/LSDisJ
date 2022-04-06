@@ -225,7 +225,8 @@ _SYNTH_PARAMS_SIZE EQU $10
 
 _MIN_TEMPO EQU 40
 
-_SYNTH_FRAMES EQU $10
+_SYNTH_FRAMES     EQU $10
+_SYNTH_FRAME_SIZE EQU $10
 
 ;;;;;;;;;;;;;;;;;;;;;
 ;; Memory Sections ;;
@@ -279,6 +280,8 @@ _SRAM_FILE_CHANGED_BANK           EQU $01
 _SRAM_PRELISTEN_BANK              EQU $01
 _SRAM_SYNTH_LOCK_BANK             EQU $01
 _SRAM_LAST_USED_INSTRUMENT_BANK   EQU $01
+_SRAM_LAST_SAVED_HOURS_BANK       EQU $01
+_SRAM_LAST_SAVED_MINUTES_BANK     EQU $01
 _SRAM_OVERCLOCK_BANK              EQU $01
 
 _SRAM_PHRASE_COMMANDS_BANK       EQU $02
@@ -288,6 +291,15 @@ _SRAM_WAVE_FRAMES_BANK        EQU $03
 _SRAM_PHRASE_INSTRUMENTS_BANK EQU $03
 _SRAM_INIT_FLAG_3_BANK        EQU $03
 _SRAM_VERSION_FLAG_BANK       EQU $03
+
+_SRAM_CURRENT_SONG_BANK EQU $04
+_SRAM_INIT_FLAG_4_BANK  EQU $04
+
+_SRAM_INIT_FLAG_5_BANK EQU $05
+
+_SRAM_INIT_FLAG_7_BANK EQU $07
+
+_SRAM_INIT_FLAG_8_BANK EQU $08
 
 ;; SRAM Addresses ;;
 
@@ -341,7 +353,8 @@ _SRAM_FILE_CHANGED           EQU $bfc1 ; 01:bfc1 - 01:bfc1 (first 4 bits) (uncha
 _SRAM_PRELISTEN              EQU $bfc3 ; 01:bfc3 - 01:bfc3
 _SRAM_SYNTH_LOCK             EQU $bfc4 ; 01:bfc4 - 01:bfc5 (0x10 synths x 1 bit)
 _SRAM_LAST_USED_INSTRUMENT   EQU $bfc6 ; 01:bfc6 - 01:bfc9 (4 channels)
-                                       ; 01:bfca - 01:bfcb (empty)
+_SRAM_LAST_SAVED_HOURS       EQU $bfca ; 01:bfca - 01:bfca
+_SRAM_LAST_SAVED_MINUTES     EQU $bfcb ; 01:bfcb - 01:bfcb
 _SRAM_OVERCLOCK              EQU $bfcc ; 01:bfcc - 01:bfcc
                                        ; 01:bfcd - 01:bfff (empty)
 
@@ -349,8 +362,17 @@ _SRAM_PHRASE_COMMANDS       EQU $a000 ; 02:a000 - 02:afef (0xff phrases x 0x10 r
 _SRAM_PHRASE_COMMAND_VALUES EQU $aff0 ; 02:aff0 - 02:bfdf (0xff phrases x 0x10 rows)
                                       ; 02:bfe0 - 02:bfff (empty)
 
-_SRAM_WAVE_FRAMES        EQU $a000 ; 03:a000 - 03:afff (0x10 synths x 0x10 frames)
+_SRAM_WAVE_FRAMES        EQU $a000 ; 03:a000 - 03:afff (0x10 synths x 0x10 frames x 0x10 samples) (1 sample = 1 char)
 _SRAM_PHRASE_INSTRUMENTS EQU $b000 ; 03:b000 - 03:bfef (0xff phrases x 0x10 rows)
 _SRAM_INIT_FLAG_3        EQU $bff0 ; 03:bff0 - 03:bff1 (2 special bytes)
                                    ; 03:bff2 - 03:bffe (empty)
 _SRAM_VERSION_FLAG       EQU $bfff ; 03:bfff - 03:bfff
+
+_SRAM_CURRENT_SONG EQU $a140 ; 04:a140 - 04:a140
+_SRAM_INIT_FLAG_4  EQU $be78 ; 04:be78 - 04:be79 (2 special bytes)
+
+_SRAM_INIT_FLAG_5 EQU $be80 ; 05:be80 - 05:be81 (2 special bytes)
+
+_SRAM_INIT_FLAG_7 EQU $bff0 ; 07:bff0 - 07:bff1 (2 special bytes)
+
+_SRAM_INIT_FLAG_8 EQU $be78 ; 08:be78 - 08:be79 (2 special bytes)

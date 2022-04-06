@@ -2633,6 +2633,8 @@
 03:4293 call_03_4293
 
 03:42ab call_03_42ab
+;; 03:42b4:r_op _SRAM_WAVE_FRAMES
+;; 03:42c4:r_op _SRAM_WAVE_FRAMES_BANK
 
 03:42ff call_03_42ff
 
@@ -3148,6 +3150,8 @@
 04:4c10 .text:0004
 
 04:4c14 call_04_4c14
+;; 04:4c34:r_op _SRAM_PHRASE_NOTES
+;; 04:4c47:r_op _SRAM_WAVE_FRAMES_BANK
 ;; 04:4c55:r_op _SRAM_PHRASE_INSTRUMENTS
 ;; 04:4c60:r_op _SRAM_PHRASE_INSTRUMENTS_BANK
 ;; 04:4c81:r_op _SRAM_PHRASE_COMMAND_VALUES
@@ -3870,8 +3874,12 @@
 06:48e9 call_06_48e9
 
 06:493c call_06_493c
+;; 06:4966:r_op _SRAM_WAVE_FRAMES
+;; 06:4989:r_op _SRAM_WAVE_FRAMES_BANK
 
 06:49b4 call_06_49b4
+;; 06:49d4:r_op _SRAM_WAVE_FRAMES
+;; 06:4a05:r_op _SRAM_WAVE_FRAMES_BANK
 
 06:4a5a call_06_4a5a
 
@@ -4508,6 +4516,9 @@
 
 07:5932 call_07_5932
 
+;; 07:59ae Last song chain row
+;; 07:59ae:r_op _SRAM_SONG_CHAINS + _CHANNELS * (_SONG_ROWS - 1)
+
 07:5ad1 data_pasted_chains_string
 07:5ad1 .text:000e
 
@@ -4535,9 +4546,15 @@
 
 07:633e call_07_633e
 
+;; 07:633f Last bookmark
+;; 07:633f:r_op _SRAM_BOOKMARKS + _BOOKMARKS - 1
+;; 07:6343:r_op _SRAM_BOOKMARKS_BANK
+
 ;; 07:6353:r_op LOW(call_01_763e)
 ;; 07:6355:r_op HIGH(call_01_763e)
 ;; 07:6358:r_op BANK(call_01_763e)
+
+;; 07:6369:r_op _SRAM_BOOKMARKS + _BOOKMARKS - 1
 
 07:6377 call_07_6377
 ;; 07:6399:r_op _SRAM_BOOKMARKS
@@ -5179,6 +5196,9 @@
 ;; 1b:6926:r_op HIGH(call_01_45d1)
 ;; 1b:6929:r_op BANK(call_01_45d1)
 
+;; 1b:6936:r_op _SRAM_CURRENT_SONG
+;; 1b:693a:r_op _SRAM_CURRENT_SONG_BANK
+
 ;; 1b:6943:r_op LOW(call_1c_4a46)
 ;; 1b:6945:r_op HIGH(call_1c_4a46)
 ;; 1b:6948:r_op BANK(call_1c_4a46)
@@ -5258,8 +5278,24 @@
 1c:4047 .data:0010
 
 1c:4057 call_1c_4057
+;; 1c:4058:r_op _SRAM_INIT_FLAG_4
+;; 1c:405c:r_op _SRAM_INIT_FLAG_4_BANK
+;; 1c:4071:r_op _SRAM_INIT_FLAG_4 + 1
+;; 1c:4075:r_op _SRAM_INIT_FLAG_4_BANK
+;; 1c:408a:r_op _SRAM_INIT_FLAG_5
+;; 1c:408e:r_op _SRAM_INIT_FLAG_5_BANK
+;; 1c:40a3:r_op _SRAM_INIT_FLAG_5 + 1
+;; 1c:40a7:r_op _SRAM_INIT_FLAG_5_BANK
+;; 1c:40bc:r_op _SRAM_INIT_FLAG_7
+;; 1c:40c0:r_op _SRAM_INIT_FLAG_7_BANK
+;; 1c:40d5:r_op _SRAM_INIT_FLAG_7 + 1
+;; 1c:40d9:r_op _SRAM_INIT_FLAG_7_BANK
 
 1c:40f2 call_1c_40f2
+;; 1c:4129:r_op _SRAM_INIT_FLAG_8
+;; 1c:412d:r_op _SRAM_INIT_FLAG_8_BANK
+;; 1c:413d:r_op _SRAM_INIT_FLAG_8 + 1
+;; 1c:4141:r_op _SRAM_INIT_FLAG_8_BANK
 
 1c:415a call_1c_415a
 
@@ -5282,6 +5318,10 @@
 1c:43c1 call_1c_43c1
 
 1c:441f call_1c_441f
+;; 1c:4434:r_op _SRAM_PHRASE_NOTES
+;; 1c:4438:r_op _SRAM_PHRASE_NOTES_BANK
+;; 1c:4444:r_op _SRAM_PHRASE_NOTES + 1
+;; 1c:4448:r_op _SRAM_PHRASE_NOTES_BANK
 
 1c:46e3 call_1c_46e3
 
@@ -5291,6 +5331,10 @@
 1c:47a3 .text:000e
 
 1c:47b1 call_1c_47b1
+;; 1c:47b8:r_op _SRAM_INIT_FLAG_4
+;; 1c:47bc:r_op _SRAM_INIT_FLAG_4_BANK
+;; 1c:47ff:r_op _SRAM_CURRENT_SONG
+;; 1c:482c:r_op _SRAM_CURRENT_SONG_BANK
 
 1c:4862 call_1c_4862
 
@@ -5303,6 +5347,8 @@
 1c:4a46 call_1c_4a46
 ;; 1c:4a49:r_op _SRAM_FILE_CHANGED
 ;; 1c:4a4d:r_op _SRAM_FILE_CHANGED_BANK
+;; 1c:4a59:r_op _SRAM_CURRENT_SONG
+;; 1c:4a5d:r_op _SRAM_CURRENT_SONG_BANK
 
 1c:4c11 data_empty_string_2
 1c:4c11 .text:0009
@@ -5310,16 +5356,28 @@
 1c:4c1a call_1c_4c1a
 
 1c:4d58 call_1c_4d58
+;; 1c:4d77:r_op _SRAM_CURRENT_SONG
+;; 1c:4d7b:r_op _SRAM_CURRENT_SONG_BANK
+;; 1c:4dc3:r_op _SRAM_CURRENT_SONG
+;; 1c:4dc7:r_op _SRAM_CURRENT_SONG_BANK
 
 1c:4dd1 call_1c_4dd1
 ;; 1c:4dd2:r_op _SRAM_WORK_TIME_MINUTES
 ;; 1c:4dd6:r_op _SRAM_WORK_TIME_MINUTES_BANK
+;; 1c:4de3:r_op _SRAM_LAST_SAVED_MINUTES
+;; 1c:4de7:r_op _SRAM_LAST_SAVED_MINUTES_BANK
 ;; 1c:4df0:r_op _SRAM_WORK_TIME_HOURS
 ;; 1c:4df4:r_op _SRAM_WORK_TIME_HOURS_BANK
+;; 1c:4e01:r_op _SRAM_LAST_SAVED_HOURS
+;; 1c:4e05:r_op _SRAM_LAST_SAVED_HOURS_BANK
 
 1c:4e10 call_1c_4e10
 ;; 1c:4f8c:r_op _SRAM_FILE_CHANGED
 ;; 1c:4f90:r_op _SRAM_FILE_CHANGED_BANK
+;; 1c:4ebc:r_op _SRAM_CURRENT_SONG
+;; 1c:4ec0:r_op _SRAM_CURRENT_SONG_BANK
+;; 1c:4f03:r_op _SRAM_CURRENT_SONG
+;; 1c:4f07:r_op _SRAM_CURRENT_SONG_BANK
 
 1c:4fa5 call_1c_4fa5
 
@@ -5376,6 +5434,8 @@
 ;; 1c:52d2:r_op _SRAM_PS2_DELAY
 ;; 1c:52d6:r_op _SRAM_PS2_DELAY_BANK
 
+;; 1c:52f6:r_op _SRAM_CURRENT_SONG
+;; 1c:52fa:r_op _SRAM_CURRENT_SONG_BANK
 ;; 1c:5307:r_op _SRAM_FILE_CHANGED
 ;; 1c:530b:r_op _SRAM_FILE_CHANGED_BANK
 
@@ -5402,6 +5462,8 @@
 1c:5597 call_1c_5597
 
 1c:55f1 call_1c_55f1
+;; 1c:55ff:r_op _SRAM_CURRENT_SONG
+;; 1c:5603:r_op _SRAM_CURRENT_SONG_BANK
 
 1c:57ac data_empty_string_3
 1c:57ac .text:000f
@@ -5427,16 +5489,24 @@
 1c:58be .text:0003
 
 1c:58c1 call_1c_58c1
+;; 1c:58d8:r_op _SRAM_CURRENT_SONG
+;; 1c:58dc:r_op _SRAM_CURRENT_SONG_BANK
 
 1c:590b call_1c_590b
+;; 1c:5917:r_op _SRAM_CURRENT_SONG
+;; 1c:591b:r_op _SRAM_CURRENT_SONG_BANK
 
 1c:594a call_1c_594a
 
 1c:595f call_1c_595f
 ;; 1c:5962:r_op _SRAM_WORK_TIME_HOURS
 ;; 1c:5966:r_op _SRAM_WORK_TIME_HOURS_BANK
+;; 1c:5976:r_op _SRAM_LAST_SAVED_HOURS
+;; 1c:597a:r_op _SRAM_LAST_SAVED_HOURS_BANK
 ;; 1c:59a7:r_op _SRAM_WORK_TIME_MINUTES
 ;; 1c:59ab:r_op _SRAM_WORK_TIME_MINUTES_BANK
+;; 1c:59c3:r_op _SRAM_LAST_SAVED_MINUTES
+;; 1c:59c7:r_op _SRAM_LAST_SAVED_MINUTES_BANK
 
 1c:59e6 call_1c_59e6
 
@@ -5444,9 +5514,15 @@
 ;; 1c:5a24:r_op HIGH(call_02_77e6)
 ;; 1c:5a27:r_op BANK(call_02_77e6)
 
+;; 1c:5be1:r_op _SRAM_CURRENT_SONG
+;; 1c:5be5:r_op _SRAM_CURRENT_SONG_BANK
+
 ;; 1c:5ae3:r_op LOW(call_01_6cef)
 ;; 1c:5ae5:r_op HIGH(call_01_6cef)
 ;; 1c:5ae8:r_op BANK(call_01_6cef)
+
+;; 1c:5d51:r_op _SRAM_CURRENT_SONG
+;; 1c:5d55:r_op _SRAM_CURRENT_SONG_BANK
 
 ;; 1c:5c56:r_op LOW(call_1b_4e8a)
 ;; 1c:5c58:r_op HIGH(call_1b_4e8a)
@@ -5568,6 +5644,8 @@
 ;; 1c:6994 Assume that the banks are the same for _SRAM_TABLE_COMMANDS_1 and _SRAM_TABLE_COMMANDS_2
 ;; 1c:6994:r_op _SRAM_TABLE_COMMANDS_2
 ;; 1c:69c5:r_op rRAMB
+;; 1c:69c8:r_op _SRAM_PHRASE_COMMANDS_BANK
+;; 1c:69ca:r_op _SRAM_PHRASE_COMMANDS
 ;; 1c:69fb:r_op rRAMG
 ;; 1c:69fe:r_op CART_RAM_DISABLE
 
@@ -5796,6 +5874,8 @@
 1d:5f30 call_1d_5f30
 
 1d:5f97 call_1d_5f97
+;; 1d:5fb9 First frame of last synth
+;; 1d:5fb9:r_op _SRAM_WAVE_FRAMES + (_SYNTHS - 1) * _SYNTH_FRAMES * _SYNTH_FRAME_SIZE
 
 1d:603c call_1d_603c
 
