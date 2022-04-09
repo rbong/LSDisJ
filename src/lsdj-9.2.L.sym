@@ -921,17 +921,106 @@
 00:2de3 data_00_2de3
 00:2de3 .data:0003
 
-00:2de6 call_00_2de6
+00:2de6 call_write_2x_simple_bg_map_attrs
+;; 00:2de6 Write 2 simple background map attributes to memory.
+;; 00:2de6 Simple map attributes only use the first 4 bits.
+;; 00:2de6 If the target address is not in the range 0x9800 - 0x9aff, throws an exception.
+;; 00:2de6
+;; 00:2de6 Entry conditions:
+;; 00:2de6   A = source byte (2 chars)
+;; 00:2de6   BG_MAP_ATTR_TARGET_* must be set
+;; 00:2de6   BG_MAP_ATTR_SIMPLE_BG_PALETTE must be set
+;; 00:2de6
+;; 00:2de6 Exit conditions:
+;; 00:2de6   The source byte upper char + BG_MAP_ATTR_SIMPLE_BG_PALETTE and lower char + BG_MAP_ATTR_SIMPLE_BG_PALETTE will be written as two bytes to the target
+;; 00:2de6   BG_MAP_ATTR_TARGET_* will be incremented by 2
+;; 00:2de6
+;; 00:2de6 Registers used: A, E, HL
 
-00:2e22 call_00_2e22
+;; 00:2df2:l_op HIGH(_SCRN0)
+;; 00:2df7:l_op HIGH(_SCRN0) + 3
+00:2e03 .jump_wait_vram_1
+;; 00:2e05:l_op STATF_BUSY
+;; 00:2e09 Write upper char
+00:2e10 .jump_wait_vram_2
+;; 00:2e12:l_op STATF_BUSY
+;; 00:2e16 Write lower char
+;; 00:2e18 Increment target
+;; 00:2e20 Return
+
+00:2e22 call_write_2x_simple_bg_map_attrs_arg
+;; 00:2e22 The same as call_write_2x_simple_bg_map_attrs, but use an argument instead of the A register for the source byte.
+;; 00:2e22 Args: source_byte
+
+;; 00:2e2c:l_op HIGH(_SCRN0)
+;; 00:2e31:l_op HIGH(_SCRN0) + 3
+00:2e45 .jump_wait_vram_1
+;; 00:2e47:l_op STATF_BUSY
+;; 00:2e4b Write upper char
+00:2e4d .jump_read_lower_char
+00:2e52 .jump_wait_vram_2
+;; 00:2e58 Write lower char
+;; 00:2e5a Increment target
+;; 00:2e62 Return
 
 00:2e64 call_00_2e64
 
-00:2eda call_00_2eda
+00:2eda call_write_bg_map_attr_indexes
+;; 00:2eda Write background map attribute data to memory.
+;; 00:2eda Data will be read from a source address using indexes.
+;; 00:2eda If the target address is not in the range 0x9800 - 0x9aff, throws an exception.
+;; 00:2eda
+;; 00:2eda Entry conditions:
+;; 00:2eda   BG_MAP_ATTR_SOURCE_* must be set
+;; 00:2eda   BG_MAP_ATTR_TARGET_* must be set
+;; 00:2eda   BG_MAP_ATTR_BG_PALETTE must be set
+;; 00:2eda
+;; 00:2eda Args:
+;; 00:2eda   indexes (word) = An address containing an array of indexes offset from the source address.
+;; 00:2eda                    Terminated by a null byte.
+;; 00:2eda
+;; 00:2eda Exit conditions:
+;; 00:2eda   The values at BG_MAP_ATTR_SOURCE_* + indexes[*] added with BG_MAP_ATTR_BG_PALETTE will be written to BG_MAP_ATTR_TARGET_*.
+;; 00:2eda
+;; 00:2eda Registers used: A, DE, HL
 
-00:2f24 call_00_2f24
+;; 00:2ede:l_op HIGH(_SCRN0)
+;; 00:2ee3:l_op HIGH(_SCRN0) + 3
+00:2ef7 .jump_loop
+00:2f02 .jump_read_value
+;; 00:2f0b:l_op HIGH(_SCRN0) + 3
+00:2f10 .jump_wait_vram
+;; 00:2f12:l_op STATF_BUSY
+;; 00:2f16 Write byte to VRAM
+00:2f1f .jump_end_loop
+00:2f22 .jump_return
 
-00:2f26 call_00_2f26
+00:2f24 call_write_bg_map_attr_index_20
+;; 00:2f24 Same as call_write_bg_map_attr_index, but use 0x20 as the index.
+
+00:2f26 call_write_bg_map_attr_index
+;; 00:2f26 Write a single background map attribute byte to memory.
+;; 00:2f26 Data will be read from a single index of a source address.
+;; 00:2f26 If the target address is not in the range 0x9800 - 0x9aff, throws an exception.
+;; 00:2f26
+;; 00:2f26 Entry conditions:
+;; 00:2f26   A = index
+;; 00:2f26   BG_MAP_ATTR_SOURCE_* must be set
+;; 00:2f26   BG_MAP_ATTR_TARGET_* must be set
+;; 00:2f26   BG_MAP_ATTR_BG_PALETTE must be set
+;; 00:2f26
+;; 00:2f26 Exit conditions:
+;; 00:2f26   The value at BG_MAP_ATTR_SOURCE_* + index added with BG_MAP_ATTR_BG_PALETTE will be written to BG_MAP_ATTR_TARGET_*.
+;; 00:2f26
+;; 00:2f26 Registers used: A, C, E, HL
+
+;; 00:2f2a:l_op HIGH(_SCRN0)
+;; 00:2f2f:l_op HIGH(_SCRN0) + 3
+00:2f3e .jump_read_value
+00:2f49 .jump_wait_vram
+;; 00:2f4b:l_op STATF_BUSY
+;; 00:2f4f Write byte to VRAM
+;; 00:2f50 Increment target
 
 00:2f63 call_00_2f63
 
@@ -6997,6 +7086,15 @@
 
 00:c530 CURRENT_PALETTE_NUM
 
+00:c565 BG_MAP_ATTR_SOURCE_LOW
+;; 00:c565 The source from which to pull background map attributes.
+00:c564 BG_MAP_ATTR_SOURCE_HIGH
+
+00:c574 BG_MAP_ATTR_TARGET_LOW
+;; 00:c574 The address at which to draw background map attributes.
+;; 00:c574 Should be in the range 0x9800 - 0x9afff.
+00:c575 BG_MAP_ATTR_TARGET_HIGH
+
 00:c693 PLAYING_SYNTH_FRAME
 
 00:c7ae IS_HANDLING_EXCEPTION
@@ -7071,6 +7169,12 @@
 
 00:ff80 REFRESH_OAM
 ;; 00:ff80 gbdk 2.95 libc/gb/global.s:refresh_OAM
+
+00:ff8c BG_MAP_ATTR_BG_PALETTE
+;; 00:ff8c The background palette to apply to bytes when writing background map attributes.
+
+00:ff8d BG_MAP_ATTR_SIMPLE_BG_PALETTE
+;; 00:ff8d The background palette to apply to bytes when writing simple background map attributes.
 
 00:ff8e CURRENT_BANK
 ;; 00:ff8e Used to store the current bank number for banked calls.
