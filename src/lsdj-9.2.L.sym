@@ -1690,6 +1690,7 @@
 01:44ca .jump_rom_test_fail
 01:44f5 .jump_rom_test_fail_halt
 01:44f8 .jump_sram_test
+;; 01:4509:l_op rRAMB
 01:4527 .jump_sram_test_fail
 01:4552 .jump_sram_test_fail_halt
 01:4555 .jump_cart_test_end
