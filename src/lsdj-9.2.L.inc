@@ -2,12 +2,6 @@
 ;; Constants ;;
 ;;;;;;;;;;;;;;;
 
-; Every defined kit starts with these two bytes
-_KIT_CHECK_1 EQU $60
-_KIT_CHECK_2 EQU $40
-
-_MAX_KIT_BANK EQU $3f
-
 ;; Key Codes ;;
 
 _SPECIAL_KEY   EQU $78
@@ -75,6 +69,14 @@ _PLAY_ONCE     EQU 1
 _PLAY_LOOP     EQU 2
 _PLAY_PINGPONG EQU 3
 _PLAY_RESYNC   EQU 4
+
+;; Kit Constants ;;
+
+; Every defined kit starts with these two bytes
+_KIT_CHECK_1 EQU $60
+_KIT_CHECK_2 EQU $40
+
+_MAX_KIT_BANK EQU $3f
 
 ;; Speech Kits ;;
 
