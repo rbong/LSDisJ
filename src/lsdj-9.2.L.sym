@@ -1655,7 +1655,7 @@
 ;; 01:40e2:r_op CART_RAM_DISABLE
 01:40e6 .call_sram_random_test_16
 
-01:40ea data_01_40ea
+01:40ea data_default_wave_frame_1
 01:40ea .data:0010
 01:40fa data_01_40fa
 01:40fa .data:00d8
@@ -2666,7 +2666,7 @@
 
 03:4000 call_03_4000
 
-03:4015 data_03_4015
+03:4015 data_default_wave_frame_2
 03:4015 .data:0010
 03:4025 data_03_4025
 03:4025 .data:0006
@@ -5367,7 +5367,7 @@
 ;; 1c:402f:r_op rRAMG
 ;; 1c:4032:r_op CART_RAM_DISABLE
 
-1c:4047 data_1c_4047
+1c:4047 data_default_wave_frame_3
 1c:4047 .data:0010
 
 1c:4057 call_1c_4057
@@ -6378,18 +6378,19 @@
 ;; 1f:48ee:r_op _SRAM_CHAIN_PHRASES
 ;; 1f:490c:r_op _SRAM_CHAIN_PHRASES_BANK
 
-1f:4919 data_1f_4919
+1f:4919 data_default_wave_frame_4
 1f:4919 .data:0010
 
 1f:4929 call_1f_4929
 ;; 1f:493c:r_op _SRAM_INSTRUMENT_ALLOC
 ;; 1f:494b:r_op _SRAM_INSTRUMENT_ALLOC_BANK
 
-1f:4a01 data_1f_4a01
+1f:4a01 data_instrument_param_defaults
+1f:4a01 data_pulse_instrument_param_defaults
 1f:4a01 .data:000b
-1f:4a0c data_1f_4a0c
+1f:4a0c data_noise_instrument_param_defaults
 1f:4a0c .data:000b
-1f:4a17 data_1f_4a17
+1f:4a17 data_wave_instrument_param_defaults
 1f:4a17 .data:000e
 
 1f:4a25 call_1f_4a25
@@ -6664,7 +6665,7 @@
 ;; 1f:6192:r_op rRAMG
 ;; 1f:6195:r_op CART_RAM_DISABLE
 
-1f:619a data_1f_619a
+1f:619a data_synth_param_defaults
 1f:619a .data:0010
 
 1f:61aa call_1f_61aa
