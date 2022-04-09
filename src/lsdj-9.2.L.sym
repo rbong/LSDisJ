@@ -2001,8 +2001,22 @@
 
 01:5666 jump_table_01_5666
 
-01:56bf data_01_56bf
-01:56bf .data:0118
+01:56bf data_palette_content
+01:56bf data_palette_1_content
+01:56bf .data:0028
+01:56e7 data_palette_2_content
+01:56e7 .data:0028
+01:570f data_palette_3_content
+01:570f .data:0028
+01:5737 data_palette_4_content
+01:5737 .data:0028
+01:575f data_palette_5_content
+01:575f .data:0028
+01:5787 data_palette_6_content
+01:5787 .data:0028
+01:57af data_palette_7_content
+01:57af .data:0028
+
 01:57d7 data_01_57d7
 01:57d7 .data:0168
 01:593f data_01_593f
