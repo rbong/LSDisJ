@@ -2,6 +2,11 @@
 ;; Constants ;;
 ;;;;;;;;;;;;;;;
 
+;; GameBoy Types ;;
+
+_GAMEBOY       EQU $00
+_GAMEBOY_COLOR EQU $01
+
 ;; Key Codes ;;
 
 _SPECIAL_KEY   EQU $78

@@ -393,6 +393,9 @@
 00:1261 call_00_1261
 
 00:12cf _main
+
+;; 00:12f4:r_op _GAMEBOY_COLOR
+
 ;; 00:131f:r_op BANK(call_1c_40f2)
 ;; 00:1326:r_op BANK(call_1c_40f2)
 ;; 00:1328:l_op call_1c_40f2
@@ -7479,6 +7482,9 @@
 
 00:ff8e CURRENT_BANK
 ;; 00:ff8e Used to store the current bank number for banked calls.
+
+00:ff90 GAMEBOY_TYPE
+;; 00:ff90 Indicates whether the current model is GameBoy Color or original
 
 ; Kits
 
