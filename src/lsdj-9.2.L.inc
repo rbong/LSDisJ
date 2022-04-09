@@ -31,6 +31,12 @@ _WORD_SCREEN        EQU $0c
 _FILE_SCREEN        EQU $0d
 _HELP_SCREEN        EQU $0e
 
+;; Cursor Modes ;;
+
+_NO_CURSOR_MODE     EQU $01
+_NORMAL_CURSOR_MODE EQU $02
+_SELECT_CURSOR_MODE EQU $04
+
 ;; Instrument Types ;;
 
 _PULSE_INSTRUMENT_TYPE EQU 0

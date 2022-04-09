@@ -844,6 +844,8 @@
 ;; 00:28db:r_op BANK(call_1f_6ff1)
 ;; 00:28dd:l_op call_1f_6ff1
 
+;; 00:28ee:l_op _SELECT_CURSOR_MODE
+
 ;; 00:2a12:r_op BANK(call_1f_6ff1)
 ;; 00:2a19:r_op BANK(call_1f_6ff1)
 ;; 00:2a1b:l_op call_1f_6ff1
@@ -1663,6 +1665,8 @@
 
 ;; 00:3bd1:r_op _SONG_SCREEN
 
+;; 00:3be5:r_op _NO_CURSOR_MODE
+
 00:3de7 data_bank_00_padding
 ;; 00:3de7 00:3de7
 ;; 00:3de7:replace:0219 ds $4000 - @, $ff
@@ -1981,6 +1985,8 @@
 
 01:5253 call_01_5253
 
+;; 01:5265:r_op _NORMAL_CURSOR_MODE
+
 ;; 01:52ce:r_op LOW(call_1c_717c)
 ;; 01:52d0:r_op HIGH(call_1c_717c)
 ;; 01:52d3:r_op BANK(call_1c_717c)
@@ -2030,6 +2036,8 @@
 01:550e .text:000d
 
 01:551b call_01_551b
+
+;; 01:552e:l_op _NORMAL_CURSOR_MODE
 
 ;; 01:55b9:r_op LOW(call_03_4e06)
 ;; 01:55bb:r_op HIGH(call_03_4e06)
@@ -2681,6 +2689,8 @@
 
 ;; 02:6a72:l_op _SONG_SCREEN
 
+;; 02:6a7b:l_op _SELECT_CURSOR_MODE
+
 02:6aa0 call_02_6aa0
 
 02:6abf call_02_6abf
@@ -3289,6 +3299,8 @@
 
 04:40b2 call_04_40b2
 
+;; 04:40d1:l_op _SELECT_CURSOR_MODE
+
 04:4106 call_04_4106
 
 04:418f call_04_418f
@@ -3320,11 +3332,27 @@
 
 04:43cd call_04_43cd
 
+;; 04:44d0:l_op _SELECT_CURSOR_MODE
+
+;; 04:44fe:l_op _SELECT_CURSOR_MODE
+
 04:457c call_04_457c
+
+;; 04:45e9:l_op _SELECT_CURSOR_MODE
+
+;; 04:468a:l_op _SELECT_CURSOR_MODE
 
 04:470b call_04_470b
 
+;; 04:477c:l_op _SELECT_CURSOR_MODE
+
+;; 04:47ac:l_op _SELECT_CURSOR_MODE
+
 04:4811 call_04_4811
+
+;; 04:4884:l_op _SELECT_CURSOR_MODE
+
+;; 04:48b2:l_op _SELECT_CURSOR_MODE
 
 04:4918 call_04_4918
 ;; 04:4942:r_op _SRAM_PHRASE_INSTRUMENTS
@@ -3341,6 +3369,8 @@
 04:4aea call_04_4aea
 
 04:4b5b call_04_4b5b
+
+;; 04:4bcc:l_op _SELECT_CURSOR_MODE
 
 04:4c06 call_04_4c06
 
@@ -3386,6 +3416,8 @@
 ;; 04:4f92:r_op LOW(call_1f_6bc2)
 ;; 04:4f94:r_op HIGH(call_1f_6bc2)
 ;; 04:4f9a:r_op BANK(call_1f_6bc2)
+
+;; 04:50aa:l_op _SELECT_CURSOR_MODE
 
 ;; 04:50b8:r_op LOW(call_1f_6ff1)
 ;; 04:50ba:r_op HIGH(call_1f_6ff1)
@@ -3466,6 +3498,8 @@
 
 04:56e8 call_04_56e8
 
+;; 04:56f5:l_op _SELECT_CURSOR_MODE
+
 ;; 04:5718:r_op LOW(call_02_7b9b)
 ;; 04:571a:r_op HIGH(call_02_7b9b)
 ;; 04:571d:r_op BANK(call_02_7b9b)
@@ -3495,6 +3529,8 @@
 04:5b06 call_04_5b06
 
 04:5b4e call_04_5b4e
+
+;; 04:5b9e:l_op _SELECT_CURSOR_MODE
 
 ;; 04:5bc8:r_op call_05_73f6
 ;; 04:5bcc:r_op BANK(call_05_73f6)
@@ -3589,7 +3625,11 @@
 ;; 04:7409:r_op HIGH(call_02_6e87)
 ;; 04:7416:r_op BANK(call_02_6e87)
 
+;; 04:745c:r_op _NORMAL_CURSOR_MODE
+
 04:7491 jump_table_04_7491
+
+;; 04:772f:l_op _NO_CURSOR_MODE
 
 ;; 04:777e:r_op LOW(call_1f_6633)
 ;; 04:7780:r_op HIGH(call_1f_6633)
@@ -3701,6 +3741,8 @@
 
 05:421a call_05_421a
 
+;; 05:421f:l_op _SELECT_CURSOR_MODE
+
 ;; 05:4228:r_op BANK(call_05_73f6)
 ;; 05:422c Banked call used for call_05_73f6 unnecessarily
 
@@ -3745,6 +3787,8 @@
 
 05:45f1 call_05_45f1
 
+;; 05:4601:l_op _SELECT_CURSOR_MODE
+
 05:4668 call_05_4668
 ;; 05:4680:r_op _SRAM_TABLE_VOLS
 ;; 05:468a:r_op _SRAM_TABLE_TRANSPOSE
@@ -3765,15 +3809,21 @@
 ;; 05:4914:r_op HIGH(call_1f_6ff1)
 ;; 05:4917:r_op BANK(call_1f_6ff1)
 
+;; 05:4924:l_op _SELECT_CURSOR_MODE
+
 05:4930 call_05_4930
 
 05:4967 call_05_4967
 
 05:4aa8 call_05_4aa8
 
+;; 05:4aaf:l_op _SELECT_CURSOR_MODE
+
 05:4b2a jump_table_05_4b2a
 
 05:4b5d call_05_4b5d
+
+;; 05:4c0f:l_op _SELECT_CURSOR_MODE
 
 ;; 05:4c28:r_op BANK(call_05_73f6)
 ;; 05:4c2c Banked call used for call_05_73f6 unnecessarily
@@ -3785,9 +3835,13 @@
 ;; 05:4c4b:r_op BANK(call_05_4040)
 ;; 05:4c4f Banked call used for call_05_4040 unnecessarily
 
+;; 05:4c74:l_op _SELECT_CURSOR_MODE
+
 ;; 05:4d92:r_op LOW(call_01_7655)
 ;; 05:4d94:r_op HIGH(call_01_7655)
 ;; 05:4d9e:r_op BANK(call_01_7655)
+
+;; 05:4e64:l_op _SELECT_CURSOR_MODE
 
 05:4ed7 jump_table_05_4ed7
 
@@ -3797,6 +3851,8 @@
 ;; 05:508a:r_op HIGH(call_01_7655)
 ;; 05:5092:r_op BANK(call_01_7655)
 
+;; 05:5192:l_op _SELECT_CURSOR_MODE
+
 05:5205 jump_table_05_5205
 
 05:5274 jump_table_05_5274
@@ -3804,6 +3860,8 @@
 ;; 05:53b6:r_op LOW(call_01_7655)
 ;; 05:53b8:r_op HIGH(call_01_7655)
 ;; 05:53c0:r_op BANK(call_01_7655)
+
+;; 05:54ac:l_op _SELECT_CURSOR_MODE
 
 05:551f jump_table_05_551f
 
@@ -3813,6 +3871,8 @@
 ;; 05:56da:r_op HIGH(call_01_7655)
 ;; 05:56e2:r_op BANK(call_01_7655)
 
+;; 05:5802:l_op _SELECT_CURSOR_MODE
+
 05:5875 jump_table_05_5875
 
 05:58e4 jump_table_05_58e4
@@ -3821,7 +3881,13 @@
 ;; 05:5a32:r_op HIGH(call_01_7655)
 ;; 05:5a3a:r_op BANK(call_01_7655)
 
+;; 05:5bcc:r_op _NORMAL_CURSOR_MODE
+
 05:5c01 jump_table_05_5c01
+
+;; 05:5dc6:l_op _NO_CURSOR_MODE
+
+;; 05:5dd7:l_op _SELECT_CURSOR_MODE
 
 ;; 05:5e26:r_op LOW(call_02_77e6)
 ;; 05:5e28:r_op HIGH(call_02_77e6)
@@ -3862,6 +3928,10 @@
 ;; 05:6002 Unused bank for call_00_2490
 ;; 05:6006 Banked call used for call_00_2490 unnecessarily
 
+;; 05:6014:l_op _SELECT_CURSOR_MODE
+
+;; 05:603b:l_op _SELECT_CURSOR_MODE
+
 ;; 05:6105:r_op BANK(call_05_73b8)
 ;; 05:6109 Banked call used for call_05_73b8 unnecessarily
 
@@ -3871,6 +3941,8 @@
 05:613c .text:0007
 
 05:6143 call_05_6143
+
+;; 05:616f:r_op _NORMAL_CURSOR_MODE
 
 05:624b jump_table_05_624b
 
@@ -3996,6 +4068,8 @@
 
 05:73b8 call_05_73b8
 
+;; 05:73eb:r_op _SELECT_CURSOR_MODE
+
 05:73f6 call_05_73f6
 
 05:7427 data_bank_05_padding
@@ -4047,6 +4121,10 @@
 
 06:431d call_06_431d
 
+;; 06:4416:l_op _SELECT_CURSOR_MODE
+
+;; 06:4426:r_op _NORMAL_CURSOR_MODE
+
 ;; 06:47ed:r_op call_05_4233
 ;; 06:47f1:r_op BANK(call_05_4233)
 
@@ -4095,7 +4173,11 @@
 
 06:4ac0 call_06_4ac0
 
+;; 06:4ad7:l_op _SELECT_CURSOR_MODE
+
 06:4aea call_06_4aea
+
+;; 06:4b13:l_op _SELECT_CURSOR_MODE
 
 06:4b51 call_06_4b51
 
@@ -4126,8 +4208,14 @@
 
 06:5029 call_06_5029
 
+;; 06:5099:l_op _SELECT_CURSOR_MODE
+
 ;; 06:50a6:r_op call_05_73f6
 ;; 06:50aa:r_op BANK(call_05_73f6)
+
+;; 06:5127:l_op _SELECT_CURSOR_MODE
+
+;; 06:5144:l_op _SELECT_CURSOR_MODE
 
 ;; 06:51c8:r_op LOW(call_02_77e6)
 ;; 06:51ca:r_op HIGH(call_02_77e6)
@@ -4153,8 +4241,16 @@
 ;; 06:5264 Unused bank for call_00_2490
 ;; 06:5268 Banked call used for call_00_2490 unnecessarily
 
+;; 06:5288:l_op _NO_CURSOR_MODE
+;; 06:528d:l_op _NORMAL_CURSOR_MODE
+;; 06:5292:l_op _SELECT_CURSOR_MODE
+
 ;; 06:529a:r_op call_05_73b8
 ;; 06:529e:r_op BANK(call_05_73b8)
+
+;; 06:52d1:l_op _SELECT_CURSOR_MODE
+
+;; 06:52f7:l_op _NORMAL_CURSOR_MODE
 
 06:532d data_wave_screen_cancel_select_string
 06:532d .text:000e
@@ -4162,6 +4258,8 @@
 06:533b .text:0007
 
 06:5342 call_06_5342
+
+;; 06:53fd:r_op _NORMAL_CURSOR_MODE
 
 ;; 06:53ff:r_op LOW(call_1c_717c)
 ;; 06:5401:r_op HIGH(call_1c_717c)
@@ -4236,6 +4334,8 @@
 
 06:5aa1 call_06_5aa1
 
+;; 06:5acc:l_op _SELECT_CURSOR_MODE
+
 ;; 06:5af6:r_op call_05_73f6
 ;; 06:5afa:r_op BANK(call_05_73f6)
 
@@ -4297,6 +4397,8 @@
 ;; 06:6552:r_op HIGH(call_1f_48c4)
 ;; 06:6575:r_op BANK(call_1f_48c4)
 
+;; 06:679e:r_op _NORMAL_CURSOR_MODE
+
 ;; 06:67c8:r_op LOW(call_02_6e87)
 ;; 06:67ca:r_op HIGH(call_02_6e87)
 ;; 06:67db:r_op BANK(call_02_6e87)
@@ -4304,6 +4406,8 @@
 ;; 06:6841:r_op LOW(call_1f_48c4)
 ;; 06:6843:r_op HIGH(call_1f_48c4)
 ;; 06:6858:r_op BANK(call_1f_48c4)
+
+;; 06:688f:l_op _NO_CURSOR_MODE
 
 ;; 06:68ec:r_op LOW(call_02_6e87)
 ;; 06:68ee:r_op HIGH(call_02_6e87)
@@ -4383,6 +4487,8 @@
 06:6cbf .text:0007
 
 06:6cc6 call_06_6cc6
+
+;; 06:6cd8:r_op _NORMAL_CURSOR_MODE
 
 ;; 06:6d76:r_op LOW(call_02_6e87)
 ;; 06:6d79:r_op HIGH(call_02_6e87)
@@ -4617,9 +4723,13 @@
 
 07:49c5 call_07_49c5
 
+;; 07:49ca:l_op _SELECT_CURSOR_MODE
+
 07:4a03 call_07_4a03
 
 07:4a57 call_07_4a57
+
+;; 07:4a5c:l_op _SELECT_CURSOR_MODE
 
 07:4a96 call_07_4a96
 
@@ -4634,6 +4744,8 @@
 ;; 07:4ac8:r_op BANK(call_05_73f6)
 
 07:4adb call_07_4adb
+
+;; 07:4b45:l_op _SELECT_CURSOR_MODE
 
 ;; 07:4b6f:r_op call_05_73f6
 ;; 07:4b73:r_op BANK(call_05_73f6)
@@ -4668,7 +4780,11 @@
 ;; 07:516b Unused bank for call_00_2490
 ;; 07:516f Banked call used for call_00_2490 unnecessarily
 
+;; 07:51b3:r_op _NORMAL_CURSOR_MODE
+
 ;; 07:5206:r_op _SRAM_SONG_CHAINS
+
+;; 07:5296:l_op _NO_CURSOR_MODE
 
 ;; 07:5382:r_op LOW(call_02_6d46)
 ;; 07:5384:r_op HIGH(call_02_6d46)
@@ -4717,6 +4833,9 @@
 07:56e3 .text:0015
 
 07:56f8 call_07_56f8
+
+;; 07:570a:r_op _NORMAL_CURSOR_MODE
+
 ;; 07:5815:r_op _SRAM_SONG_CHAINS
 
 07:5919 data_cut_chains_string
@@ -5963,9 +6082,15 @@
 
 1c:717c call_1c_717c
 
+;; 1c:7183:l_op _NORMAL_CURSOR_MODE
+
 1c:729d call_1c_729d
 
 1c:72bf call_1c_72bf
+
+;; 1c:72c5:r_op _NO_CURSOR_MODE
+
+;; 1c:73a3:r_op _NORMAL_CURSOR_MODE
 
 1c:73b1 call_1c_73b1
 
@@ -6046,6 +6171,8 @@
 
 1d:43f7 call_1d_43f7
 
+;; 1d:4479:l_op _SELECT_CURSOR_MODE
+
 ;; 1d:4486:r_op call_05_73f6
 ;; 1d:448a:r_op BANK(call_05_73f6)
 
@@ -6055,6 +6182,22 @@
 
 ;; 1d:44ab:r_op call_05_4040
 ;; 1d:44af:r_op BANK(call_05_4040)
+
+;; 1d:4528:l_op _SELECT_CURSOR_MODE
+
+;; 1d:4564:l_op _SELECT_CURSOR_MODE
+
+;; 1d:457b:l_op _SELECT_CURSOR_MODE
+
+;; 1d:4631:l_op _SELECT_CURSOR_MODE
+
+;; 1d:46e2:l_op _SELECT_CURSOR_MODE
+
+;; 1d:48df:r_op _NORMAL_CURSOR_MODE
+
+;; 1d:49da:l_op _NO_CURSOR_MODE
+
+;; 1d:49eb:l_op _SELECT_CURSOR_MODE
 
 ;; 1d:4a21:r_op LOW(call_02_77e6)
 ;; 1d:4a23:r_op HIGH(call_02_77e6)
@@ -6078,6 +6221,10 @@
 ;; 1d:4a99 Unused bank for call_00_2490
 ;; 1d:4a9d Banked call used for call_00_2490 unnecessarily
 
+;; 1d:4aab:l_op _SELECT_CURSOR_MODE
+
+;; 1d:4ad2:l_op _SELECT_CURSOR_MODE
+
 ;; 1d:4b63:r_op call_05_73b8
 ;; 1d:4b67:r_op BANK(call_05_73b8)
 
@@ -6087,6 +6234,8 @@
 1d:4b9b .text:0007
 
 1d:4ba2 call_1d_4ba2
+
+;; 1d:4bc0:r_op _NORMAL_CURSOR_MODE
 
 ;; 1d:4c4e:r_op LOW(call_1c_717c)
 ;; 1d:4c50:r_op HIGH(call_1c_717c)
@@ -6335,12 +6484,16 @@
 ;; 1d:7c71 Unused bank for call_00_2490
 ;; 1d:7c75 Banked call used for call_00_2490 unnecessarily
 
+;; 1d:7c8b:r_op _NORMAL_CURSOR_MODE
+
 ;; 1d:7ca4:r_op _SRAM_SYNTH_PARAMS
 ;; 1d:7cbf:r_op _SRAM_SYNTH_PARAMS_BANK
 
 ;; 1d:7cfb:r_op LOW(call_1c_717c)
 ;; 1d:7cfd:r_op HIGH(call_1c_717c)
 ;; 1d:7d00:r_op BANK(call_1c_717c)
+
+;; 1d:7d12:l_op _NO_CURSOR_MODE
 
 ;; 1d:7d40:r_op _SRAM_SYNTH_PARAMS
 ;; 1d:7d6b:r_op _SRAM_SYNTH_PARAMS_BANK
@@ -6894,6 +7047,8 @@
 
 1f:6633 call_1f_6633
 
+;; 1f:6667:r_op _NORMAL_CURSOR_MODE
+
 1f:6738 jump_table_1f_6738
 
 ;; 1f:6764:r_op LOW(call_04_4968)
@@ -7046,6 +7201,8 @@
 ;; 1f:7350:r_op call_05_4253
 ;; 1f:7354:r_op BANK(call_05_4253)
 
+;; 1f:73b5:r_op _NORMAL_CURSOR_MODE
+
 ;; 1f:736d:r_op call_05_4233
 ;; 1f:7371:r_op BANK(call_05_4233)
 
@@ -7169,8 +7326,6 @@
 ;; 00:c408 Counts down key repeat while a button is pressed
 
 00:c414 CURSOR_MODE
-;; 00:c414 0x02: normal mode
-;; 00:c414 0x04: select mode
 
 00:c415 CURRENT_PHRASE
 ;; 00:c415 Current phrase opened on the song screen
