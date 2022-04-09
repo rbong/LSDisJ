@@ -602,6 +602,8 @@
 ;; 00:1da0:r_op BANK(call_02_5f28)
 ;; 00:1da2:l_op call_02_5f28
 
+;; 00:1daa:l_op _SONG_SCREEN
+
 ;; 00:1e16:r_op BANK(call_02_7b9b)
 ;; 00:1e1d:r_op BANK(call_02_7b9b)
 ;; 00:1e1f:l_op call_02_7b9b
@@ -683,6 +685,8 @@
 ;; 00:227a:r_op BANK(call_02_701d)
 ;; 00:227f:l_op call_02_701d
 
+;; 00:2286:l_op _PROJECT_SCREEN
+
 ;; 00:228b:r_op BANK(call_1b_5b7a)
 ;; 00:2292:r_op BANK(call_1b_5b7a)
 ;; 00:229e:l_op call_1b_5b7a
@@ -700,6 +704,11 @@
 00:237d call_00_237d
 
 00:245b call_00_245b
+;; 00:2460:l_op _CRASH_SCREEN
+;; 00:2465:l_op _WAVE_EDITOR_SCREEN
+;; 00:246a:l_op _PROJECT_SCREEN
+;; 00:246f:l_op _FILE_SCREEN
+;; 00:2474:l_op _HELP_SCREEN
 
 00:2490 call_00_2490
 
@@ -707,13 +716,23 @@
 ;; 00:24a5:r_op BANK(call_01_6cef)
 ;; 00:24a7:l_op call_01_6cef
 
+;; 00:24ae:l_op _INSTRUMENT_SCREEN
+;; 00:24b3:l_op _WAVE_EDITOR_SCREEN
+;; 00:24b8:l_op _SYNTH_SCREEN
+;; 00:24bd:l_op _FILE_SCREEN
+;; 00:24c2:l_op _HELP_SCREEN
+
 ;; 00:24c7:r_op BANK(call_05_4040)
 ;; 00:24ce:r_op BANK(call_05_4040)
 ;; 00:24d0:l_op call_05_4040
 
+;; 00:24d7:l_op _PHRASE_SCREEN
+
 ;; 00:24dc:r_op BANK(call_1e_4000)
 ;; 00:24e3:r_op BANK(call_1e_4000)
 ;; 00:24e5:l_op call_1e_4000
+
+;; 00:2503:r_op _HELP_SCREEN
 
 00:2516 jump_table_00_2516
 
@@ -767,6 +786,9 @@
 
 00:25fe call_00_25fe
 
+;; 00:2626:l_op _PHRASE_SCREEN
+;; 00:262c:r_op _TABLE_SCREEN
+
 00:2640 jump_table_00_2640
 
 ;; 00:264f:r_op BANK(call_1f_642a)
@@ -789,12 +811,26 @@
 ;; 00:2692:r_op BANK(call_07_4788)
 ;; 00:2694:l_op call_07_4788
 
+;; 00:26a3:l_op _CRASH_SCREEN
+;; 00:26a8:l_op _WAVE_EDITOR_SCREEN
+;; 00:26ad:l_op _PROJECT_SCREEN
+;; 00:26b2:l_op _FILE_SCREEN
+;; 00:26b7:l_op _HELP_SCREEN
+
 ;; 00:26bc:r_op BANK(call_06_7235)
 ;; 00:26c3:r_op BANK(call_06_7235)
 ;; 00:26c5:l_op call_06_7235
 ;; 00:26c8:l_op call_06_741e
 
 00:26cd call_00_26cd
+
+;; 00:26d4:l_op _CRASH_SCREEN
+;; 00:26d9:l_op _WAVE_EDITOR_SCREEN
+;; 00:26de:l_op _PROJECT_SCREEN
+;; 00:26e3:l_op _FILE_SCREEN
+;; 00:26e8:l_op _HELP_SCREEN
+
+;; 00:271e:l_op _SONG_SCREEN
 
 ;; 00:27a8:r_op BANK(call_02_6171)
 ;; 00:27af:r_op BANK(call_02_6171)
@@ -813,6 +849,8 @@
 ;; 00:2a1b:l_op call_1f_6ff1
 
 00:2a24 call_00_2a24
+
+;; 00:2a26:r_op _HELP_SCREEN
 
 00:2a39 jump_table_00_2a39
 
@@ -1622,7 +1660,8 @@
 00:3a36 call_set_default_ram_values
 ;; 00:3a36 Set RAM addresses used to their default values.
 ;; 00:3a36 Registers used: A, DE, HL
-;; 00:3bce Set the default screen to the project screen
+
+;; 00:3bd1:r_op _SONG_SCREEN
 
 00:3de7 data_bank_00_padding
 ;; 00:3de7 00:3de7
@@ -1881,6 +1920,8 @@
 
 01:4fec call_01_4fec
 
+;; 01:503d:l_op _PROJECT_SCREEN
+
 01:5099 data_01_5099
 01:5099 .text:0004
 01:509d data_01_509d
@@ -1999,6 +2040,19 @@
 
 01:55e1 call_01_55e1
 
+;; 01:55e6:l_op _PHRASE_SCREEN
+;; 01:55eb:l_op _GROOVE_SCREEN
+;; 01:55f0:l_op _CHAIN_SCREEN
+;; 01:55f5:l_op _SONG_SCREEN
+;; 01:55fa:l_op _TABLE_SCREEN
+;; 01:55ff:l_op _INSTRUMENT_SCREEN
+;; 01:5604:l_op _WAVE_EDITOR_SCREEN
+;; 01:5609:l_op _PROJECT_SCREEN
+;; 01:560e:l_op _SYNTH_SCREEN
+;; 01:5613:l_op _TALK_SCREEN
+;; 01:5618:l_op _WORD_SCREEN
+;; 01:561d:l_op _FILE_SCREEN
+
 01:5666 jump_table_01_5666
 
 01:56bf data_palette_content
@@ -2054,9 +2108,25 @@
 
 01:6d5c call_01_6d5c
 
+;; 01:6d7b:l_op _FILE_SCREEN
+
+;; 01:6d90:l_op _PROJECT_SCREEN
+
+;; 01:6dc6:l_op _PHRASE_SCREEN
+;; 01:6dcb:l_op _GROOVE_SCREEN
+;; 01:6dd0:l_op _CHAIN_SCREEN
+;; 01:6dd5:l_op _SONG_SCREEN
+;; 01:6dda:l_op _TABLE_SCREEN
+;; 01:6ddf:l_op _INSTRUMENT_SCREEN
+;; 01:6de4:l_op _WAVE_EDITOR_SCREEN
+;; 01:6de9:l_op _PROJECT_SCREEN
+;; 01:6dee:l_op _SYNTH_SCREEN
+
 ;; 01:6e77:r_op LOW(call_1c_4057)
 ;; 01:6e79:r_op HIGH(call_1c_4057)
 ;; 01:6e7e:r_op BANK(call_1c_4057)
+
+;; 01:6f74:l_op _PROJECT_SCREEN
 
 01:6f87 data_command_help_strings
 01:6f87 data_command_help_title_string
@@ -2159,6 +2229,10 @@
 
 01:7655 call_01_7655
 
+;; 01:76a3:l_op _PHRASE_SCREEN
+
+;; 01:76c1:l_op _PHRASE_SCREEN
+
 01:7777 data_01_7777
 ;; 01:7777 Assumed to be jump table
 01:7777 .data:0028
@@ -2183,6 +2257,8 @@
 
 01:7954 jump_01_7954
 ;; 01:7955:r_op rRAMG
+
+;; 01:7b7c:r_op _INSTRUMENT_SCREEN
 
 01:7b88 data_crash_help_strings
 01:7b88 data_crash_help_title_string
@@ -2598,7 +2674,12 @@
 
 02:6999 call_02_6999
 
+;; 02:69bc:l_op _CHAIN_SCREEN
+;; 02:69c1:l_op _PHRASE_SCREEN
+
 02:6a5e call_02_6a5e
+
+;; 02:6a72:l_op _SONG_SCREEN
 
 02:6aa0 call_02_6aa0
 
@@ -2652,9 +2733,18 @@
 
 02:77e6 call_02_77e6
 
+;; 02:77ea:l_op _SONG_SCREEN
+
+;; 02:783a:r_op _SONG_SCREEN
+
 02:784d call_02_784d
 
 02:7a53 call_02_7a53
+
+;; 02:7a6a:l_op _SONG_SCREEN
+
+;; 02:7aa1:l_op _CHAIN_SCREEN
+;; 02:7aa6:l_op _SONG_SCREEN
 
 02:7b9b call_02_7b9b
 
@@ -3593,7 +3683,19 @@
 
 05:4167 call_05_4167
 
+;; 05:418b:r_op _PROJECT_SCREEN
+;; 05:419e:r_op _SYNTH_SCREEN
+;; 05:41a6:r_op _WAVE_EDITOR_SCREEN
+
 05:41bf jump_table_05_41bf
+
+;; 05:41d1:r_op _SONG_SCREEN
+;; 05:41d9:r_op _CHAIN_SCREEN
+;; 05:41e1:r_op _PHRASE_SCREEN
+;; 05:41e9:r_op _INSTRUMENT_SCREEN
+;; 05:41f7:r_op _WORD_SCREEN
+;; 05:41fc:r_op _TABLE_SCREEN
+;; 05:4208:r_op _GROOVE_SCREEN
 
 05:420c call_05_420c
 
@@ -4740,9 +4842,13 @@
 
 07:6e12 call_07_6e12
 
+;; 07:6e3f:l_op _PHRASE_SCREEN
+
 ;; 07:6e59:r_op LOW(call_04_4caa)
 ;; 07:6e5b:r_op HIGH(call_04_4caa)
 ;; 07:6e66:r_op BANK(call_04_4caa)
+
+;; 07:6f3c:l_op _PHRASE_SCREEN
 
 ;; 07:6f58:r_op LOW(call_04_4caa)
 ;; 07:6f5a:r_op HIGH(call_04_4caa)
@@ -4755,6 +4861,8 @@
 07:7010 call_07_7010
 
 07:7059 call_07_7059
+
+;; 07:7065:r_op _HELP_SCREEN
 
 ;; 07:7067:r_op call_01_6d3b
 ;; 07:706b:r_op BANK(call_01_6d3b)
@@ -4878,6 +4986,8 @@
 
 1b:4ac5 call_1b_4ac5
 
+;; 1b:4ac9:r_op _PROJECT_SCREEN
+
 ;; 1b:4acb:r_op LOW(call_00_2490)
 ;; 1b:4acd:r_op HIGH(call_00_2490)
 ;; 1b:4ad0 Unused bank for call_00_2490
@@ -4917,6 +5027,10 @@
 ;; 1b:4ea0:r_op LOW(call_01_493b)
 ;; 1b:4ea2:r_op HIGH(call_01_493b)
 ;; 1b:4eab:r_op BANK(call_01_493b)
+
+;; 1b:4eeb:l_op _FILE_SCREEN
+
+;; 1b:5111:r_op _CRASH_SCREEN
 
 1b:5117 data_save_name_strings
 1b:5117 data_save_as_name_string
@@ -5257,6 +5371,8 @@
 ;; 1b:6768:r_op HIGH(call_1f_634c)
 ;; 1b:676b:r_op BANK(call_1f_634c)
 
+;; 1b:677f:r_op _HELP_SCREEN
+
 ;; 1b:6781:r_op LOW(call_00_2490)
 ;; 1b:6783:r_op HIGH(call_00_2490)
 ;; 1b:6786 Unused bank for call_00_2490
@@ -5273,6 +5389,8 @@
 ;; 1b:67bd:r_op HIGH(call_00_2490)
 ;; 1b:67c0 Unused bank for call_00_2490
 ;; 1b:67c4 Banked call used for call_00_2490 unnecessarily
+
+;; 1b:67e1:r_op _FILE_SCREEN
 
 ;; 1b:67ed:r_op LOW(call_1c_5597)
 ;; 1b:67ef:r_op HIGH(call_1c_5597)
@@ -5333,6 +5451,9 @@
 
 ;; 1b:6a07:r_op call_05_4040
 ;; 1b:6a0b:r_op BANK(call_05_4040)
+
+;; 1b:6a32:r_op _SONG_SCREEN
+;; 1b:6a45:r_op _PROJECT_SCREEN
 
 ;; 1b:6a34:r_op LOW(call_02_7b9b)
 ;; 1b:6a36:r_op HIGH(call_02_7b9b)
@@ -5572,6 +5693,8 @@
 ;; 1c:531c:r_op HIGH(call_01_7c94)
 ;; 1c:531e:r_op BANK(call_01_7c94)
 
+;; 1c:5335:r_op _FILE_SCREEN
+
 ;; 1c:5337:r_op LOW(call_00_2490)
 ;; 1c:5339:r_op HIGH(call_00_2490)
 ;; 1c:533c Unused bank for call_00_2490
@@ -5660,6 +5783,8 @@
 ;; 1c:5dd5:r_op LOW(call_01_6cef)
 ;; 1c:5dd7:r_op HIGH(call_01_6cef)
 ;; 1c:5dda:r_op BANK(call_01_6cef)
+
+;; 1c:5e1c:r_op _PROJECT_SCREEN
 
 ;; 1c:5e1e:r_op LOW(call_00_2490)
 ;; 1c:5e20:r_op HIGH(call_00_2490)
@@ -5934,6 +6059,12 @@
 ;; 1d:4a21:r_op LOW(call_02_77e6)
 ;; 1d:4a23:r_op HIGH(call_02_77e6)
 ;; 1d:4a26:r_op BANK(call_02_77e6)
+
+;; 1d:4a5d:r_op _SONG_SCREEN
+
+;; 1d:4a65:r_op _CHAIN_SCREEN
+
+;; 1d:4a78:r_op _GROOVE_SCREEN
 
 ;; 1d:4a67:r_op LOW(call_02_7b9b)
 ;; 1d:4a69:r_op HIGH(call_02_7b9b)
@@ -6227,11 +6358,20 @@
 
 1e:4000 call_1e_4000
 
+;; 1e:4005:l_op _WAVE_EDITOR_SCREEN
+
 1e:42c8 data_1e_42c8
 1e:42c8 .data:0062
 
 1e:432a tileset
 1e:432a .image:0300:w64
+
+;; 1e:4045:l_op _PHRASE_SCREEN
+;; 1e:404a:l_op _GROOVE_SCREEN
+;; 1e:404f:l_op _CHAIN_SCREEN
+;; 1e:4054:l_op _SONG_SCREEN
+;; 1e:4059:l_op _TABLE_SCREEN
+;; 1e:405e:l_op _WORD_SCREEN
 
 1e:462a data_1e_462a
 1e:462a .data:0082
@@ -6870,6 +7010,8 @@
 
 1f:7087 call_1f_7087
 
+;; 1f:708d:r_op _TALK_SCREEN
+
 ;; 1f:708f:r_op LOW(call_01_6cef)
 ;; 1f:7091:r_op HIGH(call_01_6cef)
 ;; 1f:7094:r_op BANK(call_01_6cef)
@@ -6877,6 +7019,8 @@
 ;; 1f:709d:r_op LOW(call_1f_6ff1)
 ;; 1f:709f:r_op HIGH(call_1f_6ff1)
 ;; 1f:70a2:r_op BANK(call_1f_6ff1)
+
+;; 1f:70ae:r_op _INSTRUMENT_SCREEN
 
 ;; 1f:70b0:r_op LOW(call_03_45d0)
 ;; 1f:70b2:r_op HIGH(call_03_45d0)
@@ -7015,20 +7159,6 @@
 00:c213 CURRENT_NOI_INSTR
 
 00:c402 CURRENT_SCREEN
-;; 00:c402 0x01: phrase screen
-;; 00:c402 0x02: groove screen
-;; 00:c402 0x03: chain screen
-;; 00:c402 0x04: song screen
-;; 00:c402 0x05: table screen
-;; 00:c402 0x06: instrument screen
-;; 00:c402 0x07: crash screen
-;; 00:c402 0x08: wave editor screen
-;; 00:c402 0x09: project screen
-;; 00:c402 0x0a: synth screen
-;; 00:c402 0x0b: talk screen
-;; 00:c402 0x0c: word screen
-;; 00:c402 0x0d: file screen
-;; 00:c402 0x0e: help screen
 
 00:c403 DMG_SOUND_ON
 ;; 00:c403 Indicates if sound was on at startup for DMG
