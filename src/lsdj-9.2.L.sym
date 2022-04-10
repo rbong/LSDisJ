@@ -1006,7 +1006,51 @@
 ;; 00:2e5a Increment target
 ;; 00:2e62 Return
 
-00:2e64 call_00_2e64
+00:2e64 call_update_dmg_sprite_bg
+;; 00:2e64 Update the background color of tiles with sprites on original GameBoy (DMG).
+;; 00:2e64
+;; 00:2e64 Args:
+;; 00:2e64   column
+;; 00:2e64   row
+;; 00:2e64   width
+;; 00:2e64   height
+;; 00:2e64   color (0x00 = background, 0x01 = secondary, 0x02 = foreground)
+;; 00:2e64
+;; 00:2e64 Registers used: A, DE, HL
+
+;; 00:2e6b:l_op _DMG_COLOR_SECONDARY
+;; 00:2e6f Handle foreground color
+00:2e73 .jump_handle_background_color
+00:2e77 .jump_handle_secondary_color
+00:2e79 .jump_store_color
+
+00:2e7d .jump_calculate_tile_address_1
+
+00:2e93 .jump_calculate_tile_address_2
+;; 00:2e94:r_op HIGH(_SCRN0)
+;; 00:2e98:l_op HIGH(_SCRN0)
+;; 00:2e9d:l_op HIGH(_SCRN0) + 3
+
+; TODO: name better?
+00:2ea5 .jump_store_loop_info
+00:2ea9 .jump_wait_vram_1
+;; 00:2eab:l_op STATF_BUSY
+
+;; 00:2eaf Read current tile value
+;; 00:2eb0 Start modifying tile value
+00:2eb4 .jump_modify_tile_value
+
+00:2ec2 .jump_wait_vram_2
+;; 00:2ec4:l_op STATF_BUSY
+
+;; 00:2ec8 Write updated tile
+
+;; 00:2ec9 Start calculating next tile location
+;; 00:2ecb:l_op _TILE_MAP_SIZE
+
+00:2ed0 .jump_calculate_next_tile_address
+
+;; 00:2ed8 Return
 
 00:2eda call_write_bg_map_attr_indexes
 ;; 00:2eda Write background map attribute data to memory.

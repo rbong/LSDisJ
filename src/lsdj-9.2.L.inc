@@ -2,10 +2,20 @@
 ;; Constants ;;
 ;;;;;;;;;;;;;;;
 
+;; Draw Constants ;;
+
+_TILE_MAP_SIZE EQU $20
+
 ;; GameBoy Types ;;
 
 _GAMEBOY       EQU $00
 _GAMEBOY_COLOR EQU $01
+
+;; DMG Color Types ;;
+
+_DMG_COLOR_BACKGROUND EQU $00
+_DMG_COLOR_SECONDARY  EQU $01
+_DMG_COLOR_FOREGROUND EQU $02
 
 ;; Key Codes ;;
 
