@@ -215,18 +215,72 @@
 
 00:08f7 call_00_08f7
 
-00:0942 call_00_0942
+00:0942 call_write_instrument_param
+;; 00:0942 Write a single instrument param.
+;; 00:0942 There are 0x40 instruments and 0x10 params.
+;; 00:0942 Instrument type is the first param and must be less than 4.
+;; 00:0942
+;; 00:0942 Args: instrument, param (see param constants), value
+;; 00:0942
+;; 00:0942 Registers used: A, DE, HL
+
+;; 00:0945 Verify instrument is in range
+;; 00:0948:l_op _INSTRUMENTS
+
+00:0950 .jump_verify_param
+;; 00:0953:l_op _INSTRUMENT_PARAMS_SIZE
+
+00:095b .jump_verify_value
+;; 00:0965:l_op _INSTRUMENT_TYPES
+
+00:096d .jump_calculate_address_1
+00:0976 .jump_calculate_address_2
+00:097b .jump_calculate_address_3
+
+;; 00:0995 Write param value
 ;; 00:097e:r_op _SRAM_INSTRUMENT_PARAMS
 ;; 00:099b:r_op _SRAM_INSTRUMENT_PARAMS_BANK
+
+;; 00:09a4 Return
 
 00:09a8 data_00_09a8
 00:09a8 .data:d8
 
-00:0a80 call_00_0a80
-;; 00:0aaa:r_op _SRAM_INSTRUMENT_PARAMS
-;; 00:0ac3:r_op _SRAM_INSTRUMENT_PARAMS_BANK
+00:0a80 call_read_instrument_param
+;; 00:0a80 Read a single instrument param.
+;; 00:0a80 There are 0x40 instruments and 0x10 params.
+;; 00:0a80
+;; 00:0a80 Args: instrument, param (see param constants)
+;; 00:0a80
+;; 00:0a80 Result: E
+;; 00:0a80
+;; 00:0a80 Registers used: A, DE, HL
 
-00:0ad1 call_00_0ad1
+;; 00:0a83 Verify instrument is in range
+;; 00:0a86:l_op _INSTRUMENTS
+
+00:0a8e .jump_verify_param
+;; 00:0a91:l_op _INSTRUMENT_PARAMS_SIZE
+
+00:0a99 .jump_calculate_address_1
+00:0aa2 .jump_calculate_address_2
+00:0aa7 .jump_calculate_address_3
+
+;; 00:0ac2 Read param value
+;; 00:0ac3:r_op _SRAM_INSTRUMENT_PARAMS_BANK
+;; 00:0aaa:r_op _SRAM_INSTRUMENT_PARAMS
+
+;; 00:0acd Return
+
+00:0ad1 call_read_current_instrument_param
+;; 00:0ad1 Read a single param from the current instrument.
+;; 00:0ad1 See also call_read_instrument_param.
+;; 00:0ad1
+;; 00:0ad1 Args: param (see param constants)
+;; 00:0ad1
+;; 00:0ad1 Result: E
+;; 00:0ad1
+;; 00:0ad1 Registers used: A, DE, HL
 
 00:0ae5 call_00_0ae5
 ;; 00:0b0f:r_op _SRAM_SONG_CHAINS
@@ -2892,7 +2946,13 @@
 ;; 02:7eb9 02:7eb9
 ;; 02:7eb9:replace:0147 ds $8000 - @, $ff
 
-03:4000 call_03_4000
+03:4000 call_write_current_instrument_param
+;; 03:4000 Write a single param for the current instrument.
+;; 03:4000 See also call_write_instrument_param.
+;; 03:4000
+;; 03:4000 Args: param (see param constants), value
+;; 03:4000
+;; 03:4000 Registers used: A, DE, HL
 
 03:4015 data_default_wave_frame_2
 03:4015 .data:0010
@@ -7517,6 +7577,8 @@
 
 00:c576 PAD_BUTTONS
 ;; 00:c576 The currently held buttons.
+
+00:c577 CURRENT_INSTRUMENT
 
 00:c693 PLAYING_SYNTH_FRAME
 
