@@ -6,6 +6,9 @@
 
 _TILE_MAP_SIZE EQU $20
 
+_TILE_ROWS EQU $12
+_TILE_COLS EQU $14
+
 ;; GameBoy Types ;;
 
 _GAMEBOY       EQU $00

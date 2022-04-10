@@ -552,7 +552,20 @@
 00:17c2 .jump_wait_for_oam_vram
 ;; 00:17c4:l_op STATF_OAM | STATF_BUSY
 
-00:17ca call_00_17ca
+00:17ca call_clear_tiles
+;; 00:17ca Clear all tiles in VRAM.
+;; 00:17ca Registers used: A, BC, HL
+
+;; 00:17cd:r_op _TILE_ROWS
+00:17cf .jump_reset_tile_cols
+;; 00:17cf:r_op _TILE_COLS
+
+00:17d1 .jump_wait_vram
+;; 00:17d3:l_op STATF_BUSY
+
+;; 00:17d7 Clear tile
+;; 00:17d8 Next address
+;; 00:17e3 Return
 
 00:17e4 call_00_17e4
 
@@ -2416,9 +2429,62 @@
 ;; 01:7df7 Registers used: A, HL
 01:7dfa .jump_clear_ram_loop
 
-01:7e09 call_01_7e09
+01:7e09 call_copy_tile_page
+;; 01:7e09 Copy an entire page of tiles from an address to VRAM.
+;; 01:7e09 There are 18 rows and 20 columns in a page of tiles.
+;; 01:7e09 Converts DMG tiles to GBC tiles.
+;; 01:7e09 GBC only.
+;; 01:7e09
+;; 01:7e09 Args: address
+;; 01:7e09
+;; 01:7e09 Registers used: A, DE, HL
 
-01:7e5c call_01_7e5c
+;; 01:7e12:r_op _TILE_ROWS
+
+01:7e14 .jump_reset_tile_cols
+;; 01:7e15:r_op _TILE_COLS
+
+01:7e17 .jump_read_byte
+
+01:7e20 .jump_convert_byte_1
+01:7e28 .jump_convert_byte_2
+
+01:7e2a .jump_set_vram_bank
+
+01:7e2e .jump_wait_vram_1
+
+;; 01:7e34 Write byte to VRAM bank 1
+
+;; 01:7e35 Set VRAM bank to 0
+
+;; 01:7e38 Read byte again
+;; 01:7e39 Convert byte for VRAM 0
+01:7e45 .jump_convert_byte_3
+
+01:7e46 .jump_wait_vram_2
+
+;; 01:7e4c Write byte to VRAM bank 0
+;; 01:7e4d Increment
+;; 01:7e5a Return
+
+01:7e5c call_copy_dmg_tile_page
+;; 01:7e5c Copy an entire page of tiles from an address to VRAM.
+;; 01:7e5c There are 18 rows and 20 columns in a page of tiles.
+;; 01:7e5c DMG only.
+;; 01:7e5c
+;; 01:7e5c Args: address
+;; 01:7e5c
+;; 01:7e5c Registers used: A, DE, HL
+
+01:7e6a .jump_read_byte
+
+01:7e6c .jump_wait_vram
+;; 01:7e6e:l_op STATF_BUSY
+
+;; 01:7e72 Write byte to VRAM
+
+;; 01:7e73 Iterate
+;; 01:7e80 Return
 
 01:7e82 call_01_7e82
 
