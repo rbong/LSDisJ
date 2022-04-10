@@ -2,6 +2,29 @@
 ;; Constants ;;
 ;;;;;;;;;;;;;;;
 
+;; gbdk 2.9.5 libc/gb/global.ms definitions ;;
+
+_G_MODE       EQU $01
+_T_MODE       EQU $02
+_T_MODE_OUT   EQU $02
+_T_MODE_INOUT EQU $03
+
+;  Status codes for IO
+_IO_IDLE      EQU $00
+_IO_SENDING   EQU $01
+_IO_RECEIVING EQU $02
+_IO_ERROR     EQU $04
+
+; Type of IO data
+_DT_IDLE      EQU $66
+_DT_RECEIVING EQU $55
+
+;; gbdk 2.9.5 libc/gb/font.ms definitions ;;
+
+_SFONT_HANDLE_FIRST_TILE EQU 0
+_SFONT_HANDLE_FONT       EQU 1
+_SFONT_HANDLE_SIZEOF     EQU 3
+
 ;; Draw Constants ;;
 
 _TILE_MAP_SIZE EQU $20

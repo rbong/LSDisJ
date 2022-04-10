@@ -87,7 +87,6 @@
 ;; 00:0150 -
 ;; 00:0150 The labels in this subroutine are not local since they are possibly referenced elsewhere
 ;; 00:0152 Store CPU type 2 in E
-;; 00:0155 Initialize stack at 0xe0000 instead of 0xc000 in gbdk
 00:015f _code_start_1
 ;; 00:0166 Skip clearing from 0xfe00 to 0xfeff
 ;; 00:0166 Clear from 0xff80 to 0xffff
@@ -1241,6 +1240,9 @@
 ;; 00:32e6 Load a font.
 ;; 00:32e6 Entry conditions: HL = font to load
 ;; 00:32e6 Registers used: A, B, DE, HL
+
+;; 00:32ea:r_op FONT_TABLE + _SFONT_HANDLE_FONT
+
 00:32ef .font_load_find_slot
 00:3301 .font_load_found
 00:3325 .font_load_exit
@@ -1250,6 +1252,9 @@
 ;; 00:332e Copy the tiles from the current font into VRAM.
 ;; 00:332e Registers used: A, BC, DE, HL
 ;; 00:332e See: font_copy_uncompressed
+
+;; 00:332e:r_op FONT_CURRENT + _SFONT_HANDLE_FONT
+
 00:335a .font_copy_current_copy
 ;; 00:3370 Compressed fonts are not supported, jump straight to font_copy_uncompressed
 
@@ -1258,6 +1263,9 @@
 ;; 00:3373 Set the current font.
 ;; 00:3373 Entry conditions: HL = font
 ;; 00:3373 Registers used: A, HL
+
+;; 00:3378:l_op [FONT_CURRENT + 1]
+;; 00:337c:l_op [FONT_CURRENT + 2]
 
 00:3380 _font_load
 ;; 00:3380 gbdk 2.95 libc/gb/font.ms:_font_load
@@ -1291,7 +1299,9 @@
 00:33e2 .tmode_1
 
 00:33ef tmode_out
-;; 00:33ef gbdk 2.95 libc/gb/font.ms:.tmode_out
+;; 00:33ef gbdk 2.95 libc/gb/font.ms:.tmode_out (with modifications)
+;; 00:33f6 Skip clearing the screen
+;; 00:33f6:r_op _T_MODE
 
 00:33fc _rand_randw
 ;; 00:33fc gbdk 2.95 libc/gb/rand.s:_rand/_randw
@@ -1311,10 +1321,14 @@
 ;; 00:346a Send the byte in IO_OUT to the serial port.
 ;; 00:346a Registers used: A
 
+;; 00:346a:r_op _IO_SENDING
+
 00:347d receive_byte
 ;; 00:347d gbdk 2.95 libc/gb/serial.s:.receive_byte/_receive_byte
 ;; 00:347d Receive byte from the serial port in IO_IN.
 ;; 00:347d Registers used: A
+
+;; 00:347d:r_op _IO_RECEIVING
 
 00:348e set_mode
 ;; 00:348e gbdk 2.95 libc/gb/crt0.s:.set_mode
@@ -1347,12 +1361,21 @@
 00:34c0 serial_io
 ;; 00:34c0 gbdk 2.95 libc/gb/crt0.s:.serial_io (with modifications)
 ;; 00:34c0 Serial interrupt handler.
+
+;; 00:34c7:l_op _IO_RECEIVING
+;; 00:34d8:l_op _DT_RECEIVING
+
 00:34d2 .serial_io_10
+;; 00:34d2:l_op _IO_SENDING
+;; 00:34dc:r_op _IO_ERROR
+
 00:34e0 .serial_io_11
+;; 00:34e0:r_op _IO_IDLE
+
 00:34e2 .serial_io_12
 ;; 00:34e2 Skip using external clock and replying with idle byte
 00:34e5 .serial_io_99
-;; 00:34e9 TODO: document return handler at 00:167f
+;; 00:34e9 TODO: document return handler at 00:1482
 
 00:34ec _mode
 ;; 00:34ec gbdk 2.95 libc/gb/crt0.s:_mode
@@ -1517,12 +1540,12 @@
 00:37c4 divu8_modu8
 ;; 00:37c4 gbdk 2.95 libc/asm/gbz80/div.s:.divu8/.modu8
 ;; 00:37c4 8-bit unsigned division.
-;; 00:37c4 See: div8
+;; 00:37c4 See: div8_mod8
 
 00:37c7 divu16_modu16
 ;; 00:37c7 gbdk 2.95 libc/asm/gbz80/div.s:.divu16/.modu16 (with modifications)
 ;; 00:37c7 16-bit unsigned division.
-;; 00:37c7 See: div16
+;; 00:37c7 See: div16_mod16
 00:37d2 .divide
 ;; 00:37d8 Instead of looping, as in gbdk 2.95, call a function 16 times
 ;; 00:3808 libc/asm/gbz80/div.s:.nodrop (without loop counter)
@@ -1534,6 +1557,7 @@
 00:3829 initrand
 ;; 00:3829 gbdk 2.95 libc/gb/rand.s:_initrand
 ;; 00:3829 Set the random seed.
+;; 00:3829 Args: seed (word)
 ;; 00:3829 Registers used: A, HL
 
 00:3834 _strcpy
@@ -1621,8 +1645,8 @@
 ;; 00:38db
 ;; 00:38db Args:
 ;; 00:38db   first_palette
-;; 00:38db   nb_palettes (count)
-;; 00:38db   rgb_data (address)
+;; 00:38db   nb_palettes = Number of palettes
+;; 00:38db   rgb_data (word) = Address of the data
 ;; 00:38db
 ;; 00:38db Registers used: AF, HL
 00:38f1 .set_bkg_palette_1
@@ -1736,6 +1760,7 @@
 00:39d0 _set_bkg_tiles
 ;; 00:39d0 gbdk 2.95 libc/gb/set_bk_t.s:_set_bkg_tiles
 ;; 00:39d0 Set background tiles.
+;; 00:39d0 Args: x, y, w, h, tiles_address (word)
 ;; 00:39d0 Registers used: A, DE, HL
 
 00:39e4 set_xy_wtt
@@ -7619,7 +7644,11 @@
 
 00:cbdb IO_OUT
 ;; 00:cbdb gbdk 2.95 libc/gb/global.s:__io_out
-;; 00:cbdb IO out byte.
+;; 00:cbdb Byte to send.
+
+00:cbdc IO_IN
+;; 00:cbdc gbdk 2.95 libc/gb/global.s:__io_in
+;; 00:cbdc Received byte.
 
 00:cbdd IO_STATUS
 ;; 00:cbdd gbdk 2.95 libc/gb/global.s:__io_status
