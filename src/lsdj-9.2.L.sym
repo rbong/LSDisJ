@@ -443,7 +443,21 @@
 ;; 00:1164:r_op _SRAM_FILE_CHANGED
 ;; 00:1168:r_op _SRAM_FILE_CHANGED_BANK
 
-00:1261 call_00_1261
+00:1261 call_set_bg_tile_row
+;; 00:1261 Set a row of background attributes to a given tile.
+;; 00:1261
+;; 00:1261 Args: x, y, width, tile
+;; 00:1261
+;; 00:1261 Exit conditions:
+;; 00:1261   VRAM bank will be set to 0
+;; 00:1261
+;; 00:1261 Registers used: A, HL
+
+;; 00:1272:r_op _TILE_COLS
+
+00:127d .jump_handle_gbc
+00:12b3 .jump_handle_dmg
+00:12cd .jump_return
 
 00:12cf _main
 
@@ -7604,6 +7618,9 @@
 ;; 00:c576 The currently held buttons.
 
 00:c577 CURRENT_INSTRUMENT
+
+00:c676 GBC_BG_ATTR_ROW
+;; 00:c676 A row of background attributes used on GBC before being copied to VRAM.
 
 00:c693 PLAYING_SYNTH_FRAME
 
