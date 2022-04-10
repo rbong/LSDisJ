@@ -7509,6 +7509,9 @@
 ;; 00:c574 Should be in the range 0x9800 - 0x9afff.
 00:c575 BG_MAP_ATTR_TARGET_HIGH
 
+00:c576 PAD_BUTTONS
+;; 00:c576 The currently held buttons.
+
 00:c693 PLAYING_SYNTH_FRAME
 
 00:c7ae IS_HANDLING_EXCEPTION
