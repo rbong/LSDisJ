@@ -7543,6 +7543,12 @@
 00:c40e SELECTION_START_COL
 00:c40f SELECTION_START_ROW
 
+00:c410 SELECTION_END_COL
+00:c411 SELECTION_END_ROW
+
+00:c412 SELECTION_SCREEN
+;; 00:c412 The screen of the current clipboard selection.
+
 00:c414 CURSOR_MODE
 
 00:c415 CURRENT_PHRASE
@@ -7623,6 +7629,14 @@
 ;; 00:c676 A row of background attributes used on GBC before being copied to VRAM.
 
 00:c693 PLAYING_SYNTH_FRAME
+
+00:c6a8 HELP_BANNER
+;; 00:c6a8 The current help banner string.
+
+00:c7a8 HELP_BANNER_SCROLL_COUNTDOWN
+;; 00:c7a8 Number of loops left until the help banner should scroll.
+00:c7a9 LAST_READ_HELP_BANNER_ADDRESS
+;; 00:c7a9 The address of the last read help banner byte.
 
 00:c7ae IS_HANDLING_EXCEPTION
 ;; 00:c7ae Set to 1 when handling an exception
