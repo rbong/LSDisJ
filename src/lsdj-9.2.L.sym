@@ -1026,14 +1026,18 @@
 
 00:2cd5 call_00_2cd5
 
-00:2d25 data_00_2d25
-00:2d25 .data:0003
-00:2d28 data_00_2d28
-00:2d28 .data:0003
-00:2d2b data_00_2d2b
-00:2d2b .data:0003
-00:2d2e data_00_2d2e
-00:2d2e .data:0003
+00:2d25 data_pulse_wave_tiles_75
+;; 00:2d25 00:2d25
+;; 00:2d25:replace:0003 db _PULSE_WAVE_75_ASCII_CODE_1, _PULSE_WAVE_75_ASCII_CODE_2, $00
+00:2d28 data_pulse_wave_tiles_50
+;; 00:2d28 00:2d28
+;; 00:2d28:replace:0003 db _PULSE_WAVE_50_ASCII_CODE, _PULSE_WAVE_FLAT_ASCII_CODE, $00
+00:2d2b data_pulse_wave_tiles_25
+;; 00:2d2b 00:2d2b
+;; 00:2d2b:replace:0003 db _PULSE_WAVE_25_ASCII_CODE, _PULSE_WAVE_FLAT_ASCII_CODE, $00
+00:2d2e data_pulse_wave_tiles_12_5
+;; 00:2d2e 00:2d2e
+;; 00:2d2e:replace:0003 db _PULSE_WAVE_12_5_ASCII_CODE, _PULSE_WAVE_FLAT_ASCII_CODE, $00
 
 00:2d31 call_00_2d31
 
@@ -5358,7 +5362,7 @@
 1b:4c8b data_keyboard_keys_string_4
 1b:4c8b .text:0006
 ;; 1b:4c91 1b:4c91
-;; 1b:4c91:replace:0005 db _SPECIAL_KEY, " ", _BACKSPACE_KEY, _OKAY_KEY, $00
+;; 1b:4c91:replace:0005 db _SPECIAL_ASCII_CODE, " ", _BACKSPACE_ASCII_CODE, _OKAY_ASCII_CODE, $00
 
 1b:4c96 call_1b_4c96
 
