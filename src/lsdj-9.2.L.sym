@@ -1024,7 +1024,20 @@
 00:2cd1 data_wave_channel_label_string
 00:2cd1 .text:0004
 
-00:2cd5 call_00_2cd5
+00:2cd5 call_write_instrument_pulse_wave_bg_attrs
+;; 00:2cd5 Write the background attributes for instrument pulse waves.
+;; 00:2cd5
+;; 00:2cd5 Args:
+;; 00:2cd5   pulse_wave_type (1 = 25%, 2 = 12.5%, 3 = 50%, otherwise 75%)
+;; 00:2cd5
+;; 00:2cd5 Registers used: A, DE, HL
+
+;; 00:2cd8 Use 75% by default
+
+00:2cf8 .jump_pulse_wave_50
+00:2d03 .jump_pulse_waves_25
+00:2d0e .jump_pulse_waves_12_5
+00:2d16 .jump_write_bg_attrs
 
 00:2d25 data_pulse_wave_tiles_75
 ;; 00:2d25 00:2d25
