@@ -5277,7 +5277,21 @@
 
 07:71d9 call_07_71d9
 
-07:71ef call_07_71ef
+07:71ef call_oam_vram_safe_write_low_increment
+;; 07:71ef Write a byte to OAM/VRAM when both are safe to use, then increment the given values.
+;; 07:71ef Only safe to use with addresses which have read/write addresses with low bytes below 0xff.
+;; 07:71ef
+;; 07:71ef Entry conditions:
+;; 07:71ef   DE = read_address
+;; 07:71ef   HL = write_address
+;; 07:71ef
+;; 07:71ef Exit conditions:
+;; 07:71ef   E will be incremented.
+;; 07:71ef   L will be incremented.
+;; 07:71ef
+;; 07:71ef Registers used: A, DE, HL
+
+;; 07:71f1:l_op STATF_BUSY | STATF_OAM
 
 07:71fa call_07_71fa
 
