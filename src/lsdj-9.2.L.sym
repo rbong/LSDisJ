@@ -1056,8 +1056,9 @@
 
 00:2dd7 data_00_2dd7
 00:2dd7 .data:0003
-00:2dda data_00_2dda
-00:2dda .data:0003
+00:2dda data_empty_command_value_tiles
+;; 00:2dda 00:2dda
+;; 00:2dda:replace:0003 db _EMPTY_ROW_ASCII_CODE, _EMPTY_ROW_ASCII_CODE, $00
 00:2ddd data_00_2ddd
 00:2ddd .data:0003
 00:2de0 data_00_2de0
