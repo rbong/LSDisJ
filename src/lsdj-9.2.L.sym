@@ -343,9 +343,13 @@
 ;; 00:0d7a Registers used: A, DE, HL
 00:0da7 .jump_return
 
-00:0dab call_00_0dab
-;; 00:0dbb:r_op call_01_7500
-;; 00:0dbf:r_op BANK(call_01_7500)
+00:0dab call_set_banner_text
+;; 00:0dab Set the text of the top banner, then show the banner.
+;; 00:0dab Args: address (word)
+;; 00:0dab Registers used: A, DE, HL
+
+;; 00:0dbb:r_op call_show_banner
+;; 00:0dbf:r_op BANK(call_show_banner)
 
 00:0dca call_00_0dca
 ;; 00:0dd1:r_op rRAMG
@@ -1300,7 +1304,12 @@
 00:33ac .font_init_1
 ;; 00:33ba Skip calling .cls
 
-00:33bc call_00_33bc
+00:33bc call_set_bg_attr_target
+;; 00:33bc Set the background attribute target to a specific location.
+;; 00:33bc Args: col, row
+;; 00:33bc Registers used: A, HL
+
+;; 00:33ca:r_op HIGH(_SCRN0)
 
 00:33d7 call_pass
 ;; 00:33d7 Return immediately.
@@ -2366,7 +2375,9 @@
 01:74f8 data_groove_screen_title_string
 01:74f8 .text:0008
 
-01:7500 call_01_7500
+01:7500 call_show_banner
+;; 01:7500 Show the currently selected banner text.
+;; 01:7500 Registers used: A, DE, HL
 
 01:75c6 call_01_75c6
 
@@ -3058,8 +3069,8 @@
 
 03:42ff call_03_42ff
 
-;; 03:432a:r_op call_01_7500
-;; 03:432e:r_op BANK(call_01_7500)
+;; 03:432a:r_op call_show_banner
+;; 03:432e:r_op BANK(call_show_banner)
 
 03:433b data_out_of_synths_error_string
 03:433b .text:0032
@@ -3070,8 +3081,8 @@
 ;; 03:4370:r_op HIGH(call_1f_4b8c)
 ;; 03:4373:r_op BANK(call_1f_4b8c)
 
-;; 03:4390:r_op call_01_7500
-;; 03:4394:r_op BANK(call_01_7500)
+;; 03:4390:r_op call_show_banner
+;; 03:4394:r_op BANK(call_show_banner)
 
 ;; 03:43ca:r_op LOW(call_1f_409c)
 ;; 03:43cc:r_op HIGH(call_1f_409c)
