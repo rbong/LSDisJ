@@ -1052,32 +1052,64 @@
 ;; 00:2d2e 00:2d2e
 ;; 00:2d2e:replace:0003 db _PULSE_WAVE_12_5_ASCII_CODE, _PULSE_WAVE_FLAT_ASCII_CODE, $00
 
-00:2d31 call_00_2d31
+00:2d31 call_write_command_value_bg_attrs
+;; 00:2d31 Write the background attributes for a command.
+;; 00:2d31 Draws sprites if the command is empty, or if the wave/ output command is used.
+;; 00:2d31 Otherwise, draws the digits for the command value.
+;; 00:2d31
+;; 00:2d31 Args: command, command_value
+;; 00:2d31
+;; 00:2d31 Registers used: A, DE, HL
 
-00:2dd7 data_00_2dd7
-00:2dd7 .data:0003
+;; 00:2d3e:l_op _O_COMMAND
+;; 00:2d46:l_op _W_COMMAND
+
+00:2d4e .jump_handle_empty_command
+00:2d5a .jump_handle_pulse_waves
+;; 00:2d5e:l_op _WAVE_CHANNEL
+00:2d70 .jump_write_pulse_waves_bg_attrs
+
+00:2d7d .jump_handle_output
+;; 00:2d7d Write L ON R ON by default
+;; 00:2d89:l_op _OUTPUT_L_OFF_R_OFF_VALUE
+;; 00:2d90:l_op _OUTPUT_L_ON_R_OFF_VALUE
+;; 00:2d95:l_op _OUTPUT_L_OFF_R_ON_VALUE
+00:2d9d .jump_output_l_off_r_off
+00:2da8 .jump_output_l_on_r_off
+00:2db3 .jump_output_l_off_r_on
+00:2dbb .jump_write_output_bg_attrs
+
+00:2dc9 .jump_handle_digits
+
+00:2dd3 .jump_return
+
+00:2dd7 data_output_l_on_r_on_tiles
+;; 00:2dd7 00:2dd7
+;; 00:2dd7:replace:0003 db _OUTPUT_L_ON_ASCII_CODE, _OUTPUT_R_ON_ASCII_CODE, $00
 00:2dda data_empty_command_value_tiles
 ;; 00:2dda 00:2dda
 ;; 00:2dda:replace:0003 db _EMPTY_ROW_ASCII_CODE, _EMPTY_ROW_ASCII_CODE, $00
-00:2ddd data_00_2ddd
-00:2ddd .data:0003
-00:2de0 data_00_2de0
-00:2de0 .data:0003
-00:2de3 data_00_2de3
-00:2de3 .data:0003
+00:2ddd data_output_l_off_r_off_tiles
+;; 00:2ddd 00:2ddd
+;; 00:2ddd:replace:0003 db _OUTPUT_L_OFF_ASCII_CODE, _OUTPUT_R_OFF_ASCII_CODE, $00
+00:2de0 data_output_l_on_r_off_tiles
+;; 00:2de0 00:2de0
+;; 00:2de0:replace:0003 db _OUTPUT_L_ON_ASCII_CODE, _OUTPUT_R_OFF_ASCII_CODE, $00
+00:2de3 data_output_l_off_r_on_tiles
+;; 00:2de3 00:2de3
+;; 00:2de3:replace:0003 db _OUTPUT_L_OFF_ASCII_CODE, _OUTPUT_R_ON_ASCII_CODE, $00
 
-00:2de6 call_write_2x_simple_bg_map_attrs
-;; 00:2de6 Write 2 simple background map attributes to memory.
-;; 00:2de6 Simple map attributes only use the first 4 bits.
+00:2de6 call_write_2x_digit_bg_map_attrs
+;; 00:2de6 Write 2 digit background map attributes to memory.
 ;; 00:2de6 If the target address is not in the range 0x9800 - 0x9aff, throws an exception.
 ;; 00:2de6
 ;; 00:2de6 Entry conditions:
-;; 00:2de6   A = source byte (2 chars)
+;; 00:2de6   A = value (2 chars)
 ;; 00:2de6   BG_MAP_ATTR_TARGET_* must be set
-;; 00:2de6   BG_MAP_ATTR_SIMPLE_BG_PALETTE must be set
+;; 00:2de6   BG_MAP_ATTR_DIGIT_BG_PALETTE must be set
 ;; 00:2de6
 ;; 00:2de6 Exit conditions:
-;; 00:2de6   The source byte upper char + BG_MAP_ATTR_SIMPLE_BG_PALETTE and lower char + BG_MAP_ATTR_SIMPLE_BG_PALETTE will be written as two bytes to the target
+;; 00:2de6   Digits for the two chars will be written to the address given by BG_MAP_ATTR_TARGET_*
 ;; 00:2de6   BG_MAP_ATTR_TARGET_* will be incremented by 2
 ;; 00:2de6
 ;; 00:2de6 Registers used: A, E, HL
@@ -1093,8 +1125,8 @@
 ;; 00:2e18 Increment target
 ;; 00:2e20 Return
 
-00:2e22 call_write_2x_simple_bg_map_attrs_arg
-;; 00:2e22 The same as call_write_2x_simple_bg_map_attrs, but use an argument instead of the A register for the source byte.
+00:2e22 call_write_2x_digt_bg_map_attrs_arg
+;; 00:2e22 The same as call_write_2x_digt_bg_map_attrs, but use an argument instead of the A register for the source byte.
 ;; 00:2e22 Args: source_byte
 
 ;; 00:2e2c:l_op HIGH(_SCRN0)
@@ -7747,8 +7779,8 @@
 00:ff8c BG_MAP_ATTR_BG_PALETTE
 ;; 00:ff8c The background palette to apply to bytes when writing background map attributes.
 
-00:ff8d BG_MAP_ATTR_SIMPLE_BG_PALETTE
-;; 00:ff8d The background palette to apply to bytes when writing simple background map attributes.
+00:ff8d BG_MAP_ATTR_DIGIT_BG_PALETTE
+;; 00:ff8d The background palette to apply to bytes when writing digit background map attributes.
 
 00:ff8e CURRENT_BANK
 ;; 00:ff8e Used to store the current bank number for banked calls.
