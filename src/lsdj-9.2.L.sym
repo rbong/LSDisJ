@@ -3664,7 +3664,28 @@
 ;; 04:4942:r_op _SRAM_PHRASE_INSTRUMENTS
 ;; 04:495a:r_op _SRAM_PHRASE_INSTRUMENTS_BANK
 
-04:4968 call_04_4968
+04:4968 call_read_current_phrase_note
+;; 04:4968 Read the note number from a row in the current phrase.
+;; 04:4968 Args: row
+;; 04:4968 Result: E
+;; 04:4968 Registers used: A, DE, HL
+
+;; 04:4971:l_op LOW(_SRAM_PHRASE_NOTES)
+;; 04:4975:l_op HIGH(_SRAM_PHRASE_NOTES)
+
+;; 04:4980:l_op _PHRASE_NOTES
+
+04:4988 .jump_verify_current_phrase
+
+;; 04:498c The current phrase should not be unset.
+;; 04:498c:l_op _PHRASES
+
+04:4994 .jump_calculate_address_1
+;; 04:499a The loop below will shift the phrase number left 4 times, multiplying it by 16.
+04:499e .jump_calculate_address_2
+04:49a3 .jump_calculate_address_3
+
+;; 04:49b7 _SRAM_PHRASE_NOTES_BANK
 
 04:49c5 call_04_49c5
 
@@ -7410,25 +7431,25 @@
 
 1f:6738 jump_table_1f_6738
 
-;; 1f:6764:r_op LOW(call_04_4968)
-;; 1f:6767:r_op HIGH(call_04_4968)
-;; 1f:677c:r_op BANK(call_04_4968)
+;; 1f:6764:r_op LOW(call_read_current_phrase_note)
+;; 1f:6767:r_op HIGH(call_read_current_phrase_note)
+;; 1f:677c:r_op BANK(call_read_current_phrase_note)
 
 ;; 1f:67b5:r_op LOW(call_write_current_phrase_note)
 ;; 1f:67b8:r_op HIGH(call_write_current_phrase_note)
 ;; 1f:67d0:r_op BANK(call_write_current_phrase_note)
 
-;; 1f:684b:r_op LOW(call_04_4968)
-;; 1f:684e:r_op HIGH(call_04_4968)
-;; 1f:6863:r_op BANK(call_04_4968)
+;; 1f:684b:r_op LOW(call_read_current_phrase_note)
+;; 1f:684e:r_op HIGH(call_read_current_phrase_note)
+;; 1f:6863:r_op BANK(call_read_current_phrase_note)
 
 ;; 1f:6889:r_op LOW(call_write_current_phrase_note)
 ;; 1f:688c:r_op HIGH(call_write_current_phrase_note)
 ;; 1f:68a5:r_op BANK(call_write_current_phrase_note)
 
-;; 1f:68b3:r_op LOW(call_04_4968)
-;; 1f:68b6:r_op HIGH(call_04_4968)
-;; 1f:68cb:r_op BANK(call_04_4968)
+;; 1f:68b3:r_op LOW(call_read_current_phrase_note)
+;; 1f:68b6:r_op HIGH(call_read_current_phrase_note)
+;; 1f:68cb:r_op BANK(call_read_current_phrase_note)
 
 ;; 1f:68fe:r_op LOW(call_write_current_phrase_note)
 ;; 1f:6901:r_op HIGH(call_write_current_phrase_note)
