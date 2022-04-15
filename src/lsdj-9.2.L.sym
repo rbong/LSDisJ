@@ -6739,7 +6739,16 @@
 
 1d:6e18 call_1d_6e18
 
-1d:6e75 call_1d_6e75
+1d:6e75 call_write_current_synth_param
+;; 1d:6e75 Set a param in the current synth.
+;; 1d:6e75 Args: param, value
+;; 1d:6e75 Registers used: A, D, HL
+
+;; 1d:6e7e The loop below will shift the synth number left 4 times, multiplying it by 16.
+
+1d:6e82 .jump_calculate_address_1
+1d:6e87 .jump_calculate_address_2
+
 ;; 1d:6e8a:r_op _SRAM_SYNTH_PARAMS
 ;; 1d:6eb0:r_op _SRAM_SYNTH_PARAMS_BANK
 
