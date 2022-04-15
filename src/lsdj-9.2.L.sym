@@ -3061,8 +3061,8 @@
 ;; 02:7eb9 02:7eb9
 ;; 02:7eb9:replace:0147 ds $8000 - @, $ff
 
-03:4000 call_write_current_instrument_param
-;; 03:4000 Write a single param for the current instrument.
+03:4000 call_write_current_instrument_param_1
+;; 03:4000 Write a single param for CURRENT_INSTRUMENT_1.
 ;; 03:4000 See also call_write_instrument_param.
 ;; 03:4000
 ;; 03:4000 Args: param (see param constants), value
@@ -6261,7 +6261,13 @@
 
 1c:607a call_1c_607a
 
-1c:608e call_1c_608e
+1c:608e call_write_current_instrument_param_2
+;; 1c:608e Write a single param for the current instrument.
+;; 1c:608e See also call_write_current_instrument_param_1, call_write_instrument_param.
+;; 1c:608e
+;; 1c:608e Args: param (see param constants), value
+;; 1c:608e
+;; 1c:608e Registers used: A, DE, HL
 
 1c:60a3 call_1c_60a3
 
@@ -7756,7 +7762,7 @@
 00:c576 PAD_BUTTONS
 ;; 00:c576 The currently held buttons.
 
-00:c577 CURRENT_INSTRUMENT
+00:c577 CURRENT_INSTRUMENT_1
 
 00:c676 GBC_BG_ATTR_ROW
 ;; 00:c676 A row of background attributes used on GBC before being copied to VRAM.
@@ -7792,6 +7798,10 @@
 
 00:c931 HELP_PAGE
 00:c932 HELP_CURSOR_ROW
+
+00:c99f CURRENT_INSTRUMENT_2
+;; 00:c99f A copy of the current instrument.
+;; 00:c99f This is used exclusively in bank 0x1c.
 
 00:c943 DEFAULT_TSP
 ;; 00:c943 The default transpose value to use for empty rows on the chain screen
