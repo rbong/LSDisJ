@@ -4134,12 +4134,18 @@
 
 05:420c call_05_420c
 
-05:421a call_05_421a
+05:421a call_cancel_selection
+;; 05:421a Cancel the current selection and restore the backup.
+;; 05:421a Registers used:  A, HL
 
 ;; 05:421f:l_op _SELECT_CURSOR_MODE
 
+;; 05:4221 Do nothing if not in select mode
+
 ;; 05:4228:r_op BANK(call_restore_backup_selection)
 ;; 05:422c Banked call used for call_restore_backup_selection unnecessarily
+
+05:4231 .jump_return
 
 05:4233 call_05_4233
 
