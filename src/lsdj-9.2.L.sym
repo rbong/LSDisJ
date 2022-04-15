@@ -3591,7 +3591,25 @@
 
 04:4106 call_04_4106
 
-04:418f call_04_418f
+04:418f call_write_current_phrase_note
+;; 04:418f Write a note to a row in the current phrase.
+;; 04:418f Args: row, note
+;; 04:418f Registers used: A, D, HL
+
+;; 04:4198:l_op LOW(_SRAM_PHRASE_NOTES)
+;; 04:419c:l_op HIGH(_SRAM_PHRASE_NOTES)
+
+;; 04:41a7:l_op _PHRASE_NOTES
+
+04:41af .jump_check_phrase
+;; 04:41b3:l_op _PHRASES
+
+04:41bb .jump_calculate_address_1
+;; 04:41c1 The loop below will shift the phrase number left 4 times, multiplying it by 16.
+04:41c5 .jump_calculate_address_2
+04:41ca .jump_calculate_address_3
+
+;; 04:41e3:r_op _SRAM_PHRASE_NOTES_BANK
 
 04:41f0 call_04_41f0
 ;; 04:422c:r_op _SRAM_PHRASE_INSTRUMENTS
@@ -7357,25 +7375,25 @@
 ;; 1f:6767:r_op HIGH(call_04_4968)
 ;; 1f:677c:r_op BANK(call_04_4968)
 
-;; 1f:67b5:r_op LOW(call_04_418f)
-;; 1f:67b8:r_op HIGH(call_04_418f)
-;; 1f:67d0:r_op BANK(call_04_418f)
+;; 1f:67b5:r_op LOW(call_write_current_phrase_note)
+;; 1f:67b8:r_op HIGH(call_write_current_phrase_note)
+;; 1f:67d0:r_op BANK(call_write_current_phrase_note)
 
 ;; 1f:684b:r_op LOW(call_04_4968)
 ;; 1f:684e:r_op HIGH(call_04_4968)
 ;; 1f:6863:r_op BANK(call_04_4968)
 
-;; 1f:6889:r_op LOW(call_04_418f)
-;; 1f:688c:r_op HIGH(call_04_418f)
-;; 1f:68a5:r_op BANK(call_04_418f)
+;; 1f:6889:r_op LOW(call_write_current_phrase_note)
+;; 1f:688c:r_op HIGH(call_write_current_phrase_note)
+;; 1f:68a5:r_op BANK(call_write_current_phrase_note)
 
 ;; 1f:68b3:r_op LOW(call_04_4968)
 ;; 1f:68b6:r_op HIGH(call_04_4968)
 ;; 1f:68cb:r_op BANK(call_04_4968)
 
-;; 1f:68fe:r_op LOW(call_04_418f)
-;; 1f:6901:r_op HIGH(call_04_418f)
-;; 1f:691a:r_op BANK(call_04_418f)
+;; 1f:68fe:r_op LOW(call_write_current_phrase_note)
+;; 1f:6901:r_op HIGH(call_write_current_phrase_note)
+;; 1f:691a:r_op BANK(call_write_current_phrase_note)
 
 ;; 1f:6928:r_op LOW(call_04_4918)
 ;; 1f:692b:r_op HIGH(call_04_4918)
