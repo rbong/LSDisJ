@@ -2280,7 +2280,13 @@
 01:55d4 data_pasted_instrument_string
 01:55d4 .text:000d
 
-01:55e1 call_01_55e1
+01:55e1 call_get_current_screen_bg_tiles
+;; 01:55e1 Get the address for the default background tiles for the current screen.
+;; 01:55e1 If the current screen is invalid, returns 0x0000.
+;; 01:55e1
+;; 01:55e1 Result: DE
+;; 01:55e1
+;; 01:55e1 Registers used: A, DE, HL
 
 ;; 01:55e6:l_op _PHRASE_SCREEN
 ;; 01:55eb:l_op _GROOVE_SCREEN
@@ -2295,7 +2301,38 @@
 ;; 01:5618:l_op _WORD_SCREEN
 ;; 01:561d:l_op _FILE_SCREEN
 
-01:5666 jump_table_01_5666
+01:5625 .jump_load_phrase_screen_bg_tiles
+01:562b .jump_load_groove_screen_bg_tiles
+01:5631 .jump_load_chain_screen_bg_tiles
+01:5637 .jump_load_song_screen_bg_tiles
+01:563d .jump_load_table_screen_bg_tiles
+
+01:5643 .jump_read_current_instrument
+;; 01:5647:l_op _SPEECH_INSTRUMENT
+;; 01:564c:r_op _INSTRUMENT_TYPE_INSTRUMENT_PARAM
+;; 01:5657:r_op _NOISE_INSTRUMENT_TYPE
+;; 01:5657 Noise instrument is the last instrument type.
+;; 01:5657 If the instrument type is greater than this, draw nothing.
+
+;; 01:565d Select jump location based on instrument type
+
+01:5666 .jump_table_set_instrument_screen_bg_tiles
+
+01:5672 .jump_load_pulse_instrument_screen_bg_tiles
+01:5678 .jump_load_wave_instrument_screen_bg_tiles
+01:567e .jump_load_kit_instrument_screen_bg_tiles
+01:5684 .jump_load_noise_instrument_screen_bg_tiles
+01:568a .jump_load_talk_screen_bg_tiles_1
+01:5690 .jump_load_no_bg_tiles_1
+01:5696 .jump_load_wave_screen_bg_tiles
+01:569c .jump_load_project_screen_bg_tiles
+01:56a2 .jump_load_synth_screen_bg_tiles
+01:56a8 .jump_load_talk_screen_bg_tiles_2
+01:56ae .jump_load_word_screen_bg_tiles
+01:56b4 .jump_load_file_screen_bg_tiles
+
+01:56ba .jump_load_no_bg_tiles_2
+01:56bd .jump_return
 
 01:56bf data_palette_content
 01:56bf data_palette_1_content
@@ -2313,35 +2350,36 @@
 01:57af data_palette_7_content
 01:57af .data:0028
 
-01:57d7 data_01_57d7
+01:57d7 data_screen_bg_tiles
+01:57d7 data_chain_screen_bg_tiles
 01:57d7 .data:0168
-01:593f data_01_593f
+01:593f data_table_screen_bg_tiles
 01:593f .data:0168
-01:5aa7 data_01_5aa7
+01:5aa7 data_phrase_screen_bg_tiles
 01:5aa7 .data:0168
-01:5c0f data_01_5c0f
+01:5c0f data_groove_screen_bg_tiles
 01:5c0f .data:0168
-01:5d77 data_01_5d77
+01:5d77 data_project_screen_bg_tiles
 01:5d77 .data:0168
-01:5edf data_01_5edf
+01:5edf data_song_screen_bg_tiles
 01:5edf .data:0168
-01:6047 data_01_6047
+01:6047 data_pulse_instrument_screen_bg_tiles
 01:6047 .data:0168
-01:61af data_01_61af
+01:61af data_wave_instrument_screen_bg_tiles
 01:61af .data:0168
-01:6317 data_01_6317
+01:6317 data_kit_instrument_screen_bg_tiles
 01:6317 .data:0168
-01:647f data_01_647f
+01:647f data_noise_instrument_screen_bg_tiles
 01:647f .data:0168
-01:65e7 data_01_65e7
+01:65e7 data_talk_screen_bg_tiles
 01:65e7 .data:0168
-01:674f data_01_674f
+01:674f data_wave_screen_bg_tiles
 01:674f .data:0168
-01:68b7 data_01_68b7
+01:68b7 data_synth_screen_bg_tiles
 01:68b7 .data:0168
-01:6a1f data_01_6a1f
+01:6a1f data_word_screen_bg_tiles
 01:6a1f .data:0168
-01:6b87 data_01_6b87
+01:6b87 data_file_screen_bg_tiles
 01:6b87 .data:0168
 
 01:6cef call_01_6cef

@@ -249,6 +249,10 @@ _OVERCLOCK_2X  EQU $01
 _OVERCLOCK_3X  EQU $02
 _OVERCLOCK_6X  EQU $03
 
+;; Shared Instrument Params ;;
+
+_INSTRUMENT_TYPE_INSTRUMENT_PARAM EQU $00
+
 ;; Pulse Type Instrument Params ;;
 
 _ENV_STAGE_1_INSTRUMENT_PARAM   EQU $01 ; 8 bits
