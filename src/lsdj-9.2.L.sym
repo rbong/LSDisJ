@@ -3555,8 +3555,8 @@
 ;; 03:7854:r_op call_1f_409c
 ;; 03:7858:r_op BANK(call_1f_409c)
 
-;; 03:78c0:r_op call_05_426a
-;; 03:78c4:r_op BANK(call_05_426a)
+;; 03:78c0:r_op call_move_screen_up
+;; 03:78c4:r_op BANK(call_move_screen_up)
 
 ;; 03:78cd:r_op LOW(call_00_2490)
 ;; 03:78cf:r_op HIGH(call_00_2490)
@@ -3571,16 +3571,16 @@
 ;; 03:78f8 Unused bank for call_00_2490
 ;; 03:78fc Banked call used for call_00_2490 unnecessarily
 
-;; 03:790c:r_op call_05_4233
-;; 03:7910:r_op BANK(call_05_4233)
+;; 03:790c:r_op call_move_screen_left
+;; 03:7910:r_op BANK(call_move_screen_left)
 
 ;; 03:7919:r_op LOW(call_00_2490)
 ;; 03:791b:r_op HIGH(call_00_2490)
 ;; 03:791e Unused bank for call_00_2490
 ;; 03:7922 Banked call used for call_00_2490 unnecessarily
 
-;; 03:7934:r_op call_05_4253
-;; 03:7938:r_op BANK(call_05_4253)
+;; 03:7934:r_op call_move_screen_right
+;; 03:7938:r_op BANK(call_move_screen_right)
 
 ;; 03:7959:r_op LOW(call_00_2490)
 ;; 03:795b:r_op HIGH(call_00_2490)
@@ -4051,8 +4051,8 @@
 ;; 04:7868:r_op HIGH(call_02_7b9b)
 ;; 04:786b:r_op BANK(call_02_7b9b)
 
-;; 04:788f:r_op call_05_4233
-;; 04:7893:r_op BANK(call_05_4233)
+;; 04:788f:r_op call_move_screen_left
+;; 04:7893:r_op BANK(call_move_screen_left)
 
 ;; 04:789c:r_op LOW(call_00_2490)
 ;; 04:789e:r_op HIGH(call_00_2490)
@@ -4067,27 +4067,27 @@
 ;; 04:7914 Unused bank for call_00_2490
 ;; 04:7918 Banked call used for call_00_2490 unnecessarily
 
-;; 04:7938:r_op call_05_426a
-;; 04:793c:r_op BANK(call_05_426a)
+;; 04:7938:r_op call_move_screen_up
+;; 04:793c:r_op BANK(call_move_screen_up)
 
 ;; 04:7945:r_op LOW(call_00_2490)
 ;; 04:7947:r_op HIGH(call_00_2490)
 ;; 04:794a Unused bank for call_00_2490
 ;; 04:794d Banked call used for call_00_2490 unnecessarily
 
-;; 04:79fd:r_op call_05_4253
-;; 04:7a01:r_op BANK(call_05_4253)
+;; 04:79fd:r_op call_move_screen_right
+;; 04:7a01:r_op BANK(call_move_screen_right)
 
-;; 04:7a0a:r_op call_05_4253
-;; 04:7a0e:r_op BANK(call_05_4253)
+;; 04:7a0a:r_op call_move_screen_right
+;; 04:7a0e:r_op BANK(call_move_screen_right)
 
 ;; 04:7a17:r_op LOW(call_00_2490)
 ;; 04:7a19:r_op HIGH(call_00_2490)
 ;; 04:7a1e Unused bank for call_00_2490
 ;; 04:7a22 Banked call used for call_00_2490 unnecessarily
 
-;; 04:7a33:r_op call_05_4253
-;; 04:7a37:r_op BANK(call_05_4253)
+;; 04:7a33:r_op call_move_screen_right
+;; 04:7a37:r_op BANK(call_move_screen_right)
 
 ;; 04:7a40:r_op LOW(call_00_2490)
 ;; 04:7a42:r_op HIGH(call_00_2490)
@@ -4203,11 +4203,27 @@
 
 05:4231 .jump_return
 
-05:4233 call_05_4233
+05:4233 call_move_screen_left
+;; 05:4233 Move the current screen left.
+;; 05:4233 Registers used: A, DE, HL
 
-05:4253 call_05_4253
+05:4243 .jump_update_current_screen
 
-05:426a call_05_426a
+;; 05:4246:r_op _SCREEN_MOVE_LEFT
+
+05:4253 call_move_screen_right
+;; 05:4253 Move the current screen right.
+;; 05:4253 Registers used: A, DE, HL
+
+;; 05:425d:r_op _SCREEN_MOVE_RIGHT
+
+05:426a call_move_screen_up
+;; 05:426a Move the current screen up.
+;; 05:426a Registers used: A, DE, HL
+
+05:427a .jump_update_current_screen
+
+;; 05:427d:r_op _SCREEN_MOVE_UP
 
 05:4287 call_move_screen_down
 ;; 05:4287 Move the current screen down.
@@ -4362,8 +4378,8 @@
 ;; 05:5e50:r_op HIGH(call_02_7b9b)
 ;; 05:5e53:r_op BANK(call_02_7b9b)
 
-;; 05:5e6d:r_op BANK(call_05_426a)
-;; 05:5e71 Banked call used for call_05_426a unnecessarily
+;; 05:5e6d:r_op BANK(call_move_screen_up)
+;; 05:5e71 Banked call used for call_move_screen_up unnecessarily
 
 ;; 05:5e7a Unused bank for call_00_2490
 ;; 05:5e7e Banked call used for call_00_2490 unnecessarily
@@ -4385,8 +4401,8 @@
 ;; 05:5fda Unused bank for call_00_2490
 ;; 05:5fde Banked call used for call_00_2490 unnecessarily
 
-;; 05:5ff4:r_op BANK(call_05_4233)
-;; 05:5ff8 Banked call used for call_05_4233 unnecessarily
+;; 05:5ff4:r_op BANK(call_move_screen_left)
+;; 05:5ff8 Banked call used for call_move_screen_left unnecessarily
 
 ;; 05:5ffd:r_op LOW(call_00_2490)
 ;; 05:5fff:r_op HIGH(call_00_2490)
@@ -4596,16 +4612,16 @@
 
 ;; 06:4426:r_op _NORMAL_CURSOR_MODE
 
-;; 06:47ed:r_op call_05_4233
-;; 06:47f1:r_op BANK(call_05_4233)
+;; 06:47ed:r_op call_move_screen_left
+;; 06:47f1:r_op BANK(call_move_screen_left)
 
 ;; 06:47fa:r_op LOW(call_00_2490)
 ;; 06:47fc:r_op HIGH(call_00_2490)
 ;; 06:47ff Unused bank for call_00_2490
 ;; 06:4803 Banked call used for call_00_2490 unnecessarily
 
-;; 06:4815:r_op call_05_426a
-;; 06:4819:r_op BANK(call_05_426a)
+;; 06:4815:r_op call_move_screen_up
+;; 06:4819:r_op BANK(call_move_screen_up)
 
 ;; 06:4822:r_op LOW(call_00_2490)
 ;; 06:4824:r_op HIGH(call_00_2490)
@@ -4696,8 +4712,8 @@
 ;; 06:51f2:r_op HIGH(call_02_7b9b)
 ;; 06:51f5:r_op BANK(call_02_7b9b)
 
-;; 06:5225:r_op call_05_4233
-;; 06:5229:r_op BANK(call_05_4233)
+;; 06:5225:r_op call_move_screen_left
+;; 06:5229:r_op BANK(call_move_screen_left)
 
 ;; 06:5232:r_op LOW(call_00_2490)
 ;; 06:5234:r_op HIGH(call_00_2490)
@@ -4917,24 +4933,24 @@
 ;; 06:6a9b:r_op HIGH(call_01_761f)
 ;; 06:6a9e:r_op BANK(call_01_761f)
 
-;; 06:6aac:r_op call_05_4253
-;; 06:6ab0:r_op BANK(call_05_4253)
+;; 06:6aac:r_op call_move_screen_right
+;; 06:6ab0:r_op BANK(call_move_screen_right)
 
 ;; 06:6ab9:r_op LOW(call_00_2490)
 ;; 06:6abb:r_op HIGH(call_00_2490)
 ;; 06:6abe Unused bank for call_00_2490
 ;; 06:6ac2 Banked call used for call_00_2490 unnecessarily
 
-;; 06:6ae2:r_op call_05_4233
-;; 06:6ae6:r_op BANK(call_05_4233)
+;; 06:6ae2:r_op call_move_screen_left
+;; 06:6ae6:r_op BANK(call_move_screen_left)
 
 ;; 06:6aef:r_op LOW(call_00_2490)
 ;; 06:6af1:r_op HIGH(call_00_2490)
 ;; 06:6af4 Unused bank for call_00_2490
 ;; 06:6af8 Banked call used for call_00_2490 unnecessarily
 
-;; 06:6b1b:r_op call_05_426a
-;; 06:6b1f:r_op BANK(call_05_426a)
+;; 06:6b1b:r_op call_move_screen_up
+;; 06:6b1f:r_op BANK(call_move_screen_up)
 
 ;; 06:6b28:r_op LOW(call_00_2490)
 ;; 06:6b2a:r_op HIGH(call_00_2490)
@@ -5235,8 +5251,8 @@
 
 07:5010 jump_07_5010
 
-;; 07:5123:r_op call_05_426a
-;; 07:5127:r_op BANK(call_05_426a)
+;; 07:5123:r_op call_move_screen_up
+;; 07:5127:r_op BANK(call_move_screen_up)
 
 ;; 07:5130:r_op LOW(call_00_2490)
 ;; 07:5132:r_op HIGH(call_00_2490)
@@ -5285,8 +5301,8 @@
 ;; 07:54bb:r_op HIGH(call_read_chain_phrase)
 ;; 07:54c9:r_op BANK(call_read_chain_phrase)
 
-;; 07:54e0:r_op call_05_4253
-;; 07:54e4:r_op BANK(call_05_4253)
+;; 07:54e0:r_op call_move_screen_right
+;; 07:54e4:r_op BANK(call_move_screen_right)
 
 ;; 07:54ed:r_op LOW(call_00_2490)
 ;; 07:54ef:r_op HIGH(call_00_2490)
@@ -5854,8 +5870,8 @@
 ;; 1b:5e8a Unused bank for call_00_2490
 ;; 1b:5e8e Banked call used for call_00_2490 unnecessarily
 
-;; 1b:5ec1:r_op call_05_4253
-;; 1b:5ec5:r_op BANK(call_05_4253)
+;; 1b:5ec1:r_op call_move_screen_right
+;; 1b:5ec5:r_op BANK(call_move_screen_right)
 
 ;; 1b:5ece:r_op LOW(call_00_2490)
 ;; 1b:5ed0:r_op HIGH(call_00_2490)
@@ -6712,8 +6728,8 @@
 ;; 1d:4a69:r_op HIGH(call_02_7b9b)
 ;; 1d:4a6c:r_op BANK(call_02_7b9b)
 
-;; 1d:4a87:r_op call_05_426a
-;; 1d:4a8b:r_op BANK(call_05_426a)
+;; 1d:4a87:r_op call_move_screen_up
+;; 1d:4a8b:r_op BANK(call_move_screen_up)
 
 ;; 1d:4a94:r_op LOW(call_00_2490)
 ;; 1d:4a96:r_op HIGH(call_00_2490)
@@ -6993,11 +7009,11 @@
 ;; 1d:7be2:r_op call_move_screen_down
 ;; 1d:7be6:r_op BANK(call_move_screen_down)
 
-;; 1d:7c04:r_op call_05_4233
-;; 1d:7c08:r_op BANK(call_05_4233)
+;; 1d:7c04:r_op call_move_screen_left
+;; 1d:7c08:r_op BANK(call_move_screen_left)
 
-;; 1d:7c60:r_op call_05_4253
-;; 1d:7c64:r_op BANK(call_05_4253)
+;; 1d:7c60:r_op call_move_screen_right
+;; 1d:7c64:r_op BANK(call_move_screen_right)
 
 ;; 1d:7c71 Unused bank for call_00_2490
 ;; 1d:7c75 Banked call used for call_00_2490 unnecessarily
@@ -7713,16 +7729,16 @@
 ;; 1f:7316:r_op call_move_screen_down
 ;; 1f:731a:r_op BANK(call_move_screen_down)
 
-;; 1f:7333:r_op call_05_426a
-;; 1f:7337:r_op BANK(call_05_426a)
+;; 1f:7333:r_op call_move_screen_up
+;; 1f:7337:r_op BANK(call_move_screen_up)
 
-;; 1f:7350:r_op call_05_4253
-;; 1f:7354:r_op BANK(call_05_4253)
+;; 1f:7350:r_op call_move_screen_right
+;; 1f:7354:r_op BANK(call_move_screen_right)
 
 ;; 1f:73b5:r_op _NORMAL_CURSOR_MODE
 
-;; 1f:736d:r_op call_05_4233
-;; 1f:7371:r_op BANK(call_05_4233)
+;; 1f:736d:r_op call_move_screen_left
+;; 1f:7371:r_op BANK(call_move_screen_left)
 
 ;; 1f:73dc:r_op _SRAM_SPEECH_WORDS
 ;; 1f:73f7:r_op _SRAM_SPEECH_WORDS_BANK
