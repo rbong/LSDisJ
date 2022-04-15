@@ -281,9 +281,31 @@
 ;; 00:0ad1
 ;; 00:0ad1 Registers used: A, DE, HL
 
-00:0ae5 call_00_0ae5
+00:0ae5 call_read_song_chain
+;; 00:0ae5 Read a song chain number from a row/channel.
+;; 00:0ae5 Args: channel, row
+;; 00:0ae5 Result: E
+;; 00:0ae5 Registers used: A, DE, HL
+
+;; 00:0aeb:l_op _CHANNELS
+
+00:0af3 .jump_verify_row
+;; 00:0af6:l_op _SONG_ROWS
+
+00:0afe .jump_calculate_address_1
+;; 00:0b03 The loop below will shift the row number left 2 times, multiplying it by 4.
+00:0b07 .jump_calculate_address_2
+00:0b0c .jump_calculate_address_3
+
 ;; 00:0b0f:r_op _SRAM_SONG_CHAINS
+;; 00:0b27 Read chain from SRAM.
 ;; 00:0b28:r_op _SRAM_SONG_CHAINS_BANK
+
+;; 00:0b33 Check bit 7, since there are only 0x80 chains and the value should never exceed 0x7f.
+;; 00:0b38 Return 0xff (empty row) if the chain number is invalid
+
+00:0b3d .jump_set_return_to_chain_number
+00:0b3e .jump_return
 
 00:0b43 call_00_0b43
 
