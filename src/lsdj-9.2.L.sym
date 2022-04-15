@@ -6639,7 +6639,17 @@
 1d:6311 data_resync2_resync_type_string
 1d:6311 .text:0007
 
-1d:6318 call_1d_6318
+1d:6318 call_read_current_synth_param
+;; 1d:6318 Read a synth param from the current synth screen.
+;; 1d:6318 Args: param
+;; 1d:6318 Result: E
+;; 1d:6318 Registers used: A, DE, HL
+
+;; 1d:6321 The loop below will shift the phrase number left 4 times, multiplying it by 16.
+
+1d:6325 .jump_calculate_address_1
+1d:632a .jump_calculate_address_2
+
 ;; 1d:632d:r_op _SRAM_SYNTH_PARAMS
 ;; 1d:634d:r_op _SRAM_SYNTH_PARAMS_BANK
 
