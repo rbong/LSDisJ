@@ -90,6 +90,8 @@ _HELP_SCREEN        EQU $0e
 
 ;; Screen Constants ;;
 
+_SCREEN_ROWS EQU 3
+
 _SCREEN_ROW_1_WIDTH EQU 4
 
 _SCREEN_MOVE_NONE  EQU 0
