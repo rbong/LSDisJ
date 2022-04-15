@@ -271,8 +271,8 @@
 
 ;; 00:0acd Return
 
-00:0ad1 call_read_current_instrument_param
-;; 00:0ad1 Read a single param from the current instrument.
+00:0ad1 call_read_current_instrument_param_1
+;; 00:0ad1 Read a single param from CURRENT_INSTRUMENT_1.
 ;; 00:0ad1 See also call_read_instrument_param.
 ;; 00:0ad1
 ;; 00:0ad1 Args: param (see param constants)
@@ -6259,7 +6259,15 @@
 1c:6077 data_erase_file_no_string_2
 1c:6077 .text:0003
 
-1c:607a call_1c_607a
+1c:607a call_read_current_instrument_param_2
+;; 1c:607a Read a single param from CURRENT_INSTRUMENT_2.
+;; 1c:607a See also call_read_instrument_param.
+;; 1c:607a
+;; 1c:607a Args: param (see param constants)
+;; 1c:607a
+;; 1c:607a Result: E
+;; 1c:607a
+;; 1c:607a Registers used: A, DE, HL
 
 1c:608e call_write_current_instrument_param_2
 ;; 1c:608e Write a single param for the current instrument.
