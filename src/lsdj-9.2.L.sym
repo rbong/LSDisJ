@@ -821,9 +821,9 @@
 
 00:2490 call_00_2490
 
-;; 00:249e:r_op BANK(call_01_6cef)
-;; 00:24a5:r_op BANK(call_01_6cef)
-;; 00:24a7:l_op call_01_6cef
+;; 00:249e:r_op BANK(call_copy_current_screen_bg_tile_page)
+;; 00:24a5:r_op BANK(call_copy_current_screen_bg_tile_page)
+;; 00:24a7:l_op call_copy_current_screen_bg_tile_page
 
 ;; 00:24ae:l_op _INSTRUMENT_SCREEN
 ;; 00:24b3:l_op _WAVE_EDITOR_SCREEN
@@ -2382,7 +2382,22 @@
 01:6b87 data_file_screen_bg_tiles
 01:6b87 .data:0168
 
-01:6cef call_01_6cef
+01:6cef call_copy_current_screen_bg_tile_page
+;; 01:6cef Copy the tile page for the current screen.
+;; 01:6cef If the current screen is invalid, clears the current tiles.
+;; 01:6cef Resets the help banner.
+;; 01:6cef
+;; 01:6cef Registers used: A, DE, HL
+
+;; 01:6cfc Clear tiles if current screen is invalid
+
+;; 01:6d18 Check GameBoy type
+;; 01:6d21 Handle GBC
+
+01:6d31 .jump_handle_dmg
+01:6d37 .jump_return
+
+01:6d0a .jump_reset_help_banner
 
 01:6d3b call_01_6d3b
 
@@ -2643,7 +2658,7 @@
 ;; 01:7df7 Registers used: A, HL
 01:7dfa .jump_clear_ram_loop
 
-01:7e09 call_copy_tile_page
+01:7e09 call_copy_gbc_tile_page
 ;; 01:7e09 Copy an entire page of tiles from an address to VRAM.
 ;; 01:7e09 There are 18 rows and 20 columns in a page of tiles.
 ;; 01:7e09 Converts DMG tiles to GBC tiles.
@@ -3236,17 +3251,17 @@
 
 03:45fc call_03_45fc
 
-;; 03:4631:r_op LOW(call_01_6cef)
-;; 03:4633:r_op HIGH(call_01_6cef)
-;; 03:4636:r_op BANK(call_01_6cef)
+;; 03:4631:r_op LOW(call_copy_current_screen_bg_tile_page)
+;; 03:4633:r_op HIGH(call_copy_current_screen_bg_tile_page)
+;; 03:4636:r_op BANK(call_copy_current_screen_bg_tile_page)
 
 03:4644 call_03_4644
 
 03:4661 call_03_4661
 
-;; 03:468f:r_op LOW(call_01_6cef)
-;; 03:4691:r_op HIGH(call_01_6cef)
-;; 03:4694:r_op BANK(call_01_6cef)
+;; 03:468f:r_op LOW(call_copy_current_screen_bg_tile_page)
+;; 03:4691:r_op HIGH(call_copy_current_screen_bg_tile_page)
+;; 03:4694:r_op BANK(call_copy_current_screen_bg_tile_page)
 
 03:46a2 call_03_46a2
 
@@ -3437,9 +3452,9 @@
 
 03:5147 call_03_5147
 
-;; 03:517e:r_op LOW(call_01_6cef)
-;; 03:5180:r_op HIGH(call_01_6cef)
-;; 03:5185:r_op BANK(call_01_6cef)
+;; 03:517e:r_op LOW(call_copy_current_screen_bg_tile_page)
+;; 03:5180:r_op HIGH(call_copy_current_screen_bg_tile_page)
+;; 03:5185:r_op BANK(call_copy_current_screen_bg_tile_page)
 
 03:51a0 call_03_51a0
 
@@ -4278,9 +4293,9 @@
 ;; 05:4c28:r_op BANK(call_restore_backup_selection)
 ;; 05:4c2c Banked call used for call_restore_backup_selection unnecessarily
 
-;; 05:4c39:r_op LOW(call_01_6cef)
-;; 05:4c3b:r_op HIGH(call_01_6cef)
-;; 05:4c3e:r_op BANK(call_01_6cef)
+;; 05:4c39:r_op LOW(call_copy_current_screen_bg_tile_page)
+;; 05:4c3b:r_op HIGH(call_copy_current_screen_bg_tile_page)
+;; 05:4c3e:r_op BANK(call_copy_current_screen_bg_tile_page)
 
 ;; 05:4c4b:r_op BANK(call_05_4040)
 ;; 05:4c4f Banked call used for call_05_4040 unnecessarily
@@ -4795,8 +4810,8 @@
 ;; 06:5af6:r_op call_restore_backup_selection
 ;; 06:5afa:r_op BANK(call_restore_backup_selection)
 
-;; 06:5b0b:r_op call_01_6cef
-;; 06:5b0f:r_op BANK(call_01_6cef)
+;; 06:5b0b:r_op call_copy_current_screen_bg_tile_page
+;; 06:5b0f:r_op BANK(call_copy_current_screen_bg_tile_page)
 
 ;; 06:5b18:r_op call_05_4040
 ;; 06:5b1c:r_op BANK(call_05_4040)
@@ -5565,9 +5580,9 @@
 
 1b:4a62 call_1b_4a62
 
-;; 1b:4a63:r_op LOW(call_01_6cef)
-;; 1b:4a65:r_op HIGH(call_01_6cef)
-;; 1b:4a68:r_op BANK(call_01_6cef)
+;; 1b:4a63:r_op LOW(call_copy_current_screen_bg_tile_page)
+;; 1b:4a65:r_op HIGH(call_copy_current_screen_bg_tile_page)
+;; 1b:4a68:r_op BANK(call_copy_current_screen_bg_tile_page)
 
 1b:4a79 call_1b_4a79
 
@@ -5822,9 +5837,9 @@
 
 1b:5d7c call_1b_5d7c
 
-;; 1b:5d9a:r_op LOW(call_01_6cef)
-;; 1b:5d9c:r_op HIGH(call_01_6cef)
-;; 1b:5d9f:r_op BANK(call_01_6cef)
+;; 1b:5d9a:r_op LOW(call_copy_current_screen_bg_tile_page)
+;; 1b:5d9c:r_op HIGH(call_copy_current_screen_bg_tile_page)
+;; 1b:5d9f:r_op BANK(call_copy_current_screen_bg_tile_page)
 
 ;; 1b:5dab:r_op call_05_4040
 ;; 1b:5daf:r_op BANK(call_05_4040)
@@ -6022,9 +6037,9 @@
 ;; 1b:6990:r_op HIGH(call_01_7c94)
 ;; 1b:6997:r_op BANK(call_01_7c94)
 
-;; 1b:69ae:r_op LOW(call_01_6cef)
-;; 1b:69b0:r_op HIGH(call_01_6cef)
-;; 1b:69b3:r_op BANK(call_01_6cef)
+;; 1b:69ae:r_op LOW(call_copy_current_screen_bg_tile_page)
+;; 1b:69b0:r_op HIGH(call_copy_current_screen_bg_tile_page)
+;; 1b:69b3:r_op BANK(call_copy_current_screen_bg_tile_page)
 
 ;; 1b:69bc:r_op LOW(call_00_2490)
 ;; 1b:69be:r_op HIGH(call_00_2490)
@@ -6034,9 +6049,9 @@
 ;; 1b:69ca:r_op call_05_4040
 ;; 1b:69ce:r_op BANK(call_05_4040)
 
-;; 1b:69f6:r_op LOW(call_01_6cef)
-;; 1b:69f8:r_op HIGH(call_01_6cef)
-;; 1b:69fb:r_op BANK(call_01_6cef)
+;; 1b:69f6:r_op LOW(call_copy_current_screen_bg_tile_page)
+;; 1b:69f8:r_op HIGH(call_copy_current_screen_bg_tile_page)
+;; 1b:69fb:r_op BANK(call_copy_current_screen_bg_tile_page)
 
 ;; 1b:6a07:r_op call_05_4040
 ;; 1b:6a0b:r_op BANK(call_05_4040)
@@ -6358,9 +6373,9 @@
 ;; 1c:5be1:r_op _SRAM_CURRENT_FILE
 ;; 1c:5be5:r_op _SRAM_CURRENT_FILE_BANK
 
-;; 1c:5ae3:r_op LOW(call_01_6cef)
-;; 1c:5ae5:r_op HIGH(call_01_6cef)
-;; 1c:5ae8:r_op BANK(call_01_6cef)
+;; 1c:5ae3:r_op LOW(call_copy_current_screen_bg_tile_page)
+;; 1c:5ae5:r_op HIGH(call_copy_current_screen_bg_tile_page)
+;; 1c:5ae8:r_op BANK(call_copy_current_screen_bg_tile_page)
 
 ;; 1c:5d51:r_op _SRAM_CURRENT_FILE
 ;; 1c:5d55:r_op _SRAM_CURRENT_FILE_BANK
@@ -6369,9 +6384,9 @@
 ;; 1c:5c58:r_op HIGH(call_1b_4e8a)
 ;; 1c:5c5b:r_op BANK(call_1b_4e8a)
 
-;; 1c:5dd5:r_op LOW(call_01_6cef)
-;; 1c:5dd7:r_op HIGH(call_01_6cef)
-;; 1c:5dda:r_op BANK(call_01_6cef)
+;; 1c:5dd5:r_op LOW(call_copy_current_screen_bg_tile_page)
+;; 1c:5dd7:r_op HIGH(call_copy_current_screen_bg_tile_page)
+;; 1c:5dda:r_op BANK(call_copy_current_screen_bg_tile_page)
 
 ;; 1c:5e1c:r_op _PROJECT_SCREEN
 
@@ -6660,9 +6675,9 @@
 ;; 1d:4486:r_op call_restore_backup_selection
 ;; 1d:448a:r_op BANK(call_restore_backup_selection)
 
-;; 1d:449b:r_op LOW(call_01_6cef)
-;; 1d:449d:r_op HIGH(call_01_6cef)
-;; 1d:44a2:r_op BANK(call_01_6cef)
+;; 1d:449b:r_op LOW(call_copy_current_screen_bg_tile_page)
+;; 1d:449d:r_op HIGH(call_copy_current_screen_bg_tile_page)
+;; 1d:44a2:r_op BANK(call_copy_current_screen_bg_tile_page)
 
 ;; 1d:44ab:r_op call_05_4040
 ;; 1d:44af:r_op BANK(call_05_4040)
@@ -7670,9 +7685,9 @@
 
 ;; 1f:708d:r_op _TALK_SCREEN
 
-;; 1f:708f:r_op LOW(call_01_6cef)
-;; 1f:7091:r_op HIGH(call_01_6cef)
-;; 1f:7094:r_op BANK(call_01_6cef)
+;; 1f:708f:r_op LOW(call_copy_current_screen_bg_tile_page)
+;; 1f:7091:r_op HIGH(call_copy_current_screen_bg_tile_page)
+;; 1f:7094:r_op BANK(call_copy_current_screen_bg_tile_page)
 
 ;; 1f:709d:r_op LOW(call_1f_6ff1)
 ;; 1f:709f:r_op HIGH(call_1f_6ff1)
