@@ -3777,8 +3777,8 @@
 ;; 04:5552:r_op HIGH(call_1f_4a64)
 ;; 04:5557:r_op BANK(call_1f_4a64)
 
-;; 04:5577:r_op call_05_73f6
-;; 04:557b:r_op BANK(call_05_73f6)
+;; 04:5577:r_op call_restore__backup_selection
+;; 04:557b:r_op BANK(call_restore__backup_selection)
 
 04:55a8 call_04_55a8
 
@@ -3790,8 +3790,8 @@
 ;; 04:55e7:r_op HIGH(call_01_5331)
 ;; 04:55f5:r_op BANK(call_01_5331)
 
-;; 04:55fe:r_op call_05_73f6
-;; 04:5602:r_op BANK(call_05_73f6)
+;; 04:55fe:r_op call_restore__backup_selection
+;; 04:5602:r_op BANK(call_restore__backup_selection)
 
 04:5629 call_04_5629
 
@@ -3838,8 +3838,8 @@
 
 ;; 04:5b9e:l_op _SELECT_CURSOR_MODE
 
-;; 04:5bc8:r_op call_05_73f6
-;; 04:5bcc:r_op BANK(call_05_73f6)
+;; 04:5bc8:r_op call_restore__backup_selection
+;; 04:5bcc:r_op BANK(call_restore__backup_selection)
 
 04:5cc6 jump_table_04_5cc6
 
@@ -4006,8 +4006,8 @@
 ;; 04:7b50:r_op HIGH(call_1f_6633)
 ;; 04:7b57:r_op BANK(call_1f_6633)
 
-;; 04:7b65:r_op call_05_73b8
-;; 04:7b69:r_op BANK(call_05_73b8)
+;; 04:7b65:r_op call_write_backup_selection
+;; 04:7b69:r_op BANK(call_write_backup_selection)
 
 04:7b9b data_phrase_screen_cancel_select_string
 04:7b9b .text:000e
@@ -4049,8 +4049,8 @@
 
 ;; 05:421f:l_op _SELECT_CURSOR_MODE
 
-;; 05:4228:r_op BANK(call_05_73f6)
-;; 05:422c Banked call used for call_05_73f6 unnecessarily
+;; 05:4228:r_op BANK(call_restore__backup_selection)
+;; 05:422c Banked call used for call_restore__backup_selection unnecessarily
 
 05:4233 call_05_4233
 
@@ -4131,8 +4131,8 @@
 
 ;; 05:4c0f:l_op _SELECT_CURSOR_MODE
 
-;; 05:4c28:r_op BANK(call_05_73f6)
-;; 05:4c2c Banked call used for call_05_73f6 unnecessarily
+;; 05:4c28:r_op BANK(call_restore__backup_selection)
+;; 05:4c2c Banked call used for call_restore__backup_selection unnecessarily
 
 ;; 05:4c39:r_op LOW(call_01_6cef)
 ;; 05:4c3b:r_op HIGH(call_01_6cef)
@@ -4238,8 +4238,8 @@
 
 ;; 05:603b:l_op _SELECT_CURSOR_MODE
 
-;; 05:6105:r_op BANK(call_05_73b8)
-;; 05:6109 Banked call used for call_05_73b8 unnecessarily
+;; 05:6105:r_op BANK(call_write_backup_selection)
+;; 05:6109 Banked call used for call_write_backup_selection unnecessarily
 
 05:612e data_table_screen_cancel_select_string
 05:612e .text:000e
@@ -4372,11 +4372,17 @@
 05:7363 data_limit_synth_help_string
 05:7363 .text:0055
 
-05:73b8 call_05_73b8
+05:73b8 call_write_backup_selection
+;; 05:73b8 Backup the current selection, for use when cancelling a selection.
+;; 05:73b8 Sets the cursor mode to selection mode.
+;; 05:73b8 Sets the selection screen to the current screen.
+;; 05:73b8 Registers used: A, HL
 
 ;; 05:73eb:r_op _SELECT_CURSOR_MODE
 
-05:73f6 call_05_73f6
+05:73f6 call_restore__backup_selection
+;; 05:73f6 Restore the backed up selection when cancelling the current selection.
+;; 05:73f6 Registers used: A, HL
 
 05:7427 data_bank_05_padding
 ;; 05:7427 05:7427
@@ -4516,8 +4522,8 @@
 
 ;; 06:5099:l_op _SELECT_CURSOR_MODE
 
-;; 06:50a6:r_op call_05_73f6
-;; 06:50aa:r_op BANK(call_05_73f6)
+;; 06:50a6:r_op call_restore__backup_selection
+;; 06:50aa:r_op BANK(call_restore__backup_selection)
 
 ;; 06:5127:l_op _SELECT_CURSOR_MODE
 
@@ -4551,8 +4557,8 @@
 ;; 06:528d:l_op _NORMAL_CURSOR_MODE
 ;; 06:5292:l_op _SELECT_CURSOR_MODE
 
-;; 06:529a:r_op call_05_73b8
-;; 06:529e:r_op BANK(call_05_73b8)
+;; 06:529a:r_op call_write_backup_selection
+;; 06:529e:r_op BANK(call_write_backup_selection)
 
 ;; 06:52d1:l_op _SELECT_CURSOR_MODE
 
@@ -4642,8 +4648,8 @@
 
 ;; 06:5acc:l_op _SELECT_CURSOR_MODE
 
-;; 06:5af6:r_op call_05_73f6
-;; 06:5afa:r_op BANK(call_05_73f6)
+;; 06:5af6:r_op call_restore__backup_selection
+;; 06:5afa:r_op BANK(call_restore__backup_selection)
 
 ;; 06:5b0b:r_op call_01_6cef
 ;; 06:5b0f:r_op BANK(call_01_6cef)
@@ -4719,8 +4725,8 @@
 ;; 06:68ee:r_op HIGH(call_read_chain_phrase)
 ;; 06:68ff:r_op BANK(call_read_chain_phrase)
 
-;; 06:690b:r_op call_05_73f6
-;; 06:690f:r_op BANK(call_05_73f6)
+;; 06:690b:r_op call_restore__backup_selection
+;; 06:690f:r_op BANK(call_restore__backup_selection)
 
 ;; 06:6925:r_op LOW(call_01_4eb3)
 ;; 06:6927:r_op HIGH(call_01_4eb3)
@@ -4784,8 +4790,8 @@
 ;; 06:6b63 Unused bank for call_00_2490
 ;; 06:6b67 Banked call used for call_00_2490 unnecessarily
 
-;; 06:6c76:r_op call_05_73b8
-;; 06:6c7a:r_op BANK(call_05_73b8)
+;; 06:6c76:r_op call_write_backup_selection
+;; 06:6c7a:r_op BANK(call_write_backup_selection)
 
 06:6cb1 data_chain_screen_cancel_select_string
 06:6cb1 .text:000e
@@ -4934,8 +4940,8 @@
 
 07:4139 call_07_4139
 
-;; 07:413c:r_op call_05_73f6
-;; 07:4140:r_op BANK(call_05_73f6)
+;; 07:413c:r_op call_restore__backup_selection
+;; 07:4140:r_op BANK(call_restore__backup_selection)
 
 ;; 07:4149:r_op LOW(call_1f_4bbb)
 ;; 07:414b:r_op HIGH(call_1f_4bbb)
@@ -5039,22 +5045,22 @@
 
 07:4a96 call_07_4a96
 
-;; 07:4a9f:r_op call_05_73b8
-;; 07:4aa3:r_op BANK(call_05_73b8)
+;; 07:4a9f:r_op call_write_backup_selection
+;; 07:4aa3:r_op BANK(call_write_backup_selection)
 
 ;; 07:4ab6:r_op LOW(call_02_6d31)
 ;; 07:4ab8:r_op HIGH(call_02_6d31)
 ;; 07:4abb:r_op BANK(call_02_6d31)
 
-;; 07:4ac4:r_op call_05_73f6
-;; 07:4ac8:r_op BANK(call_05_73f6)
+;; 07:4ac4:r_op call_restore__backup_selection
+;; 07:4ac8:r_op BANK(call_restore__backup_selection)
 
 07:4adb call_07_4adb
 
 ;; 07:4b45:l_op _SELECT_CURSOR_MODE
 
-;; 07:4b6f:r_op call_05_73f6
-;; 07:4b73:r_op BANK(call_05_73f6)
+;; 07:4b6f:r_op call_restore__backup_selection
+;; 07:4b73:r_op BANK(call_restore__backup_selection)
 
 ;; 07:4bbb:r_op LOW(call_1f_4bbb)
 ;; 07:4bbd:r_op HIGH(call_1f_4bbb)
@@ -5128,8 +5134,8 @@
 ;; 07:54f2 Unused bank for call_00_2490
 ;; 07:54f6 Banked call used for call_00_2490 unnecessarily
 
-;; 07:5668:r_op call_05_73b8
-;; 07:566c:r_op BANK(call_05_73b8)
+;; 07:5668:r_op call_write_backup_selection
+;; 07:566c:r_op BANK(call_write_backup_selection)
 
 07:56c0 data_song_screen_cancel_select_string
 07:56c0 .text:000e
@@ -6493,8 +6499,8 @@
 
 ;; 1d:4479:l_op _SELECT_CURSOR_MODE
 
-;; 1d:4486:r_op call_05_73f6
-;; 1d:448a:r_op BANK(call_05_73f6)
+;; 1d:4486:r_op call_restore__backup_selection
+;; 1d:448a:r_op BANK(call_restore__backup_selection)
 
 ;; 1d:449b:r_op LOW(call_01_6cef)
 ;; 1d:449d:r_op HIGH(call_01_6cef)
@@ -6545,8 +6551,8 @@
 
 ;; 1d:4ad2:l_op _SELECT_CURSOR_MODE
 
-;; 1d:4b63:r_op call_05_73b8
-;; 1d:4b67:r_op BANK(call_05_73b8)
+;; 1d:4b63:r_op call_write_backup_selection
+;; 1d:4b67:r_op BANK(call_write_backup_selection)
 
 1d:4b8d data_cancel_select_string_2
 1d:4b8d .text:000e
@@ -7779,6 +7785,19 @@
 
 00:c943 DEFAULT_TSP
 ;; 00:c943 The default transpose value to use for empty rows on the chain screen
+
+00:cbd1 BACKUP_CURSOR_MODE
+;; 00:cbd1 A backup of the last used CURSOR_MODE, used when cancelling a selection.
+00:cbd2 BACKUP_SELECTION_SCREEN
+;; 00:cbd2 A backup of the last used SELECTION_SCREEN, used when cancelling a selection.
+00:cbd3 BACKUP_SELECTION_START_COL
+;; 00:cbd3 A backup of the last used SELECTION_START_COL, used when cancelling a selection.
+00:cbd4 BACKUP_SELECTION_START_ROW
+;; 00:cbd4 A backup of the last used SELECTION_START_ROW, used when cancelling a selection.
+00:cbd5 BACKUP_SELECTION_END_COL
+;; 00:cbd5 A backup of the last used SELECTION_END_COL, used when cancelling a selection.
+00:cbd6 BACKUP_SELECTION_END_ROW
+;; 00:cbd6 A backup of the last used SELECTION_END_ROW, used when cancelling a selection.
 
 00:cbd8 CPU
 ;; 00:cbd8 gbdk 2.95 libc/gb/crt0.s:__cpu
