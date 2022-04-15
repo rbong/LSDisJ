@@ -88,6 +88,10 @@ _WORD_SCREEN        EQU $0c
 _FILE_SCREEN        EQU $0d
 _HELP_SCREEN        EQU $0e
 
+;; Screen Constants ;;
+
+_SCREEN_ROW_1_WIDTH EQU 4
+
 ;; Cursor Modes ;;
 
 _NO_CURSOR_MODE     EQU $01
@@ -131,6 +135,10 @@ _KIT_INSTRUMENT_TYPE   EQU 2
 _NOISE_INSTRUMENT_TYPE EQU 3
 
 _INSTRUMENT_TYPES EQU 4
+
+;; Instrument Constants ;;
+
+_SPEECH_INSTRUMENT EQU $40
 
 ;; Pitch Types ;;
 

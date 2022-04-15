@@ -4070,21 +4070,67 @@
 05:4163 data_05_4163
 05:4163 .text:0004
 
-05:4167 call_05_4167
+05:4167 call_update_current_screen
+;; 05:4167 Update CURRENT_SCREEN based on the value of CURRENT_SCREEN_ROW and CURRENT_SCREEN_COL.
+;; 05:4167 Registers used: A, DE, HL
+
+;; 05:417a Invalid row, do not update CURRENT_SCREEN.
+
+05:417d .jump_handle_row_0
 
 ;; 05:418b:r_op _PROJECT_SCREEN
+
+05:4190 .jump_read_synth_screen_col
+
 ;; 05:419e:r_op _SYNTH_SCREEN
+
+05:41a3 .jump_set_wave_screen
+
 ;; 05:41a6:r_op _WAVE_EDITOR_SCREEN
 
-05:41bf jump_table_05_41bf
+05:41ab .jump_handle_row_1
+
+;; 05:41ac:r_op _SCREEN_ROW_1_WIDTH
+;; 05:41b2 Invalid row 1 column, do not update CURRENT_SCREEN.
+
+;; 05:41b5 Find the jump table address based on the screen column.
+
+05:41bf .jump_table_set_screen
+
+05:41ce .jump_set_song_screen
 
 ;; 05:41d1:r_op _SONG_SCREEN
+
+05:41d6 .jump_set_chain_screen
+
 ;; 05:41d9:r_op _CHAIN_SCREEN
+
+05:41de .jump_set_phrase_screen
+
 ;; 05:41e1:r_op _PHRASE_SCREEN
+
+05:41e6 .jump_set_instrument_screen
+
 ;; 05:41e9:r_op _INSTRUMENT_SCREEN
+
+05:41ee .jump_check_current_instrument
+
+;; 05:41f2 Check the current instrument to determine whether we are in the word screen or the table screen.
+;; 05:41f2:l_op _SPEECH_INSTRUMENT
+
 ;; 05:41f7:r_op _WORD_SCREEN
+
+05:41fc .jump_set_table_screen
+
 ;; 05:41fc:r_op _TABLE_SCREEN
+
+05:41fe .jump_set_word_table_screen
+
+05:4205 .jump_handle_row_2
+
 ;; 05:4208:r_op _GROOVE_SCREEN
+
+05:420a .jump_return
 
 05:420c call_05_420c
 
@@ -7830,6 +7876,14 @@
 
 00:c7ae IS_HANDLING_EXCEPTION
 ;; 00:c7ae Set to 1 when handling an exception
+
+00:c8fd CURRENT_SCREEN_COL
+00:c8fe CURRENT_SCREEN_ROW
+00:c8ff PROJECT_SCREEN_COL
+;; 00:c8ff The current column of the project screen based on the current screen.
+00:c900 SYNTH_SCREEN_COL
+;; 00:c8ff The current column of the synth screen based on the current screen.
+;; 00:c8ff The wave screen is always to the right of the synth screen.
 
 00:c905 DEFAULT_PU1_NOTE
 ;; 00:c905 The default note to use for empty pulse 1 channel rows on the phrase screen
