@@ -3224,9 +3224,9 @@
 ;; 03:4390:r_op call_show_banner
 ;; 03:4394:r_op BANK(call_show_banner)
 
-;; 03:43ca:r_op LOW(call_1f_409c)
-;; 03:43cc:r_op HIGH(call_1f_409c)
-;; 03:43cf:r_op BANK(call_1f_409c)
+;; 03:43ca:r_op LOW(call_write_table_on_instrument_param_value_bg_attrs)
+;; 03:43cc:r_op HIGH(call_write_table_on_instrument_param_value_bg_attrs)
+;; 03:43cf:r_op BANK(call_write_table_on_instrument_param_value_bg_attrs)
 
 03:43da data_out_of_tables_instrument_screen_error_string
 03:43da .text:000f
@@ -3277,9 +3277,9 @@
 ;; 03:4827:r_op HIGH(call_1f_4000)
 ;; 03:482a:r_op BANK(call_1f_4000)
 
-;; 03:4847:r_op LOW(call_1f_409c)
-;; 03:4849:r_op HIGH(call_1f_409c)
-;; 03:484c:r_op BANK(call_1f_409c)
+;; 03:4847:r_op LOW(call_write_table_on_instrument_param_value_bg_attrs)
+;; 03:4849:r_op HIGH(call_write_table_on_instrument_param_value_bg_attrs)
+;; 03:484c:r_op BANK(call_write_table_on_instrument_param_value_bg_attrs)
 
 03:4857 call_03_4857
 
@@ -3287,33 +3287,33 @@
 ;; 03:4896:r_op HIGH(call_1f_4000)
 ;; 03:4899:r_op BANK(call_1f_4000)
 
-;; 03:48b6:r_op LOW(call_1f_409c)
-;; 03:48b8:r_op HIGH(call_1f_409c)
-;; 03:48bb:r_op BANK(call_1f_409c)
+;; 03:48b6:r_op LOW(call_write_table_on_instrument_param_value_bg_attrs)
+;; 03:48b8:r_op HIGH(call_write_table_on_instrument_param_value_bg_attrs)
+;; 03:48bb:r_op BANK(call_write_table_on_instrument_param_value_bg_attrs)
 
 03:48c6 call_03_48c6
 
-;; 03:48ef:r_op LOW(call_1f_409c)
-;; 03:48f1:r_op HIGH(call_1f_409c)
-;; 03:48f4:r_op BANK(call_1f_409c)
+;; 03:48ef:r_op LOW(call_write_table_on_instrument_param_value_bg_attrs)
+;; 03:48f1:r_op HIGH(call_write_table_on_instrument_param_value_bg_attrs)
+;; 03:48f4:r_op BANK(call_write_table_on_instrument_param_value_bg_attrs)
 
 03:48ff call_03_48ff
 
-;; 03:493d:r_op LOW(call_1f_409c)
-;; 03:493f:r_op HIGH(call_1f_409c)
-;; 03:4942:r_op BANK(call_1f_409c)
+;; 03:493d:r_op LOW(call_write_table_on_instrument_param_value_bg_attrs)
+;; 03:493f:r_op HIGH(call_write_table_on_instrument_param_value_bg_attrs)
+;; 03:4942:r_op BANK(call_write_table_on_instrument_param_value_bg_attrs)
 
 03:494d call_03_494d
 
-;; 03:4975:r_op LOW(call_1f_409c)
-;; 03:4977:r_op HIGH(call_1f_409c)
-;; 03:497a:r_op BANK(call_1f_409c)
+;; 03:4975:r_op LOW(call_write_table_on_instrument_param_value_bg_attrs)
+;; 03:4977:r_op HIGH(call_write_table_on_instrument_param_value_bg_attrs)
+;; 03:497a:r_op BANK(call_write_table_on_instrument_param_value_bg_attrs)
 
 03:4985 call_03_4985
 
-;; 03:49a4:r_op LOW(call_1f_409c)
-;; 03:49a6:r_op HIGH(call_1f_409c)
-;; 03:49a9:r_op BANK(call_1f_409c)
+;; 03:49a4:r_op LOW(call_write_table_on_instrument_param_value_bg_attrs)
+;; 03:49a6:r_op HIGH(call_write_table_on_instrument_param_value_bg_attrs)
+;; 03:49a9:r_op BANK(call_write_table_on_instrument_param_value_bg_attrs)
 
 03:49b4 call_03_49b4
 
@@ -3552,8 +3552,8 @@
 ;; 03:7833:r_op call_1f_4000
 ;; 03:7837:r_op BANK(call_1f_4000)
 
-;; 03:7854:r_op call_1f_409c
-;; 03:7858:r_op BANK(call_1f_409c)
+;; 03:7854:r_op call_write_table_on_instrument_param_value_bg_attrs
+;; 03:7858:r_op BANK(call_write_table_on_instrument_param_value_bg_attrs)
 
 ;; 03:78c0:r_op call_move_screen_up
 ;; 03:78c4:r_op BANK(call_move_screen_up)
@@ -7108,9 +7108,20 @@
 1f:4097 data_off_instrument_table_type_string
 1f:4097 .text:0005
 
-1f:409c call_1f_409c
+1f:409c call_write_table_on_instrument_param_value_bg_attrs
+;; 1f:409c Write background attributes for the table on instrument param value.
+;; 1f:409c Registers used: A, DE, HL
 
-1f:40c7 data_1f_40c7
+;; 1f:409d:r_op _TABLE_ON_INSTRUMENT_PARAM
+
+;; 1f:40a9 Check that table number does not exceed 0x1f
+
+;; 1f:40af Mask the table number so it does not exceed 0x1f
+
+1f:40bc .jump_write_empty_param
+1f:40c5 .jump_return
+
+1f:40c7 data_empty_table_on_param_value_string
 1f:40c7 .text:0003
 
 1f:40ca call_1f_40ca
