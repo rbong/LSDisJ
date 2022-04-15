@@ -4132,7 +4132,10 @@
 
 05:420a .jump_return
 
-05:420c call_05_420c
+05:420c call_set_screen_move_direction
+;; 05:420c Set SCREEN_MOVE_DIRECTION and reset rSCX/rSCY.
+;; 05:420c Args: direction (see screen move constants)
+;; 05:420c Registers used: A, H
 
 05:421a call_cancel_selection
 ;; 05:421a Cancel the current selection and restore the backup.
@@ -7890,6 +7893,8 @@
 00:c900 SYNTH_SCREEN_COL
 ;; 00:c8ff The current column of the synth screen based on the current screen.
 ;; 00:c8ff The wave screen is always to the right of the synth screen.
+00:c901 SCREEN_MOVE_DIRECTION
+;; 00:c901 The direction to move the screen in, if any.
 
 00:c905 DEFAULT_PU1_NOTE
 ;; 00:c905 The default note to use for empty pulse 1 channel rows on the phrase screen
