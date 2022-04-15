@@ -6842,7 +6842,19 @@
 ;; 1d:632d:r_op _SRAM_SYNTH_PARAMS
 ;; 1d:634d:r_op _SRAM_SYNTH_PARAMS_BANK
 
-1d:635b call_1d_635b
+1d:635b call_does_current_synth_have_frame_signal
+;; 1d:635b Check if the current synth has a frame signal type.
+;; 1d:635b If it does, return true. Otherwise return false.
+;; 1d:635b
+;; 1d:635b Result: E
+;; 1d:635b
+;; 1d:635b Registers used: A, DE, HL
+
+;; 1d:635c:r_op _SIGNAL_SYNTH_PARAM
+;; 1d:6367:l_op _FRAME_SYNTH_SIGNAL
+
+1d:6370 .jump_false
+1d:6371 .jump_return
 
 1d:6375 call_1d_6375
 
