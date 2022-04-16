@@ -4375,7 +4375,28 @@
 
 ;; 05:4426 Return
 
-05:442a call_05_442a
+05:442a call_write_table_command_value
+;; 05:442a Write a table command value based on CURRENT_TABLE_SCREEN and SRAM_TABLE_COMMAND_VALUES_*.
+;; 05:442a Args: row, value
+
+;; 05:443e:l_op _TABLE_ROWS
+
+05:4446 .jump_verify_table
+
+;; 05:444a:l_op _TABLES
+
+05:4452 .jump_calculate_address_1
+
+;; 05:4458 The following loop rotates the current table left 4 times, multiplying it by 16.
+
+05:445c .jump_calculate_address_2
+05:4461 .jump_calculate_address_3
+
+;; 05:447e Write the table command value
+;; 05:4484 Assume that the bank for command values 1 and 2 are in the same bank
+;; 05:4484:r_op _SRAM_TABLE_COMMAND_VALUES_1_BANK
+
+;; 05:448d Return
 
 05:4491 call_05_4491
 ;; 05:44bd:r_op _SRAM_TABLE_TRANSPOSE
