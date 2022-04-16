@@ -4867,41 +4867,41 @@
 ;; 06:5c2a:r_op HIGH(call_01_4cfb)
 ;; 06:5c32:r_op BANK(call_01_4cfb)
 
-;; 06:5c43:r_op LOW(call_1f_48c4)
-;; 06:5c45:r_op HIGH(call_1f_48c4)
-;; 06:5c5b:r_op BANK(call_1f_48c4)
+;; 06:5c43:r_op LOW(call_write_chain_phrase)
+;; 06:5c45:r_op HIGH(call_write_chain_phrase)
+;; 06:5c5b:r_op BANK(call_write_chain_phrase)
 
 ;; 06:5e92:r_op LOW(call_read_chain_phrase)
 ;; 06:5e95:r_op HIGH(call_read_chain_phrase)
 ;; 06:5eb0:r_op BANK(call_read_chain_phrase)
 
-;; 06:5edb:r_op LOW(call_1f_48c4)
-;; 06:5ede:r_op HIGH(call_1f_48c4)
-;; 06:5efe:r_op BANK(call_1f_48c4)
+;; 06:5edb:r_op LOW(call_write_chain_phrase)
+;; 06:5ede:r_op HIGH(call_write_chain_phrase)
+;; 06:5efe:r_op BANK(call_write_chain_phrase)
 
 ;; 06:6084:r_op LOW(call_read_chain_phrase)
 ;; 06:6087:r_op HIGH(call_read_chain_phrase)
 ;; 06:60a5:r_op BANK(call_read_chain_phrase)
 
-;; 06:60fd:r_op LOW(call_1f_48c4)
-;; 06:6100:r_op HIGH(call_1f_48c4)
-;; 06:6123:r_op BANK(call_1f_48c4)
+;; 06:60fd:r_op LOW(call_write_chain_phrase)
+;; 06:6100:r_op HIGH(call_write_chain_phrase)
+;; 06:6123:r_op BANK(call_write_chain_phrase)
 
 ;; 06:62ce:r_op LOW(call_read_chain_phrase)
 ;; 06:62d1:r_op HIGH(call_read_chain_phrase)
 ;; 06:62ef:r_op BANK(call_read_chain_phrase)
 
-;; 06:630b:r_op LOW(call_1f_48c4)
-;; 06:630e:r_op HIGH(call_1f_48c4)
-;; 06:6331:r_op BANK(call_1f_48c4)
+;; 06:630b:r_op LOW(call_write_chain_phrase)
+;; 06:630e:r_op HIGH(call_write_chain_phrase)
+;; 06:6331:r_op BANK(call_write_chain_phrase)
 
 ;; 06:64d6:r_op LOW(call_read_chain_phrase)
 ;; 06:64d9:r_op HIGH(call_read_chain_phrase)
 ;; 06:64f7:r_op BANK(call_read_chain_phrase)
 
-;; 06:654f:r_op LOW(call_1f_48c4)
-;; 06:6552:r_op HIGH(call_1f_48c4)
-;; 06:6575:r_op BANK(call_1f_48c4)
+;; 06:654f:r_op LOW(call_write_chain_phrase)
+;; 06:6552:r_op HIGH(call_write_chain_phrase)
+;; 06:6575:r_op BANK(call_write_chain_phrase)
 
 ;; 06:679e:r_op _NORMAL_CURSOR_MODE
 
@@ -4909,9 +4909,9 @@
 ;; 06:67ca:r_op HIGH(call_read_chain_phrase)
 ;; 06:67db:r_op BANK(call_read_chain_phrase)
 
-;; 06:6841:r_op LOW(call_1f_48c4)
-;; 06:6843:r_op HIGH(call_1f_48c4)
-;; 06:6858:r_op BANK(call_1f_48c4)
+;; 06:6841:r_op LOW(call_write_chain_phrase)
+;; 06:6843:r_op HIGH(call_write_chain_phrase)
+;; 06:6858:r_op BANK(call_write_chain_phrase)
 
 ;; 06:688f:l_op _NO_CURSOR_MODE
 
@@ -4926,9 +4926,9 @@
 ;; 06:6927:r_op HIGH(call_01_4eb3)
 ;; 06:692c:r_op BANK(call_01_4eb3)
 
-;; 06:694d:r_op LOW(call_1f_48c4)
-;; 06:694f:r_op HIGH(call_1f_48c4)
-;; 06:6965:r_op BANK(call_1f_48c4)
+;; 06:694d:r_op LOW(call_write_chain_phrase)
+;; 06:694f:r_op HIGH(call_write_chain_phrase)
+;; 06:6965:r_op BANK(call_write_chain_phrase)
 
 ;; 06:6999:r_op LOW(call_01_75c6)
 ;; 06:699b:r_op HIGH(call_01_75c6)
@@ -5000,9 +5000,9 @@
 ;; 06:6d79:r_op HIGH(call_read_chain_phrase)
 ;; 06:6d94:r_op BANK(call_read_chain_phrase)
 
-;; 06:6dba:r_op LOW(call_1f_48c4)
-;; 06:6dbd:r_op HIGH(call_1f_48c4)
-;; 06:6ddc:r_op BANK(call_1f_48c4)
+;; 06:6dba:r_op LOW(call_write_chain_phrase)
+;; 06:6dbd:r_op HIGH(call_write_chain_phrase)
+;; 06:6ddc:r_op BANK(call_write_chain_phrase)
 
 ;; 06:6e35:r_op LOW(call_1c_717c)
 ;; 06:6e37:r_op HIGH(call_1c_717c)
@@ -5015,9 +5015,9 @@
 
 06:6e7e call_06_6e7e
 
-;; 06:6ee9:r_op LOW(call_1f_48c4)
-;; 06:6eec:r_op HIGH(call_1f_48c4)
-;; 06:6f0c:r_op BANK(call_1f_48c4)
+;; 06:6ee9:r_op LOW(call_write_chain_phrase)
+;; 06:6eec:r_op HIGH(call_write_chain_phrase)
+;; 06:6f0c:r_op BANK(call_write_chain_phrase)
 
 06:6f71 data_chain_screen_paste_string
 06:6f71 .text:0006
@@ -5145,9 +5145,9 @@
 ;; 07:418d:r_op HIGH(call_read_chain_phrase)
 ;; 07:4197:r_op BANK(call_read_chain_phrase)
 
-;; 07:4213:r_op LOW(call_1f_48c4)
-;; 07:4215:r_op HIGH(call_1f_48c4)
-;; 07:4226:r_op BANK(call_1f_48c4)
+;; 07:4213:r_op LOW(call_write_chain_phrase)
+;; 07:4215:r_op HIGH(call_write_chain_phrase)
+;; 07:4226:r_op BANK(call_write_chain_phrase)
 
 ;; 07:4232:r_op LOW(call_01_4eb3)
 ;; 07:4234:r_op HIGH(call_01_4eb3)
@@ -5161,17 +5161,17 @@
 ;; 07:4260:r_op HIGH(call_06_569a)
 ;; 07:426d:r_op BANK(call_06_569a)
 
-;; 07:4276:r_op LOW(call_1f_48c4)
-;; 07:4278:r_op HIGH(call_1f_48c4)
-;; 07:4289:r_op BANK(call_1f_48c4)
+;; 07:4276:r_op LOW(call_write_chain_phrase)
+;; 07:4278:r_op HIGH(call_write_chain_phrase)
+;; 07:4289:r_op BANK(call_write_chain_phrase)
 
-;; 07:42a6:r_op LOW(call_1f_48c4)
-;; 07:42a8:r_op HIGH(call_1f_48c4)
-;; 07:42b8:r_op BANK(call_1f_48c4)
+;; 07:42a6:r_op LOW(call_write_chain_phrase)
+;; 07:42a8:r_op HIGH(call_write_chain_phrase)
+;; 07:42b8:r_op BANK(call_write_chain_phrase)
 
-;; 07:42c4:r_op LOW(call_1f_48c4)
-;; 07:42c6:r_op HIGH(call_1f_48c4)
-;; 07:42d6:r_op BANK(call_1f_48c4)
+;; 07:42c4:r_op LOW(call_write_chain_phrase)
+;; 07:42c6:r_op HIGH(call_write_chain_phrase)
+;; 07:42d6:r_op BANK(call_write_chain_phrase)
 
 ;; 07:42df:r_op LOW(call_06_5654)
 ;; 07:42e1:r_op HIGH(call_06_5654)
@@ -7258,9 +7258,27 @@
 ;; 1f:4862:r_op call_03_49e0
 ;; 1f:4866:r_op BANK(call_03_49e0)
 
-1f:48c4 call_1f_48c4
+1f:48c4 call_write_chain_phrase
+;; 1f:48c4 Write a phrase number to a row in the given chain.
+;; 1f:48c4 Args: chain, row, phrase
+;; 1f:48c4 Registers used: A, DE, HL
+
+;; 1f:48ca Chains cannot exceed 0x7f so bit 7 should never be set
+
+1f:48d2 .jump_verify_row
+
+;; 1f:48d5:l_op _CHAIN_ROWS
+
+1f:48dd .jump_calculate_address_1
+;; 1f:48e2 The following loop shifts the chain number left 4 times, multiplying it by 16.
+1f:48e6 .jump_calculate_address_2
+1f:48eb .jump_calculate_address_3
+
 ;; 1f:48ee:r_op _SRAM_CHAIN_PHRASES
+;; 1f:4906 Write the phrase to the chain
 ;; 1f:490c:r_op _SRAM_CHAIN_PHRASES_BANK
+
+;; 1f:4917 Return
 
 1f:4919 data_default_wave_frame_4
 1f:4919 .data:0010
