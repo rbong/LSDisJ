@@ -5291,14 +5291,39 @@
 06:77b9 data_invalid_note_string_2
 06:77b9 .text:0004
 
-06:77bd call_double_values_8x
-;; 06:77bd Multiply 8 bytes at the given address by 2.
+06:77bd call_shift_left_values_8x
+;; 06:77bd Shift left 8 bytes at the given address.
 ;; 06:77bd Entry conditions: DE = address
 ;; 06:77bd Registers used: A, DE, HL
 
-06:77e0 call_06_77e0
+06:77e0 call_set_oscilloscope_graphical_chunk
+;; 06:77e0 Set a chunk of graphical oscilloscope data given raw oscilloscope data.
+;; 06:77e0 A chunk of oscilloscope data is 8 bytes.
+;; 06:77e0
+;; 06:77e0 Entry conditions:
+;; 06:77e0   C = raw_data_address (range 0xffa0 - 0xffaf)
+;; 06:77e0   DE = graphical_data_address (range 0xcba3 - 0xcbba)
+;; 06:77e0
+;; 06:77e0 Exit conditions:
+;; 06:77e0   The 8 bytes of graphical data at the given address will be set.
+;; 06:77e0
+;; 06:77e0 Registers used: A, BC, DE, HL
 
-06:7829 call_06_7829
+06:7801 jump_clear_oscilloscope
+
+06:7829 call_set_oscilloscope_graphical_data
+;; 06:7829 Set oscilloscope graphical data given the current raw data.
+;; 06:7829
+;; 06:7829 Entry conditions:
+;; 06:7829   ENABLE_OSCILLOSCOPE must be set
+;; 06:7829   OSCILLOSCOPE_DRAW_TYPE must be set
+;; 06:7829   OSCILLOSCOPE_VALUES must be set
+;; 06:7829
+;; 06:7829 Registers used: A, BC, DE, HL
+
+;; 06:7834:l_op _CLEAR_DRAW_OSCILLOSCOPE
+
+;; 06:783a:r_op LOW(OSCILLOSCOPE_VALUES) + 1
 
 06:787b data_bank_06_padding
 ;; 06:787b 06:787b
@@ -8302,6 +8327,15 @@
 00:c943 DEFAULT_TSP
 ;; 00:c943 The default transpose value to use for empty rows on the chain screen
 
+00:cba1 ENABLE_OSCILLOSCOPE
+00:cba2 OSCILLOSCOPE_DRAW_TYPE
+;; 00:cba2 Controls what to do with the oscilloscope next update.
+;; 00:cba2 See _*_DRAW_OSCILLOSCOPE constants.
+
+00:cba3 OSCILLOSCOPE_GRAPHICAL_DATA_1
+00:cbab OSCILLOSCOPE_GRAPHICAL_DATA_2
+00:cbb3 OSCILLOSCOPE_GRAPHICAL_DATA_3
+
 00:cbd1 BACKUP_CURSOR_MODE
 ;; 00:cbd1 A backup of the last used CURSOR_MODE, used when cancelling a selection.
 00:cbd2 BACKUP_SELECTION_SCREEN
@@ -8378,6 +8412,9 @@
 
 00:ff90 GAMEBOY_TYPE
 ;; 00:ff90 Indicates whether the current model is GameBoy Color or original
+
+00:ffa0 OSCILLOSCOPE_VALUES
+;; 00:ffa0 The current wave frame data being shown in the oscilloscope viewer.
 
 ; Kits
 
