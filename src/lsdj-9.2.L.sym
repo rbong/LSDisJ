@@ -4876,9 +4876,30 @@
 06:55fc data_06_55fc
 06:55fc .text:0003
 
-06:55ff call_06_55ff
+06:55ff call_read_chain_transposes
+;; 06:55ff Read transpose amounts from a chain row.
+;; 06:55ff Args: chain, row
+;; 06:55ff Result: E
+;; 06:55ff Registers used: A, DE, HL
+
+;; 06:5605:l_op _CHAINS
+
+06:560d .jump_verify_row
+
+;; 06:5610:l_op _CHAIN_ROWS
+
+06:5618 .jump_calculate_address_1
+
+;; 06:561d The following loop shifts the chain left 4 times, multiplying it by 16.
+
+06:5621 .jump_calculate_address_2
+06:5626 .jump_calculate_address_3
+
 ;; 06:5629:r_op _SRAM_CHAIN_TRANSPOSES
+;; 06:5644 Read chain row
 ;; 06:5647:r_op _SRAM_CHAIN_TRANSPOSES_BANK
+
+;; 06:5650 Return
 
 06:5654 call_06_5654
 ;; 06:5673:r_op _SRAM_CHAIN_TRANSPOSES
@@ -5256,9 +5277,9 @@
 ;; 07:42e1:r_op HIGH(call_06_5654)
 ;; 07:42ee:r_op BANK(call_06_5654)
 
-;; 07:42fa:r_op LOW(call_06_55ff)
-;; 07:42fc:r_op HIGH(call_06_55ff)
-;; 07:430a:r_op BANK(call_06_55ff)
+;; 07:42fa:r_op LOW(call_read_chain_transposes)
+;; 07:42fc:r_op HIGH(call_read_chain_transposes)
+;; 07:430a:r_op BANK(call_read_chain_transposes)
 
 07:4351 data_clone_chain_strings
 07:4351 data_cloned_chain_string
@@ -6605,8 +6626,8 @@
 ;; 1c:65e7:r_op call_06_5654
 ;; 1c:65eb:r_op BANK(call_06_5654)
 
-;; 1c:6628:r_op call_06_55ff
-;; 1c:662c:r_op BANK(call_06_55ff)
+;; 1c:6628:r_op call_read_chain_transposes
+;; 1c:662c:r_op BANK(call_read_chain_transposes)
 
 1c:664c call_1c_664c
 
@@ -7487,9 +7508,9 @@
 ;; 1f:5332:r_op HIGH(call_01_4f59)
 ;; 1f:5337:r_op BANK(call_01_4f59)
 
-;; 1f:536d:r_op LOW(call_06_55ff)
-;; 1f:5370:r_op HIGH(call_06_55ff)
-;; 1f:5390:r_op BANK(call_06_55ff)
+;; 1f:536d:r_op LOW(call_read_chain_transposes)
+;; 1f:5370:r_op HIGH(call_read_chain_transposes)
+;; 1f:5390:r_op BANK(call_read_chain_transposes)
 
 1f:53ae call_1f_53ae
 
