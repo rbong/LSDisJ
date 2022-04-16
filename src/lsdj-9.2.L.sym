@@ -6878,9 +6878,32 @@
 1d:4058 data_1d_4058
 1d:4058 .data:0002
 
-1d:405a call_1d_405a
+1d:405a call_read_groove_row
+;; 1d:405a Read the groove value at a particular row in the current groove.
+;; 1d:405a Args: row
+;; 1d:405a Result: E
+;; 1d:405a Registers used: A, DE, HL
+
+;; 1d:4060 Make sure the row does not exceed 0xf
+
+1d:4067 .jump_throw_exception
+
+1d:406a .jump_verify_groove
+
+;; 1d:406e:l_op _GROOVES
+
+1d:4076 .jump_calculate_address_1
+
+;; 1d:407c The following loop will rotate the groove left 4 times, multiplying it by 16.
+
+1d:4080 .jump_calculate_address_2
+1d:4085 .jump_calculate_address_3
+
 ;; 1d:4088:r_op _SRAM_GROOVES
+;; 1d:409f Read the groove row
 ;; 1d:40a0:r_op _SRAM_GROOVES_BANK
+
+;; 1d:40aa Return
 
 1d:40ae call_1d_40ae
 
