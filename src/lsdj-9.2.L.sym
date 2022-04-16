@@ -4242,7 +4242,26 @@
 05:42db data_05_42db
 05:42db .data:000c
 
-05:42e7 call_05_42e7
+05:42e7 call_read_table_command
+;; 05:42e7 Read a table command based on SRAM_TABLE_COMMANDS_* and CURRENT_TABLE_SCREEN.
+;; 05:42e7 Args: row
+;; 05:42e7 Registers used: A, DE, HL
+
+;; 05:42fb:l_op _TABLE_ROWS
+
+05:4303 .jump_verify_table_screen
+
+;; 05:4307:l_op _TABLES
+
+05:430f .jump_calculate_address_1
+;; 05:4315 The loop below will shift the table number left 4 times, multiplying it by 16.
+05:4319 .jump_calculate_address_2
+05:431e .jump_calculate_address_3
+
+;; 05:433c Assume that the banks for all table commands are the same
+;; 05:433c:r_op _SRAM_TABLE_COMMANDS_1_BANK
+
+05:435b .jump_return
 
 05:4360 call_05_4360
 ;; 05:438c:r_op _SRAM_TABLE_VOLS
@@ -7924,6 +7943,10 @@
 
 00:c442 CURRENT_SYNTH_SCREEN
 00:c443 SYNTH_CURSOR_POS
+
+00:c448 SRAM_TABLE_COMMANDS_LOW
+;; 00:c448 The current table command base location in SRAM
+00:c449 SRAM_TABLE_COMMANDS_HIGH
 
 00:c44c DEFAULT_PU1_CMD
 ;; 00:c44c The default command to use for empty pulse 1 channel rows
