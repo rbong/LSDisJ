@@ -3768,7 +3768,40 @@
 
 04:4a8f call_04_4a8f
 
-04:4aea call_04_4aea
+04:4aea call_read_phrase_command
+;; 04:4aea Read a command from a row in the given phrase.
+;; 04:4aea If the command is invalid, returns 0.
+;; 04:4aea
+;; 04:4aea Args: phrase, row
+;; 04:4aea
+;; 04:4aea Result: E
+;; 04:4aea
+;; 04:4aea Registers used: A, DE, HL
+
+;; 04:4af3:l_op LOW(_SRAM_PHRASE_COMMANDS)
+;; 04:4af7:l_op HIGH(_SRAM_PHRASE_COMMANDS)
+
+;; 04:4b02:l_op _PHRASES
+
+04:4b0a .jump_check_row
+
+;; 04:4b0d:l_op _PHRASE_NOTES
+
+04:4b15 .jump_calculate_address_1
+
+;; 04:4b1a The following loop rotates the phrase left 4 times, multiplying it by 16.
+
+04:4b1e .jump_calculate_address_2
+
+04:4b23 .jump_calculate_address_3
+
+;; 04:4b32 Read the command from the phrase row
+
+;; 04:4b37:r_op _SRAM_PHRASE_COMMANDS_BANK
+
+;; 04:4b54 Command is invalid
+
+04:4b56 .jump_return
 
 04:4b5b call_04_4b5b
 
@@ -7677,9 +7710,9 @@
 ;; 1f:696f:r_op HIGH(call_04_41f0)
 ;; 1f:698e:r_op BANK(call_04_41f0)
 
-;; 1f:699c:r_op LOW(call_04_4aea)
-;; 1f:699f:r_op HIGH(call_04_4aea)
-;; 1f:69ba:r_op BANK(call_04_4aea)
+;; 1f:699c:r_op LOW(call_read_phrase_command)
+;; 1f:699f:r_op HIGH(call_read_phrase_command)
+;; 1f:69ba:r_op BANK(call_read_phrase_command)
 
 ;; 1f:69e0:r_op LOW(call_04_49c5)
 ;; 1f:69e3:r_op HIGH(call_04_49c5)
