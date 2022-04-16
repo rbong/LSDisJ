@@ -5291,7 +5291,10 @@
 06:77b9 data_invalid_note_string_2
 06:77b9 .text:0004
 
-06:77bd call_06_77bd
+06:77bd call_double_values_8x
+;; 06:77bd Multiply 8 bytes at the given address by 2.
+;; 06:77bd Entry conditions: DE = address
+;; 06:77bd Registers used: A, DE, HL
 
 06:77e0 call_06_77e0
 
