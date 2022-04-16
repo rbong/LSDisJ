@@ -4924,10 +4924,9 @@
 06:55fc data_06_55fc
 06:55fc .text:0003
 
-06:55ff call_read_chain_transposes
-;; 06:55ff Read transpose amounts from a chain row.
-;; 06:55ff Args: chain, row
-;; 06:55ff Result: E
+06:55ff call_write_chain_transpose
+;; 06:55ff Write a transpose value to a chain row.
+;; 06:55ff Args: chain, row, transpose
 ;; 06:55ff Registers used: A, DE, HL
 
 ;; 06:5605:l_op _CHAINS
@@ -4944,14 +4943,31 @@
 06:5626 .jump_calculate_address_3
 
 ;; 06:5629:r_op _SRAM_CHAIN_TRANSPOSES
-;; 06:5644 Read chain row
+;; 06:5644 Write transpose
 ;; 06:5647:r_op _SRAM_CHAIN_TRANSPOSES_BANK
 
 ;; 06:5650 Return
 
-06:5654 call_06_5654
+06:5654 call_read_chain_transpose
+;; 06:5654 Read a transpose value from a chain row.
+;; 06:5654 Args: cahin, row
+;; 06:5654 Result: E
+;; 06:5654 Registers used: A, DE, HL
+
+;; 06:565a:l_op _CHAINS
+
+06:5662 .jump_calculate_address_1
+
+;; 06:5667 The next loop rotates the chain number left 4 times, multiplying it by 16.
+
+06:566b .jump_calculate_address_2
+06:5670 .jump_calculate_address_3
+
 ;; 06:5673:r_op _SRAM_CHAIN_TRANSPOSES
+;; 06:568b Read the chain transpose value
 ;; 06:568c:r_op _SRAM_CHAIN_TRANSPOSES_BANK
+
+;; 06:5696 Return
 
 06:569a call_06_569a
 ;; 06:5702:r_op _SRAM_PHRASE_INSTRUMENTS
@@ -5345,13 +5361,13 @@
 ;; 07:42c6:r_op HIGH(call_write_chain_phrase)
 ;; 07:42d6:r_op BANK(call_write_chain_phrase)
 
-;; 07:42df:r_op LOW(call_06_5654)
-;; 07:42e1:r_op HIGH(call_06_5654)
-;; 07:42ee:r_op BANK(call_06_5654)
+;; 07:42df:r_op LOW(call_read_chain_transpose)
+;; 07:42e1:r_op HIGH(call_read_chain_transpose)
+;; 07:42ee:r_op BANK(call_read_chain_transpose)
 
-;; 07:42fa:r_op LOW(call_read_chain_transposes)
-;; 07:42fc:r_op HIGH(call_read_chain_transposes)
-;; 07:430a:r_op BANK(call_read_chain_transposes)
+;; 07:42fa:r_op LOW(call_write_chain_transpose)
+;; 07:42fc:r_op HIGH(call_write_chain_transpose)
+;; 07:430a:r_op BANK(call_write_chain_transpose)
 
 07:4351 data_clone_chain_strings
 07:4351 data_cloned_chain_string
@@ -6695,11 +6711,11 @@
 
 1c:6567 call_1c_6567
 
-;; 1c:65e7:r_op call_06_5654
-;; 1c:65eb:r_op BANK(call_06_5654)
+;; 1c:65e7:r_op call_read_chain_transpose
+;; 1c:65eb:r_op BANK(call_read_chain_transpose)
 
-;; 1c:6628:r_op call_read_chain_transposes
-;; 1c:662c:r_op BANK(call_read_chain_transposes)
+;; 1c:6628:r_op call_write_chain_transpose
+;; 1c:662c:r_op BANK(call_write_chain_transpose)
 
 1c:664c call_1c_664c
 
@@ -7580,9 +7596,9 @@
 ;; 1f:5332:r_op HIGH(call_01_4f59)
 ;; 1f:5337:r_op BANK(call_01_4f59)
 
-;; 1f:536d:r_op LOW(call_read_chain_transposes)
-;; 1f:5370:r_op HIGH(call_read_chain_transposes)
-;; 1f:5390:r_op BANK(call_read_chain_transposes)
+;; 1f:536d:r_op LOW(call_write_chain_transpose)
+;; 1f:5370:r_op HIGH(call_write_chain_transpose)
+;; 1f:5390:r_op BANK(call_write_chain_transpose)
 
 1f:53ae call_1f_53ae
 
