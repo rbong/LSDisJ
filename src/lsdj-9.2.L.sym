@@ -5276,9 +5276,33 @@
 
 07:4084 call_07_4084
 
-07:40d0 call_07_40d0
+07:40d0 call_write_song_chain
+;; 07:40d0 Write a chain number to a row in a song.
+;; 07:40d0 Args: channel, row, chain
+;; 07:40d0 Registers used: A, DE, HL
+
+;; 07:40d6:l_op _CHANNELS
+
+07:40de .jump_verify_row
+
+;; 07:40df:r_op _SONG_ROWS -1
+
+07:40ea .jump_verify_chain
+
+;; 07:40f5:l_op _CHAINS
+
+07:40fd .jump_calculate_address_1
+
+;; 07:4102 The following loop will rotate the row number right 2 times, multiplying it by 4.
+
+07:4106 .jump_calculate_address_2
+07:410b .jump_calculate_address_3
+
 ;; 07:410e:r_op _SRAM_SONG_CHAINS
+;; 07:4126 Write the chain to the song row
 ;; 07:412c:r_op _SRAM_SONG_CHAINS_BANK
+
+;; 07:4135 Return
 
 07:4139 call_07_4139
 
