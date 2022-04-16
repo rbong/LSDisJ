@@ -3735,9 +3735,31 @@
 
 ;; 04:48b2:l_op _SELECT_CURSOR_MODE
 
-04:4918 call_04_4918
+04:4918 call_read_phrase_instrument
+;; 04:4918 Read an instrument number from a row in a phrase.
+;; 04:4918 Args: phrase, row
+;; 04:4918 Result: E
+;; 04:4918 Registers used: A, DE, HL
+
+;; 04:491e:l_op _PHRASES
+
+04:4926 .jump_verify_phrase_row
+
+;; 04:4929:l_op _PHRASE_NOTES
+
+04:4931 .jump_calculate_address_1
+
+;; 04:4936 The following loopp rotates the phrase left 4 times, multiplying it by 16.
+
+04:493a .jump_calculate_address_2
+
+04:493f .jump_calculate_address_3
+
 ;; 04:4942:r_op _SRAM_PHRASE_INSTRUMENTS
+;; 04:4959 Read the phrase instrument
 ;; 04:495a:r_op _SRAM_PHRASE_INSTRUMENTS_BANK
+
+;; 04:4964 Return
 
 04:4968 call_read_current_phrase_note
 ;; 04:4968 Read the note number from a row in the current phrase.
@@ -7465,9 +7487,9 @@
 ;; 1f:4e39:r_op rRAMG
 ;; 1f:4e3c:r_op CART_RAM_DISABLE
 
-;; 1f:4cda:r_op LOW(call_04_4918)
-;; 1f:4cdd:r_op HIGH(call_04_4918)
-;; 1f:4cf6:r_op BANK(call_04_4918)
+;; 1f:4cda:r_op LOW(call_read_phrase_instrument)
+;; 1f:4cdd:r_op HIGH(call_read_phrase_instrument)
+;; 1f:4cf6:r_op BANK(call_read_phrase_instrument)
 
 ;; 1f:4dc1:r_op LOW(call_01_4a49)
 ;; 1f:4dc3:r_op HIGH(call_01_4a49)
@@ -7795,9 +7817,9 @@
 ;; 1f:6901:r_op HIGH(call_write_current_phrase_note)
 ;; 1f:691a:r_op BANK(call_write_current_phrase_note)
 
-;; 1f:6928:r_op LOW(call_04_4918)
-;; 1f:692b:r_op HIGH(call_04_4918)
-;; 1f:6946:r_op BANK(call_04_4918)
+;; 1f:6928:r_op LOW(call_read_phrase_instrument)
+;; 1f:692b:r_op HIGH(call_read_phrase_instrument)
+;; 1f:6946:r_op BANK(call_read_phrase_instrument)
 
 ;; 1f:696c:r_op LOW(call_04_41f0)
 ;; 1f:696f:r_op HIGH(call_04_41f0)
