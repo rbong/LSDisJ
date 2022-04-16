@@ -454,13 +454,13 @@
 ;; 00:1097:r_op BANK(call_04_49c5)
 ;; 00:10a7:l_op call_04_49c5
 
-;; 00:10af:r_op BANK(call_05_43b7)
-;; 00:10b6:r_op BANK(call_05_43b7)
-;; 00:10d0:l_op call_05_43b7
+;; 00:10af:r_op BANK(call_write_table_command)
+;; 00:10b6:r_op BANK(call_write_table_command)
+;; 00:10d0:l_op call_write_table_command
 
-;; 00:10d8:r_op BANK(call_05_43b7)
-;; 00:10df:r_op BANK(call_05_43b7)
-;; 00:10f9:l_op call_05_43b7
+;; 00:10d8:r_op BANK(call_write_table_command)
+;; 00:10df:r_op BANK(call_write_table_command)
+;; 00:10f9:l_op call_write_table_command
 
 ;; 00:1128:r_op BANK(call_1d_4d5f)
 ;; 00:112f:r_op BANK(call_1d_4d5f)
@@ -4325,7 +4325,33 @@
 ;; 05:438c:r_op _SRAM_TABLE_VOLS
 ;; 05:43aa:r_op _SRAM_TABLE_VOLS_BANK
 
-05:43b7 call_05_43b7
+05:43b7 call_write_table_command
+;; 05:43b7 Write a table command given CURRENT_TABLE_SCREEN and SRAM_TABLE_COMMANDS_*.
+;; 05:43b7 Args: row, value
+;; 05:43b7 Registers used: A, DE, HL
+
+;; 05:43cb:l_op _TABLE_ROWS
+
+05:43d3 .jump_validate_table
+
+;; 05:43d7:l_op _TABLES
+
+05:43df .jump_validate_value
+
+05:43eb .jump_calculate_address_1
+
+;; 05:43f1 In the next loop, the current table will be shifted left 3 times, multiplying it by 16.
+
+05:43f5 .jump_calculate_address_2
+
+05:43fa .jump_calculate_address_3
+
+;; 05:4417 Write table command
+
+;; 05:441d Assume that table commands 1 and 2 are in the same bank
+;; 05:441d:r_op _SRAM_TABLE_COMMANDS_1_BANK
+
+;; 05:4426 Return
 
 05:442a call_05_442a
 
