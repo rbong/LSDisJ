@@ -3766,7 +3766,32 @@
 
 04:4a30 call_04_4a30
 
-04:4a8f call_04_4a8f
+04:4a8f call_read_phrase_command_value
+;; 04:4a8f Read a command value from the row of a phrase.
+;; 04:4a8f Args: phrase, row
+;; 04:4a8f Registers used: A, DE, HL
+
+;; 04:4a98:l_op LOW(_SRAM_PHRASE_COMMAND_VALUES)
+;; 04:4a9c:l_op HIGH(_SRAM_PHRASE_COMMAND_VALUES)
+
+;; 04:4aa7:l_op _PHRASES
+
+04:4aaf .jump_check_row
+
+;; 04:4ab2:l_op _PHRASE_NOTES
+
+04:4aba .jump_calculate_address_1
+
+;; 04:4abf The following loop rotates the phrase number left 4 times, multiplying it by 16.
+
+04:4ac3 .jump_calculate_address_2
+04:4ac8 .jump_calculate_address_3
+
+;; 04:4ad7 Read the phrase row command value
+
+;; 04:4adc:r_op _SRAM_PHRASE_COMMAND_VALUES_BANK
+
+;; 04:4ae6 Return
 
 04:4aea call_read_phrase_command
 ;; 04:4aea Read a command from a row in the given phrase.
@@ -7718,9 +7743,9 @@
 ;; 1f:69e3:r_op HIGH(call_04_49c5)
 ;; 1f:6a02:r_op BANK(call_04_49c5)
 
-;; 1f:6a10:r_op LOW(call_04_4a8f)
-;; 1f:6a13:r_op HIGH(call_04_4a8f)
-;; 1f:6a2e:r_op BANK(call_04_4a8f)
+;; 1f:6a10:r_op LOW(call_read_phrase_command_value)
+;; 1f:6a13:r_op HIGH(call_read_phrase_command_value)
+;; 1f:6a2e:r_op BANK(call_read_phrase_command_value)
 
 ;; 1f:6a54:r_op LOW(call_04_4a30)
 ;; 1f:6a57:r_op HIGH(call_04_4a30)
