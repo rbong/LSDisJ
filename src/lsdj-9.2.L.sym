@@ -1147,8 +1147,8 @@
 ;; 00:2e18 Increment target
 ;; 00:2e20 Return
 
-00:2e22 call_write_2x_digt_bg_map_attrs_arg
-;; 00:2e22 The same as call_write_2x_digt_bg_map_attrs, but use an argument instead of the A register for the source byte.
+00:2e22 call_write_2x_digit_bg_map_attrs_arg
+;; 00:2e22 The same as call_write_2x_digit_bg_map_attrs, but use an argument instead of the A register for the source byte.
 ;; 00:2e22 Args: source_byte
 
 ;; 00:2e2c:l_op HIGH(_SCRN0)
@@ -3367,9 +3367,33 @@
 03:4a0d data_03_4a0d
 03:4a0d .text:0003
 
-03:4a10 call_03_4a10
+03:4a10 call_read_current_instrument_wave_loop_pos_param
+;; 03:4a10 Read the wave loop pos param for the current instrument.
+;; 03:4a10 Result: E
+;; 03:4a10 Registers used: A, DE, HL
 
-03:4a26 call_03_4a26
+;; 03:4a11:r_op _WAVE_LOOP_POS_INSTRUMENT_PARAM
+;; 03:4a1c Mask the param to only get the wave loop pos part
+;; 03:4a1f Wave loop pos is stored as a negative, subtract from 0xf to get the real value
+
+;; 03:4a24 Return
+
+03:4a26 call_draw_wave_loop_pos_instrument_param
+;; 03:4a26 Draw the wave loop pos instrument param for the current instrument.
+;; 03:4a26 Registers used: A, DE, HL
+
+;; 03:4a34:l_op _PLAY_LOOP
+;; 03:4a39:l_op _PLAY_PINGPONG
+;; 03:4a3e:l_op _PLAY_RESYNC
+
+;; 03:4a40 Manual and once do not have loop pos
+
+03:4a43 .jump_draw_loop_pos
+03:4a58 .jump_draw_empty
+
+;; 03:4a58:r_op _EMPTY_ROW_ASCII_CODE
+
+03:4a61 .jump_return
 
 03:4a63 call_03_4a63
 
@@ -3389,7 +3413,16 @@
 
 03:4aff call_03_4aff
 
-03:4b13 call_03_4b13
+03:4b13 call_read_current_instrument_wave_length_param
+;; 03:4b13 Read the value of the wave length param for the current instrument.
+;; 03:4b13 Result: E
+;; 03:4b13 Registers used: A, DE, HL
+
+;; 03:4b14:r_op _WAVE_LENGTH_INSTRUMENT_PARAM
+;; 03:4b1f Mask the param to only get the wave length part
+;; 03:4b22 Wave length is stored as a negative, subtract from 0xf to get the real value
+
+;; 03:4b27 Return
 
 03:4b29 call_03_4b29
 
@@ -7619,8 +7652,8 @@
 ;; 1f:4848:r_op call_03_49b4
 ;; 1f:484c:r_op BANK(call_03_49b4)
 
-;; 1f:4855:r_op call_03_4a26
-;; 1f:4859:r_op BANK(call_03_4a26)
+;; 1f:4855:r_op call_draw_wave_loop_pos_instrument_param
+;; 1f:4859:r_op BANK(call_draw_wave_loop_pos_instrument_param)
 
 ;; 1f:4862:r_op call_03_49e0
 ;; 1f:4866:r_op BANK(call_03_49e0)
