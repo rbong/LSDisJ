@@ -5722,9 +5722,26 @@
 ;; 07:624d:r_op _SRAM_BOOKMARKS
 ;; 07:6274:r_op _SRAM_BOOKMARKS_BANK
 
-07:62e2 call_07_62e2
+07:62e2 call_is_song_row_bookmarked
+;; 07:62e2 Checks if the given row in the song is bookmarked.
+;; 07:62e2 Args: row
+;; 07:62e2 Result: E
+
+;; 07:62ec Check for empty song row
+
+07:62f6 .jump_calculate_address
+
 ;; 07:62fb:r_op _SRAM_BOOKMARKS
+;; 07:6306 Read the bookmark
 ;; 07:630c:r_op _SRAM_BOOKMARKS_BANK
+
+;; 07:6317 Check if row has been overshot (bookmarks are sorted)
+
+07:6323 .jump_check_bookmark
+
+07:632f .jump_increment_loop
+
+07:633a .jump_return
 
 07:633e call_07_633e
 
