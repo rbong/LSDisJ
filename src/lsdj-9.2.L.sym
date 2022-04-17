@@ -4815,9 +4815,21 @@
 
 06:4026 call_06_4026
 
-06:405d call_06_405d
+06:405d call_read_word_value
+;; 06:405d Read a byte from the word at the current speech/word cursor position.
+;; 06:405d Result: E
+;; 06:405d Registers used: A, DE, HL
+
+;; 06:4066 The following loop will rotate the speech cursor left 5 times, multiplying it by 32.
+
+06:406a .jump_calculate_address_1
+06:406f .jump_calculate_address_2
+
 ;; 06:4072:r_op _SRAM_SPEECH_WORDS
+;; 06:40a0 Read the word value
 ;; 06:40a5:r_op _SRAM_SPEECH_WORDS_BANK
+
+;; 06:40af Return
 
 06:40b3 call_write_word_value
 ;; 06:40b3 Write a byte to the word at the current speech/word cursor position.
