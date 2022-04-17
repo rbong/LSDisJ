@@ -3895,7 +3895,33 @@
 
 04:49c5 call_04_49c5
 
-04:4a30 call_04_4a30
+04:4a30 call_write_phrase_command_value
+;; 04:4a30 Write a command value to a phrase row.
+;; 04:4a30 Args: phrase, row, value
+;; 04:4a30 Registers used: A, DE, HL
+
+;; 04:4a39:l_op LOW(_SRAM_PHRASE_COMMAND_VALUES)
+;; 04:4a3d:l_op HIGH(_SRAM_PHRASE_COMMAND_VALUES)
+
+;; 04:4a45 Verify the phrase
+
+;; 04:4a48:l_op _PHRASES
+
+04:4a50 .jump_verify_row
+
+;; 04:4a53:l_op _PHRASE_NOTES
+
+04:4a5b .jump_calculate_address_1
+
+;; 04:4a60 The following loop will shift the phrase number left 4 times, multiplying it by 16.
+
+04:4a64 .jump_calculate_address_2
+04:4a69 .jump_calculate_address_3
+
+;; 04:4a78 Write phrase command value
+;; 04:4a82:r_op _SRAM_PHRASE_COMMAND_VALUES_BANK
+
+;; 04:4a8b Return
 
 04:4a8f call_read_phrase_command_value
 ;; 04:4a8f Read a command value from the row of a phrase.
