@@ -7121,7 +7121,30 @@
 
 1c:7116 call_1c_7116
 
-1c:714b call_1c_714b
+1c:714b call_request_send_byte
+;; 1c:714b Request an IO transfer and send a byte.
+;; 1c:714b This subroutine will idle briefly after sending the byte.
+;; 1c:714b
+;; 1c:714b Args: byte
+;; 1c:714b
+;; 1c:714b Registers used: A, DE, HL
+
+;; 1c:714e:l_op _IO_TRANSFER_REQUESTED
+
+;; 1c:714e Enable transfer request bytes
+
+;; 1c:7151 Throw error if extra bytes enabled
+;; 1c:7151:l_op _IO_TRANSFER_REQUESTED
+
+1c:7159 .jump_send_byte
+
+;; 1c:7163 Check gameboy type
+
+1c:7170 .jump_set_delay_3ms
+
+1c:7172 .jump_delay
+
+;; 1c:717a Return
 
 1c:717c call_1c_717c
 

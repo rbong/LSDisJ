@@ -15,6 +15,9 @@ _IO_SENDING   EQU $01
 _IO_RECEIVING EQU $02
 _IO_ERROR     EQU $04
 
+; IO transfer request byte for rSC
+_IO_TRANSFER_REQUESTED EQU $81
+
 ; Type of IO data
 _DT_IDLE      EQU $66
 _DT_RECEIVING EQU $55
