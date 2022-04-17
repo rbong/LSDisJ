@@ -3795,9 +3795,33 @@
 
 ;; 04:41e3:r_op _SRAM_PHRASE_NOTES_BANK
 
-04:41f0 call_04_41f0
+04:41f0 call_write_phrase_instrument
+;; 04:41f0 Write an instrument number to a phrase row.
+;; 04:41f0 Args: phrase, row, value
+;; 04:41f0 Registers used: A, DE, HL
+
+;; 04:41f6:l_op _PHRASES
+
+04:41fe .jump_verify_row
+
+;; 04:4201:l_op _PHRASE_NOTES
+
+04:4209 .jump_verify_instrument
+
+;; 04:420a:r_op _INSTRUMENTS
+;; 04:4212 Allow clearing an instrument
+
+04:421b .jump_calculate_address_1
+;; 04:4220 The following loop will shift the phrase number left 4 times, multiplying it by 16.
+
+04:4224 .jump_calculate_address_2
+04:4229 .jump_calculate_address_3
+
 ;; 04:422c:r_op _SRAM_PHRASE_INSTRUMENTS
+;; 04:4244 Write phrase instrument value
 ;; 04:424a:r_op _SRAM_PHRASE_INSTRUMENTS_BANK
+
+;; 04:4253 Return
 
 04:4257 call_04_4257
 
@@ -7919,9 +7943,9 @@
 
 1f:4a64 call_1f_4a64
 
-;; 1f:4a80:r_op LOW(call_04_41f0)
-;; 1f:4a82:r_op HIGH(call_04_41f0)
-;; 1f:4a98:r_op BANK(call_04_41f0)
+;; 1f:4a80:r_op LOW(call_write_phrase_instrument)
+;; 1f:4a82:r_op HIGH(call_write_phrase_instrument)
+;; 1f:4a98:r_op BANK(call_write_phrase_instrument)
 
 1f:4ab3 call_1f_4ab3
 
@@ -8293,9 +8317,9 @@
 ;; 1f:692b:r_op HIGH(call_read_phrase_instrument)
 ;; 1f:6946:r_op BANK(call_read_phrase_instrument)
 
-;; 1f:696c:r_op LOW(call_04_41f0)
-;; 1f:696f:r_op HIGH(call_04_41f0)
-;; 1f:698e:r_op BANK(call_04_41f0)
+;; 1f:696c:r_op LOW(call_write_phrase_instrument)
+;; 1f:696f:r_op HIGH(call_write_phrase_instrument)
+;; 1f:698e:r_op BANK(call_write_phrase_instrument)
 
 ;; 1f:699c:r_op LOW(call_read_phrase_command)
 ;; 1f:699f:r_op HIGH(call_read_phrase_command)
@@ -8309,9 +8333,9 @@
 ;; 1f:6a13:r_op HIGH(call_read_phrase_command_value)
 ;; 1f:6a2e:r_op BANK(call_read_phrase_command_value)
 
-;; 1f:6a54:r_op LOW(call_04_4a30)
-;; 1f:6a57:r_op HIGH(call_04_4a30)
-;; 1f:6a76:r_op BANK(call_04_4a30)
+;; 1f:6a54:r_op LOW(call_write_phrase_command_value)
+;; 1f:6a57:r_op HIGH(call_write_phrase_command_value)
+;; 1f:6a76:r_op BANK(call_write_phrase_command_value)
 
 ;; 1f:6a9d:r_op LOW(call_1c_717c)
 ;; 1f:6a9f:r_op HIGH(call_1c_717c)
