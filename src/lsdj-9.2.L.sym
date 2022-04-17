@@ -8507,6 +8507,21 @@
 00:c7ae IS_HANDLING_EXCEPTION
 ;; 00:c7ae Set to 1 when handling an exception
 
+00:c8de CURRENT_CHANNEL_CHAIN_ROW
+;; 00:c8de The address of the currently playing chain for the current channel
+
+00:c8e0 CURRENT_CHANNEL_PHRASE_ROW
+;; 00:c8e0 The address of the currently playing phrase row for the current channel
+
+00:c8e2 CURRENT_CHANNEL_NOTE_COUNTDOWN
+;; 00:c8e2 The address of the currently playing note countdown for the current channel
+
+00:c8ea CURRENT_CHANNEL_PLAYING_PHRASE
+;; 00:c8ea The address of the currently playing phrase for the current channel
+
+00:c8ec CURRENT_CHANNEL_CURRENT_NOTE
+;; 00:c8ec The address of the currently playing note for the current channel
+
 00:c8fd CURRENT_SCREEN_COL
 00:c8fe CURRENT_SCREEN_ROW
 00:c8ff PROJECT_SCREEN_COL
