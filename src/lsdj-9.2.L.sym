@@ -4860,9 +4860,29 @@
 
 06:48e9 call_06_48e9
 
-06:493c call_06_493c
+06:493c call_read_wave_sample
+;; 06:493c Reads a single sample from the current synth wave frame.
+;; 06:493c Args: sample
+;; 06:493c Result: E
+;; 06:493c Registers used: A, DE, HL
+
+;; 06:4942:l_op _FRAME_SAMPLES
+
+06:494a .jump_calculate_address_1
+;; 06:4958 The following loop shifts the current wave frame left 4 times, multiplying it by 16
+06:495c .jump_calculate_address_2
+06:4961 .jump_calculate_address_3
+
 ;; 06:4966:r_op _SRAM_WAVE_FRAMES
+;; 06:4988 Read the wave frame
 ;; 06:4989:r_op _SRAM_WAVE_FRAMES_BANK
+
+;; 06:4993 Check if we are reading an even or odd byte
+
+06:49a3 .jump_handle_odd_byte
+
+06:49ab .jump_return
+;; 06:49ab Mask the value so only the first character of the byte is returned
 
 06:49b4 call_06_49b4
 ;; 06:49d4:r_op _SRAM_WAVE_FRAMES
