@@ -6855,7 +6855,9 @@
 
 1c:5361 call_1c_5361
 
-1c:5531 call_1c_5531
+1c:5531 call_draw_file_action_cursor
+;; 1c:5531 Draw the cursor for the currently selected file action.
+;; 1c:5531 Registers used: A, DE, HL
 
 1c:5563 call_1c_5563
 
@@ -8761,6 +8763,19 @@
 
 00:c943 DEFAULT_TSP
 ;; 00:c943 The default transpose value to use for empty rows on the chain screen
+
+00:c990 FILE_SCREEN_CURSOR_COL
+00:c991 FILE_SCREEN_MAX_CURSOR_ROW
+
+00:c996 IS_SELECTING_FILE
+
+00:c997 FILE_SCREEN_CURSOR_ROW
+
+00:c998 FILE_SCREEN_ACTION_TYPE
+;; 00:c998 The current file screen action type - see file action type constants
+
+00:c99a RESTRICT_FILE_CURSOR
+;; 00:c99a Whether to restrict the file cursor to the current/empty file
 
 00:c99f CURRENT_INSTRUMENT_2
 ;; 00:c99f A copy of the current instrument.
