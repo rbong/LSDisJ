@@ -5371,7 +5371,10 @@
 06:732d data_06_732d
 06:732d .text:0004
 
-06:7331 call_06_7331
+06:7331 call_draw_sync_wait_status_string
+;; 06:7331 Draw a string describing the current status of sync wait.
+;; 06:7331 Args: address
+;; 06:7331 Registers used: A, DE, Hl
 
 06:734d call_06_734d
 
