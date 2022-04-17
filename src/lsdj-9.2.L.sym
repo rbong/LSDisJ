@@ -3173,9 +3173,26 @@
 
 03:4105 call_03_4105
 
-03:4118 call_03_4118
+03:4118 call_current_instrument_has_table_on_param
+;; 03:4118 Checks to see if the current instrument has the table on instrument param.
+;; 03:4118 Result: E
+;; 03:4118 Registers used: A, DE, HL
 
-03:4133 call_03_4133
+;; 03:4119:r_op _TABLE_ON_INSTRUMENT_PARAM
+
+;; 03:4124 Look at the bit of the table on param
+
+03:412e .jump_set_false
+03:4130 .jump_return
+
+03:4133 call_enable_current_instrument_table_on_param
+;; 03:4133 Enable the table on param for the current instrument.
+;; 03:4133 Registers used: A, DE, HL
+
+;; 03:4134 Read current instrument param
+;; 03:413f Enable bit 5, table on param
+;; 03:4142 Write updated param
+;; 03:414d Return
 
 03:414f call_is_instrument_cursor_max
 ;; 03:414f Checks if the instrument cursor row is at the max position (not including table).
@@ -3224,9 +3241,9 @@
 ;; 03:4390:r_op call_show_banner
 ;; 03:4394:r_op BANK(call_show_banner)
 
-;; 03:43ca:r_op LOW(call_write_table_on_instrument_param_value_bg_attrs)
-;; 03:43cc:r_op HIGH(call_write_table_on_instrument_param_value_bg_attrs)
-;; 03:43cf:r_op BANK(call_write_table_on_instrument_param_value_bg_attrs)
+;; 03:43ca:r_op LOW(call_draw_table_instrument_param)
+;; 03:43cc:r_op HIGH(call_draw_table_instrument_param)
+;; 03:43cf:r_op BANK(call_draw_table_instrument_param)
 
 03:43da data_out_of_tables_instrument_screen_error_string
 03:43da .text:000f
@@ -3273,47 +3290,64 @@
 
 03:47cb call_03_47cb
 
-;; 03:4825:r_op LOW(call_1f_4000)
-;; 03:4827:r_op HIGH(call_1f_4000)
-;; 03:482a:r_op BANK(call_1f_4000)
+;; 03:4825:r_op LOW(call_draw_table_type_instrument_params)
+;; 03:4827:r_op HIGH(call_draw_table_type_instrument_params)
+;; 03:482a:r_op BANK(call_draw_table_type_instrument_params)
 
-;; 03:4847:r_op LOW(call_write_table_on_instrument_param_value_bg_attrs)
-;; 03:4849:r_op HIGH(call_write_table_on_instrument_param_value_bg_attrs)
-;; 03:484c:r_op BANK(call_write_table_on_instrument_param_value_bg_attrs)
+;; 03:4847:r_op LOW(call_draw_table_instrument_param)
+;; 03:4849:r_op HIGH(call_draw_table_instrument_param)
+;; 03:484c:r_op BANK(call_draw_table_instrument_param)
 
-03:4857 call_03_4857
+03:4857 call_handle_shift_table_type_right
+;; 03:4857 Handle shifting the table on/step/tick instrument params when the right key is pressed.
+;; 03:4857
+;; 03:4857 Entry conditions:
+;; 03:4857   KEY_CHANGE_START must be set to 1 after pressing the key
+;; 03:4857
+;; 03:4857 Registers used: A, DE, HL
 
-;; 03:4894:r_op LOW(call_1f_4000)
-;; 03:4896:r_op HIGH(call_1f_4000)
-;; 03:4899:r_op BANK(call_1f_4000)
+;; 03:4869:r_op _TABLE_STEP_INSTRUMENT_PARAM
 
-;; 03:48b6:r_op LOW(call_write_table_on_instrument_param_value_bg_attrs)
-;; 03:48b8:r_op HIGH(call_write_table_on_instrument_param_value_bg_attrs)
-;; 03:48bb:r_op BANK(call_write_table_on_instrument_param_value_bg_attrs)
+;; 03:4874 Enable the table step instrument param bit
+
+03:4885 .jump_enable_table_on
+
+;; 03:4894:r_op LOW(call_draw_table_type_instrument_params)
+;; 03:4896:r_op HIGH(call_draw_table_type_instrument_params)
+;; 03:4899:r_op BANK(call_draw_table_type_instrument_params)
+
+;; 03:48b6:r_op LOW(call_draw_table_instrument_param)
+;; 03:48b8:r_op HIGH(call_draw_table_instrument_param)
+;; 03:48bb:r_op BANK(call_draw_table_instrument_param)
+
+03:4888 .jump_draw_table_type
+03:48aa .jump_draw_table
+
+03:48c4 .jump_return
 
 03:48c6 call_03_48c6
 
-;; 03:48ef:r_op LOW(call_write_table_on_instrument_param_value_bg_attrs)
-;; 03:48f1:r_op HIGH(call_write_table_on_instrument_param_value_bg_attrs)
-;; 03:48f4:r_op BANK(call_write_table_on_instrument_param_value_bg_attrs)
+;; 03:48ef:r_op LOW(call_draw_table_instrument_param)
+;; 03:48f1:r_op HIGH(call_draw_table_instrument_param)
+;; 03:48f4:r_op BANK(call_draw_table_instrument_param)
 
 03:48ff call_03_48ff
 
-;; 03:493d:r_op LOW(call_write_table_on_instrument_param_value_bg_attrs)
-;; 03:493f:r_op HIGH(call_write_table_on_instrument_param_value_bg_attrs)
-;; 03:4942:r_op BANK(call_write_table_on_instrument_param_value_bg_attrs)
+;; 03:493d:r_op LOW(call_draw_table_instrument_param)
+;; 03:493f:r_op HIGH(call_draw_table_instrument_param)
+;; 03:4942:r_op BANK(call_draw_table_instrument_param)
 
 03:494d call_03_494d
 
-;; 03:4975:r_op LOW(call_write_table_on_instrument_param_value_bg_attrs)
-;; 03:4977:r_op HIGH(call_write_table_on_instrument_param_value_bg_attrs)
-;; 03:497a:r_op BANK(call_write_table_on_instrument_param_value_bg_attrs)
+;; 03:4975:r_op LOW(call_draw_table_instrument_param)
+;; 03:4977:r_op HIGH(call_draw_table_instrument_param)
+;; 03:497a:r_op BANK(call_draw_table_instrument_param)
 
 03:4985 call_03_4985
 
-;; 03:49a4:r_op LOW(call_write_table_on_instrument_param_value_bg_attrs)
-;; 03:49a6:r_op HIGH(call_write_table_on_instrument_param_value_bg_attrs)
-;; 03:49a9:r_op BANK(call_write_table_on_instrument_param_value_bg_attrs)
+;; 03:49a4:r_op LOW(call_draw_table_instrument_param)
+;; 03:49a6:r_op HIGH(call_draw_table_instrument_param)
+;; 03:49a9:r_op BANK(call_draw_table_instrument_param)
 
 03:49b4 call_03_49b4
 
@@ -3549,11 +3583,11 @@
 ;; 03:7798:r_op call_05_6936
 ;; 03:77a1:r_op BANK(call_05_6936)
 
-;; 03:7833:r_op call_1f_4000
-;; 03:7837:r_op BANK(call_1f_4000)
+;; 03:7833:r_op call_draw_table_type_instrument_params
+;; 03:7837:r_op BANK(call_draw_table_type_instrument_params)
 
-;; 03:7854:r_op call_write_table_on_instrument_param_value_bg_attrs
-;; 03:7858:r_op BANK(call_write_table_on_instrument_param_value_bg_attrs)
+;; 03:7854:r_op call_draw_table_instrument_param
+;; 03:7858:r_op BANK(call_draw_table_instrument_param)
 
 ;; 03:78c0:r_op call_move_screen_up
 ;; 03:78c4:r_op BANK(call_move_screen_up)
@@ -7387,9 +7421,39 @@
 ;; 1e:7bab 1e:7bab
 ;; 1e:7bab:replace:0455 ds $8000 - @, $ff
 
-1f:4000 call_1f_4000
+1f:4000 call_draw_table_type_instrument_params
+;; 1f:4000 Draw the table on/step instrument param text for the current instrument.
+;; 1f:4000 Registers used: A, DE, HL
 
-1f:401b jump_table_1f_401b
+;; 1f:4001:r_op _INSTRUMENT_TYPE_INSTRUMENT_PARAM
+
+;; 1f:400c Check that instrument type is valid
+
+1f:401b .jump_table_instrument_type
+1f:4027 .jump_handle_pulse_instrument_type
+1f:4032 .jump_handle_wave_instrument_type
+1f:403d .jump_handle_kit_instrument_type
+1f:4048 .jump_handle_noise_instrument_type
+
+;; 1f:4040 The table is drawn on a different row for noise instruments
+
+1f:4050 .jump_read_instrument_params
+
+;; 1f:4050:r_op _TABLE_ON_INSTRUMENT_PARAM
+;; 1f:405b Check table on bit
+
+;; 1f:4060:r_op _TABLE_STEP_INSTRUMENT_PARAM
+;; 1f:406b Check table step bit
+
+1f:4078 .jump_load_tick_type_string
+
+1f:407d .jump_return_1
+
+1f:4080 .jump_load_off_string
+
+1f:4085 .jump_write_bg_map_attrs
+
+;; 1f:408b Return
 
 1f:408d data_instrument_table_type_strings
 1f:408d data_step_instrument_table_type_string
@@ -7399,8 +7463,8 @@
 1f:4097 data_off_instrument_table_type_string
 1f:4097 .text:0005
 
-1f:409c call_write_table_on_instrument_param_value_bg_attrs
-;; 1f:409c Write background attributes for the table on instrument param value.
+1f:409c call_draw_table_instrument_param
+;; 1f:409c Draw the table instrument param for the current instrument.
 ;; 1f:409c Registers used: A, DE, HL
 
 ;; 1f:409d:r_op _TABLE_ON_INSTRUMENT_PARAM
@@ -8264,6 +8328,14 @@
 00:c565 BG_MAP_ATTR_SOURCE_LOW
 ;; 00:c565 The source from which to pull background map attributes.
 00:c564 BG_MAP_ATTR_SOURCE_HIGH
+
+00:c567 BG_MAP_ATTR_SHADOWED_PALETTE_LOW
+;; 00:c567 The background palette to apply to bytes when writing shaded tiles.
+00:c568 BG_MAP_ATTR_SHADOWED_PALETTE_HIGH
+
+00:c569 BG_MAP_ATTR_SELECTED_PALETTE_LOW
+;; 00:c569 The background palette to apply to bytes when writing selected tiles.
+00:c56a BG_MAP_ATTR_SELECTED_PALETTE_HIGH
 
 00:c574 BG_MAP_ATTR_TARGET_LOW
 ;; 00:c574 The address at which to draw background map attributes.
