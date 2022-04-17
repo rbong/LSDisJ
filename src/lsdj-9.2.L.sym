@@ -3953,9 +3953,20 @@
 
 04:4caa call_04_4caa
 
-04:4cc4 call_04_4cc4
+04:4cc4 call_draw_sample_note
+;; 04:4cc4 Draw the current sample note string.
+;; 04:4cc4
+;; 04:4cc4 Entry conditions:
+;; 04:4cc4   SAMPLE_NOTE_STRING must be set
+;; 04:4cc4
+;; 04:4cc4 Registers used: A, DE
 
-04:4ce1 data_04_4ce1
+04:4cd4 .jump_sample_off
+04:4cd9 .jump_draw
+
+;; 04:4cdf Return
+
+04:4ce1 data_kit_note_off
 04:4ce1 .text:0004
 
 04:4ce5 call_04_4ce5
@@ -8387,6 +8398,9 @@
 00:c42d KEYBOARD_LETTER_POS
 00:c42e KEYBOARD_CURSOR_COL
 00:c42f KEYBOARD_CURSOR_ROW
+
+00:c43b SAMPLE_NOTE_STRING
+;; 00:c43b A string containing the values for the current sample note.
 
 00:c442 CURRENT_SYNTH_SCREEN
 00:c443 SYNTH_CURSOR_POS
