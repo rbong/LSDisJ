@@ -2851,11 +2851,23 @@
 
 02:4ea3 call_02_4ea3
 
-02:4ef9 call_02_4ef9
+02:4ef9 call_fill_12x
+;; 02:4ef9 Fill 12 addresses with the given byte.
+;; 02:4ef9 Entry conditions: A = byte, HL = start_address
+;; 02:4ef9 Exit conditions: HL = end_address
+;; 02:4ef9 Registers used: A, HL
 
-02:4efd call_02_4efd
+02:4efd call_fill_8x
+;; 02:4efd Fill 8 addresses with the given byte.
+;; 02:4efd Entry conditions: A = byte, HL = start_address
+;; 02:4efd Exit conditions: HL = end_address
+;; 02:4efd Registers used: A, HL
 
-02:4f01 call_02_4f01
+02:4f01 call_fill_4x
+;; 02:4f01 Fill 4 addresses with the given byte.
+;; 02:4f01 Entry conditions: A = byte, HL = start_address
+;; 02:4f01 Exit conditions: HL = end_address
+;; 02:4f01 Registers used: A, HL
 
 02:4f06 call_02_4f06
 
