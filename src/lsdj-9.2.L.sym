@@ -3756,7 +3756,16 @@
 
 04:405d call_04_405d
 
-04:4071 call_04_4071
+04:4071 call_read_current_phrase_row_instrument
+;; 04:4071 Read the instrument at the current phrase row.
+;; 04:4071
+;; 04:4071 Entry conditions:
+;; 04:4071   PHRASE_CURSOR_ROW must be set
+;; 04:4071   CURRENT_PHRASE must be set
+;; 04:4071
+;; 04:4071 Result: E
+;; 04:4071
+;; 04:4071 Registers used: A, DE, HL
 
 04:4087 call_04_4087
 
