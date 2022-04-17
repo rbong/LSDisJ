@@ -4463,9 +4463,28 @@
 
 05:435b .jump_return
 
-05:4360 call_05_4360
+05:4360 call_write_table_vol_value
+;; 05:4360 Write a value to a table volume row.
+;; 05:4360 Args: row, value
+;; 05:4360 Registers used: A, DE, HL
+
+;; 05:4366:l_op _TABLE_ROWS
+
+05:436e .jump_verify_table_screen
+
+;; 05:4372:l_op _TABLES
+
+05:437a .jump_calculate_address_1
+;; 05:4380 The loop below will shift the table number left 4 times, multiplying it by 16.
+
+05:4384 .jump_calculate_address_2
+05:4389 .jump_calculate_address_3
+
 ;; 05:438c:r_op _SRAM_TABLE_VOLS
+;; 05:43a4 Write volume value
 ;; 05:43aa:r_op _SRAM_TABLE_VOLS_BANK
+
+;; 05:43b3  Return
 
 05:43b7 call_write_table_command
 ;; 05:43b7 Write a table command given CURRENT_TABLE_SCREEN and SRAM_TABLE_COMMANDS_*.
