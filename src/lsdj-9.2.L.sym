@@ -3176,7 +3176,13 @@
 
 ;; 03:40f9:r_op _WAVE_PLAY_INSTRUMENT_PARAM
 
-03:4105 call_03_4105
+03:4105 call_current_instrument_has_manual_wave_play_type
+;; 03:4105 Check if the current instrument has a manual wave play type.
+;; 03:4105 Result: E
+;; 03:4105 Registers used: A, DE, HL
+
+03:4113 .jump_false
+03:4114 .jump_return
 
 03:4118 call_current_instrument_has_table_on_param
 ;; 03:4118 Checks to see if the current instrument has the table on instrument param.
