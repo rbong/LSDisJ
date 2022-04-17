@@ -7440,9 +7440,27 @@
 ;; 1d:6f5b:r_op _SRAM_SYNTH_PARAMS
 ;; 1d:6f7b:r_op _SRAM_SYNTH_PARAMS_BANK
 
-1d:6fcb call_1d_6fcb
+1d:6fcb call_increment_synth_param
+;; 1d:6fcb Decrement a synth param and draw its updated digts.
+;; 1d:6fcb Args: param (see synth param constants), max
+;; 1d:6fcb Registers used: A, DE, HL
+
+;; 1d:6fd4 The following loop will shift CURRENT_SYNTH_SCREEN left 4 times, multiplying it by 16.
+
+1d:6fd8 .jump_calculate_address_1
+1d:6fdd .jump_calculate_address_2
+
 ;; 1d:6fe0:r_op _SRAM_SYNTH_PARAMS
+;; 1d:6ffb Read synth param
 ;; 1d:7000:r_op _SRAM_SYNTH_PARAMS_BANK
+
+;; 1d:700a Check if synth param is at max
+
+1d:7013 .jump_write_digits
+
+;; 1d:701d Write synth param
+
+;; 1d:702e Return
 
 1d:7032 call_decrement_synth_param
 ;; 1d:7032 Decrement a synth param and draw its updated digits.
