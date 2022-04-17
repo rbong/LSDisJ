@@ -4518,9 +4518,28 @@
 
 ;; 05:448d Return
 
-05:4491 call_05_4491
+05:4491 call_write_table_transpose_value
+;; 05:4491 Write a transpose value to a row in a table.
+;; 05:4491 Args: row, value
+;; 05:4491 Registers used: A, DE, HL
+
+;; 05:4497:l_op _TABLE_ROWS
+
+05:449f .jump_verify_current_table
+
+;; 05:44a3:l_op _TABLES
+
+05:44ab .jump_calculate_address_1
+;; 05:44b1 The following loop will rotate CURRENT_TABLE_SCREEN left 4 times, multiplying it by 16.
+
+05:44b5 .jump_calculate_address_2
+05:44ba .jump_calculate_address_3
+
 ;; 05:44bd:r_op _SRAM_TABLE_TRANSPOSE
+;; 05:44d5 Write transpose value
 ;; 05:44db:r_op _SRAM_TABLE_TRANSPOSE_BANK
+
+;; 05:44e4 Return
 
 05:44e8 call_05_44e8
 ;; 05:4514:r_op _SRAM_TABLE_VOLS
