@@ -7432,9 +7432,31 @@
 ;; 1d:6e8a:r_op _SRAM_SYNTH_PARAMS
 ;; 1d:6eb0:r_op _SRAM_SYNTH_PARAMS_BANK
 
-1d:6ebd call_1d_6ebd
+1d:6ebd call_add_synth_param
+;; 1d:6ebd Add an amount to a synth param and draw its updated digits.
+;; 1d:6ebd Args: param (see synth param constants), amount, max
+;; 1d:6ebd Registers used: A, DE, HL
+
+;; 1d:6ec6 The following loop will shift CURRENT_SYNTH_SCREEN left 4 times, multiplying it by 16.
+
+1d:6eca .jump_calculate_address_1
+1d:6ecf .jump_calculate_address_2
+
 ;; 1d:6ed2:r_op _SRAM_SYNTH_PARAMS
+;; 1d:6eed Read synth param
 ;; 1d:6ef2:r_op _SRAM_SYNTH_PARAMS_BANK
+
+;; 1d:6efc Add to synth param
+
+;; 1d:6f16 Check if synth param + addition amount is greater than max
+
+;; 1d:6f21 Set synth param to max
+
+1d:6f25 .jump_draw_digits
+
+;; 1d:6f31 Write synth param
+
+;; 1d:6f42 Return
 
 1d:6f46 call_subtract_synth_param
 ;; 1d:6f46 Subtract an amount from a synth param and draw its updated digits.
