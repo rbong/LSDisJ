@@ -3169,7 +3169,12 @@
 03:40f7 data_max_noise_instrument_cursor_row
 03:40f7 .data:0001
 
-03:40f8 call_03_40f8
+03:40f8 call_read_current_instrument_wave_play_instrument_param
+;; 03:40f8 Read the wave play instrument param from the current instrument.
+;; 03:40f8 Result: E
+;; 03:40f8 Registers used: A, DE, HL
+
+;; 03:40f9:r_op _WAVE_PLAY_INSTRUMENT_PARAM
 
 03:4105 call_03_4105
 
