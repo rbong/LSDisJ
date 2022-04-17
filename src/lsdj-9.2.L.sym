@@ -4637,9 +4637,30 @@
 
 ;; 05:459a Return
 
-05:459e call_05_459e
+05:459e call_read_table_transpose_value
+;; 05:459e Read a table transpose value for on a certain row in the current table.
+;; 05:459e Args: row
+;; 05:459e Result: E
+;; 05:459e Registers used: A, DE, HL
+
+;; 05:45a4:l_op _TABLE_ROWS
+
+05:45ac .jump_verify_table
+
+;; 05:45b0:l_op _TABLES
+
+05:45b8 .jump_calculate_address_1
+
+;; 05:45be The following loop will shift the table number left 4 times, multiplying it by 16.
+
+05:45c2 .jump_calculate_address_2
+05:45c7 .jump_calculate_address_3
+
 ;; 05:45ca:r_op _SRAM_TABLE_TRANSPOSE
+;; 05:45e0 Read the table transpose value
 ;; 05:45e3:r_op _SRAM_TABLE_TRANSPOSE_BANK
+
+;; 05:45ed Return
 
 05:45f1 call_05_45f1
 
