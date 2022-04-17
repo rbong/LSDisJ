@@ -695,7 +695,13 @@
 
 00:1c71 call_00_1c71
 
-00:1ca1 call_00_1ca1
+00:1ca1 call_check_new_keys
+;; 00:1ca1 Check new keypresses in the buffer and update CURRENT_KEY_PRESS_COUNT.
+;; 00:1ca1 Registers used: A, E, HL
+
+;; 00:1ca9:r_op HIGH(KEY_BUFFER)
+
+00:1cb3 .jump_return
 
 00:1cb6 call_00_1cb6
 ;; 00:1cb6:r_op _SRAM_SYNC
@@ -8456,6 +8462,9 @@
 ;; 00:c569 The background palette to apply to bytes when writing selected tiles.
 00:c56a BG_MAP_ATTR_SELECTED_PALETTE_HIGH
 
+00:c570 CURRENT_KEY_PRESS_COUNT
+00:c571 TOTAL_KEY_PRESS_COUNT
+
 00:c574 BG_MAP_ATTR_TARGET_LOW
 ;; 00:c574 The address at which to draw background map attributes.
 ;; 00:c574 Should be in the range 0x9800 - 0x9afff.
@@ -8591,6 +8600,9 @@
 ;; 00:cbfa gbdk 2.95 libc/gb/font.ms:.fg_colour
 00:cbfb BG_COLOUR
 ;; 00:cbfb gbdk 2.95 libc/gb/font.ms:.bg_colour
+
+00:ce00 KEY_BUFFER
+;; 00:ce00 A buffer of the last pressed keys (up to 0xceff)
 
 00:ff80 REFRESH_OAM
 ;; 00:ff80 gbdk 2.95 libc/gb/global.s:refresh_OAM
