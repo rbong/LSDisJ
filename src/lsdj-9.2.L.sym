@@ -3191,7 +3191,7 @@
 03:40f7 data_max_noise_instrument_cursor_row
 03:40f7 .data:0001
 
-03:40f8 call_read_current_instrument_wave_play_instrument_param
+03:40f8 call_read_current_instrument_wave_play_param
 ;; 03:40f8 Read the wave play instrument param from the current instrument.
 ;; 03:40f8 Result: E
 ;; 03:40f8 Registers used: A, DE, HL
@@ -3606,14 +3606,14 @@
 
 03:580c jump_table_03_580c
 
-;; 03:582e:r_op call_1f_4157
-;; 03:5832:r_op BANK(call_1f_4157)
+;; 03:582e:r_op call_read_current_instrument_env_1_byte_1
+;; 03:5832:r_op BANK(call_read_current_instrument_env_1_byte_1)
 
 ;; 03:5848:r_op call_1f_4169
 ;; 03:584c:r_op BANK(call_1f_4169)
 
-;; 03:58c7:r_op call_1f_4157
-;; 03:58cb:r_op BANK(call_1f_4157)
+;; 03:58c7:r_op call_read_current_instrument_env_1_byte_1
+;; 03:58cb:r_op BANK(call_read_current_instrument_env_1_byte_1)
 
 ;; 03:58e1:r_op call_1f_4169
 ;; 03:58e5:r_op BANK(call_1f_4169)
@@ -7878,7 +7878,14 @@
 
 1f:411f call_1f_411f
 
-1f:4157 call_1f_4157
+1f:4157 call_read_current_instrument_env_1_byte_1
+;; 1f:4157 Read the first byte from the envelope stage 1 param in the current instrument.
+;; 1f:4157 Result: E
+;; 1f:4157 Registers used: A, DE, HL
+
+;; 1f:4158:r_op _ENV_STAGE_1_INSTRUMENT_PARAM
+
+;; 1f:4163 Get first byte
 
 1f:4169 call_1f_4169
 
