@@ -4786,9 +4786,21 @@
 ;; 06:4072:r_op _SRAM_SPEECH_WORDS
 ;; 06:40a5:r_op _SRAM_SPEECH_WORDS_BANK
 
-06:40b3 call_06_40b3
+06:40b3 call_write_word_value
+;; 06:40b3 Write a byte to the word at the current speech/word cursor position.
+;; 06:40b3 Args: value
+;; 06:40b3 Registers used: A, DE, HL
+
+;; 06:40bc The following loop will rotate the current speech cursor row left 5 times, multiplying it by 32.
+
+06:40c0 .jump_calculate_address_1
+06:40c5 .jump_calculate_address_2
+
 ;; 06:40c8:r_op _SRAM_SPEECH_WORDS
+;; 06:40f6 Read the speech word value
 ;; 06:4101:r_op _SRAM_SPEECH_WORDS_BANK
+
+;; 06:410a Return
 
 06:410e call_06_410e
 
@@ -8304,7 +8316,7 @@
 
 00:c428 INSTR_CURSOR_ROW
 00:c429 INSTR_CURSOR_COL
-00:c42a SPEECH_CURSOR_POS
+00:c42a SPEECH_CURSOR_ROW
 00:c42b CURRENT_SYNTH_WAV_FRAME
 ;; 00:c42b High 8 bits: current synth
 ;; 00:c42b Low 8 bits: current wave frame
@@ -8423,12 +8435,15 @@
 00:c931 HELP_PAGE
 00:c932 HELP_CURSOR_ROW
 
-00:c99f CURRENT_INSTRUMENT_2
-;; 00:c99f A copy of the current instrument.
-;; 00:c99f This is used exclusively in bank 0x1c.
+00:c935 WORD_CURSOR_ROW
+00:c936 WORD_CURSOR_COL
 
 00:c943 DEFAULT_TSP
 ;; 00:c943 The default transpose value to use for empty rows on the chain screen
+
+00:c99f CURRENT_INSTRUMENT_2
+;; 00:c99f A copy of the current instrument.
+;; 00:c99f This is used exclusively in bank 0x1c.
 
 00:cba1 ENABLE_OSCILLOSCOPE
 00:cba2 OSCILLOSCOPE_DRAW_TYPE
