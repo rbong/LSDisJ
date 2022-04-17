@@ -2936,7 +2936,11 @@
 ;; 02:5859 Assume bank is set to bank for _SRAM_TABLE_TRANSPOSE
 ;; 02:5859:r_op _SRAM_TABLE_TRANSPOSE
 
-02:5891 call_02_5891
+02:5891 call_write_ff_x32
+;; 02:5891 Write 0xff to 32 addresses.
+;; 02:5891 Entry conditions: HL = start
+;; 02:5891 Exit conditions: HL = end + 1
+;; 02:5891 Registers used: A, HL
 
 02:58b4 call_02_58b4
 ;; 02:58be:r_op _SRAM_INSTRUMENT_PARAMS
