@@ -4610,9 +4610,30 @@
 
 ;; 05:44e4 Return
 
-05:44e8 call_05_44e8
+05:44e8 call_read_table_vol_value
+;; 05:44e8 Read a table volume value from a row in the current table.
+;; 05:44e8 Args: row
+;; 05:44e8 Result: E
+;; 05:44e8 Registers used: A, DE, HL
+
+;; 05:44ee:l_op _TABLE_ROWS
+
+05:44f6 .jump_verify_table
+
+;; 05:44fa:l_op _TABLES
+
+05:4502 .jump_calculate_address_1
+
+;; 05:4508 The following loop rotates the table left 4 times, multiplying it by 16.
+
+05:450c .jump_calculate_address_2
+05:4511 .jump_calculate_address_3
+
 ;; 05:4514:r_op _SRAM_TABLE_VOLS
+;; 05:452a Read the table vol value
 ;; 05:452d:r_op _SRAM_TABLE_VOLS_BANK
+
+;; 05:4537 Return
 
 05:453b call_read_table_command_value
 ;; 05:453b Read a command value from a row in a table.
