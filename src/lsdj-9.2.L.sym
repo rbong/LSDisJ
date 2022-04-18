@@ -3448,7 +3448,20 @@
 
 03:4b29 call_03_4b29
 
-03:4b48 call_03_4b48
+03:4b48 call_write_current_instrument_wave_loop_pos_param
+;; 03:4b48 Write the loop position to the current instrument.
+;; 03:4b48 Args: loop_pos (half byte) (negative)
+;; 03:4b48 Registers used: A, DE, HL
+
+;; 03:4b49 Read the loop pos
+
+;; 03:4b53 Manipulate the loop pos into a valid value
+
+;; 03:4b49:r_op _WAVE_LOOP_POS_INSTRUMENT_PARAM
+;; 03:4b5e Write loop pos
+;; 03:4b60:r_op _WAVE_LOOP_POS_INSTRUMENT_PARAM
+
+;; 03:4b69 Return
 
 03:4b6b call_03_4b6b
 
