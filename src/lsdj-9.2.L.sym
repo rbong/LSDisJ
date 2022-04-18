@@ -784,9 +784,26 @@
 ;; 00:209d:r_op BANK(call_02_7030)
 ;; 00:209f:l_op call_02_7030
 
-00:20bd call_00_20bd
+00:20bd call_read_song_chain_fast
+;; 00:20bd Read a song chain number from a row/channel.
+;; 00:20bd This version of the subroutine uses less instructions, but is less safe.
+;; 00:20bd
+;; 00:20bd Args: row, channel
+;; 00:20bd
+;; 00:20bd Result: E
+;; 00:20bd
+;; 00:20bd Registers used: A, DE, HL
+
+;; 00:20c5 The following loop will rotate the song row left two times, multiplying it by 4
+
+00:20c9 .jump_calculate_tile_address_1
+00:20ce .jump_calculate_tile_address_2
+
 ;; 00:20d1:r_op _SRAM_SONG_CHAINS
+;; 00:20e7 Read the song chain
 ;; 00:20ea:r_op _SRAM_SONG_CHAINS_BANK
+
+;; 00:20f4 Return
 
 00:20f8 call_00_20f8
 ;; 00:210c:r_op _SRAM_CHAIN_PHRASES
