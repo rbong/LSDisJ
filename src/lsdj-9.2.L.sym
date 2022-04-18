@@ -2207,9 +2207,27 @@
 
 ;; 01:4dcf Return
 
-01:4dd3 call_01_4dd3
+01:4dd3 call_write_phrase_alloc
+;; 01:4dd3 Write the allocation value for a phrase, marking it as allocated.
+;; 01:4dd3 Args: phrase
+;; 01:4dd3 Registers used: A, DE, HL
+
+;; 01:4dd9:l_op _PHRASES
+
+01:4de1 .jump_calculate_address_1
+
 ;; 01:4ded:r_op _SRAM_PHRASE_ALLOC
+;; 01:4e0a Read phrase alloc
 ;; 01:4e0f:r_op _SRAM_PHRASE_ALLOC_BANK
+
+;; 01:4e19 Modify the allocation value
+
+01:4e21 .jump_modify_alloc_1
+01:4e24 .jump_modify_alloc_2
+
+;; 01:4e2e Write updated allocation value
+
+;; 01:4e3f Return
 
 01:4e43 call_01_4e43
 ;; 01:4e5d:r_op _SRAM_CHAIN_ALLOC
@@ -8368,9 +8386,9 @@
 ;; 1f:5960:r_op CART_RAM_DISABLE
 ;; 1f:59b9:r_op rRAMB
 
-;; 1f:5963:r_op LOW(call_01_4dd3)
-;; 1f:5965:r_op HIGH(call_01_4dd3)
-;; 1f:596d:r_op BANK(call_01_4dd3)
+;; 1f:5963:r_op LOW(call_write_phrase_alloc)
+;; 1f:5965:r_op HIGH(call_write_phrase_alloc)
+;; 1f:596d:r_op BANK(call_write_phrase_alloc)
 
 1f:59ad call_1f_59ad
 ;; 1f:59b0:r_op _SRAM_SONG_CHAINS
