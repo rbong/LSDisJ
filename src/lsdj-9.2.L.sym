@@ -7194,7 +7194,30 @@
 
 ;; 1c:7183:l_op _NORMAL_CURSOR_MODE
 
-1c:729d call_1c_729d
+1c:729d call_wait_io_receive
+;; 1c:729d Wait to receive a byte from IO and write it to an address.
+;; 1c:729d Once IO_STATUS is no longer in _IO_RECEIVING mode, reads the byte from IO_IN, writes it to the address, and returns.
+;; 1c:729d If a button is pressed, it will do the same.
+;; 1c:729d
+;; 1c:729d Args: address
+;; 1c:729d
+;; 1c:729d Exit conditions:
+;; 1c:729d   receive_byte will be called, so that another byte can be received
+;; 1c:729d
+;; 1c:729d Registers used: A, DE, HL
+
+1c:729e .jump_get_io_status
+
+;; 1c:72a2:l_op _IO_RECEIVING
+
+;; 1c:72a7 Read held buttons
+;; 1c:72ad 0 = no buttons held
+
+1c:72b0 .jump_read_address
+
+;; 1c:72b5 Read IO in byte
+;; 1c:72b9 Store IO in byte at address
+;; 1c:72bd Return
 
 1c:72bf call_1c_72bf
 
