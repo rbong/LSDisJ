@@ -2263,9 +2263,25 @@
 
 01:4f59 call_01_4f59
 
-01:4f99 call_01_4f99
+01:4f99 call_write_phrase_alloc
+;; 01:4f99 Write the allocation value for a phrase, marking it as allocated.
+;; 01:4f99 Args: phrase
+;; 01:4f99 Registers used: A, DE, HL
+
+;; 01:4f9f:l_op _PHRASES
+
+01:4fa7 .jump_calculate_address
+
 ;; 01:4fb3:r_op _SRAM_PHRASE_ALLOC
+;; 01:4fc9 Read phrase alloc
 ;; 01:4fcc:r_op _SRAM_PHRASE_ALLOC_BANK
+
+;; 01:4fd6 Modify the allocation value
+
+01:4fde .jump_modify_alloc_1
+01:4fe1 .jump_modify_alloc_2
+
+;; 01:4fe8 Return
 
 01:4fec call_01_4fec
 
@@ -8288,9 +8304,9 @@
 
 1f:502c call_1f_502c
 
-;; 1f:502d:r_op LOW(call_01_4f99)
-;; 1f:502f:r_op HIGH(call_01_4f99)
-;; 1f:5037:r_op BANK(call_01_4f99)
+;; 1f:502d:r_op LOW(call_write_phrase_alloc)
+;; 1f:502f:r_op HIGH(call_write_phrase_alloc)
+;; 1f:5037:r_op BANK(call_write_phrase_alloc)
 
 1f:5043 call_1f_5043
 
