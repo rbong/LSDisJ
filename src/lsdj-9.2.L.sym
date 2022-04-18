@@ -805,9 +805,26 @@
 
 ;; 00:20f4 Return
 
-00:20f8 call_00_20f8
+00:20f8 call_read_chain_phrase_fast
+;; 00:20f8 Reads a phrase from a chain row.
+;; 00:20f8 This version of the subroutine uses less instructions, but is less safe.
+;; 00:20f8
+;; 00:20f8 Args: chain, row
+;; 00:20f8
+;; 00:20f8 Result: E
+;; 00:20f8
+;; 00:20f8 Registers used: A, DE, HL
+
+;; 00:2100 The following loop will shift the row number left 4 times, multiplying it by 16
+
+00:2104 .jump_calculate_address_1
+00:2109 .jump_calculate_address_2
+
 ;; 00:210c:r_op _SRAM_CHAIN_PHRASES
+;; 00:2122 Read the chain phrase
 ;; 00:2125:r_op _SRAM_CHAIN_PHRASES_BANK
+
+;; 00:212f Return
 
 00:2133 call_00_2133
 
