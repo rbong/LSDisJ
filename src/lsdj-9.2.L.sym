@@ -450,9 +450,9 @@
 ;; 00:1032:r_op BANK(call_02_7b9b)
 ;; 00:1034:l_op call_02_7b9b
 
-;; 00:1090:r_op BANK(call_04_49c5)
-;; 00:1097:r_op BANK(call_04_49c5)
-;; 00:10a7:l_op call_04_49c5
+;; 00:1090:r_op BANK(call_write_phrase_command)
+;; 00:1097:r_op BANK(call_write_phrase_command)
+;; 00:10a7:l_op call_write_phrase_command
 
 ;; 00:10af:r_op BANK(call_write_table_command)
 ;; 00:10b6:r_op BANK(call_write_table_command)
@@ -3917,7 +3917,37 @@
 
 ;; 04:49b7 _SRAM_PHRASE_NOTES_BANK
 
-04:49c5 call_04_49c5
+04:49c5 call_write_phrase_command
+;; 04:49c5 Write a command to a row in a phrase.
+;; 04:49c5 Args: phrase, row, command (see command constants)
+;; 04:49c5 Registers used: A, DE, HL
+
+;; 04:49ce:l_op LOW(_SRAM_PHRASE_COMMANDS)
+;; 04:49d2:l_op HIGH(_SRAM_PHRASE_COMMANDS)
+
+;; 04:49da Verify phrase
+
+;; 04:49dd:l_op _PHRASES
+
+04:49e5 .jump_verify_row
+
+;; 04:49e8:l_op _PHRASE_NOTES
+
+04:49f0 .jump_verify_command
+
+;; 04:49f1:r_op _Z_COMMAND
+
+04:49fc .jump_calculate_address_1
+
+;; 04:4a01 The following loop will shift the phrase number left 4 times, multiplying it by 16.
+
+04:4a05 .jump_calculate_address_2
+04:4a0a .jump_calculate_address_3
+
+;; 04:4a19 Write phrase command
+;; 04:4a23:r_op _SRAM_PHRASE_COMMANDS_BANK
+
+;; 04:4a2c Return
 
 04:4a30 call_write_phrase_command_value
 ;; 04:4a30 Write a command value to a phrase row.
@@ -8432,9 +8462,9 @@
 ;; 1f:699f:r_op HIGH(call_read_phrase_command)
 ;; 1f:69ba:r_op BANK(call_read_phrase_command)
 
-;; 1f:69e0:r_op LOW(call_04_49c5)
-;; 1f:69e3:r_op HIGH(call_04_49c5)
-;; 1f:6a02:r_op BANK(call_04_49c5)
+;; 1f:69e0:r_op LOW(call_write_phrase_command)
+;; 1f:69e3:r_op HIGH(call_write_phrase_command)
+;; 1f:6a02:r_op BANK(call_write_phrase_command)
 
 ;; 1f:6a10:r_op LOW(call_read_phrase_command_value)
 ;; 1f:6a13:r_op HIGH(call_read_phrase_command_value)
