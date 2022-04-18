@@ -403,8 +403,8 @@
 ;; 00:0e46 Assume the bank of call_01_45d1 is the same as call_01_4cf1
 ;; 00:0e46:l_op call_01_45d1
 
-;; 00:0e49 Assume the bank of call_01_48d4 is the same as call_01_4cf1
-;; 00:0e49:l_op call_01_48d4
+;; 00:0e49 Assume the bank of call_write_sram_check is the same as call_01_4cf1
+;; 00:0e49:l_op call_write_sram_check
 
 ;; 00:0e8b:r_op call_01_7c94
 ;; 00:0e93:r_op BANK(call_01_7c94)
@@ -2120,20 +2120,37 @@
 ;; 01:48b7:r_op _SRAM_INIT_FLAG_2 + 1
 ;; 01:48bb:r_op _SRAM_TABLE_COMMAND_VALUES_2_BANK
 
-01:48d4 call_01_48d4
+01:48d4 call_write_sram_check
+;; 01:48d4 Write SRAM check values to mark the ROM/RAM as verified.
+;; 01:48d4 Registers used: A, HL
+
+;; 01:48d4:r_op _SRAM_CHECK_1
 
 ;; 01:48d8:r_op _SRAM_INIT_FLAG_1
 ;; 01:48dc:r_op _SRAM_INIT_FLAG_1_BANK
+
+;; 01:48e5:r_op _SRAM_CHECK_2
+
 ;; 01:48e9:r_op _SRAM_INIT_FLAG_1 + 1
 ;; 01:48ed:r_op _SRAM_INIT_FLAG_1_BANK
 
+;; 01:48f6:r_op _SRAM_CHECK_1
+
 ;; 01:48fa:r_op _SRAM_INIT_FLAG_2
 ;; 01:48fe:r_op _SRAM_INIT_FLAG_2_BANK
+
+;; 01:4907:r_op _SRAM_CHECK_2
+
 ;; 01:490b:r_op _SRAM_INIT_FLAG_2 + 1
 ;; 01:490f:r_op _SRAM_INIT_FLAG_2_BANK
 
+;; 01:4918:r_op _SRAM_CHECK_1
+
 ;; 01:491c:r_op _SRAM_INIT_FLAG_3
 ;; 01:4920:r_op _SRAM_INIT_FLAG_3_BANK
+
+;; 01:4929:r_op _SRAM_CHECK_2
+
 ;; 01:492d:r_op _SRAM_INIT_FLAG_3 + 1
 ;; 01:4931:r_op _SRAM_INIT_FLAG_3_BANK
 
