@@ -3009,7 +3009,10 @@
 
 02:5014 call_02_5014
 
-02:503e call_02_503e
+02:503e call_random_mod_0f
+;; 02:503e Get a single random half byte 0x0 - 0xe.
+;; 02:503e Result: E
+;; 02:503e Registers used: A, DE, HL
 
 02:5049 call_02_5049
 
