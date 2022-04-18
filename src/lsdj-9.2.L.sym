@@ -2257,9 +2257,9 @@
 ;; 01:4ef2:r_op _SRAM_PHRASE_ALLOC_BANK
 ;; 01:4f1c:r_op _SRAM_PHRASE_ALLOC_BANK
 
-;; 01:4f45:r_op LOW(call_01_75c6)
-;; 01:4f47:r_op HIGH(call_01_75c6)
-;; 01:4f4a:r_op BANK(call_01_75c6)
+;; 01:4f45:r_op LOW(call_set_out_of_memory_error_banner)
+;; 01:4f47:r_op HIGH(call_set_out_of_memory_error_banner)
+;; 01:4f4a:r_op BANK(call_set_out_of_memory_error_banner)
 
 01:4f59 call_01_4f59
 
@@ -2631,22 +2631,30 @@
 ;; 01:7500 Show the currently selected banner text.
 ;; 01:7500 Registers used: A, DE, HL
 
-01:75c6 call_01_75c6
+01:75c6 call_set_out_of_memory_error_banner
+;; 01:75c6 Sets the banner text to the out of memory error.
+;; 01:75c6 Registers used: A, DE, HL
 
 01:75d0 data_out_of_memory_error_string
 01:75d0 .text:0031
 
-01:7601 call_01_7601
+01:7601 call_set_add_chain_error_banner
+;; 01:7601 Sets the banner text to the add chain error.
+;; 01:7601 Registers used: A, DE, HL
 
 01:760b data_add_chain_error_string
 01:760b .text:0014
 
-01:761f call_01_761f
+01:761f call_set_add_phrase_error_banner
+;; 01:761f Sets the banner text to the add phrase error.
+;; 01:761f Registers used: A, DE, HL
 
 01:7629 data_add_phrase_error_string
 01:7629 .text:0015
 
-01:763e call_01_763e
+01:763e call_set_max_marks_error_banner
+;; 01:763e Sets the banner text to the add max marks error.
+;; 01:763e Registers used: A, DE, HL
 
 01:7648 data_max_marks_error_string
 01:7648 .text:000d
@@ -5595,9 +5603,9 @@
 ;; 06:694f:r_op HIGH(call_write_chain_phrase)
 ;; 06:6965:r_op BANK(call_write_chain_phrase)
 
-;; 06:6999:r_op LOW(call_01_75c6)
-;; 06:699b:r_op HIGH(call_01_75c6)
-;; 06:699e:r_op BANK(call_01_75c6)
+;; 06:6999:r_op LOW(call_set_out_of_memory_error_banner)
+;; 06:699b:r_op HIGH(call_set_out_of_memory_error_banner)
+;; 06:699e:r_op BANK(call_set_out_of_memory_error_banner)
 
 ;; 06:69d0:r_op LOW(call_02_77e6)
 ;; 06:69d2:r_op HIGH(call_02_77e6)
@@ -5613,9 +5621,9 @@
 ;; 06:6a69:r_op HIGH(call_02_7b9b)
 ;; 06:6a6c:r_op BANK(call_02_7b9b)
 
-;; 06:6a99:r_op LOW(call_01_761f)
-;; 06:6a9b:r_op HIGH(call_01_761f)
-;; 06:6a9e:r_op BANK(call_01_761f)
+;; 06:6a99:r_op LOW(call_set_add_phrase_error_banner)
+;; 06:6a9b:r_op HIGH(call_set_add_phrase_error_banner)
+;; 06:6a9e:r_op BANK(call_set_add_phrase_error_banner)
 
 ;; 06:6aac:r_op call_move_screen_right
 ;; 06:6ab0:r_op BANK(call_move_screen_right)
@@ -5873,9 +5881,9 @@
 ;; 07:4234:r_op HIGH(call_01_4eb3)
 ;; 07:4237:r_op BANK(call_01_4eb3)
 
-;; 07:4249:r_op LOW(call_01_75c6)
-;; 07:424b:r_op HIGH(call_01_75c6)
-;; 07:4250:r_op BANK(call_01_75c6)
+;; 07:4249:r_op LOW(call_set_out_of_memory_error_banner)
+;; 07:424b:r_op HIGH(call_set_out_of_memory_error_banner)
+;; 07:4250:r_op BANK(call_set_out_of_memory_error_banner)
 
 ;; 07:425e:r_op LOW(call_06_569a)
 ;; 07:4260:r_op HIGH(call_06_569a)
@@ -6032,9 +6040,9 @@
 ;; 07:5423:r_op HIGH(call_02_7b9b)
 ;; 07:5426:r_op BANK(call_02_7b9b)
 
-;; 07:5498:r_op LOW(call_01_7601)
-;; 07:549a:r_op HIGH(call_01_7601)
-;; 07:549d:r_op BANK(call_01_7601)
+;; 07:5498:r_op LOW(call_set_add_chain_error_banner)
+;; 07:549a:r_op HIGH(call_set_add_chain_error_banner)
+;; 07:549d:r_op BANK(call_set_add_chain_error_banner)
 
 ;; 07:54b9:r_op LOW(call_read_chain_phrase)
 ;; 07:54bb:r_op HIGH(call_read_chain_phrase)
@@ -6122,9 +6130,9 @@
 ;; 07:633f:r_op _SRAM_BOOKMARKS + _BOOKMARKS - 1
 ;; 07:6343:r_op _SRAM_BOOKMARKS_BANK
 
-;; 07:6353:r_op LOW(call_01_763e)
-;; 07:6355:r_op HIGH(call_01_763e)
-;; 07:6358:r_op BANK(call_01_763e)
+;; 07:6353:r_op LOW(call_set_max_marks_error_banner)
+;; 07:6355:r_op HIGH(call_set_max_marks_error_banner)
+;; 07:6358:r_op BANK(call_set_max_marks_error_banner)
 
 ;; 07:6369:r_op _SRAM_BOOKMARKS + _BOOKMARKS - 1
 
@@ -8262,9 +8270,9 @@
 ;; 1f:4c1c:r_op HIGH(call_write_chain_alloc)
 ;; 1f:4c24:r_op BANK(call_write_chain_alloc)
 
-;; 1f:4c54:r_op LOW(call_01_75c6)
-;; 1f:4c56:r_op HIGH(call_01_75c6)
-;; 1f:4c59:r_op BANK(call_01_75c6)
+;; 1f:4c54:r_op LOW(call_set_out_of_memory_error_banner)
+;; 1f:4c56:r_op HIGH(call_set_out_of_memory_error_banner)
+;; 1f:4c59:r_op BANK(call_set_out_of_memory_error_banner)
 
 1f:4c68 call_1f_4c68
 ;; 1f:4d1b:r_op _SRAM_INSTRUMENT_ALLOC
