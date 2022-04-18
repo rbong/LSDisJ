@@ -435,9 +435,9 @@
 ;; 00:0f7a:r_op BANK(call_01_4cfb)
 ;; 00:0f81:l_op call_01_4cfb
 
-;; 00:0fc4:r_op BANK(call_01_4d67)
-;; 00:0fcb:r_op BANK(call_01_4d67)
-;; 00:0fd2:l_op call_01_4d67
+;; 00:0fc4:r_op BANK(call_write_chain_alloc)
+;; 00:0fcb:r_op BANK(call_write_chain_alloc)
+;; 00:0fd2:l_op call_write_chain_alloc
 
 ;; 00:0ff0:r_op BANK(call_1f_4a25)
 ;; 00:0ff7:r_op BANK(call_1f_4a25)
@@ -2185,9 +2185,27 @@
 ;; 01:4d15:r_op _SRAM_PHRASE_ALLOC
 ;; 01:4d5a:r_op _SRAM_PHRASE_ALLOC_BANK
 
-01:4d67 call_01_4d67
+01:4d67 call_write_chain_alloc
+;; 01:4d67 Write the allocation value for a chain, marking it as allocated.
+;; 01:4d67 Args: chain
+;; 01:4d67 Registers used: A, DE, HL
+
+;; 01:4d6d:l_op _CHAINS
+
+01:4d75 .jump_calculate_address
+
 ;; 01:4d81:r_op _SRAM_CHAIN_ALLOC
+;; 01:4d9e Read chain alloc
 ;; 01:4da3:r_op _SRAM_CHAIN_ALLOC_BANK
+
+;; 01:4dad Modify the allocation value
+
+01:4db5 .jump_modify_alloc_1
+01:4db8 .jump_modify_alloc_2
+
+;; 01:4dbd Write updated allocation value
+
+;; 01:4dcf Return
 
 01:4dd3 call_01_4dd3
 ;; 01:4ded:r_op _SRAM_PHRASE_ALLOC
@@ -5910,9 +5928,9 @@
 ;; 07:4bbd:r_op HIGH(call_1f_4bbb)
 ;; 07:4bc0:r_op BANK(call_1f_4bbb)
 
-;; 07:4c12:r_op LOW(call_01_4d67)
-;; 07:4c14:r_op HIGH(call_01_4d67)
-;; 07:4c1e:r_op BANK(call_01_4d67)
+;; 07:4c12:r_op LOW(call_write_chain_alloc)
+;; 07:4c14:r_op HIGH(call_write_chain_alloc)
+;; 07:4c1e:r_op BANK(call_write_chain_alloc)
 
 ;; 07:4c38:r_op LOW(call_1f_4bbb)
 ;; 07:4c3a:r_op HIGH(call_1f_4bbb)
@@ -8188,9 +8206,9 @@
 ;; 1f:4be9:r_op _SRAM_CHAIN_ALLOC
 ;; 1f:4bf8:r_op _SRAM_CHAIN_ALLOC_BANK
 
-;; 1f:4c1a:r_op LOW(call_01_4d67)
-;; 1f:4c1c:r_op HIGH(call_01_4d67)
-;; 1f:4c24:r_op BANK(call_01_4d67)
+;; 1f:4c1a:r_op LOW(call_write_chain_alloc)
+;; 1f:4c1c:r_op HIGH(call_write_chain_alloc)
+;; 1f:4c24:r_op BANK(call_write_chain_alloc)
 
 ;; 1f:4c54:r_op LOW(call_01_75c6)
 ;; 1f:4c56:r_op HIGH(call_01_75c6)
@@ -8267,9 +8285,9 @@
 ;; 1f:528e:r_op HIGH(call_01_4e43)
 ;; 1f:5293:r_op BANK(call_01_4e43)
 
-;; 1f:52e9:r_op LOW(call_01_4d67)
-;; 1f:52ec:r_op HIGH(call_01_4d67)
-;; 1f:5301:r_op BANK(call_01_4d67)
+;; 1f:52e9:r_op LOW(call_write_chain_alloc)
+;; 1f:52ec:r_op HIGH(call_write_chain_alloc)
+;; 1f:5301:r_op BANK(call_write_chain_alloc)
 
 ;; 1f:5330:r_op LOW(call_01_4f59)
 ;; 1f:5332:r_op HIGH(call_01_4f59)
