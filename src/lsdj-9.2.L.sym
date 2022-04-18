@@ -7403,7 +7403,15 @@
 
 1d:56c4 jump_table_1d_56c4
 
-1d:58e1 call_1d_58e1
+1d:58e1 call_increment_synth_phase_value
+;; 1d:58e1 Add 1 to a value, capping out at 0x1f and cycling back to 0x00.
+;; 1d:58e1 Used for phase calculations.
+;; 1d:58e1
+;; 1d:58e1 Args: value
+;; 1d:58e1
+;; 1d:58e1 Result: E
+;; 1d:58e1
+;; 1d:58e1 Registers used: A, DE, HL
 
 1d:58ed call_1d_58ed
 
