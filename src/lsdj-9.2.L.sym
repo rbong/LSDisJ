@@ -2891,9 +2891,31 @@
 
 02:50e3 call_02_50e3
 
-02:511b call_02_511b
+02:511b call_read_channel_value
+;; 02:511b Read a channel value.
+;; 02:511b Will read from the address at the given base address + the current channel * 2.
+;; 02:511b The base address lower byte cannot exceed 8.
+;; 02:511b
+;; 02:511b Entry conditions:
+;; 02:511b   CURRENT_CHANNEL must be set to the target channel
+;; 02:511b   HL = base_address
+;; 02:511b
+;; 02:511b Exit conditions:
+;; 02:511b   E will contain the value stored at the address stored at base_address + CURRENT_CHANNEL * 2
+;; 02:511b   Interrupts will be enabled
+;; 02:511b
+;; 02:511b Registers used:  A, E, HL
+;; 02:511b -
+
+;; 02:511b Add the current channel x2 to the base address
+
+;; 02:5120 Prepare to read from the cart
 ;; 02:5123:r_op CART_RAM_ENABLE
 ;; 02:5126:l_op [rRAMG]
+
+;; 02:5129 Read the value from the address that was read before
+
+;; 02:512b Return
 ;; 02:512b:l_op [rRAMG]
 
 02:512f call_02_512f
@@ -8987,6 +9009,9 @@
 
 00:ff80 REFRESH_OAM
 ;; 00:ff80 gbdk 2.95 libc/gb/global.s:refresh_OAM
+
+00:ff8b CURRENT_CHANNEL
+;; 00:ff8b The target channel.
 
 00:ff8c BG_MAP_ATTR_BG_PALETTE
 ;; 00:ff8c The background palette to apply to bytes when writing background map attributes.
