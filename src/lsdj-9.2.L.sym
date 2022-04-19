@@ -3545,7 +3545,15 @@
 
 03:4790 .jump_return
 
-03:4792 call_03_4792
+03:4792 call_decrement_command_rate_instrument_param
+;; 03:4792 Decrement the command rate instrument param if it is not at 0 and draw the updated digits.
+;; 03:4792 Registers used: A, DE, HL
+
+;; 03:4793:r_op _COMMAND_RATE_INSTRUMENT_PARAM
+
+;; 03:47a6:r_op _COMMAND_RATE_INSTRUMENT_PARAM
+
+03:47b7 .jump_return
 
 03:47b9 call_03_47b9
 
