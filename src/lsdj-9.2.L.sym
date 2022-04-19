@@ -413,9 +413,9 @@
 ;; 00:0e53:r_op BANK(call_1c_4057)
 ;; 00:0e55:l_op call_1c_4057
 
-;; 00:0e5e:r_op BANK(call_01_4811)
-;; 00:0e65:r_op BANK(call_01_4811)
-;; 00:0e67:l_op call_01_4811
+;; 00:0e5e:r_op BANK(call_is_sram_file_initialized)
+;; 00:0e65:r_op BANK(call_is_sram_file_initialized)
+;; 00:0e67:l_op call_is_sram_file_initialized
 
 ;; 00:0e70:r_op BANK(call_1c_47b1)
 ;; 00:0e77:r_op BANK(call_1c_47b1)
@@ -2097,11 +2097,26 @@
 ;; 01:4808:r_op rRAMG
 ;; 01:480b:r_op CART_RAM_DISABLE
 
-01:4811 call_01_4811
+01:4811 call_is_sram_file_initialized
+;; 01:4811 Check whether the file initialized flags are set in SRAM.
+;; 01:4811 Result: E
+;; 01:4811 Args: A, E, HL
+
 ;; 01:4812:r_op _SRAM_FILE_INIT_FLAG
 ;; 01:4816:r_op _SRAM_FILE_INIT_FLAG_BANK
+
+;; 01:4821:l_op _SRAM_FILE_CHECK_1
+
+01:482b .jump_check_high_byte
+
 ;; 01:482b:r_op _SRAM_FILE_INIT_FLAG + 1
 ;; 01:482f:r_op _SRAM_FILE_INIT_FLAG_BANK
+
+;; 01:483a:l_op _SRAM_FILE_CHECK_2
+
+01:4844 .jump_true
+
+01:4846 .jump_return
 
 01:4848 call_is_sram_initialized
 ;; 01:4848 Check if initialization flags are set on SRAM.
