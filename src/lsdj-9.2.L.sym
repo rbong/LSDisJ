@@ -3696,7 +3696,11 @@
 03:4aeb data_extra_instrument_distortion_type_prefix_string
 03:4aeb .text:0003
 
-03:4aee call_03_4aee
+03:4aee call_read_current_instrument_wave_speed_param
+;; 03:4aee Read the wave speed param from the current instrument.
+;; 03:4aee Registers used: A, DE, HL
+
+;; 03:4aef:r_op _WAVE_SPEED_INSTRUMENT_PARAM
 
 03:4aff call_03_4aff
 
