@@ -8279,7 +8279,7 @@
 ;; 1f:4169 Result: E
 ;; 1f:4169 Registers used: A, DE, HL
 
-;; 1f:416e:r_op _ENV_STAGE_2
+;; 1f:416e:r_op _ENV_STAGE_2_INSTRUMENT_PARAM
 
 1f:4182 .jump_set_return
 1f:4186 .jump_return
