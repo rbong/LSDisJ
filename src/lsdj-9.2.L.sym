@@ -3732,7 +3732,14 @@
 
 ;; 03:4b69 Return
 
-03:4b6b call_03_4b6b
+03:4b6b call_get_current_instrument_pitch_shape_param
+;; 03:4b6b Get the current instrument pitch shape param.
+;; 03:4b6b Result: E
+;; 03:4b6b Registers used: A, DE, HL
+
+;; 03:4b6c:r_op _PITCH_SHAPE_INSTRUMENT_PARAM
+
+;; 03:4b77 Get only pitch shape param bits
 
 03:4b7d call_03_4b7d
 
