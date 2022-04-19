@@ -3631,11 +3631,21 @@
 ;; 03:4977:r_op HIGH(call_draw_table_instrument_param)
 ;; 03:497a:r_op BANK(call_draw_table_instrument_param)
 
-03:4985 call_03_4985
+03:4985 call_disable_current_instrument_table_on_param
+;; 03:4985 Turn off the table on param for the current instrument.
+;; 03:4985 Registers used: A, DE, HL
+
+;; 03:4986:r_op _TABLE_INSTRUMENT_PARAM
+
+;; 03:4991 Check the table on bit
+
+;; 03:4996 Disable table on bit
 
 ;; 03:49a4:r_op LOW(call_draw_table_instrument_param)
 ;; 03:49a6:r_op HIGH(call_draw_table_instrument_param)
 ;; 03:49a9:r_op BANK(call_draw_table_instrument_param)
+
+03:49b2 .jump_return
 
 03:49b4 call_03_49b4
 
