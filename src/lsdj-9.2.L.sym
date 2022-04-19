@@ -8463,7 +8463,8 @@
 ;; 1f:4fb0 Assume the banks are the same for _SRAM_TABLE_*
 ;; 1f:4fb0:r_op _SRAM_TABLE_COMMANDS_1_BANK
 
-1f:502c call_1f_502c
+1f:502c call_1f_banked_write_phrase_alloc
+;; 1f:502c See: call_write_phrase_alloc
 
 ;; 1f:502d:r_op LOW(call_write_phrase_alloc)
 ;; 1f:502f:r_op HIGH(call_write_phrase_alloc)
