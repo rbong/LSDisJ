@@ -5548,7 +5548,9 @@
 06:549e data_06_549e
 06:549e .text:0006
 
-06:54a4 call_06_54a4
+06:54a4 call_read_song_chain_under_cursor
+;; 06:54a4 Read the chain currently under the song cursor.
+;; 06:54a4 Registers used: A, DE, HL
 
 06:54b9 data_06_54b9
 06:54b9 .data:0002
