@@ -8817,7 +8817,10 @@
 ;; 1f:701c Unused bank for call_00_2490
 ;; 1f:7020 Banked call used for call_00_2490 unnecessarily
 
-1f:7027 call_1f_7027
+1f:7027 call_get_speech_cursor_plus_4
+;; 1f:7027 Get the current location of the speech cursor row + 4.
+;; 1f:7027 Result: E
+;; 1f:7027 Registers used: E, HL
 
 1f:7035 call_1f_7035
 
