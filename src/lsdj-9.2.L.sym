@@ -8449,7 +8449,15 @@
 
 1f:4eb7 call_1f_4eb7
 
-1f:4ec9 call_1f_4ec9
+1f:4ec9 call_read_instrument_alloc
+;; 1f:4ec9 Read whether an instrument is allocated or not.
+;; 1f:4ec9 Args: instrument
+;; 1f:4ec9 Result: E
+;; 1f:4ec9 Registers used: A, DE, HL
+
+;; 1f:4ed0:l_op LOW(_SRAM_INSTRUMENT_ALLOC)
+;; 1f:4ed4:l_op HIGH(_SRAM_INSTRUMENT_ALLOC)
+;; 1f:4ed8:r_op _SRAM_INSTRUMENT_ALLOC_BANK
 
 1f:4ee4 call_1f_4ee4
 ;; 1f:4f02:r_op _SRAM_PHRASE_COMMAND_VALUES
