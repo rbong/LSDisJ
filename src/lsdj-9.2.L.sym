@@ -6294,7 +6294,12 @@
 07:666c data_07_666c
 07:666c .data:0080
 
-07:66ec call_07_66ec
+07:66ec call_get_digit_char
+;; 07:66ec Get the character of a single digit 0-F.
+;; 07:66ec Registers used: A, DE, HL
+
+;; 07:66f0:r_op LOW(digits_2)
+;; 07:66f4:r_op HIGH(digits_2)
 
 07:66fe digits_2
 ;; 07:66fe gbdk 2.95 libc/gb/digits.c:digits
