@@ -3916,14 +3916,14 @@
 ;; 03:582e:r_op call_read_current_instrument_env_1_byte_1
 ;; 03:5832:r_op BANK(call_read_current_instrument_env_1_byte_1)
 
-;; 03:5848:r_op call_1f_4169
-;; 03:584c:r_op BANK(call_1f_4169)
+;; 03:5848:r_op call_current_instrument_has_non_flat_env_stage_1_and_2
+;; 03:584c:r_op BANK(call_current_instrument_has_non_flat_env_stage_1_and_2)
 
 ;; 03:58c7:r_op call_read_current_instrument_env_1_byte_1
 ;; 03:58cb:r_op BANK(call_read_current_instrument_env_1_byte_1)
 
-;; 03:58e1:r_op call_1f_4169
-;; 03:58e5:r_op BANK(call_1f_4169)
+;; 03:58e1:r_op call_current_instrument_has_non_flat_env_stage_1_and_2
+;; 03:58e5:r_op BANK(call_current_instrument_has_non_flat_env_stage_1_and_2)
 
 03:5994 jump_table_03_5994
 
@@ -8274,7 +8274,15 @@
 
 ;; 1f:4163 Get first byte
 
-1f:4169 call_1f_4169
+1f:4169 call_current_instrument_has_non_flat_env_stage_1_and_2
+;; 1f:4169 Indicates whether current instrument envelope stage 1 or 2 have 0 as their first digit.
+;; 1f:4169 Result: E
+;; 1f:4169 Registers used: A, DE, HL
+
+;; 1f:416e:r_op _ENV_STAGE_2
+
+1f:4182 .jump_set_return
+1f:4186 .jump_return
 
 1f:418a call_1f_418a
 
