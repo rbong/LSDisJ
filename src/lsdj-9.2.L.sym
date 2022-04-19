@@ -3555,7 +3555,14 @@
 
 03:47b7 .jump_return
 
-03:47b9 call_03_47b9
+03:47b9 call_read_table_step_instrument_param
+;; 03:47b9 Check the table step param for the current instrument.
+;; 03:47b9 Result: E
+;; 03:47b9 Registers used: A, DE, HL
+
+;; 03:47ba:r_op _TABLE_STEP_INSTRUMENT_PARAM
+
+;; 03:47c5 Get only the table step bit
 
 03:47cb call_03_47cb
 
