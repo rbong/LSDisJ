@@ -3535,7 +3535,16 @@
 
 03:46a2 call_03_46a2
 
-03:476a call_03_476a
+03:4790 .jump_return
+
+03:476a call_increment_command_rate_instrument_param
+;; 03:476a Increment the command rate instrument param if it is not at maximum and draw the updated digits.
+;; 03:476a Registers used: A, DE, HL
+
+;; 03:476b:r_op _COMMAND_RATE_INSTRUMENT_PARAM
+
+;; 03:477f:r_op _COMMAND_RATE_INSTRUMENT_PARAM
+
 
 03:4792 call_03_4792
 
