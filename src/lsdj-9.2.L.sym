@@ -3601,11 +3601,23 @@
 
 03:48c4 .jump_return
 
-03:48c6 call_03_48c6
+03:48c6 call_increment_current_instrument_table_param
+;; 03:48c6 Increment the table for the current instrument.
+;; 03:48c6 Registers used: A, DE, HL
+
+;; 03:48c7:r_op _TABLE_INSTRUMENT_PARAM
+
+;; 03:48d2 Check the table on bit
+
+;; 03:48d7 Check the table
+
+03:48e2 .jump_increment_table
 
 ;; 03:48ef:r_op LOW(call_draw_table_instrument_param)
 ;; 03:48f1:r_op HIGH(call_draw_table_instrument_param)
 ;; 03:48f4:r_op BANK(call_draw_table_instrument_param)
+
+03:48fd .jump_return
 
 03:48ff call_03_48ff
 
