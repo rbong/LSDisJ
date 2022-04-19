@@ -3750,7 +3750,12 @@
 
 03:4bea call_03_4bea
 
-03:4c08 call_03_4c08
+03:4c08 call_get_current_instrument_type_param_minus_2
+;; 03:4c08 Get the instrument type instrument param of the current instrument minus 2.
+;; 03:4c08 Result: E
+;; 03:4c08 Registers used: A, DE, HL
+
+;; 03:4c09:r_op _INSTRUMENT_TYPE_INSTRUMENT_PARAM
 
 03:4c18 call_03_4c18
 
