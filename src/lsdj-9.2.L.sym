@@ -3698,11 +3698,17 @@
 
 03:4aee call_read_current_instrument_wave_speed_param
 ;; 03:4aee Read the wave speed param from the current instrument.
+;; 03:4aee Result: E
 ;; 03:4aee Registers used: A, DE, HL
 
 ;; 03:4aef:r_op _WAVE_SPEED_INSTRUMENT_PARAM
 
-03:4aff call_03_4aff
+03:4aff call_write_current_instrument_wave_speed_param
+;; 03:4aff Write the wave speed param for the current instrument.
+;; 03:4aff Args: value
+;; 03:4aff Registers used: A, DE, HL
+
+;; 03:4b08:r_op _WAVE_SPEED_INSTRUMENT_PARAM
 
 03:4b13 call_read_current_instrument_wave_length_param
 ;; 03:4b13 Read the value of the wave length param for the current instrument.
