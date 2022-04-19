@@ -2261,7 +2261,29 @@
 ;; 01:4f47:r_op HIGH(call_set_out_of_memory_error_banner)
 ;; 01:4f4a:r_op BANK(call_set_out_of_memory_error_banner)
 
-01:4f59 call_01_4f59
+01:4f59 call_read_chain_alloc
+;; 01:4f59 Read whether a chain is allocated or not.
+;; 01:4f59 Args: chain
+;; 01:4f59 Result: E
+;; 01:4f59 Registers used: A, DE, HL
+
+;; 01:4f5d:l_op _CHAINS
+
+01:4f65 .jump_calculate_address
+
+;; 01:4f6f:l_op LOW(_SRAM_CHAIN_ALLOC)
+;; 01:4f74:l_op HIGH(_SRAM_CHAIN_ALLOC)
+
+;; 01:4f77 Read byte
+
+;; 01:4f78:r_op _SRAM_CHAIN_ALLOC_BANK
+
+;; 01:4f82 Get allocation bit
+
+01:4f8d .jump_get_bit_1
+01:4f90 .jump_get_bit_2
+
+;; 01:4f97 Return
 
 01:4f99 call_write_phrase_alloc
 ;; 01:4f99 Write the allocation value for a phrase, marking it as allocated.
@@ -3009,10 +3031,7 @@
 
 02:5014 call_02_5014
 
-02:503e call_random_mod_0f
-;; 02:503e Get a single random half byte 0x0 - 0xe.
-;; 02:503e Result: E
-;; 02:503e Registers used: A, DE, HL
+02:503e call_02_503e
 
 02:5049 call_02_5049
 
@@ -8352,9 +8371,9 @@
 ;; 1f:52ec:r_op HIGH(call_write_chain_alloc)
 ;; 1f:5301:r_op BANK(call_write_chain_alloc)
 
-;; 1f:5330:r_op LOW(call_01_4f59)
-;; 1f:5332:r_op HIGH(call_01_4f59)
-;; 1f:5337:r_op BANK(call_01_4f59)
+;; 1f:5330:r_op LOW(call_read_chain_alloc)
+;; 1f:5332:r_op HIGH(call_read_chain_alloc)
+;; 1f:5337:r_op BANK(call_read_chain_alloc)
 
 ;; 1f:536d:r_op LOW(call_write_chain_transpose)
 ;; 1f:5370:r_op HIGH(call_write_chain_transpose)
@@ -8372,9 +8391,9 @@
 
 1f:53fc call_1f_53fc
 
-;; 1f:53fd:r_op LOW(call_01_4f59)
-;; 1f:53ff:r_op HIGH(call_01_4f59)
-;; 1f:5407:r_op BANK(call_01_4f59)
+;; 1f:53fd:r_op LOW(call_read_chain_alloc)
+;; 1f:53ff:r_op HIGH(call_read_chain_alloc)
+;; 1f:5407:r_op BANK(call_read_chain_alloc)
 
 1f:5413 call_1f_5413
 
