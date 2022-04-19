@@ -3721,7 +3721,14 @@
 
 ;; 03:4b27 Return
 
-03:4b29 call_03_4b29
+03:4b29 call_write_current_instrument_wave_length_param
+;; 03:4b29 Write the wave length param of the current instrument.
+;; 03:4b29 Args: wave_lenth
+;; 03:4b29 Registers used: A, DE, HL
+
+03:4b35 .jump_calculate_value
+
+;; 03:4b3d:r_op _WAVE_LENGTH_INSTRUMENT_PARAM
 
 03:4b48 call_write_current_instrument_wave_loop_pos_param
 ;; 03:4b48 Write the loop position to the current instrument.
