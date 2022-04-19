@@ -8171,7 +8171,14 @@
 
 1e:79fa call_1e_79fa
 
-1e:7a38 call_1e_7a38
+1e:7a38 call_wait_vblank_read
+;; 1e:7a38 Wait for VBLANK LCD mode and read a byte.
+;; 1e:7a38 Result: E
+;; 1e:7a38 Registers used: A, DE, HL
+
+1e:7a39 .jump_wait_vblank
+
+;; 1e:7a3c Check VBLANK bit
 
 1e:7a4b call_1e_7a4b
 
