@@ -8520,7 +8520,8 @@
 ;; 1f:53df:r_op HIGH(call_01_4cfb)
 ;; 1f:53e9:r_op BANK(call_01_4cfb)
 
-1f:53fc call_1f_53fc
+1f:53fc call_1f_banked_read_chain_alloc
+;; 1f:53fc See: call_read_chain_alloc
 
 ;; 1f:53fd:r_op LOW(call_read_chain_alloc)
 ;; 1f:53ff:r_op HIGH(call_read_chain_alloc)
