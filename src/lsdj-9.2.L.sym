@@ -6555,7 +6555,14 @@
 ;; 1b:4c91 1b:4c91
 ;; 1b:4c91:replace:0005 db _SPECIAL_ASCII_CODE, " ", _BACKSPACE_ASCII_CODE, _OKAY_ASCII_CODE, $00
 
-1b:4c96 call_1b_4c96
+1b:4c96 call_clear_keyboard_cursor
+;; 1b:4c96 Clear the current keyboard cursor.
+;; 1b:4c96
+;; 1b:4c96 Entry conditions:
+;; 1b:4c96   KEYBOARD_CURSOR_ROW must be set
+;; 1b:4c96   KEYBOARD_CURSOR_COL must be set
+;; 1b:4c96
+;; 1b:4c96 Registers used: A, HL
 
 1b:4cba call_1b_4cba
 
