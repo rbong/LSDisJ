@@ -383,8 +383,8 @@
 ;; 00:0de2:r_op BANK(call_01_4cf1)
 ;; 00:0de9:r_op BANK(call_01_4cf1)
 ;; 00:0deb:l_op call_01_4cf1
-;; 00:0dee Assume the bank of call_01_4848 is the same as call_01_4cf1
-;; 00:0dee:l_op call_01_4848
+;; 00:0dee Assume the bank of call_is_sram_initialized is the same as call_01_4cf1
+;; 00:0dee:l_op call_is_sram_initialized
 
 ;; 00:0dfa:r_op LOW(call_1e_7aa0)
 ;; 00:0dfc:r_op HIGH(call_1e_7aa0)
@@ -2103,22 +2103,48 @@
 ;; 01:482b:r_op _SRAM_FILE_INIT_FLAG + 1
 ;; 01:482f:r_op _SRAM_FILE_INIT_FLAG_BANK
 
-01:4848 call_01_4848
+01:4848 call_is_sram_initialized
+;; 01:4848 Check if initialization flags are set on SRAM.
+;; 01:4848 Result: E
+;; 01:4848 Registers used: A, E, HL
 
 ;; 01:4849:r_op _SRAM_INIT_FLAG_1
 ;; 01:484d:r_op _SRAM_INIT_FLAG_1_BANK
+
+;; 01:4858:l_op _SRAM_CHECK_1
+
 ;; 01:485d:r_op _SRAM_INIT_FLAG_1 + 1
 ;; 01:4861:r_op _SRAM_INIT_FLAG_1_BANK
 
+;; 01:486c:l_op _SRAM_CHECK_2
+
+01:4876 .jump_check_sram_init_flag_3
+
 ;; 01:4876:r_op _SRAM_INIT_FLAG_3
 ;; 01:487a:r_op _SRAM_INIT_FLAG_3_BANK
+
+;; 01:4885:l_op _SRAM_CHECK_1
+
 ;; 01:488a:r_op _SRAM_INIT_FLAG_3 + 1
 ;; 01:488e:r_op _SRAM_INIT_FLAG_3_BANK
 
+;; 01:4899:l_op _SRAM_CHECK_2
+
+01:48a3 .jump_check_sram_init_flag_2
+
 ;; 01:48a3:r_op _SRAM_INIT_FLAG_2
 ;; 01:48a7:r_op _SRAM_INIT_FLAG_2_BANK
+
+;; 01:48b2:l_op _SRAM_CHECK_1
+
 ;; 01:48b7:r_op _SRAM_INIT_FLAG_2 + 1
 ;; 01:48bb:r_op _SRAM_TABLE_COMMAND_VALUES_2_BANK
+
+;; 01:48c6:l_op _SRAM_CHECK_2
+
+01:48d0 .jump_false
+
+01:48d2 .jump_return
 
 01:48d4 call_write_sram_check
 ;; 01:48d4 Write SRAM check values to mark the ROM/RAM as verified.
