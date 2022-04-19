@@ -506,8 +506,8 @@
 ;; 00:13c5 Assume the bank of call_01_50a0 is the same ass call_01_4fec
 ;; 00:13c5:l_op call_01_50a0
 
-;; 00:13c8 Assume the bank of call_01_7869 is the same ass call_01_4fec
-;; 00:13c8:l_op call_01_7869
+;; 00:13c8 Assume the bank of call_has_banner is the same ass call_01_4fec
+;; 00:13c8:l_op call_has_banner
 
 ;; 00:13de Assume the bank of call_01_7881 is the same ass call_01_4fec
 ;; 00:13de:l_op call_01_7881
@@ -2742,7 +2742,13 @@
 
 01:7828 call_01_7828
 
-01:7869 call_01_7869
+01:7869 call_has_banner
+;; 01:7869 Check to see if there is an active banner being displayed.
+;; 01:7869 Result: E
+;; 01:7869 Registers used: A, E, HL
+
+01:7879 .jump_check_banner_address
+01:787d .jump_return
 
 01:7881 call_01_7881
 
