@@ -6092,7 +6092,15 @@
 
 07:44fc call_07_44fc
 
-07:451e call_07_451e
+07:451e call_refresh_song_screen_scroll
+;; 07:451e Update the song screen scroll after changing the cursor row arbitrarily.
+;; 07:451e Registers used: A, HL
+
+07:4536 .jump_set_scroll_1
+
+07:4546 .jump_set_scroll_2
+
+07:4550 .jump_return
 
 07:4552 call_07_4552
 
