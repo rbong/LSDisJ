@@ -8080,7 +8080,18 @@
 
 1d:70eb call_1d_70eb
 
-1d:7118 call_1d_7118
+1d:7118 call_decrement_current_synth_resonance_2_param
+;; 1d:7118 Decrement the resonance 2 param for the current instrument.
+;; 1d:7118 Result: E
+;; 1d:7118 Registers used: A, DE, HL
+
+;; 1d:7119:r_op _RESONANCE_2_SYNTH_PARAM
+
+1d:712b .jump_decrement
+
+;; 1d:712f:r_op _RESONANCE_2_SYNTH_PARAM
+
+1d:7138 .jump_set_return
 
 1d:713f call_1d_713f
 
