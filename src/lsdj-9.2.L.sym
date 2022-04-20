@@ -4074,8 +4074,8 @@
 ;; 04:4071
 ;; 04:4071 Registers used: A, DE, HL
 
-04:4087 call_phrase_row_has_preceeding_speech_null_instrument
-;; 04:4087 Check if the current phrase cursor row has a speech/null instrument preceeding it.
+04:4087 call_get_preceeding_instrument
+;; 04:4087 Get the instrument number preceeding the current phrase row, if any.
 ;; 04:4087
 ;; 04:4087 Entry conditions:
 ;; 04:4087   PHRASE_CURSOR_ROW must be set
@@ -4374,6 +4374,7 @@
 
 04:4c06 call_04_4c06
 
+; TODO: this might be wrong
 04:4c10 data_kit_empty_row_string
 04:4c10 .text:0004
 
@@ -4452,7 +4453,25 @@
 04:5106 data_04_5106
 04:5106 .text:0004
 
-04:510a call_04_510a
+04:510a call_phrase_has_no_preceeding_kit_instrument
+;; 04:510a Returns whether the current phrase row doesn't have a preceeding speech/kit instrument.
+;; 04:510a Result: E
+;; 04:510a Registers used: A, DE, HL
+
+;; 04:510b Check for speech instrument
+
+;; 04:5110:l_op _SPEECH_INSTRUMENT
+
+;; 04:5115 Check for kit instrument
+
+;; 04:5115:r_op _INSTRUMENT_TYPE_INSTRUMENT_PARAM
+
+;; 04:5128 Return true
+
+04:512c .jump_return_false_1
+04:512d .jump_return_a
+04:5131 .jump_return_false_2
+04:5133 .jump_return
 
 04:5136 call_04_5136
 
