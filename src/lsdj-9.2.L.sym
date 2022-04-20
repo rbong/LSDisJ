@@ -4723,7 +4723,23 @@
 ;; 04:7bb0 04:7bb0
 ;; 04:7bb0:replace:0450 ds $8000 - @, $ff
 
-05:4000 call_05_4000
+05:4000 call_update_screen_offset_cols
+;; 05:4000 Update the offet positions of screen columns based on screen cursor position.
+
+;; 05:4004 Column offsets can only change on row 1
+
+05:400c .jump_check_col
+;; 05:400c If at column 0, use default screen offsets
+
+;; 05:4014 When cursor is to the right, draw screens all the way to the right
+
+;; 05:401b Otherwise set screen offsets to middle
+
+05:4028 .jump_set_right_offsets
+
+05:4035 .jump_set_left_offsets
+
+05:403f .jump_return
 
 05:4040 call_05_4040
 
