@@ -4074,7 +4074,26 @@
 ;; 04:4071
 ;; 04:4071 Registers used: A, DE, HL
 
-04:4087 call_04_4087
+04:4087 call_phrase_row_has_preceeding_speech_null_instrument
+;; 04:4087 Check if the current phrase cursor row has a speech/null instrument preceeding it.
+;; 04:4087
+;; 04:4087 Entry conditions:
+;; 04:4087   PHRASE_CURSOR_ROW must be set
+;; 04:4087   CURRENT_PHRASE must be set
+;; 04:4087
+;; 04:4087 Registers used: A, DE, HL
+
+04:408c .jump_check_row
+
+;; 04:4092 Read instrument
+
+;; 04:40a0 Check instrument
+
+04:40aa .jump_decrement_row
+
+04:40ae .jump_return_null
+
+04:40b0 .jump_return
 
 04:40b2 call_04_40b2
 
