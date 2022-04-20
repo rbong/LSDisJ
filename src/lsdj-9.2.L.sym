@@ -8078,7 +8078,20 @@
 
 1d:70c3 call_1d_70c3
 
-1d:70eb call_1d_70eb
+1d:70eb call_write_current_synth_resonance_2_param
+;; 1d:70eb Write the resonance 2 param for the current synth.
+;; 1d:70eb Result: E
+;; 1d:70eb Registers used: A, DE, HL
+
+;; 1d:70ec _RESONANCE_2_SYNTH_PARAM
+
+;; 1d:70f7 Disable resonance 2 bits
+
+1d:70fe .jump_set_resonance_2
+
+;; 1d:7104 _RESONANCE_2_SYNTH_PARAM
+
+1d:710d .jump_set_return
 
 1d:7118 call_1d_7118
 
