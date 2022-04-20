@@ -7473,7 +7473,28 @@
 
 1c:6519 call_1c_6519
 
-1c:6533 call_1c_6533
+1c:6533 call_read_song_row_noise_chain
+;; 1c:6533 Read a noise channel chain on a song row.
+;; 1c:6533 Args: row
+;; 1c:6533 Result: E
+;; 1c:6533 Registers used: A, DE, HL
+
+;; 1c:6539 The following loop rotates the row left twice, multiplying it by 4
+
+1c:653d .jump_calculate_address_1
+
+1c:6542 .jump_calculate_address_2
+
+;; 1c:6546:l_op LOW(_SRAM_SONG_CHAINS) + _NOISE_CHANNEL
+;; 1c:654a:l_op HIGH(_SRAM_SONG_CHAINS)
+
+;; 1c:654d Read the chain
+
+;; 1c:6558 Verify chain
+
+1c:6563 .jump_set_result
+
+1c:6564 .jump_return
 
 1c:6567 call_1c_6567
 
