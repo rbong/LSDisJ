@@ -2326,8 +2326,8 @@
 
 ;; 01:4f97 Return
 
-01:4f99 call_write_phrase_alloc
-;; 01:4f99 Write the allocation value for a phrase, marking it as allocated.
+01:4f99 call_read_phrase_alloc
+;; 01:4f99 Read whether a phrase is allocated or not.
 ;; 01:4f99 Args: phrase
 ;; 01:4f99 Registers used: A, DE, HL
 
@@ -8608,11 +8608,11 @@
 ;; 1f:4fb0:r_op _SRAM_TABLE_COMMANDS_1_BANK
 
 1f:502c call_1f_banked_write_phrase_alloc
-;; 1f:502c See: call_write_phrase_alloc
+;; 1f:502c See: call_read_phrase_alloc
 
-;; 1f:502d:r_op LOW(call_write_phrase_alloc)
-;; 1f:502f:r_op HIGH(call_write_phrase_alloc)
-;; 1f:5037:r_op BANK(call_write_phrase_alloc)
+;; 1f:502d:r_op LOW(call_read_phrase_alloc)
+;; 1f:502f:r_op HIGH(call_read_phrase_alloc)
+;; 1f:5037:r_op BANK(call_read_phrase_alloc)
 
 1f:5043 call_1f_5043
 
@@ -8763,9 +8763,43 @@
 1f:5d61 data_1f_5d61
 1f:5d61 .text:0003
 
-1f:5d64 call_1f_5d64
+1f:5d64 call_get_free_phrases
+;; 1f:5d64 Get the number of free phrases.
+;; 1f:5d64 Result: E
+;; 1f:5d64 Registers used: A, DE, HL
 
-1f:5d8e call_1f_5d8e
+1f:5d6d .jump_check_phrase
+
+;; 1f:5d6e:l_op _PHRASES
+
+;; 1f:5d73 Read phrase alloc
+
+;; 1f:5d7b Check if phrase was cleared
+
+;; 1f:5d80 Increment count of cleared phrases
+
+1f:5d83 .jump_increment
+
+1f:5d87 .jump_return
+
+1f:5d8e call_get_free_chains
+;; 1f:5d8e Get the number of free chains.
+;; 1f:5d8e Result: E
+;; 1f:5d8e Registers used: A, DE, HL
+
+1f:5d97 .jump_check_chain
+
+;; 1f:5d98:l_op _CHAINS
+
+;; 1f:5d9d Read chain alloc
+
+;; 1f:5da2 Check whether chain is taken
+
+;; 1f:5daa Count chain
+
+1f:5dad .jump_increment
+
+1f:5db1 .jump_return
 
 1f:5db8 call_1f_5db8
 ;; 1f:5dbb:r_op rRAMB
