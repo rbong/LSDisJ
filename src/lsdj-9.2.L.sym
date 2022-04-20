@@ -7927,7 +7927,24 @@
 
 1d:650a call_1d_650a
 
-1d:657e call_1d_657e
+1d:657e call_draw_distortion_string
+;; 1d:657e Draw the string describing a distortion type.
+;; 1d:657e Args: type
+;; 1d:657e Registers used: A, DE, HL
+
+;; 1d:6581 Check for 0 (_CLIP_DIST)
+
+;; 1d:6588:l_op _FOLD_DIST
+
+;; 1d:6590:l_op _WRAP_DIST
+
+1d:6598 .jump_draw_clip_distortion_string
+
+1d:65a4 .jump_draw_fold_distortion_string
+
+1d:65b0 .jump_draw_wrap_distortion_string
+
+1d:65b9 .jump_return
 
 1d:65ba data_distortion_type_strings
 1d:65ba data_clip_distortion_type_string
