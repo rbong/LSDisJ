@@ -7931,9 +7931,19 @@
 
 1d:619a call_1d_619a
 
-1d:62af call_1d_62af
+1d:62af call_draw_resync_synth_param
+;; 1d:62af Draw the value for a resync type.
+;; 1d:62af Args: resync_type (see resync type constants)
+;; 1d:62af Registers used: A, C, DE, HL
 
-1d:62c2 jump_table_1d_62c2
+1d:62c2 .jump_table_resync_type
+
+1d:62ce .jump_draw_pinch
+1d:62da .jump_draw_warp
+1d:62e6 .jump_draw_default
+1d:62f2 .jump_draw_resync2
+
+1d:62fb .jump_return
 
 1d:62fc data_resync_type_strings
 1d:62fc data_pinch_resync_type_string
