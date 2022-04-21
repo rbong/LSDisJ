@@ -6618,7 +6618,9 @@
 
 1b:4bc3 call_1b_4bc3
 
-1b:4c30 call_1b_4c30
+1b:4c30 call_draw_keyboard_cursor
+;; 1b:4c30 Draw the cursor on the keyboard.
+;; 1b:4c30 Registers used: A, DE, HL
 
 1b:4c6a data_keyboard_keys_strings
 1b:4c6a data_keyboard_keys_string_1
