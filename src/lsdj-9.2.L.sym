@@ -8656,7 +8656,16 @@
 
 1f:50fa call_1f_50fa
 
-1f:511e call_1f_511e
+1f:511e call_set_table_column_values
+;; 1f:511e Set the values for an entire column of a table.
+;; 1f:511e Args: address (word), value
+;; 1f:511e Registers used: A, DE, HL
+
+1f:5125 .jump_check_row
+
+1f:514a .jump_increment
+
+1f:5150 .jump_return
 
 1f:5154 call_1f_5154
 ;; 1f:5173:r_op _SRAM_TABLE_COMMANDS_1
