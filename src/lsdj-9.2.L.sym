@@ -2039,9 +2039,9 @@
 ;; 01:45d5:r_op rRAMG
 ;; 01:45d8:r_op CART_RAM_ENABLE
 
-;; 01:45e2:r_op LOW(call_07_63ff)
-;; 01:45e4:r_op HIGH(call_07_63ff)
-;; 01:45e7:r_op BANK(call_07_63ff)
+;; 01:45e2:r_op LOW(call_clear_bookmarks)
+;; 01:45e4:r_op HIGH(call_clear_bookmarks)
+;; 01:45e7:r_op BANK(call_clear_bookmarks)
 
 ;; 01:45da:r_op rRAMB
 ;; 01:45dd:r_op _SRAM_INIT_FLAG_1_BANK
@@ -6360,7 +6360,14 @@
 
 07:63d5 call_07_63d5
 
-07:63ff call_07_63ff
+07:63ff call_clear_bookmarks
+;; 07:63ff Clear all bookmarks.
+;; 07:63ff
+;; 07:63ff Entry conditions:
+;; 07:63ff   The RAM bank must be set to _SRAM_BOOKMARKS_BANK.
+;; 07:63ff
+;; 07:63ff Registers used: A, HL
+
 ;; 07:6407:r_op _SRAM_BOOKMARKS
 ;; 07:640b Assume the bank is set to the bank for _SRAM_BOOKMARKS
 
