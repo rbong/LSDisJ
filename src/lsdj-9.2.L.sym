@@ -8430,7 +8430,19 @@
 1f:40c7 data_empty_table_on_param_value_string
 1f:40c7 .text:0003
 
-1f:40ca call_1f_40ca
+1f:40ca call_draw_kit_2_loop_type_instrument_param
+;; 1f:40ca Draw the current instrument loop type for kit 2.
+;; 1f:40ca Registers used: A, DE, HL
+
+;; 1f:40cb:r_op _KIT_2_LOOP_ON_INSTRUMENT_PARAM
+
+;; 1f:40de Assume param for kit 2 loop attack is the same
+
+;; 1f:40e9 Check attack bit
+
+1f:40fc .jump_draw_on
+1f:4108 .jump_draw_off
+1f:4111 .jump_return
 
 1f:4113 data_kit_loop_type_strings
 1f:4113 data_attack_kit_loop_type_string
