@@ -7228,7 +7228,19 @@
 ;; 1c:4dc3:r_op _SRAM_CURRENT_FILE
 ;; 1c:4dc7:r_op _SRAM_CURRENT_FILE_BANK
 
-1c:4dd1 call_1c_4dd1
+1c:4dd1 call_set_last_saved_time
+;; 1c:4dd1 Set the file last saved time based on the current time.
+;; 1c:4dd1
+;; 1c:4dd1 Entry conditions:
+;; 1c:4dd1   _SRAM_WORK_TIME_HOURS must be set
+;; 1c:4dd1   _SRAM_WORK_TIME_MINUTES must be set
+;; 1c:4dd1
+;; 1c:4dd1 Exit conditions:
+;; 1c:4dd1   _SRAM_LAST_SAVED_HOURS must will set
+;; 1c:4dd1   _SRAM_LAST_SAVED_MINUTES must will set
+;; 1c:4dd1
+;; 1c:4dd1 Registers used: A, DE, HL
+
 ;; 1c:4dd2:r_op _SRAM_WORK_TIME_MINUTES
 ;; 1c:4dd6:r_op _SRAM_WORK_TIME_MINUTES_BANK
 ;; 1c:4de3:r_op _SRAM_LAST_SAVED_MINUTES
