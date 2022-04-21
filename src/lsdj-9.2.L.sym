@@ -3789,7 +3789,13 @@
 ;; 03:4ce1:r_op HIGH(call_01_518c)
 ;; 03:4ceb:r_op BANK(call_01_518c)
 
-03:4cf8 call_03_4cf8
+03:4cf8 call_draw_wave_finetune_instrument_param
+;; 03:4cf8 Draw the wave finetune instrument param value.
+;; 03:4cf8 Registers used: A, DE, HL
+
+;; 03:4cf9:r_op _WAVE_FINETUNE_INSTRUMENT_PARAM
+
+;; 03:4d11:r_op _EMPTY_ROW_ASCII_CODE
 
 03:4d34 call_03_4d34
 
@@ -8496,8 +8502,8 @@
 ;; 1f:4803:r_op HIGH(call_01_522d)
 ;; 1f:480b:r_op BANK(call_01_522d)
 
-;; 1f:482e:r_op call_03_4cf8
-;; 1f:4832:r_op BANK(call_03_4cf8)
+;; 1f:482e:r_op call_draw_wave_finetune_instrument_param
+;; 1f:4832:r_op BANK(call_draw_wave_finetune_instrument_param)
 
 ;; 1f:483b:r_op call_03_4d34
 ;; 1f:483f:r_op BANK(call_03_4d34)
