@@ -4371,16 +4371,15 @@
 
 04:4b56 .jump_return
 
-04:4b5b call_draw_kit_empty_row
-;; 04:4b5b Draw an empty row for kits.
-;; 04:4b5b See also: call_write_bg_map_attr_indexes
-;; 04:4b5b Registers used: A, DE, HL
+04:4b5b call_04_4b5b
 
 ;; 04:4bcc:l_op _SELECT_CURSOR_MODE
 
-04:4c06 call_04_4c06
+04:4c06 call_draw_empty_kit_row
+;; 04:4c06 Draw an empty row for kits.
+;; 04:4c06 See also: call_write_bg_map_attr_indexes
+;; 04:4c06 Registers used: A, DE, HL
 
-; TODO: this might be wrong
 04:4c10 data_kit_empty_row_string
 04:4c10 .text:0004
 
