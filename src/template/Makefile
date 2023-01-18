@@ -7,7 +7,7 @@ VERIFY := true
 ASM := rgbasm
 # Assembler flags
 ASFLAGS := \
-  -L \
+	-L \
 	--pad-value 0xFF
 
 # Linker program
