@@ -375,7 +375,7 @@
 
 00:0dca call_00_0dca
 ;; 00:0dd1:r_op rRAMG
-; ;; 00:0dd4:r_op CART_RAM_DISABLE
+;; 00:0dd4:r_op CART_SRAM_DISABLE
 
 ;; 00:0dd6:r_op BANK(call_1b_6b7a)
 ;; 00:0ddd:r_op BANK(call_1b_6b7a)
@@ -543,7 +543,7 @@
 ;; 00:14a6 Set external RAM bank number
 ;; 00:14a6:l_op [rRAMB]
 ;; 00:14a9 Enable external RAM
-; ;; 00:14a9:r_op CART_RAM_ENABLE
+;; 00:14a9:r_op CART_SRAM_ENABLE
 ;; 00:14ab:l_op [rRAMG]
 ;; 00:14ae Read byte
 ;; 00:14b1 Disable external RAM
@@ -558,7 +558,7 @@
 ;; 00:14b5   E = the byte at the address
 ;; 00:14b5   The external RAM register (0x0000) will be set to 0
 ;; 00:14bb:l_op [rRAMB]
-; ;; 00:14be:r_op CART_RAM_ENABLE
+;; 00:14be:r_op CART_SRAM_ENABLE
 ;; 00:14c0:l_op [rRAMG]
 ;; 00:14c6:l_op [rRAMG]
 
@@ -573,7 +573,7 @@
 ;; 00:14ca
 ;; 00:14ca Registers used: A, DE, HL
 ;; 00:14ce:l_op [rRAMB]
-; ;; 00:14dd:r_op CART_RAM_ENABLE
+;; 00:14dd:r_op CART_SRAM_ENABLE
 ;; 00:14df:l_op [rRAMG]
 ;; 00:1512:l_op [rRAMG]
 
@@ -592,7 +592,7 @@
 ;; 00:1527:l_op HIGH(_SRAM)
 ;; 00:152c:l_op HIGH(_SRAM + $2000)
 ;; 00:1533:l_op [rRAMB]
-; ;; 00:1536:r_op CART_RAM_ENABLE
+;; 00:1536:r_op CART_SRAM_ENABLE
 ;; 00:1538:l_op [rRAMG]
 ;; 00:153e:l_op [rRAMG]
 
@@ -610,7 +610,7 @@
 ;; 00:154e Enable external RAM
 ;; 00:1553 Write byte
 ;; 00:1555 Disable external RAM
-; ;; 00:154e:r_op CART_RAM_ENABLE
+;; 00:154e:r_op CART_SRAM_ENABLE
 ;; 00:1550:l_op [rRAMG]
 ;; 00:1556:l_op [rRAMG]
 
@@ -1950,7 +1950,7 @@
 ;; 01:4000 Exit conditions: E = success
 ;; 01:4000 Registers used: A, DE, HL
 ;; 01:400c:r_op rRAMG
-; ;; 01:400f:r_op CART_RAM_ENABLE
+;; 01:400f:r_op CART_SRAM_ENABLE
 01:4015 .call_sram_random_test_1
 ;; 01:4026:r_op rRAMB
 01:402a .call_sram_random_test_2
@@ -1969,7 +1969,7 @@
 01:40d9 .call_sram_random_test_14
 01:40df .call_sram_random_test_15
 ;; 01:40df:r_op rRAMG
-; ;; 01:40e2:r_op CART_RAM_DISABLE
+;; 01:40e2:r_op CART_SRAM_DISABLE
 01:40e6 .call_sram_random_test_16
 
 01:40ea data_default_wave_frame_1
@@ -1988,13 +1988,13 @@
 ;; 01:445a Exit conditions: E = success
 ;; 01:445a Registers used: A, E, HL
 ;; 01:445b:r_op rRAMG
-; ;; 01:445e:r_op CART_RAM_ENABLE
+;; 01:445e:r_op CART_SRAM_ENABLE
 01:4462 .call_sram_test_1
 ;; 01:4468:r_op rRAMB
 01:447a .call_sram_test_2
 01:447e .call_sram_test_3
 ;; 01:447e:r_op rRAMG
-; ;; 01:4481:r_op CART_RAM_DISABLE
+;; 01:4481:r_op CART_SRAM_DISABLE
 01:4485 .call_sram_test_4
 
 01:4487 call_cart_test
@@ -2037,7 +2037,7 @@
 
 01:45d1 call_01_45d1
 ;; 01:45d5:r_op rRAMG
-; ;; 01:45d8:r_op CART_RAM_ENABLE
+;; 01:45d8:r_op CART_SRAM_ENABLE
 
 ;; 01:45e2:r_op LOW(call_clear_bookmarks)
 ;; 01:45e4:r_op HIGH(call_clear_bookmarks)
@@ -2072,7 +2072,7 @@
 ;; 01:470c:r_op _SRAM_PHRASE_INSTRUMENTS
 
 ;; 01:471e:r_op rRAMG
-; ;; 01:4721:r_op CART_RAM_ENABLE
+;; 01:4721:r_op CART_SRAM_ENABLE
 
 ;; 01:4723:r_op rRAMB
 ;; 01:4726 Assume the banks are the same for _SRAM_INIT_FLAG_2, _SRAM_TEMPO, _SRAM_KEY_DELAY, _SRAM_KEY_REPEAT
@@ -2095,7 +2095,7 @@
 ;; 01:4801:r_op _SRAM_VERSION_FLAG
 
 ;; 01:4808:r_op rRAMG
-; ;; 01:480b:r_op CART_RAM_DISABLE
+;; 01:480b:r_op CART_SRAM_DISABLE
 
 01:4811 call_is_sram_file_initialized
 ;; 01:4811 Check whether the file initialized flags are set in SRAM.
@@ -2754,7 +2754,7 @@
 
 01:794e data_01_794e
 01:794e .text:0006
-; ;; 01:7958:r_op CART_RAM_DISABLE
+;; 01:7958:r_op CART_SRAM_DISABLE
 
 01:7954 jump_01_7954
 ;; 01:7955:r_op rRAMG
@@ -2789,19 +2789,19 @@
 
 01:7bec call_01_7bec
 ;; 01:7c39:r_op rRAMG
-; ;; 01:7c3c:r_op CART_RAM_ENABLE
+;; 01:7c3c:r_op CART_SRAM_ENABLE
 ;; 01:7c41:r_op rRAMG
-; ;; 01:7c44:r_op CART_RAM_DISABLE
+;; 01:7c44:r_op CART_SRAM_DISABLE
 
 01:7c94 call_01_7c94
 ;; 01:7caa:r_op rRAMG
-; ;; 01:7cad:r_op CART_RAM_ENABLE
+;; 01:7cad:r_op CART_SRAM_ENABLE
 ;; 01:7caf:r_op rRAMB
 ;; 01:7cb2:r_op _SRAM_FONT_BANK
 ;; 01:7cb4:r_op _SRAM_FONT
 
 ;; 01:7ccb:r_op rRAMG
-; ;; 01:7cce:r_op CART_RAM_ENABLE
+;; 01:7cce:r_op CART_SRAM_ENABLE
 ;; 01:7cd0:r_op rRAMB
 ;; 01:7cd3:r_op _SRAM_CLONE_TYPE_BANK
 ;; 01:7cd5:r_op _SRAM_CLONE_TYPE
@@ -2810,12 +2810,12 @@
 
 ;; 01:7cfe:r_op LOW(call_1e_7aa0)
 ;; 01:7cf9:r_op rRAMG
-; ;; 01:7cfc:r_op CART_RAM_DISABLE
+;; 01:7cfc:r_op CART_SRAM_DISABLE
 ;; 01:7d00:r_op HIGH(call_1e_7aa0)
 ;; 01:7d03:r_op BANK(call_1e_7aa0)
 
 ;; 01:7d1c:r_op rRAMG
-; ;; 01:7d1f:r_op CART_RAM_ENABLE
+;; 01:7d1f:r_op CART_SRAM_ENABLE
 ;; 01:7d21:r_op rRAMB
 ;; 01:7d24:r_op _SRAM_TEMPO_BANK
 ;; 01:7d26:r_op _SRAM_TEMPO
@@ -2832,7 +2832,7 @@
 ;; 01:7d96 Assume the bank for _SRAM_KEY_REPEAT and _SRAM_TEMPO are the same
 
 ;; 01:7d9d:r_op rRAMG
-; ;; 01:7da0:r_op CART_RAM_DISABLE
+;; 01:7da0:r_op CART_SRAM_DISABLE
 
 ;; 01:7da2:r_op LOW(call_07_5d9a)
 ;; 01:7da4:r_op HIGH(call_07_5d9a)
@@ -2950,7 +2950,7 @@
 
 02:4286 call_02_4286
 ;; 02:42da:l_op [rRAMB]
-; ;; 02:42dd:r_op CART_RAM_ENABLE
+;; 02:42dd:r_op CART_SRAM_ENABLE
 ;; 02:42e0:l_op [rRAMG]
 ;; 02:42e6:l_op [rRAMG]
 
@@ -2988,7 +2988,7 @@
 ;; 02:4897:r_op _SRAM_GROOVES
 ;; 02:489b Assume bank for _SRAM_GROOVES is 0
 ;; 02:489c:l_op [rRAMB]
-; ;; 02:489f:r_op CART_RAM_ENABLE
+;; 02:489f:r_op CART_SRAM_ENABLE
 ;; 02:48a2:l_op [rRAMG]
 ;; 02:48a7:l_op [rRAMG]
 
@@ -2999,11 +2999,11 @@
 ;; 02:48de:r_op _SRAM_SONG_CHAINS_BANK
 ;; 02:48e0:l_op [rRAMB]
 ;; 02:48ef:r_op _SRAM_SONG_CHAINS
-; ;; 02:4911:r_op CART_RAM_ENABLE
+;; 02:4911:r_op CART_SRAM_ENABLE
 ;; 02:4914:l_op [rRAMG]
-; ;; 02:491a:r_op CART_RAM_DISABLE
+;; 02:491a:r_op CART_SRAM_DISABLE
 ;; 02:491c:l_op [rRAMG]
-; ;; 02:4940:r_op CART_RAM_ENABLE
+;; 02:4940:r_op CART_SRAM_ENABLE
 ;; 02:4943:l_op [rRAMG]
 ;; 02:4949:l_op [rRAMG]
 
@@ -3013,7 +3013,7 @@
 ;; 02:4b9e:r_op _SRAM_CHAIN_TRANSPOSES
 ;; 02:4bab:r_op _SRAM_CHAIN_TRANSPOSES_BANK
 ;; 02:4bad:l_op [rRAMB]
-; ;; 02:4bb0:r_op CART_RAM_ENABLE
+;; 02:4bb0:r_op CART_SRAM_ENABLE
 ;; 02:4bb3:l_op [rRAMG]
 ;; 02:4bb8:l_op [rRAMG]
 
@@ -3027,7 +3027,7 @@
 
 02:4c68 call_02_4c68
 ;; 02:4c6a:l_op [rRAMB]
-; ;; 02:4c78:r_op CART_RAM_ENABLE
+;; 02:4c78:r_op CART_SRAM_ENABLE
 ;; 02:4c7b:l_op [rRAMG]
 ;; 02:4c80:l_op [rRAMG]
 
@@ -3073,7 +3073,7 @@
 ;; 02:4f8c:l_op [rRAMB]
 
 02:5006 call_02_5006
-; ;; 02:5009:r_op CART_RAM_ENABLE
+;; 02:5009:r_op CART_SRAM_ENABLE
 ;; 02:500b:r_op rRAMG
 
 02:5014 call_02_5014
@@ -3108,7 +3108,7 @@
 ;; 02:511b Add the current channel x2 to the base address
 
 ;; 02:5120 Prepare to read from the cart
-; ;; 02:5123:r_op CART_RAM_ENABLE
+;; 02:5123:r_op CART_SRAM_ENABLE
 ;; 02:5126:l_op [rRAMG]
 
 ;; 02:5129 Read the value from the address that was read before
@@ -3118,7 +3118,7 @@
 
 02:512f call_02_512f
 ;; 02:517f:l_op [rRAMB]
-; ;; 02:5182:r_op CART_RAM_ENABLE
+;; 02:5182:r_op CART_SRAM_ENABLE
 ;; 02:5185:l_op [rRAMG]
 ;; 02:518a:l_op [rRAMG]
 ;; 02:521d:l_op [rRAMB]
@@ -3126,7 +3126,7 @@
 02:530f call_02_530f
 
 02:5423 call_02_5423
-; ;; 02:5434:r_op CART_RAM_ENABLE
+;; 02:5434:r_op CART_SRAM_ENABLE
 ;; 02:5437:l_op [rRAMG]
 ;; 02:543d:l_op [rRAMG]
 
@@ -3178,7 +3178,7 @@
 ;; 02:58be:r_op _SRAM_INSTRUMENT_PARAMS
 ;; 02:58c2:r_op _SRAM_INSTRUMENT_PARAMS_BANK
 ;; 02:58c4:l_op [rRAMB]
-; ;; 02:58ca:r_op CART_RAM_ENABLE
+;; 02:58ca:r_op CART_SRAM_ENABLE
 ;; 02:58cd:l_op [rRAMG]
 ;; 02:58fa:l_op [rRAMG]
 
@@ -3186,7 +3186,7 @@
 ;; 02:5e62:r_op _SRAM_CHAIN_PHRASES
 ;; 02:5e66:r_op _SRAM_CHAIN_PHRASES_BANK
 ;; 02:5e68:l_op [rRAMB]
-; ;; 02:5e6b:r_op CART_RAM_ENABLE
+;; 02:5e6b:r_op CART_SRAM_ENABLE
 ;; 02:5e6e:l_op [rRAMG]
 ;; 02:5e73:l_op [rRAMG]
 
@@ -3194,7 +3194,7 @@
 ;; 02:5e8f:r_op _SRAM_SONG_CHAINS
 ;; 02:5e93:r_op _SRAM_SONG_CHAINS_BANK
 ;; 02:5e95:l_op [rRAMB]
-; ;; 02:5e98:r_op CART_RAM_ENABLE
+;; 02:5e98:r_op CART_SRAM_ENABLE
 ;; 02:5e9b:l_op [rRAMG]
 ;; 02:5ea0:l_op [rRAMG]
 
@@ -3227,7 +3227,7 @@
 
 02:61bf call_02_61bf
 ;; 02:61d0:l_op [rRAMB]
-; ;; 02:61d3:r_op CART_RAM_ENABLE
+;; 02:61d3:r_op CART_SRAM_ENABLE
 ;; 02:61d6:l_op [rRAMG]
 ;; 02:620a:l_op [rRAMG]
 
@@ -3311,15 +3311,15 @@
 02:6f56 call_02_6f56
 ;; 02:6f57:r_op rRAMB
 ;; 02:6f69:r_op rRAMG
-; ;; 02:6f6c:r_op CART_RAM_ENABLE
+;; 02:6f6c:r_op CART_SRAM_ENABLE
 ;; 02:6f80:r_op rRAMG
-; ;; 02:6f83:r_op CART_RAM_DISABLE
+;; 02:6f83:r_op CART_SRAM_DISABLE
 ;; 02:6fdf:r_op rRAMG
-; ;; 02:6fe2:r_op CART_RAM_DISABLE
+;; 02:6fe2:r_op CART_SRAM_DISABLE
 ;; 02:6ff1:r_op rRAMG
-; ;; 02:6ff4:r_op CART_RAM_ENABLE
+;; 02:6ff4:r_op CART_SRAM_ENABLE
 ;; 02:7001:r_op rRAMG
-; ;; 02:7004:r_op CART_RAM_DISABLE
+;; 02:7004:r_op CART_SRAM_DISABLE
 
 02:701d call_02_701d
 
@@ -6510,13 +6510,13 @@
 
 07:73c4 call_07_73c4
 ;; 07:73d8:l_op [rRAMB]
-; ;; 07:73db:r_op CART_RAM_ENABLE
+;; 07:73db:r_op CART_SRAM_ENABLE
 ;; 07:73dd:l_op [rRAMG]
 ;; 07:73e3:l_op [rRAMG]
 
 07:73f1 call_07_73f1
 ;; 07:7401:l_op [rRAMB]
-; ;; 07:7404:r_op CART_RAM_ENABLE
+;; 07:7404:r_op CART_SRAM_ENABLE
 ;; 07:7406:l_op [rRAMG]
 ;; 07:740c:l_op [rRAMG]
 
@@ -7121,9 +7121,9 @@
 1c:4000 call_1c_4000
 ;; 1c:4011:r_op rRAMB
 ;; 1c:4016:r_op rRAMG
-; ;; 1c:4019:r_op CART_RAM_ENABLE
+;; 1c:4019:r_op CART_SRAM_ENABLE
 ;; 1c:402f:r_op rRAMG
-; ;; 1c:4032:r_op CART_RAM_DISABLE
+;; 1c:4032:r_op CART_SRAM_DISABLE
 
 1c:4047 data_default_wave_frame_3
 1c:4047 .data:0010
@@ -7163,9 +7163,9 @@
 1c:4352 call_1c_4352
 ;; 1c:4383:r_op rRAMB
 ;; 1c:4388:r_op rRAMG
-; ;; 1c:438b:r_op CART_RAM_ENABLE
+;; 1c:438b:r_op CART_SRAM_ENABLE
 ;; 1c:439b:r_op rRAMG
-; ;; 1c:439e:r_op CART_RAM_DISABLE
+;; 1c:439e:r_op CART_SRAM_DISABLE
 
 1c:43b9 data_empty_string_1
 1c:43b9 .text:0008
@@ -7500,11 +7500,11 @@
 
 1c:63c9 call_1c_63c9
 ;; 1c:63cd:r_op rRAMG
-; ;; 1c:63d0:r_op CART_RAM_ENABLE
+;; 1c:63d0:r_op CART_SRAM_ENABLE
 ;; 1c:63d2:r_op rRAMB
 ;; 1c:644b:r_op rRAMB
 ;; 1c:648b:r_op rRAMG
-; ;; 1c:648e:r_op CART_RAM_DISABLE
+;; 1c:648e:r_op CART_SRAM_DISABLE
 
 1c:6495 call_1c_6495
 
@@ -7564,7 +7564,7 @@
 
 1c:6955 call_1c_6955
 ;; 1c:6959:r_op rRAMG
-; ;; 1c:695c:r_op CART_RAM_ENABLE
+;; 1c:695c:r_op CART_SRAM_ENABLE
 ;; 1c:695e:r_op rRAMB
 ;; 1c:6961:r_op _SRAM_TABLE_COMMANDS_1_BANK
 ;; 1c:6963:r_op _SRAM_TABLE_COMMANDS_1
@@ -7574,7 +7574,7 @@
 ;; 1c:69c8:r_op _SRAM_PHRASE_COMMANDS_BANK
 ;; 1c:69ca:r_op _SRAM_PHRASE_COMMANDS
 ;; 1c:69fb:r_op rRAMG
-; ;; 1c:69fe:r_op CART_RAM_DISABLE
+;; 1c:69fe:r_op CART_SRAM_DISABLE
 
 1c:6a05 call_1c_6a05
 
@@ -7588,10 +7588,10 @@
 
 1c:6ac6 call_1c_6ac6
 ;; 1c:6ad1:r_op rRAMG
-; ;; 1c:6ad4:r_op CART_RAM_ENABLE
+;; 1c:6ad4:r_op CART_SRAM_ENABLE
 ;; 1c:6ad6:r_op rRAMB
 ;; 1c:6b4b:r_op rRAMG
-; ;; 1c:6b4e:r_op CART_RAM_DISABLE
+;; 1c:6b4e:r_op CART_SRAM_DISABLE
 
 1c:6b55 call_1c_6b55
 
@@ -7624,7 +7624,7 @@
 
 1c:70cd call_1c_70cd
 ;; 1c:70e6:l_op [rRAMB]
-; ;; 1c:70f4:r_op CART_RAM_ENABLE
+;; 1c:70f4:r_op CART_SRAM_ENABLE
 ;; 1c:70f7:l_op [rRAMG]
 ;; 1c:7100:l_op [rRAMG]
 
@@ -7713,7 +7713,7 @@
 
 1c:748f call_1c_748f
 ;; 1c:7496:l_op [rRAMB]
-; ;; 1c:74a5:r_op CART_RAM_ENABLE
+;; 1c:74a5:r_op CART_SRAM_ENABLE
 ;; 1c:74a8:l_op [rRAMG]
 ;; 1c:74b7:l_op [rRAMG]
 
@@ -8636,9 +8636,9 @@
 
 ;; 1f:4e1b:r_op rRAMB
 ;; 1f:4e21:r_op rRAMG
-; ;; 1f:4e24:r_op CART_RAM_ENABLE
+;; 1f:4e24:r_op CART_SRAM_ENABLE
 ;; 1f:4e39:r_op rRAMG
-; ;; 1f:4e3c:r_op CART_RAM_DISABLE
+;; 1f:4e3c:r_op CART_SRAM_DISABLE
 
 ;; 1f:4cda:r_op LOW(call_read_phrase_instrument)
 ;; 1f:4cdd:r_op HIGH(call_read_phrase_instrument)
@@ -8752,7 +8752,7 @@
 
 1f:5437 call_1f_5437
 ;; 1f:544b:r_op rRAMG
-; ;; 1f:544e:r_op CART_RAM_ENABLE
+;; 1f:544e:r_op CART_SRAM_ENABLE
 ;; 1f:5498:r_op rRAMB
 ;; 1f:54d3:r_op rRAMB
 ;; 1f:54d6:r_op _SRAM_PHRASE_INSTRUMENTS_BANK
@@ -8765,7 +8765,7 @@
 
 1f:55df call_1f_55df
 ;; 1f:55f3:r_op rRAMG
-; ;; 1f:55f6:r_op CART_RAM_ENABLE
+;; 1f:55f6:r_op CART_SRAM_ENABLE
 ;; 1f:561b:r_op _SRAM_CHAIN_PHRASES
 ;; 1f:5635:r_op _SRAM_CHAIN_PHRASES
 ;; 1f:5640:r_op rRAMB
@@ -8775,7 +8775,7 @@
 
 1f:56d7 call_1f_56d7
 ;; 1f:5709:r_op rRAMG
-; ;; 1f:570c:r_op CART_RAM_ENABLE
+;; 1f:570c:r_op CART_SRAM_ENABLE
 ;; 1f:570e:r_op rRAMB
 ;; 1f:5711:r_op _SRAM_TABLE_COMMANDS_1_BANK
 ;; 1f:5718:r_op _SRAM_TABLE_COMMANDS_1
@@ -8796,11 +8796,11 @@
 1f:5931 call_1f_5931
 ;; 1f:5934:r_op _SRAM_CHAIN_PHRASES
 ;; 1f:5938:r_op rRAMG
-; ;; 1f:593b:r_op CART_RAM_ENABLE
+;; 1f:593b:r_op CART_SRAM_ENABLE
 ;; 1f:593d:r_op rRAMB
 ;; 1f:5940:r_op _SRAM_CHAIN_PHRASES_BANK
 ;; 1f:595d:r_op rRAMG
-; ;; 1f:5960:r_op CART_RAM_DISABLE
+;; 1f:5960:r_op CART_SRAM_DISABLE
 ;; 1f:59b9:r_op rRAMB
 
 ;; 1f:5963:r_op LOW(call_write_phrase_unalloc)
@@ -8810,10 +8810,10 @@
 1f:59ad call_1f_59ad
 ;; 1f:59b0:r_op _SRAM_SONG_CHAINS
 ;; 1f:59b4:r_op rRAMG
-; ;; 1f:59b7:r_op CART_RAM_ENABLE
+;; 1f:59b7:r_op CART_SRAM_ENABLE
 ;; 1f:59d9:r_op rRAMG
 ;; 1f:59bc:r_op _SRAM_SONG_CHAINS_BANK
-; ;; 1f:59dc:r_op CART_RAM_DISABLE
+;; 1f:59dc:r_op CART_SRAM_DISABLE
 
 ;; 1f:59df:r_op LOW(call_write_chain_unalloc)
 ;; 1f:59e1:r_op HIGH(call_write_chain_unalloc)
@@ -8821,11 +8821,11 @@
 
 1f:5a29 call_1f_5a29
 ;; 1f:5a3b:r_op rRAMG
-; ;; 1f:5a3e:r_op CART_RAM_ENABLE
+;; 1f:5a3e:r_op CART_SRAM_ENABLE
 ;; 1f:5a40:r_op rRAMB
 ;; 1f:5ad5:r_op rRAMB
 ;; 1f:5b29:r_op rRAMG
-; ;; 1f:5b2c:r_op CART_RAM_DISABLE
+;; 1f:5b2c:r_op CART_SRAM_DISABLE
 
 1f:5b79 call_1f_5b79
 
@@ -8881,17 +8881,17 @@
 ;; 1f:5dbb:r_op rRAMB
 ;; 1f:5dbe:r_op _SRAM_PHRASE_ALLOC_BANK
 ;; 1f:5dc1:r_op rRAMG
-; ;; 1f:5dc4:r_op CART_RAM_ENABLE
+;; 1f:5dc4:r_op CART_SRAM_ENABLE
 ;; 1f:5dce:r_op _SRAM_PHRASE_ALLOC
 ;; 1f:5dd7:r_op rRAMG
-; ;; 1f:5dda:r_op CART_RAM_DISABLE
+;; 1f:5dda:r_op CART_SRAM_DISABLE
 ;; 1f:5e33:r_op rRAMG
-; ;; 1f:5e36:r_op CART_RAM_ENABLE
+;; 1f:5e36:r_op CART_SRAM_ENABLE
 ;; 1f:5e38:r_op rRAMB
 ;; 1f:5e50:r_op rRAMB
 ;; 1f:5e93:r_op rRAMB
 ;; 1f:5eab:r_op rRAMG
-; ;; 1f:5eae:r_op CART_RAM_DISABLE
+;; 1f:5eae:r_op CART_SRAM_DISABLE
 
 1f:5ebb call_1f_5ebb
 
@@ -8908,18 +8908,18 @@
 1f:60fe call_1f_60fe
 ;; 1f:6118:r_op rRAMB
 ;; 1f:611e:r_op rRAMG
-; ;; 1f:6121:r_op CART_RAM_ENABLE
+;; 1f:6121:r_op CART_SRAM_ENABLE
 ;; 1f:6131:r_op rRAMG
-; ;; 1f:6134:r_op CART_RAM_DISABLE
+;; 1f:6134:r_op CART_SRAM_DISABLE
 
 1f:6139 call_1f_6139
 
 1f:615f call_1f_615f
 ;; 1f:6179:r_op rRAMB
 ;; 1f:617f:r_op rRAMG
-; ;; 1f:6182:r_op CART_RAM_ENABLE
+;; 1f:6182:r_op CART_SRAM_ENABLE
 ;; 1f:6192:r_op rRAMG
-; ;; 1f:6195:r_op CART_RAM_DISABLE
+;; 1f:6195:r_op CART_SRAM_DISABLE
 
 1f:619a data_synth_param_defaults
 1f:619a .data:0010
