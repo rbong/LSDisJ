@@ -29,11 +29,11 @@ FIXFLAGS := \
 
 # Helper variables
 
-IMAGE_TARGETS = \
-	src/gfx/font_1_content.2bpp \
-	src/gfx/font_2_content.2bpp \
-	src/gfx/font_3_content.2bpp \
-	src/gfx/tileset.2bpp
+# IMAGE_TARGETS = \
+# 	src/gfx/font_1_content.2bpp \
+# 	src/gfx/font_2_content.2bpp \
+# 	src/gfx/font_3_content.2bpp \
+# 	src/gfx/tileset.2bpp
 
 # Special targets
 
@@ -52,7 +52,8 @@ clean:
 %.2bpp: %.png
 	$(GFX) $(GFXFLAGS) -o "$@" "$<"
 
-src/lsdj.o: src/lsdj.asm $(wildcard src/bank_*.asm) $(wildcard src/*.inc) $(IMAGE_TARGETS)
+# src/lsdj.o: src/lsdj.asm $(wildcard src/bank_*.asm) $(wildcard src/*.inc) $(IMAGE_TARGETS)
+src/lsdj.o: src/lsdj.asm $(wildcard src/bank_*.asm) $(wildcard src/*.inc)
 	$(ASM) $(ASFLAGS) -i src -o "$@" "$<"
 
 lsdj.gb: src/lsdj.o
