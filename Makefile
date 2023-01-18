@@ -21,15 +21,15 @@ INC := src/lsdj-$(VERSION).inc
 DIS := mgbdis/mgbdis.py
 # Disassembly flags
 DISFLAGS := --disable-auto-ldh \
-						--disable-makefile \
-						--overwrite
+	--disable-makefile \
+	--overwrite
 
 # Helper variables
 
 DIS_TARGET_PREREQS = build/$(VERSION)/src/lsdj.asm \
-										 build/$(VERSION)/Makefile \
-										 build/$(VERSION)/lsdj.sym \
-										 build/$(VERSION)/lsdj.gb.md5
+	build/$(VERSION)/Makefile \
+	build/$(VERSION)/lsdj.sym \
+	build/$(VERSION)/lsdj.gb.md5
 
 ifeq ($(CHECK),true)
 	DIS_TARGET_PREREQS := check $(DIS_TARGET_PREREQS)
