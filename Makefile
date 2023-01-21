@@ -110,14 +110,15 @@ build/%/src/lsdj.asm: $(ROM) $(SYM) $(INC)
 		"build/$*/src/"*.2bpp \
 		"build/$*/src/"*.data
 	mkdir -p "build/$*/src"
-	LUA_PATH="$(_LUA_PATH)" $(LUA) $(LUAFLAGS) $(DIS) \
-		--main "lsdj.asm" \
-		--symbols "$(SYM)" \
-		--include "src/hardware.inc" \
-		--include "$(INC)" \
-		$(DISFLAGS) \
-		"$<" \
-		"build/$*/src"
+	LUA_PATH="$(_LUA_PATH)" \
+		$(LUA) $(LUAFLAGS) $(DIS) \
+			--main "lsdj.asm" \
+			--symbols "$(SYM)" \
+			--include "src/hardware.inc" \
+			--include "$(INC)" \
+			$(DISFLAGS) \
+			"$<" \
+			"build/$*/src"
 
 build/%/lsdj.sym: $(SYM)
 	mkdir -p "build/$*"
