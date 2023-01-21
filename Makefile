@@ -1,5 +1,8 @@
 # Options
 
+# Root build directory
+ROOT_DIR := $(dir $(realpath $(lastword $(MAKEFILE_LIST))))
+
 # Check the hash of the ROM before disassembling
 CHECK := true
 # Rebuild after disassembling
@@ -18,11 +21,12 @@ SYM := src/lsdj-$(VERSION).sym
 INC := src/lsdj-$(VERSION).inc
 
 # Disassembly program
-DIS := mgbdis/mgbdis.py
+DIS := beast/bin/beast
 # Disassembly flags
-DISFLAGS := --disable-auto-ldh \
-	--disable-makefile \
-	--overwrite
+DISFLAGS :=
+
+# Custom Lua paths
+CUSTOM_LUA_PATH := $(ROOT_DIR)/beast/src/?.lua;$(LUA_PATH)
 
 # Helper variables
 
@@ -96,12 +100,19 @@ build/%/Makefile: src/template/Makefile
 	cp "$^" "$@"
 
 build/%/src/lsdj.asm: $(ROM) $(SYM) $(INC)
-	mkdir -p "build/$*"
-	$(DIS) $(DISFLAGS) \
-		--output-dir "build/$*/src" \
-		--game-asm "lsdj.asm" \
+	rm -rf \
+		"build/$*/src/"*.asm \
+		"build/$*/src/"*.inc \
+		"build/$*/src/"*.2bpp \
+		"build/$*/src/"*.data
+	mkdir -p "build/$*/src"
+	LUA_PATH="$(CUSTOM_LUA_PATH)" $(DIS) \
+		--main "lsdj.asm" \
+		--symbols "$(SYM)" \
+		--include "src/hardware.inc" \
 		--include "$(INC)" \
-		"$<"
+		"$<" \
+		"build/$*/src"
 
 build/%/lsdj.sym: $(SYM)
 	mkdir -p "build/$*"

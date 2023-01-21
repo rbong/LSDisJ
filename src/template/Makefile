@@ -7,6 +7,7 @@ VERIFY := true
 ASM := rgbasm
 # Assembler flags
 ASFLAGS := \
+	-h \
 	-L \
 	--pad-value 0xFF
 
@@ -14,11 +15,6 @@ ASFLAGS := \
 LD := rgblink
 # Linker flags
 LDFLAGS := -w -m src/lsdj.map
-
-# Image converter program
-GFX := rgbgfx
-# Image converter flags
-GFXFLAGS :=
 
 # ROM checksum fixer program
 FIX := rgbfix
@@ -28,12 +24,6 @@ FIXFLAGS := \
 	--p 0xFF
 
 # Helper variables
-
-# IMAGE_TARGETS = \
-# 	src/gfx/font_1_content.2bpp \
-# 	src/gfx/font_2_content.2bpp \
-# 	src/gfx/font_3_content.2bpp \
-# 	src/gfx/tileset.2bpp
 
 # Special targets
 
@@ -45,15 +35,11 @@ FIXFLAGS := \
 default: lsdj.gb
 
 clean:
-	rm -f src/*.o src/gfx/*.2bpp src/lsdj.map lsdj.gb
+	rm -f src/*.o src/lsdj.map lsdj.gb
 
 # Build targets
 
-%.2bpp: %.png
-	$(GFX) $(GFXFLAGS) -o "$@" "$<"
-
-# src/lsdj.o: src/lsdj.asm $(wildcard src/bank_*.asm) $(wildcard src/*.inc) $(IMAGE_TARGETS)
-src/lsdj.o: src/lsdj.asm $(wildcard src/bank_*.asm) $(wildcard src/*.inc)
+src/lsdj.o: src/lsdj.asm src/memory.asm $(wildcard src/bank_*.asm) $(wildcard src/*.inc) $(wildcard src/*.2bpp) $(wildcard src/*.data)
 	$(ASM) $(ASFLAGS) -i src -o "$@" "$<"
 
 lsdj.gb: src/lsdj.o

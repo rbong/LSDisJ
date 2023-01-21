@@ -12,7 +12,7 @@ This currently supportes the last 2 stable versions at the time of writing:
   - An LSDj ROM, for example [version 9.2.L](https://www.littlesounddj.com/lsd/latest/rom_images/stable/lsdj9_2_L-stable.zip)
     - Read [the LSDj license](https://www.littlesounddj.com/lsd/latest/rom_images/LICENSE.txt)
     - Extract and move the ROM to `src/lsdj-9.2.L.gb`
-  - [Python](https://www.python.org/)
+  - [LuaJIT](https://luajit.org/luajit.html) or [Lua 5.1](https://www.lua.org/start.html#installing)
   - [rgbds](https://github.com/gbdev/rgbds)
 
 ## Usage
