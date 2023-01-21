@@ -111,6 +111,7 @@ build/%/src/lsdj.asm: $(ROM) $(SYM) $(INC)
 		--symbols "$(SYM)" \
 		--include "src/hardware.inc" \
 		--include "$(INC)" \
+		$(DISFLAGS) \
 		"$<" \
 		"build/$*/src"
 
