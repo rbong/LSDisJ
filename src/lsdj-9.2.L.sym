@@ -2,11 +2,9 @@
 
 ;; 00:0000 Most RSTs are unused
 00:0000 rst_00
-;; 00:0001 00:0001
-;; 00:0001:replace:0007 ds $0007, $ff
+;; 00:0001:replace:0007 ds $0007, $ff    ; 00:0001
 00:0008 rst_08
-;; 00:0008 00:0008
-;; 00:0008:replace:0008 ds $0008, $ff
+;; 00:0008:replace:0008 ds $0008, $ff    ; 00:0008
 00:0010 rst_10
 ;; 00:0011 Does nothing, used for breakpoints
 00:0012 .data:0006
@@ -14,44 +12,35 @@
 00:0018 .code:0008
 ;; 00:001e Does nothing, used for breakpoints
 00:0020 rst_20
-;; 00:0020 00:0020
-;; 00:0020:replace:0008 ds $0008, $ff
+;; 00:0020:replace:0008 ds $0008, $ff    ; 00:0020
 00:0028 rst_28
 ;; 00:0028 00:0028
 ;; 00:0028:replace:0008 ds $0008, $ff
 00:0030 rst_30
-;; 00:0030 00:0030
-;; 00:0030:replace:0008 ds $0008, $ff
+;; 00:0030:replace:0008 ds $0008, $ff    ; 00:0030
 00:0038 rst_trigger_crash
 ;; 00:0039 Does nothing, used for breakpoints
-;; 00:003c 00:003c
-;; 00:003c:replace:0004 ds $0004, $ff
+;; 00:003c:replace:0004 ds $0004, $ff    ; 00:003c
 
 00:0040 vblank_interrupt
-;; 00:0045 00:0045
-;; 00:0045:replace:0003 ds $0003, $ff
+;; 00:0045:replace:0003 ds $0003, $ff    ; 00:0045
 00:0048 lcdc_interrupt
-;; 00:0049 00:0049
-;; 00:0049:replace:0007 ds $0007, $ff
+;; 00:0049:replace:0007 ds $0007, $ff    ; 00:0049
 00:0050 timer_overflow_interrupt
-;; 00:0053 00:0053
-;; 00:0053:replace:0005 ds $0005, $ff
+;; 00:0053:replace:0005 ds $0005, $ff    ; 00:0053
 00:0058 serial_transfer_complete_interrupt
-;; 00:005b 00:005b
-;; 00:005b:replace:0005 ds $0005, $ff
+;; 00:005b:replace:0005 ds $0005, $ff    ; 00:005b
 00:0060 joypad_transition_interrupt
 00:0061 jump_00_0061
 00:0061 .code:0008
 ;; 00:0061:op BANK(jump_01_7954)
 ;; 00:0066:op jump_01_7954
-;; 00:0069 00:0069
-;; 00:0069:replace:0097 ds $0100 - @, $ff
+;; 00:0069:replace:0097 ds $0100 - @, $ff    ; 00:0069
 
 00:0100 Boot
 
 00:0104 HeaderLogo
-;; 00:0104 00:0104
-;; 00:0104:replace:0030 NINTENDO_LOGO
+;; 00:0104:replace:0030 NINTENDO_LOGO    ; 00:0104
 00:0134 HeaderTitle
 00:0134 .text:000b
 00:013f HeaderManufacturerCode
@@ -64,8 +53,7 @@
 ;; 00:0146 No SGB functions (Normal Gameboy or CGB only game)
 00:0146 .data:0001
 00:0147 HeaderCartridgeType
-;; 00:0147 00:0147
-;; 00:0147:replace:0001 db CART_ROM_MBC5_RAM_BAT
+;; 00:0147:replace:0001 db CART_ROM_MBC5_RAM_BAT    ; 00:0147
 00:0148 HeaderROMSize
 00:0148 .data:0001
 00:0149 HeaderRAMSize
@@ -1105,17 +1093,13 @@
 00:2d16 .jump_write_bg_attrs
 
 00:2d25 data_pulse_wave_tiles_75
-;; 00:2d25 00:2d25
-;; 00:2d25:replace:0003 db _PULSE_WAVE_75_ASCII_CODE_1, _PULSE_WAVE_75_ASCII_CODE_2, $00
+;; 00:2d25:replace:0003 db _PULSE_WAVE_75_ASCII_CODE_1, _PULSE_WAVE_75_ASCII_CODE_2, $00    ; 00:2d25
 00:2d28 data_pulse_wave_tiles_50
-;; 00:2d28 00:2d28
-;; 00:2d28:replace:0003 db _PULSE_WAVE_50_ASCII_CODE, _PULSE_WAVE_FLAT_ASCII_CODE, $00
+;; 00:2d28:replace:0003 db _PULSE_WAVE_50_ASCII_CODE, _PULSE_WAVE_FLAT_ASCII_CODE, $00    ; 00:2d28
 00:2d2b data_pulse_wave_tiles_25
-;; 00:2d2b 00:2d2b
-;; 00:2d2b:replace:0003 db _PULSE_WAVE_25_ASCII_CODE, _PULSE_WAVE_FLAT_ASCII_CODE, $00
+;; 00:2d2b:replace:0003 db _PULSE_WAVE_25_ASCII_CODE, _PULSE_WAVE_FLAT_ASCII_CODE, $00    ; 00:2d2b
 00:2d2e data_pulse_wave_tiles_12_5
-;; 00:2d2e 00:2d2e
-;; 00:2d2e:replace:0003 db _PULSE_WAVE_12_5_ASCII_CODE, _PULSE_WAVE_FLAT_ASCII_CODE, $00
+;; 00:2d2e:replace:0003 db _PULSE_WAVE_12_5_ASCII_CODE, _PULSE_WAVE_FLAT_ASCII_CODE, $00    ; 00:2d2e
 
 00:2d31 call_write_command_value_bg_attrs
 ;; 00:2d31 Write the background attributes for a command.
@@ -1149,20 +1133,15 @@
 00:2dd3 .jump_return
 
 00:2dd7 data_output_l_on_r_on_tiles
-;; 00:2dd7 00:2dd7
-;; 00:2dd7:replace:0003 db _OUTPUT_L_ON_ASCII_CODE, _OUTPUT_R_ON_ASCII_CODE, $00
+;; 00:2dd7:replace:0003 db _OUTPUT_L_ON_ASCII_CODE, _OUTPUT_R_ON_ASCII_CODE, $00    ; 00:2dd7
 00:2dda data_empty_command_value_tiles
-;; 00:2dda 00:2dda
-;; 00:2dda:replace:0003 db _EMPTY_ROW_ASCII_CODE, _EMPTY_ROW_ASCII_CODE, $00
+;; 00:2dda:replace:0003 db _EMPTY_ROW_ASCII_CODE, _EMPTY_ROW_ASCII_CODE, $00    ; 00:2dda
 00:2ddd data_output_l_off_r_off_tiles
-;; 00:2ddd 00:2ddd
-;; 00:2ddd:replace:0003 db _OUTPUT_L_OFF_ASCII_CODE, _OUTPUT_R_OFF_ASCII_CODE, $00
+;; 00:2ddd:replace:0003 db _OUTPUT_L_OFF_ASCII_CODE, _OUTPUT_R_OFF_ASCII_CODE, $00    ; 00:2ddd
 00:2de0 data_output_l_on_r_off_tiles
-;; 00:2de0 00:2de0
-;; 00:2de0:replace:0003 db _OUTPUT_L_ON_ASCII_CODE, _OUTPUT_R_OFF_ASCII_CODE, $00
+;; 00:2de0:replace:0003 db _OUTPUT_L_ON_ASCII_CODE, _OUTPUT_R_OFF_ASCII_CODE, $00    ; 00:2de0
 00:2de3 data_output_l_off_r_on_tiles
-;; 00:2de3 00:2de3
-;; 00:2de3:replace:0003 db _OUTPUT_L_OFF_ASCII_CODE, _OUTPUT_R_ON_ASCII_CODE, $00
+;; 00:2de3:replace:0003 db _OUTPUT_L_OFF_ASCII_CODE, _OUTPUT_R_ON_ASCII_CODE, $00    ; 00:2de3
 
 00:2de6 call_write_2x_digit_bg_map_attrs
 ;; 00:2de6 Write 2 digit background map attributes to memory.
@@ -1945,8 +1924,7 @@
 ;; 00:3be5:op _NO_CURSOR_MODE
 
 00:3de7 data_bank_00_padding
-;; 00:3de7 00:3de7
-;; 00:3de7:replace:0219 ds $4000 - @, $ff
+;; 00:3de7:replace:0219 ds $4000 - @, $ff    ; 00:3de7
 
 01:4000 call_sram_random_test
 ;; 01:4000 Test SRAM by generating random numbers.
@@ -2930,8 +2908,7 @@
 01:7ef7 .set_sprite_palette_1
 
 01:7f0c data_bank_01_padding
-;; 01:7f0c 01:7f0c
-;; 01:7f0c:replace:00f4 ds $8000 - @, $ff
+;; 01:7f0c:replace:00f4 ds $8000 - @, $ff    ; 01:7f0c
 
 02:4000 call_02_4000
 
@@ -3378,8 +3355,7 @@
 02:7e98 call_02_7e98
 
 02:7eb9 data_bank_02_padding
-;; 02:7eb9 02:7eb9
-;; 02:7eb9:replace:0147 ds $8000 - @, $ff
+;; 02:7eb9:replace:0147 ds $8000 - @, $ff    ; 02:7eb9
 
 03:4000 call_write_current_instrument_param_1
 ;; 03:4000 Write a single param for CURRENT_INSTRUMENT_1.
@@ -4054,8 +4030,7 @@
 03:7a6f .text:0004
 
 03:7a73 data_bank_03_padding
-;; 03:7a73 03:7a73
-;; 03:7a73:replace:058d ds $8000 - @, $ff
+;; 03:7a73:replace:058d ds $8000 - @, $ff    ; 03:7a73
 
 04:4000 call_04_4000
 
@@ -4747,8 +4722,7 @@
 04:7ba9 .text:0007
 
 04:7bb0 data_bank_04_padding
-;; 04:7bb0 04:7bb0
-;; 04:7bb0:replace:0450 ds $8000 - @, $ff
+;; 04:7bb0:replace:0450 ds $8000 - @, $ff    ; 04:7bb0
 
 05:4000 call_update_screen_offset_cols
 ;; 05:4000 Update the offet positions of screen columns based on screen cursor position.
@@ -5379,8 +5353,7 @@
 ;; 05:73f6 Registers used: A, HL
 
 05:7427 data_bank_05_padding
-;; 05:7427 05:7427
-;; 05:7427:replace:0bd9 ds $8000 - @, $ff
+;; 05:7427:replace:0bd9 ds $8000 - @, $ff    ; 05:7427
 
 06:4000 call_06_4000
 ; E = arg1 / 15 + 25
@@ -6029,8 +6002,7 @@
 ;; 06:783a:op LOW(OSCILLOSCOPE_VALUES) + 1
 
 06:787b data_bank_06_padding
-;; 06:787b 06:787b
-;; 06:787b:replace:0785 ds $8000 - @, $ff
+;; 06:787b:replace:0785 ds $8000 - @, $ff    ; 06:787b
 
 07:4000 call_07_4000
 
@@ -6524,8 +6496,7 @@
 ;; 07:740c:op rRAMG
 
 07:741a data_bank_07_padding
-;; 07:741a 07:741a
-;; 07:741a:replace:0be6 ds $8000 - @, $ff
+;; 07:741a:replace:0be6 ds $8000 - @, $ff    ; 07:741a
 
 1b:4000 call_1b_4000
 
@@ -6633,8 +6604,7 @@
 1b:4c80 .text:000b
 1b:4c8b data_keyboard_keys_string_4
 1b:4c8b .text:0006
-;; 1b:4c91 1b:4c91
-;; 1b:4c91:replace:0005 db _SPECIAL_ASCII_CODE, " ", _BACKSPACE_ASCII_CODE, _OKAY_ASCII_CODE, $00
+;; 1b:4c91:replace:0005 db _SPECIAL_ASCII_CODE, " ", _BACKSPACE_ASCII_CODE, _OKAY_ASCII_CODE, $00    ; 1b:4c91
 
 1b:4c96 call_clear_keyboard_cursor
 ;; 1b:4c96 Clear the current keyboard cursor.
@@ -7118,8 +7088,7 @@
 1b:754f call_1b_754f
 
 1b:7570 data_bank_1b_padding
-;; 1b:7570 1b:7570
-;; 1b:7570:replace:0a90 ds $8000 - @, $ff
+;; 1b:7570:replace:0a90 ds $8000 - @, $ff    ; 1b:7570
 
 1c:4000 call_1c_4000
 ;; 1c:4011:op rRAMB
@@ -7727,8 +7696,7 @@
 1c:753d call_1c_753d
 
 1c:7582 data_bank_1c_padding
-;; 1c:7582 1c:7582
-;; 1c:7582:replace:0a7e ds $8000 - @, $ff
+;; 1c:7582:replace:0a7e ds $8000 - @, $ff    ; 1c:7582
 
 1d:4000 call_1d_4000
 
@@ -8311,8 +8279,7 @@
 1d:7dac call_1d_7dac
 
 1d:7ddf data_bank_1d_padding
-;; 1d:7ddf 1d:7ddf
-;; 1d:7ddf:replace:0221 ds $8000 - @, $ff
+;; 1d:7ddf:replace:0221 ds $8000 - @, $ff    ; 1d:7ddf
 
 1e:4000 call_1e_4000
 
@@ -8375,8 +8342,7 @@
 1e:7aa0 call_1e_7aa0
 
 1e:7bab data_bank_1e_padding
-;; 1e:7bab 1e:7bab
-;; 1e:7bab:replace:0455 ds $8000 - @, $ff
+;; 1e:7bab:replace:0455 ds $8000 - @, $ff    ; 1e:7bab
 
 1f:4000 call_draw_table_type_instrument_params
 ;; 1f:4000 Draw the table on/step instrument param text for the current instrument.
@@ -9198,8 +9164,7 @@
 1f:7789 .text:000c
 
 1f:7795 data_bank_1f_padding
-;; 1f:7795 1f:7795
-;; 1f:7795:replace:086c ds $8000 - @, $ff
+;; 1f:7795:replace:086c ds $8000 - @, $ff    ; 1f:7795
 
 ; Memory
 
