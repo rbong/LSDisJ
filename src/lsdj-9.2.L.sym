@@ -2,6 +2,7 @@
 
 ;; 00:0000 Most RSTs are unused
 00:0000 rst_00
+00:0000 .code:0001
 ;; 00:0001:replace:0007 ds $0007, $ff    ; 00:0001
 00:0008 rst_08
 ;; 00:0008:replace:0008 ds $0008, $ff    ; 00:0008
@@ -27,10 +28,13 @@
 00:0048 lcdc_interrupt
 ;; 00:0049:replace:0007 ds $0007, $ff    ; 00:0049
 00:0050 timer_overflow_interrupt
+00:0050 .code:0003
 ;; 00:0053:replace:0005 ds $0005, $ff    ; 00:0053
 00:0058 serial_transfer_complete_interrupt
+00:0058 .code:0003
 ;; 00:005b:replace:0005 ds $0005, $ff    ; 00:005b
 00:0060 joypad_transition_interrupt
+00:0060 .code:0001
 00:0061 jump_00_0061
 00:0061 .code:0008
 ;; 00:0061:op BANK(jump_01_7954)
@@ -103,81 +107,97 @@
 ;; 00:0300 Multiply register A by 1.
 ;; 00:0300 Result: HL
 ;; 00:0300 Registers used: A, HL
+00:0300 .code:0004
 
 00:0304 call_multiply_2
 ;; 00:0304 Multiply register A by 2.
 ;; 00:0304 Result: HL
 ;; 00:0304 Registers used: A, HL
+00:0304 .code:0005
 
 00:0309 call_multiply_3
 ;; 00:0309 Multiply register A by 3.
 ;; 00:0309 Result: HL
 ;; 00:0309 Registers used: A, HL
+00:0309 .code:0007
 
 00:0310 call_multiply_4
 ;; 00:0310 Multiply register A by 4.
 ;; 00:0310 Result: HL
 ;; 00:0310 Registers used: A, HL
+00:0310 .code:0006
 
 00:0316 call_multiply_6
 ;; 00:0316 Multiply register A by 6.
 ;; 00:0316 Result: HL
 ;; 00:0316 Registers used: A, HL
+00:0316 .code:0008
 
 00:031e call_multiply_8
 ;; 00:031e Multiply register A by 8.
 ;; 00:031e Result: HL
 ;; 00:031e Registers used: A, HL
+00:031e .code:0009
 
 00:0327 call_multiply_12
 ;; 00:0327 Multiply register A by 12.
 ;; 00:0327 Result: HL
 ;; 00:0327 Registers used: A, HL
+00:0327 .code:0009
 
 00:0330 call_multiply_16
 ;; 00:0330 Multiply register A by 16.
 ;; 00:0330 Result: HL
 ;; 00:0330 Registers used: A, HL
+00:0330 .code:0008
 
 00:0338 call_multiply_20
 ;; 00:0338 Multiply register A by 20.
 ;; 00:0338 Result: HL
 ;; 00:0338 Registers used: A, HL
+00:0338 .code:000a
 
 00:0342 call_multiply_24
 ;; 00:0342 Multiply register A by 24.
 ;; 00:0342 Result: HL
 ;; 00:0342 Registers used: A, HL
+00:0342 .code:000a
 
 00:034c call_multiply_28
 ;; 00:034c Multiply register A by 28.
 ;; 00:034c Result: HL
 ;; 00:034c Registers used: A, HL
+00:034c .code:000c
 
 00:0358 call_multiply_32
 ;; 00:0358 Multiply register A by 32.
 ;; 00:0358 Result: HL
 ;; 00:0358 Registers used: A, HL
+00:0358 .code:000b
 
 00:0363 call_multiply_40
 ;; 00:0363 Multiply register A by 40.
 ;; 00:0363 Result: HL
 ;; 00:0363 Registers used: A, HL
+00:0363 .code:000c
 
 00:036f call_multiply_48
 ;; 00:036f Multiply register A by 48.
 ;; 00:036f Result: HL
 ;; 00:036f Registers used: A, HL
+00:036f .code:000c
 
 00:037b call_multiply_56
 ;; 00:037b Multiply register A by 56.
 ;; 00:037b Result: HL
 ;; 00:037b Registers used: A, HL
+00:037b .code:000c
 
 00:0387 call_multiply_64
 ;; 00:0387 Multiply register A by 64.
 ;; 00:0387 Result: HL
 ;; 00:0387 Registers used: A, HL
+00:0387 .code:000a
 
 00:0391 jump_timer_overflow
 
@@ -186,6 +206,7 @@
 00:075a call_00_075a
 
 00:07d2 call_00_07d2
+00:07d2 .code:004a
 
 00:081c data_dash_letters_string
 00:081c .text:0015
@@ -204,6 +225,7 @@
 00:0855 .data:00a2
 
 00:08f7 call_00_08f7
+00:08f7 .code:004b
 
 00:0942 call_write_instrument_param
 ;; 00:0942 Write a single instrument param.
@@ -216,6 +238,7 @@
 
 ;; 00:0945 Verify instrument is in range
 ;; 00:0948:op _INSTRUMENTS
+00:0948 .code:0060
 
 00:0950 .jump_verify_param
 ;; 00:0953:op _INSTRUMENT_PARAMS_SIZE
@@ -245,6 +268,7 @@
 ;; 00:0a80 Result: E
 ;; 00:0a80
 ;; 00:0a80 Registers used: A, DE, HL
+00:0a80 .code:0051
 
 ;; 00:0a83 Verify instrument is in range
 ;; 00:0a86:op _INSTRUMENTS
@@ -271,6 +295,7 @@
 ;; 00:0ad1 Result: E
 ;; 00:0ad1
 ;; 00:0ad1 Registers used: A, DE, HL
+00:0ad1 .code:0014
 
 00:0ae5 call_read_song_chain
 ;; 00:0ae5 Read a song chain number from a row/channel.
@@ -299,12 +324,14 @@
 00:0b3e .jump_return
 
 00:0b43 call_00_0b43
+00:0b43 .code:00aa
 
 00:0bed call_banked_call_old
 ;; 00:0bed Call a subroutine in another bank.
 ;; 00:0bed This version of call_banked_call uses extra instructions.
 ;; 00:0bed Args: bank, address (word)
 ;; 00:0bed Registers used: A, HL
+00:0bed .code:002b
 00:0c0a call_banked_call_old_return
 ;; 00:0c0a Doesn't appear to actually do anything with register B or E
 
@@ -313,16 +340,19 @@
 ;; 00:0c18 This version of call_banked_call_arg uses extra instructions.
 ;; 00:0c18 Args: bank, address (word), arg
 ;; 00:0c18 Registers used: A, HL
+00:0c18 .code:0031
 00:0c39 call_banked_call_arg_old_return
 
 00:0c49 call_banked_call_arg_2_old
 ;; 00:0c49 Call a subroutine in another bank with two byte arguments.
 ;; 00:0c49 Args: bank, address (word), arg1, arg2
 ;; 00:0c49 Registers used: A, HL
+00:0c49 .code:0035
 00:0c6f call_banked_call_arg_2_old_return
 
 00:0c7e call_banked_call_arg_2_old_dup
 ;; 00:0c7e Duplicate of call_banked_call_arg_2.
+00:0c7e .code:0036
 00:0ca4 call_banked_call_arg_2_old_dup_return
 ;; 00:0ca4 Doesn't appear to actually do anything with register B or E
 
@@ -330,6 +360,7 @@
 ;; 00:0cb4 Call a subroutine in another bank with three byte arguments.
 ;; 00:0cb4 Args: bank, address (word), arg1, arg2, arg3
 ;; 00:0cb4 Registers used: A, HL
+00:0cb4 .code:0039
 00:0cde call_banked_call_arg_3_old_return
 
 00:0ced call_is_kit_present
@@ -340,6 +371,7 @@
 ;; 00:0ced Result: E
 ;; 00:0ced
 ;; 00:0ced Registers used: A, E, HL
+00:0ced .code:004e
 ;; 00:0d01:op _MAX_KIT_BANK
 00:0d0c .jump_check_kit
 ;; 00:0d1c:op _KIT_CHECK_1
@@ -349,11 +381,13 @@
 00:0d37 .jump_return
 
 00:0d3b call_00_0d3b
+00:0d3b .code:003f
 
 00:0d7a call_sort_pair
 ;; 00:0d7a Swap the two bytes in the given addresses if the first byte is greater.
 ;; 00:0d7a Args: (word) addr1, (word) addr2
 ;; 00:0d7a Registers used: A, DE, HL
+00:0d7a .code:0031
 00:0da7 .jump_return
 
 00:0dab call_set_banner_text
@@ -469,6 +503,7 @@
 ;; 00:1261   VRAM bank will be set to 0
 ;; 00:1261
 ;; 00:1261 Registers used: A, HL
+00:1261 .code:006e
 
 ;; 00:1272:op _TILE_COLS
 
@@ -563,6 +598,7 @@
 ;; 00:14b5   The external RAM register (0x0000) will be set to 0
 ;; 00:14ca
 ;; 00:14ca Registers used: A, DE, HL
+00:14ca .code:004c
 ;; 00:14ce:op rRAMB
 ;; 00:14dd:op CART_SRAM_ENABLE
 ;; 00:14df:op rRAMG
@@ -579,6 +615,7 @@
 ;; 00:1516   E = the byte at the offset
 ;; 00:1516   Interrupts will be enabled
 ;; 00:1516   The external RAM register (0x0000) will be set to 0
+00:1516 .code:002c
 ;; 00:1527 Check that the address is not out of range
 ;; 00:1527:op HIGH(_SRAM)
 ;; 00:152c:op HIGH(_SRAM + $2000)
@@ -609,10 +646,13 @@
 ;; 00:155a Call the halt instruction, waiting for any interrupts
 
 00:155d call_00_155d
+00:155d .code:00e7
 
 00:1644 call_00_1644
+00:1644 .code:00eb
 
 00:172f call_00_172f
+00:172f .code:0039
 
 00:1768 call_jump_hl
 ;; 00:1768 Jump to the address stored in HL.
@@ -685,6 +725,7 @@
 00:1c5f call_00_1c5f
 
 00:1c71 call_00_1c71
+00:1c71 .code:0030
 
 00:1ca1 call_check_new_keys
 ;; 00:1ca1 Check new keypresses in the buffer and update CURRENT_KEY_PRESS_COUNT.
@@ -695,12 +736,15 @@
 00:1cb3 .jump_return
 
 00:1cb6 call_00_1cb6
+00:1cb6 .code:002a
 ;; 00:1cb6:op _SRAM_SYNC
 ;; 00:1cbe:op _SRAM_PS2_DELAY
 
 00:1ce0 call_00_1ce0
+00:1ce0 .code:0043
 
 00:1d23 call_00_1d23
+00:1d23 .code:0031
 
 00:1d54 call_00_1d54
 
@@ -742,6 +786,7 @@
 ;; 00:1f8c   E = success
 ;; 00:1f8c
 ;; 00:1f8c Registers used: A, DE, HL
+00:1f8c .code:00de
 00:1faa .call_rom_test_1
 00:1fd1 .call_rom_test_2
 00:1fd4 .call_rom_test_3
@@ -766,6 +811,7 @@
 ;; 00:207b Test the integrity of a single SRAM address.
 ;; 00:207b Exit conditions: E = success
 ;; 00:207b Registers used: A, E, HL
+00:207b .code:0017
 00:207e .call_sram_test_address_1
 00:2090 .call_sram_test_address_2
 
@@ -1051,8 +1097,10 @@
 00:2b40 call_00_2b40
 
 00:2b77 call_00_2b77
+00:2b77 .code:0078
 
 00:2bef call_00_2bef
+00:2bef .code:0059
 
 00:2c48 data_00_2c48
 00:2c48 .data:0004
@@ -1064,8 +1112,10 @@
 00:2c54 .data:0003
 
 00:2c57 call_00_2c57
+00:2c57 .code:0022
 
 00:2c79 call_00_2c79
+00:2c79 .code:004c
 
 00:2cc5 data_channel_label_strings
 00:2cc5 data_noise_channel_label_string
@@ -1084,6 +1134,7 @@
 ;; 00:2cd5   pulse_wave_type (1 = 25%, 2 = 12.5%, 3 = 50%, otherwise 75%)
 ;; 00:2cd5
 ;; 00:2cd5 Registers used: A, DE, HL
+00:2cd5 .code:0050
 
 ;; 00:2cd8 Use 75% by default
 
@@ -1109,6 +1160,7 @@
 ;; 00:2d31 Args: command, command_value
 ;; 00:2d31
 ;; 00:2d31 Registers used: A, DE, HL
+00:2d31 .code:00a6
 
 ;; 00:2d3e:op _O_COMMAND
 ;; 00:2d46:op _W_COMMAND
@@ -1172,6 +1224,7 @@
 00:2e22 call_write_2x_digit_bg_map_attrs_arg
 ;; 00:2e22 The same as call_write_2x_digit_bg_map_attrs, but use an argument instead of the A register for the source byte.
 ;; 00:2e22 Args: source_byte
+00:2e22 .code:0042
 
 ;; 00:2e2c:op HIGH(_SCRN0)
 ;; 00:2e31:op HIGH(_SCRN0) + 3
@@ -1313,20 +1366,28 @@
 00:3116 call_00_3116
 
 00:313e call_00_313e
+00:313e .code:0017
 
 00:3155 call_00_3155
+00:3155 .code:002e
 
 00:3183 call_00_3183
+00:3183 .code:0039
 
 00:31bc call_00_31bc
+00:31bc .code:0017
 
 00:31d3 call_00_31d3
+00:31d3 .code:0017
 
 00:31ea call_00_31ea
+00:31ea .code:0017
 
 00:3201 call_00_3201
+00:3201 .code:0063
 
 00:3264 call_00_3264
+00:3264 .code:0037
 
 00:329b call_00_329b
 
@@ -1352,6 +1413,7 @@
 ;; 00:32e6 Load a font.
 ;; 00:32e6 Entry conditions: HL = font to load
 ;; 00:32e6 Registers used: A, B, DE, HL
+00:32e6 .code:0048
 
 ;; 00:32ea:op FONT_TABLE + _SFONT_HANDLE_FONT
 
@@ -1384,17 +1446,20 @@
 ;; 00:3380 Load a font.
 ;; 00:3380 Args: font (word)
 ;; 00:3380 See: font_load
+00:3380 .code:000e
 
 00:338e _font_set
 ;; 00:338e gbdk 2.95 libc/gb/font.ms:_font_set
 ;; 00:338e Set the current font.
 ;; 00:338e Args: font (word)
 ;; 00:338e See: font_set
+00:338e .code:000f
 
 00:339d _font_init
 ;; 00:339d gbdk 2.95 libc/gb/font.ms:_font_init (with modifications)
 ;; 00:339d Initialize the font system.
 ;; 00:339d Registers used: A, HL
+00:339d .code:001f
 00:33ac .font_init_1
 ;; 00:33ba Skip calling .cls
 
@@ -1407,6 +1472,7 @@
 
 00:33d7 call_pass
 ;; 00:33d7 Return immediately.
+00:33d7 .code:0001
 
 00:33d8 tmode
 ;; 00:33d8 gbdk 2.95 libc/gb/font.ms:.tmode (with modifications)
@@ -1425,6 +1491,7 @@
 ;; 00:33fc Generate a random number.
 ;; 00:33fc Result: DE
 ;; 00:33fc Registers used: A, DE, HL
+00:33fc .code:002b
 
 00:3427 _cpu_fast
 ;; 00:3427 gbdk 2.95 libc/gb/cgb.s:_cpu_fast
@@ -1432,6 +1499,7 @@
 ;; 00:3427 Registers used: AF, HL
 
 00:3442 call_00_3442
+00:3442 .code:0028
 
 00:346a send_byte
 ;; 00:346a gbdk 2.95 libc/gb/serial.s:.send_byte/_send_byte
@@ -1471,6 +1539,7 @@
 ;; 00:34b5   The value at address HL will be cleared.
 ;; 00:34b5
 ;; 00:34b5 Registers used: A
+00:34b5 .code:000b
 ;; 00:34b5:op _OAM
 00:34bb .start_refresh_oam_1
 00:34c0 end_refresh_oam
@@ -1514,6 +1583,7 @@
 
 00:34fc _reset
 ;; 00:34fc gbdk 2.95 libc/gb/crt0.s:.reset/_reset
+00:34fc .code:0006
 
 00:3502 call_clear_interrupt_request
 ;; 00:3502 Clear an interrupt request by clearing bits in the interrupt flag register.
@@ -1556,11 +1626,13 @@
 ;; 00:36e0   The address arg will be set to the address after the terminating null byte
 ;; 00:36e0
 ;; 00:36e0 Registers used: A, DE, HL
+00:36e0 .code:0037
 00:36ea .jump_count_loop
 00:370b .jump_skip_increment_high
 00:370e .jump_return
 
 00:3717 _modslong_divslong_mulslong
+00:3717 .code:0001
 
 00:3718 _divschar
 ;; 00:3718 gbdk 2.95 libc/asm/gbz80/div.s:__divschar
@@ -1568,6 +1640,7 @@
 ;; 00:3718 Args: dividend, divisor
 ;; 00:3718 Result: E
 ;; 00:3718 See: div8_mod8
+00:3718 .code:000c
 
 00:3724 _modschar
 ;; 00:3724 gbdk 2.95 libc/asm/gbz80/div.s:__modschar
@@ -1575,6 +1648,7 @@
 ;; 00:3724 Args: dividend, divisor
 ;; 00:3724 Result: E
 ;; 00:3724 See: div8_mod8
+00:3724 .code:000b
 
 00:372f _divsint
 ;; 00:372f gbdk 2.95 libc/asm/gbz80/div.s:__divsint
@@ -1582,6 +1656,7 @@
 ;; 00:372f Args: dividend (word), divisor (word)
 ;; 00:372f Result: DE
 ;; 00:372f See: div16_mod16
+00:372f .code:0011
 
 00:3740 _modsint
 ;; 00:3740 gbdk 2.95 libc/asm/gbz80/div.s:__modsint
@@ -1589,6 +1664,7 @@
 ;; 00:3740 Args: dividend (word), divisor (word)
 ;; 00:3740 Result: DE
 ;; 00:3740 See: div16_mod16
+00:3740 .code:000f
 
 00:374f _divuchar
 ;; 00:374f gbdk 2.95 libc/asm/gbz80/div.s:__divuchar
@@ -1596,6 +1672,7 @@
 ;; 00:374f Args: dividend, divisor
 ;; 00:374f Result: E
 ;; 00:374f See: divu8_modu8
+00:374f .code:000c
 
 00:375b _moduchar
 ;; 00:375b gbdk 2.95 libc/asm/gbz80/div.s:__moduchar
@@ -1603,6 +1680,7 @@
 ;; 00:375b Args: dividend, divisor
 ;; 00:375b Result: E
 ;; 00:375b See: divu8_modu8
+00:375b .code:000b
 
 00:3766 _divuint
 ;; 00:3766 gbdk 2.95 libc/asm/gbz80/div.s:__divuint
@@ -1676,6 +1754,7 @@
 ;; 00:3829 Set the random seed.
 ;; 00:3829 Args: seed (word)
 ;; 00:3829 Registers used: A, HL
+00:3829 .code:000b
 
 00:3834 _strcpy
 ;; 00:3834 gbdk 2.95 libc/asm/gbz80/asm_string.s:_strcpy
@@ -1694,6 +1773,7 @@
 ;; 00:3866 gbdk 2.95 libc/asm/gbz80/asm_string.s:_strcmp
 ;; 00:3866 int strcmp(const char *s1, const char *s2)
 ;; 00:3866 Result: DE = 0 if equal, 1 if s1 is greater than s2, -1 if s1 is less than s2
+00:3866 .code:0024
 00:3871 .strcmp_2
 00:3878 .strcmp_1
 00:387c .strcmp_3
@@ -1723,6 +1803,7 @@
 ;; 00:38b1 Args: multiplicand (word), multiplier (word)
 ;; 00:38b1 Result: DE
 ;; 00:38b1 See: mul16_mulu16
+00:38b1 .code:0011
 
 00:38c2 mul8_mulu8
 ;; 00:38c2 gbdk 2.95 libc/asm/gbz80/mul.s:.mul8/.mulu8
@@ -1766,13 +1847,16 @@
 ;; 00:38db   rgb_data (word) = Address of the data
 ;; 00:38db
 ;; 00:38db Registers used: AF, HL
+00:38db .code:002b
 00:38f1 .set_bkg_palette_1
 
 00:3906 vbl
 ;; 00:3906 gbdk 2.95 libc/gb/drawing.s:.vbl
+00:3906 .code:000b
 
 00:3911 lcd
 ;; 00:3911 gbdk 2.95 libc/gb/drawing.s:.lcd
+00:3911 .code:000d
 
 00:391e jpad
 ;; 00:391e gbdk 2.95 libc/gb/pad.s:.jpad (with modifications)
@@ -1804,6 +1888,7 @@
 ;; 00:394c   DE = milliseconds (1 to 65536, 0 = 65536)
 ;; 00:394c
 ;; 00:394c Registers used: AF, DE
+00:394c .code:003a
 00:3952 .ldlp
 00:3954 .delay_1
 00:3956 .delay_2
@@ -1841,12 +1926,14 @@
 ;; 00:398f   HL = address
 ;; 00:398f
 ;; 00:398f Registers used: A, B, DE, HL
+00:398f .code:000e
 
 00:399d init_wtt
 ;; 00:399d gbdk 2.95 libc/gb/init_tt.s:.init_wtt
 ;; 00:399d Fill window tile table with a value.
 ;; 00:399d Entry conditions: B = value
 ;; 00:399d Registers used: A, B, DE, HL
+00:399d .code:0010
 ;; 00:39a3:op _SCRN0
 00:39a8 .init_wtt_1
 ;; 00:39a8:op _SCRN1
@@ -1892,6 +1979,7 @@
 ;; 00:39e4   L = height
 ;; 00:39e4
 ;; 00:39e4 Registers used: A, BC, DE, HL
+00:39e4 .code:0011
 ;; 00:39eb:op _SCRN0
 00:39f0 .set_xy_wtt_1
 ;; 00:39f0:op _SCRN1
@@ -1930,6 +2018,7 @@
 ;; 01:4000 Test SRAM by generating random numbers.
 ;; 01:4000 Exit conditions: E = success
 ;; 01:4000 Registers used: A, DE, HL
+01:4000 .code:00ea
 ;; 01:400c:op rRAMG
 ;; 01:400f:op CART_SRAM_ENABLE
 01:4015 .call_sram_random_test_1
@@ -1968,6 +2057,7 @@
 ;; 01:445a Test SRAM integrity.
 ;; 01:445a Exit conditions: E = success
 ;; 01:445a Registers used: A, E, HL
+01:445a .code:002d
 ;; 01:445b:op rRAMG
 ;; 01:445e:op CART_SRAM_ENABLE
 01:4462 .call_sram_test_1
@@ -1982,6 +2072,7 @@
 ;; 01:4487 Run the cart test.
 ;; 01:4487 Prints messages to the screen, and performs ROM/SRAM tests.
 ;; 01:4487 Registers used: A, HL, DE
+01:4487 .code:00d0
 ;; 01:44aa:op LOW(call_rom_test)
 ;; 01:44ac:op HIGH(call_rom_test)
 ;; 01:44af:op BANK(call_rom_test)
@@ -2017,6 +2108,7 @@
 01:45bd .text:0014
 
 01:45d1 call_01_45d1
+01:45d1 .code:0240
 ;; 01:45d5:op rRAMG
 ;; 01:45d8:op CART_SRAM_ENABLE
 
@@ -2082,6 +2174,7 @@
 ;; 01:4811 Check whether the file initialized flags are set in SRAM.
 ;; 01:4811 Result: E
 ;; 01:4811 Args: A, E, HL
+01:4811 .code:0037
 
 ;; 01:4812:op _SRAM_FILE_INIT_FLAG
 ;; 01:4816:op _SRAM_FILE_INIT_FLAG_BANK
@@ -2103,6 +2196,7 @@
 ;; 01:4848 Check if initialization flags are set on SRAM.
 ;; 01:4848 Result: E
 ;; 01:4848 Registers used: A, E, HL
+01:4848 .code:008c
 
 ;; 01:4849:op _SRAM_INIT_FLAG_1
 ;; 01:484d:op _SRAM_INIT_FLAG_1_BANK
@@ -2145,6 +2239,7 @@
 01:48d4 call_write_sram_check
 ;; 01:48d4 Write SRAM check values to mark the ROM/RAM as verified.
 ;; 01:48d4 Registers used: A, HL
+01:48d4 .code:0067
 
 ;; 01:48d4:op _SRAM_CHECK_1
 
@@ -2177,6 +2272,7 @@
 ;; 01:4931:op _SRAM_INIT_FLAG_3_BANK
 
 01:493b call_01_493b
+01:493b .code:0109
 ;; 01:4973:op _SRAM_INSTRUMENT_NAMES
 ;; 01:4990:op _SRAM_INSTRUMENT_NAMES_BANK
 ;; 01:49b4:op _SRAM_INSTRUMENT_NAMES_BANK
@@ -2188,6 +2284,7 @@
 01:4a44 .text:0005
 
 01:4a49 call_01_4a49
+01:4a49 .code:00cc
 ;; 01:4a68:op _SRAM_INSTRUMENT_NAMES
 ;; 01:4a8a:op _SRAM_INSTRUMENT_NAMES_BANK
 ;; 01:4aab:op _SRAM_INSTRUMENT_NAMES_BANK
@@ -2196,14 +2293,19 @@
 ;; 01:4b08:op _SRAM_INSTRUMENT_NAMES_BANK
 
 01:4b15 call_01_4b15
+01:4b15 .code:0049
 
 01:4b5e call_01_4b5e
+01:4b5e .code:0103
 
 01:4c61 call_01_4c61
+01:4c61 .code:0090
 
 01:4cf1 call_01_4cf1
+01:4cf1 .code:000a
 
 01:4cfb call_01_4cfb
+01:4cfb .code:006c
 ;; 01:4d15:op _SRAM_PHRASE_ALLOC
 ;; 01:4d5a:op _SRAM_PHRASE_ALLOC_BANK
 
@@ -2211,6 +2313,7 @@
 ;; 01:4d67 Write the allocation value for a chain, marking it as allocated.
 ;; 01:4d67 Args: chain
 ;; 01:4d67 Registers used: A, DE, HL
+01:4d67 .code:006c
 
 ;; 01:4d6d:op _CHAINS
 
@@ -2233,6 +2336,7 @@
 ;; 01:4dd3 Write the allocation value for a phrase, marking it as unallocated.
 ;; 01:4dd3 Args: phrase
 ;; 01:4dd3 Registers used: A, DE, HL
+01:4dd3 .code:0070
 
 ;; 01:4dd9:op _PHRASES
 
@@ -2255,6 +2359,7 @@
 ;; 01:4e43 Write the allocation value for a chain, marking it as unallocated.
 ;; 01:4e43 Args: chain
 ;; 01:4e43 Registers used: A, DE, HL
+01:4e43 .code:0070
 
 ;; 01:4e49:op _CHAINS
 
@@ -2275,6 +2380,7 @@
 ;; 01:4eaf Return
 
 01:4eb3 call_01_4eb3
+01:4eb3 .code:00a6
 ;; 01:4ee3:op _SRAM_PHRASE_ALLOC
 ;; 01:4ef2:op _SRAM_PHRASE_ALLOC_BANK
 ;; 01:4f1c:op _SRAM_PHRASE_ALLOC_BANK
@@ -2288,6 +2394,7 @@
 ;; 01:4f59 Args: chain
 ;; 01:4f59 Result: E
 ;; 01:4f59 Registers used: A, DE, HL
+01:4f59 .code:0040
 
 ;; 01:4f5d:op _CHAINS
 
@@ -2311,6 +2418,8 @@
 ;; 01:4f99 Read whether a phrase is allocated or not.
 ;; 01:4f99 Args: phrase
 ;; 01:4f99 Registers used: A, DE, HL
+01:4f99 .code:0053
+01:4f99 .code:0053
 
 ;; 01:4f9f:op _PHRASES
 
@@ -2328,6 +2437,7 @@
 ;; 01:4fe8 Return
 
 01:4fec call_01_4fec
+01:4fec .code:00ad
 
 ;; 01:503d:op _PROJECT_SCREEN
 
@@ -2337,6 +2447,7 @@
 01:509d .text:0003
 
 01:50a0 call_01_50a0
+01:50a0 .code:00ec
 ;; 01:50a1:op _SRAM_WORK_TIME_MINUTES
 ;; 01:50a5:op _SRAM_WORK_TIME_MINUTES_BANK
 ;; 01:50ba:op _SRAM_WORK_TIME_MINUTES
@@ -2365,6 +2476,7 @@
 ;; 01:5181:op _SRAM_TOTAL_TIME_MINUTES_BANK
 
 01:518c call_01_518c
+01:518c .code:0062
 
 01:51ee data_01_51ee
 01:51ee .data:0006
@@ -2382,6 +2494,7 @@
 01:5208 call_01_5208
 
 01:522d call_01_522d
+01:522d .code:001e
 
 01:524b data_01_524b
 01:524b .text:0004
@@ -2389,6 +2502,7 @@
 01:524f .text:0004
 
 01:5253 call_01_5253
+01:5253 .code:008b
 
 ;; 01:5265:op _NORMAL_CURSOR_MODE
 
@@ -2406,6 +2520,7 @@
 ;; 01:52eb Args: bank, read_start_address (word), write_start_address (word)
 ;; 01:52eb
 ;; 01:52eb Registers used: A, DE, HL
+01:52eb .code:0041
 01:52ee .jump_loop
 01:531f .jump_increment_write_address
 01:5326 .jump_increment_count
@@ -2415,6 +2530,7 @@
 01:532c .data:0005
 
 01:5331 call_01_5331
+01:5331 .code:013d
 ;; 01:5363:op _SRAM_TABLE_COMMANDS_1
 ;; 01:5371:op _SRAM_TABLE_COMMAND_VALUES_1
 ;; 01:5380:op _SRAM_TABLE_COMMANDS_2
@@ -2429,6 +2545,7 @@
 ;; 01:53fd TODO: determine which bank number below is used for which SRAM value above
 
 01:546e call_01_546e
+01:546e .code:00ad
 
 ;; 01:54ad:op LOW(call_1f_4b8c)
 ;; 01:54af:op HIGH(call_1f_4b8c)
@@ -2441,6 +2558,7 @@
 01:550e .text:000d
 
 01:551b call_01_551b
+01:551b .code:00b9
 
 ;; 01:552e:op _NORMAL_CURSOR_MODE
 
@@ -2571,8 +2689,10 @@
 01:6d0a .jump_reset_help_banner
 
 01:6d3b call_01_6d3b
+01:6d3b .code:0021
 
 01:6d5c call_01_6d5c
+01:6d5c .code:022b
 
 ;; 01:6d7b:op _FILE_SCREEN
 
@@ -2674,10 +2794,12 @@
 01:7500 call_show_banner
 ;; 01:7500 Show the currently selected banner text.
 ;; 01:7500 Registers used: A, DE, HL
+01:7500 .code:00c6
 
 01:75c6 call_set_out_of_memory_error_banner
 ;; 01:75c6 Sets the banner text to the out of memory error.
 ;; 01:75c6 Registers used: A, DE, HL
+01:75c6 .code:000a
 
 01:75d0 data_out_of_memory_error_string
 01:75d0 .text:0031
@@ -2685,6 +2807,7 @@
 01:7601 call_set_add_chain_error_banner
 ;; 01:7601 Sets the banner text to the add chain error.
 ;; 01:7601 Registers used: A, DE, HL
+01:7601 .code:000a
 
 01:760b data_add_chain_error_string
 01:760b .text:0014
@@ -2692,6 +2815,7 @@
 01:761f call_set_add_phrase_error_banner
 ;; 01:761f Sets the banner text to the add phrase error.
 ;; 01:761f Registers used: A, DE, HL
+01:761f .code:000a
 
 01:7629 data_add_phrase_error_string
 01:7629 .text:0015
@@ -2699,11 +2823,13 @@
 01:763e call_set_max_marks_error_banner
 ;; 01:763e Sets the banner text to the add max marks error.
 ;; 01:763e Registers used: A, DE, HL
+01:763e .code:000a
 
 01:7648 data_max_marks_error_string
 01:7648 .text:000d
 
 01:7655 call_01_7655
+01:7655 .code:0122
 
 ;; 01:76a3:op _PHRASE_SCREEN
 
@@ -2722,22 +2848,26 @@
 01:7816 .text:0012
 
 01:7828 call_01_7828
+01:7828 .code:0041
 
 01:7869 call_has_banner
 ;; 01:7869 Check to see if there is an active banner being displayed.
 ;; 01:7869 Result: E
 ;; 01:7869 Registers used: A, E, HL
+01:7869 .code:0018
 
 01:7879 .jump_check_banner_address
 01:787d .jump_return
 
 01:7881 call_01_7881
+01:7881 .code:00cd
 
 01:794e data_01_794e
 01:794e .text:0006
 ;; 01:7958:op CART_SRAM_DISABLE
 
 01:7954 jump_01_7954
+01:7954 .code:0234
 ;; 01:7955:op rRAMG
 
 ;; 01:7b7c:op _INSTRUMENT_SCREEN
@@ -2769,12 +2899,14 @@
 01:7be8 .text:0004
 
 01:7bec call_01_7bec
+01:7bec .code:00a8
 ;; 01:7c39:op rRAMG
 ;; 01:7c3c:op CART_SRAM_ENABLE
 ;; 01:7c41:op rRAMG
 ;; 01:7c44:op CART_SRAM_DISABLE
 
 01:7c94 call_01_7c94
+01:7c94 .code:0163
 ;; 01:7caa:op rRAMG
 ;; 01:7cad:op CART_SRAM_ENABLE
 ;; 01:7caf:op rRAMB
@@ -2911,14 +3043,18 @@
 ;; 01:7f0c:replace:00f4 ds $8000 - @, $ff    ; 01:7f0c
 
 02:4000 call_02_4000
+02:4000 .code:00e6
 
 02:40e6 call_02_40e6
 
 02:410c call_02_410c
+02:410c .code:0026
 
 02:4132 call_02_4132
+02:4132 .code:0022
 
 02:4154 call_02_4154
+02:4154 .code:00b4
 
 02:4208 call_02_4208
 
@@ -2927,8 +3063,10 @@
 02:4254 call_02_4254
 
 02:4276 call_02_4276
+02:4276 .code:0010
 
 02:4286 call_02_4286
+02:4286 .code:0148
 ;; 02:42da:op rRAMB
 ;; 02:42dd:op CART_SRAM_ENABLE
 ;; 02:42e0:op rRAMG
@@ -2940,20 +3078,27 @@
 02:43d8 .data:0200
 
 02:45d8 call_02_45d8
+02:45d8 .code:005f
 
 02:4637 call_02_4637
 
 02:4679 call_02_4679
+02:4679 .code:004e
 
 02:46c7 call_02_46c7
+02:46c7 .code:0011
 
 02:46d8 call_02_46d8
+02:46d8 .code:001f
 
 02:46f7 call_02_46f7
+02:46f7 .code:0038
 
 02:472f call_02_472f
+02:472f .code:0024
 
 02:4753 call_02_4753
+02:4753 .code:003a
 
 02:478d call_02_478d
 
@@ -2961,10 +3106,13 @@
 02:47a2 .data:009d
 
 02:483f call_02_483f
+02:483f .code:001b
 
 02:485a call_02_485a
+02:485a .code:0024
 
 02:487e call_02_487e
+02:487e .code:002d
 ;; 02:4897:op _SRAM_GROOVES
 ;; 02:489b Assume bank for _SRAM_GROOVES is 0
 ;; 02:489c:op rRAMB
@@ -2973,9 +3121,11 @@
 ;; 02:48a7:op rRAMG
 
 02:48ab call_02_48ab
+02:48ab .code:0027
 ;; 02:48ac:op rRAMB
 
 02:48d2 call_02_48d2
+02:48d2 .code:007b
 ;; 02:48de:op _SRAM_SONG_CHAINS_BANK
 ;; 02:48e0:op rRAMB
 ;; 02:48ef:op _SRAM_SONG_CHAINS
@@ -2988,6 +3138,7 @@
 ;; 02:4949:op rRAMG
 
 02:494d call_02_494d
+02:494d .code:023d
 
 02:4b8a call_02_4b8a
 ;; 02:4b9e:op _SRAM_CHAIN_TRANSPOSES
@@ -2998,20 +3149,26 @@
 ;; 02:4bb8:op rRAMG
 
 02:4bc5 call_02_4bc5
+02:4bc5 .code:0061
 
 02:4c26 call_02_4c26
+02:4c26 .code:001c
 
 02:4c42 call_02_4c42
+02:4c42 .code:000c
 
 02:4c4e call_02_4c4e
+02:4c4e .code:001a
 
 02:4c68 call_02_4c68
+02:4c68 .code:0034
 ;; 02:4c6a:op rRAMB
 ;; 02:4c78:op CART_SRAM_ENABLE
 ;; 02:4c7b:op rRAMG
 ;; 02:4c80:op rRAMG
 
 02:4c9c call_02_4c9c
+02:4c9c .code:0023
 
 02:4cbf call_02_4cbf
 
@@ -3022,12 +3179,14 @@
 02:4e17 call_02_4e17
 
 02:4e2a call_02_4e2a
+02:4e2a .code:003f
 
 02:4e69 call_02_4e69
 
 02:4e74 call_02_4e74
 
 02:4ea3 call_02_4ea3
+02:4ea3 .code:0056
 
 02:4ef9 call_fill_12x
 ;; 02:4ef9 Fill 12 addresses with the given byte.
@@ -3048,8 +3207,10 @@
 ;; 02:4f01 Registers used: A, HL
 
 02:4f06 call_02_4f06
+02:4f06 .code:0084
 
 02:4f8a call_02_4f8a
+02:4f8a .code:007c
 ;; 02:4f8c:op rRAMB
 
 02:5006 call_02_5006
@@ -3057,17 +3218,23 @@
 ;; 02:500b:op rRAMG
 
 02:5014 call_02_5014
+02:5014 .code:002a
 
 02:503e call_02_503e
+02:503e .code:000b
 
 02:5049 call_02_5049
+02:5049 .code:001d
 
 02:5066 call_02_5066
+02:5066 .code:0045
 ;; 02:506b:op rRAMB
 
 02:50ab call_02_50ab
+02:50ab .code:0038
 
 02:50e3 call_02_50e3
+02:50e3 .code:0038
 
 02:511b call_read_channel_value
 ;; 02:511b Read a channel value.
@@ -3097,6 +3264,7 @@
 ;; 02:512b:op rRAMG
 
 02:512f call_02_512f
+02:512f .code:01e0
 ;; 02:517f:op rRAMB
 ;; 02:5182:op CART_SRAM_ENABLE
 ;; 02:5185:op rRAMG
@@ -3104,8 +3272,10 @@
 ;; 02:521d:op rRAMB
 
 02:530f call_02_530f
+02:530f .code:0114
 
 02:5423 call_02_5423
+02:5423 .code:001e
 ;; 02:5434:op CART_SRAM_ENABLE
 ;; 02:5437:op rRAMG
 ;; 02:543d:op rRAMG
@@ -3113,6 +3283,7 @@
 02:5441 call_02_5441
 
 02:54a1 call_02_54a1
+02:54a1 .code:0093
 
 02:5534 call_02_5534
 
@@ -3212,20 +3383,26 @@
 ;; 02:620a:op rRAMG
 
 02:620e call_02_620e
+02:620e .code:0233
 
 02:6441 call_02_6441
 
 02:6465 call_02_6465
+02:6465 .code:00da
 
 02:653f call_02_653f
 
 02:65bb call_02_65bb
+02:65bb .code:0053
 
 02:660e call_02_660e
+02:660e .code:0019
 
 02:6627 call_02_6627
+02:6627 .code:000a
 
 02:6631 call_02_6631
+02:6631 .code:002b
 
 ;; 02:663d:op LOW(call_07_5d9a)
 ;; 02:663f:op HIGH(call_07_5d9a)
@@ -3264,6 +3441,7 @@
 02:6d31 call_02_6d31
 
 02:6d46 call_02_6d46
+02:6d46 .code:0083
 
 02:6dc9 call_02_6dc9
 
@@ -3321,6 +3499,7 @@
 02:7791 call_02_7791
 
 02:77e6 call_02_77e6
+02:77e6 .code:0067
 
 ;; 02:77ea:op _SONG_SCREEN
 
@@ -3364,6 +3543,7 @@
 ;; 03:4000 Args: param (see param constants), value
 ;; 03:4000
 ;; 03:4000 Registers used: A, DE, HL
+03:4000 .code:0015
 
 03:4015 data_default_wave_frame_2
 03:4015 .data:0010
@@ -3394,6 +3574,7 @@
 ;; 03:40f8 Read the wave play instrument param from the current instrument.
 ;; 03:40f8 Result: E
 ;; 03:40f8 Registers used: A, DE, HL
+03:40f8 .code:000d
 
 ;; 03:40f9:op _WAVE_PLAY_INSTRUMENT_PARAM
 
@@ -3401,6 +3582,7 @@
 ;; 03:4105 Check if the current instrument has a manual wave play type.
 ;; 03:4105 Result: E
 ;; 03:4105 Registers used: A, DE, HL
+03:4105 .code:0013
 
 03:4113 .jump_false
 03:4114 .jump_return
@@ -3409,6 +3591,7 @@
 ;; 03:4118 Checks to see if the current instrument has the table on instrument param.
 ;; 03:4118 Result: E
 ;; 03:4118 Registers used: A, DE, HL
+03:4118 .code:001b
 
 ;; 03:4119:op _TABLE_ON_INSTRUMENT_PARAM
 
@@ -3420,6 +3603,7 @@
 03:4133 call_enable_current_instrument_table_on_param
 ;; 03:4133 Enable the table on param for the current instrument.
 ;; 03:4133 Registers used: A, DE, HL
+03:4133 .code:001c
 
 ;; 03:4134 Read current instrument param
 ;; 03:413f Enable bit 5, table on param
@@ -3435,28 +3619,35 @@
 ;; 03:414f Result: E
 ;; 03:414f
 ;; 03:414f Registers used: A, DE, HL
+03:414f .code:0021
 ;; 03:4153:op LOW(data_max_instrument_cursor_rows)
 ;; 03:4157:op HIGH(data_max_instrument_cursor_rows)
 03:416b .jump_false
 03:416c .jump_return
 
 03:4170 call_03_4170
+03:4170 .code:00e7
 
 03:4257 call_03_4257
+03:4257 .code:0024
 
 ;; 03:4266:op LOW(call_01_522d)
 ;; 03:4268:op HIGH(call_01_522d)
 ;; 03:4270:op BANK(call_01_522d)
 
 03:427b call_03_427b
+03:427b .code:0018
 
 03:4293 call_03_4293
+03:4293 .code:0018
 
 03:42ab call_03_42ab
+03:42ab .code:0054
 ;; 03:42b4:op _SRAM_WAVE_FRAMES
 ;; 03:42c4:op _SRAM_WAVE_FRAMES_BANK
 
 03:42ff call_03_42ff
+03:42ff .code:003c
 
 ;; 03:432a:op call_show_banner
 ;; 03:432e:op BANK(call_show_banner)
@@ -3465,6 +3656,7 @@
 03:433b .text:0032
 
 03:436d call_03_436d
+03:436d .code:006d
 
 ;; 03:436e:op LOW(call_1f_4b8c)
 ;; 03:4370:op HIGH(call_1f_4b8c)
@@ -3481,8 +3673,10 @@
 03:43da .text:000f
 
 03:43e9 call_03_43e9
+03:43e9 .code:005a
 
 03:4443 call_03_4443
+03:4443 .code:0180
 ;; 03:44a1:op _SRAM_SYNTH_PARAMS
 ;; 03:44c9:op _SRAM_SYNTH_PARAMS_BANK
 
@@ -3490,6 +3684,7 @@
 03:45c3 .text:000d
 
 03:45d0 call_03_45d0
+03:45d0 .code:002c
 
 ;; 03:45d9:op call_05_4040
 ;; 03:45dd:op BANK(call_05_4040)
@@ -3499,14 +3694,17 @@
 ;; 03:45eb:op BANK(call_01_6d5c)
 
 03:45fc call_03_45fc
+03:45fc .code:0048
 
 ;; 03:4631:op LOW(call_copy_current_screen_bg_tile_page)
 ;; 03:4633:op HIGH(call_copy_current_screen_bg_tile_page)
 ;; 03:4636:op BANK(call_copy_current_screen_bg_tile_page)
 
 03:4644 call_03_4644
+03:4644 .code:001d
 
 03:4661 call_03_4661
+03:4661 .code:0041
 
 ;; 03:468f:op LOW(call_copy_current_screen_bg_tile_page)
 ;; 03:4691:op HIGH(call_copy_current_screen_bg_tile_page)
@@ -3517,6 +3715,7 @@
 03:476a call_increment_command_rate_instrument_param
 ;; 03:476a Increment the command rate instrument param if it is not at maximum and draw the updated digits.
 ;; 03:476a Registers used: A, DE, HL
+03:476a .code:0028
 
 ;; 03:476b:op _COMMAND_RATE_INSTRUMENT_PARAM
 
@@ -3527,6 +3726,7 @@
 03:4792 call_decrement_command_rate_instrument_param
 ;; 03:4792 Decrement the command rate instrument param if it is not at 0 and draw the updated digits.
 ;; 03:4792 Registers used: A, DE, HL
+03:4792 .code:0027
 
 ;; 03:4793:op _COMMAND_RATE_INSTRUMENT_PARAM
 
@@ -3538,12 +3738,14 @@
 ;; 03:47b9 Check the table step param for the current instrument.
 ;; 03:47b9 Result: E
 ;; 03:47b9 Registers used: A, DE, HL
+03:47b9 .code:0012
 
 ;; 03:47ba:op _TABLE_STEP_INSTRUMENT_PARAM
 
 ;; 03:47c5 Get only the table step bit
 
 03:47cb call_03_47cb
+03:47cb .code:008c
 
 ;; 03:4825:op LOW(call_draw_table_type_instrument_params)
 ;; 03:4827:op HIGH(call_draw_table_type_instrument_params)
@@ -3560,6 +3762,7 @@
 ;; 03:4857   KEY_CHANGE_START must be set to 1 after pressing the key
 ;; 03:4857
 ;; 03:4857 Registers used: A, DE, HL
+03:4857 .code:006f
 
 ;; 03:4869:op _TABLE_STEP_INSTRUMENT_PARAM
 
@@ -3583,6 +3786,7 @@
 03:48c6 call_increment_current_instrument_table_param
 ;; 03:48c6 Increment the table for the current instrument.
 ;; 03:48c6 Registers used: A, DE, HL
+03:48c6 .code:0039
 
 ;; 03:48c7:op _TABLE_INSTRUMENT_PARAM
 
@@ -3599,12 +3803,14 @@
 03:48fd .jump_return
 
 03:48ff call_03_48ff
+03:48ff .code:004e
 
 ;; 03:493d:op LOW(call_draw_table_instrument_param)
 ;; 03:493f:op HIGH(call_draw_table_instrument_param)
 ;; 03:4942:op BANK(call_draw_table_instrument_param)
 
 03:494d call_03_494d
+03:494d .code:0038
 
 ;; 03:4975:op LOW(call_draw_table_instrument_param)
 ;; 03:4977:op HIGH(call_draw_table_instrument_param)
@@ -3613,6 +3819,7 @@
 03:4985 call_disable_current_instrument_table_on_param
 ;; 03:4985 Turn off the table on param for the current instrument.
 ;; 03:4985 Registers used: A, DE, HL
+03:4985 .code:002f
 
 ;; 03:4986:op _TABLE_INSTRUMENT_PARAM
 
@@ -3627,8 +3834,10 @@
 03:49b2 .jump_return
 
 03:49b4 call_03_49b4
+03:49b4 .code:002c
 
 03:49e0 call_03_49e0
+03:49e0 .code:002d
 
 03:4a0d data_03_4a0d
 03:4a0d .text:0003
@@ -3637,6 +3846,7 @@
 ;; 03:4a10 Read the wave loop pos param for the current instrument.
 ;; 03:4a10 Result: E
 ;; 03:4a10 Registers used: A, DE, HL
+03:4a10 .code:0016
 
 ;; 03:4a11:op _WAVE_LOOP_POS_INSTRUMENT_PARAM
 ;; 03:4a1c Mask the param to only get the wave loop pos part
@@ -3647,6 +3857,7 @@
 03:4a26 call_draw_wave_loop_pos_instrument_param
 ;; 03:4a26 Draw the wave loop pos instrument param for the current instrument.
 ;; 03:4a26 Registers used: A, DE, HL
+03:4a26 .code:003d
 
 ;; 03:4a34:op _PLAY_LOOP
 ;; 03:4a39:op _PLAY_PINGPONG
@@ -3662,6 +3873,7 @@
 03:4a61 .jump_return
 
 03:4a63 call_03_4a63
+03:4a63 .code:0070
 
 03:4ad3 data_instrument_distortion_type_strings
 03:4ad3 data_hard_instrument_distortion_type_string
@@ -3686,6 +3898,7 @@
 ;; 03:4aff Write the wave speed param for the current instrument.
 ;; 03:4aff Args: value
 ;; 03:4aff Registers used: A, DE, HL
+03:4aff .code:0014
 
 ;; 03:4b08:op _WAVE_SPEED_INSTRUMENT_PARAM
 
@@ -3704,6 +3917,7 @@
 ;; 03:4b29 Write the wave length param of the current instrument.
 ;; 03:4b29 Args: wave_lenth
 ;; 03:4b29 Registers used: A, DE, HL
+03:4b29 .code:001f
 
 03:4b35 .jump_calculate_value
 
@@ -3713,6 +3927,7 @@
 ;; 03:4b48 Write the loop position to the current instrument.
 ;; 03:4b48 Args: loop_pos (half byte) (negative)
 ;; 03:4b48 Registers used: A, DE, HL
+03:4b48 .code:0023
 
 ;; 03:4b49 Read the loop pos
 
@@ -3728,12 +3943,14 @@
 ;; 03:4b6b Get the current instrument pitch shape param.
 ;; 03:4b6b Result: E
 ;; 03:4b6b Registers used: A, DE, HL
+03:4b6b .code:0012
 
 ;; 03:4b6c:op _PITCH_SHAPE_INSTRUMENT_PARAM
 
 ;; 03:4b77 Get only pitch shape param bits
 
 03:4b7d call_03_4b7d
+03:4b7d .code:004e
 
 ;; 03:4bad:op LOW(call_01_5208)
 ;; 03:4baf:op HIGH(call_01_5208)
@@ -3746,23 +3963,28 @@
 ;; 03:4bc4 Call either call_01_518c or call_01_5208
 
 03:4bcb call_03_4bcb
+03:4bcb .code:001f
 
 03:4bea call_03_4bea
+03:4bea .code:001e
 
 03:4c08 call_get_current_instrument_type_param_minus_2
 ;; 03:4c08 Get the instrument type instrument param of the current instrument minus 2.
 ;; 03:4c08 Result: E
 ;; 03:4c08 Registers used: A, DE, HL
+03:4c08 .code:0010
 
 ;; 03:4c09:op _INSTRUMENT_TYPE_INSTRUMENT_PARAM
 
 03:4c18 call_03_4c18
+03:4c18 .code:006b
 
 ;; 03:4c6a:op LOW(call_01_518c)
 ;; 03:4c6c:op HIGH(call_01_518c)
 ;; 03:4c76:op BANK(call_01_518c)
 
 03:4c83 call_03_4c83
+03:4c83 .code:0075
 
 ;; 03:4cdf:op LOW(call_01_518c)
 ;; 03:4ce1:op HIGH(call_01_518c)
@@ -3771,12 +3993,14 @@
 03:4cf8 call_draw_wave_finetune_instrument_param
 ;; 03:4cf8 Draw the wave finetune instrument param value.
 ;; 03:4cf8 Registers used: A, DE, HL
+03:4cf8 .code:003c
 
 ;; 03:4cf9:op _WAVE_FINETUNE_INSTRUMENT_PARAM
 
 ;; 03:4d11:op _EMPTY_ROW_ASCII_CODE
 
 03:4d34 call_03_4d34
+03:4d34 .code:00b6
 
 03:4dea data_wave_instrument_screen_string
 03:4dea .text:0006
@@ -3833,60 +4057,77 @@
 03:4ff5 .text:0006
 
 03:4ffb call_03_4ffb
+03:4ffb .code:0026
 
 03:5021 call_03_5021
+03:5021 .code:0038
 
 03:5059 call_03_5059
+03:5059 .code:0052
 
 03:50ab call_03_50ab
+03:50ab .code:0053
 
 03:50fe call_03_50fe
+03:50fe .code:0049
 
 03:5147 call_03_5147
+03:5147 .code:0059
 
 ;; 03:517e:op LOW(call_copy_current_screen_bg_tile_page)
 ;; 03:5180:op HIGH(call_copy_current_screen_bg_tile_page)
 ;; 03:5185:op BANK(call_copy_current_screen_bg_tile_page)
 
 03:51a0 call_03_51a0
+03:51a0 .code:003b
 
 ;; 03:51c6:op call_1f_418a
 ;; 03:51ca:op BANK(call_1f_418a)
 
 03:51db call_03_51db
+03:51db .code:0038
 
 ;; 03:51fe:op call_1f_418a
 ;; 03:5202:op BANK(call_1f_418a)
 
 03:5213 call_03_5213
+03:5213 .code:003d
 
 ;; 03:523b:op call_1f_418a
 ;; 03:523f:op BANK(call_1f_418a)
 
 03:5250 call_03_5250
+03:5250 .code:003a
 
 ;; 03:5275:op call_1f_418a
 ;; 03:5279:op BANK(call_1f_418a)
 
 03:528a call_03_528a
+03:528a .code:0050
 
 03:52da data_03_52da
 03:52da .text:0004
 
 03:52de call_03_52de
+03:52de .code:0059
 
 03:5337 jump_table_03_5337
+03:5337 .code:0004
 
 03:533b call_03_533b
+03:533b .code:005a
 
 03:5395 data_03_5395
 03:5395 .text:0004
 
 03:5399 call_03_5399
+03:5399 .code:0060
 
 03:53f9 jump_table_03_53f9
+03:53f9 .code:0004
 
 03:53fd call_03_53fd
+03:53fd .code:0118
 
 ;; 03:5409:op LOW(call_1f_71cc)
 ;; 03:540b:op HIGH(call_1f_71cc)
@@ -4033,19 +4274,23 @@
 ;; 03:7a73:replace:058d ds $8000 - @, $ff    ; 03:7a73
 
 04:4000 call_04_4000
+04:4000 .code:001b
 
 ;; 04:4001:op call_06_752b
 ;; 04:4010:op BANK(call_06_752b)
 
 04:401b call_04_401b
+04:401b .code:0011
 
 ;; 04:401c:op LOW(call_1f_6bac)
 ;; 04:401e:op HIGH(call_1f_6bac)
 ;; 04:4021:op BANK(call_1f_6bac)
 
 04:402c call_04_402c
+04:402c .code:0031
 
 04:405d call_04_405d
+04:405d .code:0014
 
 04:4071 call_read_current_phrase_row_instrument
 ;; 04:4071 Read the instrument at the current phrase row.
@@ -4057,6 +4302,7 @@
 ;; 04:4071 Result: E
 ;; 04:4071
 ;; 04:4071 Registers used: A, DE, HL
+04:4071 .code:0016
 
 04:4087 call_get_preceeding_instrument
 ;; 04:4087 Get the instrument number preceeding the current phrase row, if any.
@@ -4066,6 +4312,7 @@
 ;; 04:4087   CURRENT_PHRASE must be set
 ;; 04:4087
 ;; 04:4087 Registers used: A, DE, HL
+04:4087 .code:002b
 
 04:408c .jump_check_row
 
@@ -4080,15 +4327,18 @@
 04:40b0 .jump_return
 
 04:40b2 call_04_40b2
+04:40b2 .code:0054
 
 ;; 04:40d1:op _SELECT_CURSOR_MODE
 
 04:4106 call_04_4106
+04:4106 .code:0089
 
 04:418f call_write_current_phrase_note
 ;; 04:418f Write a note to a row in the current phrase.
 ;; 04:418f Args: row, note
 ;; 04:418f Registers used: A, D, HL
+04:418f .code:0061
 
 ;; 04:4198:op LOW(_SRAM_PHRASE_NOTES)
 ;; 04:419c:op HIGH(_SRAM_PHRASE_NOTES)
@@ -4109,6 +4359,7 @@
 ;; 04:41f0 Write an instrument number to a phrase row.
 ;; 04:41f0 Args: phrase, row, value
 ;; 04:41f0 Registers used: A, DE, HL
+04:41f0 .code:0067
 
 ;; 04:41f6:op _PHRASES
 
@@ -4134,6 +4385,7 @@
 ;; 04:4253 Return
 
 04:4257 call_04_4257
+04:4257 .code:0047
 
 04:429e data_04_429e
 04:429e .data:0005
@@ -4141,6 +4393,7 @@
 04:42a3 .data:0005
 
 04:42a8 call_04_42a8
+04:42a8 .code:0125
 
 ;; 04:42d0:op LOW(call_1f_4a64)
 ;; 04:42d2:op HIGH(call_1f_4a64)
@@ -4155,24 +4408,28 @@
 ;; 04:43b1:op BANK(call_01_7828)
 
 04:43cd call_04_43cd
+04:43cd .code:01af
 
 ;; 04:44d0:op _SELECT_CURSOR_MODE
 
 ;; 04:44fe:op _SELECT_CURSOR_MODE
 
 04:457c call_04_457c
+04:457c .code:018f
 
 ;; 04:45e9:op _SELECT_CURSOR_MODE
 
 ;; 04:468a:op _SELECT_CURSOR_MODE
 
 04:470b call_04_470b
+04:470b .code:0106
 
 ;; 04:477c:op _SELECT_CURSOR_MODE
 
 ;; 04:47ac:op _SELECT_CURSOR_MODE
 
 04:4811 call_04_4811
+04:4811 .code:0107
 
 ;; 04:4884:op _SELECT_CURSOR_MODE
 
@@ -4183,6 +4440,7 @@
 ;; 04:4918 Args: phrase, row
 ;; 04:4918 Result: E
 ;; 04:4918 Registers used: A, DE, HL
+04:4918 .code:0050
 
 ;; 04:491e:op _PHRASES
 
@@ -4209,6 +4467,7 @@
 ;; 04:4968 Args: row
 ;; 04:4968 Result: E
 ;; 04:4968 Registers used: A, DE, HL
+04:4968 .code:005d
 
 ;; 04:4971:op LOW(_SRAM_PHRASE_NOTES)
 ;; 04:4975:op HIGH(_SRAM_PHRASE_NOTES)
@@ -4231,6 +4490,7 @@
 ;; 04:49c5 Write a command to a row in a phrase.
 ;; 04:49c5 Args: phrase, row, command (see command constants)
 ;; 04:49c5 Registers used: A, DE, HL
+04:49c5 .code:006b
 
 ;; 04:49ce:op LOW(_SRAM_PHRASE_COMMANDS)
 ;; 04:49d2:op HIGH(_SRAM_PHRASE_COMMANDS)
@@ -4263,6 +4523,7 @@
 ;; 04:4a30 Write a command value to a phrase row.
 ;; 04:4a30 Args: phrase, row, value
 ;; 04:4a30 Registers used: A, DE, HL
+04:4a30 .code:005f
 
 ;; 04:4a39:op LOW(_SRAM_PHRASE_COMMAND_VALUES)
 ;; 04:4a3d:op HIGH(_SRAM_PHRASE_COMMAND_VALUES)
@@ -4291,6 +4552,7 @@
 ;; 04:4a8f Read a command value from the row of a phrase.
 ;; 04:4a8f Args: phrase, row
 ;; 04:4a8f Registers used: A, DE, HL
+04:4a8f .code:005b
 
 ;; 04:4a98:op LOW(_SRAM_PHRASE_COMMAND_VALUES)
 ;; 04:4a9c:op HIGH(_SRAM_PHRASE_COMMAND_VALUES)
@@ -4323,6 +4585,7 @@
 ;; 04:4aea Result: E
 ;; 04:4aea
 ;; 04:4aea Registers used: A, DE, HL
+04:4aea .code:0071
 
 ;; 04:4af3:op LOW(_SRAM_PHRASE_COMMANDS)
 ;; 04:4af7:op HIGH(_SRAM_PHRASE_COMMANDS)
@@ -4350,6 +4613,7 @@
 04:4b56 .jump_return
 
 04:4b5b call_04_4b5b
+04:4b5b .code:00ab
 
 ;; 04:4bcc:op _SELECT_CURSOR_MODE
 
@@ -4440,6 +4704,7 @@
 ;; 04:510a Returns whether the current phrase row doesn't have a preceeding speech/kit instrument.
 ;; 04:510a Result: E
 ;; 04:510a Registers used: A, DE, HL
+04:510a .code:002c
 
 ;; 04:510b Check for speech instrument
 
@@ -4457,8 +4722,10 @@
 04:5133 .jump_return
 
 04:5136 call_04_5136
+04:5136 .code:0078
 
 04:51ae call_04_51ae
+04:51ae .code:0107
 
 04:52b5 jump_table_04_52b5
 
@@ -4466,6 +4733,7 @@
 04:548d .text:0006
 
 04:5493 call_04_5493
+04:5493 .code:0052
 
 ;; 04:54bd:op LOW(call_01_493b)
 ;; 04:54bf:op HIGH(call_01_493b)
@@ -4479,6 +4747,7 @@
 04:54e5 .data:0050
 
 04:5535 call_04_5535
+04:5535 .code:0073
 
 ;; 04:5550:op LOW(call_1f_4a64)
 ;; 04:5552:op HIGH(call_1f_4a64)
@@ -4488,6 +4757,7 @@
 ;; 04:557b:op BANK(call_restore_backup_selection)
 
 04:55a8 call_04_55a8
+04:55a8 .code:0081
 
 ;; 04:55c9:op LOW(call_1f_4b8c)
 ;; 04:55cb:op HIGH(call_1f_4b8c)
@@ -4501,8 +4771,10 @@
 ;; 04:5602:op BANK(call_restore_backup_selection)
 
 04:5629 call_04_5629
+04:5629 .code:003d
 
 04:5666 call_04_5666
+04:5666 .code:0068
 
 04:56ce data_cloned_instrument_string
 04:56ce .text:000d
@@ -4510,6 +4782,7 @@
 04:56db .text:000d
 
 04:56e8 call_04_56e8
+04:56e8 .code:0094
 
 ;; 04:56f5:op _SELECT_CURSOR_MODE
 
@@ -4522,6 +4795,7 @@
 ;; 04:5771:op BANK(call_02_7b9b)
 
 04:577c call_04_577c
+04:577c .code:0105
 
 ;; 04:5783:op LOW(call_01_493b)
 ;; 04:5785:op HIGH(call_01_493b)
@@ -4532,16 +4806,22 @@
 ;; 04:57d4:op BANK(call_01_7828)
 
 04:5881 call_04_5881
+04:5881 .code:00a4
 
 04:5925 call_04_5925
+04:5925 .code:00a3
 
 04:59c8 call_04_59c8
+04:59c8 .code:00a7
 
 04:5a6f call_04_5a6f
+04:5a6f .code:0097
 
 04:5b06 call_04_5b06
+04:5b06 .code:0048
 
 04:5b4e call_04_5b4e
+04:5b4e .code:0050
 
 ;; 04:5b9e:op _SELECT_CURSOR_MODE
 
@@ -4726,6 +5006,7 @@
 
 05:4000 call_update_screen_offset_cols
 ;; 05:4000 Update the offet positions of screen columns based on screen cursor position.
+05:4000 .code:1881
 
 ;; 05:4004 Column offsets can only change on row 1
 
@@ -4743,6 +5024,7 @@
 05:403f .jump_return
 
 05:4040 call_05_4040
+05:4040 .code:0120
 
 05:4160 data_05_4160
 05:4160 .text:0003
@@ -4752,6 +5034,7 @@
 05:4167 call_update_current_screen
 ;; 05:4167 Update CURRENT_SCREEN based on the value of CURRENT_SCREEN_ROW and CURRENT_SCREEN_COL.
 ;; 05:4167 Registers used: A, DE, HL
+05:4167 .code:00a5
 
 ;; 05:417a Invalid row, do not update CURRENT_SCREEN.
 
@@ -5239,6 +5522,7 @@
 05:66e3 call_05_66e3
 
 05:6936 call_05_6936
+05:6936 .code:0031
 
 05:6967 jump_table_05_6967
 
@@ -5317,8 +5601,10 @@
 05:716d .text:0014
 
 05:7181 call_05_7181
+05:7181 .code:0018
 
 05:7199 jump_table_05_7199
+05:7199 .code:0083
 
 05:721c data_synth_help_strings
 05:721c data_signal_synth_help_string
@@ -5345,27 +5631,32 @@
 ;; 05:73b8 Sets the cursor mode to selection mode.
 ;; 05:73b8 Sets the selection screen to the current screen.
 ;; 05:73b8 Registers used: A, HL
+05:73b8 .code:003e
 
 ;; 05:73eb:op _SELECT_CURSOR_MODE
 
 05:73f6 call_restore_backup_selection
 ;; 05:73f6 Restore the backed up selection when cancelling the current selection.
 ;; 05:73f6 Registers used: A, HL
+05:73f6 .code:0031
 
 05:7427 data_bank_05_padding
 ;; 05:7427:replace:0bd9 ds $8000 - @, $ff    ; 05:7427
 
 06:4000 call_06_4000
+06:4000 .code:0022
 
 06:4022 data_06_4022
 06:4022 .data:0004
 
 06:4026 call_06_4026
+06:4026 .code:0037
 
 06:405d call_read_word_value
 ;; 06:405d Read a byte from the word at the current speech/word cursor position.
 ;; 06:405d Result: E
 ;; 06:405d Registers used: A, DE, HL
+06:405d .code:0056
 
 ;; 06:4066 The following loop will rotate the speech cursor left 5 times, multiplying it by 32.
 
@@ -5382,6 +5673,7 @@
 ;; 06:40b3 Write a byte to the word at the current speech/word cursor position.
 ;; 06:40b3 Args: value
 ;; 06:40b3 Registers used: A, DE, HL
+06:40b3 .code:005b
 
 ;; 06:40bc The following loop will rotate the current speech cursor row left 5 times, multiplying it by 32.
 
@@ -5395,10 +5687,13 @@
 ;; 06:410a Return
 
 06:410e call_06_410e
+06:410e .code:0041
 
 06:414f call_06_414f
+06:414f .code:0053
 
 06:41a2 call_06_41a2
+06:41a2 .code:0159
 
 ;; 06:41a5:op LOW(call_01_6d5c)
 ;; 06:41a7:op HIGH(call_01_6d5c)
@@ -5421,8 +5716,10 @@
 06:4301 .text:005
 
 06:4306 call_06_4306
+06:4306 .code:0017
 
 06:431d call_06_431d
+06:431d .code:058e
 
 ;; 06:4416:op _SELECT_CURSOR_MODE
 
@@ -5461,14 +5758,17 @@
 ;; 06:4897:op BANK(call_02_7b9b)
 
 06:48ab call_06_48ab
+06:48ab .code:003e
 
 06:48e9 call_06_48e9
+06:48e9 .code:0053
 
 06:493c call_read_wave_sample
 ;; 06:493c Reads a single sample from the current synth wave frame.
 ;; 06:493c Args: sample
 ;; 06:493c Result: E
 ;; 06:493c Registers used: A, DE, HL
+06:493c .code:0078
 
 ;; 06:4942:op _FRAME_SAMPLES
 
@@ -5489,30 +5789,40 @@
 ;; 06:49ab Mask the value so only the first character of the byte is returned
 
 06:49b4 call_06_49b4
+06:49b4 .code:00a6
 ;; 06:49d4:op _SRAM_WAVE_FRAMES
 ;; 06:4a05:op _SRAM_WAVE_FRAMES_BANK
 
 06:4a5a call_06_4a5a
+06:4a5a .code:0066
 
 06:4ac0 call_06_4ac0
+06:4ac0 .code:002a
 
 ;; 06:4ad7:op _SELECT_CURSOR_MODE
 
 06:4aea call_06_4aea
+06:4aea .code:0067
 
 ;; 06:4b13:op _SELECT_CURSOR_MODE
 
 06:4b51 call_06_4b51
+06:4b51 .code:00ae
 
 06:4bff call_06_4bff
+06:4bff .code:0257
 
 06:4e56 call_06_4e56
+06:4e56 .code:0011
 
 06:4e67 call_06_4e67
+06:4e67 .code:0045
 
 06:4eac call_06_4eac
+06:4eac .code:0016
 
 06:4ec2 call_06_4ec2
+06:4ec2 .code:002a
 
 ;; 06:4eca:op BANK(call_01_6d5c)
 ;; 06:4ece:op LOW(call_01_6d5c)
@@ -5522,14 +5832,19 @@
 ;; 06:4ee1:op BANK(call_05_4040)
 
 06:4eec call_06_4eec
+06:4eec .code:0067
 
 06:4f53 call_06_4f53
+06:4f53 .code:0052
 
 06:4fa5 call_06_4fa5
+06:4fa5 .code:0053
 
 06:4ff8 call_06_4ff8
+06:4ff8 .code:0031
 
 06:5029 call_06_5029
+06:5029 .code:0304
 
 ;; 06:5099:op _SELECT_CURSOR_MODE
 
@@ -5599,19 +5914,23 @@
 06:54a4 call_read_song_chain_under_cursor
 ;; 06:54a4 Read the chain currently under the song cursor.
 ;; 06:54a4 Registers used: A, DE, HL
+06:54a4 .code:0015
 
 06:54b9 data_06_54b9
 06:54b9 .data:0002
 
 06:54bb call_06_54bb
+06:54bb .code:0052
 
 ;; 06:54c5:op LOW(call_read_chain_phrase)
 ;; 06:54c7:op HIGH(call_read_chain_phrase)
 ;; 06:54d7:op BANK(call_read_chain_phrase)
 
 06:550d call_06_550d
+06:550d .code:00c3
 
 06:55d0 call_06_55d0
+06:55d0 .code:002c
 
 06:55fc data_06_55fc
 06:55fc .text:0003
@@ -5620,6 +5939,7 @@
 ;; 06:55ff Write a transpose value to a chain row.
 ;; 06:55ff Args: chain, row, transpose
 ;; 06:55ff Registers used: A, DE, HL
+06:55ff .code:0055
 
 ;; 06:5605:op _CHAINS
 
@@ -5645,6 +5965,7 @@
 ;; 06:5654 Args: cahin, row
 ;; 06:5654 Result: E
 ;; 06:5654 Registers used: A, DE, HL
+06:5654 .code:0046
 
 ;; 06:565a:op _CHAINS
 
@@ -5662,6 +5983,7 @@
 ;; 06:5696 Return
 
 06:569a call_06_569a
+06:569a .code:01a0
 ;; 06:5702:op _SRAM_PHRASE_INSTRUMENTS
 ;; 06:5719:op _SRAM_BOOKMARKS
 ;; 06:5737:op _SRAM_PHRASE_INSTRUMENTS
@@ -5671,6 +5993,7 @@
 06:583a .text:000e
 
 06:5848 call_06_5848
+06:5848 .code:0054
 
 06:589c call_06_589c
 ;; 06:58b1:op _SRAM_CHAIN_PHRASES
@@ -5691,10 +6014,13 @@
 06:59ff .text:0004
 
 06:5a03 call_06_5a03
+06:5a03 .code:005c
 
 06:5a5f call_06_5a5f
+06:5a5f .code:0042
 
 06:5aa1 call_06_5aa1
+06:5aa1 .code:1210
 
 ;; 06:5acc:op _SELECT_CURSOR_MODE
 
@@ -5881,8 +6207,10 @@
 06:6f77 call_06_6f77
 
 06:715e call_06_715e
+06:715e .code:00d7
 
 06:7235 call_06_7235
+06:7235 .code:00f8
 
 06:732d data_06_732d
 06:732d .text:0004
@@ -5891,10 +6219,13 @@
 ;; 06:7331 Draw a string describing the current status of sync wait.
 ;; 06:7331 Args: address
 ;; 06:7331 Registers used: A, DE, Hl
+06:7331 .code:001c
 
 06:734d call_06_734d
+06:734d .code:0030
 
 06:737d call_06_737d
+06:737d .code:0049
 
 06:73c6 data_sync_strings_1
 06:73c6 data_wait_sync_string_1
@@ -5907,6 +6238,7 @@
 06:73d5 .text:0005
 
 06:73da call_06_73da
+06:73da .code:0035
 
 06:740f data_sync_strings_2
 06:740f data_sync_string_2
@@ -5917,6 +6249,7 @@
 06:7419 .text:005
 
 06:741e call_06_741e
+06:741e .code:0063
 
 06:7481 data_sync_strings_3
 06:7481 data_sync_string_3
@@ -6003,6 +6336,7 @@
 ;; 06:787b:replace:0785 ds $8000 - @, $ff    ; 06:787b
 
 07:4000 call_07_4000
+07:4000 .code:003f
 
 07:403f data_07_403f
 07:403f .data:0008
@@ -6011,13 +6345,16 @@
 07:4047 .data:0004
 
 07:404b call_07_404b
+07:404b .code:0039
 
 07:4084 call_07_4084
+07:4084 .code:004c
 
 07:40d0 call_write_song_chain
 ;; 07:40d0 Write a chain number to a row in a song.
 ;; 07:40d0 Args: channel, row, chain
 ;; 07:40d0 Registers used: A, DE, HL
+07:40d0 .code:0069
 
 ;; 07:40d6:op _CHANNELS
 
@@ -6043,6 +6380,7 @@
 ;; 07:4135 Return
 
 07:4139 call_07_4139
+07:4139 .code:0218
 
 ;; 07:413c:op call_restore_backup_selection
 ;; 07:4140:op BANK(call_restore_backup_selection)
@@ -6098,16 +6436,21 @@
 07:435e .text:0015
 
 07:4373 call_07_4373
+07:4373 .code:004f
 
 07:43c2 call_07_43c2
+07:43c2 .code:007f
 
 07:4441 call_07_4441
+07:4441 .code:00bb
 
 07:44fc call_07_44fc
+07:44fc .code:0022
 
 07:451e call_refresh_song_screen_scroll
 ;; 07:451e Update the song screen scroll after changing the cursor row arbitrarily.
 ;; 07:451e Registers used: A, HL
+07:451e .code:0034
 
 07:4536 .jump_set_scroll_1
 
@@ -6116,6 +6459,7 @@
 07:4550 .jump_return
 
 07:4552 call_07_4552
+07:4552 .code:00e3
 
 ;; 07:4553:op LOW(call_01_6d5c)
 ;; 07:4555:op HIGH(call_01_6d5c)
@@ -6129,33 +6473,44 @@
 ;; 07:462a:op BANK(call_05_4040)
 
 07:4635 call_07_4635
+07:4635 .code:0153
 
 07:4788 call_07_4788
+07:4788 .code:0025
 
 07:47ad call_07_47ad
+07:47ad .code:015b
 
 07:4908 data_07_4908
 07:4908 .text:0003
 
 07:490b call_07_490b
+07:490b .code:0021
 
 07:492c call_07_492c
+07:492c .code:0025
 
 07:4951 call_07_4951
+07:4951 .code:0025
 
 07:4976 call_07_4976
+07:4976 .code:004f
 
 07:49c5 call_07_49c5
+07:49c5 .code:003e
 
 ;; 07:49ca:op _SELECT_CURSOR_MODE
 
 07:4a03 call_07_4a03
+07:4a03 .code:0054
 
 07:4a57 call_07_4a57
+07:4a57 .code:003f
 
 ;; 07:4a5c:op _SELECT_CURSOR_MODE
 
 07:4a96 call_07_4a96
+07:4a96 .code:0045
 
 ;; 07:4a9f:op call_write_backup_selection
 ;; 07:4aa3:op BANK(call_write_backup_selection)
@@ -6168,6 +6523,7 @@
 ;; 07:4ac8:op BANK(call_restore_backup_selection)
 
 07:4adb call_07_4adb
+07:4adb .code:0535
 
 ;; 07:4b45:op _SELECT_CURSOR_MODE
 
@@ -6281,6 +6637,7 @@
 07:5d7a .data:0020
 
 07:5d9a call_07_5d9a
+07:5d9a .code:0071
 
 07:5e0b data_00_5e0b
 07:5e0b .data:0200
@@ -6288,6 +6645,7 @@
 07:600b .data:0200
 
 07:620b call_07_620b
+07:620b .code:0033
 
 07:623e call_07_623e
 ;; 07:624d:op _SRAM_BOOKMARKS
@@ -6339,6 +6697,7 @@
 ;; 07:63ff   The RAM bank must be set to _SRAM_BOOKMARKS_BANK.
 ;; 07:63ff
 ;; 07:63ff Registers used: A, HL
+07:63ff .code:0012
 
 ;; 07:6407:op _SRAM_BOOKMARKS
 ;; 07:640b Assume the bank is set to the bank for _SRAM_BOOKMARKS
@@ -6352,6 +6711,7 @@
 ;; 07:64a9:op _SRAM_BOOKMARKS_BANK
 
 07:6505 call_07_6505
+07:6505 .code:00e7
 
 07:65ec data_07_65ec
 07:65ec .data:0080
@@ -6361,6 +6721,7 @@
 07:66ec call_get_digit_char
 ;; 07:66ec Get the character of a single digit 0-F.
 ;; 07:66ec Registers used: A, DE, HL
+07:66ec .code:0012
 
 ;; 07:66f0:op LOW(digits_2)
 ;; 07:66f4:op HIGH(digits_2)
@@ -6370,6 +6731,7 @@
 07:66fe .text:0011
 
 07:670f call_07_670f
+07:670f .code:00c5
 
 ;; 07:6715:op LOW(call_01_493b)
 ;; 07:6717:op HIGH(call_01_493b)
@@ -6380,6 +6742,7 @@
 ;; 07:67c7:op BANK(call_01_7828)
 
 07:67d4 call_07_67d4
+07:67d4 .code:0077
 
 07:684b data_07_684b
 07:684b .text:0005
@@ -6393,6 +6756,7 @@
 07:685f .text:0005
 
 07:6864 call_07_6864
+07:6864 .code:058a
 
 ;; 07:6c37:op LOW(call_02_4679)
 ;; 07:6c39:op HIGH(call_02_4679)
@@ -6427,12 +6791,16 @@
 ;; 07:6f63:op BANK(call_04_4caa)
 
 07:6fd4 call_07_6fd4
+07:6fd4 .code:0021
 
 07:6ff5 call_07_6ff5
+07:6ff5 .code:001b
 
 07:7010 call_07_7010
+07:7010 .code:0049
 
 07:7059 call_07_7059
+07:7059 .code:00e7
 
 ;; 07:7065:op _HELP_SCREEN
 
@@ -6497,8 +6865,10 @@
 ;; 07:741a:replace:0be6 ds $8000 - @, $ff    ; 07:741a
 
 1b:4000 call_1b_4000
+1b:4000 .code:001b
 
 1b:401b call_1b_401b
+1b:401b .code:003d
 
 1b:4058 data_1b_4058
 1b:4058 .data:0040
@@ -6556,20 +6926,26 @@
 1b:4971 .text:0087
 
 1b:49f8 call_1b_49f8
+1b:49f8 .code:0055
 
 1b:4a4d call_1b_4a4d
+1b:4a4d .code:0015
 
 1b:4a62 call_1b_4a62
+1b:4a62 .code:0017
 
 ;; 1b:4a63:op LOW(call_copy_current_screen_bg_tile_page)
 ;; 1b:4a65:op HIGH(call_copy_current_screen_bg_tile_page)
 ;; 1b:4a68:op BANK(call_copy_current_screen_bg_tile_page)
 
 1b:4a79 call_1b_4a79
+1b:4a79 .code:002d
 
 1b:4aa6 call_1b_4aa6
+1b:4aa6 .code:001f
 
 1b:4ac5 call_1b_4ac5
+1b:4ac5 .code:0016
 
 ;; 1b:4ac9:op _PROJECT_SCREEN
 
@@ -6579,19 +6955,24 @@
 ;; 1b:4ad4 Banked call used for call_00_2490 unnecessarily
 
 1b:4adb call_1b_4adb
+1b:4adb .code:000c
 
 1b:4ae7 call_1b_4ae7
+1b:4ae7 .code:0086
 
 1b:4b6d call_1b_4b6d
+1b:4b6d .code:0042
 
 1b:4baf data_1b_4baf
 1b:4baf .data:0014
 
 1b:4bc3 call_1b_4bc3
+1b:4bc3 .code:006d
 
 1b:4c30 call_draw_keyboard_cursor
 ;; 1b:4c30 Draw the cursor on the keyboard.
 ;; 1b:4c30 Registers used: A, DE, HL
+1b:4c30 .code:003a
 
 1b:4c6a data_keyboard_keys_strings
 1b:4c6a data_keyboard_keys_string_1
@@ -6612,10 +6993,13 @@
 ;; 1b:4c96   KEYBOARD_CURSOR_COL must be set
 ;; 1b:4c96
 ;; 1b:4c96 Registers used: A, HL
+1b:4c96 .code:0024
 
 1b:4cba call_1b_4cba
+1b:4cba .code:01d0
 
 1b:4e8a call_1b_4e8a
+1b:4e8a .code:028d
 
 ;; 1b:4ea0:op LOW(call_01_493b)
 ;; 1b:4ea2:op HIGH(call_01_493b)
@@ -6632,6 +7016,7 @@
 1b:5120 .text:0006
 
 1b:5126 call_1b_5126
+1b:5126 .code:01b2
 
 ;; 1b:5132:op LOW(call_1c_5098)
 ;; 1b:5134:op HIGH(call_1c_5098)
@@ -6666,8 +7051,10 @@
 1b:52fd .text:0006
 
 1b:5303 call_1b_5303
+1b:5303 .code:00e5
 
 1b:53e8 call_1b_53e8
+1b:53e8 .code:02b4
 
 ;; 1b:5683:op LOW(call_00_2490)
 ;; 1b:5685:op HIGH(call_00_2490)
@@ -6675,6 +7062,7 @@
 ;; 1b:568c Banked call used for call_00_2490 unnecessarily
 
 1b:569c call_1b_569c
+1b:569c .code:006b
 
 1b:5707 data_font_1_name_string
 1b:5707 .text:0005
@@ -6712,30 +7100,39 @@
 1b:575c .data:0026
 
 1b:5782 call_1b_5782
+1b:5782 .code:0014
 ;; 1b:5788:op _SRAM_SYNC
 ;; 1b:578c:op _SRAM_SYNC_BANK
 
 1b:5796 call_1b_5796
+1b:5796 .code:002b
 ;; 1b:57b3:op _SRAM_PS2_DELAY
 ;; 1b:57b7:op _SRAM_PS2_DELAY_BANK
 
 1b:57c1 call_1b_57c1
+1b:57c1 .code:006b
 
 1b:582c call_1b_582c
+1b:582c .code:0027
 ;; 1b:5832:op _SRAM_TEMPO
 ;; 1b:5836:op _SRAM_TEMPO_BANK
 ;; 1b:5845:op _SRAM_OVERCLOCK
 ;; 1b:5849:op _SRAM_OVERCLOCK_BANK
 
 1b:5853 call_1b_5853
+1b:5853 .code:000e
 
 1b:5861 call_1b_5861
+1b:5861 .code:0015
 
 1b:5876 call_1b_5876
+1b:5876 .code:0020
 
 1b:5896 call_1b_5896
+1b:5896 .code:001b
 
 1b:58b1 call_1b_58b1
+1b:58b1 .code:0106
 
 1b:59b7 data_project_screen_param_strings
 1b:59b7 data_off_project_screen_param_string
@@ -6758,19 +7155,25 @@
 1b:59f9 .text:000e
 
 1b:5a07 call_1b_5a07
+1b:5a07 .code:003b
 
 1b:5a42 call_1b_5a42
+1b:5a42 .code:004e
 
 1b:5a90 call_1b_5a90
+1b:5a90 .code:0053
 
 1b:5ae3 call_1b_5ae3
+1b:5ae3 .code:0023
 
 1b:5b06 data_1b_5b06
 1b:5b06 .text:0003
 
 1b:5b09 call_1b_5b09
+1b:5b09 .code:001a
 
 1b:5b23 call_1b_5b23
+1b:5b23 .code:0033
 
 1b:5b56 data_prelisten_strings
 1b:5b56 data_prelisten_on_string
@@ -6781,8 +7184,10 @@
 1b:5b5e .text:0004
 
 1b:5b62 call_1b_5b62
+1b:5b62 .code:0018
 
 1b:5b7a call_1b_5b7a
+1b:5b7a .code:0089
 
 ;; 1b:5bd1:op _SRAM_WORK_TIME_HOURS
 ;; 1b:5bd5:op _SRAM_WORK_TIME_HOURS_BANK
@@ -6796,6 +7201,7 @@
 1b:5c0c .text:000b
 
 1b:5c17 call_1b_5c17
+1b:5c17 .code:0138
 
 ;; 1b:5c1a:op LOW(call_1c_4057)
 ;; 1b:5c1c:op HIGH(call_1c_4057)
@@ -6825,6 +7231,7 @@
 1b:5d75 .text:0007
 
 1b:5d7c call_1b_5d7c
+1b:5d7c .code:0043
 
 ;; 1b:5d9a:op LOW(call_copy_current_screen_bg_tile_page)
 ;; 1b:5d9c:op HIGH(call_copy_current_screen_bg_tile_page)
@@ -6834,6 +7241,7 @@
 ;; 1b:5daf:op BANK(call_05_4040)
 
 1b:5dbf call_1b_5dbf
+1b:5dbf .code:0150
 
 ;; 1b:5e78:op call_move_screen_down
 ;; 1b:5e7c:op BANK(call_move_screen_down)
@@ -7069,6 +7477,7 @@
 1b:6a8c call_1b_6a8c
 
 1b:6b7a call_1b_6b7a
+1b:6b7a .code:00be
 
 1b:6c38 data_1b_6c38
 1b:6c38 .data:03c6
@@ -7076,19 +7485,25 @@
 1b:6ffe .data:00ba
 
 1b:70b8 call_1b_70b8
+1b:70b8 .code:0148
 
 1b:7200 call_1b_7200
+1b:7200 .code:006e
 
 1b:726e call_1b_726e
+1b:726e .code:0276
 
 1b:74e4 call_1b_74e4
+1b:74e4 .code:006b
 
 1b:754f call_1b_754f
+1b:754f .code:0021
 
 1b:7570 data_bank_1b_padding
 ;; 1b:7570:replace:0a90 ds $8000 - @, $ff    ; 1b:7570
 
 1c:4000 call_1c_4000
+1c:4000 .code:0047
 ;; 1c:4011:op rRAMB
 ;; 1c:4016:op rRAMG
 ;; 1c:4019:op CART_SRAM_ENABLE
@@ -7099,6 +7514,7 @@
 1c:4047 .data:0010
 
 1c:4057 call_1c_4057
+1c:4057 .code:009b
 ;; 1c:4058:op _SRAM_INIT_FLAG_1
 ;; 1c:405c:op _SRAM_INIT_FLAG_1_BANK + 4
 ;; 1c:4071:op _SRAM_INIT_FLAG_1 + 1
@@ -7113,6 +7529,7 @@
 ;; 1c:40d9:op _SRAM_INIT_FLAG_3_BANK + 4
 
 1c:40f2 call_1c_40f2
+1c:40f2 .code:0068
 ;; 1c:4101:op _SRAM_FILE_INIT_FLAG
 ;; 1c:4105:op _SRAM_FILE_INIT_FLAG_BANK + 8
 ;; 1c:4115:op _SRAM_FILE_INIT_FLAG + 1
@@ -7123,14 +7540,19 @@
 ;; 1c:4141:op _SRAM_INIT_FLAG_1_BANK + 8
 
 1c:415a call_1c_415a
+1c:415a .code:017c
 
 1c:42d6 call_1c_42d6
+1c:42d6 .code:0013
 
 1c:42e9 call_1c_42e9
+1c:42e9 .code:004c
 
 1c:4335 call_1c_4335
+1c:4335 .code:001d
 
 1c:4352 call_1c_4352
+1c:4352 .code:0067
 ;; 1c:4383:op rRAMB
 ;; 1c:4388:op rRAMG
 ;; 1c:438b:op CART_SRAM_ENABLE
@@ -7141,21 +7563,26 @@
 1c:43b9 .text:0008
 
 1c:43c1 call_1c_43c1
+1c:43c1 .code:005e
 
 1c:441f call_1c_441f
+1c:441f .code:02c4
 ;; 1c:4434:op _SRAM_PHRASE_NOTES
 ;; 1c:4438:op _SRAM_PHRASE_NOTES_BANK
 ;; 1c:4444:op _SRAM_PHRASE_NOTES + 1
 ;; 1c:4448:op _SRAM_PHRASE_NOTES_BANK
 
 1c:46e3 call_1c_46e3
+1c:46e3 .code:0095
 
 1c:4778 call_1c_4778
+1c:4778 .code:002b
 
 1c:47a3 data_verify_string
 1c:47a3 .text:000e
 
 1c:47b1 call_1c_47b1
+1c:47b1 .code:00b1
 ;; 1c:47b8:op _SRAM_INIT_FLAG_1
 ;; 1c:47bc:op _SRAM_INIT_FLAG_1_BANK + 4
 ;; 1c:47c5:op _SRAM_FILE_NAMES
@@ -7168,12 +7595,15 @@
 ;; 1c:4855:op _SRAM_FILE_INIT_FLAG_BANK
 
 1c:4862 call_1c_4862
+1c:4862 .code:0072
 
 1c:48d4 call_1c_48d4
 
 1c:4969 call_1c_4969
+1c:4969 .code:006b
 
 1c:49d4 call_1c_49d4
+1c:49d4 .code:0072
 
 1c:4a46 call_1c_4a46
 ;; 1c:4a49:op _SRAM_FILE_CHANGED
@@ -7185,6 +7615,7 @@
 1c:4c11 .text:0009
 
 1c:4c1a call_1c_4c1a
+1c:4c1a .code:013e
 ;; 1c:4c2b:op _SRAM_FILE_NAMES
 ;; 1c:4c58:op _SRAM_FILE_NAMES_BANK
 ;; 1c:4c82 Start of last file name
@@ -7194,6 +7625,7 @@
 ;; 1c:4cc1:op _SRAM_FILE_VERSIONS_BANK
 
 1c:4d58 call_1c_4d58
+1c:4d58 .code:0079
 ;; 1c:4d77:op _SRAM_CURRENT_FILE
 ;; 1c:4d7b:op _SRAM_CURRENT_FILE_BANK
 ;; 1c:4dc3:op _SRAM_CURRENT_FILE
@@ -7211,6 +7643,7 @@
 ;; 1c:4dd1   _SRAM_LAST_SAVED_MINUTES must will set
 ;; 1c:4dd1
 ;; 1c:4dd1 Registers used: A, DE, HL
+1c:4dd1 .code:003f
 
 ;; 1c:4dd2:op _SRAM_WORK_TIME_MINUTES
 ;; 1c:4dd6:op _SRAM_WORK_TIME_MINUTES_BANK
@@ -7222,6 +7655,7 @@
 ;; 1c:4e05:op _SRAM_LAST_SAVED_HOURS_BANK
 
 1c:4e10 call_1c_4e10
+1c:4e10 .code:0195
 ;; 1c:4e2c:op _SRAM_FILE_NAMES
 ;; 1c:4e53:op _SRAM_FILE_VERSIONS_BANK
 ;; 1c:4f8c:op _SRAM_FILE_CHANGED
@@ -7236,15 +7670,18 @@
 1c:4fa5 call_1c_4fa5
 
 1c:5077 call_1c_5077
+1c:5077 .code:001b
 
 1c:5092 data_1c_5092
 1c:5092 .data:0006
 
 1c:5098 call_1c_5098
+1c:5098 .code:001b
 
 ;; 1c:509b:op _INTERRUPT_ENABLE
 
 1c:50b3 call_1c_50b3
+1c:50b3 .code:029b
 
 ;; 1c:50b6:op _SRAM_KEY_REPEAT
 ;; 1c:50ba:op _SRAM_KEY_REPEAT_BANK
@@ -7316,12 +7753,16 @@
 1c:5531 call_draw_file_action_cursor
 ;; 1c:5531 Draw the cursor for the currently selected file action.
 ;; 1c:5531 Registers used: A, DE, HL
+1c:5531 .code:0032
 
 1c:5563 call_1c_5563
+1c:5563 .code:0034
 
 1c:5597 call_1c_5597
+1c:5597 .code:005a
 
 1c:55f1 call_1c_55f1
+1c:55f1 .code:01bb
 ;; 1c:55ff:op _SRAM_CURRENT_FILE
 ;; 1c:5603:op _SRAM_CURRENT_FILE_BANK
 
@@ -7329,6 +7770,7 @@
 1c:57ac .text:000f
 
 1c:57bb call_1c_57bb
+1c:57bb .code:00df
 
 ;; 1c:57bc:op LOW(call_01_6d5c)
 ;; 1c:57be:op HIGH(call_01_6d5c)
@@ -7349,16 +7791,20 @@
 1c:58be .text:0003
 
 1c:58c1 call_1c_58c1
+1c:58c1 .code:004a
 ;; 1c:58d8:op _SRAM_CURRENT_FILE
 ;; 1c:58dc:op _SRAM_CURRENT_FILE_BANK
 
 1c:590b call_1c_590b
+1c:590b .code:003f
 ;; 1c:5917:op _SRAM_CURRENT_FILE
 ;; 1c:591b:op _SRAM_CURRENT_FILE_BANK
 
 1c:594a call_1c_594a
+1c:594a .code:0015
 
 1c:595f call_1c_595f
+1c:595f .code:0087
 ;; 1c:5962:op _SRAM_WORK_TIME_HOURS
 ;; 1c:5966:op _SRAM_WORK_TIME_HOURS_BANK
 ;; 1c:5976:op _SRAM_LAST_SAVED_HOURS
@@ -7369,6 +7815,7 @@
 ;; 1c:59c7:op _SRAM_LAST_SAVED_MINUTES_BANK
 
 1c:59e6 call_1c_59e6
+1c:59e6 .code:0647
 
 ;; 1c:5a22:op LOW(call_02_77e6)
 ;; 1c:5a24:op HIGH(call_02_77e6)
@@ -7431,6 +7878,7 @@
 ;; 1c:607a Result: E
 ;; 1c:607a
 ;; 1c:607a Registers used: A, DE, HL
+1c:607a .code:0014
 
 1c:608e call_write_current_instrument_param_2
 ;; 1c:608e Write a single param for the current instrument.
@@ -7439,36 +7887,52 @@
 ;; 1c:608e Args: param (see param constants), value
 ;; 1c:608e
 ;; 1c:608e Registers used: A, DE, HL
+1c:608e .code:0015
 
 1c:60a3 call_1c_60a3
+1c:60a3 .code:003f
 
 1c:60e2 call_1c_60e2
+1c:60e2 .code:00a2
 
 1c:6184 call_1c_6184
+1c:6184 .code:0010
 
 1c:6194 call_1c_6194
+1c:6194 .code:0037
 
 1c:61cb call_1c_61cb
+1c:61cb .code:0010
 
 1c:61db call_1c_61db
+1c:61db .code:005e
 
 1c:6239 call_1c_6239
+1c:6239 .code:0048
 
 1c:6281 call_1c_6281
+1c:6281 .code:003c
 
 1c:62bd call_1c_62bd
+1c:62bd .code:0027
 
 1c:62e4 call_1c_62e4
+1c:62e4 .code:005f
 
 1c:6343 call_1c_6343
+1c:6343 .code:0031
 
 1c:6374 call_1c_6374
+1c:6374 .code:0010
 
 1c:6384 call_1c_6384
+1c:6384 .code:0035
 
 1c:63b9 call_1c_63b9
+1c:63b9 .code:0010
 
 1c:63c9 call_1c_63c9
+1c:63c9 .code:00cc
 ;; 1c:63cd:op rRAMG
 ;; 1c:63d0:op CART_SRAM_ENABLE
 ;; 1c:63d2:op rRAMB
@@ -7477,22 +7941,29 @@
 ;; 1c:648e:op CART_SRAM_DISABLE
 
 1c:6495 call_1c_6495
+1c:6495 .code:001c
 
 1c:64b1 call_1c_64b1
+1c:64b1 .code:0010
 
 1c:64c1 call_1c_64c1
+1c:64c1 .code:001d
 
 1c:64de call_1c_64de
+1c:64de .code:0010
 
 1c:64ee call_1c_64ee
+1c:64ee .code:002b
 
 1c:6519 call_1c_6519
+1c:6519 .code:001a
 
 1c:6533 call_read_song_row_noise_chain
 ;; 1c:6533 Read a noise channel chain on a song row.
 ;; 1c:6533 Args: row
 ;; 1c:6533 Result: E
 ;; 1c:6533 Registers used: A, DE, HL
+1c:6533 .code:0034
 
 ;; 1c:6539 The following loop rotates the row left twice, multiplying it by 4
 
@@ -7512,6 +7983,7 @@
 1c:6564 .jump_return
 
 1c:6567 call_1c_6567
+1c:6567 .code:00e5
 
 ;; 1c:65e7:op call_read_chain_transpose
 ;; 1c:65eb:op BANK(call_read_chain_transpose)
@@ -7520,19 +7992,25 @@
 ;; 1c:662c:op BANK(call_write_chain_transpose)
 
 1c:664c call_1c_664c
+1c:664c .code:0227
 
 1c:6873 call_1c_6873
+1c:6873 .code:002c
 
 1c:689f data_1c_689f
 1c:689f .data:0008
 
 1c:68a7 call_1c_68a7
+1c:68a7 .code:0060
 
 1c:6907 call_1c_6907
+1c:6907 .code:001a
 
 1c:6921 call_1c_6921
+1c:6921 .code:0034
 
 1c:6955 call_1c_6955
+1c:6955 .code:00b0
 ;; 1c:6959:op rRAMG
 ;; 1c:695c:op CART_SRAM_ENABLE
 ;; 1c:695e:op rRAMB
@@ -7547,16 +8025,22 @@
 ;; 1c:69fe:op CART_SRAM_DISABLE
 
 1c:6a05 call_1c_6a05
+1c:6a05 .code:001b
 
 1c:6a20 call_1c_6a20
+1c:6a20 .code:0060
 
 1c:6a80 call_1c_6a80
+1c:6a80 .code:001a
 
 1c:6a9a call_1c_6a9a
+1c:6a9a .code:001c
 
 1c:6ab6 call_1c_6ab6
+1c:6ab6 .code:0010
 
 1c:6ac6 call_1c_6ac6
+1c:6ac6 .code:008f
 ;; 1c:6ad1:op rRAMG
 ;; 1c:6ad4:op CART_SRAM_ENABLE
 ;; 1c:6ad6:op rRAMB
@@ -7564,23 +8048,30 @@
 ;; 1c:6b4e:op CART_SRAM_DISABLE
 
 1c:6b55 call_1c_6b55
+1c:6b55 .code:0082
 
 1c:6bd7 call_1c_6bd7
+1c:6bd7 .code:001d
 
 1c:6bf4 call_1c_6bf4
+1c:6bf4 .code:0010
 
 1c:6c04 call_1c_6c04
+1c:6c04 .code:01e6
 
 1c:6dea data_1c_6dea
 1c:6dea .data:0070
 
 1c:6e5a call_1c_6e5a
+1c:6e5a .code:00c7
 
 1c:6f21 call_1c_6f21
+1c:6f21 .code:0054
 ;; 1c:6f24:op _SRAM_SYNTH_PARAMS
 ;; 1c:6f42:op _SRAM_SYNTH_PARAMS_BANK
 
 1c:6f75 call_1c_6f75
+1c:6f75 .code:0132
 ;; 1c:6f76:op _SRAM_VERSION_FLAG
 ;; 1c:6f7a:op _SRAM_VERSION_FLAG_BANK
 
@@ -7591,8 +8082,10 @@
 1c:70a7 .text:0010
 
 1c:70b7 call_1c_70b7
+1c:70b7 .code:0016
 
 1c:70cd call_1c_70cd
+1c:70cd .code:003d
 ;; 1c:70e6:op rRAMB
 ;; 1c:70f4:op CART_SRAM_ENABLE
 ;; 1c:70f7:op rRAMG
@@ -7628,6 +8121,7 @@
 ;; 1c:717a Return
 
 1c:717c call_1c_717c
+1c:717c .code:0121
 
 ;; 1c:7183:op _NORMAL_CURSOR_MODE
 
@@ -7642,6 +8136,7 @@
 ;; 1c:729d   receive_byte will be called, so that another byte can be received
 ;; 1c:729d
 ;; 1c:729d Registers used: A, DE, HL
+1c:729d .code:0022
 
 1c:729e .jump_get_io_status
 
@@ -7657,6 +8152,7 @@
 ;; 1c:72bd Return
 
 1c:72bf call_1c_72bf
+1c:72bf .code:00f2
 
 ;; 1c:72c5:op _NO_CURSOR_MODE
 
@@ -7697,6 +8193,7 @@
 ;; 1c:7582:replace:0a7e ds $8000 - @, $ff    ; 1c:7582
 
 1d:4000 call_1d_4000
+1d:4000 .code:0058
 
 ;; 1d:402e:op _SRAM_GROOVES
 ;; 1d:404b:op _SRAM_GROOVES_BANK
@@ -7709,6 +8206,7 @@
 ;; 1d:405a Args: row
 ;; 1d:405a Result: E
 ;; 1d:405a Registers used: A, DE, HL
+1d:405a .code:0054
 
 ;; 1d:4060 Make sure the row does not exceed 0xf
 
@@ -7732,8 +8230,10 @@
 ;; 1d:40aa Return
 
 1d:40ae call_1d_40ae
+1d:40ae .code:003c
 
 1d:40ea call_1d_40ea
+1d:40ea .code:010c
 
 1d:41f6 data_1d_41f6
 1d:41f6 .text:0007
@@ -7741,6 +8241,7 @@
 1d:41fd .text:0005
 
 1d:4202 call_1d_4202
+1d:4202 .code:003b
 
 ;; 1d:4219:op LOW(call_01_6d5c)
 ;; 1d:421b:op HIGH(call_01_6d5c)
@@ -7751,6 +8252,7 @@
 ;; 1d:4232:op BANK(call_1f_6ff1)
 
 1d:423d call_1d_423d
+1d:423d .code:0046
 
 1d:4283 call_1d_4283
 
@@ -7758,10 +8260,13 @@
 1d:4382 .text:0003
 
 1d:4385 call_1d_4385
+1d:4385 .code:0037
 
 1d:43bc call_1d_43bc
+1d:43bc .code:003b
 
 1d:43f7 call_1d_43f7
+1d:43f7 .code:0796
 
 ;; 1d:4479:op _SELECT_CURSOR_MODE
 
@@ -7846,8 +8351,10 @@
 1d:4ce5 call_1d_4ce5
 
 1d:4d5f call_1d_4d5f
+1d:4d5f .code:0029
 
 1d:4d88 call_1d_4d88
+1d:4d88 .code:016f
 
 1d:4ef7 data_1d_4ef7
 1d:4ef7 .data:0200
@@ -7855,12 +8362,16 @@
 1d:50f7 .data:00a0
 
 1d:5197 call_1d_5197
+1d:5197 .code:0193
 
 1d:532a call_1d_532a
+1d:532a .code:0372
 
 1d:569c call_1d_569c
+1d:569c .code:0028
 
 1d:56c4 jump_table_1d_56c4
+1d:56c4 .code:021d
 
 1d:58e1 call_increment_synth_phase_value
 ;; 1d:58e1 Add 1 to a value, capping out at 0x1f and cycling back to 0x00.
@@ -7871,38 +8382,51 @@
 ;; 1d:58e1 Result: E
 ;; 1d:58e1
 ;; 1d:58e1 Registers used: A, DE, HL
+1d:58e1 .code:000c
 
 1d:58ed call_1d_58ed
+1d:58ed .code:02d7
 
 1d:5bc4 call_1d_5bc4
+1d:5bc4 .code:0296
 
 1d:5e5a call_1d_5e5a
+1d:5e5a .code:00ad
 
 1d:5f07 call_1d_5f07
+1d:5f07 .code:0029
 
 1d:5f30 call_1d_5f30
+1d:5f30 .code:0067
 
 1d:5f97 call_1d_5f97
+1d:5f97 .code:00a5
 ;; 1d:5fb9 First frame of last synth
 ;; 1d:5fb9:op _SRAM_WAVE_FRAMES + (_SYNTHS - 1) * _SYNTH_FRAMES * _SYNTH_FRAME_SIZE
 
 1d:603c call_1d_603c
+1d:603c .code:0072
 
 1d:60ae call_1d_60ae
+1d:60ae .code:003e
 
 1d:60ec data_1d_60ec
 1d:60ec .data:0030
 
 1d:611c call_1d_611c
+1d:611c .code:002f
 
 1d:614b call_1d_614b
+1d:614b .code:004f
 
 1d:619a call_1d_619a
+1d:619a .code:0115
 
 1d:62af call_draw_resync_synth_param
 ;; 1d:62af Draw the value for a resync type.
 ;; 1d:62af Args: resync_type (see resync type constants)
 ;; 1d:62af Registers used: A, C, DE, HL
+1d:62af .code:004d
 
 1d:62c2 .jump_table_resync_type
 
@@ -7928,6 +8452,7 @@
 ;; 1d:6318 Args: param
 ;; 1d:6318 Result: E
 ;; 1d:6318 Registers used: A, DE, HL
+1d:6318 .code:0043
 
 ;; 1d:6321 The loop below will shift the phrase number left 4 times, multiplying it by 16.
 
@@ -7944,6 +8469,7 @@
 ;; 1d:635b Result: E
 ;; 1d:635b
 ;; 1d:635b Registers used: A, DE, HL
+1d:635b .code:001a
 
 ;; 1d:635c:op _SIGNAL_SYNTH_PARAM
 ;; 1d:6367:op _FRAME_SYNTH_SIGNAL
@@ -7952,8 +8478,10 @@
 1d:6371 .jump_return
 
 1d:6375 call_1d_6375
+1d:6375 .code:0038
 
 1d:63ad jump_table_1d_63ad
+1d:63ad .code:004a
 
 1d:63f7 data_filter_type_strings
 1d:63f7 data_empty_filter_type_string
@@ -7970,8 +8498,10 @@
 1d:6415 .text:0006
 
 1d:641b call_1d_641b
+1d:641b .code:0023
 
 1d:643e jump_table_1d_643e
+1d:643e .code:0052
 
 1d:6490 data_1d_6490
 1d:6490 .data:0005
@@ -7985,13 +8515,16 @@
 1d:64a3 .data:0003
 
 1d:64a6 call_1d_64a6
+1d:64a6 .code:0064
 
 1d:650a call_1d_650a
+1d:650a .code:0074
 
 1d:657e call_draw_distortion_string
 ;; 1d:657e Draw the string describing a distortion type.
 ;; 1d:657e Args: type
 ;; 1d:657e Registers used: A, DE, HL
+1d:657e .code:003c
 
 ;; 1d:6581 Check for 0 (_CLIP_DIST)
 
@@ -8016,6 +8549,7 @@
 1d:65c4 .text:0005
 
 1d:65c9 call_1d_65c9
+1d:65c9 .code:02e3
 ;; 1d:65de:op _SRAM_SYNTH_PARAMS
 ;; 1d:664b:op _SRAM_SYNTH_PARAMS_BANK
 
@@ -8025,6 +8559,7 @@
 1d:68af .text:0003
 
 1d:68b2 call_1d_68b2
+1d:68b2 .code:004e
 
 ;; 1d:68cf:op LOW(call_01_6d5c)
 ;; 1d:68d1:op HIGH(call_01_6d5c)
@@ -8038,14 +8573,18 @@
 ;; 1d:68f5:op BANK(call_05_4040)
 
 1d:6900 call_1d_6900
+1d:6900 .code:023a
 ;; 1d:6928:op _SRAM_SYNTH_PARAMS
 ;; 1d:693d:op _SRAM_SYNTH_PARAMS_BANK
 
 1d:6b3a call_1d_6b3a
+1d:6b3a .code:01dc
 
 1d:6d16 call_1d_6d16
+1d:6d16 .code:0060
 
 1d:6d76 call_1d_6d76
+1d:6d76 .code:006e
 
 1d:6de4 data_hand_drawn_waves_warning_strings
 1d:6de4 data_hand_drawn_waves_warning_1_string
@@ -8060,6 +8599,7 @@
 1d:6e04 .text:0003
 
 1d:6e07 call_1d_6e07
+1d:6e07 .code:0011
 
 ;; 1d:6e08:op LOW(call_00_2490)
 ;; 1d:6e0a:op HIGH(call_00_2490)
@@ -8067,11 +8607,13 @@
 ;; 1d:6e11 Banked call used for call_00_2490 unnecessarily
 
 1d:6e18 call_1d_6e18
+1d:6e18 .code:005d
 
 1d:6e75 call_write_current_synth_param
 ;; 1d:6e75 Set a param in the current synth.
 ;; 1d:6e75 Args: param, value
 ;; 1d:6e75 Registers used: A, D, HL
+1d:6e75 .code:0048
 
 ;; 1d:6e7e The loop below will shift the synth number left 4 times, multiplying it by 16.
 
@@ -8085,6 +8627,7 @@
 ;; 1d:6ebd Add an amount to a synth param and draw its updated digits.
 ;; 1d:6ebd Args: param (see synth param constants), amount, max
 ;; 1d:6ebd Registers used: A, DE, HL
+1d:6ebd .code:0089
 
 ;; 1d:6ec6 The following loop will shift CURRENT_SYNTH_SCREEN left 4 times, multiplying it by 16.
 
@@ -8111,6 +8654,7 @@
 ;; 1d:6f46 Subtract an amount from a synth param and draw its updated digits.
 ;; 1d:6f46 Args: param (see synth param constants), amount
 ;; 1d:6f46 Registers used: A, DE, HL
+1d:6f46 .code:0085
 
 ;; 1d:6f4f The following loop will shift CURRENT_SYNTH_SCREEN left 4 times, multiplying it by 16.
 
@@ -8137,6 +8681,7 @@
 ;; 1d:6fcb Decrement a synth param and draw its updated digts.
 ;; 1d:6fcb Args: param (see synth param constants), max
 ;; 1d:6fcb Registers used: A, DE, HL
+1d:6fcb .code:0067
 
 ;; 1d:6fd4 The following loop will shift CURRENT_SYNTH_SCREEN left 4 times, multiplying it by 16.
 
@@ -8161,6 +8706,7 @@
 ;; 1d:7032 Decrement a synth param and draw its updated digits.
 ;; 1d:7032 Args: param (see synth param constants)
 ;; 1d:7032 Registers used: A, DE, Hl
+1d:7032 .code:0063
 
 ;; 1d:703b The following loop will shift CURRENT_SYNTH_SCREEN left 4 times, multiplying it by 16.
 
@@ -8180,11 +8726,13 @@
 1d:7091 .jump_return
 
 1d:7095 call_1d_7095
+1d:7095 .code:002e
 
 1d:70c3 call_increment_current_synth_resonance_2_param
 ;; 1d:70c3 Increment the resonance 2 param for the current instrument.
 ;; 1d:70c3 Result: E
 ;; 1d:70c3 Registers used: A, DE, HL
+1d:70c3 .code:0028
 
 ;; 1d:70c4:op _RESONANCE_2_SYNTH_PARAM
 
@@ -8196,6 +8744,7 @@
 ;; 1d:70eb Decrement the resonance 1 param for the current synth.
 ;; 1d:70eb Result: E
 ;; 1d:70eb Registers used: A, DE, HL
+1d:70eb .code:002d
 
 ;; 1d:70ec:op _RESONANCE_1_SYNTH_PARAM
 
@@ -8209,6 +8758,7 @@
 ;; 1d:7118 Decrement the resonance 2 param for the current synth.
 ;; 1d:7118 Result: E
 ;; 1d:7118 Registers used: A, DE, HL
+1d:7118 .code:0027
 
 ;; 1d:7119:op _RESONANCE_2_SYNTH_PARAM
 
@@ -8219,6 +8769,7 @@
 1d:7138 .jump_set_return
 
 1d:713f call_1d_713f
+1d:713f .code:01d6
 
 ;; 1d:7226:op call_05_7181
 ;; 1d:722a:op BANK(call_05_7181)
@@ -8275,11 +8826,13 @@
 1d:7d9f .text:000d
 
 1d:7dac call_1d_7dac
+1d:7dac .code:0033
 
 1d:7ddf data_bank_1d_padding
 ;; 1d:7ddf:replace:0221 ds $8000 - @, $ff    ; 1d:7ddf
 
 1e:4000 call_1e_4000
+1e:4000 .code:02c8
 
 ;; 1e:4005:op _WAVE_EDITOR_SCREEN
 
@@ -8325,19 +8878,23 @@
 1e:6d1a .data:0ce0
 
 1e:79fa call_1e_79fa
+1e:79fa .code:003e
 
 1e:7a38 call_wait_vblank_read
 ;; 1e:7a38 Wait for VBLANK LCD mode and read a byte.
 ;; 1e:7a38 Result: E
 ;; 1e:7a38 Registers used: A, DE, HL
+1e:7a38 .code:0013
 
 1e:7a39 .jump_wait_vblank
 
 ;; 1e:7a3c Check VBLANK bit
 
 1e:7a4b call_1e_7a4b
+1e:7a4b .code:0055
 
 1e:7aa0 call_1e_7aa0
+1e:7aa0 .code:010b
 
 1e:7bab data_bank_1e_padding
 ;; 1e:7bab:replace:0455 ds $8000 - @, $ff    ; 1e:7bab
@@ -8345,6 +8902,7 @@
 1f:4000 call_draw_table_type_instrument_params
 ;; 1f:4000 Draw the table on/step instrument param text for the current instrument.
 ;; 1f:4000 Registers used: A, DE, HL
+1f:4000 .code:008d
 
 ;; 1f:4001:op _INSTRUMENT_TYPE_INSTRUMENT_PARAM
 
@@ -8387,6 +8945,7 @@
 1f:409c call_draw_table_instrument_param
 ;; 1f:409c Draw the table instrument param for the current instrument.
 ;; 1f:409c Registers used: A, DE, HL
+1f:409c .code:002b
 
 ;; 1f:409d:op _TABLE_ON_INSTRUMENT_PARAM
 
@@ -8403,6 +8962,7 @@
 1f:40ca call_draw_kit_2_loop_type_instrument_param
 ;; 1f:40ca Draw the current instrument loop type for kit 2.
 ;; 1f:40ca Registers used: A, DE, HL
+1f:40ca .code:0049
 
 ;; 1f:40cb:op _KIT_2_LOOP_ON_INSTRUMENT_PARAM
 
@@ -8423,11 +8983,13 @@
 1f:411b .text:0004
 
 1f:411f call_1f_411f
+1f:411f .code:0038
 
 1f:4157 call_read_current_instrument_env_1_byte_1
 ;; 1f:4157 Read the first byte from the envelope stage 1 param in the current instrument.
 ;; 1f:4157 Result: E
 ;; 1f:4157 Registers used: A, DE, HL
+1f:4157 .code:0012
 
 ;; 1f:4158:op _ENV_STAGE_1_INSTRUMENT_PARAM
 
@@ -8437,6 +8999,7 @@
 ;; 1f:4169 Indicates whether current instrument envelope stage 1 or 2 have 0 as their first digit.
 ;; 1f:4169 Result: E
 ;; 1f:4169 Registers used: A, DE, HL
+1f:4169 .code:0021
 
 ;; 1f:416e:op _ENV_STAGE_2_INSTRUMENT_PARAM
 
@@ -8444,11 +9007,13 @@
 1f:4186 .jump_return
 
 1f:418a call_1f_418a
+1f:418a .code:00ac
 
 1f:4236 data_1f_4236
 1f:4236 .text:0007
 
 1f:423d call_1f_423d
+1f:423d .code:0152
 
 ;; 1f:42f9:op LOW(call_01_518c)
 ;; 1f:42fb:op HIGH(call_01_518c)
@@ -8465,6 +9030,7 @@
 1f:4395 .text:0004
 
 1f:4399 call_1f_4399
+1f:4399 .code:010a
 
 ;; 1f:4443:op LOW(call_01_5208)
 ;; 1f:4445:op HIGH(call_01_5208)
@@ -8485,8 +9051,10 @@
 1f:44b2 .text:0005
 
 1f:44b7 call_1f_44b7
+1f:44b7 .code:0026
 
 1f:44dd call_1f_44dd
+1f:44dd .code:0261
 
 ;; 1f:460a:op LOW(call_03_4a63)
 ;; 1f:460c:op HIGH(call_03_4a63)
@@ -8506,6 +9074,7 @@
 1f:474a .text:0004
 
 1f:474e call_1f_474e
+1f:474e .code:0176
 
 ;; 1f:47e6:op LOW(call_01_518c)
 ;; 1f:47e8:op HIGH(call_01_518c)
@@ -8534,6 +9103,7 @@
 ;; 1f:48c4 Write a phrase number to a row in the given chain.
 ;; 1f:48c4 Args: chain, row, phrase
 ;; 1f:48c4 Registers used: A, DE, HL
+1f:48c4 .code:0055
 
 ;; 1f:48ca Chains cannot exceed 0x7f so bit 7 should never be set
 
@@ -8556,6 +9126,7 @@
 1f:4919 .data:0010
 
 1f:4929 call_1f_4929
+1f:4929 .code:00d8
 ;; 1f:493c:op _SRAM_INSTRUMENT_ALLOC
 ;; 1f:494b:op _SRAM_INSTRUMENT_ALLOC_BANK
 
@@ -8568,16 +9139,20 @@
 1f:4a17 .data:000e
 
 1f:4a25 call_1f_4a25
+1f:4a25 .code:003f
 
 1f:4a64 call_1f_4a64
+1f:4a64 .code:004f
 
 ;; 1f:4a80:op LOW(call_write_phrase_instrument)
 ;; 1f:4a82:op HIGH(call_write_phrase_instrument)
 ;; 1f:4a98:op BANK(call_write_phrase_instrument)
 
 1f:4ab3 call_1f_4ab3
+1f:4ab3 .code:0045
 
 1f:4af8 call_1f_4af8
+1f:4af8 .code:0094
 ;; 1f:4b0f:op _SRAM_TABLE_TRANSPOSE
 ;; 1f:4b1e:op _SRAM_TABLE_TRANSPOSE_BANK
 ;; 1f:4b37:op _SRAM_TABLE_COMMANDS_1
@@ -8588,8 +9163,10 @@
 ;; 1f:4b7e:op _SRAM_TABLE_VOLS_BANK
 
 1f:4b8c call_1f_4b8c
+1f:4b8c .code:002f
 
 1f:4bbb call_1f_4bbb
+1f:4bbb .code:00ad
 ;; 1f:4be9:op _SRAM_CHAIN_ALLOC
 ;; 1f:4bf8:op _SRAM_CHAIN_ALLOC_BANK
 
@@ -8602,6 +9179,7 @@
 ;; 1f:4c59:op BANK(call_set_out_of_memory_error_banner)
 
 1f:4c68 call_1f_4c68
+1f:4c68 .code:0237
 ;; 1f:4d1b:op _SRAM_INSTRUMENT_ALLOC
 ;; 1f:4d2e:op _SRAM_INSTRUMENT_ALLOC_BANK
 
@@ -8620,24 +9198,29 @@
 ;; 1f:4dcb:op BANK(call_01_4a49)
 
 1f:4e9f call_1f_4e9f
+1f:4e9f .code:0018
 
 1f:4eb7 call_1f_4eb7
+1f:4eb7 .code:0012
 
 1f:4ec9 call_read_instrument_alloc
 ;; 1f:4ec9 Read whether an instrument is allocated or not.
 ;; 1f:4ec9 Args: instrument
 ;; 1f:4ec9 Result: E
 ;; 1f:4ec9 Registers used: A, DE, HL
+1f:4ec9 .code:001b
 
 ;; 1f:4ed0:op LOW(_SRAM_INSTRUMENT_ALLOC)
 ;; 1f:4ed4:op HIGH(_SRAM_INSTRUMENT_ALLOC)
 ;; 1f:4ed8:op _SRAM_INSTRUMENT_ALLOC_BANK
 
 1f:4ee4 call_1f_4ee4
+1f:4ee4 .code:007c
 ;; 1f:4f02:op _SRAM_PHRASE_COMMAND_VALUES
 ;; 1f:4f20:op _SRAM_PHRASE_COMMAND_VALUES_BANK
 
 1f:4f60 call_1f_4f60
+1f:4f60 .code:00cc
 ;; 1f:4f74:op _SRAM_TABLE_COMMANDS_1
 ;; 1f:4f7e:op _SRAM_TABLE_COMMAND_VALUES_1
 ;; 1f:4f88:op _SRAM_TABLE_COMMANDS_2
@@ -8647,25 +9230,32 @@
 
 1f:502c call_1f_banked_write_phrase_alloc
 ;; 1f:502c See: call_read_phrase_alloc
+1f:502c .code:0017
 
 ;; 1f:502d:op LOW(call_read_phrase_alloc)
 ;; 1f:502f:op HIGH(call_read_phrase_alloc)
 ;; 1f:5037:op BANK(call_read_phrase_alloc)
 
 1f:5043 call_1f_5043
+1f:5043 .code:0024
 
 1f:5067 call_1f_5067
+1f:5067 .code:002a
 
 1f:5091 call_1f_5091
+1f:5091 .code:0047
 
 1f:50d8 call_1f_50d8
+1f:50d8 .code:0022
 
 1f:50fa call_1f_50fa
+1f:50fa .code:0024
 
 1f:511e call_set_table_column_values
 ;; 1f:511e Set the values for an entire column of a table.
 ;; 1f:511e Args: address (word), value
 ;; 1f:511e Registers used: A, DE, HL
+1f:511e .code:0036
 
 1f:5125 .jump_check_row
 
@@ -8674,6 +9264,7 @@
 1f:5150 .jump_return
 
 1f:5154 call_1f_5154
+1f:5154 .code:00b2
 ;; 1f:5173:op _SRAM_TABLE_COMMANDS_1
 ;; 1f:517d:op _SRAM_TABLE_COMMAND_VALUES_1
 ;; 1f:5187:op _SRAM_TABLE_COMMANDS_2
@@ -8681,10 +9272,13 @@
 ;; 1f:519b:op _SRAM_TABLE_TRANSPOSE
 
 1f:5206 call_1f_5206
+1f:5206 .code:0048
 
 1f:524e call_1f_524e
+1f:524e .code:0027
 
 1f:5275 call_1f_5275
+1f:5275 .code:0139
 
 ;; 1f:528c:op LOW(call_write_chain_unalloc)
 ;; 1f:528e:op HIGH(call_write_chain_unalloc)
@@ -8703,6 +9297,7 @@
 ;; 1f:5390:op BANK(call_write_chain_transpose)
 
 1f:53ae call_1f_53ae
+1f:53ae .code:004e
 
 ;; 1f:53bd:op LOW(call_read_chain_phrase)
 ;; 1f:53bf:op HIGH(call_read_chain_phrase)
@@ -8714,14 +9309,17 @@
 
 1f:53fc call_1f_banked_read_chain_alloc
 ;; 1f:53fc See: call_read_chain_alloc
+1f:53fc .code:0017
 
 ;; 1f:53fd:op LOW(call_read_chain_alloc)
 ;; 1f:53ff:op HIGH(call_read_chain_alloc)
 ;; 1f:5407:op BANK(call_read_chain_alloc)
 
 1f:5413 call_1f_5413
+1f:5413 .code:0024
 
 1f:5437 call_1f_5437
+1f:5437 .code:01a8
 ;; 1f:544b:op rRAMG
 ;; 1f:544e:op CART_SRAM_ENABLE
 ;; 1f:5498:op rRAMB
@@ -8735,6 +9333,7 @@
 ;; 1f:5598:op _SRAM_BOOKMARKS
 
 1f:55df call_1f_55df
+1f:55df .code:00f8
 ;; 1f:55f3:op rRAMG
 ;; 1f:55f6:op CART_SRAM_ENABLE
 ;; 1f:561b:op _SRAM_CHAIN_PHRASES
@@ -8745,6 +9344,7 @@
 ;; 1f:5690:op _SRAM_CHAIN_TRANSPOSES
 
 1f:56d7 call_1f_56d7
+1f:56d7 .code:025a
 ;; 1f:5709:op rRAMG
 ;; 1f:570c:op CART_SRAM_ENABLE
 ;; 1f:570e:op rRAMB
@@ -8765,6 +9365,7 @@
 ;; 1f:58f0:op rRAMB
 
 1f:5931 call_1f_5931
+1f:5931 .code:007c
 ;; 1f:5934:op _SRAM_CHAIN_PHRASES
 ;; 1f:5938:op rRAMG
 ;; 1f:593b:op CART_SRAM_ENABLE
@@ -8779,6 +9380,7 @@
 ;; 1f:596d:op BANK(call_write_phrase_unalloc)
 
 1f:59ad call_1f_59ad
+1f:59ad .code:007c
 ;; 1f:59b0:op _SRAM_SONG_CHAINS
 ;; 1f:59b4:op rRAMG
 ;; 1f:59b7:op CART_SRAM_ENABLE
@@ -8791,6 +9393,7 @@
 ;; 1f:59e9:op BANK(call_write_chain_unalloc)
 
 1f:5a29 call_1f_5a29
+1f:5a29 .code:0150
 ;; 1f:5a3b:op rRAMG
 ;; 1f:5a3e:op CART_SRAM_ENABLE
 ;; 1f:5a40:op rRAMB
@@ -8799,13 +9402,16 @@
 ;; 1f:5b2c:op CART_SRAM_DISABLE
 
 1f:5b79 call_1f_5b79
+1f:5b79 .code:009a
 
 1f:5c13 call_1f_5c13
+1f:5c13 .code:009d
 
 1f:5cb0 data_1f_5cb0
 1f:5cb0 .text:0003
 
 1f:5cb3 call_1f_5cb3
+1f:5cb3 .code:00ae
 
 1f:5d61 data_1f_5d61
 1f:5d61 .text:0003
@@ -8814,6 +9420,7 @@
 ;; 1f:5d64 Get the number of free phrases.
 ;; 1f:5d64 Result: E
 ;; 1f:5d64 Registers used: A, DE, HL
+1f:5d64 .code:002a
 
 1f:5d6d .jump_check_phrase
 
@@ -8833,6 +9440,7 @@
 ;; 1f:5d8e Get the number of free chains.
 ;; 1f:5d8e Result: E
 ;; 1f:5d8e Registers used: A, DE, HL
+1f:5d8e .code:002a
 
 1f:5d97 .jump_check_chain
 
@@ -8849,6 +9457,7 @@
 1f:5db1 .jump_return
 
 1f:5db8 call_1f_5db8
+1f:5db8 .code:0103
 ;; 1f:5dbb:op rRAMB
 ;; 1f:5dbe:op _SRAM_PHRASE_ALLOC_BANK
 ;; 1f:5dc1:op rRAMG
@@ -8865,18 +9474,25 @@
 ;; 1f:5eae:op CART_SRAM_DISABLE
 
 1f:5ebb call_1f_5ebb
+1f:5ebb .code:0065
 
 1f:5f20 call_1f_5f20
+1f:5f20 .code:003d
 
 1f:5f5d call_1f_5f5d
+1f:5f5d .code:002a
 
 1f:5f87 call_1f_5f87
+1f:5f87 .code:0088
 
 1f:600f call_1f_600f
+1f:600f .code:00d8
 
 1f:60e7 call_1f_60e7
+1f:60e7 .code:0017
 
 1f:60fe call_1f_60fe
+1f:60fe .code:003b
 ;; 1f:6118:op rRAMB
 ;; 1f:611e:op rRAMG
 ;; 1f:6121:op CART_SRAM_ENABLE
@@ -8884,8 +9500,10 @@
 ;; 1f:6134:op CART_SRAM_DISABLE
 
 1f:6139 call_1f_6139
+1f:6139 .code:0026
 
 1f:615f call_1f_615f
+1f:615f .code:003b
 ;; 1f:6179:op rRAMB
 ;; 1f:617f:op rRAMG
 ;; 1f:6182:op CART_SRAM_ENABLE
@@ -8896,10 +9514,13 @@
 1f:619a .data:0010
 
 1f:61aa call_1f_61aa
+1f:61aa .code:00ae
 
 1f:6258 call_1f_6258
+1f:6258 .code:0020
 
 1f:6278 call_1f_6278
+1f:6278 .code:00a0
 
 1f:6318 data_dedup_song_strings
 1f:6318 data_dedup_song_title_string
@@ -8918,6 +9539,7 @@
 1f:6348 .text:0004
 
 1f:634c call_1f_634c
+1f:634c .code:009c
 
 1f:63e8 data_dedup_instruments_strings
 1f:63e8 data_dedup_instruments_title_string
@@ -8940,11 +9562,13 @@
 1f:6426 .text:0004
 
 1f:642a call_1f_642a
+1f:642a .code:0052
 
 1f:647c data_1f_647c
 1f:647c .data:001e
 
 1f:649a call_1f_649a
+1f:649a .code:0157
 
 ;; 1f:654a:op LOW(call_read_chain_phrase)
 ;; 1f:654c:op HIGH(call_read_chain_phrase)
@@ -8961,10 +9585,13 @@
 ;; 1f:65e2:op BANK(call_1e_4000)
 
 1f:65f1 call_1f_65f1
+1f:65f1 .code:0021
 
 1f:6612 call_1f_6612
+1f:6612 .code:0021
 
 1f:6633 call_1f_6633
+1f:6633 .code:0105
 
 ;; 1f:6667:op _NORMAL_CURSOR_MODE
 
@@ -9032,10 +9659,13 @@
 1f:6ad1 .text:0005
 
 1f:6ad6 call_1f_6ad6
+1f:6ad6 .code:00d6
 
 1f:6bac call_1f_6bac
+1f:6bac .code:0016
 
 1f:6bc2 call_1f_6bc2
+1f:6bc2 .code:006a
 ;; 1f:6bdd:op _SRAM_SPEECH_WORD_NAMES
 ;; 1f:6c00:op _SRAM_SPEECH_WORD_NAMES_BANK
 
@@ -9045,10 +9675,12 @@
 1f:6c30 call_1f_6c30
 
 1f:6cd7 call_1f_6cd7
+1f:6cd7 .code:01a6
 
 1f:6e7d call_1f_6e7d
 
 1f:6e93 call_1f_6e93
+1f:6e93 .code:0144
 
 1f:6fd7 data_1f_6fd7
 1f:6fd7 .data:0004
@@ -9068,8 +9700,10 @@
 1f:6fed .text:0004
 
 1f:6ff1 call_1f_6ff1
+1f:6ff1 .code:0025
 
 1f:7016 call_1f_7016
+1f:7016 .code:0011
 
 ;; 1f:7017:op LOW(call_00_2490)
 ;; 1f:7019:op HIGH(call_00_2490)
@@ -9080,12 +9714,16 @@
 ;; 1f:7027 Get the current location of the speech cursor row + 4.
 ;; 1f:7027 Result: E
 ;; 1f:7027 Registers used: E, HL
+1f:7027 .code:000e
 
 1f:7035 call_1f_7035
+1f:7035 .code:0029
 
 1f:705e call_1f_705e
+1f:705e .code:0029
 
 1f:7087 call_1f_7087
+1f:7087 .code:0137
 
 ;; 1f:708d:op _TALK_SCREEN
 
@@ -9107,6 +9745,7 @@
 1f:71be .text:000e
 
 1f:71cc call_1f_71cc
+1f:71cc .code:05a8
 ;; 1f:723b:op _SRAM_SPEECH_WORD_NAMES
 ;; 1f:7259:op _SRAM_SPEECH_WORD_NAMES_BANK
 
