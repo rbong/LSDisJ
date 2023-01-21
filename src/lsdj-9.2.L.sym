@@ -1577,9 +1577,11 @@
 
 00:34f8 _enable_interrupts
 ;; 00:34f8 gbdk 2.95 libc/gb/crt0.s:_enable_interrupts
+00:34f8 .code:0002
 
 00:34fa _disable_interrupts
 ;; 00:34fa gbdk 2.95 libc/gb/crt0.s:_disable_interrupts
+00:34fa .code:0002
 
 00:34fc _reset
 ;; 00:34fc gbdk 2.95 libc/gb/crt0.s:.reset/_reset
