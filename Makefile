@@ -25,8 +25,12 @@ DIS := beast/bin/beast
 # Disassembly flags
 DISFLAGS :=
 
+# The Lua program
+LUA := luajit
+# Flags to pass to Lua when running the disassembler
+LUAFLAGS :=
 # Custom Lua paths
-CUSTOM_LUA_PATH := $(ROOT_DIR)/beast/src/?.lua;$(LUA_PATH)
+_LUA_PATH := $(ROOT_DIR)/beast/src/?.lua;$(shell $(LUA) -e "print(package.path)")
 
 # Helper variables
 
@@ -106,7 +110,7 @@ build/%/src/lsdj.asm: $(ROM) $(SYM) $(INC)
 		"build/$*/src/"*.2bpp \
 		"build/$*/src/"*.data
 	mkdir -p "build/$*/src"
-	LUA_PATH="$(CUSTOM_LUA_PATH)" $(DIS) \
+	LUA_PATH="$(_LUA_PATH)" $(LUA) $(LUAFLAGS) $(DIS) \
 		--main "lsdj.asm" \
 		--symbols "$(SYM)" \
 		--include "src/hardware.inc" \
