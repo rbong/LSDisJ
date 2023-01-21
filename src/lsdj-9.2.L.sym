@@ -59,7 +59,7 @@
 00:0149 HeaderRAMSize
 00:0149 .data:0001
 00:014a HeaderDestinationCode
-;; 00:014a Destination is Japanese
+;; 00:014a:replace:0001 db CART_DEST_JAPANESE    ; 00:014a
 00:014a .data:0001
 00:014b HeaderOldLicenseeCode
 00:014b .data:0001
