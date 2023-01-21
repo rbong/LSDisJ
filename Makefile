@@ -61,7 +61,7 @@ rebuild: build/$(VERSION)/Makefile
 	cd "build/$(VERSION)" && $(MAKE)
 
 clean:
-	rm -rf build/
+	rm -rf "build/$(VERSION)"
 
 # Placeholder targets
 
