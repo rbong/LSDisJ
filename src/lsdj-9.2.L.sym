@@ -4137,6 +4137,7 @@
 03:52de .code:0059
 
 ;; 03:52df Get current instrument length
+;; 03:52df:op _LENGTH_INSTRUMENT_PARAM
 
 ;; 03:52e9 Decrement the current instrument
 
