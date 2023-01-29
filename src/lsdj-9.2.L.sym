@@ -4187,11 +4187,36 @@
 03:5395 data_increment_instrument_pu_length_param_digit2_clear_bg
 03:5395 .text:0004
 
-03:5399 call_03_5399
+03:5399 call_decrement_current_instrument_pu_length_param_digit2
+;; 03:5399 Decrement the high digit of the PU instrument length param.
+;; 03:5399 Registers used: A, DE, HL
 03:5399 .code:0060
 
-03:53f9 jump_table_03_53f9
-03:53f9 .code:0004
+;; 03:539a Get current instrument length
+;; 03:539a:op _LENGTH_INSTRUMENT_PARAM
+
+;; 03:53a4 Decrement the current instrument length
+
+03:53af .jump_decrement_1
+
+03:53bf .jump_decrement_2
+
+03:53c3 .jump_write_param
+
+;; 03:53c6:op _LENGTH_INSTRUMENT_PARAM
+
+;; 03:53cf Check if digit is at min
+
+;; 03:53d5 Clear the background
+
+;; 03:53de Draw the digits
+
+03:53ee .jump_draw_bg
+
+03:53f7 .jump_return
+
+03:53f9 data_decrement_instrument_pu_length_param_digit2_clear_bg
+03:53f9 .text:0004
 
 03:53fd call_03_53fd
 03:53fd .code:0118
