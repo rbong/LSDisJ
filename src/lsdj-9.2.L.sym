@@ -4104,10 +4104,31 @@
 ;; 03:5275:op call_1f_418a
 ;; 03:5279:op BANK(call_1f_418a)
 
-03:528a call_03_528a
+03:528a call_increment_current_instrument_pu_length_param
+;; 03:528a Increment the PU instrument length param.
+;; 03:528a Registers used: A, DE, HL
 03:528a .code:0050
 
-03:52da data_03_52da
+;; 03:528b Get current instrument length
+;; 03:528b:op _LENGTH_INSTRUMENT_PARAM
+
+;; 03:5293 Increment param value
+
+03:52a4 .jump_write_param
+
+;; 03:52a7:op _LENGTH_INSTRUMENT_PARAM
+
+;; 03:52b0 Check if the current value is at max
+
+;; 03:52b6 Clear the background
+
+;; 03:52bf Draw the digits
+
+03:52cf .jump_draw_cursor
+
+03:52d8 .jump_return
+
+03:52da data_increment_instrument_pu_length_param_clear_bg
 03:52da .text:0004
 
 03:52de call_03_52de
