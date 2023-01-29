@@ -3549,7 +3549,7 @@
 
 03:4015 data_default_wave_frame_2
 03:4015 .data:0010
-03:4025 data_03_4025
+03:4025 data_decrement_instrument_pu_length_param_bg
 03:4025 .data:0006
 03:402b data_03_402b
 03:402b .data:001b
@@ -4131,11 +4131,31 @@
 03:52da data_increment_instrument_pu_length_param_clear_bg
 03:52da .text:0004
 
-03:52de call_03_52de
+03:52de call_decrement_current_instrument_pu_length_param
+;; 03:52de Decrement the PU instrument length param.
+;; 03:52de Registers used: A, DE, HL
 03:52de .code:0059
 
-03:5337 jump_table_03_5337
-03:5337 .code:0004
+;; 03:52df Get current instrument length
+
+;; 03:52e9 Decrement the current instrument
+
+03:52f7 .jump_decrement
+
+03:5301 .jump_write_param
+
+;; 03:530d Check if current value is at min
+
+;; 03:5313 Clear the background
+
+;; 03:531c Draw the digits
+
+03:532c .jump_draw_bg
+
+03:5335 .jump_return
+
+03:5337 data_decrement_instrument_pu_length_param_clear_bg
+03:5337 .text:0004
 
 03:533b call_03_533b
 03:533b .code:005a
