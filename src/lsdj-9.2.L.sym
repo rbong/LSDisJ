@@ -6446,7 +6446,7 @@
 07:403f data_07_403f
 07:403f .data:0008
 
-07:4047 data_07_4047
+07:4047 data_song_channel_cols
 07:4047 .data:0004
 
 07:404b call_is_any_channel_playing
@@ -6476,8 +6476,29 @@
 
 07:4080 .jump_return
 
-07:4084 call_07_4084
+07:4084 call_clear_song_cursor
+;; 07:4084 Clear the cursor at its current location on the song screen.
+;; 07:4084
+;; 07:4084 Entry conditions:
+;; 07:4084   SONG_CURSOR_COL must be set.
+;; 07:4084   SONG_CURSOR_ROW must be set.
+;; 07:4084
+;; 07:4084 Registers used: A, DE, HL
 07:4084 .code:004c
+
+;; 07:4087 Get the BG tile based on the song cursor col
+;; 07:408b:op LOW(data_song_channel_cols)
+;; 07:408f:op HIGH(data_song_channel_cols)
+
+;; 07:4096 Calculate the cursor row based on scroll pos
+
+;; 07:40a1 Check if the row is bookmarked
+
+;; 07:40af Check that cursor row is valid
+
+07:40b8 .jump_clear
+
+;; 07:40ca Return
 
 07:40d0 call_write_song_chain
 ;; 07:40d0 Write a chain number to a row in a song.
