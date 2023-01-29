@@ -4126,7 +4126,7 @@
 
 03:52d8 .jump_return
 
-03:52da data_increment_instrument_pu_length_param_clear_bg
+03:52da .data_clear_bg
 03:52da .text:0004
 
 03:52de call_decrement_current_instrument_pu_length_param
@@ -4159,7 +4159,7 @@
 
 03:5335 .jump_return
 
-03:5337 data_decrement_instrument_pu_length_param_clear_bg
+03:5337 .data_clear_bg
 03:5337 .text:0004
 
 03:533b call_increment_current_instrument_pu_length_param_digit2
@@ -4184,7 +4184,7 @@
 
 03:5393 .jump_return
 
-03:5395 data_increment_instrument_pu_length_param_digit2_clear_bg
+03:5395 .data_clear_bg
 03:5395 .text:0004
 
 03:5399 call_decrement_current_instrument_pu_length_param_digit2
@@ -4215,7 +4215,7 @@
 
 03:53f7 .jump_return
 
-03:53f9 data_decrement_instrument_pu_length_param_digit2_clear_bg
+03:53f9 .data_clear_bg
 03:53f9 .text:0004
 
 03:53fd call_03_53fd
