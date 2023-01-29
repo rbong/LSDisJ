@@ -6359,8 +6359,32 @@
 07:4047 data_07_4047
 07:4047 .data:0004
 
-07:404b call_07_404b
+07:404b call_is_any_channel_playing
+;; 07:404b Checks if any channel is currently playing.
+;; 07:404b Registers used: A, BC, DE, HL
+;; 07:404b Result: E
 07:404b .code:0039
+
+;; 07:404c Check if PU1 is playing
+
+;; 07:405a Check PU2
+
+07:405c .jump_skip_check_pu2
+;; 07:405e Set if PU1 or PU2 are playing
+
+07:4060 .jump_check_wav
+;; 07:4060 Check if WAV is playing
+
+07:406c .jump_skip_check_wav
+;; 07:406e Set if WAV or PU1 or PU2 is playing
+
+07:4070 .jump_check_noi
+;; 07:4070 Check if NOI is playing
+
+07:407c .jump_skip_check_noi
+;; 07:407e Set if any channel is playing
+
+07:4080 .jump_return
 
 07:4084 call_07_4084
 07:4084 .code:004c
