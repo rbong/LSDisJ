@@ -6018,8 +6018,21 @@
 06:5a03 call_06_5a03
 06:5a03 .code:005c
 
-06:5a5f call_06_5a5f
+06:5a5f call_draw_chain_screen_cursor
+;; 06:5a5f Draws the cursor for the chain screen.
+;; 06:5a5f Registers used: A, DE, HL
 06:5a5f .code:0042
+
+;; 06:5a62 Check GAMEBOY_TYPE
+;; 06:5a6a Handle CGB
+
+06:5a6f .jump_dmg
+
+06:5a71 .jump_cgb
+
+;; 06:5a71 Calculate cursor position
+;; 06:5a89 Draw cursor background attributes
+;; 06:5a9b Return
 
 06:5aa1 call_06_5aa1
 06:5aa1 .code:1210
