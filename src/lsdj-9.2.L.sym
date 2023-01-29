@@ -3549,7 +3549,7 @@
 
 03:4015 data_default_wave_frame_2
 03:4015 .data:0010
-03:4025 data_decrement_instrument_pu_length_param_bg
+03:4025 data_instrument_pu_length_param_bg
 03:4025 .data:0006
 03:402b data_03_402b
 03:402b .data:001b
@@ -4139,7 +4139,7 @@
 ;; 03:52df Get current instrument length
 ;; 03:52df:op _LENGTH_INSTRUMENT_PARAM
 
-;; 03:52e9 Decrement the current instrument
+;; 03:52e9 Decrement the current instrument length
 
 03:52f7 .jump_decrement
 
