@@ -4120,10 +4120,6 @@
 
 ;; 03:52b0 Check if the current value is at max
 
-;; 03:536b Check if digit is at max
-
-;; 03:5371 Clear the background
-
 ;; 03:52bf Draw the digits
 
 03:52cf .jump_draw_cursor
@@ -4152,6 +4148,10 @@
 ;; 03:530d Check if current value is at min
 
 ;; 03:5313 Clear the background
+
+;; 03:536b Check if digit is at max
+
+;; 03:5371 Clear the background
 
 ;; 03:531c Draw the digits
 
