@@ -80,3 +80,9 @@ Search for bytes from one ROM in another:
 ```bash
 python3 -m lsdisj.grep src/lsdj-8.5.1.gb:01:4200 src/lsdj-9.2.L.gb:01:0000
 ```
+
+Get statistics about unknown calls:
+
+```bash
+python3 -m lsdisj.grep build/9.2.L/src/bank_*.asm
+```
