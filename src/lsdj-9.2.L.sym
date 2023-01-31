@@ -8421,11 +8421,40 @@
 1c:7582 data_bank_1c_padding
 ;; 1c:7582:replace:0a7e ds $8000 - @, $ff    ; 1c:7582
 
-1d:4000 call_1d_4000
+1d:4000 call_write_groove_row
+;; 1d:4000 Write a value to a row in the current groove.
+;; 1d:4000
+;; 1d:4000 Args: row, value
+;; 1d:4000
+;; 1d:4000 Entry conditions:
+;; 1d:4000   CURRENT_GROOVE_SCREEN must be set.
+;; 1d:4000
+;; 1d:4000 Registers used: A, DE, HL
 1d:4000 .code:0058
 
+;; 1d:4005 Check that row is not greater than $0f
+
+1d:400d .jump_throw_exception
+
+1d:4010 .jump_verify_groove_screen
+
+;; 1d:4014 Check that CURRENT_GROOVE_SCREEN does not exceen max
+;; 1d:4014:op _GROOVES
+
+1d:401c .jump_calculate_screen_address_1
+;; 1d:4022 Shift groove screen left 4 times (multiply by 16)
+1d:4026 .jump_calculate_screen_address_2
+1d:402b .jump_calculate_screen_address_3
+
+;; 1d:4038 Get row
+
+;; 1d:403d Add row to groove screen address
+
+;; 1d:4045 Write value to address
 ;; 1d:402e:op _SRAM_GROOVES
 ;; 1d:404b:op _SRAM_GROOVES_BANK
+
+;; 1d:4054 Return
 
 1d:4058 data_1d_4058
 1d:4058 .data:0002
