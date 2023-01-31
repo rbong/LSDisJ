@@ -8133,8 +8133,43 @@
 1c:61cb call_1c_61cb
 1c:61cb .code:0010
 
-1c:61db call_1c_61db
+1c:61db call_increment_table_vols
+;; 1c:61db Increments all saved table volumes by 1.
+;; 1c:61db Used for upgrading saves.
+;; 1c:61db
+;; 1c:61db Registers used: A, DE, HL
 1c:61db .code:005e
+
+;; 1c:61de Get start address
+
+;; 1c:61e0:op LOW(_SRAM_TABLE_VOLS)
+;; 1c:61e3:op HIGH(_SRAM_TABLE_VOLS)
+
+1c:61e5 .jump_loop_1
+;; 1c:61e5 Check that address is not at max
+
+;; 1c:61e8:op LOW(_SRAM_TABLE_VOLS + _TABLES * _TABLE_ROWS)
+;; 1c:61ef:op HIGH(_SRAM_TABLE_VOLS + _TABLES * _TABLE_ROWS)
+
+1c:61f4 .jump_loop_2
+;; 1c:61f4 Get current address
+
+;; 1c:61f9 Read value at current address
+;; 1c:61fa:op _SRAM_TABLE_VOLS_BANK
+
+;; 1c:6201 Check value at current address
+
+;; 1c:6215 Increment volume
+
+;; 1c:621b Write new value
+
+1c:622b .jump_loop_3
+;; 1c:622b Increment address
+
+1c:6232 .jump_loop_4
+;; 1c:6232 Jump back to start
+
+1c:6235 .jump_return
 
 1c:6239 call_1c_6239
 1c:6239 .code:0048
