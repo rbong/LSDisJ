@@ -322,6 +322,7 @@ _KIT_2_OFFSET_INSTRUMENT_PARAM      EQU $0d ; 8 bits
 ;; Noise Type Instrument Params ;;
 
 _NOISE_PITCH_INSTRUMENT_PARAM EQU $02 ; 1 bit (0) (see above)
+_NOISE_DEFAULT_NOTE_PARAM     EQU $04 ; 8 bits
 
 ;; Synth Params ;;
 

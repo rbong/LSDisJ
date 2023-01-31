@@ -4418,10 +4418,54 @@
 
 04:40b0 .jump_return
 
-04:40b2 call_04_40b2
+04:40b2 call_write_default_note
+;; 04:40b2 Write the default note for the current instrument.
+;; 04:40b2
+;; 04:40b2 Entry conditions:
+;; 04:40b2   SONG_CURSOR_COL must be set
+;; 04:40b2   PHRASE_CURSOR_ROW must be set
+;; 04:40b2   CURRENT_PHRASE must be set
+;; 04:40b2
+;; 04:40b2 Args: note
+;; 04:40b2
+;; 04:40b2 Exit conditions:
+;; 04:40b2   DEFAULT_NOTES + SONG_CURSOR_COL will be set to "note"
+;; 04:40b2   If the instrument is noise and not in select mode, will set the default note param
+;; 04:40b2
+;; 04:40b2 Registers used: A, DE, HL
 04:40b2 .code:0054
 
+;; 04:40b3 Get default note address for the current song column
+
+;; 04:40b7:op LOW(DEFAULT_NOTES)
+;; 04:40bb:op HIGH(DEFAULT_NOTES)
+
+;; 04:40c0 Set default note
+
+;; 04:40c4 Check if the current instrument is noise type
+
+;; 04:40c8:op _NOISE_CHANNEL
+
 ;; 04:40d1:op _SELECT_CURSOR_MODE
+
+;; 04:40cd Check if currently in select cursor mode
+
+;; 04:40d6 Get preceeding instrument
+
+;; 04:40da Check if the current instrument is the speech instrument
+
+;; 04:40e0 Get preceeding instrument type
+;; 04:40e0:op _INSTRUMENT_TYPE_INSTRUMENT_PARAM
+
+;; 04:40ed Check if preceeding instrument type is noise
+
+;; 04:40ee:op _NOISE_CHANNEL
+
+;; 04:40f3 Write noise default instrument param
+
+;; 04:40f8:op _NOISE_DEFAULT_NOTE_PARAM
+
+04:4104 .jump_return
 
 04:4106 call_04_4106
 04:4106 .code:0089
@@ -10191,6 +10235,7 @@
 00:c901 SCREEN_MOVE_DIRECTION
 ;; 00:c901 The direction to move the screen in, if any.
 
+00:c905 DEFAULT_NOTES
 00:c905 DEFAULT_PU1_NOTE
 ;; 00:c905 The default note to use for empty pulse 1 channel rows on the phrase screen
 00:c906 DEFAULT_PU2_NOTE
