@@ -2957,9 +2957,9 @@
 ;; 01:7dc2:op HIGH(call_1c_4a46)
 ;; 01:7dc5:op BANK(call_1c_4a46)
 
-;; 01:7dce:op LOW(call_1c_6f75)
-;; 01:7dd0:op HIGH(call_1c_6f75)
-;; 01:7dd3:op BANK(call_1c_6f75)
+;; 01:7dce:op LOW(call_upgrade_save)
+;; 01:7dd0:op HIGH(call_upgrade_save)
+;; 01:7dd3:op BANK(call_upgrade_save)
 
 ;; 01:7de5:op LOW(call_07_6505)
 ;; 01:7de7:op HIGH(call_07_6505)
@@ -8124,18 +8124,22 @@
 1c:60e2 call_1c_60e2
 1c:60e2 .code:00a2
 
-1c:6184 call_1c_6184
+; TODO: finish labeling
+1c:6184 call_upgrade_save_version_0
+;; 1c:6184 Upgrade save version 0 to 1.
 1c:6184 .code:0010
 
 1c:6194 call_1c_6194
 1c:6194 .code:0037
 
-1c:61cb call_1c_61cb
+; TODO: finish labeling
+1c:61cb call_upgrade_save_version_1
+;; 1c:61cb Upgrade save version 1 to 2.
 1c:61cb .code:0010
 
-1c:61db call_increment_table_vols
+1c:61db call_upgrade_save_version_2
+;; 1c:61db Upgrade save version 2 to 3.
 ;; 1c:61db Increments all saved table volumes by 1.
-;; 1c:61db Used for upgrading saves.
 ;; 1c:61db
 ;; 1c:61db Registers used: A, DE, HL
 1c:61db .code:005e
@@ -8171,32 +8175,51 @@
 
 1c:6235 .jump_return
 
-1c:6239 call_1c_6239
+; TODO: finish labeling
+1c:6239 call_upgrade_save_version_3_a
+;; 1c:6239 Used while upgrading save version 3 to 4.
 1c:6239 .code:0048
 
-1c:6281 call_1c_6281
+; TODO: finish labeling
+1c:6281 call_upgrade_save_version_3_b
+;; 1c:6281 Used while upgrading save version 3 to 4.
 1c:6281 .code:003c
 
-1c:62bd call_1c_62bd
+; TODO: finish labeling
+1c:62bd call_upgrade_save_version_3
+;; 1c:62bd Upgrade save version 3 to 4.
 1c:62bd .code:0027
 
-1c:62e4 call_1c_62e4
+; TODO: finish labeling
+1c:62e4 call_upgrade_save_version_4
+;; 1c:62e4 Upgrade save version 4 to 5.
 1c:62e4 .code:005f
 
-1c:6343 call_1c_6343
+; TODO: finish labeling
+1c:6343 call_upgrade_save_version_5_a
+;; 1c:6343 Used while upgrading save version 5 to 6.
 1c:6343 .code:0031
 
-1c:6374 call_1c_6374
+; TODO: finish labeling
+1c:6374 call_upgrade_save_version_5
+;; 1c:6374 Upgrade save version 5 to 6.
 1c:6374 .code:0010
 
-1c:6384 call_1c_6384
+; TODO: finish labeling
+1c:6384 call_upgrade_save_version_6_a
+;; 1c:6384 Used while upgrading save version 6 to 7.
 1c:6384 .code:0035
 
-1c:63b9 call_1c_63b9
+; TODO: finish labeling
+1c:63b9 call_upgrade_save_version_6
+;; 1c:63b9 Upgrade save version 6 to 7.
 1c:63b9 .code:0010
 
-1c:63c9 call_1c_63c9
+; TODO: finish labeling
+1c:63c9 call_upgrade_save_version_7
+;; 1c:63c9 Upgrade save version 7 to 8.
 1c:63c9 .code:00cc
+
 ;; 1c:63cd:op rRAMG
 ;; 1c:63d0:op CART_SRAM_ENABLE
 ;; 1c:63d2:op rRAMB
@@ -8207,19 +8230,28 @@
 1c:6495 call_1c_6495
 1c:6495 .code:001c
 
-1c:64b1 call_1c_64b1
+; TODO: finish labeling
+1c:64b1 call_upgrade_save_version_8
+;; 1c:64b1 Upgrade save version 8 to 9.
 1c:64b1 .code:0010
 
-1c:64c1 call_1c_64c1
+; TODO: finish labeling
+1c:64c1 call_upgrade_save_version_9_a
+;; 1c:64c1 Used while upgrading save version from 9 to 10.
 1c:64c1 .code:001d
 
-1c:64de call_1c_64de
+; TODO: finish labeling
+1c:64de call_upgrade_save_version_9
+;; 1c:64de Upgrade save version 9 to 10.
 1c:64de .code:0010
 
-1c:64ee call_1c_64ee
+; TODO: finish_labeling
+1c:64ee call_upgrade_save_version_10_a
 1c:64ee .code:002b
 
-1c:6519 call_1c_6519
+; TODO: finish labeling
+1c:6519 call_upgrade_save_version_10
+;; 1c:6519 Upgrade save version 10 to 11.
 1c:6519 .code:001a
 
 1c:6533 call_read_song_row_noise_chain
@@ -8246,7 +8278,9 @@
 
 1c:6564 .jump_return
 
-1c:6567 call_1c_6567
+; TODO: finish labeling
+1c:6567 call_upgrade_save_version_11_5
+;; 1c:6567 Upgrade save version 11.5 to 12.
 1c:6567 .code:00e5
 
 ;; 1c:65e7:op call_read_chain_transpose
@@ -8255,26 +8289,39 @@
 ;; 1c:6628:op call_write_chain_transpose
 ;; 1c:662c:op BANK(call_write_chain_transpose)
 
-1c:664c call_1c_664c
+; TODO: finish labeling
+1c:664c call_upgrade_save_version_11
+;; 1c:664c Upgrade save version 11 to 11.5.
 1c:664c .code:0227
 
-1c:6873 call_1c_6873
+; TODO: finish labeling
+1c:6873 call_upgrade_save_version_12_a
+;; 1c:6873 Used while upgrading save version 12 to 13.
 1c:6873 .code:002c
 
-1c:689f data_1c_689f
+1c:689f data_upgrade_save_version_12
 1c:689f .data:0008
 
-1c:68a7 call_1c_68a7
+; TODO: finish labeling
+1c:68a7 call_upgrade_save_version_12_b
+;; 1c:68a7 Used while upgrading save version 12 to 13.
 1c:68a7 .code:0060
 
-1c:6907 call_1c_6907
+; TODO: finish labeling
+1c:6907 call_upgrade_save_version_12
+;; 1c:6907 Upgrade save version 12 to 13.
 1c:6907 .code:001a
 
-1c:6921 call_1c_6921
+; TODO: finish labeling
+1c:6921 call_upgrade_save_version_13_a
+;; 1c:6921 Used while upgrading save version 13 to 14.
 1c:6921 .code:0034
 
-1c:6955 call_1c_6955
+; TODO: finish labeling
+1c:6955 call_upgrade_save_version_13
+;; 1c:6955 Upgrade save version 13 to 14.
 1c:6955 .code:00b0
+
 ;; 1c:6959:op rRAMG
 ;; 1c:695c:op CART_SRAM_ENABLE
 ;; 1c:695e:op rRAMB
@@ -8288,61 +8335,133 @@
 ;; 1c:69fb:op rRAMG
 ;; 1c:69fe:op CART_SRAM_DISABLE
 
-1c:6a05 call_1c_6a05
+; TODO: finish labeling
+1c:6a05 call_upgrade_save_version_14_a
+;; 1c:6a05 Used while upgrading save version 14 to 15.
 1c:6a05 .code:001b
 
-1c:6a20 call_1c_6a20
+; TODO: finish labeling
+1c:6a20 call_upgrade_save_version_14_b
+;; 1c:6a20 Used while upgrading save version 14 to 15.
 1c:6a20 .code:0060
 
-1c:6a80 call_1c_6a80
+; TODO: finish labeling
+1c:6a80 call_upgrade_save_version_14
+;; 1c:6a80 Upgrade save version 14 to 15.
 1c:6a80 .code:001a
 
-1c:6a9a call_1c_6a9a
+; TODO: finish labeling
+1c:6a9a call_upgrade_save_version_15_a
+;; 1c:6a9a Used while upgrading save version 15 to 16.
 1c:6a9a .code:001c
 
-1c:6ab6 call_1c_6ab6
+; TODO: finish labeling
+1c:6ab6 call_upgrade_save_version_15
+;; 1c:6ab6 Upgrade save version 15 to 16.
 1c:6ab6 .code:0010
 
-1c:6ac6 call_1c_6ac6
+; TODO: finish labeling
+1c:6ac6 call_upgrade_save_version_16
+;; 1c:6ac6 Upgrade save version 16 to 17.
 1c:6ac6 .code:008f
+
 ;; 1c:6ad1:op rRAMG
 ;; 1c:6ad4:op CART_SRAM_ENABLE
 ;; 1c:6ad6:op rRAMB
 ;; 1c:6b4b:op rRAMG
 ;; 1c:6b4e:op CART_SRAM_DISABLE
 
-1c:6b55 call_1c_6b55
+; TODO: finish labeling
+1c:6b55 call_upgrade_save_version_17
+;; 1c:6b55 Upgrade save version 17 to 17.5.
 1c:6b55 .code:0082
 
-1c:6bd7 call_1c_6bd7
+; TODO: finish labeling
+1c:6bd7 call_upgrade_save_verison_17_5_a
+;; 1c:6bd7 Used while upgrading save version 17.5 to 18.
 1c:6bd7 .code:001d
 
-1c:6bf4 call_1c_6bf4
+; TODO: finish labeling
+1c:6bf4 call_upgrade_save_version_17_5
+;; 1c:6bf4 Upgrade save version 17.5 to 18.
 1c:6bf4 .code:0010
 
-1c:6c04 call_1c_6c04
+; TODO: finish labeling
+1c:6c04 call_upgrade_save_version_18
+;; 1c:6c04 Upgrade save version 18 to 19.
 1c:6c04 .code:01e6
 
-1c:6dea data_1c_6dea
+1c:6dea data_upgrade_save_version_18
 1c:6dea .data:0070
 
-1c:6e5a call_1c_6e5a
+; TODO: finish labeling
+1c:6e5a call_upgrade_save_version_19
+;; 1c:6e5a Upgrade save version 19 to 21.
 1c:6e5a .code:00c7
 
-1c:6f21 call_1c_6f21
+; TODO: finish labeling
+1c:6f21 call_upgrade_save_version_21
+;; 1c:6f21 Upgrade save version 21 to 22.
 1c:6f21 .code:0054
+
 ;; 1c:6f24:op _SRAM_SYNTH_PARAMS
 ;; 1c:6f42:op _SRAM_SYNTH_PARAMS_BANK
 
-1c:6f75 call_1c_6f75
+1c:6f75 call_upgrade_save
+;; 1c:6f75 Upgrades the current save.
+;; 1c:6f75 Registers used: A, E
 1c:6f75 .code:0132
+
+;; 1c:6f76 Read the current version
+
+;; 1c:6f84 Check if version is up to date
+
+;; 1c:6f9e Check if end of loop has been reached
+;; 1c:6fa4 Run upgrades
+
 ;; 1c:6f76:op _SRAM_VERSION_FLAG
 ;; 1c:6f7a:op _SRAM_VERSION_FLAG_BANK
+
+;; 1c:6f85:op _SAVE_VERSION
+
+1c:6f8d .jump_draw_upgrading_message
+
+1c:6f9e .jump_loop
+
+1c:700f .jump_upgrade_save_version_0
+1c:7015 .jump_upgrade_save_version_1
+1c:701b .jump_upgrade_save_version_2
+1c:7021 .jump_upgrade_save_version_3
+1c:7027 .jump_upgrade_save_version_4
+1c:702d .jump_upgrade_save_version_5
+1c:7033 .jump_upgrade_save_version_6
+1c:7039 .jump_upgrade_save_version_7
+1c:703f .jump_upgrade_save_version_8
+1c:7045 .jump_upgrade_save_version_9
+1c:704b .jump_upgrade_save_version_10
+1c:7051 .jump_upgrade_save_version_11
+1c:705a .jump_upgrade_save_version_12
+1c:7060 .jump_upgrade_save_version_13
+1c:7066 .jump_upgrade_save_version_14
+1c:706c .jump_upgrade_save_version_15
+1c:7072 .jump_upgrade_save_version_16
+1c:7078 .jump_upgrade_save_version_17
+1c:7081 .jump_upgrade_save_version_18
+1c:7087 .jump_upgrade_save_version_19
+1c:708d .jump_upgrade_save_version_21
+
+1c:7090 .jump_increment
+
+1c:7094 .jump_write_new_version
+
+;; 1c:7094:op _SAVE_VERSION
 
 ;; 1c:7098:op _SRAM_VERSION_FLAG
 ;; 1c:709c:op _SRAM_VERSION_FLAG_BANK
 
-1c:70a7 data_upgrading_string
+1c:70a5 .jump_return
+
+1c:70a7 .data_upgrading_string
 1c:70a7 .text:0010
 
 1c:70b7 call_1c_70b7

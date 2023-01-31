@@ -343,6 +343,10 @@ _VSHIFT_2_SYNTH_PARAM    EQU $0c ; 8 bits
 _LIMIT_1_SYNTH_PARAM     EQU $0d ; 8 bits              (0x0f - value)
 _LIMIT_2_SYNTH_PARAM     EQU $0e ; 8 bits              (0x0f - value)
 
+;; Save version
+
+_SAVE_VERSION EQU 22
+
 ;; SRAM Constants ;;
 
 _PHRASES      EQU $ff
