@@ -8118,10 +8118,14 @@
 ;; 1c:608e Registers used: A, DE, HL
 1c:608e .code:0015
 
-1c:60a3 call_1c_60a3
+; TODO: finish labeling
+1c:60a3 call_upgrade_read_instrument_params
+;; 1c:60a3 Used in various upgrades to read some instrument params.
 1c:60a3 .code:003f
 
-1c:60e2 call_1c_60e2
+; TODO: finish labeling
+1c:60e2 call_upgrade_save_version_8_a
+;; 1c:60e2 Used while upgrading save version 8 to 9.
 1c:60e2 .code:00a2
 
 ; TODO: finish labeling
@@ -8129,7 +8133,9 @@
 ;; 1c:6184 Upgrade save version 0 to 1.
 1c:6184 .code:0010
 
-1c:6194 call_1c_6194
+; TODO: finish labeling
+1c:6194 call_upgrade_save_version_1_a
+;; 1c:6194 Used while upgrading save version 1 to 2.
 1c:6194 .code:0037
 
 ; TODO: finish labeling
@@ -8227,7 +8233,9 @@
 ;; 1c:648b:op rRAMG
 ;; 1c:648e:op CART_SRAM_DISABLE
 
-1c:6495 call_1c_6495
+; TODO: finish labeling
+1c:6495 call_upgrade_save_version_8_b
+;; 1c:6495 Used while upgrading save version 8 to 9.
 1c:6495 .code:001c
 
 ; TODO: finish labeling
