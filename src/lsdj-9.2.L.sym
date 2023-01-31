@@ -6052,7 +6052,7 @@
 ;; 06:54a4 Registers used: A, DE, HL
 06:54a4 .code:0015
 
-06:54b9 data_06_54b9
+06:54b9 data_chain_cols
 06:54b9 .data:0002
 
 06:54bb call_06_54bb
@@ -6128,8 +6128,43 @@
 06:583a data_cloned_phrase_string
 06:583a .text:000e
 
-06:5848 call_06_5848
+06:5848 call_clear_chain_cursor
+;; 06:5848 Clear the cursor at its current location is on the chain screen.
+;; 06:5848
+;; 06:5848 Entry conditions:
+;; 06:5848   CHAIN_CURSOR_COL must be set.
+;; 06:5848   CHAIN_CURSOR_ROW must be set.
+;; 06:5848
+;; 06:5848 Registers used: A, DE, HL
 06:5848 .code:0054
+
+;; 06:584b Check if chain cursor row upper 4 bits are set
+;; 06:584b Chain cursor row should never exceed $0f
+
+06:5857 .jump_exception
+
+06:585a .jump_get_tile
+
+;; 06:585a Check if chain cursor col is 0
+;; 06:5862 Check if GAMEBOY_TYPE is 0 (DMG)
+
+06:5867 .jump_check_z
+
+;; 06:5869 Set tile to 1 if GAMEBOY_TYPE is non-0 (GBC) or CHAIN_CURSOR_COL != 0
+;; 06:5869 Otherwise tile will be 0
+
+06:586b .jump_clear
+
+;; 06:586c Get chain row
+
+;; 06:5875 Get chain column
+
+;; 06:5879:op LOW(data_chain_cols)
+;; 06:587d:op HIGH(data_chain_cols)
+
+;; 06:5884 Draw background tiles
+
+;; 06:5896 Return
 
 06:589c call_06_589c
 ;; 06:58b1:op _SRAM_CHAIN_PHRASES
