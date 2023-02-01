@@ -2690,8 +2690,28 @@
 
 01:6d0a .jump_reset_help_banner
 
-01:6d3b call_01_6d3b
+01:6d3b call_draw_current_screen_gbc_bg_tiles
+;; 01:6d3b Draw the background tiles for the current screen on GBC.
+;; 01:6d3b See also call_get_current_screen_bg_tiles, call_copy_gbc_tile_page.
+;; 01:6d3b
+;; 01:6d3b Entry conditions:
+;; 01:6d3b   GAMEBOY_TYPE must be set to non-zero (GBC).
+;; 01:6d3b   CURRENT_SCREEN must be set to a valid screen.
+;; 01:6d3b
+;; 01:6d3b Exit conditions:
+;; 01:6d3b   The tile page at the address returned from call_get_current_screen_bg_tiles will be copied to VRAM.
+;; 01:6d3b
+;; 01:6d3b Registers used: A, DE, HL
 01:6d3b .code:0021
+
+;; 01:6d3c Get current tile address
+;; 01:6d41 Check GameBoy type
+
+01:6d4c .jump_handle_gbc
+
+01:6d54 .jump_copy
+
+;; 01:6d5a Return
 
 01:6d5c call_01_6d5c
 01:6d5c .code:022b
@@ -7033,8 +7053,8 @@
 
 ;; 07:7065:op _HELP_SCREEN
 
-;; 07:7067:op call_01_6d3b
-;; 07:706b:op BANK(call_01_6d3b)
+;; 07:7067:op call_draw_current_screen_gbc_bg_tiles
+;; 07:706b:op BANK(call_draw_current_screen_gbc_bg_tiles)
 
 07:7140 data_keyboard_calibration_strings
 07:7140 data_keyboard_calibration_title_string
