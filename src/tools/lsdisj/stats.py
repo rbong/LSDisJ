@@ -98,6 +98,10 @@ for filename in files:
         if re.match('^ *$', line):
             continue
 
+        # Skip comments
+        if re.match('^ *;', line):
+            continue
+
         # Update lines
         total_lines += 1
         if is_unknown:
