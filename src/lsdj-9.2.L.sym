@@ -3863,12 +3863,35 @@
 ;; 03:493f:op HIGH(call_draw_table_instrument_param)
 ;; 03:4942:op BANK(call_draw_table_instrument_param)
 
-03:494d call_03_494d
+03:494d call_increment_current_instrument_table_param_by_16
+;; 03:494d Increase the table param of the current instrument by 16.
+;; 03:494d Does nothing if the value stored at KEY_CHANGE_START is not 0.
+;; 03:494d Does nothing if the table is greater than $0f.
+;; 03:494d
+;; 03:494d Entry conditions:
+;; 03:494d   CURRENT_INSTRUMENT_1 must be set.
+;; 03:494d   The table must be on.
 03:494d .code:0038
+
+;; 03:494e Read the table instrument param
+;; 03:494e:op _TABLE_INSTRUMENT_PARAM
+
+;; 03:4958 Check if table is on
+
+;; 03:495e Check KEY_CHANGE_START
+
+;; 03:4966 Add 16 to table
+;; 03:496c:op _TABLE_INSTRUMENT_PARAM
+
+;; 03:496a Write instrument param
+
+;; 03:4975 Draw updated table instrument param
 
 ;; 03:4975:op LOW(call_draw_table_instrument_param)
 ;; 03:4977:op HIGH(call_draw_table_instrument_param)
 ;; 03:497a:op BANK(call_draw_table_instrument_param)
+
+03:4983 .jump_return
 
 03:4985 call_disable_current_instrument_table_on_param
 ;; 03:4985 Turn off the table on param for the current instrument.
