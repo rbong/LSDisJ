@@ -2495,12 +2495,25 @@
 
 01:5208 call_01_5208
 
-01:522d call_01_522d
+01:522d call_draw_transpose_instrument_param
+;; 01:522d Draws "ON"/"OFF" for the transpose instrument param.
+;; 01:522d Args: transpose
+;; 01:522d Registers used: A, DE, HL
 01:522d .code:001e
 
-01:524b data_01_524b
+;; 01:522e Check whether transpose is on
+
+;; 01:5236 Handle transpose off
+
+01:523e .jump_handle_transpose_on
+
+01:5243 .jump_draw
+
+;; 01:5249 Return
+
+01:524b .data_off_string
 01:524b .text:0004
-01:524f data_01_524f
+01:524f .data_on_string
 01:524f .text:0004
 
 01:5253 call_01_5253
@@ -3685,9 +3698,9 @@
 03:4257 call_03_4257
 03:4257 .code:0024
 
-;; 03:4266:op LOW(call_01_522d)
-;; 03:4268:op HIGH(call_01_522d)
-;; 03:4270:op BANK(call_01_522d)
+;; 03:4266:op LOW(call_draw_transpose_instrument_param)
+;; 03:4268:op HIGH(call_draw_transpose_instrument_param)
+;; 03:4270:op BANK(call_draw_transpose_instrument_param)
 
 03:427b call_03_427b
 03:427b .code:0018
@@ -9554,9 +9567,9 @@
 ;; 1f:42fb:op HIGH(call_01_518c)
 ;; 1f:4303:op BANK(call_01_518c)
 
-;; 1f:4314:op LOW(call_01_522d)
-;; 1f:4316:op HIGH(call_01_522d)
-;; 1f:431e:op BANK(call_01_522d)
+;; 1f:4314:op LOW(call_draw_transpose_instrument_param)
+;; 1f:4316:op HIGH(call_draw_transpose_instrument_param)
+;; 1f:431e:op BANK(call_draw_transpose_instrument_param)
 
 1f:438f data_instrument_length_strings
 1f:438f data_unlim_instrument_length_string
@@ -9571,9 +9584,9 @@
 ;; 1f:4445:op HIGH(call_01_5208)
 ;; 1f:444b:op BANK(call_01_5208)
 
-;; 1f:445c:op LOW(call_01_522d)
-;; 1f:445e:op HIGH(call_01_522d)
-;; 1f:4466:op BANK(call_01_522d)
+;; 1f:445c:op LOW(call_draw_transpose_instrument_param)
+;; 1f:445e:op HIGH(call_draw_transpose_instrument_param)
+;; 1f:4466:op BANK(call_draw_transpose_instrument_param)
 
 1f:44a3 data_noise_instrument_param_strings
 1f:44a3 data_unlim_noise_instrument_param_string
@@ -9615,9 +9628,9 @@
 ;; 1f:47e8:op HIGH(call_01_518c)
 ;; 1f:47f0:op BANK(call_01_518c)
 
-;; 1f:4801:op LOW(call_01_522d)
-;; 1f:4803:op HIGH(call_01_522d)
-;; 1f:480b:op BANK(call_01_522d)
+;; 1f:4801:op LOW(call_draw_transpose_instrument_param)
+;; 1f:4803:op HIGH(call_draw_transpose_instrument_param)
+;; 1f:480b:op BANK(call_draw_transpose_instrument_param)
 
 ;; 1f:482e:op call_draw_wave_finetune_instrument_param
 ;; 1f:4832:op BANK(call_draw_wave_finetune_instrument_param)
