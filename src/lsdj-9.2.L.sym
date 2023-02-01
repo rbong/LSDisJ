@@ -3363,13 +3363,45 @@
 ;; 02:5e6e:op rRAMG
 ;; 02:5e73:op rRAMG
 
-02:5e77 call_02_5e77
+02:5e77 call_get_current_channel_song_chain
+;; 02:5e77 Get the chain for the current row in the current channel on the song screen.
+;; 02:5e77 Returns $ff when the row number is not valid.
+;; 02:5e77
+;; 02:5e77 Entry conditions:
+;; 02:5e77   CURRENT_CHANNEL must be set.
+;; 02:5e77   CURRENT_CHANNEL_SONG_ROWS + CURRENT_CHANNEL must be set.
+;; 02:5e77
+;; 02:5e77 Exit conditions:
+;; 02:5e77   Interrupts will be enabled if the row was valid.
+;; 02:5e77
+;; 02:5e77 Result: E
+;; 02:5e77
+;; 02:5e77 Registers used: A, DE, HL
+;; 02:5e77 -
+
+;; 02:5e77 Get the current song row for the current channel
+
+;; 02:5e7e Check if row is valid
+;; 02:5e80:op _SONG_ROWS
+
+;; 02:5e84 Handle invalid row
+
+02:5e87 .jump_write
+
+;; 02:5e87 Calculate the song chain address for current channel row
+
 ;; 02:5e8f:op _SRAM_SONG_CHAINS
 ;; 02:5e93:op _SRAM_SONG_CHAINS_BANK
 ;; 02:5e95:op rRAMB
+
+;; 02:5e93 Read the song chain from SRAM
+
 ;; 02:5e98:op CART_SRAM_ENABLE
 ;; 02:5e9b:op rRAMG
+
 ;; 02:5ea0:op rRAMG
+
+;; 02:5ea3 Return
 
 02:5ea4 data_02_5ea4
 02:5ea4 .data:0078
@@ -10334,6 +10366,7 @@
 00:c17e CURRENT_WAV_CHAIN_ROW
 00:c17f CURRENT_NOI_CHAIN_ROW
 
+00:c200 CURRENT_CHANNEL_SONG_ROWS
 00:c200 CURRENT_PU1_SONG_ROW
 00:c201 CURRENT_PU2_SONG_ROW
 00:c202 CURRENT_WAV_SONG_ROW
