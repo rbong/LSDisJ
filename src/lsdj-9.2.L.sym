@@ -3255,7 +3255,10 @@
 02:5014 call_02_5014
 02:5014 .code:002a
 
-02:503e call_02_503e
+02:503e call_generate_random_byte_under_15
+;; 02:503e Generate a random byte between 0 and 14.
+;; 02:503e Result: E
+;; 02:503e Registers used: A, DE, HL
 02:503e .code:000b
 
 02:5049 call_02_5049
