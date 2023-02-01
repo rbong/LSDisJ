@@ -3890,10 +3890,26 @@
 03:49b4 call_03_49b4
 03:49b4 .code:002c
 
-03:49e0 call_03_49e0
+03:49e0 call_draw_wave_speed_instrument_param
+;; 03:49e0 Draw the wave speed for the current instrument.
+;; 03:49e0 Registers used: A, DE, HL
 03:49e0 .code:002d
 
-03:4a0d data_03_4a0d
+;; 03:49e1 Set target
+
+;; 03:49e9 Check for manual wave play type
+
+;; 03:49f2 Handle manual wave play type
+
+03:49fe .jump_draw_digits
+
+;; 03:49fe Read the wave speed
+
+;; 03:4a02 Draw the wave speed
+
+03:4a0b .jump_return
+
+03:4a0d .data_manual_placeholder
 03:4a0d .text:0003
 
 03:4a10 call_read_current_instrument_wave_loop_pos_param
@@ -9592,8 +9608,8 @@
 ;; 1f:4855:op call_draw_wave_loop_pos_instrument_param
 ;; 1f:4859:op BANK(call_draw_wave_loop_pos_instrument_param)
 
-;; 1f:4862:op call_03_49e0
-;; 1f:4866:op BANK(call_03_49e0)
+;; 1f:4862:op call_draw_wave_speed_instrument_param
+;; 1f:4866:op BANK(call_draw_wave_speed_instrument_param)
 
 1f:48c4 call_write_chain_phrase
 ;; 1f:48c4 Write a phrase number to a row in the given chain.
