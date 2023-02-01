@@ -38,6 +38,8 @@ total_unknown_refs = 0
 total_unknown_lines = 0
 
 fn_calls = {}
+fn_unk_addrs = {}
+fn_unk_bytes = {}
 fn_lines = {}
 fn_end = {}
 fn_refs = {}
@@ -50,6 +52,8 @@ for filename in files:
     current_fn = None
     is_unknown = False
     calls = None
+    unk_addrs = None
+    unk_bytes = None
 
     for line in open(filename, 'r', encoding='utf-8').readlines():
         # Parse label
@@ -57,25 +61,41 @@ for filename in files:
         if label_match:
             if label_match[1] == 'call':
                 # Handle call label
+
                 fn = label_match[0][:-1]
                 current_fn = fn
                 is_unknown = is_unknown_fn(label_match[2])
                 total_fns += 1
+
                 if is_unknown:
                     calls = {}
+                    unk_addrs = {}
+                    unk_bytes = {}
+
                     fn_calls[fn] = calls
+                    fn_unk_addrs[fn] = unk_addrs
+                    fn_unk_bytes[fn] = unk_bytes
                     fn_lines[fn] = 0
                     fn_end[fn] = False
                     total_unknown_fns += 1
+
             elif label_match[1] == 'data':
                 # Handle data label
+
                 current_fn = None
                 is_unknown = False
                 calls = None
+                unk_addrs = None
+                unk_bytes = None
+
             continue
 
         # Skip non-function lines
         if not current_fn:
+            continue
+
+        # Skip empty lines
+        if re.match('^ *$', line):
             continue
 
         # Update lines
@@ -91,8 +111,20 @@ for filename in files:
             current_fn = None
             is_unknown = False
             calls = None
-            lines = None
+            unk_addrs = None
+            unk_bytes = None
             continue
+
+        # Check for unknown addresses/bytes
+        if is_unknown:
+            match = re.search('\$[0-9a-f]{4}', line)
+            if match:
+                unk_addrs[match[0]] = True
+                continue
+            match = re.search('\$[0-9a-f]{2}', line)
+            if match:
+                unk_bytes[match[0]] = True
+                continue
 
         # Parse all unknown call refs
         for ref in re.findall('call_([0-9a-f_]*)', line):
@@ -110,15 +142,23 @@ for filename in files:
 # Sort statistics
 
 stats = [
-    (-fn_end.get(fn, False), len(fn_calls.get(fn, {})), -refs, fn_lines.get(fn, 0), fn)
+    (
+        -fn_end.get(fn, False),
+        len(fn_calls.get(fn, {})),
+        len(fn_unk_addrs.get(fn, {})),
+        len(fn_unk_bytes.get(fn, {})),
+        -refs,
+        fn_lines.get(fn, 0),
+        fn
+    )
     for fn, refs
     in fn_refs.items()
 ]
 
 # Print statistics
 
-for end, calls, refs, lines, fn in sorted(stats):
-    print(f'{fn}:\tends: {"yes" if end else "no"}\tunknown calls: {calls}\treferences: {-refs}\tlines: {lines}')
+for end, calls, addrs, bytes, refs, lines, fn in sorted(stats):
+    print(f'{fn} ends: {"yes" if end else "no "}   unk. calls: {calls: <4} unk. addrs: {addrs: <4} unk. bytes: {bytes: <4} refs: {-refs: <4} lines: {lines}')
 
 print(f'total functions: {total_fns}')
 print(f'total references: {total_refs}')
