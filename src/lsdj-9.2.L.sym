@@ -4168,8 +4168,26 @@
 03:4ffb call_03_4ffb
 03:4ffb .code:0026
 
-03:5021 call_03_5021
+03:5021 call_write_current_instrument_kit_num_param
+;; 03:5021 Writes a kit number param for the current instrument.
+;; 03:5021 Can write either kit number 1 or kit number 2.
+;; 03:5021
+;; 03:5021 Entry conditions:
+;; 03:5021   CURRENT_INSTRUMENT_1 must be set.
+;; 03:5021
+;; 03:5021 Args: instrument_param, kit
+;; 03:5021
+;; 03:5021 Registers used: A, DE, HL
 03:5021 .code:0038
+
+;; 03:5026 Read the instrument param value
+
+; Possibly related to high-bank kits
+;; 03:502f Perform some unknown bit fiddling
+
+;; 03:5048 Write the updated instrument param
+
+;; 03:5057 Return
 
 03:5059 call_03_5059
 03:5059 .code:0052
