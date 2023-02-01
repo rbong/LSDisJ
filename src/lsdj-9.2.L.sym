@@ -4819,8 +4819,8 @@
 ;; 04:4d0c:op HIGH(call_01_6d5c)
 ;; 04:4d0f:op BANK(call_01_6d5c)
 
-;; 04:4d18:op call_06_55d0
-;; 04:4d1c:op BANK(call_06_55d0)
+;; 04:4d18:op call_draw_cursor_row_num
+;; 04:4d1c:op BANK(call_draw_cursor_row_num)
 
 ;; 04:4e94:op _SRAM_INSTRUMENT_PARAMS + 2
 ;; 04:4ea3:op _SRAM_INSTRUMENT_PARAMS_BANK
@@ -6085,10 +6085,34 @@
 06:550d call_06_550d
 06:550d .code:00c3
 
-06:55d0 call_06_55d0
+06:55d0 call_draw_cursor_row_num
+;; 06:55d0 Draw the current cursor row number in the top right.
+;; 06:55d0 Ex. draws "CP1" for row 1.
+;; 06:55d0 See also call_write_bg_map_attr_indexes, call_write_2x_digit_bg_map_attrs_arg.
+;; 06:55d0
+;; 06:55d0 Entry conditions:
+;; 06:55d0   BG_MAP_ATTR_SHADOWED_PALETTE_LOW/HIGH must be set.
+;; 06:55d0   CHAIN_CURSOR_ROW must be set.
+;; 06:55d0
+;; 06:55d0 Exit conditions:
+;; 06:55d0   The row number will be drawn in the top right.
+;; 06:55d0
+;; 06:55d0 Registers used: A, DE, HL
 06:55d0 .code:002c
 
-06:55fc data_06_55fc
+;; 06:55d1 Set target row/column
+
+;; 06:55d9 Set background attributes
+
+;; 06:55e5 Draw "CP"
+
+;; 06:55ee Get the cursor row
+
+;; 06:55f3 Draw the row number
+
+;; 06:55fa Return
+
+06:55fc .data_cp
 06:55fc .text:0003
 
 06:55ff call_write_chain_transpose
