@@ -456,9 +456,9 @@
 ;; 00:0f56:op BANK(call_read_chain_phrase)
 ;; 00:0f65:op call_read_chain_phrase
 
-;; 00:0f73:op BANK(call_01_4cfb)
-;; 00:0f7a:op BANK(call_01_4cfb)
-;; 00:0f81:op call_01_4cfb
+;; 00:0f73:op BANK(call_write_phrase_alloc)
+;; 00:0f7a:op BANK(call_write_phrase_alloc)
+;; 00:0f81:op call_write_phrase_alloc
 
 ;; 00:0fc4:op BANK(call_write_chain_alloc)
 ;; 00:0fcb:op BANK(call_write_chain_alloc)
@@ -2306,13 +2306,28 @@
 01:4cf1 call_01_4cf1
 01:4cf1 .code:000a
 
-01:4cfb call_01_4cfb
+01:4cfb call_write_phrase_alloc
+;; 01:4cfb Mark a phrase as allocated.
 01:4cfb .code:006c
+
+;; 01:4d01:op _PHRASES
+
+01:4d09 .jump_calculate_address
+
 ;; 01:4d15:op _SRAM_PHRASE_ALLOC
+;; 01:4d32 Read phrase alloc
 ;; 01:4d5a:op _SRAM_PHRASE_ALLOC_BANK
 
+01:4d49 .jump_get_phrase_1
+
+01:4d4c .jump_get_phrase_2
+
+;; 01:4d51 Write updated allocation value
+
+;; 01:4d63 Return
+
 01:4d67 call_write_chain_alloc
-;; 01:4d67 Write the allocation value for a chain, marking it as allocated.
+;; 01:4d67 Mark a chain as allocated.
 ;; 01:4d67 Args: chain
 ;; 01:4d67 Registers used: A, DE, HL
 01:4d67 .code:006c
@@ -2325,40 +2340,40 @@
 ;; 01:4d9e Read chain alloc
 ;; 01:4da3:op _SRAM_CHAIN_ALLOC_BANK
 
-;; 01:4dad Modify the allocation value
+;; 01:4dad Get the chain from the alloc value
 
-01:4db5 .jump_modify_alloc_1
-01:4db8 .jump_modify_alloc_2
+01:4db5 .jump_get_chain_1
+01:4db8 .jump_get_chain_2
 
 ;; 01:4dbd Write updated allocation value
 
 ;; 01:4dcf Return
 
 01:4dd3 call_write_phrase_unalloc
-;; 01:4dd3 Write the allocation value for a phrase, marking it as unallocated.
+;; 01:4dd3 Mark a phrase as unallocated.
 ;; 01:4dd3 Args: phrase
 ;; 01:4dd3 Registers used: A, DE, HL
 01:4dd3 .code:0070
 
 ;; 01:4dd9:op _PHRASES
 
-01:4de1 .jump_calculate_address_1
+01:4de1 .jump_calculate_address
 
 ;; 01:4ded:op _SRAM_PHRASE_ALLOC
 ;; 01:4e0a Read phrase alloc
 ;; 01:4e0f:op _SRAM_PHRASE_ALLOC_BANK
 
-;; 01:4e19 Modify the allocation value
+;; 01:4e19 Get the phrase from the alloc value
 
-01:4e21 .jump_modify_alloc_1
-01:4e24 .jump_modify_alloc_2
+01:4e21 .jump_get_phrase_1
+01:4e24 .jump_get_phrase_2
 
 ;; 01:4e2e Write updated allocation value
 
 ;; 01:4e3f Return
 
 01:4e43 call_write_chain_unalloc
-;; 01:4e43 Write the allocation value for a chain, marking it as unallocated.
+;; 01:4e43 Mark a chain as unallocated.
 ;; 01:4e43 Args: chain
 ;; 01:4e43 Registers used: A, DE, HL
 01:4e43 .code:0070
@@ -2371,10 +2386,10 @@
 ;; 01:4e7a Read chain alloc
 ;; 01:4e7f:op _SRAM_CHAIN_ALLOC_BANK
 
-;; 01:4e89 Modify the allocation value
+;; 01:4e89 Get the chain from the alloc value
 
-01:4e91 .jump_modify_alloc_1
-01:4e94 .jump_modify_alloc_2
+01:4e91 .jump_get_chain_1
+01:4e94 .jump_get_chain_2
 
 ;; 01:4e9e Write the updated allocation value
 ;; 01:4ea6:op _SRAM_CHAIN_ALLOC_BANK
@@ -2431,10 +2446,10 @@
 ;; 01:4fc9 Read phrase alloc
 ;; 01:4fcc:op _SRAM_PHRASE_ALLOC_BANK
 
-;; 01:4fd6 Modify the allocation value
+;; 01:4fd6 Get the phrase from the allocation value
 
-01:4fde .jump_modify_alloc_1
-01:4fe1 .jump_modify_alloc_2
+01:4fde .jump_get_phrase_1
+01:4fe1 .jump_get_phrase_2
 
 ;; 01:4fe8 Return
 
@@ -6508,9 +6523,9 @@
 ;; 06:5c11:op HIGH(call_01_4eb3)
 ;; 06:5c14:op BANK(call_01_4eb3)
 
-;; 06:5c28:op LOW(call_01_4cfb)
-;; 06:5c2a:op HIGH(call_01_4cfb)
-;; 06:5c32:op BANK(call_01_4cfb)
+;; 06:5c28:op LOW(call_write_phrase_alloc)
+;; 06:5c2a:op HIGH(call_write_phrase_alloc)
+;; 06:5c32:op BANK(call_write_phrase_alloc)
 
 ;; 06:5c43:op LOW(call_write_chain_phrase)
 ;; 06:5c45:op HIGH(call_write_chain_phrase)
@@ -10002,9 +10017,9 @@
 ;; 1f:53bf:op HIGH(call_read_chain_phrase)
 ;; 1f:53cb:op BANK(call_read_chain_phrase)
 
-;; 1f:53dd:op LOW(call_01_4cfb)
-;; 1f:53df:op HIGH(call_01_4cfb)
-;; 1f:53e9:op BANK(call_01_4cfb)
+;; 1f:53dd:op LOW(call_write_phrase_alloc)
+;; 1f:53df:op HIGH(call_write_phrase_alloc)
+;; 1f:53e9:op BANK(call_write_phrase_alloc)
 
 1f:53fc call_1f_banked_read_chain_alloc
 ;; 1f:53fc See: call_read_chain_alloc
