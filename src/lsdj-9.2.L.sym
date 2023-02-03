@@ -5689,7 +5689,24 @@
 ;; 05:46a8:op _SRAM_TABLE_COMMAND_VALUES_1
 ;; 05:46c4 TODO: determine which bank number below is used for which SRAM value above
 
-05:472b call_05_472b
+05:472b call_draw_table_vol
+;; 05:472b Draw the table volume.
+;; 05:472b Args: volume
+;; 05:472b Registers used: A, DE, HL
+
+;; 05:472c Check the second digit for $f (hop)
+
+;; 05:4737 Get the first digit
+
+;; 05:4743 Draw the first digit
+
+;; 05:474a Draw "H"
+;; 05:474a:op "H"
+
+05:4756 .jump_handle_no_hop
+;; 05:4756 Draw both digits
+
+05:4760 .jump_return
 
 05:4762 call_05_4762
 
