@@ -3888,22 +3888,61 @@
 
 ;; 03:47c5 Get only the table step bit
 
-03:47cb call_03_47cb
+03:47cb call_handle_shift_table_type_left
+;; 03:47cb Handle shifting the table on/step/tick instrument params when the left key is pressed.
+;; 03:47cb Does nothing if KEY_CHANGE_START is non-zero.
+;; 03:47cb
+;; 03:47cb Entry conditions:
+;; 03:47cb   CURRENT_INSTRUMENT_1 must be set.
+;; 03:47cb   BG_MAP_ATTR_TARGET must be set.
+;; 03:47cb
+;; 03:47cb Registers used: A, DE, HL
 03:47cb .code:008c
+
+;; 03:47cd Check KEY_CHANGE_START
+
+;; 03:47d4 Check if table step bit is set
+;; 03:47d4:op _TABLE_STEP_INSTRUMENT_PARAM
+
+;; 03:47e4 Read table step instrument param
+;; 03:47e4:op _TABLE_STEP_INSTRUMENT_PARAM
+;; 03:47ef Mask table step off
+;; 03:47ef:op _TABLE_STEP_PARAM_OFF_MASK
+;; 03:47f4 Write updated table step instrument param
+;; 03:47f4:op _TABLE_STEP_INSTRUMENT_PARAM
+
+03:4800 .jump_turn_table_off
+
+;; 03:4800 Read table on instrument param
+;; 03:4800:op _TABLE_ON_INSTRUMENT_PARAM
+;; 03:480b Mask table off
+;; 03:480b:op _TABLE_ON_INSTRUMENT_PARAM_OFF_MASK
+;; 03:4810 Write updated table on instrument param
+;; 03:4810:op _TABLE_ON_INSTRUMENT_PARAM
+
+03:4819 .jump_draw_table_type
 
 ;; 03:4825:op LOW(call_draw_table_type_instrument_params)
 ;; 03:4827:op HIGH(call_draw_table_type_instrument_params)
 ;; 03:482a:op BANK(call_draw_table_type_instrument_params)
 
+;; 03:4833 Update BG_MAP_ATTR_TARGET
+
+03:483b .jump_draw_table_num
+
 ;; 03:4847:op LOW(call_draw_table_instrument_param)
 ;; 03:4849:op HIGH(call_draw_table_instrument_param)
 ;; 03:484c:op BANK(call_draw_table_instrument_param)
 
+03:4855 .jump_return
+
 03:4857 call_handle_shift_table_type_right
 ;; 03:4857 Handle shifting the table on/step/tick instrument params when the right key is pressed.
+;; 03:4857 Does nothing if KEY_CHANGE_START is non-zero.
 ;; 03:4857
 ;; 03:4857 Entry conditions:
-;; 03:4857   KEY_CHANGE_START must be set to 1 after pressing the key
+;; 03:4857   CURRENT_INSTRUMENT_1 must be set.
+;; 03:4857   BG_MAP_ATTR_TARGET must be set.
 ;; 03:4857
 ;; 03:4857 Registers used: A, DE, HL
 03:4857 .code:006f
@@ -10652,6 +10691,7 @@
 00:c570 CURRENT_KEY_PRESS_COUNT
 00:c571 TOTAL_KEY_PRESS_COUNT
 
+00:c574 BG_MAP_ATTR_TARGET
 00:c574 BG_MAP_ATTR_TARGET_LOW
 ;; 00:c574 The address at which to draw background map attributes.
 ;; 00:c574 Should be in the range 0x9800 - 0x9afff.
