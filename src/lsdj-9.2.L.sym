@@ -3734,12 +3734,23 @@
 03:4170 call_03_4170
 03:4170 .code:00e7
 
-03:4257 call_03_4257
+03:4257 call_write_current_instrument_transpose_param
+;; 03:4257 Write the transpose instrument param for the current instrument.
+;; 03:4257 Args: value
+;; 03:4257 Registers used: A, DE, HL
 03:4257 .code:0024
 
+;; 03:4258 Read value
+
+;; 03:425b Write instrument param
+;; 03:425d:op _TRANSPOSE_INSTRUMENT_PARAM
+
+;; 03:4266 Draw transpose
 ;; 03:4266:op LOW(call_draw_transpose_instrument_param)
 ;; 03:4268:op HIGH(call_draw_transpose_instrument_param)
 ;; 03:4270:op BANK(call_draw_transpose_instrument_param)
+
+;; 03:4279 Return
 
 03:427b call_03_427b
 03:427b .code:0018
