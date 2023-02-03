@@ -3429,6 +3429,7 @@
 02:5f71 call_02_5f71
 
 02:5f88 call_02_5f88
+02:5f88 .code:001c
 
 02:5fa4 call_02_5fa4
 
@@ -3535,6 +3536,7 @@
 ;; 02:6eca:op _SRAM_CHAIN_PHRASES_BANK
 
 02:6ed8 call_02_6ed8
+02:6ed8 .code:007e
 
 02:6f56 call_02_6f56
 ;; 02:6f57:op rRAMB
@@ -3548,6 +3550,7 @@
 ;; 02:6ff4:op CART_SRAM_ENABLE
 ;; 02:7001:op rRAMG
 ;; 02:7004:op CART_SRAM_DISABLE
+02:6f56 .code:00c7
 
 02:701d call_02_701d
 
@@ -3565,6 +3568,7 @@
 02:74e8 call_02_74e8
 
 02:7712 call_02_7712
+02:7712 .code:007f
 
 02:7791 call_02_7791
 
