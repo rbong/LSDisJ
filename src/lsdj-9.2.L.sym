@@ -3344,11 +3344,38 @@
 02:530f call_02_530f
 02:530f .code:0114
 
-02:5423 call_02_5423
+02:5423 call_write_current_channel_current_note_from_phrase
+;; 02:5423 Write the current note for the current channel from the phrase.
+;; 02:5423
+;; 02:5423 Entry conditions:
+;; 02:5423   CURRENT_CHANNEL must be set to the target channel.
+;; 02:5423   PLAYING_*_PHRASE_NOTE_ADDRESS must be set to the target note for the channel.
+;; 02:5423   CURRENT_CHANNEL_CURRENT_NOTE must be set to the target address.
+;; 02:5423
+;; 02:5423 Exit conditions:
+;; 02:5423   Interrupts will be enabled.
+;; 02:5423
+;; 02:5423 Registers used: A, DE, HL
+;; 02:5423 -
 02:5423 .code:001e
+
+;; 02:5423 Read playing phrase note address for the current channel
+
+;; 02:542e Find address for current channel current note
+;; 02:542e Assumes that address will not exceed $ff and starts at $c000
+
+;; 02:5434 Enable SRAM
 ;; 02:5434:op CART_SRAM_ENABLE
 ;; 02:5437:op rRAMG
+
+;; 02:543a Read playing phrase note
+
+;; 02:543b Write current channel current note
+
+;; 02:543c Disable SRAM
 ;; 02:543d:op rRAMG
+
+;; 02:5440 Return
 
 02:5441 call_02_5441
 
@@ -10448,6 +10475,7 @@
 00:c0e2 IS_WAV_CHANNEL_PLAYING
 00:c0e3 IS_NOI_CHANNEL_PLAYING
 
+00:c110 PLAYING_PHRASE_NOTE_ADDRESSES
 00:c110 PLAYING_PU1_PHRASE_NOTE_ADDRESS_LOW
 00:c111 PLAYING_PU1_PHRASE_NOTE_ADDRESS_HIGH
 00:c112 PLAYING_PU2_PHRASE_NOTE_ADDRESS_LOW
