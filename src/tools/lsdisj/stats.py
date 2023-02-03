@@ -45,8 +45,8 @@ fn_end = {}
 fn_refs = {}
 fn_lines = {}
 
-def is_unknown_fn(call_suffix):
-    return bool(re.match('^[0-9a-f]{2}_[0-9a-f]{4}$', call_suffix))
+def is_unknown_fn(fn):
+    return bool(re.search('[0-9a-f]{2}_[0-9a-f]{4}$', fn))
 
 for filename in files:
     current_fn = None
@@ -56,44 +56,6 @@ for filename in files:
     unk_bytes = None
 
     for line in open(filename, 'r', encoding='utf-8').readlines():
-        # Parse label
-        label_match = re.match('^(call|data)_(.*):$', line)
-        if label_match:
-            if label_match[1] == 'call':
-                # Handle call label
-
-                fn = label_match[0][:-1]
-                current_fn = fn
-                is_unknown = is_unknown_fn(label_match[2])
-                total_fns += 1
-
-                if is_unknown:
-                    calls = {}
-                    unk_addrs = {}
-                    unk_bytes = {}
-
-                    fn_calls[fn] = calls
-                    fn_unk_addrs[fn] = unk_addrs
-                    fn_unk_bytes[fn] = unk_bytes
-                    fn_lines[fn] = 0
-                    fn_end[fn] = False
-                    total_unknown_fns += 1
-
-            elif label_match[1] == 'data':
-                # Handle data label
-
-                current_fn = None
-                is_unknown = False
-                calls = None
-                unk_addrs = None
-                unk_bytes = None
-
-            continue
-
-        # Skip non-function lines
-        if not current_fn:
-            continue
-
         # Skip empty lines
         if re.match('^ *$', line):
             continue
@@ -102,25 +64,59 @@ for filename in files:
         if re.match('^ *;', line):
             continue
 
-        # Update lines
-        total_lines += 1
-        if is_unknown:
-            fn_lines[current_fn] += 1
-            total_unknown_lines += 1
-
-        # Handle return function
-        if re.match('^ *ret( *;|$)', line):
-            if is_unknown:
-                fn_end[current_fn] = True
-            current_fn = None
-            is_unknown = False
-            calls = None
-            unk_addrs = None
-            unk_bytes = None
+        # Skip non-function labels
+        if re.match('^(jump|jp|jr|data|kit)_.*:$', line):
             continue
 
-        # Check for unknown addresses/bytes
+        # Skip local labels
+        if re.match('^\.', line):
+            continue
+
+        # Skip data
+        if re.match('^ *d[sb] ', line):
+            continue
+
+        # Parse label
+        label_match = re.match('^ *([^ ;]+):$', line)
+        if label_match:
+            fn = label_match[1]
+            current_fn = fn
+            fn_lines[fn] = 0
+            is_unknown = is_unknown_fn(label_match[1])
+            total_fns += 1
+
+            if is_unknown:
+                calls = {}
+                unk_addrs = {}
+                unk_bytes = {}
+
+                fn_calls[fn] = calls
+                fn_unk_addrs[fn] = unk_addrs
+                fn_unk_bytes[fn] = unk_bytes
+                fn_end[fn] = False
+                total_unknown_fns += 1
+
+            continue
+
+        # Skip non-function lines
+        if not current_fn:
+            continue
+
+        # Update lines
+        total_lines += 1
+        fn_lines[current_fn] += 1
         if is_unknown:
+            total_unknown_lines += 1
+
+        if is_unknown:
+            # Check for return instructions at end
+            if re.match('^ *reti?( *;|$)', line):
+                fn_end[current_fn] = True
+                continue
+            else:
+                fn_end[current_fn] = False
+
+            # Check for unknown addresses/bytes
             match = re.search('\$[0-9a-f]{4}', line)
             if match:
                 unk_addrs[match[0]] = True
@@ -143,6 +139,14 @@ for filename in files:
                 if is_unknown:
                     calls[ref] = True
 
+# Remove empty functions
+
+for fn, lines in fn_lines.items():
+    if lines == 0:
+        if fn in fn_refs:
+            del fn_refs[fn]
+        total_fns -= 1
+
 # Sort statistics
 
 stats = [
@@ -164,9 +168,19 @@ stats = [
 for end, calls, addrs, bytes, refs, lines, fn in sorted(stats):
     print(f'{fn} ends: {"yes" if end else "no "}   unk. calls: {calls: <4} unk. addrs: {addrs: <4} unk. bytes: {bytes: <4} refs: {-refs: <4} lines: {lines}')
 
-print(f'total functions: {total_fns}')
+total_known_fns = total_fns - total_unknown_fns
+total_known_refs = total_refs - total_unknown_refs
+total_known_lines = total_lines - total_unknown_lines
+
+print('---')
+print(f'total functions:  {total_fns}')
 print(f'total references: {total_refs}')
-print(f'total lines: {total_lines}')
-print(f'total unknown functions: {total_unknown_fns}')
+print(f'total lines:      {total_lines}')
+print('---')
+print(f'total unknown functions:  {total_unknown_fns}')
 print(f'total unknown references: {total_unknown_refs}')
-print(f'total unknown lines: {total_unknown_lines}')
+print(f'total unknown lines:      {total_unknown_lines}')
+print('---')
+print(f'total known functions:  {total_known_fns:<5} / {total_fns:<5} [{total_known_fns / total_fns:.2%}]')
+print(f'total known references: {total_known_refs:<5} / {total_refs:<5} [{total_known_refs / total_refs:.2%}]')
+print(f'total known lines:      {total_known_lines:<5} / {total_lines:<5} [{total_known_lines / total_lines:.2%}]')
