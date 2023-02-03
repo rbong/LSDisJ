@@ -3107,7 +3107,17 @@
 ;; 02:42e0:op rRAMG
 ;; 02:42e6:op rRAMG
 
-02:43ce call_02_43ce
+02:43ce call_cpl_inc_hl
+;; 02:43ce Sets HL to its negative (one's compliment) and adds 1.
+;; 02:43ce Entry conditions: HL = value
+;; 02:43ce Registers used: A, HL
+;; 02:43ce Result: HL
+;; 02:43ce -
+
+;; 02:43ce Invert H
+;; 02:43d1 Invert L
+;; 02:43d4 Increment
+;; 02:43d7 Return
 
 02:43d8 data_02_43d8
 02:43d8 .data:0200
