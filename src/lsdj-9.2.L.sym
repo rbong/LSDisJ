@@ -3248,9 +3248,31 @@
 02:4f8a .code:007c
 ;; 02:4f8c:op rRAMB
 
-02:5006 call_02_5006
+02:5006 call_read_sram_reference
+;; 02:5006 Read the value stored at the address in HL.
+;; 02:5006 Then, read the value stored in SRAM from that value.
+;; 02:5006
+;; 02:5006 Entry conditions: HL = sram_reference
+;; 02:5006
+;; 02:5006 Registers used: A, BC, E, HL
+;; 02:5006
+;; 02:5006 Result: E
+;; 02:5006
+;; 02:5006 Exit conditions:
+;; 02:5006   rRAMG will be set to 0
+;; 02:5006   Interrupts will be enabled
+
+;; 02:5006 Read reference address
+
+;; 02:5009 Enable SRAM
 ;; 02:5009:op CART_SRAM_ENABLE
 ;; 02:500b:op rRAMG
+
+;; 02:5010 Read value from reference address
+
+;; 02:5011 Disable SRAM
+
+;; 02:5013 Return
 
 02:5014 call_02_5014
 02:5014 .code:002a
