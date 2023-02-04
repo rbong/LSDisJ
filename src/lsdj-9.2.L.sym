@@ -2398,15 +2398,71 @@
 
 ;; 01:4eaf Return
 
-01:4eb3 call_01_4eb3
+01:4eb3 call_write_next_phrase_alloc
+;; 01:4eb3 Find the next available phrase for the current channel and allocate it.
+;; 01:4eb3
+;; 01:4eb3 Entry conditions:
+;; 01:4eb3   SONG_CURSOR_COL must be set.
+;; 01:4eb3   DEFAULT_*_CHAIN_PHRASE must be set for the current channel.
+;; 01:4eb3
+;; 01:4eb3 Result: E (out of memory = $ff)
+;; 01:4eb3
+;; 01:4eb3 Registers used: A, DE, HL
 01:4eb3 .code:00a6
+
+;; 01:4eb6 Get the default chain phrase for the current channel
+;; 01:4ec3 Read the default chain phrase
+
+;; 01:4ec4 Save original default chain phrase for later
+;; 01:4ec7 Make sure value isn't over max
+;; 01:4ec8:op _PHRASES
+
+01:4ed1 .jump_init_find_phrase
+
+01:4ed7 .jump_find_phrase_1
+
+;; 01:4ed7 Calculate alloc value address
+
+;; 01:4eee Read alloc value
+
+;; 01:4eba:op LOW(DEFAULT_CHAIN_PHRASES)
+;; 01:4ebe:op HIGH(DEFAULT_CHAIN_PHRASES)
+
+;; 01:4efc Get the phrase from the alloc value
+
 ;; 01:4ee3:op _SRAM_PHRASE_ALLOC
 ;; 01:4ef2:op _SRAM_PHRASE_ALLOC_BANK
-;; 01:4f1c:op _SRAM_PHRASE_ALLOC_BANK
+
+01:4f07 .jump_find_phrase_2
+
+01:4f0a .jump_find_phrase_3
+
+;; 01:4f10 Check if phrase is free
+
+;; 01:4f14 Phrase is free, allocate
+
+;; 01:4f20 Confirm that phrase is valid
+
+01:4f29 .jump_finish_find_phrase
+;; 01:4f29 Set return value
+
+01:4f2f .jump_find_phrase_4
+;; 01:4f2f Increment phrase
+;; 01:4f33 Make sure value isn't over max
+;; 01:4f33:op _PHRASES
+
+01:4f3c .jump_find_phrase_5
+;; 01:4f3c Check if all phrases have been checked
+
+;; 01:4f45 Handle out of memory
 
 ;; 01:4f45:op LOW(call_set_out_of_memory_error_banner)
 ;; 01:4f47:op HIGH(call_set_out_of_memory_error_banner)
 ;; 01:4f4a:op BANK(call_set_out_of_memory_error_banner)
+
+;; 01:4f53 Return $ff (out of memory)
+
+01:4f55 .jump_return
 
 01:4f59 call_read_chain_alloc
 ;; 01:4f59 Read whether a chain is allocated or not.
@@ -6513,17 +6569,17 @@
 ;; 06:5b18:op call_05_4040
 ;; 06:5b1c:op BANK(call_05_4040)
 
-;; 06:5bad:op LOW(call_01_4eb3)
-;; 06:5baf:op HIGH(call_01_4eb3)
-;; 06:5bb2:op BANK(call_01_4eb3)
+;; 06:5bad:op LOW(call_write_next_phrase_alloc)
+;; 06:5baf:op HIGH(call_write_next_phrase_alloc)
+;; 06:5bb2:op BANK(call_write_next_phrase_alloc)
 
 ;; 06:5bc6:op LOW(call_read_chain_phrase)
 ;; 06:5bc8:op HIGH(call_read_chain_phrase)
 ;; 06:5bd9:op BANK(call_read_chain_phrase)
 
-;; 06:5c0f:op LOW(call_01_4eb3)
-;; 06:5c11:op HIGH(call_01_4eb3)
-;; 06:5c14:op BANK(call_01_4eb3)
+;; 06:5c0f:op LOW(call_write_next_phrase_alloc)
+;; 06:5c11:op HIGH(call_write_next_phrase_alloc)
+;; 06:5c14:op BANK(call_write_next_phrase_alloc)
 
 ;; 06:5c28:op LOW(call_write_phrase_alloc)
 ;; 06:5c2a:op HIGH(call_write_phrase_alloc)
@@ -6584,9 +6640,9 @@
 ;; 06:690b:op call_restore_backup_selection
 ;; 06:690f:op BANK(call_restore_backup_selection)
 
-;; 06:6925:op LOW(call_01_4eb3)
-;; 06:6927:op HIGH(call_01_4eb3)
-;; 06:692c:op BANK(call_01_4eb3)
+;; 06:6925:op LOW(call_write_next_phrase_alloc)
+;; 06:6927:op HIGH(call_write_next_phrase_alloc)
+;; 06:692c:op BANK(call_write_next_phrase_alloc)
 
 ;; 06:694d:op LOW(call_write_chain_phrase)
 ;; 06:694f:op HIGH(call_write_chain_phrase)
@@ -6922,9 +6978,9 @@
 ;; 07:4215:op HIGH(call_write_chain_phrase)
 ;; 07:4226:op BANK(call_write_chain_phrase)
 
-;; 07:4232:op LOW(call_01_4eb3)
-;; 07:4234:op HIGH(call_01_4eb3)
-;; 07:4237:op BANK(call_01_4eb3)
+;; 07:4232:op LOW(call_write_next_phrase_alloc)
+;; 07:4234:op HIGH(call_write_next_phrase_alloc)
+;; 07:4237:op BANK(call_write_next_phrase_alloc)
 
 ;; 07:4249:op LOW(call_set_out_of_memory_error_banner)
 ;; 07:424b:op HIGH(call_set_out_of_memory_error_banner)
@@ -10671,6 +10727,7 @@
 00:c44f DEFAULT_NOI_CMD
 ;; 00:c44f The default command to use for empty noise channel rows
 
+00:c454 DEFAULT_CHAIN_PHRASES
 00:c454 DEFAULT_PU1_CHAIN_PHRASE
 ;; 00:c454 The default phrase number to use for empty rows on the chain screen for the pulse 1 channel
 00:c455 DEFAULT_PU2_CHAIN_PHRASE
