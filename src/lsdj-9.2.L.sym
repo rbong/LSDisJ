@@ -4209,19 +4209,33 @@
 
 03:4a61 .jump_return
 
-03:4a63 call_03_4a63
+03:4a63 call_draw_kit_clip_instrument_param
+;; 03:4a63 Draw the kit clip instrument param.
+;; 03:4a63 Args: clip
+;; 03:4a63 Registers used: A, DE, HL
 03:4a63 .code:0070
 
-03:4ad3 data_instrument_distortion_type_strings
-03:4ad3 data_hard_instrument_distortion_type_string
+;; 03:4a66:op _KIT_CLIP_HARD
+;; 03:4a6e:op _KIT_CLIP_SOFT
+;; 03:4a76:op _KIT_CLIP_FOLD
+;; 03:4a7e:op _KIT_CLIP_WRAP
+
+03:4a86 .jump_hard
+03:4a92 .jump_soft
+03:4a9e .jump_fold
+03:4aaa .jump_wrap
+03:4ab6 .jump_extra
+03:4ad2 .jump_return
+
+03:4ad3 .data_hard
 03:4ad3 .text:0006
-03:4ad9 data_soft_instrument_distortion_type_string
+03:4ad9 .data_soft
 03:4ad9 .text:0006
-03:4adf data_fold_instrument_distortion_type_string
+03:4adf .data_fold
 03:4adf .text:0006
-03:4ae5 data_wrap_instrument_distortion_type_string
+03:4ae5 .data_wrap
 03:4ae5 .text:0006
-03:4aeb data_extra_instrument_distortion_type_prefix_string
+03:4aeb .data_extra
 03:4aeb .text:0003
 
 03:4aee call_read_current_instrument_wave_speed_param
@@ -9870,9 +9884,9 @@
 1f:44dd call_1f_44dd
 1f:44dd .code:0261
 
-;; 1f:460a:op LOW(call_03_4a63)
-;; 1f:460c:op HIGH(call_03_4a63)
-;; 1f:4614:op BANK(call_03_4a63)
+;; 1f:460a:op LOW(call_draw_kit_clip_instrument_param)
+;; 1f:460c:op HIGH(call_draw_kit_clip_instrument_param)
+;; 1f:4614:op BANK(call_draw_kit_clip_instrument_param)
 
 ;; 1f:4711:op LOW(call_draw_vibrato_speed_shape)
 ;; 1f:4713:op HIGH(call_draw_vibrato_speed_shape)
