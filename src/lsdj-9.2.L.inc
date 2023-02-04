@@ -352,11 +352,6 @@ _TABLE_ON_INSTRUMENT_PARAM_OFF_MASK EQU $df
 
 _SAVE_VERSION EQU 22
 
-;; VRAM Constants ;;
-
-_OSCILLOSCOPE_TILES EQU $8000
-_ADSR_TILES         EQU $8060
-
 ;; SRAM Constants ;;
 
 _PHRASES      EQU $ff
@@ -424,6 +419,11 @@ _BLOCKS EQU $bf
 
 ; gbdk 2.95 libc/gb/global.s:OAM
 _OAM EQU $dd
+
+;; VRAM ;;
+
+_OSCILLOSCOPE_TILES EQU $8000
+_ADSR_TILES         EQU $8060
 
 ;; SRAM Banks ;;
 
