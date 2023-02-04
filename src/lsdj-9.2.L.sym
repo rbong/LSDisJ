@@ -2550,8 +2550,32 @@
 ;; 01:517d:op _SRAM_TOTAL_TIME_MINUTES
 ;; 01:5181:op _SRAM_TOTAL_TIME_MINUTES_BANK
 
-01:518c call_01_518c
+01:518c call_draw_vibrato_speed_shape
+;; 01:518c Draw pitch shift type and vibrato shape.
+;; 01:518c Args: vibrato
+;; 01:518c Registers used: A, DE, HL
 01:518c .code:0062
+
+;; 01:5195 Handle step pitch shift type
+;; 01:5195:op data_step_pitch_shift_type_string
+
+01:51a1 .jump_check_tick
+
+;; 01:51a9 Handle tick pitch shift type
+;; 01:51a9:op data_tick_pitch_shift_type_string
+
+01:51b5 .jump_check_drum
+
+;; 01:51bd Read instrument type
+;; 01:51bd:op _INSTRUMENT_TYPE_INSTRUMENT_PARAM
+
+;; 01:51cd Handle drum pitch shift type
+
+01:51d9 .jump_fast
+
+01:51e2 .jump_draw_shape
+
+;; 01:51ec Return
 
 01:51ee data_vibrato_shape_chars
 01:51ee .data:0006
@@ -4268,12 +4292,12 @@
 ;; 03:4bad:op LOW(call_draw_vibrato_shape)
 ;; 03:4baf:op HIGH(call_draw_vibrato_shape)
 
-;; 03:4bb4:op LOW(call_01_518c)
-;; 03:4bb6:op HIGH(call_01_518c)
+;; 03:4bb4:op LOW(call_draw_vibrato_speed_shape)
+;; 03:4bb6:op HIGH(call_draw_vibrato_speed_shape)
 
-;; 03:4bc0 Assume the bank of call_01_518c is the same as call_draw_vibrato_shape
+;; 03:4bc0 Assume the bank of call_draw_vibrato_speed_shape is the same as call_draw_vibrato_shape
 ;; 03:4bc0:op BANK(call_draw_vibrato_shape)
-;; 03:4bc4 Call either call_01_518c or call_draw_vibrato_shape
+;; 03:4bc4 Call either call_draw_vibrato_speed_shape or call_draw_vibrato_shape
 
 03:4bcb call_03_4bcb
 03:4bcb .code:001f
@@ -4292,16 +4316,16 @@
 03:4c18 call_03_4c18
 03:4c18 .code:006b
 
-;; 03:4c6a:op LOW(call_01_518c)
-;; 03:4c6c:op HIGH(call_01_518c)
-;; 03:4c76:op BANK(call_01_518c)
+;; 03:4c6a:op LOW(call_draw_vibrato_speed_shape)
+;; 03:4c6c:op HIGH(call_draw_vibrato_speed_shape)
+;; 03:4c76:op BANK(call_draw_vibrato_speed_shape)
 
 03:4c83 call_03_4c83
 03:4c83 .code:0075
 
-;; 03:4cdf:op LOW(call_01_518c)
-;; 03:4ce1:op HIGH(call_01_518c)
-;; 03:4ceb:op BANK(call_01_518c)
+;; 03:4cdf:op LOW(call_draw_vibrato_speed_shape)
+;; 03:4ce1:op HIGH(call_draw_vibrato_speed_shape)
+;; 03:4ceb:op BANK(call_draw_vibrato_speed_shape)
 
 03:4cf8 call_draw_wave_finetune_instrument_param
 ;; 03:4cf8 Draw the wave finetune instrument param value.
@@ -9805,9 +9829,9 @@
 1f:423d call_1f_423d
 1f:423d .code:0152
 
-;; 1f:42f9:op LOW(call_01_518c)
-;; 1f:42fb:op HIGH(call_01_518c)
-;; 1f:4303:op BANK(call_01_518c)
+;; 1f:42f9:op LOW(call_draw_vibrato_speed_shape)
+;; 1f:42fb:op HIGH(call_draw_vibrato_speed_shape)
+;; 1f:4303:op BANK(call_draw_vibrato_speed_shape)
 
 ;; 1f:4314:op LOW(call_draw_transpose_instrument_param)
 ;; 1f:4316:op HIGH(call_draw_transpose_instrument_param)
@@ -9850,9 +9874,9 @@
 ;; 1f:460c:op HIGH(call_03_4a63)
 ;; 1f:4614:op BANK(call_03_4a63)
 
-;; 1f:4711:op LOW(call_01_518c)
-;; 1f:4713:op HIGH(call_01_518c)
-;; 1f:471b:op BANK(call_01_518c)
+;; 1f:4711:op LOW(call_draw_vibrato_speed_shape)
+;; 1f:4713:op HIGH(call_draw_vibrato_speed_shape)
+;; 1f:471b:op BANK(call_draw_vibrato_speed_shape)
 
 1f:473e data_1f_473e
 1f:473e .text:0004
@@ -9866,9 +9890,9 @@
 1f:474e call_1f_474e
 1f:474e .code:0176
 
-;; 1f:47e6:op LOW(call_01_518c)
-;; 1f:47e8:op HIGH(call_01_518c)
-;; 1f:47f0:op BANK(call_01_518c)
+;; 1f:47e6:op LOW(call_draw_vibrato_speed_shape)
+;; 1f:47e8:op HIGH(call_draw_vibrato_speed_shape)
+;; 1f:47f0:op BANK(call_draw_vibrato_speed_shape)
 
 ;; 1f:4801:op LOW(call_draw_transpose_instrument_param)
 ;; 1f:4803:op HIGH(call_draw_transpose_instrument_param)
