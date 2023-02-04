@@ -2553,8 +2553,11 @@
 01:518c call_01_518c
 01:518c .code:0062
 
-01:51ee data_01_51ee
+01:51ee data_vibrato_shape_chars
 01:51ee .data:0006
+;; 01:51ee:replace:0002 db _VIBRATO_TRI_DOWN_ASCII_CODE, _VIBRATO_TRI_UP_ASCII_CODE           ; 01:51ee
+;; 01:51f0:replace:0002 db _VIBRATO_SAW_DOWN_ASCII_CODE, _VIBRATO_SAW_UP_ASCII_CODE           ; 01:51f0
+;; 01:51f2:replace:0002 db _VIBRATO_SQUARE_LOW_ASCII_CODE, _VIBRATO_SQUARE_HIGH_ASCII_CODE    ; 01:51f2
 
 01:51f4 data_pitch_shift_type_strings
 01:51f4 data_step_pitch_shift_type_string
@@ -2566,7 +2569,20 @@
 01:5203 data_fast_pitch_shift_type_string
 01:5203 .text:0005
 
-01:5208 call_01_5208
+01:5208 call_draw_vibrato_shape
+;; 01:5208 Draw the vibrato shape.
+;; 01:5208 Args: vibrato_shape
+;; 01:5208 Registers used: A, DE, HL
+
+;; 01:520b Calculate tile address
+;; 01:5210:op LOW(data_vibrato_shape_chars)
+;; 01:5214:op HIGH(data_vibrato_shape_chars)
+
+;; 01:5219 Read tile
+
+;; 01:521c Draw tile twice
+
+;; 01:522b Return
 
 01:522d call_draw_transpose_instrument_param
 ;; 01:522d Draws "ON"/"OFF" for the transpose instrument param.
@@ -2619,6 +2635,7 @@
 
 01:5331 call_01_5331
 01:5331 .code:013d
+
 ;; 01:5363:op _SRAM_TABLE_COMMANDS_1
 ;; 01:5371:op _SRAM_TABLE_COMMAND_VALUES_1
 ;; 01:5380:op _SRAM_TABLE_COMMANDS_2
@@ -2630,6 +2647,7 @@
 ;; 01:53cb:op _SRAM_TABLE_COMMANDS_2
 ;; 01:53d5:op _SRAM_TABLE_COMMAND_VALUES_2
 ;; 01:53df:op _SRAM_TABLE_TRANSPOSE
+
 ;; 01:53fd TODO: determine which bank number below is used for which SRAM value above
 
 01:546e call_01_546e
@@ -4247,15 +4265,15 @@
 03:4b7d call_03_4b7d
 03:4b7d .code:004e
 
-;; 03:4bad:op LOW(call_01_5208)
-;; 03:4baf:op HIGH(call_01_5208)
+;; 03:4bad:op LOW(call_draw_vibrato_shape)
+;; 03:4baf:op HIGH(call_draw_vibrato_shape)
 
 ;; 03:4bb4:op LOW(call_01_518c)
 ;; 03:4bb6:op HIGH(call_01_518c)
 
-;; 03:4bc0 Assume the bank of call_01_518c is the same as call_01_5208
-;; 03:4bc0:op BANK(call_01_5208)
-;; 03:4bc4 Call either call_01_518c or call_01_5208
+;; 03:4bc0 Assume the bank of call_01_518c is the same as call_draw_vibrato_shape
+;; 03:4bc0:op BANK(call_draw_vibrato_shape)
+;; 03:4bc4 Call either call_01_518c or call_draw_vibrato_shape
 
 03:4bcb call_03_4bcb
 03:4bcb .code:001f
@@ -9804,9 +9822,9 @@
 1f:4399 call_1f_4399
 1f:4399 .code:010a
 
-;; 1f:4443:op LOW(call_01_5208)
-;; 1f:4445:op HIGH(call_01_5208)
-;; 1f:444b:op BANK(call_01_5208)
+;; 1f:4443:op LOW(call_draw_vibrato_shape)
+;; 1f:4445:op HIGH(call_draw_vibrato_shape)
+;; 1f:444b:op BANK(call_draw_vibrato_shape)
 
 ;; 1f:445c:op LOW(call_draw_transpose_instrument_param)
 ;; 1f:445e:op HIGH(call_draw_transpose_instrument_param)
