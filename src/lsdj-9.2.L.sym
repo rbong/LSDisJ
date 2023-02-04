@@ -10519,6 +10519,9 @@
 
 ; Memory
 
+00:8000 OSCILLOSCOPE_TILES
+00:8060 ADSR_TILES
+
 00:c0a0 MOD_PU1_FLAG
 ;; 00:c0a0 The high byte enables mute/pan on the pulse 1 channel
 00:c0a1 MOD_PU2_FLAG
