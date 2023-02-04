@@ -2308,6 +2308,8 @@
 
 01:4cfb call_write_phrase_alloc
 ;; 01:4cfb Mark a phrase as allocated.
+;; 01:4cfb Args: phrase
+;; 01:4cfb Registers used: A, DE, HL
 01:4cfb .code:006c
 
 ;; 01:4d01:op _PHRASES
