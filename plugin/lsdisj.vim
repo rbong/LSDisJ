@@ -216,35 +216,34 @@ function! GetLsdisjSymLoc() abort
   return split(l:address, ':')
 endfunction
 
-function! FindLsdisjSymLoc(bank, addr) abort
+function! FindLsdisjSymLoc(bank, addr, forwards = v:true) abort
   " Go to window
   call GotoLsdisjSym()
 
   " Init
-  let l:pattern = '^\v(;; )?' .. a:bank .. ':' .. a:addr
   let l:line = 0
-
-  " Search current line
-  let l:match = match(getline('.'), l:pattern)
-  if l:match >= 0
-    let l:line = l:match + 1
-  endif
-
-  " Search backwards
-  if l:line <= 0
-    let l:line = search(l:pattern, 'b', line('.'))
-  endif
+  let l:addr_num = str2nr(a:addr, 16)
 
   " Search forwards
-  if l:line <= 0
-    let l:addr_num = str2nr(a:addr, 16)
-    while l:addr_num >= 0 && l:line <= 0
-      let l:line = search(printf('^\v(;; )?%s:%04x', a:bank, l:addr_num))
-      let l:addr_num -= 1
-    endwhile
-  endif
+  while l:addr_num >= 0
+    let l:pattern = printf('^\v(;; )?%s:%04x', a:bank, l:addr_num)
 
-  return l:line
+    " Search current line
+    let l:match = match(getline('.'), l:pattern)
+    if l:match >= 0
+      return l:match + 1
+    endif
+
+    " Search forwards/backwards
+    let l:line = search(l:pattern, a:forwards ? '' : 'b')
+    if l:line > 0
+      return l:line
+    endif
+
+    let l:addr_num -= 1
+  endwhile
+
+  return 0
 endfunction
 
 function! GotoLsdisjSym() abort
@@ -310,7 +309,7 @@ function! LsdisjStats() abort
   call GotoLsdisjStats()
 endfunction
 
-function! LsdisjJump() abort
+function! LsdisjJump(forwards = v:true) abort
   " Get win type
   let l:is_from_bank = IsLsdisjBank()
   let l:is_from_stats = IsLsdisjStats() || IsLsdisjExcludedStats()
@@ -341,7 +340,7 @@ function! LsdisjJump() abort
 
   " Find address in other file
   if l:is_from_bank
-    let l:line = FindLsdisjSymLoc(l:bank, l:addr)
+    let l:line = FindLsdisjSymLoc(l:bank, l:addr, a:forwards)
     " Restore
     if l:line <= 0
       call GotoLsdisjBank(l:bank)
@@ -382,7 +381,7 @@ endfunction
 
 function! LsdisjComment() abort
   if IsLsdisjBank()
-    let [l:bank, l:addr] = LsdisjJump()
+    let [l:bank, l:addr] = LsdisjJump(v:false)
   elseif IsLsdisjSym()
     let [l:bank, l:addr] = GetLsdisjSymLoc()
   else
@@ -400,7 +399,7 @@ endfunction
 
 function! LsdisjLabel() abort
   if IsLsdisjBank()
-    let [l:bank, l:addr] = LsdisjJump()
+    let [l:bank, l:addr] = LsdisjJump(v:false)
   elseif IsLsdisjSym()
     let [l:bank, l:addr] = GetLsdisjSymLoc()
   else
