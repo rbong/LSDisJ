@@ -58,7 +58,7 @@ function! GotoLsdisjStats() abort
   call GotoLsdisjWin('lsdisj_stats_win', 'tabe', LsdisjStatsFile())
   tabm 0
   exec 'lcd ' .. LsdisjStatsDir()
-  set nowrap autowriteall
+  set nowrap autoread
   105wincmd |
 endfunction
 
@@ -159,7 +159,7 @@ function! GotoLsdisjBank(bank = '0', should_open = v:true) abort
   let l:bank = printf('%03s', a:bank)
   call GotoLsdisjStats()
   call GotoLsdisjWin('lsdisj_bank_win', 'tabe', LsdisjDir() .. '/build/' .. LsdjVersion() .. '/src/bank_' .. l:bank .. '.asm', a:should_open)
-  set nowrap
+  set nowrap autoread
   exec 'lcd ' .. LsdisjDir()
   wincmd =
 endfunction
@@ -293,9 +293,9 @@ function! LsdisjMake(args = ' ') abort
 endfunction
 
 function! LsdisjStats() abort
-  echo 'Getting stats...'
+  echo 'Installing...'
   call system('pip3 install -q ' .. LsdisjDir())
-  call system('python3 -m lsdisj.stats ' .. LsdisjBuildDir() .. '/src/bank_*.asm | grep -vf ' .. LsdisjExcludedStatsFile() .. ' | tee ' .. LsdisjStatsFile())
+  exec '!python3 -m lsdisj.stats ' .. LsdisjBuildDir() .. '/src/bank_*.asm | grep -vf ' .. LsdisjExcludedStatsFile() .. ' | tee ' .. LsdisjStatsFile()
   call GotoLsdisjStats()
 endfunction
 
