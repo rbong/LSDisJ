@@ -71,7 +71,7 @@ endfunction
 
 function! GotoLsdisjExcludedStats() abort
   call GotoLsdisjStats()
-  call GotoLsdisjWin('lsdisj_excluded_stats_win', 'botright vs', LsdisjExcludedStatsFile())
+  call GotoLsdisjWin('lsdisj_excluded_stats_win', 'belowright vs', LsdisjExcludedStatsFile())
   exec 'lcd ' .. LsdisjStatsDir()
   set nowrap
   wincmd |
@@ -248,7 +248,7 @@ endfunction
 
 function! GotoLsdisjSym() abort
   call GotoLsdisjBank('0', v:false)
-  call GotoLsdisjWin('lsdisj_sym_win', 'botright vs', LsdisjDir() .. '/src/lsdj-' .. LsdjVersion() .. '.sym')
+  call GotoLsdisjWin('lsdisj_sym_win', 'belowright vs', LsdisjDir() .. '/src/lsdj-' .. LsdjVersion() .. '.sym')
   exec 'lcd ' .. LsdisjDir()
   set nowrap
   wincmd =
