@@ -86,3 +86,87 @@ Get statistics about unknown calls:
 ```bash
 python3 -m lsdisj.stats build/9.2.L/src/bank_*.asm
 ```
+
+## Vim Plugin
+
+Sets up LSDisJ windows, functions, commands, and bindings in Vim.
+
+### Setup
+
+In `.vimrc`, using [vim-plug](https://github.com/junegunn/vim-plug):
+
+```vim
+Plug 'rbong/lsdisj', { 'on': 'Ldsj' }
+" Default settings shown
+let g:lsdj_version = '9.2.L'
+let g:lsdisj_src_dir = '~/prog/personal/lsdisj'
+let g:lsdisj_stats_dir = '~/shared/docs/lsdj'
+```
+
+### Usage
+
+Launch:
+
+```vim
+Lsdisj
+```
+
+Opens one tab with stats and excluded stats,
+a tab with the bank `.asm` file and the `.sym` file,
+and a tab with the `.inc` file.
+
+Edit the excluded stats to excluded functions from stats.
+Each line is regex-based: start lines with `$` for comments.
+
+Open a bank file:
+
+```vim
+" Defaults to bank 0
+" Binding: <leader>lb
+LsdisjBank [bank]
+```
+
+Make:
+
+```vim
+" Binding: <leader>lm
+LsdisjMake [...args]
+```
+
+Compile stats:
+
+```vim
+" Binding: <leader>ls
+LsdisjStats
+```
+
+Jump to address under cursor:
+
+```vim
+" Binding: <leader>lm
+LsdisjJump
+```
+
+If the cursor is in the stats window or the sym window, jumps to the bank window.
+If the cursor is in the bank window, jumps to the sym window.
+
+Leave a comment/label at the address under cursor:
+
+```vim
+" Binding: <leader>lc
+LsdisjComment
+" Binding: <leader>ll
+LsdisjLabel
+```
+
+Works from the sym and bank window.
+
+Yank the address under the cursor:
+
+```vim
+" Binding: <leader>ly
+LsdisjYank
+```
+
+Yanks the bank to `@b`, the address to `@a`, the full address to `@f`/`@"`,
+a generic call label to `@c`, and a generic data label to `@d`.
