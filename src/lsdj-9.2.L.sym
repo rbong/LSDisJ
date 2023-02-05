@@ -1638,7 +1638,7 @@
 00:3718 _divschar
 ;; 00:3718 gbdk 2.95 libc/asm/gbz80/div.s:__divschar
 ;; 00:3718 Divide chars.
-;; 00:3718 Args: dividend, divisor
+;; 00:3718 Args: quotient, divisor
 ;; 00:3718 Result: E
 ;; 00:3718 See: div8_mod8
 00:3718 .code:000c
@@ -1646,7 +1646,7 @@
 00:3724 _modschar
 ;; 00:3724 gbdk 2.95 libc/asm/gbz80/div.s:__modschar
 ;; 00:3724 Perform modulus on chars.
-;; 00:3724 Args: dividend, divisor
+;; 00:3724 Args: quotient, divisor
 ;; 00:3724 Result: E
 ;; 00:3724 See: div8_mod8
 00:3724 .code:000b
@@ -1654,7 +1654,7 @@
 00:372f _divsint
 ;; 00:372f gbdk 2.95 libc/asm/gbz80/div.s:__divsint
 ;; 00:372f Divide ints.
-;; 00:372f Args: dividend (word), divisor (word)
+;; 00:372f Args: quotient (word), divisor (word)
 ;; 00:372f Result: DE
 ;; 00:372f See: div16_mod16
 00:372f .code:0011
@@ -1662,7 +1662,7 @@
 00:3740 _modsint
 ;; 00:3740 gbdk 2.95 libc/asm/gbz80/div.s:__modsint
 ;; 00:3740 Perform modulus on ints.
-;; 00:3740 Args: dividend (word), divisor (word)
+;; 00:3740 Args: quotient (word), divisor (word)
 ;; 00:3740 Result: DE
 ;; 00:3740 See: div16_mod16
 00:3740 .code:000f
@@ -1670,7 +1670,7 @@
 00:374f _divuchar
 ;; 00:374f gbdk 2.95 libc/asm/gbz80/div.s:__divuchar
 ;; 00:374f Divide unsigned chars.
-;; 00:374f Args: dividend, divisor
+;; 00:374f Args: quotient, divisor
 ;; 00:374f Result: E
 ;; 00:374f See: divu8_modu8
 00:374f .code:000c
@@ -1678,7 +1678,7 @@
 00:375b _moduchar
 ;; 00:375b gbdk 2.95 libc/asm/gbz80/div.s:__moduchar
 ;; 00:375b Perform modulus on unsigned chars.
-;; 00:375b Args: dividend, divisor
+;; 00:375b Args: quotient, divisor
 ;; 00:375b Result: E
 ;; 00:375b See: divu8_modu8
 00:375b .code:000b
@@ -1686,14 +1686,14 @@
 00:3766 _divuint
 ;; 00:3766 gbdk 2.95 libc/asm/gbz80/div.s:__divuint
 ;; 00:3766 Divide unsigned ints.
-;; 00:3766 Args: dividend (word), divisor (word)
+;; 00:3766 Args: quotient (word), divisor (word)
 ;; 00:3766 Result: DE
 ;; 00:3766 See: divu16_modu16
 
 00:3777 _moduint
 ;; 00:3777 gbdk 2.95 libc/asm/gbz80/div.s:__moduint
 ;; 00:3777 Perform modulus on unsigned ints.
-;; 00:3777 Args: dividend (word), divisor (word)
+;; 00:3777 Args: quotient (word), divisor (word)
 ;; 00:3777 Result: DE
 ;; 00:3777 See: divu16_modu16
 
@@ -1703,7 +1703,7 @@
 ;; 00:3786 8-bit division.
 ;; 00:3786
 ;; 00:3786 Entry conditions:
-;; 00:3786   C = dividend
+;; 00:3786   C = quotient
 ;; 00:3786   E = divisor
 ;; 00:3786
 ;; 00:3786 Exit conditions:
@@ -1720,7 +1720,7 @@
 ;; 00:378e 16-bit division.
 ;; 00:378e
 ;; 00:378e Entry conditions:
-;; 00:378e   BC = dividend
+;; 00:378e   BC = quotient
 ;; 00:378e   DE = divisor
 ;; 00:378e
 ;; 00:378e Exit conditions:
@@ -1812,8 +1812,8 @@
 ;; 00:38c2 8-bit multiplication.
 ;; 00:38c2
 ;; 00:38c2 Entry conditions:
-;; 00:38c2   C = dividend
-;; 00:38c2   E = divisor
+;; 00:38c2   C = multiplicand
+;; 00:38c2   E = multiplier
 ;; 00:38c2
 ;; 00:38c2 Exit conditions:
 ;; 00:38c2   DE = product
@@ -1826,8 +1826,8 @@
 ;; 00:38c5 16-bit multiplication.
 ;; 00:38c5
 ;; 00:38c5 Entry conditions:
-;; 00:38c5   BC = dividend
-;; 00:38c5   DE = divisor
+;; 00:38c5   BC = multiplicand
+;; 00:38c5   DE = multiplier
 ;; 00:38c5
 ;; 00:38c5 Exit conditions:
 ;; 00:38c5   DE = product (least significant word)
