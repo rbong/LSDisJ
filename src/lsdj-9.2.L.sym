@@ -7516,14 +7516,53 @@
 1b:401b call_1b_401b
 1b:401b .code:003d
 
-1b:4058 data_1b_4058
-1b:4058 .data:0040
+1b:4058 data_help_page_index_string_lookup
+1b:4058 .data:0020
+;; 1b:4058:replace:0002 dw data_title_help_page_index_string           ; 1b:4058
+;; 1b:405a:replace:0002 dw data_empty_help_page_index_string_1         ; 1b:405a
+;; 1b:405c:replace:0002 dw data_screens_help_page_index_string         ; 1b:405c
+;; 1b:405e:replace:0002 dw data_empty_help_page_index_string_2         ; 1b:405e
+;; 1b:4060:replace:0002 dw data_song_help_page_index_string            ; 1b:4060
+;; 1b:4062:replace:0002 dw data_chain_help_page_index_string           ; 1b:4062
+;; 1b:4064:replace:0002 dw data_phrase_help_page_index_string          ; 1b:4064
+;; 1b:4066:replace:0002 dw data_instrument_help_page_index_string      ; 1b:4066
+;; 1b:4068:replace:0002 dw data_groove_help_page_index_string          ; 1b:4068
+;; 1b:406a:replace:0002 dw data_wave_help_page_index_string            ; 1b:406a
+;; 1b:406c:replace:0002 dw data_empty_help_page_index_string_3         ; 1b:406c
+;; 1b:406e:replace:0002 dw data_command_list_help_page_index_string    ; 1b:406e
+;; 1b:4070:replace:0002 dw data_empty_help_page_index_string_4         ; 1b:4070
+;; 1b:4072:replace:0002 dw data_live_mode_help_page_index_string       ; 1b:4072
+;; 1b:4074:replace:0002 dw data_select_help_page_index_string          ; 1b:4074
+;; 1b:4076:replace:0002 dw data_mute_help_page_index_string            ; 1b:4076
+
+1b:4078 data_1b_4078
+1b:4078 .data:0002
+
+1b:407a data_help_page_lookup
+1b:407a .data:001e
+;; 1b:407a:replace:0002 dw data_song_help_page_string                  ; 1b:407a
+;; 1b:407c:replace:0002 dw data_live_help_page_string                  ; 1b:407c
+;; 1b:407e:replace:0002 dw data_chain_help_page_string                 ; 1b:407e
+;; 1b:4080:replace:0002 dw data_phrase_help_page_string                ; 1b:4080
+;; 1b:4082:replace:0002 dw data_instrument_help_page_string            ; 1b:4082
+;; 1b:4084:replace:0002 dw data_groove_help_page_string                ; 1b:4084
+;; 1b:4086:replace:0002 dw data_wave_help_page_string                  ; 1b:4086
+;; 1b:4088:replace:0002 dw data_command_list_help_page_string          ; 1b:4088
+;; 1b:408a:replace:0002 dw data_select_help_page_string                ; 1b:408a
+;; 1b:408c:replace:0002 dw data_mute_help_page_string                  ; 1b:408c
+
+1b:408e data_1b_408e
+1b:408e .data:000a
 
 1b:4098 data_help_page_index_strings
 1b:4098 data_title_help_page_index_string
-1b:4098 .text:000f
+1b:4098 .text:000e
+1b:40a6 data_empty_help_page_index_string_1
+1b:40a6 .text:0001
 1b:40a7 data_screens_help_page_index_string
-1b:40a7 .text:000a
+1b:40a7 .text:0009
+1b:40b0 data_empty_help_page_index_string_2
+1b:40b0 .data:0001
 1b:40b1 data_song_help_page_index_string
 1b:40b1 .text:0005
 1b:40b6 data_chain_help_page_index_string
@@ -7535,9 +7574,12 @@
 1b:40c9 data_groove_help_page_index_string
 1b:40c9 .text:0007
 1b:40d0 data_wave_help_page_index_string
-1b:40d0 .text:0006
+1b:40d0 .text:0005
+1b:40d5 data_empty_help_page_index_string_3
+1b:40d5 .data:0001
 1b:40d6 data_command_list_help_page_index_string
-1b:40d6 .text:000e
+1b:40d6 .text:000d
+1b:40e3 data_empty_help_page_index_string_4
 1b:40e4 data_live_mode_help_page_index_string
 1b:40e4 .text:000a
 1b:40ee data_select_help_page_index_string
