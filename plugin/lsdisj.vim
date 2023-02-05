@@ -26,6 +26,10 @@ function! LsdisjExcludedStatsFile() abort
   return LsdisjStatsDir() .. '/excluded-stats'
 endfunction
 
+function! IsLsdisjWin() abort
+  return IsLsdisjStats() || IsLsdisjExcludedStats() || IsLsdisjBank() || IsLsdisjSym() || IsLsdisjInc()
+endfunction
+
 function! GotoLsdisjWin(win, open, fname, should_open = v:true) abort
   let l:open = a:open
 
@@ -257,6 +261,10 @@ function! GotoLsdisjBankOrSym() abort
 endfunction
 
 " .inc window
+
+function! IsLsdisjInc() abort
+  return get(g:, 'lsdisj_inc_win', -1) == win_getid()
+endfunction
 
 function! GotoLsdisjInc() abort
   call GotoLsdisjSym()
