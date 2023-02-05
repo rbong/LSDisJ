@@ -2578,9 +2578,9 @@
 
 01:51ee data_vibrato_shape_chars
 01:51ee .data:0006
-;; 01:51ee:replace:0002 db _VIBRATO_TRI_DOWN_ASCII_CODE, _VIBRATO_TRI_UP_ASCII_CODE           ; 01:51ee
-;; 01:51f0:replace:0002 db _VIBRATO_SAW_DOWN_ASCII_CODE, _VIBRATO_SAW_UP_ASCII_CODE           ; 01:51f0
-;; 01:51f2:replace:0002 db _VIBRATO_SQUARE_LOW_ASCII_CODE, _VIBRATO_SQUARE_HIGH_ASCII_CODE    ; 01:51f2
+;; 01:51ee:replace:0002 db _TRI_DOWN_ASCII_CODE, _TRI_UP_ASCII_CODE           ; 01:51ee
+;; 01:51f0:replace:0002 db _SAW_DOWN_ASCII_CODE, _SAW_UP_ASCII_CODE           ; 01:51f0
+;; 01:51f2:replace:0002 db _SQUARE_LOW_ASCII_CODE, _SQUARE_HIGH_ASCII_CODE    ; 01:51f2
 
 01:51f4 data_pitch_shift_type_strings
 01:51f4 data_step_pitch_shift_type_string
@@ -9334,22 +9334,34 @@
 1d:6415 data_notch_filter_type_string
 1d:6415 .text:0006
 
-1d:641b call_1d_641b
+1d:641b call_draw_current_synth_signal_param
+;; 1d:641b Draws the current synth signal param.
+;; 1d:641b Registers used: A, DE, HL
 1d:641b .code:0023
 
-1d:643e jump_table_1d_643e
+1d:643e .jump_table_signal
 1d:643e .code:0052
 
-1d:6490 data_1d_6490
+1d:644a .jump_saw_signal
+1d:6456 .jump_square_signal
+1d:6462 .jump_tri_signal
+1d:646e .jump_frame_signal
+1d:6485 .jump_unknown
+1d:648e .jump_return
+
+1d:6490 .data_saw_signal_chars
 1d:6490 .data:0005
-1d:6495 data_1d_6495
+;; 1d:6490:replace:0004 ds 4, _SAW_DOWN_ASCII_CODE      ; 01:4589
+1d:6495 .data_square_signal_chars
 1d:6495 .data:0005
-1d:649a data_1d_649a
+;; 1d:6495:replace:0004 ds 4, _SQUARE_LOW_ASCII_CODE    ; 1d:6495
+1d:649a .data_tri_signal_chars
 1d:649a .data:0005
-1d:649f data_1d_649f
-1d:649f .data:0004
-1d:64a3 data_1d_64a3
-1d:64a3 .data:0003
+;; 1d:649a:replace:0004 ds 4, _TRI_DOWN_ASCII_CODE      ; 1d:649a
+1d:649f .data_frame_signal_chars
+1d:649f .text:0004
+1d:64a3 .data_unknown_signal_chars
+1d:64a3 .text:0003
 
 1d:64a6 call_1d_64a6
 1d:64a6 .code:0064
