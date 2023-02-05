@@ -7,7 +7,10 @@ function! LsdjVersion() abort
 endfunction
 
 function! LsdisjDir() abort
-  return get(g:, 'lsdisj_src_dir', '~/prog/personal/lsdisj')
+  if !has_key(g:, 'lsdisj_src_dir')
+    return expand('<script>:p:h:h')
+  endif
+  return g:lsdisj_src_dir
 endfunction
 
 function! LsdisjBuildDir() abort
@@ -15,7 +18,7 @@ function! LsdisjBuildDir() abort
 endfunction
 
 function! LsdisjStatsDir() abort
-  return get(g:, 'lsdisj_stats_dir', '~/shared/docs/lsdj')
+  return LsdisjDir() .. '/stats'
 endfunction
 
 function! LsdisjStatsFile() abort
@@ -303,6 +306,7 @@ endfunction
 function! LsdisjStats() abort
   echo 'Installing...'
   call system('pip3 install -q ' .. LsdisjDir())
+  call system('mkdir -p ' .. LsdisjStatsDir())
   exec '!python3 -m lsdisj.stats ' .. LsdisjBuildDir() .. '/src/bank_*.asm | grep -vf ' .. LsdisjExcludedStatsFile() .. ' | tee ' .. LsdisjStatsFile()
   call GotoLsdisjStats()
 endfunction

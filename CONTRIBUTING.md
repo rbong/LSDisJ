@@ -93,14 +93,11 @@ Sets up LSDisJ windows, functions, commands, and bindings in Vim.
 
 ### Setup
 
-In `.vimrc`, using [vim-plug](https://github.com/junegunn/vim-plug):
+In `.vimrc`:
 
 ```vim
-Plug 'rbong/lsdisj', { 'on': 'Ldsj' }
-" Default settings shown
-let g:lsdj_version = '9.2.L'
-let g:lsdisj_src_dir = '~/prog/personal/lsdisj'
-let g:lsdisj_stats_dir = '~/shared/docs/lsdj'
+" Loads the LSDisJ plugin on running :Lsdisj
+command Lsdisj exec 'source ~/prog/personal/lsdisj/plugin/lsdisj.vim | Lsdisj'
 ```
 
 ### Usage

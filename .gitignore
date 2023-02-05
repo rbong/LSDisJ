@@ -1,6 +1,9 @@
 # build files
 build/
 
+# stats
+stats/
+
 # tool files
 *.egg-info/
 
