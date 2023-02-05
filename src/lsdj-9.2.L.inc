@@ -172,7 +172,8 @@ _INSTRUMENT_TYPES EQU 4
 
 ;; Instrument Constants ;;
 
-_SPEECH_INSTRUMENT EQU $40
+_SPEECH_INSTRUMENT         EQU $40
+_SPEECH_SYLLABLES_PER_WORD EQU $f
 
 ;; Pitch Types ;;
 
