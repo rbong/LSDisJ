@@ -423,8 +423,8 @@ command! -bar LsdisjYank call LsdisjYank()
 
 nno <leader>lb :<C-U>LsdisjBank<space>
 nno <leader>lm :<C-U>LsdisjMake<space>
-nno <leader>ls :<C-U>LsdisjStats<CR>
-nno <leader>lj :<C-U>LsdisjJump<CR>
-nno <leader>lc :<C-U>LsdisjComment<CR>
-nno <leader>ll :<C-U>LsdisjLabel<CR>
-nno <leader>ly :<C-U>LsdisjYank<CR>
+nno <silent> <leader>ls :<C-U>LsdisjStats<CR>
+nno <silent> <leader>lj :<C-U>LsdisjJump<CR>
+nno <silent> <leader>lc :<C-U>LsdisjComment<CR>
+nno <silent> <leader>ll :<C-U>LsdisjLabel<CR>
+nno <silent> <leader>ly :<C-U>LsdisjYank<CR>
