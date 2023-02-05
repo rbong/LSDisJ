@@ -391,7 +391,7 @@ function! LsdisjComment() abort
   endif
 
   call append('.', [';; ' .. l:bank .. ':' .. l:addr])
-  normal! 2j
+  normal! j
   startinsert!
 endfunction
 
