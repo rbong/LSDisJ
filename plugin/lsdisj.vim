@@ -29,7 +29,7 @@ endfunction
 function! GotoLsdisjWin(win, open, fname, should_open = v:true) abort
   let l:open = a:open
 
-  if has_key(g:, a:win) && win_gotoid(g:[a:win]) || expand('%') ==# ''
+  if has_key(g:, a:win) && win_gotoid(g:[a:win]) || expand('%:p') ==# ''
     let l:open = 'edit'
   endif
 
