@@ -227,8 +227,7 @@ function! FindLsdisjSymLoc(bank, addr) abort
   " Search current line
   let l:match = match(getline('.'), l:pattern)
   if l:match >= 0
-    let l:y = line('.')
-    let l:x = l:match + 1
+    let l:line = l:match + 1
   endif
 
   " Search backwards
@@ -240,7 +239,7 @@ function! FindLsdisjSymLoc(bank, addr) abort
   if l:line <= 0
     let l:addr_num = str2nr(a:addr, 16)
     while l:addr_num >= 0 && l:line <= 0
-      let l:line = search(printf('%s:%04x', a:bank, l:addr_num))
+      let l:line = search(printf('^\v(;; )?%s:%04x', a:bank, l:addr_num))
       let l:addr_num -= 1
     endwhile
   endif
