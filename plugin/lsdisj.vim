@@ -77,17 +77,21 @@ function! GetLsdisjStatsLoc() abort
     return ['', '']
   endif
 
-  " Save cursor
-  let l:view = winsaveview()
+  " Init
+  let l:pattern = '\v^call_\zs\x{2}_\x{4}'
+  let l:y = 0
 
-  " Set cursor
-  call cursor(line('.'), col('$'))
+  " Search current line
+  let l:match = match(getline('.'), l:pattern)
+  if l:match >= 0
+    let l:y = line('.')
+    let l:x = l:match + 1
+  endif
 
   " Search backwards
-  let [l:y, l:x] = searchpos('\v^call_\zs\x{2}_\x{4}', 'Wnb')
-
-  " Restore cursor
-  call winrestview(l:view)
+  if l:y <= 0
+    let [l:y, l:x] = searchpos('\v^call_\zs\x{2}_\x{4}', 'Wnb')
+  endif
 
   " Check location
   if l:y <= 0
@@ -113,23 +117,26 @@ function! GetLsdisjBankLoc() abort
     return ['', '']
   endif
 
-  " Save cursor
-  let l:view = winsaveview()
-
-  " Set cursor
-  call cursor(line('.'), 1)
-
-  " Find location of address
+  " Init
   let l:pattern = '\v\x{2}:\x{4}$'
-  " Search forward
-  let [l:y, l:x] = searchpos(l:pattern, 'Wn')
-  if l:y <= 0
-    " Search backwards
-    let [l:y, l:x] = searchpos(l:pattern, 'Wnb')
+  let l:y = 0
+
+  " Search current line
+  let l:match = match(getline('.'), l:pattern)
+  if l:match >= 0
+    let l:y = line('.')
+    let l:x = l:match + 1
   endif
 
-  " Restore cursor
-  call winrestview(l:view)
+  " Search forward
+  if l:y <= 0
+    let [l:y, l:x] = searchpos(l:pattern, 'Wn')
+  endif
+
+  " Search backwards
+  if l:y <= 0
+    let [l:y, l:x] = searchpos(l:pattern, 'Wnb')
+  endif
 
   " Check location
   if l:y <= 0
@@ -169,23 +176,26 @@ function! GetLsdisjSymLoc() abort
     return ['', '']
   endif
 
-  " Save cursor
-  let l:view = winsaveview()
-
-  " Set cursor
-  call cursor(line('.'), col('$'))
-
-  " Find location of address
+  " Init
   let l:pattern = '\v^(;; )?\zs\x{2}:\x{4}'
+  let l:y = 0
+
+  " Search current line
+  let l:match = match(getline('.'), l:pattern)
+  if l:match >= 0
+    let l:y = line('.')
+    let l:x = l:match + 1
+  endif
+
   " Search backwards
-  let [l:y, l:x] = searchpos(l:pattern, 'Wnb')
+  if l:y <= 0
+    let [l:y, l:x] = searchpos(l:pattern, 'Wnb')
+  endif
+
   if l:y <= 0
     " Search forwards
     let [l:y, l:x] = searchpos(l:pattern, 'Wn')
   endif
-
-  " Restore cursor
-  call winrestview(l:view)
 
   " Check location
   if l:y <= 0
@@ -203,12 +213,21 @@ function! FindLsdisjSymLoc(bank, addr) abort
   " Go to window
   call GotoLsdisjSym()
 
-  " Save cursor
-  let l:view = winsaveview()
+  " Init
+  let l:pattern = '^\v(;; )?' .. a:bank .. ':' .. a:addr
+  let l:line = 0
+
+  " Search current line
+  let l:match = match(getline('.'), l:pattern)
+  if l:match >= 0
+    let l:y = line('.')
+    let l:x = l:match + 1
+  endif
 
   " Search backwards
-  call cursor(line('.'), col('$'))
-  let l:line = search('^\v(;; )?' .. a:bank .. ':' .. a:addr, 'b', line('.'))
+  if l:line <= 0
+    let l:line = search(l:pattern, 'b', line('.'))
+  endif
 
   " Search forwards
   if l:line <= 0
@@ -217,11 +236,6 @@ function! FindLsdisjSymLoc(bank, addr) abort
       let l:line = search(printf('%s:%04x', a:bank, l:addr_num))
       let l:addr_num -= 1
     endwhile
-  endif
-
-  " Restore cursor
-  if l:line <= 0
-    call winrestview(l:view)
   endif
 
   return l:line
