@@ -64,7 +64,7 @@ endfunction
 function! GotoLsdisjStats() abort
   call GotoLsdisjWin('lsdisj_stats_win', 'tabe', LsdisjStatsFile())
   tabm 0
-  exec 'lcd ' .. LsdisjStatsDir()
+  exec 'lcd ' .. LsdisjDir()
   set nowrap autoread
   105wincmd |
 endfunction
@@ -72,7 +72,7 @@ endfunction
 function! GotoLsdisjExcludedStats() abort
   call GotoLsdisjStats()
   call GotoLsdisjWin('lsdisj_excluded_stats_win', 'belowright vs', LsdisjExcludedStatsFile())
-  exec 'lcd ' .. LsdisjStatsDir()
+  exec 'lcd ' .. LsdisjDir()
   set nowrap
   wincmd |
   104wincmd <
