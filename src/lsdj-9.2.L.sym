@@ -7081,8 +7081,36 @@
 07:435e data_cloned_chain_phrases_string
 07:435e .text:0015
 
-07:4373 call_07_4373
+07:4373 call_draw_song_screen_cursor
+;; 07:4373 Draw the cursor on the song screen.
+;; 07:4373
+;; 07:4373 Entry conditions:
+;; 07:4373   SONG_CURSOR_ROW must be set.
+;; 07:4373   SONG_CURSOR_COL must be set.
+;; 07:4373   SONG_SCREEN_SCROLL must be set.
+;; 07:4373   GAMEBOY_TYPE must be set.
+;; 07:4373
+;; 07:4373 Registers used: A, DE, HL
 07:4373 .code:004f
+
+;; 07:4376 Calculate row position
+
+;; 07:4384 Check that row is not out of bounds
+
+07:438c .jump_get_tile
+;; 07:4394 Handle GBC
+07:4399 .jump_handle_dmg
+
+07:439b .jump_draw_cursor
+
+;; 07:439b Get column position
+
+;; 07:439f:op LOW(data_song_channel_cols)
+;; 07:43a3:op HIGH(data_song_channel_cols)
+
+;; 07:43ab Draw cursor
+
+;; 07:43be Return
 
 07:43c2 call_07_43c2
 07:43c2 .code:007f
