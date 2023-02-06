@@ -10725,8 +10725,18 @@
 1f:7035 call_1f_7035
 1f:7035 .code:0029
 
-1f:705e call_1f_705e
+1f:705e call_draw_speech_screen_cursor
+;; 1f:705e Draw the cursor on the speech screen.
+;; 1f:705e Registers used: A, DE, HL
 1f:705e .code:0029
+
+;; 1f:7067 Handle DMG
+1f:706c .jump_cgb
+
+1f:706e .jump_draw
+;; 1f:706e Get row
+;; 1f:7072 Draw cursor
+;; 1f:7085 Return
 
 1f:7087 call_1f_7087
 1f:7087 .code:0137
