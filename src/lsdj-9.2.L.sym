@@ -5646,7 +5646,15 @@
 
 ;; 05:429a:op _SCREEN_MOVE_DOWN
 
-05:42a4 call_05_42a4
+05:42a4 call_draw_table_command_type
+;; 05:42a4 Draw the command type for the table screen.
+;; 05:42a4 Args: command_type
+;; 05:42a4 Registers used: A, DE, HL
+
+;; 05:42a5 Calculate command char
+05:42c9 .jump_handle_unknown
+05:42cb .jump_draw
+;; 05:42d3 Return
 
 05:42d5 data_05_42d5
 05:42d5 .data:0006
