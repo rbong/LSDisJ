@@ -7518,21 +7518,37 @@
 
 1b:4058 data_help_page_index_string_lookup
 1b:4058 .data:0020
+1b:4058 .title
 ;; 1b:4058:replace:0002 dw data_title_help_page_index_string           ; 1b:4058
+1b:405a .empty_1
 ;; 1b:405a:replace:0002 dw data_empty_help_page_index_string_1         ; 1b:405a
+1b:405c .screens
 ;; 1b:405c:replace:0002 dw data_screens_help_page_index_string         ; 1b:405c
+1b:405e .empty_2
 ;; 1b:405e:replace:0002 dw data_empty_help_page_index_string_2         ; 1b:405e
+1b:4060 .song
 ;; 1b:4060:replace:0002 dw data_song_help_page_index_string            ; 1b:4060
+1b:4062 .chain
 ;; 1b:4062:replace:0002 dw data_chain_help_page_index_string           ; 1b:4062
+1b:4064 .phrase
 ;; 1b:4064:replace:0002 dw data_phrase_help_page_index_string          ; 1b:4064
+1b:4066 .instrument
 ;; 1b:4066:replace:0002 dw data_instrument_help_page_index_string      ; 1b:4066
+1b:4068 .groove
 ;; 1b:4068:replace:0002 dw data_groove_help_page_index_string          ; 1b:4068
+1b:406a .wave
 ;; 1b:406a:replace:0002 dw data_wave_help_page_index_string            ; 1b:406a
+1b:406c .empty_3
 ;; 1b:406c:replace:0002 dw data_empty_help_page_index_string_3         ; 1b:406c
+1b:406e .command_list
 ;; 1b:406e:replace:0002 dw data_command_list_help_page_index_string    ; 1b:406e
+1b:4070 .empty_4
 ;; 1b:4070:replace:0002 dw data_empty_help_page_index_string_4         ; 1b:4070
+1b:4072 .live_mode
 ;; 1b:4072:replace:0002 dw data_live_mode_help_page_index_string       ; 1b:4072
+1b:4074 .select
 ;; 1b:4074:replace:0002 dw data_select_help_page_index_string          ; 1b:4074
+1b:4076 .mute
 ;; 1b:4076:replace:0002 dw data_mute_help_page_index_string            ; 1b:4076
 
 1b:4078 data_1b_4078
@@ -7551,7 +7567,7 @@
 ;; 1b:408a:replace:0002 dw data_select_help_page_string                ; 1b:408a
 ;; 1b:408c:replace:0002 dw data_mute_help_page_string                  ; 1b:408c
 
-1b:408e data_1b_408e
+1b:408e data_help_page_index_cursor_row_lookup
 1b:408e .data:000a
 
 1b:4098 data_help_page_index_strings
@@ -7613,8 +7629,34 @@
 1b:4971 data_mute_help_page_string
 1b:4971 .text:0087
 
-1b:49f8 call_1b_49f8
+1b:49f8 call_draw_help_index_row_bg
+;; 1b:49f8 Draw the background for a cursor row.
+;; 1b:49f8
+;; 1b:49f8 Args: clear
+;; 1b:49f8
+;; 1b:49f8 Entry conditions:
+;; 1b:49f8   HELP_CURSOR_ROW must be set.
+;; 1b:49f8
+;; 1b:49f8 Registers: A, DE, HL
 1b:49f8 .code:0055
+
+;; 1b:49fb Get help page index string
+
+;; 1b:49ff:op LOW(data_help_page_index_cursor_row_lookup)
+;; 1b:4a03:op HIGH(data_help_page_index_cursor_row_lookup)
+
+;; 1b:4a0f:op LOW(data_help_page_index_string_lookup)
+;; 1b:4a13:op HIGH(data_help_page_index_string_lookup)
+
+;; 1b:4a1f Read string length
+
+;; 1b:4a28 Check whether to clear row
+;; 1b:4a2e Clear row
+
+1b:4a33 .jump_highlight_row
+1b:4a35 .jump_draw_row
+
+;; 1b:4a49 Return
 
 1b:4a4d call_1b_4a4d
 1b:4a4d .code:0015
