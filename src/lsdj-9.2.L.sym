@@ -3893,11 +3893,19 @@
 
 ;; 03:4279 Return
 
-03:427b call_03_427b
+03:427b call_enable_current_instrument_transpose_param
+;; 03:427b Enables transpose for the current instrument.
+;; 03:427b Registers used: A, DE, HL
 03:427b .code:0018
 
-03:4293 call_03_4293
+;; 03:427c:op _TRANSPOSE_INSTRUMENT_PARAM
+
+03:4293 call_disable_current_instrument_transpose_param
+;; 03:4293 Disables transpose for the current instrument.
+;; 03:4293 Registers used: A, DE, HL
 03:4293 .code:0018
+
+;; 03:4294:op _TRANSPOSE_INSTRUMENT_PARAM
 
 03:42ab call_03_42ab
 03:42ab .code:0054
