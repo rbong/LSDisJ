@@ -4153,8 +4153,18 @@
 
 03:49b2 .jump_return
 
-03:49b4 call_03_49b4
+03:49b4 call_draw_wave_length_instrument_param
+;; 03:49b4 Draw the wave length for the current instrument.
+;; 03:49b4 Registers used: A, DE, HL
 03:49b4 .code:002c
+
+;; 03:49b5 Set target
+;; 03:49bd Check for manual wave play type
+;; 03:49c6 Handle manual type
+;; 03:49c6:op _EMPTY_ROW_ASCII_CODE
+
+03:49d2 .jump_draw_digits
+03:49de .jump_return
 
 03:49e0 call_draw_wave_speed_instrument_param
 ;; 03:49e0 Draw the wave speed for the current instrument.
@@ -10076,8 +10086,8 @@
 ;; 1f:483b:op call_03_4d34
 ;; 1f:483f:op BANK(call_03_4d34)
 
-;; 1f:4848:op call_03_49b4
-;; 1f:484c:op BANK(call_03_49b4)
+;; 1f:4848:op call_draw_wave_length_instrument_param
+;; 1f:484c:op BANK(call_draw_wave_length_instrument_param)
 
 ;; 1f:4855:op call_draw_wave_loop_pos_instrument_param
 ;; 1f:4859:op BANK(call_draw_wave_loop_pos_instrument_param)
