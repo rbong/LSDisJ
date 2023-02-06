@@ -6226,8 +6226,25 @@
 06:410e call_06_410e
 06:410e .code:0041
 
-06:414f call_06_414f
+06:414f call_draw_word_screen_cursor
+;; 06:414f Draws the cursor on the word screen.
+;; 06:414f
+;; 06:414f Entry conditions:
+;; 06:414f   WORD_CURSOR_COL must be set.
+;; 06:414f   WORD_CURSOR_ROW must be set.
+;; 06:414f   GAMEBOY_TYPE must be set.
+;; 06:414f
+;; 06:414f Registers used: A, DL, HL
 06:414f .code:0053
+
+;; 06:4152 Check GAMEBOY_TYPE
+;; 06:415a CGB
+06:415f .jump_dmg
+
+06:4161 .jump_draw_cursor
+;; 06:4161 Calculate cursor position
+;; 06:418a Draw
+;; 06:419e Return
 
 06:41a2 call_06_41a2
 06:41a2 .code:0159
