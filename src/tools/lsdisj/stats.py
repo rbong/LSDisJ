@@ -10,6 +10,13 @@ parser = argparse.ArgumentParser(
 )
 
 parser.add_argument(
+    '-r',
+    '--recursive',
+    action='store_true',
+    help='Calculate references for functions recursively.'
+)
+
+parser.add_argument(
     'files',
     metavar='file',
     nargs='+',
@@ -147,6 +154,33 @@ for fn, lines in fn_lines.items():
             del fn_refs[fn]
         total_fns -= 1
 
+# Get recursive refs
+
+if args.recursive:
+    recursive_refs = {}
+    def get_recursive_refs(fn, visited):
+        if fn in visited:
+            return 0
+        visited.add(fn)
+
+        if fn in recursive_refs:
+            return recursive_refs[fn]
+        if fn not in fn_refs:
+            recursive_refs[fn] = 0
+            return 0
+
+        count = 0
+        for caller in fn_refs[fn]:
+            count += 1 + get_recursive_refs(caller, visited)
+
+        recursive_refs[fn] = count
+        return count
+
+    for fn, refs in fn_refs.items():
+        get_recursive_refs(fn, set())
+
+    fn_refs = recursive_refs
+
 # Sort statistics
 
 stats = [
@@ -155,7 +189,7 @@ stats = [
         len(fn_calls.get(fn, {})),
         len(fn_unk_addrs.get(fn, {})),
         len(fn_unk_bytes.get(fn, {})),
-        -len(refs),
+        -refs if args.recursive else -len(refs),
         fn_lines.get(fn, 0),
         fn
     )
