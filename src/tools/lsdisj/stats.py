@@ -84,7 +84,7 @@ for filename in files:
             fn_lines[fn] = 0
             is_unknown = is_unknown_fn(label_match[1])
             total_fns += 1
-            calls = {}
+            calls = set()
             fn_calls[fn] = calls
 
             if is_unknown:
@@ -133,11 +133,13 @@ for filename in files:
                 # Repair ref
                 ref = f'call_{ref}'
                 if ref not in calls:
-                    fn_refs[ref] = fn_refs.get(ref, 0) + 1
+                    if ref not in fn_refs:
+                        fn_refs[ref] = set()
+                    fn_refs[ref].add(current_fn)
                     total_unknown_refs += 1
                     # Record call
                     if is_unknown:
-                        calls[ref] = True
+                        calls.add(ref)
 
 # Remove empty functions
 
@@ -155,7 +157,7 @@ stats = [
         len(fn_calls.get(fn, {})),
         len(fn_unk_addrs.get(fn, {})),
         len(fn_unk_bytes.get(fn, {})),
-        -refs,
+        -len(refs),
         fn_lines.get(fn, 0),
         fn
     )
