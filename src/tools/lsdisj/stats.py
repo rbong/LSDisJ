@@ -137,11 +137,11 @@ for filename in files:
         for ref in re.findall('call_[0-9a-f_]*', line):
             total_refs += 1
             if is_unknown_fn(ref):
+                total_unknown_refs += 1
                 if ref not in calls:
                     if ref not in fn_refs:
                         fn_refs[ref] = set()
                     fn_refs[ref].add(current_fn)
-                    total_unknown_refs += 1
                     # Record call
                     if is_unknown:
                         calls.add(ref)
