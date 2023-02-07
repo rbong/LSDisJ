@@ -286,7 +286,7 @@ function! Lsdisj() abort
   call win_gotoid(g:lsdisj_sym_win)
 endfunction
 
-function! LsdisjMake(args = ' ') abort
+function! LsdisjMake(args = '') abort
   let l:version = LsdjVersion()
   call GotoLsdisjBankOrSym()
 
@@ -301,11 +301,11 @@ function! LsdisjMake(args = ' ') abort
   exec '!make VERSION=' .. l:version .. ' ' .. a:args
 endfunction
 
-function! LsdisjStats() abort
+function! LsdisjStats(args = '') abort
   echo 'Installing...'
   call system('pip3 install -q ' .. LsdisjDir())
   call system('mkdir -p ' .. LsdisjStatsDir())
-  exec '!python3 -m lsdisj.stats ' .. LsdisjBuildDir() .. '/src/bank_*.asm | grep -vf ' .. LsdisjExcludedStatsFile() .. ' | tee ' .. LsdisjStatsFile()
+  exec '!python3 -m lsdisj.stats ' .. LsdisjBuildDir() .. '/src/bank_*.asm ' .. a:args .. ' | grep -vf ' .. LsdisjExcludedStatsFile() .. ' | tee ' .. LsdisjStatsFile()
   call GotoLsdisjStats()
 endfunction
 
@@ -439,7 +439,7 @@ endfunction
 command! -bar Lsdisj call Lsdisj()
 command! -bar -nargs=* LsdisjBank call GotoLsdisjBank(<f-args>)
 command! -bar -nargs=* LsdisjMake call LsdisjMake(<q-args>)
-command! -bar LsdisjStats call LsdisjStats()
+command! -bar -nargs=* LsdisjStats call LsdisjStats(<q-args>)
 command! -bar LsdisjJump call LsdisjJump()
 command! -bar LsdisjComment call LsdisjComment()
 command! -bar LsdisjLabel call LsdisjLabel()
@@ -447,7 +447,7 @@ command! -bar LsdisjYank call LsdisjYank()
 
 nno <leader>lb :<C-U>LsdisjBank<space>
 nno <leader>lm :<C-U>LsdisjMake<space>
-nno <silent> <leader>ls :<C-U>LsdisjStats<CR>
+nno <leader>ls :<C-U>LsdisjStats<space>
 nno <silent> <leader>lj :<C-U>LsdisjJump<CR>
 nno <silent> <leader>lc :<C-U>LsdisjComment<CR>
 nno <silent> <leader>ll :<C-U>LsdisjLabel<CR>
