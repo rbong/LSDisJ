@@ -7700,7 +7700,7 @@
 1b:4971 data_mute_help_page_string
 1b:4971 .text:0087
 
-1b:49f8 call_draw_help_index_row_bg
+1b:49f8 call_draw_help_index_index
 ;; 1b:49f8 Draw the background for a cursor row.
 ;; 1b:49f8
 ;; 1b:49f8 Args: clear
@@ -7729,8 +7729,16 @@
 
 ;; 1b:4a49 Return
 
-1b:4a4d call_1b_4a4d
+1b:4a4d call_draw_help_index_init_cursor
+;; 1b:4a4d Draw the initial cursor on the help index.
+;; 1b:4a4d Registers used: A, DE, HL
+;; 1b:4a4d -
 1b:4a4d .code:0015
+
+;; 1b:4a4d Check help page
+
+1b:4a58 .jump_draw
+1b:4a61 .jump_return
 
 1b:4a62 call_1b_4a62
 1b:4a62 .code:0017
