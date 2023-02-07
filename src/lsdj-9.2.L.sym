@@ -1113,17 +1113,26 @@
 00:2c57 call_00_2c57
 00:2c57 .code:0022
 
-00:2c79 call_00_2c79
+00:2c79 call_draw_channel_name
 00:2c79 .code:004c
 
-00:2cc5 data_channel_label_strings
-00:2cc5 data_noise_channel_label_string
+;; 00:2c7f Set target
+;; 00:2c93 Check current channel
+
+00:2ca8 .jump_pu1
+00:2cb0 .jump_pu2
+00:2cb8 .jump_wav
+
+00:2cbd .jump_draw
+;; 00:2cc3 Return
+
+00:2cc5 .data_noi
 00:2cc5 .text:0004
-00:2cc9 data_pulse1_channel_label_string
+00:2cc9 .data_pu1
 00:2cc9 .text:0004
-00:2ccd data_pulse2_channel_label_string
+00:2ccd .data_pu2
 00:2ccd .text:0004
-00:2cd1 data_wave_channel_label_string
+00:2cd1 .data_wav
 00:2cd1 .text:0004
 
 00:2cd5 call_write_instrument_pulse_wave_bg_attrs
