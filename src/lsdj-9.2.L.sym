@@ -9729,11 +9729,19 @@
 
 1d:7091 .jump_return
 
-1d:7095 call_1d_7095
+1d:7095 call_increment_current_synth_resonance_1_param
+;; 1d:7095 Increment the resonance 1 param for the current synth.
+;; 1d:7095 Result: E
+;; 1d:7095 Registers used: A, DE, HL
 1d:7095 .code:002e
 
+;; 1d:7096:op _RESONANCE_1_SYNTH_PARAM
+;; 1d:70af:op _RESONANCE_1_SYNTH_PARAM
+
+1d:70b8 .jump_set_return
+
 1d:70c3 call_increment_current_synth_resonance_2_param
-;; 1d:70c3 Increment the resonance 2 param for the current instrument.
+;; 1d:70c3 Increment the resonance 2 param for the current synth.
 ;; 1d:70c3 Result: E
 ;; 1d:70c3 Registers used: A, DE, HL
 1d:70c3 .code:0028
