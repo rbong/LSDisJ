@@ -490,8 +490,8 @@ _SRAM_LAST_SAVED_HOURS_BANK       EQU $01
 _SRAM_LAST_SAVED_MINUTES_BANK     EQU $01
 _SRAM_OVERCLOCK_BANK              EQU $01
 
-_SRAM_PHRASE_COMMANDS_BANK       EQU $02
-_SRAM_PHRASE_COMMAND_VALUES_BANK EQU $02
+_SRAM_PHRASE_CMDS_BANK       EQU $02
+_SRAM_PHRASE_CMD_VALUES_BANK EQU $02
 
 _SRAM_WAVE_FRAMES_BANK        EQU $03
 _SRAM_PHRASE_INSTRUMENTS_BANK EQU $03
@@ -563,8 +563,8 @@ _SRAM_LAST_SAVED_MINUTES     EQU $bfcb ; 01:bfcb - 01:bfcb
 _SRAM_OVERCLOCK              EQU $bfcc ; 01:bfcc - 01:bfcc
                                        ; 01:bfcd - 01:bfff (empty)
 
-_SRAM_PHRASE_COMMANDS       EQU $a000 ; 02:a000 - 02:afef (0xff phrases x 0x10 rows)
-_SRAM_PHRASE_COMMAND_VALUES EQU $aff0 ; 02:aff0 - 02:bfdf (0xff phrases x 0x10 rows)
+_SRAM_PHRASE_CMDS       EQU $a000 ; 02:a000 - 02:afef (0xff phrases x 0x10 rows)
+_SRAM_PHRASE_CMD_VALUES EQU $aff0 ; 02:aff0 - 02:bfdf (0xff phrases x 0x10 rows)
                                       ; 02:bfe0 - 02:bfff (empty)
 
 _SRAM_WAVE_FRAMES        EQU $a000 ; 03:a000 - 03:afff (0x10 synths x 0x10 frames x 0x10 samples) (1 sample = 1 char)

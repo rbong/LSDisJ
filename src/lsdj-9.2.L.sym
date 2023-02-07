@@ -3534,7 +3534,44 @@
 
 02:5742 call_02_5742
 
-02:5809 call_02_5809
+02:5809 call_write_playing_phrase_note_address
+;; 02:5809 Write the currently playing phrase note address.
+;; 02:5809 Also sets the phrase instrument and command value addresses.
+;; 02:5809
+;; 02:5809 Entry conditions:
+;; 02:5809   CURRENT_CHANNEL must be set.
+;; 02:5809   PLAYING_*_PHRASE must be set for the current channel.
+;; 02:5809
+;; 02:5809 Registers used: A, DE, HL
+
+;; 02:580a Get the currently playing phrase address
+;; 02:581f:op LOW(_SRAM_PHRASE_NOTES)
+;; 02:5823:op HIGH(_SRAM_PHRASE_NOTES)
+
+;; 02:5812 Calculate note address
+
+;; 02:5827 Calculate note target
+;; 02:582b Write note
+
+;; 02:582e Calculate currently playing instrument address
+;; 02:582e Assume low byte is the same as note
+;; 02:582f:op HIGH(_SRAM_PHRASE_INSTRUMENTS) - HIGH(_SRAM_PHRASE_NOTES)
+
+;; 02:5831 Calculate instrument target
+;; 02:5831 Assume high byte is the same as note
+;; 02:5832:op LOW(PLAYING_PHRASE_INSTRUMENT_ADDRESSES)
+;; 02:5835 Write instrument
+
+;; 02:5838 Calculate currently playing command value address
+;; 02:5838 Assume that it is under $100 addresses away from instruments
+;; 02:5839:op _SRAM_PHRASE_INSTRUMENTS - _SRAM_PHRASE_CMD_VALUES
+
+02:583f .jump_write_cmd
+;; 02:583f Calculate command value target
+;; 02:583f Assume high byte is the same as note
+;; 02:583f:op LOW(PLAYING_PHRASE_CMD_VALUE_ADDRESSES)
+
+;; 02:5845 Return
 
 02:5847 call_02_5847
 ;; 02:5859 Assume bank is set to bank for _SRAM_TABLE_TRANSPOSE
@@ -5022,8 +5059,8 @@
 ;; 04:49c5 Registers used: A, DE, HL
 04:49c5 .code:006b
 
-;; 04:49ce:op LOW(_SRAM_PHRASE_COMMANDS)
-;; 04:49d2:op HIGH(_SRAM_PHRASE_COMMANDS)
+;; 04:49ce:op LOW(_SRAM_PHRASE_CMDS)
+;; 04:49d2:op HIGH(_SRAM_PHRASE_CMDS)
 
 ;; 04:49da Verify phrase
 
@@ -5045,7 +5082,7 @@
 04:4a0a .jump_calculate_address_3
 
 ;; 04:4a19 Write phrase command
-;; 04:4a23:op _SRAM_PHRASE_COMMANDS_BANK
+;; 04:4a23:op _SRAM_PHRASE_CMDS_BANK
 
 ;; 04:4a2c Return
 
@@ -5055,8 +5092,8 @@
 ;; 04:4a30 Registers used: A, DE, HL
 04:4a30 .code:005f
 
-;; 04:4a39:op LOW(_SRAM_PHRASE_COMMAND_VALUES)
-;; 04:4a3d:op HIGH(_SRAM_PHRASE_COMMAND_VALUES)
+;; 04:4a39:op LOW(_SRAM_PHRASE_CMD_VALUES)
+;; 04:4a3d:op HIGH(_SRAM_PHRASE_CMD_VALUES)
 
 ;; 04:4a45 Verify the phrase
 
@@ -5074,7 +5111,7 @@
 04:4a69 .jump_calculate_address_3
 
 ;; 04:4a78 Write phrase command value
-;; 04:4a82:op _SRAM_PHRASE_COMMAND_VALUES_BANK
+;; 04:4a82:op _SRAM_PHRASE_CMD_VALUES_BANK
 
 ;; 04:4a8b Return
 
@@ -5084,8 +5121,8 @@
 ;; 04:4a8f Registers used: A, DE, HL
 04:4a8f .code:005b
 
-;; 04:4a98:op LOW(_SRAM_PHRASE_COMMAND_VALUES)
-;; 04:4a9c:op HIGH(_SRAM_PHRASE_COMMAND_VALUES)
+;; 04:4a98:op LOW(_SRAM_PHRASE_CMD_VALUES)
+;; 04:4a9c:op HIGH(_SRAM_PHRASE_CMD_VALUES)
 
 ;; 04:4aa7:op _PHRASES
 
@@ -5102,7 +5139,7 @@
 
 ;; 04:4ad7 Read the phrase row command value
 
-;; 04:4adc:op _SRAM_PHRASE_COMMAND_VALUES_BANK
+;; 04:4adc:op _SRAM_PHRASE_CMD_VALUES_BANK
 
 ;; 04:4ae6 Return
 
@@ -5117,8 +5154,8 @@
 ;; 04:4aea Registers used: A, DE, HL
 04:4aea .code:0071
 
-;; 04:4af3:op LOW(_SRAM_PHRASE_COMMANDS)
-;; 04:4af7:op HIGH(_SRAM_PHRASE_COMMANDS)
+;; 04:4af3:op LOW(_SRAM_PHRASE_CMDS)
+;; 04:4af7:op HIGH(_SRAM_PHRASE_CMDS)
 
 ;; 04:4b02:op _PHRASES
 
@@ -5136,7 +5173,7 @@
 
 ;; 04:4b32 Read the command from the phrase row
 
-;; 04:4b37:op _SRAM_PHRASE_COMMANDS_BANK
+;; 04:4b37:op _SRAM_PHRASE_CMDS_BANK
 
 ;; 04:4b54 Command is invalid
 
@@ -5160,8 +5197,8 @@
 ;; 04:4c47:op _SRAM_PHRASE_NOTES_BANK
 ;; 04:4c55:op _SRAM_PHRASE_INSTRUMENTS
 ;; 04:4c60:op _SRAM_PHRASE_INSTRUMENTS_BANK
-;; 04:4c81:op _SRAM_PHRASE_COMMAND_VALUES
-;; 04:4c8c:op _SRAM_PHRASE_COMMAND_VALUES_BANK
+;; 04:4c81:op _SRAM_PHRASE_CMD_VALUES
+;; 04:4c8c:op _SRAM_PHRASE_CMD_VALUES_BANK
 
 04:4c99 call_banked_1f_6cd7
 
@@ -8928,8 +8965,8 @@
 ;; 1c:6994 Assume that the banks are the same for _SRAM_TABLE_COMMANDS_1 and _SRAM_TABLE_COMMANDS_2
 ;; 1c:6994:op _SRAM_TABLE_COMMANDS_2
 ;; 1c:69c5:op rRAMB
-;; 1c:69c8:op _SRAM_PHRASE_COMMANDS_BANK
-;; 1c:69ca:op _SRAM_PHRASE_COMMANDS
+;; 1c:69c8:op _SRAM_PHRASE_CMDS_BANK
+;; 1c:69ca:op _SRAM_PHRASE_CMDS
 ;; 1c:69fb:op rRAMG
 ;; 1c:69fe:op CART_SRAM_DISABLE
 
@@ -10246,8 +10283,8 @@
 
 1f:4ee4 call_1f_4ee4
 1f:4ee4 .code:007c
-;; 1f:4f02:op _SRAM_PHRASE_COMMAND_VALUES
-;; 1f:4f20:op _SRAM_PHRASE_COMMAND_VALUES_BANK
+;; 1f:4f02:op _SRAM_PHRASE_CMD_VALUES
+;; 1f:4f20:op _SRAM_PHRASE_CMD_VALUES_BANK
 
 1f:4f60 call_1f_4f60
 1f:4f60 .code:00cc
@@ -10885,6 +10922,26 @@
 00:c115 PLAYING_WAV_PHRASE_NOTE_ADDRESS_HIGH
 00:c116 PLAYING_NOI_PHRASE_NOTE_ADDRESS_LOW
 00:c117 PLAYING_NOI_PHRASE_NOTE_ADDRESS_HIGH
+
+00:c128 PLAYING_PHRASE_CMD_VALUE_ADDRESSES
+00:c128 PLAYING_PU1_PHRASE_CMD_VALUE_ADDRESS_LOW
+00:c129 PLAYING_PU1_PHRASE_CMD_VALUE_ADDRESS_HIGH
+00:c12a PLAYING_PU2_PHRASE_CMD_VALUE_ADDRESS_LOW
+00:c12b PLAYING_PU2_PHRASE_CMD_VALUE_ADDRESS_HIGH
+00:c12c PLAYING_WAV_PHRASE_CMD_VALUE_ADDRESS_LOW
+00:c12d PLAYING_WAV_PHRASE_CMD_VALUE_ADDRESS_HIGH
+00:c12e PLAYING_NOI_PHRASE_CMD_VALUE_ADDRESS_LOW
+00:c12f PLAYING_NOI_PHRASE_CMD_VALUE_ADDRESS_HIGH
+
+00:c140 PLAYING_PHRASE_INSTRUMENT_ADDRESSES
+00:c140 PLAYING_PU1_PHRASE_INSTRUMENT_ADDRESS_LOW
+00:c141 PLAYING_PU1_PHRASE_INSTRUMENT_ADDRESS_HIGH
+00:c142 PLAYING_PU2_PHRASE_INSTRUMENT_ADDRESS_LOW
+00:c143 PLAYING_PU2_PHRASE_INSTRUMENT_ADDRESS_HIGH
+00:c144 PLAYING_WAV_PHRASE_INSTRUMENT_ADDRESS_LOW
+00:c145 PLAYING_WAV_PHRASE_INSTRUMENT_ADDRESS_HIGH
+00:c146 PLAYING_NOI_PHRASE_INSTRUMENT_ADDRESS_LOW
+00:c147 PLAYING_NOI_PHRASE_INSTRUMENT_ADDRESS_HIGH
 
 00:c160 NOTE_COUNTDOWNS
 00:c160 PU1_NOTE_COUNTDOWN
