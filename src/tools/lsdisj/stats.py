@@ -46,7 +46,7 @@ fn_refs = {}
 fn_lines = {}
 
 def is_unknown_fn(fn):
-    return bool(re.search('[0-9a-f]{2}_[0-9a-f]{4}$', fn))
+    return bool(re.search('^call_[0-9a-f]{2}_[0-9a-f]{4}$', fn))
 
 for filename in files:
     current_fn = None
@@ -127,11 +127,9 @@ for filename in files:
                 continue
 
         # Parse all unknown call refs
-        for ref in re.findall('call_([0-9a-f_]*)', line):
+        for ref in re.findall('call_[0-9a-f_]*', line):
             total_refs += 1
             if is_unknown_fn(ref):
-                # Repair ref
-                ref = f'call_{ref}'
                 if ref not in calls:
                     if ref not in fn_refs:
                         fn_refs[ref] = set()
@@ -163,6 +161,7 @@ stats = [
     )
     for fn, refs
     in fn_refs.items()
+    if is_unknown_fn(fn)
 ]
 
 # Print statistics
