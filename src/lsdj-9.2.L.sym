@@ -3308,13 +3308,39 @@
 02:494d call_02_494d
 02:494d .code:023d
 
-02:4b8a call_02_4b8a
+02:4b8a call_write_current_channel_chain_transpose
+;; 02:4b8a Write the current transpose for the current channel chain row.
+;; 02:4b8a
+;; 02:4b8a Entry conditions:
+;; 02:4b8a   CURRENT_CHANNEL must be set.
+;; 02:4b8a   CURRENT_CHANNEL_CHAIN_ROW must be set.
+;; 02:4b8a   CURRENT_*_CHAIN must be set for the current channel.
+;; 02:4b8a   CURRENT_*_CHAIN_ROW must be set for the current channel.
+;; 02:4b8a   CURRENT_*_TRANSPOSE must be set for the current channel.
+;; 02:4b8a
+;; 02:4b8a Exit conditions:
+;; 02:4b8a   Interrupts will be enabled.
+;; 02:4b8a
+;; 02:4b8a Registers used: A, DE, HL
+;; 02:4b8a -
+
+;; 02:4b8a Calculate the transpose address in SRAM
 ;; 02:4b9e:op _SRAM_CHAIN_TRANSPOSES
+;; 02:4ba2:op HIGH(CURRENT_CHAIN_ROWS)
+
+;; 02:4bab Prepare for SRAM read
 ;; 02:4bab:op _SRAM_CHAIN_TRANSPOSES_BANK
 ;; 02:4bad:op rRAMB
 ;; 02:4bb0:op CART_SRAM_ENABLE
 ;; 02:4bb3:op rRAMG
+
+;; 02:4bb6 Read transpose from SRAM
+
+;; 02:4bb7 Disable SRAM
 ;; 02:4bb8:op rRAMG
+
+;; 02:4bbc Write current transpose
+;; 02:4bc4 Return
 
 02:4bc5 call_02_4bc5
 02:4bc5 .code:0061
@@ -11006,11 +11032,11 @@
 00:c16e CURRENT_WAV_PHRASE_ROW
 00:c16f CURRENT_NOI_PHRASE_ROW
 
-00:c170 PLAYING_CHAINS
-00:c170 PLAYING_PU1_CHAIN
-00:c171 PLAYING_PU2_CHAIN
-00:c172 PLAYING_WAV_CHAIN
-00:c173 PLAYING_NOI_CHAIN
+00:c170 CURRENT_CHAINS
+00:c170 CURRENT_PU1_CHAIN
+00:c171 CURRENT_PU2_CHAIN
+00:c172 CURRENT_WAV_CHAIN
+00:c173 CURRENT_NOI_CHAIN
 
 00:c17c CURRENT_CHAIN_ROWS
 00:c17c CURRENT_PU1_CHAIN_ROW
@@ -11048,11 +11074,11 @@
 00:c3b7 WAV_GROOVE_3
 00:c3b8 NOI_GROOVE_3
 
-00:c3fc TRANSPOSES
-00:c3fc PU1_TRANSPOSE
-00:c3fd PU2_TRANSPOSE
-00:c3fe WAV_TRANSPOSE
-00:c3ff NOI_TRANSPOSE
+00:c3fc CURRENT_TRANSPOSES
+00:c3fc CURRENT_PU1_TRANSPOSE
+00:c3fd CURRENT_PU2_TRANSPOSE
+00:c3fe CURRENT_WAV_TRANSPOSE
+00:c3ff CURRENT_NOI_TRANSPOSE
 
 00:c402 CURRENT_SCREEN
 
@@ -11199,19 +11225,19 @@
 00:c7ae IS_HANDLING_EXCEPTION
 ;; 00:c7ae Set to 1 when handling an exception
 
-00:c8de CURRENT_CHANNEL_CHAIN_ROW
-;; 00:c8de The address of the currently playing chain for the current channel
+00:c8de CURRENT_CHANNEL_CHAIN_ROW_ADDRESS
+;; 00:c8de The address of the currently current chain for the current channel
 
-00:c8e0 CURRENT_CHANNEL_PHRASE_ROW
+00:c8e0 CURRENT_CHANNEL_PHRASE_ROW_ADDRESS
 ;; 00:c8e0 The address of the currently playing phrase row for the current channel
 
-00:c8e2 CURRENT_CHANNEL_NOTE_COUNTDOWN
+00:c8e2 CURRENT_CHANNEL_NOTE_COUNTDOWN_ADDRESS
 ;; 00:c8e2 The address of the currently playing note countdown for the current channel
 
-00:c8ea CURRENT_CHANNEL_PLAYING_PHRASE
+00:c8ea CURRENT_CHANNEL_PLAYING_PHRASE_ADDRESS
 ;; 00:c8ea The address of the currently playing phrase for the current channel
 
-00:c8ec CURRENT_CHANNEL_CURRENT_NOTE
+00:c8ec CURRENT_CHANNEL_CURRENT_NOTE_ADDRESS
 ;; 00:c8ec The address of the currently playing note for the current channel
 
 00:c8fd CURRENT_SCREEN_COL
