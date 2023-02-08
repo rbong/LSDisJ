@@ -453,42 +453,42 @@ _SRAM_SPEECH_WORD_NAMES_BANK EQU $00
 _SRAM_INIT_FLAG_1_BANK       EQU $00
 _SRAM_INSTRUMENT_NAMES_BANK  EQU $00
 
-_SRAM_INSTRUMENT_ALLOC_BANK       EQU $01
-_SRAM_CHAIN_PHRASES_BANK          EQU $01
-_SRAM_CHAIN_TRANSPOSES_BANK       EQU $01
-_SRAM_INSTRUMENT_PARAMS_BANK      EQU $01
-_SRAM_TABLE_TRANSPOSE_BANK        EQU $01
-_SRAM_TABLE_COMMANDS_1_BANK       EQU $01
-_SRAM_TABLE_COMMAND_VALUES_1_BANK EQU $01
-_SRAM_TABLE_COMMANDS_2_BANK       EQU $01
-_SRAM_TABLE_COMMAND_VALUES_2_BANK EQU $01
-_SRAM_INIT_FLAG_2_BANK            EQU $01
-_SRAM_PHRASE_ALLOC_BANK           EQU $01
-_SRAM_CHAIN_ALLOC_BANK            EQU $01
-_SRAM_SYNTH_PARAMS_BANK           EQU $01
-_SRAM_WORK_TIME_HOURS_BANK        EQU $01
-_SRAM_WORK_TIME_MINUTES_BANK      EQU $01
-_SRAM_TEMPO_BANK                  EQU $01
-_SRAM_TRANSPOSE_BANK              EQU $01
-_SRAM_TOTAL_TIME_DAYS_BANK        EQU $01
-_SRAM_TOTAL_TIME_HOURS_BANK       EQU $01
-_SRAM_TOTAL_TIME_MINUTES_BANK     EQU $01
-_SRAM_TOTAL_TIME_CHECKSUM_BANK    EQU $01
-_SRAM_KEY_DELAY_BANK              EQU $01
-_SRAM_KEY_REPEAT_BANK             EQU $01
-_SRAM_FONT_BANK                   EQU $01
-_SRAM_SYNC_BANK                   EQU $01
-_SRAM_PALETTE_NUM_BANK            EQU $01
-_SRAM_PS2_DELAY_BANK              EQU $01
-_SRAM_TICKS_PER_STEP_BANK         EQU $01
-_SRAM_CLONE_TYPE_BANK             EQU $01
-_SRAM_FILE_CHANGED_BANK           EQU $01
-_SRAM_PRELISTEN_BANK              EQU $01
-_SRAM_SYNTH_LOCK_BANK             EQU $01
-_SRAM_LAST_USED_INSTRUMENT_BANK   EQU $01
-_SRAM_LAST_SAVED_HOURS_BANK       EQU $01
-_SRAM_LAST_SAVED_MINUTES_BANK     EQU $01
-_SRAM_OVERCLOCK_BANK              EQU $01
+_SRAM_INSTRUMENT_ALLOC_BANK     EQU $01
+_SRAM_CHAIN_PHRASES_BANK        EQU $01
+_SRAM_CHAIN_TRANSPOSES_BANK     EQU $01
+_SRAM_INSTRUMENT_PARAMS_BANK    EQU $01
+_SRAM_TABLE_TRANSPOSE_BANK      EQU $01
+_SRAM_TABLE_CMDS_1_BANK         EQU $01
+_SRAM_TABLE_CMD_VALUES_1_BANK   EQU $01
+_SRAM_TABLE_CMDS_2_BANK         EQU $01
+_SRAM_TABLE_CMD_VALUES_2_BANK   EQU $01
+_SRAM_INIT_FLAG_2_BANK          EQU $01
+_SRAM_PHRASE_ALLOC_BANK         EQU $01
+_SRAM_CHAIN_ALLOC_BANK          EQU $01
+_SRAM_SYNTH_PARAMS_BANK         EQU $01
+_SRAM_WORK_TIME_HOURS_BANK      EQU $01
+_SRAM_WORK_TIME_MINUTES_BANK    EQU $01
+_SRAM_TEMPO_BANK                EQU $01
+_SRAM_TRANSPOSE_BANK            EQU $01
+_SRAM_TOTAL_TIME_DAYS_BANK      EQU $01
+_SRAM_TOTAL_TIME_HOURS_BANK     EQU $01
+_SRAM_TOTAL_TIME_MINUTES_BANK   EQU $01
+_SRAM_TOTAL_TIME_CHECKSUM_BANK  EQU $01
+_SRAM_KEY_DELAY_BANK            EQU $01
+_SRAM_KEY_REPEAT_BANK           EQU $01
+_SRAM_FONT_BANK                 EQU $01
+_SRAM_SYNC_BANK                 EQU $01
+_SRAM_PALETTE_NUM_BANK          EQU $01
+_SRAM_PS2_DELAY_BANK            EQU $01
+_SRAM_TICKS_PER_STEP_BANK       EQU $01
+_SRAM_CLONE_TYPE_BANK           EQU $01
+_SRAM_FILE_CHANGED_BANK         EQU $01
+_SRAM_PRELISTEN_BANK            EQU $01
+_SRAM_SYNTH_LOCK_BANK           EQU $01
+_SRAM_LAST_USED_INSTRUMENT_BANK EQU $01
+_SRAM_LAST_SAVED_HOURS_BANK     EQU $01
+_SRAM_LAST_SAVED_MINUTES_BANK   EQU $01
+_SRAM_OVERCLOCK_BANK            EQU $01
 
 _SRAM_PHRASE_CMDS_BANK       EQU $02
 _SRAM_PHRASE_CMD_VALUES_BANK EQU $02
@@ -523,49 +523,49 @@ _SRAM_INIT_FLAG_1       EQU $be78 ; 00:be78 - 00:be79 (2 special bytes)
 _SRAM_INSTRUMENT_NAMES  EQU $be7a ; 00:be7a - 00:bfb9 (0x40 instruments x 5 chars)
                                   ; 00:bfba - 00:bfff (empty)
 
-                                       ; 01:a000 - 01:a03f (empty)
-_SRAM_INSTRUMENT_ALLOC       EQU $a040 ; 01:a040 - 01:a07f (0x40 instruments x 1 bit)
-_SRAM_CHAIN_PHRASES          EQU $a080 ; 01:a080 - 01:a87f (0x80 chains x 0x10 phrases)
-_SRAM_CHAIN_TRANSPOSES       EQU $a880 ; 01:a880 - 01:b07f (0x80 chains x 0x10 rows)
-_SRAM_INSTRUMENT_PARAMS      EQU $b080 ; 01:b080 - 01:b47f (0x40 instruments x 0x10 size) (see above)
-_SRAM_TABLE_TRANSPOSE        EQU $b480 ; 01:b480 - 01:b67f (0x20 tables x 0x10 rows)
-_SRAM_TABLE_COMMANDS_1       EQU $b680 ; 01:b680 - 01:b87f (0x20 tables x 0x10 rows)
-_SRAM_TABLE_COMMAND_VALUES_1 EQU $b880 ; 01:b880 - 01:ba7f (0x20 tables x 0x10 rows)
-_SRAM_TABLE_COMMANDS_2       EQU $ba80 ; 01:ba80 - 01:bc7f (0x20 tables x 0x10 rows)
-_SRAM_TABLE_COMMAND_VALUES_2 EQU $bc80 ; 01:bc80 - 01:be7f (0x20 tables x 0x10 rows)
-_SRAM_INIT_FLAG_2            EQU $be80 ; 01:be80 - 01:be81 (2 special bytes)
-_SRAM_PHRASE_ALLOC           EQU $be82 ; 01:be82 - 01:bea1 (0xff phrases x 1 bit)
-_SRAM_CHAIN_ALLOC            EQU $bea2 ; 01:bea2 - 01:beb1 (0x80 chains x 1 bit)
-_SRAM_SYNTH_PARAMS           EQU $beb2 ; 01:beb2 - 01:bfb1 (0x10 synths x 0x10 size)
-_SRAM_WORK_TIME_HOURS        EQU $bfb2 ; 01:bfb2 - 01:bfb2
-_SRAM_WORK_TIME_MINUTES      EQU $bfb3 ; 01:bfb3 - 01:bfb3
-_SRAM_TEMPO                  EQU $bfb4 ; 01:bfb4 - 01:bfb4 (40-255: value, 256-295: value - 256)
-_SRAM_TRANSPOSE              EQU $bfb5 ; 01:bfb5 - 01:bfb5
-_SRAM_TOTAL_TIME_DAYS        EQU $bfb6 ; 01:bfb6 - 01:bfb6
-_SRAM_TOTAL_TIME_HOURS       EQU $bfb7 ; 01:bfb7 - 01:bfb7
-_SRAM_TOTAL_TIME_MINUTES     EQU $bfb8 ; 01:bfb8 - 01:bfb8
-_SRAM_TOTAL_TIME_CHECKSUM    EQU $bfb9 ; 01:bfb9 - 01:bfb9
-_SRAM_KEY_DELAY              EQU $bfba ; 01:bfba - 01:bfba
-_SRAM_KEY_REPEAT             EQU $bfbb ; 01:bfbb - 01:bfbb
-_SRAM_FONT                   EQU $bfbc ; 01:bfbc - 01:bfbc
-_SRAM_SYNC                   EQU $bfbd ; 01:bfbd - 01:bfbd
-_SRAM_PALETTE_NUM            EQU $bfbe ; 01:bfbe - 01:bfbe
-_SRAM_PS2_DELAY              EQU $bfbf ; 01:bfbf - 01:bfbf
-_SRAM_TICKS_PER_STEP         EQU $bfbf ; 01:bfbf - 01:bfbf
-_SRAM_CLONE_TYPE             EQU $bfc0 ; 01:bfc0 - 01:bfc0
-_SRAM_FILE_CHANGED           EQU $bfc1 ; 01:bfc1 - 01:bfc1 (first 4 bits) (unchanged: 0, changed: 1)
-                                       ; 01:bfc2 - 01:bfc2 (empty)
-_SRAM_PRELISTEN              EQU $bfc3 ; 01:bfc3 - 01:bfc3
-_SRAM_SYNTH_LOCK             EQU $bfc4 ; 01:bfc4 - 01:bfc5 (0x10 synths x 1 bit)
-_SRAM_LAST_USED_INSTRUMENT   EQU $bfc6 ; 01:bfc6 - 01:bfc9 (4 channels)
-_SRAM_LAST_SAVED_HOURS       EQU $bfca ; 01:bfca - 01:bfca
-_SRAM_LAST_SAVED_MINUTES     EQU $bfcb ; 01:bfcb - 01:bfcb
-_SRAM_OVERCLOCK              EQU $bfcc ; 01:bfcc - 01:bfcc
-                                       ; 01:bfcd - 01:bfff (empty)
+                                     ; 01:a000 - 01:a03f (empty)
+_SRAM_INSTRUMENT_ALLOC     EQU $a040 ; 01:a040 - 01:a07f (0x40 instruments x 1 bit)
+_SRAM_CHAIN_PHRASES        EQU $a080 ; 01:a080 - 01:a87f (0x80 chains x 0x10 phrases)
+_SRAM_CHAIN_TRANSPOSES     EQU $a880 ; 01:a880 - 01:b07f (0x80 chains x 0x10 rows)
+_SRAM_INSTRUMENT_PARAMS    EQU $b080 ; 01:b080 - 01:b47f (0x40 instruments x 0x10 size) (see above)
+_SRAM_TABLE_TRANSPOSE      EQU $b480 ; 01:b480 - 01:b67f (0x20 tables x 0x10 rows)
+_SRAM_TABLE_CMDS_1         EQU $b680 ; 01:b680 - 01:b87f (0x20 tables x 0x10 rows)
+_SRAM_TABLE_CMD_VALUES_1   EQU $b880 ; 01:b880 - 01:ba7f (0x20 tables x 0x10 rows)
+_SRAM_TABLE_CMDS_2         EQU $ba80 ; 01:ba80 - 01:bc7f (0x20 tables x 0x10 rows)
+_SRAM_TABLE_CMD_VALUES_2   EQU $bc80 ; 01:bc80 - 01:be7f (0x20 tables x 0x10 rows)
+_SRAM_INIT_FLAG_2          EQU $be80 ; 01:be80 - 01:be81 (2 special bytes)
+_SRAM_PHRASE_ALLOC         EQU $be82 ; 01:be82 - 01:bea1 (0xff phrases x 1 bit)
+_SRAM_CHAIN_ALLOC          EQU $bea2 ; 01:bea2 - 01:beb1 (0x80 chains x 1 bit)
+_SRAM_SYNTH_PARAMS         EQU $beb2 ; 01:beb2 - 01:bfb1 (0x10 synths x 0x10 size)
+_SRAM_WORK_TIME_HOURS      EQU $bfb2 ; 01:bfb2 - 01:bfb2
+_SRAM_WORK_TIME_MINUTES    EQU $bfb3 ; 01:bfb3 - 01:bfb3
+_SRAM_TEMPO                EQU $bfb4 ; 01:bfb4 - 01:bfb4 (40-255: value, 256-295: value - 256)
+_SRAM_TRANSPOSE            EQU $bfb5 ; 01:bfb5 - 01:bfb5
+_SRAM_TOTAL_TIME_DAYS      EQU $bfb6 ; 01:bfb6 - 01:bfb6
+_SRAM_TOTAL_TIME_HOURS     EQU $bfb7 ; 01:bfb7 - 01:bfb7
+_SRAM_TOTAL_TIME_MINUTES   EQU $bfb8 ; 01:bfb8 - 01:bfb8
+_SRAM_TOTAL_TIME_CHECKSUM  EQU $bfb9 ; 01:bfb9 - 01:bfb9
+_SRAM_KEY_DELAY            EQU $bfba ; 01:bfba - 01:bfba
+_SRAM_KEY_REPEAT           EQU $bfbb ; 01:bfbb - 01:bfbb
+_SRAM_FONT                 EQU $bfbc ; 01:bfbc - 01:bfbc
+_SRAM_SYNC                 EQU $bfbd ; 01:bfbd - 01:bfbd
+_SRAM_PALETTE_NUM          EQU $bfbe ; 01:bfbe - 01:bfbe
+_SRAM_PS2_DELAY            EQU $bfbf ; 01:bfbf - 01:bfbf
+_SRAM_TICKS_PER_STEP       EQU $bfbf ; 01:bfbf - 01:bfbf
+_SRAM_CLONE_TYPE           EQU $bfc0 ; 01:bfc0 - 01:bfc0
+_SRAM_FILE_CHANGED         EQU $bfc1 ; 01:bfc1 - 01:bfc1 (first 4 bits) (unchanged: 0, changed: 1)
+                                     ; 01:bfc2 - 01:bfc2 (empty)
+_SRAM_PRELISTEN            EQU $bfc3 ; 01:bfc3 - 01:bfc3
+_SRAM_SYNTH_LOCK           EQU $bfc4 ; 01:bfc4 - 01:bfc5 (0x10 synths x 1 bit)
+_SRAM_LAST_USED_INSTRUMENT EQU $bfc6 ; 01:bfc6 - 01:bfc9 (4 channels)
+_SRAM_LAST_SAVED_HOURS     EQU $bfca ; 01:bfca - 01:bfca
+_SRAM_LAST_SAVED_MINUTES   EQU $bfcb ; 01:bfcb - 01:bfcb
+_SRAM_OVERCLOCK            EQU $bfcc ; 01:bfcc - 01:bfcc
+                                     ; 01:bfcd - 01:bfff (empty)
 
 _SRAM_PHRASE_CMDS       EQU $a000 ; 02:a000 - 02:afef (0xff phrases x 0x10 rows)
 _SRAM_PHRASE_CMD_VALUES EQU $aff0 ; 02:aff0 - 02:bfdf (0xff phrases x 0x10 rows)
-                                      ; 02:bfe0 - 02:bfff (empty)
+                                  ; 02:bfe0 - 02:bfff (empty)
 
 _SRAM_WAVE_FRAMES        EQU $a000 ; 03:a000 - 03:afff (0x10 synths x 0x10 frames x 0x10 samples) (1 sample = 1 char)
 _SRAM_PHRASE_INSTRUMENTS EQU $b000 ; 03:b000 - 03:bfef (0xff phrases x 0x10 rows)
