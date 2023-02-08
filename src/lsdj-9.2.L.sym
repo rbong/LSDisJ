@@ -3319,8 +3319,22 @@
 02:4bc5 call_02_4bc5
 02:4bc5 .code:0061
 
-02:4c26 call_02_4c26
+02:4c26 call_add_playing_phrase_note_address
+;; 02:4c26 Add to the currently playing phrase note address.
+;; 02:4c26 Also adds to the phrase unstrument and command value addresses.
+;; 02:4c26
+;; 02:4c26 Entry conditions:
+;; 02:4c26   A = value
+;; 02:4c26
+;; 02:4c26 Registers used: A, C, DE, HL
 02:4c26 .code:001c
+
+;; 02:4c27 Add to playing phrase instrument address
+;; 02:4c34 Add to playing phrase note address
+;; 02:4c3b Add to playing phrase command value address
+;; 02:4c3b Assume that the high byte is the same as playing note address
+;; 02:4c3b:op LOW(PLAYING_PHRASE_CMD_VALUE_ADDRESSES)
+;; 02:4c41 Return
 
 02:4c42 call_02_4c42
 02:4c42 .code:000c
