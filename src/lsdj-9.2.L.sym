@@ -8753,8 +8753,15 @@
 
 1c:4fa5 call_1c_4fa5
 
-1c:5077 call_1c_5077
+1c:5077 call_stop_playing_channels
+;; 1c:5077 Sets all channels to not playing.
+;; 1c:5077 Registers used: A, DE
 1c:5077 .code:001b
+
+1c:507a .jump_loop
+;; 1c:507b:op -1
+;; 1c:507e:op LOW(ARE_CHANNELS_PLAYING)
+;; 1c:5082:op HIGH(ARE_CHANNELS_PLAYING)
 
 1c:5092 data_1c_5092
 1c:5092 .data:0006
