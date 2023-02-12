@@ -7942,10 +7942,18 @@
 1b:4a79 call_1b_4a79
 1b:4a79 .code:002d
 
-1b:4aa6 call_1b_4aa6
+1b:4aa6 call_move_help_index_cursor_up
+;; 1b:4aa6 Move the help index cursor up and draw.
+;; 1b:4aa6 Registers used: A, DE, HL
+;; 1b:4aa6 -
 1b:4aa6 .code:001f
 
-;; 1b:4aa6 If help cursor row = 0, return
+;; 1b:4aa6 Check if row is 0
+;; 1b:4aae Clear current row
+;; 1b:4ab7 Decrement help cursor
+;; 1b:4abb Draw current row
+
+1b:4ac4 .jump_return
 
 1b:4ac5 call_1b_4ac5
 1b:4ac5 .code:0016
