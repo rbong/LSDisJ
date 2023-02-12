@@ -9669,24 +9669,38 @@
 1d:6370 .jump_false
 1d:6371 .jump_return
 
-1d:6375 call_1d_6375
+1d:6375 call_draw_current_synth_filter_param
+;; 1d:6375 Draws the current synth filter param.
+;; 1d:6375 Registers used: A, DE, HL
 1d:6375 .code:0038
 
-1d:63ad jump_table_1d_63ad
+;; 1d:637e Check for frame signal
+;; 1d:6387 Handle frame signal
+
+1d:6393 .jump_read_filter
+;; 1d:6393:op _FILTER_SYNTH_PARAM
+
+1d:63ad .jump_table_filter
 1d:63ad .code:004a
 
-1d:63f7 data_filter_type_strings
-1d:63f7 data_empty_filter_type_string
+1d:63bc .jump_lowpass
+1d:63c8 .jump_highpass
+1d:63d4 .jump_bandpass
+1d:63e0 .jump_allpass
+1d:63ec .jump_notch
+1d:63f5 .jump_return
+
+1d:63f7 .data_empty_filter_chars
 1d:63f7 .text:0006
-1d:63fd data_lowpass_filter_type_string
+1d:63fd .data_lowpass_filter_chars
 1d:63fd .text:0006
-1d:6403 data_highpass_filter_type_string
+1d:6403 .data_highpass_filter_chars
 1d:6403 .text:0006
-1d:6409 data_bandpass_filter_type_string
+1d:6409 .data_bandpass_filter_chars
 1d:6409 .text:0006
-1d:640f data_allpass_filter_type_string
+1d:640f .data_allpass_filter_chars
 1d:640f .text:0006
-1d:6415 data_notch_filter_type_string
+1d:6415 .data_notch_filter_chars
 1d:6415 .text:0006
 
 1d:641b call_draw_current_synth_signal_param
