@@ -965,9 +965,9 @@
 ;; 00:25e9:op BANK(call_1c_57bb)
 ;; 00:25eb:op call_1c_57bb
 
-;; 00:25f1:op BANK(call_1b_4a62)
-;; 00:25f8:op BANK(call_1b_4a62)
-;; 00:25fa:op call_1b_4a62
+;; 00:25f1:op BANK(call_draw_help_page_index)
+;; 00:25f8:op BANK(call_draw_help_page_index)
+;; 00:25fa:op call_draw_help_page_index
 
 00:25fe call_00_25fe
 
@@ -7939,7 +7939,9 @@
 1b:4a58 .jump_draw
 1b:4a61 .jump_return
 
-1b:4a62 call_1b_4a62
+1b:4a62 call_draw_help_page_index
+;; 1b:4a62 Draw the help page index.
+;; 1b:4a62 Registers used: A, DE, HL
 1b:4a62 .code:0017
 
 ;; 1b:4a63:op LOW(call_copy_current_screen_bg_tile_page)
