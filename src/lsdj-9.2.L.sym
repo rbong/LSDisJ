@@ -7776,8 +7776,15 @@
 1b:4000 call_1b_4000
 1b:4000 .code:001b
 
-1b:401b call_1b_401b
+1b:401b call_draw_help_page_index_tiles
+;; 1b:401b Draw the tiles for the help page index.
+;; 1b:401b Registers used: A, DE, HL
 1b:401b .code:003d
+
+1b:4022 .jump_draw
+;; 1b:4027:op LOW(data_help_page_index_string_lookup)
+;; 1b:402b:op HIGH(data_help_page_index_string_lookup)
+1b:4054 .jump_return
 
 1b:4058 data_help_page_index_string_lookup
 1b:4058 .data:0020
