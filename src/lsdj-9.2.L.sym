@@ -4802,10 +4802,13 @@
 ;; 03:540e:op BANK(call_1f_71cc)
 
 03:5515 jump_table_03_5515
+03:5515 .code:0246
 
 03:575b jump_table_03_575b
+03:575b .code:00b1
 
 03:580c jump_table_03_580c
+03:580c .code:0188
 
 ;; 03:582e:op call_read_current_instrument_env_1_byte_1
 ;; 03:5832:op BANK(call_read_current_instrument_env_1_byte_1)
@@ -4820,28 +4823,40 @@
 ;; 03:58e5:op BANK(call_current_instrument_has_non_flat_env_stage_1_and_2)
 
 03:5994 jump_table_03_5994
+03:5994 .code:002a
 
 03:59be jump_table_03_59be
+03:59be .code:019a
 
 03:5b58 jump_table_03_5b58
+03:5b58 .code:0298
 
 03:5df0 jump_table_03_5df0
+03:5df0 .code:030d
 
 03:60fd jump_table_03_60fd
+03:60fd .code:0159
 
 03:6256 jump_table_03_6256
+03:6256 .code:002a
 
 03:6280 jump_table_03_6280
+03:6280 .code:019b
 
 03:641b jump_table_03_641b
+03:641b .code:0291
 
 03:66ac jump_table_03_66ac
+03:66ac .code:032c
 
 03:69d8 jump_table_03_69d8
+03:69d8 .code:0139
 
 03:6b11 jump_table_03_6b11
+03:6b11 .code:061f
 
 03:7130 jump_table_03_7130
+03:7130 .code:0909
 
 ;; 03:76ea:op LOW(call_1b_4e8a)
 ;; 03:76ec:op HIGH(call_1b_4e8a)
@@ -5440,6 +5455,7 @@
 04:51ae .code:0107
 
 04:52b5 jump_table_04_52b5
+04:52b5 .code:01d8
 
 04:548d data_04_548d
 04:548d .text:0006
@@ -5533,7 +5549,7 @@
 04:5b06 .code:0048
 
 04:5b4e call_04_5b4e
-04:5b4e .code:0050
+04:5b4e .code:0178
 
 ;; 04:5b9e:op _SELECT_CURSOR_MODE
 
@@ -5541,6 +5557,7 @@
 ;; 04:5bcc:op BANK(call_restore_backup_selection)
 
 04:5cc6 jump_table_04_5cc6
+04:5cc6 .code:04aa
 
 ;; 04:5dd9:op LOW(call_1f_4a64)
 ;; 04:5ddb:op HIGH(call_1f_4a64)
@@ -5575,6 +5592,7 @@
 ;; 04:60a4:op BANK(call_read_chain_phrase)
 
 04:6170 jump_table_04_6170
+04:6170 .code:0429
 
 ;; 04:6237:op LOW(call_1f_6bc2)
 ;; 04:6239:op HIGH(call_1f_6bc2)
@@ -5585,6 +5603,7 @@
 ;; 04:63f7:op BANK(call_01_7655)
 
 04:6599 jump_table_04_6599
+04:6599 .code:0453
 
 ;; 04:6663:op LOW(call_1f_6bc2)
 ;; 04:6665:op HIGH(call_1f_6bc2)
@@ -5595,6 +5614,7 @@
 ;; 04:682a:op BANK(call_01_7655)
 
 04:69ec jump_table_04_69ec
+04:69ec .code:04bb
 
 ;; 04:6b0e:op LOW(call_1f_6bc2)
 ;; 04:6b10:op HIGH(call_1f_6bc2)
@@ -5605,6 +5625,7 @@
 ;; 04:6d03:op BANK(call_01_7655)
 
 04:6ea7 jump_table_04_6ea7
+04:6ea7 .code:05ea
 
 ;; 04:6fd4:op LOW(call_1f_6bc2)
 ;; 04:6fd6:op HIGH(call_1f_6bc2)
@@ -5633,6 +5654,7 @@
 ;; 04:745c:op _NORMAL_CURSOR_MODE
 
 04:7491 jump_table_04_7491
+04:7491 .code:032d
 
 ;; 04:772f:op _NO_CURSOR_MODE
 
@@ -5641,6 +5663,7 @@
 ;; 04:7789:op BANK(call_1f_6633)
 
 04:77be jump_table_04_77be
+04:77be .code:03dd
 
 ;; 04:77f8:op LOW(call_1f_6e7d)
 ;; 04:77fa:op HIGH(call_1f_6e7d)
@@ -6262,14 +6285,19 @@
 05:6936 .code:0031
 
 05:6967 jump_table_05_6967
+05:6967 .code:002a
 
 05:6991 jump_table_05_6991
+05:6991 .code:00cb
 
 05:6a5c jump_table_05_6a5c
+05:6a5c .code:00e0
 
 05:6b3c jump_table_05_6b3c
+05:6b3c .code:00cb
 
 05:6c07 jump_table_05_6c07
+05:6c07 .code:0097
 
 05:6c9e data_instrument_help_strings
 05:6c9e data_envelope_stage_1_instrument_help_string
@@ -8294,6 +8322,7 @@
 ;; 1b:5ed7 Banked call used for call_00_2490 unnecessarily
 
 1b:5f0f jump_table_1b_5f0f
+1b:5f0f .code:0208
 
 ;; 1b:5f5f:op LOW(call_07_5d9a)
 ;; 1b:5f61:op HIGH(call_07_5d9a)
@@ -8320,6 +8349,7 @@
 ;; 1b:60f5:op _SRAM_PRELISTEN_BANK
 
 1b:6117 jump_table_1b_6117
+1b:6117 .code:0945
 
 ;; 1b:614b:op _SRAM_PALETTE_NUM
 ;; 1b:614f:op _SRAM_PALETTE_NUM_BANK
@@ -10034,16 +10064,22 @@
 ;; 1d:722a:op BANK(call_05_7181)
 
 1d:7315 jump_table_1d_7315
+1d:7315 .code:0047
 
 1d:735c jump_table_1d_735c
+1d:735c .code:005b
 
 1d:73b7 jump_table_1d_73b7
+1d:73b7 .code:0270
 
 1d:7627 jump_table_1d_7627
+1d:7627 .code:024b
 
 1d:7872 jump_table_1d_7872
+1d:7872 .code:01a3
 
 1d:7a15 jump_table_1d_7a15
+1d:7a15 .code:037d
 
 ;; 1d:7b9a:op LOW(call_02_77e6)
 ;; 1d:7b9c:op HIGH(call_02_77e6)
@@ -10855,6 +10891,7 @@
 ;; 1f:6667:op _NORMAL_CURSOR_MODE
 
 1f:6738 jump_table_1f_6738
+1f:6738 .code:0395
 
 ;; 1f:6764:op LOW(call_read_current_phrase_note)
 ;; 1f:6767:op HIGH(call_read_current_phrase_note)
