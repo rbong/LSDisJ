@@ -3309,13 +3309,12 @@
 02:494d .code:023d
 
 02:4b8a call_write_current_channel_chain_transpose
-;; 02:4b8a Write the current transpose for the current channel chain row.
+;; 02:4b8a Write the current transpose for the playing channel chain row.
 ;; 02:4b8a
 ;; 02:4b8a Entry conditions:
 ;; 02:4b8a   CURRENT_CHANNEL must be set.
-;; 02:4b8a   CURRENT_CHANNEL_CHAIN_ROW must be set.
-;; 02:4b8a   CURRENT_*_CHAIN must be set for the current channel.
-;; 02:4b8a   CURRENT_*_CHAIN_ROW must be set for the current channel.
+;; 02:4b8a   PLAYING_*_CHAIN must be set for the current channel.
+;; 02:4b8a   PLAYING_*_CHAIN_ROW must be set for the current channel.
 ;; 02:4b8a   CURRENT_*_TRANSPOSE must be set for the current channel.
 ;; 02:4b8a
 ;; 02:4b8a Exit conditions:
@@ -3326,7 +3325,7 @@
 
 ;; 02:4b8a Calculate the transpose address in SRAM
 ;; 02:4b9e:op _SRAM_CHAIN_TRANSPOSES
-;; 02:4ba2:op HIGH(CURRENT_CHAIN_ROWS)
+;; 02:4ba2:op HIGH(PLAYING_CHAIN_ROWS)
 
 ;; 02:4bab Prepare for SRAM read
 ;; 02:4bab:op _SRAM_CHAIN_TRANSPOSES_BANK
@@ -3513,7 +3512,7 @@
 ;; 02:5423 Entry conditions:
 ;; 02:5423   CURRENT_CHANNEL must be set to the target channel.
 ;; 02:5423   PLAYING_*_PHRASE_NOTE_ADDRESS must be set to the target note for the channel.
-;; 02:5423   CURRENT_CHANNEL_CURRENT_NOTE must be set to the target address.
+;; 02:5423   CURRENT_CHANNEL_CURRENT_NOTE_ADDRESS must be set to the target address.
 ;; 02:5423
 ;; 02:5423 Exit conditions:
 ;; 02:5423   Interrupts will be enabled.
@@ -3639,13 +3638,13 @@
 ;; 02:5e6e:op rRAMG
 ;; 02:5e73:op rRAMG
 
-02:5e77 call_get_current_channel_song_chain
-;; 02:5e77 Get the chain for the current row in the current channel on the song screen.
+02:5e77 call_get_playing_channel_song_chain
+;; 02:5e77 Get the chain for the currently playing row in the current channel on the song screen.
 ;; 02:5e77 Returns $ff when the row number is not valid.
 ;; 02:5e77
 ;; 02:5e77 Entry conditions:
 ;; 02:5e77   CURRENT_CHANNEL must be set.
-;; 02:5e77   CURRENT_SONG_ROWS + CURRENT_CHANNEL must be set.
+;; 02:5e77   PLAYING_SONG_ROWS + CURRENT_CHANNEL must be set.
 ;; 02:5e77
 ;; 02:5e77 Exit conditions:
 ;; 02:5e77   Interrupts will be enabled if the row was valid.
@@ -3655,7 +3654,7 @@
 ;; 02:5e77 Registers used: A, DE, HL
 ;; 02:5e77 -
 
-;; 02:5e77 Get the current song row for the current channel
+;; 02:5e77 Get the playing song row for the current channel
 
 ;; 02:5e7e Check if row is valid
 ;; 02:5e80:op _SONG_ROWS
@@ -3664,7 +3663,7 @@
 
 02:5e87 .jump_write
 
-;; 02:5e87 Calculate the song chain address for current channel row
+;; 02:5e87 Calculate the song chain address for playing channel row
 
 ;; 02:5e8f:op _SRAM_SONG_CHAINS
 ;; 02:5e93:op _SRAM_SONG_CHAINS_BANK
@@ -3765,7 +3764,113 @@
 
 02:6aa0 call_02_6aa0
 
-02:6abf call_02_6abf
+02:6abf call_start_playing_live_channel
+;; 02:6abf Start playing the next live channel row when nothing else is playing.
+;; 02:6abf If no chain is on the queued row, finds the a chain on some previous row.
+;; 02:6abf If no chain is on the row or any previous row, the channel will stop playing.
+;; 02:6abf
+;; 02:6abf Entry conditions:
+;; 02:6abf   LIVE_NEXT_*_SONG_ROW must be set for the current channel.
+;; 02:6abf
+;; 02:6abf Registers used: A, DE, HL
+
+;; 02:6ac2 Check if live song row is queued
+;; 02:6ac5:op LOW(LIVE_NEXT_SONG_ROWS)
+;; 02:6ac9:op HIGH(LIVE_NEXT_SONG_ROWS)
+
+;; 02:6ad5 No row queued, return
+
+02:6ad8 .jump_set_defaults
+
+;; 02:6ad8 Set channel note countdown to 0
+;; 02:6adb:op LOW(NOTE_COUNTDOWNS)
+;; 02:6adf:op HIGH(NOTE_COUNTDOWNS)
+
+;; 02:6ae7 Set channel groove row to $ff
+;; 02:6ae7:op LOW(PLAYING_GROOVE_ROWS)
+;; 02:6aeb:op HIGH(PLAYING_GROOVE_ROWS)
+
+;; 02:6af3 Set channel table row 1 to $ff
+;; 02:6af3:op LOW(PLAYING_TABLE_ROWS_1)
+;; 02:6af7:op HIGH(PLAYING_TABLE_ROWS_1)
+
+;; 02:6aff Set channel table to $ff
+;; 02:6aff:op LOW(PLAYING_TABLES)
+;; 02:6b03:op HIGH(PLAYING_TABLES)
+
+;; 02:6b0b Set playing channel phrase row to $ff
+;; 02:6b0b:op LOW(PLAYING_PHRASE_ROWS)
+;; 02:6b0f:op HIGH(PLAYING_PHRASE_ROWS)
+
+;; 02:6b17 Set $c214 + channel to 0
+
+;; 02:6b23 Set channel table countdown to 0
+;; 02:6b28:op LOW(TABLE_COUNTDOWNS - 4)
+;; 02:6b2c:op HIGH(TABLE_COUNTDOWNS - 4)
+
+;; 02:6b34 Set has played table to 0
+;; 02:6b39:op LOW(HAS_PLAYED_CHANNEL_TABLES - 4)
+;; 02:6b3d:op HIGH(HAS_PLAYED_CHANNEL_TABLES - 4)
+
+;; 02:6b45 Set $c15c + channel to $ff
+
+;; 02:6b56 Set channel table row 2 to $ff
+;; 02:6b5b:op LOW(PLAYING_TABLE_ROWS_2 - 4)
+;; 02:6b5f:op HIGH(PLAYING_TABLE_ROWS_2 - 4)
+
+;; 02:6b67 Set playing channel chain to chain on queued row
+
+;; 02:6b77:op LOW(LIVE_NEXT_SONG_ROWS)
+;; 02:6b7b:op HIGH(LIVE_NEXT_SONG_ROWS)
+
+;; 02:6b98:op LOW(LIVE_NEXT_SONG_ROWS)
+;; 02:6b9c:op HIGH(LIVE_NEXT_SONG_ROWS)
+
+02:6bb6 .jump_find_non_empty_row
+;; 02:6bb6 Check if queued channel row has a chain
+
+;; 02:6bb9:op LOW(PLAYING_CHAINS)
+;; 02:6bbd:op HIGH(PLAYING_CHAINS)
+
+;; 02:6bc6 Chain found
+
+;; 02:6bcc:op LOW(PLAYING_SONG_ROWS)
+;; 02:6bd0:op HIGH(PLAYING_SONG_ROWS)
+
+;; 02:6bd8 First song row, no chain found
+
+;; 02:6bdb Decrement row, read chain, then loop
+;; 02:6bf3:op -1
+
+;; 02:6c0b:op LOW(PLAYING_SONG_ROWS)
+;; 02:6c0f:op HIGH(PLAYING_SONG_ROWS)
+
+02:6c2c .jump_set_channel_not_playing
+;; 02:6c2c Check if final row has chain
+
+;; 02:6c2f:op LOW(PLAYING_CHAINS)
+;; 02:6c33:op HIGH(PLAYING_CHAINS)
+
+;; 02:6c3f No chain, set channel to not playing
+
+;; 02:6c42:op LOW(ARE_CHANNELS_PLAYING)
+;; 02:6c46:op HIGH(ARE_CHANNELS_PLAYING)
+
+02:6c51 .jump_set_channel_playing
+
+;; 02:6c54:op LOW(ARE_CHANNELS_PLAYING)
+;; 02:6c58:op HIGH(ARE_CHANNELS_PLAYING)
+
+;; 02:6c60 Set playing channel chain row to $ff
+;; 02:6c60:op LOW(PLAYING_CHAIN_ROWS)
+;; 02:6c64:op HIGH(PLAYING_CHAIN_ROWS)
+
+;; 02:6c6c Set playing channel phrase to first chain phrase
+
+;; 02:6c79:op LOW(PLAYING_CHAINS)
+;; 02:6c7d:op HIGH(PLAYING_CHAINS)
+
+02:6c98 .jump_return
 
 02:6c9c call_02_6c9c
 
@@ -11010,6 +11115,22 @@
 00:c152 WAV_GROOVE_1
 00:c153 NOI_GROOVE_1
 
+00:c154 HAS_PLAYED_CHANNEL_TABLES
+00:c154 HAS_PLAYED_PU1_TABLE
+;; 00:c154 Set to 0 if a table has not played yet in the pulse 1 channel, set to $20 if a table has played
+00:c155 HAS_PLAYED_PU2_TABLE
+;; 00:c155 Set to 0 if a table has not played yet in the pulse 2 channel, set to $20 if a table has played
+00:c156 HAS_PLAYED_WAV_TABLE
+;; 00:c156 Set to 0 if a table has not played yet in the wave channel, set to $20 if a table has played
+00:c157 HAS_PLAYED_NOI_TABLE
+;; 00:c157 Set to 0 if a table has not played yet in the noise channel, set to $20 if a table has played
+
+00:c158 PLAYING_GROOVE_ROWS
+00:c158 PLAYING_PU1_GROOVE_ROW
+00:c159 PLAYING_PU2_GROOVE_ROW
+00:c15a PLAYING_WAV_GROOVE_ROW
+00:c15b PLAYING_NOI_GROOVE_ROW
+
 00:c160 NOTE_COUNTDOWNS
 00:c160 PU1_NOTE_COUNTDOWN
 ;; 00:c160 Counts down the time the current note has been playing on the pulse 1 channel. Resets to 0 when the next note starts
@@ -11020,35 +11141,63 @@
 00:c163 NOI_NOTE_COUNTDOWN
 ;; 00:c163 Counts down the time the current note has been playing on the noise channel. Resets to 0 when the next note starts
 
+00:c164 TABLE_COUNTDOWNS
+00:c164 PU1_TABLE_COUNTDOWN
+;; 00:c164 Counts down the time the current table has been playing on the pulse 1 channel.
+00:c165 PU2_TABLE_COUNTDOWN
+;; 00:c165 Counts down the time the current table has been playing on the pulse 2 channel.
+00:c166 WAV_TABLE_COUNTDOWN
+;; 00:c166 Counts down the time the current table has been playing on the wave channel.
+00:c167 NOI_TABLE_COUNTDOWN
+;; 00:c167 Counts down the time the current table has been playing on the noise channel.
+
 00:c168 PLAYING_PHRASES
 00:c168 PLAYING_PU1_PHRASE
 00:c169 PLAYING_PU2_PHRASE
 00:c16a PLAYING_WAV_PHRASE
 00:c16b PLAYING_NOI_PHRASE
 
-00:c16c CURRENT_PHRASE_ROWS
-00:c16c CURRENT_PU1_PHRASE_ROW
-00:c16d CURRENT_PU2_PHRASE_ROW
-00:c16e CURRENT_WAV_PHRASE_ROW
-00:c16f CURRENT_NOI_PHRASE_ROW
+00:c16c PLAYING_PHRASE_ROWS
+00:c16c PLAYING_PU1_PHRASE_ROW
+00:c16d PLAYING_PU2_PHRASE_ROW
+00:c16e PLAYING_WAV_PHRASE_ROW
+00:c16f PLAYING_NOI_PHRASE_ROW
 
-00:c170 CURRENT_CHAINS
-00:c170 CURRENT_PU1_CHAIN
-00:c171 CURRENT_PU2_CHAIN
-00:c172 CURRENT_WAV_CHAIN
-00:c173 CURRENT_NOI_CHAIN
+00:c170 PLAYING_CHAINS
+00:c170 PLAYING_PU1_CHAIN
+00:c171 PLAYING_PU2_CHAIN
+00:c172 PLAYING_WAV_CHAIN
+00:c173 PLAYING_NOI_CHAIN
 
-00:c17c CURRENT_CHAIN_ROWS
-00:c17c CURRENT_PU1_CHAIN_ROW
-00:c17d CURRENT_PU2_CHAIN_ROW
-00:c17e CURRENT_WAV_CHAIN_ROW
-00:c17f CURRENT_NOI_CHAIN_ROW
+00:c17c PLAYING_CHAIN_ROWS
+00:c17c PLAYING_PU1_CHAIN_ROW
+00:c17d PLAYING_PU2_CHAIN_ROW
+00:c17e PLAYING_WAV_CHAIN_ROW
+00:c17f PLAYING_NOI_CHAIN_ROW
 
-00:c200 CURRENT_SONG_ROWS
-00:c200 CURRENT_PU1_SONG_ROW
-00:c201 CURRENT_PU2_SONG_ROW
-00:c202 CURRENT_WAV_SONG_ROW
-00:c203 CURRENT_NOI_SONG_ROW
+00:c200 PLAYING_SONG_ROWS
+00:c200 PLAYING_PU1_SONG_ROW
+00:c201 PLAYING_PU2_SONG_ROW
+00:c202 PLAYING_WAV_SONG_ROW
+00:c203 PLAYING_NOI_SONG_ROW
+
+00:c204 PLAYING_TABLES
+00:c204 PLAYING_PU1_TABLE
+00:c205 PLAYING_PU2_TABLE
+00:c206 PLAYING_WAV_TABLE
+00:c207 PLAYING_NOI_TABLE
+
+00:c208 PLAYING_TABLE_ROWS_1
+00:c208 PLAYING_PU1_TABLE_ROW_1
+00:c209 PLAYING_PU2_TABLE_ROW_1
+00:c20a PLAYING_WAV_TABLE_ROW_1
+00:c20b PLAYING_NOI_TABLE_ROW_1
+
+00:c20c PLAYING_TABLE_ROWS_2
+00:c20c PLAYING_PU1_TABLE_ROW_2
+00:c20d PLAYING_PU2_TABLE_ROW_2
+00:c20e PLAYING_WAV_TABLE_ROW_2
+00:c20f PLAYING_NOI_TABLE_ROW_2
 
 00:c210 CURRENT_INSTRS
 00:c210 CURRENT_PU1_INSTR
@@ -11056,11 +11205,11 @@
 00:c212 CURRENT_WAV_INSTR
 00:c213 CURRENT_NOI_INSTR
 
-00:c2fc LIVE_NEXT_CHAINS
-00:c2fc LIVE_NEXT_PU1_CHAIN
-00:c2fd LIVE_NEXT_PU2_CHAIN
-00:c2fe LIVE_NEXT_WAV_CHAIN
-00:c2ff LIVE_NEXT_NOI_CHAIN
+00:c2fc LIVE_NEXT_SONG_ROWS
+00:c2fc LIVE_NEXT_PU1_SONG_ROW
+00:c2fd LIVE_NEXT_PU2_SONG_ROW
+00:c2fe LIVE_NEXT_WAV_SONG_ROW
+00:c2ff LIVE_NEXT_NOI_SONG_ROW
 
 00:c36b CHANNEL_GROOVES_2
 00:c36b PU1_GROOVE_2
@@ -11226,7 +11375,7 @@
 ;; 00:c7ae Set to 1 when handling an exception
 
 00:c8de CURRENT_CHANNEL_CHAIN_ROW_ADDRESS
-;; 00:c8de The address of the currently current chain for the current channel
+;; 00:c8de The address of the currently playing chain for the current channel
 
 00:c8e0 CURRENT_CHANNEL_PHRASE_ROW_ADDRESS
 ;; 00:c8e0 The address of the currently playing phrase row for the current channel
