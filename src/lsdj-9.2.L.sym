@@ -11289,6 +11289,18 @@
 00:c409 KEY_CHANGE_START
 ;; 00:c409 Set to 0 when a button change has first occurred, then 1 afterwards
 
+00:c40a A_PRESS_ENABLED
+;; 00:c40a Whether plain A presses are enabled.
+
+00:c40b SELECT_MODIFIER
+;; 00:c40b Whether the select button modifier is enabled.
+
+00:c40c SONG_CURSOR_LR_DISABLED
+;; 00:c40c Whether left/right is disabled for the song cursor.
+
+00:c40d KIT_CLIP_LR_ENABLED
+;; 00:c40d Whether left/right is enabled for the kit clip instrument param.
+
 00:c40e SELECTION_START_COL
 00:c40f SELECTION_START_ROW
 
