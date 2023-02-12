@@ -7939,8 +7939,20 @@
 ;; 1b:4a65:op HIGH(call_copy_current_screen_bg_tile_page)
 ;; 1b:4a68:op BANK(call_copy_current_screen_bg_tile_page)
 
-1b:4a79 call_1b_4a79
+1b:4a79 call_move_help_index_cursor_down
+;; 1b:4a79 Move the help index cursor down and draw.
+;; 1b:4a79 Registers used: A, DE, HL
 1b:4a79 .code:002d
+
+;; 1b:4a7a Check if row is at bottom
+
+1b:4a8e .jump_draw
+
+;; 1b:4a8e Clear current row
+;; 1b:4a97 Increment help cursor
+;; 1b:4a9b Draw current row
+
+1b:4aa4 .jump_return
 
 1b:4aa6 call_move_help_index_cursor_up
 ;; 1b:4aa6 Move the help index cursor up and draw.
