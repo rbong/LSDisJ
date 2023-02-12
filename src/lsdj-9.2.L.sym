@@ -7892,8 +7892,8 @@
 1b:4971 data_mute_help_page_string
 1b:4971 .text:0087
 
-1b:49f8 call_draw_help_index_index
-;; 1b:49f8 Draw the background for a cursor row.
+1b:49f8 call_draw_help_index_cursor
+;; 1b:49f8 Draw the cursor on the help index.
 ;; 1b:49f8
 ;; 1b:49f8 Args: clear
 ;; 1b:49f8
@@ -7944,6 +7944,8 @@
 
 1b:4aa6 call_1b_4aa6
 1b:4aa6 .code:001f
+
+;; 1b:4aa6 If help cursor row = 0, return
 
 1b:4ac5 call_1b_4ac5
 1b:4ac5 .code:0016
