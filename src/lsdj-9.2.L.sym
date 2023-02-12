@@ -7854,15 +7854,25 @@
 
 1b:407a data_help_page_lookup
 1b:407a .data:001e
+1b:407a data_song_help_page_lookup
 ;; 1b:407a:replace:0002 dw data_song_help_page_string                  ; 1b:407a
+1b:407c data_live_help_page_lookup
 ;; 1b:407c:replace:0002 dw data_live_help_page_string                  ; 1b:407c
+1b:407e data_chain_help_page_lookup
 ;; 1b:407e:replace:0002 dw data_chain_help_page_string                 ; 1b:407e
+1b:4080 data_phrase_help_page_lookup
 ;; 1b:4080:replace:0002 dw data_phrase_help_page_string                ; 1b:4080
+1b:4082 data_instrument_help_page_lookup
 ;; 1b:4082:replace:0002 dw data_instrument_help_page_string            ; 1b:4082
+1b:4084 data_groove_help_page_lookup
 ;; 1b:4084:replace:0002 dw data_groove_help_page_string                ; 1b:4084
+1b:4086 data_wave_help_page_lookup
 ;; 1b:4086:replace:0002 dw data_wave_help_page_string                  ; 1b:4086
+1b:4088 data_command_list_help_page_lookup
 ;; 1b:4088:replace:0002 dw data_command_list_help_page_string          ; 1b:4088
+1b:408a data_select_help_page_lookup
 ;; 1b:408a:replace:0002 dw data_select_help_page_string                ; 1b:408a
+1b:408c data_mute_help_page_lookup
 ;; 1b:408c:replace:0002 dw data_mute_help_page_string                  ; 1b:408c
 
 1b:408e data_help_page_index_cursor_row_lookup
@@ -8025,8 +8035,18 @@
 1b:4b6d call_1b_4b6d
 1b:4b6d .code:0042
 
-1b:4baf data_1b_4baf
+1b:4baf data_help_page_lookup_lookup
 1b:4baf .data:0014
+;; 1b:4baf:replace:0002 dw data_song_help_page_lookup            ; 1b:4baf
+;; 1b:4bb1:replace:0002 dw data_chain_help_page_lookup           ; 1b:4bb1
+;; 1b:4bb3:replace:0002 dw data_phrase_help_page_lookup          ; 1b:4bb3
+;; 1b:4bb5:replace:0002 dw data_instrument_help_page_lookup      ; 1b:4bb5
+;; 1b:4bb7:replace:0002 dw data_groove_help_page_lookup          ; 1b:4bb7
+;; 1b:4bb9:replace:0002 dw data_wave_help_page_lookup            ; 1b:4bb9
+;; 1b:4bbb:replace:0002 dw data_command_list_help_page_lookup    ; 1b:4bbb
+;; 1b:4bbd:replace:0002 dw data_live_help_page_lookup            ; 1b:4bbd
+;; 1b:4bbf:replace:0002 dw data_select_help_page_lookup          ; 1b:4bbf
+;; 1b:4bc1:replace:0002 dw data_mute_help_page_lookup            ; 1b:4bc1
 
 1b:4bc3 call_1b_4bc3
 1b:4bc3 .code:006d
