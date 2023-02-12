@@ -7986,7 +7986,9 @@
 ;; 1b:4ad0 Unused bank for call_00_2490
 ;; 1b:4ad4 Banked call used for call_00_2490 unnecessarily
 
-1b:4adb call_1b_4adb
+1b:4adb call_open_help_page_index
+;; 1b:4adb Open the help page index.
+;; 1b:4adb Registers used: A, DE, HL
 1b:4adb .code:000c
 
 1b:4ae7 call_1b_4ae7
