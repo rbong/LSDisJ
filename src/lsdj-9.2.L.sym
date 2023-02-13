@@ -8888,6 +8888,7 @@
 1b:5782 call_save_sync
 ;; 1b:5782 Save the current sync value to SRAM.
 ;; 1b:5782 Registers used: A, DE, HL
+;; 1b:5782 Result: E
 1b:5782 .code:0014
 
 ;; 1b:5788:op _SRAM_SYNC
@@ -8917,8 +8918,19 @@
 1b:5876 call_1b_5876
 1b:5876 .code:0020
 
-1b:5896 call_1b_5896
+1b:5896 call_has_keyboard_or_analog_sync
+;; 1b:5896 Returns true if the current sync is keyboard or analog in/out.
+;; 1b:5896 Registers used: A, e, HL
+;; 1b:5896 Result: E
 1b:5896 .code:001b
+
+;; 1b:589a:op _SYNC_KEYBOARD
+;; 1b:589f:op _SYNC_ANALOG_IN
+;; 1b:58a4:op _SYNC_ANALOG_OUT
+
+1b:58a9 .jump_true
+1b:58ae .jump_false
+1b:58b0 .jump_return
 
 1b:58b1 call_1b_58b1
 1b:58b1 .code:0106
