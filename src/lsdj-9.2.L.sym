@@ -4973,8 +4973,8 @@
 ;; 03:4e21:op HIGH(call_1f_7087)
 ;; 03:4e24:op BANK(call_1f_7087)
 
-;; 03:4e36:op call_1f_4929
-;; 03:4e3a:op BANK(call_1f_4929)
+;; 03:4e36:op call_alloc_init_instrument
+;; 03:4e3a:op BANK(call_alloc_init_instrument)
 
 ;; 03:4ecd:op LOW(call_01_493b)
 ;; 03:4ecf:op HIGH(call_01_493b)
@@ -11314,17 +11314,49 @@
 1f:4919 data_default_wave_frame_4
 1f:4919 .data:0010
 
-1f:4929 call_1f_4929
+1f:4929 call_alloc_init_instrument
+;; 1f:4929 Allocate an instrument and set default params.
+;; 1f:4929 Does nothing if already allocated.
+;; 1f:4929 Registers used: A, DE, HL
+;; 1f:4929 Result: E
 1f:4929 .code:00d8
+
+;; 1f:492c Check if instrument is valid
+
+1f:4937 .jump_check_alloc
 ;; 1f:493c:op _SRAM_INSTRUMENT_ALLOC
 ;; 1f:494b:op _SRAM_INSTRUMENT_ALLOC_BANK
 
-1f:4a01 data_instrument_param_defaults
-1f:4a01 data_pulse_instrument_param_defaults
+1f:495f .jump_write_alloc
+;; 1f:4969:op _SRAM_INSTRUMENT_ALLOC_BANK
+
+;; 1f:4972 Check song cursor column
+;; 1f:4976:op _WAVE_CHANNEL
+;; 1f:497b:op _NOISE_CHANNEL
+
+1f:4983 .jump_wave
+
+1f:4995 .jump_noise
+
+1f:49a7 .jump_pulse
+
+1f:49b6 .jump_init_loop
+
+1f:49bd .jump_check_remaining_params
+
+1f:49d0 .jump_write_param
+
+1f:49f8 .jump_next_loop
+
+1f:49fb .jump_return_true
+
+1f:49fd .jump_return
+
+1f:4a01 .data_pulse_defaults
 1f:4a01 .data:000b
-1f:4a0c data_noise_instrument_param_defaults
+1f:4a0c .data_noise_defaults
 1f:4a0c .data:000b
-1f:4a17 data_wave_instrument_param_defaults
+1f:4a17 .data_wave_defaults
 1f:4a17 .data:000e
 
 1f:4a25 call_1f_4a25
