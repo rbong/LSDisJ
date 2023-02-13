@@ -8958,8 +8958,17 @@
 1b:5b06 data_1b_5b06
 1b:5b06 .text:0003
 
-1b:5b09 call_1b_5b09
+1b:5b09 call_has_non_midi_or_analog_sync
+;; 1b:5b09 Returns true if the current sync is not MIDI or analog in/out.
+;; 1b:5b09 Registers used: A, E, HL
 1b:5b09 .code:001a
+
+;; 1b:5b11:op _SYNC_LSDJ
+;; 1b:5b16:op _SYNC_KEYBOARD
+
+1b:5b1b .jump_true
+1b:5b20 .jump_false
+1b:5b22 .jump_return
 
 1b:5b23 call_1b_5b23
 1b:5b23 .code:0033
