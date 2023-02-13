@@ -3861,7 +3861,16 @@
 ;; 02:62e3:op LOW(ram_00_c34e)
 ;; 02:62e7:op HIGH(ram_00_c34e)
 
-02:6441 call_02_6441
+02:6441 call_rand_char_range
+;; 02:6441 Get a random char between 0 and a value.
+;; 02:6441 Args: value
+;; 02:6441 Registers used: A, DE, HL
+;; 02:6441 Result: E
+
+02:644e .jump_rand
+;; 02:6452 Calculate random % (value + 1)
+
+02:6463 .jump_return
 
 02:6465 call_02_6465
 02:6465 .code:00da
