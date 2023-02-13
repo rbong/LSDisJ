@@ -3755,7 +3755,19 @@
 ;; 02:58cd:op rRAMG
 ;; 02:58fa:op rRAMG
 
-02:5e46 call_02_5e46
+02:5e46 call_read_sram_playing_chain_row_phrase
+;; 02:5e46 Read the phrase on the playing chain row from SRAM
+;; 02:5e46 Registers used: A, C, DE, HL
+;; 02:5e46 Result: E
+;; 02:5e46 -
+
+;; 02:5e46 Read playing chain row
+;; 02:5e46:op HIGH(PLAYING_CHAIN_ROWS)
+
+;; 02:5e4d Read playing chain
+
+;; 02:5e55 Read chain phrase from SRAM
+
 ;; 02:5e62:op _SRAM_CHAIN_PHRASES
 ;; 02:5e66:op _SRAM_CHAIN_PHRASES_BANK
 ;; 02:5e68:op rRAMB
