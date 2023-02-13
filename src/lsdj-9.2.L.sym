@@ -8994,15 +8994,22 @@
 1b:5b20 .jump_false
 1b:5b22 .jump_return
 
-1b:5b23 call_1b_5b23
+1b:5b23 call_draw_prelisten_string
+;; 1b:5b23 Draws the prelisten string.
+;; 1b:5b23 Entry conditions: BG_MAP_ATTR_TARGET must be est.
+;; 1b:5b23 Registers used: A, DE, HL
 1b:5b23 .code:0033
 
-1b:5b56 data_prelisten_strings
-1b:5b56 data_prelisten_on_string
+1b:5b3d .jump_off
+1b:5b42 .jump_draw
+1b:5b4b .jump_na
+1b:5b54 .jump_return
+
+1b:5b56 .data_on_string
 1b:5b56 .text:0004
-1b:5b5a data_prelisten_off_string
+1b:5b5a .data_off_string
 1b:5b5a .text:0004
-1b:5b5e data_prelisten_na_string
+1b:5b5e .data_na_string
 1b:5b5e .text:0004
 
 1b:5b62 call_1b_5b62
@@ -12862,7 +12869,7 @@
 00:c56c ram_00_c56c
 00:c56d ram_00_c56d
 00:c56e ram_00_c56e
-00:c56f ram_00_c56f
+00:c56f PRELISTEN
 
 00:c570 CURRENT_KEY_PRESS_COUNT
 00:c571 TOTAL_KEY_PRESS_COUNT
