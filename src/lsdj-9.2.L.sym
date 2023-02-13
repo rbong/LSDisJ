@@ -3376,8 +3376,16 @@
 02:47a2 data_02_47a2
 02:47a2 .data:009d
 
-02:483f call_02_483f
+02:483f call_increment_current_channel_phrase_addresses
+;; 02:483f Increment addresses for the current channel relating to phrases.
+;; 02:483f Registers used: A, DE, HL
 02:483f .code:001b
+
+;; 02:483f:op HIGH(PLAYING_PHRASE_ROWS)
+;; 02:4851 Assume high byte is the same as PLAYING_PHRASE_INSTRUMENT_ADDRESSES
+;; 02:4851:op LOW(PLAYING_PHRASE_NOTE_ADDRESSES)
+;; 02:4855 Assume high byte is the same as PLAYING_PHRASE_INSTRUMENT_ADDRESSES
+;; 02:4855:op LOW(PLAYING_PHRASE_CMD_VALUE_ADDRESSES)
 
 02:485a call_02_485a
 02:485a .code:0024
