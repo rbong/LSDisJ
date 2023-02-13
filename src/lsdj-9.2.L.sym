@@ -325,6 +325,9 @@
 00:0b43 call_00_0b43
 00:0b43 .code:00aa
 
+;; 00:0bb7:op LOW(ram_00_c9f3)
+;; 00:0bbb:op HIGH(ram_00_c9f3)
+
 00:0bed call_banked_call_old
 ;; 00:0bed Call a subroutine in another bank.
 ;; 00:0bed This version of call_banked_call uses extra instructions.
@@ -459,9 +462,15 @@
 ;; 00:0f7a:op BANK(call_write_phrase_alloc)
 ;; 00:0f81:op call_write_phrase_alloc
 
+;; 00:0f8a:op LOW(DEFAULT_CHAIN_PHRASES)
+;; 00:0f8e:op HIGH(DEFAULT_CHAIN_PHRASES)
+
 ;; 00:0fc4:op BANK(call_write_chain_alloc)
 ;; 00:0fcb:op BANK(call_write_chain_alloc)
 ;; 00:0fd2:op call_write_chain_alloc
+
+;; 00:0fdb:op LOW(ram_00_c450)
+;; 00:0fdf:op HIGH(ram_00_c450)
 
 ;; 00:0ff0:op BANK(call_1f_4a25)
 ;; 00:0ff7:op BANK(call_1f_4a25)
@@ -485,6 +494,9 @@
 ;; 00:10d8:op BANK(call_write_table_command)
 ;; 00:10df:op BANK(call_write_table_command)
 ;; 00:10f9:op call_write_table_command
+
+;; 00:1102:op LOW(DEFAULT_CMDS)
+;; 00:1106:op HIGH(DEFAULT_CMDS)
 
 ;; 00:1128:op BANK(call_1d_4d5f)
 ;; 00:112f:op BANK(call_1d_4d5f)
@@ -747,11 +759,23 @@
 
 00:1d54 call_00_1d54
 
+;; 00:1d74:op LOW(LIVE_NEXT_SONG_ROWS)
+;; 00:1d78:op HIGH(LIVE_NEXT_SONG_ROWS)
+
+;; 00:1d80:op LOW(ram_00_c304)
+;; 00:1d84:op HIGH(ram_00_c304)
+
+;; 00:1d8c:op LOW(ARE_CHANNELS_PLAYING)
+;; 00:1d90:op HIGH(ARE_CHANNELS_PLAYING)
+
 ;; 00:1d99:op BANK(call_02_5f28)
 ;; 00:1da0:op BANK(call_02_5f28)
 ;; 00:1da2:op call_02_5f28
 
 ;; 00:1daa:op _SONG_SCREEN
+
+;; 00:1db2:op LOW(PLAYING_SONG_ROWS)
+;; 00:1db6:op HIGH(PLAYING_SONG_ROWS)
 
 ;; 00:1e16:op BANK(call_02_7b9b)
 ;; 00:1e1d:op BANK(call_02_7b9b)
@@ -1015,21 +1039,85 @@
 ;; 00:26e3:op _FILE_SCREEN
 ;; 00:26e8:op _HELP_SCREEN
 
+;; 00:2709:op LOW(MOD_PU1_TYPE)
+;; 00:270d:op HIGH(MOD_PU1_TYPE)
+
 ;; 00:271e:op _SONG_SCREEN
+
+;; 00:2735:op LOW(MOD_PU1_TYPE)
+;; 00:2739:op HIGH(MOD_PU1_TYPE)
+
+;; 00:274a:op LOW(MOD_PU1_TYPE)
+;; 00:274e:op HIGH(MOD_PU1_TYPE)
+
+;; 00:2788:op LOW(MOD_PU1_FLAG)
+;; 00:278c:op HIGH(MOD_PU1_FLAG)
+
+;; 00:279b:op LOW(MOD_PU1_FLAG)
+;; 00:279f:op HIGH(MOD_PU1_FLAG)
 
 ;; 00:27a8:op BANK(call_02_6171)
 ;; 00:27af:op BANK(call_02_6171)
+
+;; 00:27b4:op LOW(MOD_PU1_TYPE)
+;; 00:27b8:op HIGH(MOD_PU1_TYPE)
+
 ;; 00:27c1:op call_02_6171
+
+;; 00:27c9:op LOW(MOD_PU1_FLAG)
+;; 00:27cd:op HIGH(MOD_PU1_FLAG)
 
 ;; 00:27d9:op BANK(call_1f_6ff1)
 ;; 00:27e0:op BANK(call_1f_6ff1)
 ;; 00:27e2:op call_1f_6ff1
+
+;; 00:2820:op LOW(MOD_PU1_FLAG)
+;; 00:2824:op HIGH(MOD_PU1_FLAG)
+
+;; 00:282d:op LOW(MOD_PU1_TYPE)
+;; 00:2831:op HIGH(MOD_PU1_TYPE)
+
+;; 00:284f:op LOW(MOD_PU1_TYPE)
+;; 00:2853:op HIGH(MOD_PU1_TYPE)
+
+;; 00:2863:op LOW(MOD_PU1_TYPE)
+;; 00:2867:op HIGH(MOD_PU1_TYPE)
+
+;; 00:287b:op LOW(MOD_PU1_FLAG)
+;; 00:287f:op HIGH(MOD_PU1_FLAG)
+
+;; 00:28ac:op LOW(MOD_PU1_FLAG)
+;; 00:28b0:op HIGH(MOD_PU1_FLAG)
+
+;; 00:28c2:op LOW(MOD_PU1_FLAG)
+;; 00:28c6:op HIGH(MOD_PU1_FLAG)
 
 ;; 00:28d4:op BANK(call_1f_6ff1)
 ;; 00:28db:op BANK(call_1f_6ff1)
 ;; 00:28dd:op call_1f_6ff1
 
 ;; 00:28ee:op _SELECT_CURSOR_MODE
+
+;; 00:2956:op LOW(MOD_PU1_TYPE)
+;; 00:295a:op HIGH(MOD_PU1_TYPE)
+
+;; 00:2962:op LOW(ram_00_c0a8)
+;; 00:2966:op HIGH(ram_00_c0a8)
+
+;; 00:297d:op LOW(MOD_PU1_FLAG)
+;; 00:2981:op HIGH(MOD_PU1_FLAG)
+
+;; 00:29a9:op LOW(ram_00_c0a8)
+;; 00:29ad:op HIGH(ram_00_c0a8)
+
+;; 00:29bb:op LOW(MOD_PU1_TYPE)
+;; 00:29bf:op HIGH(MOD_PU1_TYPE)
+
+;; 00:29d9:op LOW(MOD_PU1_FLAG)
+;; 00:29dd:op HIGH(MOD_PU1_FLAG)
+
+;; 00:29f7:op LOW(MOD_PU1_FLAG)
+;; 00:29fb:op HIGH(MOD_PU1_FLAG)
 
 ;; 00:2a12:op BANK(call_1f_6ff1)
 ;; 00:2a19:op BANK(call_1f_6ff1)
@@ -2642,6 +2730,9 @@
 
 ;; 01:5265:op _NORMAL_CURSOR_MODE
 
+;; 01:529d:op LOW(ram_00_c432)
+;; 01:52a1:op HIGH(ram_00_c432)
+
 ;; 01:52ce:op LOW(call_1c_717c)
 ;; 01:52d0:op HIGH(call_1c_717c)
 ;; 01:52d3:op BANK(call_1c_717c)
@@ -2954,6 +3045,15 @@
 ;; 01:7500 Registers used: A, DE, HL
 01:7500 .code:00c6
 
+;; 01:7519:op LOW(HELP_BANNER)
+;; 01:751d:op HIGH(HELP_BANNER)
+
+;; 01:7530:op LOW(HELP_BANNER)
+;; 01:7534:op HIGH(HELP_BANNER)
+
+;; 01:753f:op LOW(HELP_BANNER)
+;; 01:7543:op HIGH(HELP_BANNER)
+
 01:75c6 call_set_out_of_memory_error_banner
 ;; 01:75c6 Sets the banner text to the out of memory error.
 ;; 01:75c6 Registers used: A, DE, HL
@@ -3007,6 +3107,9 @@
 
 01:7828 call_01_7828
 01:7828 .code:0041
+
+;; 01:7843:op LOW(SAMPLE_NOTE_STRING)
+;; 01:7847:op HIGH(SAMPLE_NOTE_STRING)
 
 01:7869 call_has_banner
 ;; 01:7869 Check to see if there is an active banner being displayed.
@@ -3308,6 +3411,9 @@
 02:494d call_02_494d
 02:494d .code:023d
 
+;; 02:49d6:op LOW(ram_00_cf28)
+;; 02:49da:op HIGH(ram_00_cf28)
+
 02:4b8a call_write_current_channel_chain_transpose
 ;; 02:4b8a Write the current transpose for the playing channel chain row.
 ;; 02:4b8a
@@ -3558,10 +3664,18 @@
 02:55e5 call_02_55e5
 
 02:5621 call_02_5621
+
 ;; 02:564c Assume bank is set to bank for _SRAM_TABLE_TRANSPOSE
 ;; 02:564c:op _SRAM_TABLE_TRANSPOSE
+
+;; 02:5656:op LOW(ram_00_c108)
+;; 02:5659:op HIGH(ram_00_c108)
+
 ;; 02:568e Assume bank is set to bank for _SRAM_TABLE_CMDS_2
 ;; 02:568e:op _SRAM_TABLE_CMDS_2
+
+;; 02:5698:op LOW(ram_00_c120)
+;; 02:569b:op HIGH(ram_00_c120)
 
 02:56ab call_02_56ab
 
@@ -3615,6 +3729,9 @@
 02:5847 call_02_5847
 ;; 02:5859 Assume bank is set to bank for _SRAM_TABLE_TRANSPOSE
 ;; 02:5859:op _SRAM_TABLE_TRANSPOSE
+
+;; 02:5863:op LOW(ram_00_c108)
+;; 02:5866:op HIGH(ram_00_c108)
 
 02:5891 call_write_ff_x32
 ;; 02:5891 Write 0xff to 32 addresses.
@@ -3715,15 +3832,78 @@
 02:620e call_02_620e
 02:620e .code:0233
 
+;; 02:625f:op LOW(ram_00_c0f4)
+;; 02:6263:op HIGH(ram_00_c0f4)
+
+;; 02:62ac:op LOW(ram_00_c337)
+;; 02:62b0:op HIGH(ram_00_c337)
+
+;; 02:62e3:op LOW(ram_00_c34e)
+;; 02:62e7:op HIGH(ram_00_c34e)
+
 02:6441 call_02_6441
 
 02:6465 call_02_6465
 02:6465 .code:00da
 
+;; 02:647c:op LOW(ram_00_c8c5)
+;; 02:6480:op HIGH(ram_00_c8c5)
+
+;; 02:6497:op LOW(ram_00_c148)
+;; 02:649b:op HIGH(ram_00_c148)
+
+;; 02:64a3:op LOW(ram_00_c14c)
+;; 02:64a7:op HIGH(ram_00_c14c)
+
+;; 02:64c4:op LOW(ram_00_c8c5)
+;; 02:64c8:op HIGH(ram_00_c8c5)
+
+;; 02:64e0:op LOW(ram_00_c8cd)
+;; 02:64e4:op HIGH(ram_00_c8cd)
+
+;; 02:64fc:op LOW(ram_00_c2f0)
+;; 02:6500:op HIGH(ram_00_c2f0)
+
+;; 02:6512:op LOW(ram_00_c224)
+;; 02:6516:op HIGH(ram_00_c224)
+
+;; 02:6529:op LOW(ram_00_c23c)
+;; 02:652d:op HIGH(ram_00_c23c)
+
 02:653f call_02_653f
+
+;; 02:6546:op LOW(ram_00_c2f0)
+;; 02:654a:op HIGH(ram_00_c2f0)
+
+;; 02:6557:op LOW(ram_00_c2f0)
+;; 02:655b:op HIGH(ram_00_c2f0)
+
+;; 02:6568:op LOW(ram_00_c2f0)
+;; 02:656c:op HIGH(ram_00_c2f0)
+
+;; 02:6578:op LOW(ram_00_c2d0)
+;; 02:657c:op HIGH(ram_00_c2d0)
+
+;; 02:6589:op LOW(PLAYING_TABLES)
+;; 02:658d:op HIGH(PLAYING_TABLES)
+
+;; 02:6595:op LOW(ram_00_c420)
+;; 02:6599:op HIGH(ram_00_c420)
+
+;; 02:65a1:op LOW(ram_00_c218)
+;; 02:65a5:op HIGH(ram_00_c218)
+
+;; 02:65ad:op LOW(ram_00_c35f)
+;; 02:65b1:op HIGH(ram_00_c35f)
 
 02:65bb call_02_65bb
 02:65bb .code:0053
+
+;; 02:65ca:op LOW(ram_00_c230)
+;; 02:65ce:op HIGH(ram_00_c230)
+
+;; 02:65f1:op LOW(ram_00_c2f0)
+;; 02:65f5:op HIGH(ram_00_c2f0)
 
 02:660e call_02_660e
 02:660e .code:0019
@@ -3740,6 +3920,39 @@
 
 02:665c call_02_665c
 
+;; 02:66b7:op LOW(ram_00_c2e8)
+;; 02:66bb:op HIGH(ram_00_c2e8)
+
+;; 02:66d6:op LOW(ram_00_c220)
+;; 02:66da:op HIGH(ram_00_c220)
+
+;; 02:66ec:op LOW(PLAYING_TABLE_ROWS_1)
+;; 02:66f0:op HIGH(PLAYING_TABLE_ROWS_1)
+
+;; 02:66fb:op LOW(PLAYING_TABLE_ROWS_1)
+;; 02:66ff:op HIGH(PLAYING_TABLE_ROWS_1)
+
+;; 02:670c:op LOW(PLAYING_GROOVE_ROWS)
+;; 02:6710:op HIGH(PLAYING_GROOVE_ROWS)
+
+;; 02:671d:op LOW(NOTE_COUNTDOWNS)
+;; 02:6721:op HIGH(NOTE_COUNTDOWNS)
+
+;; 02:6732:op LOW(ram_00_c2ec)
+;; 02:6736:op HIGH(ram_00_c2ec)
+
+;; 02:6748:op LOW(ram_00_c2e4)
+;; 02:674c:op HIGH(ram_00_c2e4)
+
+;; 02:676f:op LOW(ram_00_c8cd)
+;; 02:6773:op HIGH(ram_00_c8cd)
+
+;; 02:6783:op LOW(ram_00_c2f0)
+;; 02:6787:op HIGH(ram_00_c2f0)
+
+;; 02:6796:op LOW(ram_00_c23c)
+;; 02:679a:op HIGH(ram_00_c23c)
+
 02:6809 call_02_6809
 
 02:683d jump_table_02_683d
@@ -3755,6 +3968,27 @@
 
 ;; 02:69bc:op _CHAIN_SCREEN
 ;; 02:69c1:op _PHRASE_SCREEN
+
+;; 02:69e2:op LOW(LIVE_NEXT_CHAIN_PHRASES)
+;; 02:69e6:op HIGH(LIVE_NEXT_CHAIN_PHRASES)
+
+;; 02:69f4:op LOW(LIVE_NEXT_CHAIN_PHRASES)
+;; 02:69f8:op HIGH(LIVE_NEXT_CHAIN_PHRASES)
+
+;; 02:6a00:op LOW(ram_00_c300)
+;; 02:6a04:op HIGH(ram_00_c300)
+
+;; 02:6a19:op LOW(ram_00_c300)
+;; 02:6a1d:op HIGH(ram_00_c300)
+
+;; 02:6a25:op LOW(ram_00_c304)
+;; 02:6a29:op HIGH(ram_00_c304)
+
+;; 02:6a42:op LOW(ram_00_c304)
+;; 02:6a46:op HIGH(ram_00_c304)
+
+;; 02:6a4e:op LOW(LIVE_NEXT_SONG_ROWS)
+;; 02:6a52:op HIGH(LIVE_NEXT_SONG_ROWS)
 
 02:6a5e call_02_6a5e
 
@@ -3802,7 +4036,10 @@
 ;; 02:6b0b:op LOW(PLAYING_PHRASE_ROWS)
 ;; 02:6b0f:op HIGH(PLAYING_PHRASE_ROWS)
 
-;; 02:6b17 Set $c214 + channel to 0
+;; 02:6b17 Set ram_00_c214 + channel to 0
+
+;; 02:6b17:op LOW(ram_00_c214)
+;; 02:6b1b:op HIGH(ram_00_c214)
 
 ;; 02:6b23 Set channel table countdown to 0
 ;; 02:6b28:op LOW(TABLE_COUNTDOWNS - 4)
@@ -3812,7 +4049,10 @@
 ;; 02:6b39:op LOW(HAS_PLAYED_CHANNEL_TABLES - 4)
 ;; 02:6b3d:op HIGH(HAS_PLAYED_CHANNEL_TABLES - 4)
 
-;; 02:6b45 Set $c15c + channel to $ff
+;; 02:6b45 Set ram_00_c15c + channel to $ff
+
+;; 02:6b4a:op LOW(ram_00_c15c - 4)
+;; 02:6b4e:op HIGH(ram_00_c15c - 4)
 
 ;; 02:6b56 Set channel table row 2 to $ff
 ;; 02:6b5b:op LOW(PLAYING_TABLE_ROWS_2 - 4)
@@ -3874,10 +4114,22 @@
 
 02:6c9c call_02_6c9c
 
+;; 02:6cbc:op LOW(LIVE_NEXT_SONG_ROWS)
+;; 02:6cc0:op HIGH(LIVE_NEXT_SONG_ROWS)
+
 02:6d31 call_02_6d31
 
 02:6d46 call_02_6d46
 02:6d46 .code:0083
+
+;; 02:6d79:op LOW(ARE_CHANNELS_PLAYING)
+;; 02:6d7d:op HIGH(ARE_CHANNELS_PLAYING)
+
+;; 02:6da6:op LOW(ram_00_c300)
+;; 02:6daa:op HIGH(ram_00_c300)
+
+;; 02:6db5:op LOW(ram_00_c300)
+;; 02:6db9:op HIGH(ram_00_c300)
 
 02:6dc9 call_02_6dc9
 
@@ -3923,19 +4175,94 @@
 
 02:7041 call_02_7041
 
+;; 02:704e:op LOW(CHANNEL_GROOVES_2)
+;; 02:7052:op HIGH(CHANNEL_GROOVES_2)
+
+;; 02:7136:op LOW(ram_00_c300)
+;; 02:713a:op HIGH(ram_00_c300)
+
+;; 02:715f:op LOW(ram_00_c300)
+;; 02:7163:op HIGH(ram_00_c300)
+
+;; 02:71e3:op LOW(ARE_CHANNELS_PLAYING)
+;; 02:71e7:op HIGH(ARE_CHANNELS_PLAYING)
+
 02:7284 call_02_7284
 
 02:72d2 call_02_72d2
 
+;; 02:7373:op LOW(PLAYING_TABLES)
+;; 02:7377:op HIGH(PLAYING_TABLES)
+
+;; 02:7395:op LOW(PLAYING_TABLES)
+;; 02:7399:op HIGH(PLAYING_TABLES)
+
 02:73b0 call_02_73b0
 ;; 02:73b3:op rRAMB
 
+;; 02:73c3:op LOW(ram_00_cb95)
+;; 02:73c7:op HIGH(ram_00_cb95)
+
+;; 02:73ee:op LOW(ram_00_c178)
+;; 02:73f2:op HIGH(ram_00_c178)
+
+;; 02:7408:op LOW(ram_00_c178)
+;; 02:740c:op HIGH(ram_00_c178)
+
+;; 02:741c:op LOW(ram_00_c178)
+;; 02:7420:op HIGH(ram_00_c178)
+
+;; 02:744c:op LOW(ram_00_c178)
+;; 02:7450:op HIGH(ram_00_c178)
+
+;; 02:7483:op LOW(ram_00_cb95)
+;; 02:7487:op HIGH(ram_00_cb95)
+
+;; 02:74a0:op LOW(CURRENT_INSTRS)
+;; 02:74a4:op HIGH(CURRENT_INSTRS)
+
 02:74e8 call_02_74e8
+
+;; 02:756f:op LOW(PLAYING_PHRASE_INSTRUMENT_ADDRESSES)
+;; 02:7573:op HIGH(PLAYING_PHRASE_INSTRUMENT_ADDRESSES)
+
+;; 02:75ba:op LOW(PLAYING_PHRASE_NOTE_ADDRESSES)
+;; 02:75be:op HIGH(PLAYING_PHRASE_NOTE_ADDRESSES)
+
+;; 02:75ef:op LOW(PLAYING_PHRASE_CMD_VALUE_ADDRESSES)
+;; 02:75f3:op HIGH(PLAYING_PHRASE_CMD_VALUE_ADDRESSES)
+
+;; 02:7646:op LOW(CHANNEL_GROOVES_2)
+;; 02:764a:op HIGH(CHANNEL_GROOVES_2)
+
+;; 02:7690:op LOW(ram_00_c0f0)
+;; 02:7694:op HIGH(ram_00_c0f0)
+
+;; 02:76a2:op LOW(CHANNEL_GROOVES_2)
+;; 02:76a6:op HIGH(CHANNEL_GROOVES_2)
+
+;; 02:76c4:op LOW(ram_00_c178)
+;; 02:76c8:op HIGH(ram_00_c178)
+
+;; 02:76da:op LOW(ram_00_c0fc)
+;; 02:76de:op HIGH(ram_00_c0fc)
+
+;; 02:76e7:op LOW(ram_00_c0f0)
+;; 02:76eb:op HIGH(ram_00_c0f0)
+
+;; 02:76f9:op LOW(CHANNEL_GROOVES_2)
+;; 02:76fd:op HIGH(CHANNEL_GROOVES_2)
 
 02:7712 call_02_7712
 02:7712 .code:007f
 
 02:7791 call_02_7791
+
+;; 02:7798:op LOW(ram_00_c304)
+;; 02:779c:op HIGH(ram_00_c304)
+
+;; 02:77ca:op LOW(LIVE_NEXT_SONG_ROWS)
+;; 02:77ce:op HIGH(LIVE_NEXT_SONG_ROWS)
 
 02:77e6 call_02_77e6
 02:77e6 .code:0067
@@ -3946,6 +4273,18 @@
 
 02:784d call_02_784d
 
+;; 02:78f8:op LOW(PLAYING_SONG_ROWS)
+;; 02:78fc:op HIGH(PLAYING_SONG_ROWS)
+
+;; 02:7950:op LOW(PLAYING_SONG_ROWS)
+;; 02:7954:op HIGH(PLAYING_SONG_ROWS)
+
+;; 02:7983:op LOW(PLAYING_CHAIN_ROWS)
+;; 02:7987:op HIGH(PLAYING_CHAIN_ROWS)
+
+;; 02:7a1f:op LOW(PLAYING_CHAIN_ROWS)
+;; 02:7a23:op HIGH(PLAYING_CHAIN_ROWS)
+
 02:7a53 call_02_7a53
 
 ;; 02:7a6a:op _SONG_SCREEN
@@ -3953,11 +4292,38 @@
 ;; 02:7aa1:op _CHAIN_SCREEN
 ;; 02:7aa6:op _SONG_SCREEN
 
+;; 02:7ab5:op LOW(ARE_CHANNELS_PLAYING)
+;; 02:7ab9:op HIGH(ARE_CHANNELS_PLAYING)
+
+;; 02:7ae4:op LOW(PLAYING_CHAINS)
+;; 02:7ae8:op HIGH(PLAYING_CHAINS)
+
+;; 02:7af6:op LOW(PLAYING_CHAIN_ROWS)
+;; 02:7afa:op HIGH(PLAYING_CHAIN_ROWS)
+
+;; 02:7b20:op LOW(PLAYING_CHAIN_ROWS)
+;; 02:7b24:op HIGH(PLAYING_CHAIN_ROWS)
+
+;; 02:7b33:op LOW(ARE_CHANNELS_PLAYING)
+;; 02:7b37:op HIGH(ARE_CHANNELS_PLAYING)
+
+;; 02:7b53:op LOW(PLAYING_PHRASES)
+;; 02:7b57:op HIGH(PLAYING_PHRASES)
+
 02:7b9b call_02_7b9b
+
+;; 02:7bca:op LOW(ARE_CHANNELS_PLAYING)
+;; 02:7bce:op HIGH(ARE_CHANNELS_PLAYING)
 
 02:7c4a call_02_7c4a
 
+;; 02:7c4e:op LOW(CHANNEL_GROOVES_2)
+;; 02:7c52:op HIGH(CHANNEL_GROOVES_2)
+
 02:7c6c jump_table_02_7c6c
+
+;; 02:7cb9:op LOW(ram_00_c2d8)
+;; 02:7cbd:op HIGH(ram_00_c2d8)
 
 02:7cd0 data_02_7cd0
 02:7cd0 .data:012b
@@ -5061,6 +5427,9 @@
 04:4106 call_04_4106
 04:4106 .code:0089
 
+;; 04:4120:op LOW(DEFAULT_INSTRS)
+;; 04:4124:op HIGH(DEFAULT_INSTRS)
+
 04:418f call_write_current_phrase_note
 ;; 04:418f Write a note to a row in the current phrase.
 ;; 04:418f Args: row, note
@@ -5122,13 +5491,22 @@
 04:42a8 call_04_42a8
 04:42a8 .code:0125
 
+;; 04:42c0:op LOW(DEFAULT_INSTRS)
+;; 04:42c4:op HIGH(DEFAULT_INSTRS)
+
 ;; 04:42d0:op LOW(call_1f_4a64)
 ;; 04:42d2:op HIGH(call_1f_4a64)
 ;; 04:42d7:op BANK(call_1f_4a64)
 
+;; 04:42f1:op LOW(DEFAULT_INSTRS)
+;; 04:42f5:op HIGH(DEFAULT_INSTRS)
+
 ;; 04:4362:op LOW(call_01_493b)
 ;; 04:4364:op HIGH(call_01_493b)
 ;; 04:436c:op BANK(call_01_493b)
+
+;; 04:438a:op LOW(ram_00_c432)
+;; 04:438e:op HIGH(ram_00_c432)
 
 ;; 04:43ac:op LOW(call_01_7828)
 ;; 04:43ae:op HIGH(call_01_7828)
@@ -5139,12 +5517,18 @@
 
 ;; 04:44d0:op _SELECT_CURSOR_MODE
 
+;; 04:44dc:op LOW(DEFAULT_NOTES)
+;; 04:44e0:op HIGH(DEFAULT_NOTES)
+
 ;; 04:44fe:op _SELECT_CURSOR_MODE
 
 04:457c call_04_457c
 04:457c .code:018f
 
 ;; 04:45e9:op _SELECT_CURSOR_MODE
+
+;; 04:45f5:op LOW(DEFAULT_NOTES)
+;; 04:45f9:op HIGH(DEFAULT_NOTES)
 
 ;; 04:468a:op _SELECT_CURSOR_MODE
 
@@ -5153,12 +5537,18 @@
 
 ;; 04:477c:op _SELECT_CURSOR_MODE
 
+;; 04:4788:op LOW(DEFAULT_NOTES)
+;; 04:478c:op HIGH(DEFAULT_NOTES)
+
 ;; 04:47ac:op _SELECT_CURSOR_MODE
 
 04:4811 call_04_4811
 04:4811 .code:0107
 
 ;; 04:4884:op _SELECT_CURSOR_MODE
+
+;; 04:4890:op LOW(DEFAULT_NOTES)
+;; 04:4894:op HIGH(DEFAULT_NOTES)
 
 ;; 04:48b2:op _SELECT_CURSOR_MODE
 
@@ -5344,6 +5734,9 @@
 
 ;; 04:4bcc:op _SELECT_CURSOR_MODE
 
+;; 04:4be4:op LOW(DEFAULT_NOTES)
+;; 04:4be8:op HIGH(DEFAULT_NOTES)
+
 04:4c06 call_draw_empty_kit_row
 ;; 04:4c06 Draw an empty row for kits.
 ;; 04:4c06 See also: call_write_bg_map_attr_indexes
@@ -5367,6 +5760,9 @@
 ;; 04:4c9f:op BANK(call_1f_6cd7)
 
 04:4caa call_04_4caa
+
+;; 04:4cae:op LOW(ram_00_c90b)
+;; 04:4cb2:op HIGH(ram_00_c90b)
 
 04:4cc4 call_draw_sample_note
 ;; 04:4cc4 Draw the current sample note string.
@@ -5529,9 +5925,15 @@
 ;; 04:5785:op HIGH(call_01_493b)
 ;; 04:578f:op BANK(call_01_493b)
 
+;; 04:57ad:op LOW(ram_00_c432)
+;; 04:57b1:op HIGH(ram_00_c432)
+
 ;; 04:57cf:op LOW(call_01_7828)
 ;; 04:57d1:op HIGH(call_01_7828)
 ;; 04:57d4:op BANK(call_01_7828)
+
+;; 04:586e:op LOW(ram_00_c9b6)
+;; 04:5872:op HIGH(ram_00_c9b6)
 
 04:5881 call_04_5881
 04:5881 .code:00a4
@@ -5556,16 +5958,37 @@
 ;; 04:5bc8:op call_restore_backup_selection
 ;; 04:5bcc:op BANK(call_restore_backup_selection)
 
+;; 04:5c7c:op LOW(DEFAULT_NOTES)
+;; 04:5c80:op HIGH(DEFAULT_NOTES)
+
 04:5cc6 jump_table_04_5cc6
 04:5cc6 .code:04aa
+
+;; 04:5d15:op LOW(DEFAULT_NOTES)
+;; 04:5d19:op HIGH(DEFAULT_NOTES)
+
+;; 04:5d52:op LOW(DEFAULT_NOTES)
+;; 04:5d56:op HIGH(DEFAULT_NOTES)
+
+;; 04:5d7b:op LOW(DEFAULT_NOTES)
+;; 04:5d7f:op HIGH(DEFAULT_NOTES)
+
+;; 04:5dac:op LOW(DEFAULT_NOTES)
+;; 04:5db0:op HIGH(DEFAULT_NOTES)
 
 ;; 04:5dd9:op LOW(call_1f_4a64)
 ;; 04:5ddb:op HIGH(call_1f_4a64)
 ;; 04:5de0:op BANK(call_1f_4a64)
 
+;; 04:5e3f:op LOW(DEFAULT_CMDS)
+;; 04:5e43:op HIGH(DEFAULT_CMDS)
+
 ;; 04:5e59:op LOW(call_01_7655)
 ;; 04:5e5b:op HIGH(call_01_7655)
 ;; 04:5e63:op BANK(call_01_7655)
+
+;; 04:5e70:op LOW(ram_00_c458)
+;; 04:5e74:op HIGH(ram_00_c458)
 
 ;; 04:5ecb:op LOW(call_1f_6e7d)
 ;; 04:5ecd:op HIGH(call_1f_6e7d)
@@ -5594,46 +6017,118 @@
 04:6170 jump_table_04_6170
 04:6170 .code:0429
 
+;; 04:61c4:op LOW(ram_00_c90b)
+;; 04:61c8:op HIGH(ram_00_c90b)
+
+;; 04:61e0:op LOW(DEFAULT_NOTES)
+;; 04:61e4:op HIGH(DEFAULT_NOTES)
+
 ;; 04:6237:op LOW(call_1f_6bc2)
 ;; 04:6239:op HIGH(call_1f_6bc2)
 ;; 04:623f:op BANK(call_1f_6bc2)
+
+;; 04:628f:op LOW(ram_00_c91b)
+;; 04:6293:op HIGH(ram_00_c91b)
+
+;; 04:62bc:op LOW(DEFAULT_NOTES)
+;; 04:62c0:op HIGH(DEFAULT_NOTES)
+
+;; 04:63e0:op LOW(ram_00_c458)
+;; 04:63e4:op HIGH(ram_00_c458)
 
 ;; 04:63ed:op LOW(call_01_7655)
 ;; 04:63ef:op HIGH(call_01_7655)
 ;; 04:63f7:op BANK(call_01_7655)
 
+;; 04:641c:op LOW(ram_00_c458)
+;; 04:6420:op HIGH(ram_00_c458)
+
 04:6599 jump_table_04_6599
 04:6599 .code:0453
+
+;; 04:65ee:op LOW(ram_00_c90b)
+;; 04:65f2:op HIGH(ram_00_c90b)
+
+;; 04:660a:op LOW(DEFAULT_NOTES)
+;; 04:660e:op HIGH(DEFAULT_NOTES)
 
 ;; 04:6663:op LOW(call_1f_6bc2)
 ;; 04:6665:op HIGH(call_1f_6bc2)
 ;; 04:666f:op BANK(call_1f_6bc2)
 
+;; 04:66d1:op LOW(ram_00_c91b)
+;; 04:66d5:op HIGH(ram_00_c91b)
+
+;; 04:66ed:op LOW(DEFAULT_NOTES)
+;; 04:66f1:op HIGH(DEFAULT_NOTES)
+
+;; 04:6813:op LOW(ram_00_c458)
+;; 04:6817:op HIGH(ram_00_c458)
+
 ;; 04:6820:op LOW(call_01_7655)
 ;; 04:6822:op HIGH(call_01_7655)
 ;; 04:682a:op BANK(call_01_7655)
 
+;; 04:684f:op LOW(ram_00_c458)
+;; 04:6853:op HIGH(ram_00_c458)
+
 04:69ec jump_table_04_69ec
 04:69ec .code:04bb
+
+;; 04:6a48:op LOW(ram_00_c90b)
+;; 04:6a4c:op HIGH(ram_00_c90b)
+
+;; 04:6aba:op LOW(DEFAULT_NOTES)
+;; 04:6abe:op HIGH(DEFAULT_NOTES)
 
 ;; 04:6b0e:op LOW(call_1f_6bc2)
 ;; 04:6b10:op HIGH(call_1f_6bc2)
 ;; 04:6b16:op BANK(call_1f_6bc2)
 
+;; 04:6b6c:op LOW(ram_00_c91b)
+;; 04:6b70:op HIGH(ram_00_c91b)
+
+;; 04:6bcf:op LOW(DEFAULT_NOTES)
+;; 04:6bd3:op HIGH(DEFAULT_NOTES)
+
+;; 04:6cec:op LOW(ram_00_c458)
+;; 04:6cf0:op HIGH(ram_00_c458)
+
 ;; 04:6cf9:op LOW(call_01_7655)
 ;; 04:6cfb:op HIGH(call_01_7655)
 ;; 04:6d03:op BANK(call_01_7655)
 
+;; 04:6d28:op LOW(ram_00_c458)
+;; 04:6d2c:op HIGH(ram_00_c458)
+
 04:6ea7 jump_table_04_6ea7
 04:6ea7 .code:05ea
+
+;; 04:6f04:op LOW(ram_00_c90b)
+;; 04:6f08:op HIGH(ram_00_c90b)
+
+;; 04:6f76:op LOW(DEFAULT_NOTES)
+;; 04:6f7a:op HIGH(DEFAULT_NOTES)
 
 ;; 04:6fd4:op LOW(call_1f_6bc2)
 ;; 04:6fd6:op HIGH(call_1f_6bc2)
 ;; 04:6fde:op BANK(call_1f_6bc2)
 
+;; 04:7036:op LOW(ram_00_c91b)
+;; 04:703a:op HIGH(ram_00_c91b)
+
+;; 04:7099:op LOW(DEFAULT_NOTES)
+;; 04:709d:op HIGH(DEFAULT_NOTES)
+
+;; 04:71b5:op LOW(ram_00_c458)
+;; 04:71b9:op HIGH(ram_00_c458)
+
 ;; 04:71c2:op LOW(call_01_7655)
 ;; 04:71c4:op HIGH(call_01_7655)
 ;; 04:71cc:op BANK(call_01_7655)
+
+;; 04:71f1:op LOW(ram_00_c458)
+;; 04:71f5:op HIGH(ram_00_c458)
 
 ;; 04:731b:op LOW(call_1f_65f1)
 ;; 04:731d:op HIGH(call_1f_65f1)
@@ -5655,6 +6150,18 @@
 
 04:7491 jump_table_04_7491
 04:7491 .code:032d
+
+;; 04:74c5:op LOW(DEFAULT_NOTES)
+;; 04:74c9:op HIGH(DEFAULT_NOTES)
+
+;; 04:75a2:op LOW(DEFAULT_NOTES)
+;; 04:75a6:op HIGH(DEFAULT_NOTES)
+
+;; 04:75fb:op LOW(DEFAULT_NOTES)
+;; 04:75ff:op HIGH(DEFAULT_NOTES)
+
+;; 04:76bb:op LOW(DEFAULT_CMDS)
+;; 04:76bf:op HIGH(DEFAULT_CMDS)
 
 ;; 04:772f:op _NO_CURSOR_MODE
 
@@ -6122,6 +6629,24 @@
 ;; 05:47b5:op HIGH(call_01_6d5c)
 ;; 05:47b8:op BANK(call_01_6d5c)
 
+;; 05:47df:op LOW(ram_00_c46e)
+;; 05:47e3:op HIGH(ram_00_c46e)
+
+;; 05:47f9:op LOW(ram_00_c47e)
+;; 05:47fd:op HIGH(ram_00_c47e)
+
+;; 05:482a:op LOW(ram_00_c4ae)
+;; 05:482e:op HIGH(ram_00_c4ae)
+
+;; 05:4837:op LOW(ram_00_c48e)
+;; 05:483b:op HIGH(ram_00_c48e)
+
+;; 05:4882:op LOW(ram_00_c49e)
+;; 05:4886:op HIGH(ram_00_c49e)
+
+;; 05:48a4:op LOW(ram_00_c4be)
+;; 05:48a8:op HIGH(ram_00_c4be)
+
 ;; 05:4912:op LOW(call_1f_6ff1)
 ;; 05:4914:op HIGH(call_1f_6ff1)
 ;; 05:4917:op BANK(call_1f_6ff1)
@@ -6131,6 +6656,36 @@
 05:4930 call_05_4930
 
 05:4967 call_05_4967
+
+;; 05:497a:op LOW(PLAYING_TABLES)
+;; 05:497e:op HIGH(PLAYING_TABLES)
+
+;; 05:49af:op LOW(ram_00_c0c4)
+;; 05:49b3:op HIGH(ram_00_c0c4)
+
+;; 05:49cc:op LOW(ram_00_c0bc)
+;; 05:49d0:op HIGH(ram_00_c0bc)
+
+;; 05:49e9:op LOW(ram_00_c0bc)
+;; 05:49ed:op HIGH(ram_00_c0bc)
+
+;; 05:4a16:op LOW(ram_00_c33f)
+;; 05:4a1a:op HIGH(ram_00_c33f)
+
+;; 05:4a2a:op LOW(CURRENT_INSTRS)
+;; 05:4a2e:op HIGH(CURRENT_INSTRS)
+
+;; 05:4a35:op LOW(ram_00_c250)
+;; 05:4a39:op HIGH(ram_00_c250)
+
+;; 05:4a46:op LOW(ram_00_c250)
+;; 05:4a4a:op HIGH(ram_00_c250)
+
+;; 05:4a59:op LOW(PLAYING_TABLE_ROWS_1)
+;; 05:4a5d:op HIGH(PLAYING_TABLE_ROWS_1)
+
+;; 05:4a6d:op LOW(PLAYING_TABLE_ROWS_1)
+;; 05:4a71:op HIGH(PLAYING_TABLE_ROWS_1)
 
 05:4aa8 call_05_4aa8
 
@@ -6154,9 +6709,15 @@
 
 ;; 05:4c74:op _SELECT_CURSOR_MODE
 
+;; 05:4d78:op LOW(DEFAULT_CMDS)
+;; 05:4d7c:op HIGH(DEFAULT_CMDS)
+
 ;; 05:4d92:op LOW(call_01_7655)
 ;; 05:4d94:op HIGH(call_01_7655)
 ;; 05:4d9e:op BANK(call_01_7655)
+
+;; 05:4dc0:op LOW(ram_00_c458)
+;; 05:4dc4:op HIGH(ram_00_c458)
 
 ;; 05:4e64:op _SELECT_CURSOR_MODE
 
@@ -6164,9 +6725,21 @@
 
 05:4f46 jump_table_05_4f46
 
+;; 05:5005:op LOW(ram_00_c458)
+;; 05:5009:op HIGH(ram_00_c458)
+
+;; 05:5056:op LOW(ram_00_c458)
+;; 05:505a:op HIGH(ram_00_c458)
+
+;; 05:507b:op LOW(ram_00_c458)
+;; 05:507f:op HIGH(ram_00_c458)
+
 ;; 05:5088:op LOW(call_01_7655)
 ;; 05:508a:op HIGH(call_01_7655)
 ;; 05:5092:op BANK(call_01_7655)
+
+;; 05:50b1:op LOW(ram_00_c458)
+;; 05:50b5:op HIGH(ram_00_c458)
 
 ;; 05:5192:op _SELECT_CURSOR_MODE
 
@@ -6174,9 +6747,21 @@
 
 05:5274 jump_table_05_5274
 
+;; 05:5332:op LOW(ram_00_c458)
+;; 05:5336:op HIGH(ram_00_c458)
+
+;; 05:5384:op LOW(ram_00_c458)
+;; 05:5388:op HIGH(ram_00_c458)
+
+;; 05:53a9:op LOW(ram_00_c458)
+;; 05:53ad:op HIGH(ram_00_c458)
+
 ;; 05:53b6:op LOW(call_01_7655)
 ;; 05:53b8:op HIGH(call_01_7655)
 ;; 05:53c0:op BANK(call_01_7655)
+
+;; 05:53df:op LOW(ram_00_c458)
+;; 05:53e3:op HIGH(ram_00_c458)
 
 ;; 05:54ac:op _SELECT_CURSOR_MODE
 
@@ -6184,9 +6769,21 @@
 
 05:558e jump_table_05_558e
 
+;; 05:5656:op LOW(ram_00_c458)
+;; 05:565a:op HIGH(ram_00_c458)
+
+;; 05:56a6:op LOW(ram_00_c458)
+;; 05:56aa:op HIGH(ram_00_c458)
+
+;; 05:56cb:op LOW(ram_00_c458)
+;; 05:56cf:op HIGH(ram_00_c458)
+
 ;; 05:56d8:op LOW(call_01_7655)
 ;; 05:56da:op HIGH(call_01_7655)
 ;; 05:56e2:op BANK(call_01_7655)
+
+;; 05:5701:op LOW(ram_00_c458)
+;; 05:5705:op HIGH(ram_00_c458)
 
 ;; 05:5802:op _SELECT_CURSOR_MODE
 
@@ -6194,13 +6791,31 @@
 
 05:58e4 jump_table_05_58e4
 
+;; 05:59ac:op LOW(ram_00_c458)
+;; 05:59b0:op HIGH(ram_00_c458)
+
+;; 05:59fe:op LOW(ram_00_c458)
+;; 05:5a02:op HIGH(ram_00_c458)
+
+;; 05:5a23:op LOW(ram_00_c458)
+;; 05:5a27:op HIGH(ram_00_c458)
+
 ;; 05:5a30:op LOW(call_01_7655)
 ;; 05:5a32:op HIGH(call_01_7655)
 ;; 05:5a3a:op BANK(call_01_7655)
 
+;; 05:5a59:op LOW(ram_00_c458)
+;; 05:5a5d:op HIGH(ram_00_c458)
+
 ;; 05:5bcc:op _NORMAL_CURSOR_MODE
 
 05:5c01 jump_table_05_5c01
+
+;; 05:5cc6:op LOW(DEFAULT_CMDS)
+;; 05:5cca:op HIGH(DEFAULT_CMDS)
+
+;; 05:5d58:op LOW(DEFAULT_CMDS)
+;; 05:5d5c:op HIGH(DEFAULT_CMDS)
 
 ;; 05:5dc6:op _NO_CURSOR_MODE
 
@@ -6857,6 +7472,12 @@
 ;; 06:590f:op HIGH(call_01_6d5c)
 ;; 06:5912:op BANK(call_01_6d5c)
 
+;; 06:5936:op LOW(ram_00_c46e)
+;; 06:593a:op HIGH(ram_00_c46e)
+
+;; 06:597c:op LOW(ram_00_c47e)
+;; 06:5980:op HIGH(ram_00_c47e)
+
 ;; 06:59ed:op LOW(call_1f_6ff1)
 ;; 06:59ef:op HIGH(call_1f_6ff1)
 ;; 06:59f2:op BANK(call_1f_6ff1)
@@ -6866,6 +7487,15 @@
 
 06:5a03 call_06_5a03
 06:5a03 .code:005c
+
+;; 06:5a16:op LOW(ARE_CHANNELS_PLAYING)
+;; 06:5a1a:op HIGH(ARE_CHANNELS_PLAYING)
+
+;; 06:5a26:op LOW(PLAYING_CHAINS)
+;; 06:5a2a:op HIGH(PLAYING_CHAINS)
+
+;; 06:5a3b:op LOW(PLAYING_CHAIN_ROWS)
+;; 06:5a3f:op HIGH(PLAYING_CHAIN_ROWS)
 
 06:5a5f call_draw_chain_screen_cursor
 ;; 06:5a5f Draws the cursor for the chain screen.
@@ -6905,6 +7535,9 @@
 ;; 06:5bc8:op HIGH(call_read_chain_phrase)
 ;; 06:5bd9:op BANK(call_read_chain_phrase)
 
+;; 06:5bfc:op LOW(DEFAULT_CHAIN_PHRASES)
+;; 06:5c00:op HIGH(DEFAULT_CHAIN_PHRASES)
+
 ;; 06:5c0f:op LOW(call_write_next_phrase_alloc)
 ;; 06:5c11:op HIGH(call_write_next_phrase_alloc)
 ;; 06:5c14:op BANK(call_write_next_phrase_alloc)
@@ -6916,6 +7549,9 @@
 ;; 06:5c43:op LOW(call_write_chain_phrase)
 ;; 06:5c45:op HIGH(call_write_chain_phrase)
 ;; 06:5c5b:op BANK(call_write_chain_phrase)
+
+;; 06:5c72:op LOW(DEFAULT_CHAIN_PHRASES)
+;; 06:5c76:op HIGH(DEFAULT_CHAIN_PHRASES)
 
 ;; 06:5e92:op LOW(call_read_chain_phrase)
 ;; 06:5e95:op HIGH(call_read_chain_phrase)
@@ -6954,6 +7590,9 @@
 ;; 06:67c8:op LOW(call_read_chain_phrase)
 ;; 06:67ca:op HIGH(call_read_chain_phrase)
 ;; 06:67db:op BANK(call_read_chain_phrase)
+
+;; 06:67eb:op LOW(DEFAULT_CHAIN_PHRASES)
+;; 06:67ef:op HIGH(DEFAULT_CHAIN_PHRASES)
 
 ;; 06:6841:op LOW(call_write_chain_phrase)
 ;; 06:6843:op HIGH(call_write_chain_phrase)
@@ -7471,6 +8110,9 @@
 ;; 07:4bbd:op HIGH(call_1f_4bbb)
 ;; 07:4bc0:op BANK(call_1f_4bbb)
 
+;; 07:4bff:op LOW(ram_00_c450)
+;; 07:4c03:op HIGH(ram_00_c450)
+
 ;; 07:4c12:op LOW(call_write_chain_alloc)
 ;; 07:4c14:op HIGH(call_write_chain_alloc)
 ;; 07:4c1e:op BANK(call_write_chain_alloc)
@@ -7478,6 +8120,15 @@
 ;; 07:4c38:op LOW(call_1f_4bbb)
 ;; 07:4c3a:op HIGH(call_1f_4bbb)
 ;; 07:4c3f:op BANK(call_1f_4bbb)
+
+;; 07:4c79:op LOW(ram_00_c450)
+;; 07:4c7d:op HIGH(ram_00_c450)
+
+;; 07:4f3c:op LOW(LIVE_NEXT_SONG_ROWS)
+;; 07:4f40:op HIGH(LIVE_NEXT_SONG_ROWS)
+
+;; 07:4f57:op LOW(ram_00_c300)
+;; 07:4f5b:op HIGH(ram_00_c300)
 
 07:5010 jump_07_5010
 
@@ -7500,6 +8151,9 @@
 ;; 07:51b3:op _NORMAL_CURSOR_MODE
 
 ;; 07:5206:op _SRAM_SONG_CHAINS
+
+;; 07:525f:op LOW(ram_00_c450)
+;; 07:5263:op HIGH(ram_00_c450)
 
 ;; 07:5296:op _NO_CURSOR_MODE
 
@@ -7695,9 +8349,21 @@
 07:6864 call_07_6864
 07:6864 .code:058a
 
+;; 07:686b:op LOW(ram_00_cb80)
+;; 07:686f:op HIGH(ram_00_cb80)
+
+;; 07:6c12:op LOW(ram_00_cb95)
+;; 07:6c16:op HIGH(ram_00_cb95)
+
+;; 07:6c24:op LOW(ram_00_cb9a)
+;; 07:6c28:op HIGH(ram_00_cb9a)
+
 ;; 07:6c37:op LOW(call_02_4679)
 ;; 07:6c39:op HIGH(call_02_4679)
 ;; 07:6c3c:op BANK(call_02_4679)
+
+;; 07:6cb4:op LOW(ram_00_cb96 - 1)
+;; 07:6cb9:op HIGH(ram_00_cb96 - 1)
 
 07:6dee data_pulse_channel_combo_strings
 07:6dee data_pulse1_pulse_channel_combo_string_1
@@ -7729,6 +8395,9 @@
 
 07:6fd4 call_07_6fd4
 07:6fd4 .code:0021
+
+;; 07:6fe3:op LOW(ram_00_cb80)
+;; 07:6fe7:op HIGH(ram_00_cb80)
 
 07:6ff5 call_07_6ff5
 07:6ff5 .code:001b
@@ -8087,7 +8756,13 @@
 ;; 1b:4ea2:op HIGH(call_01_493b)
 ;; 1b:4eab:op BANK(call_01_493b)
 
+;; 1b:4ebd:op LOW(ram_00_c432)
+;; 1b:4ec1:op HIGH(ram_00_c432)
+
 ;; 1b:4eeb:op _FILE_SCREEN
+
+;; 1b:4fa9:op LOW(ram_00_c432)
+;; 1b:4fad:op HIGH(ram_00_c432)
 
 ;; 1b:5111:op _CRASH_SCREEN
 
@@ -8135,8 +8810,29 @@
 1b:5303 call_1b_5303
 1b:5303 .code:00e5
 
+;; 1b:5313:op LOW(ram_00_c432)
+;; 1b:5317:op HIGH(ram_00_c432)
+
+;; 1b:5362:op LOW(ram_00_c432)
+;; 1b:5366:op HIGH(ram_00_c432)
+
+;; 1b:53bc:op LOW(ram_00_c432)
+;; 1b:53c0:op HIGH(ram_00_c432)
+
+;; 1b:53cc:op LOW(ram_00_c432)
+;; 1b:53d0:op HIGH(ram_00_c432)
+
 1b:53e8 call_1b_53e8
 1b:53e8 .code:02b4
+
+;; 1b:54c2:op LOW(ram_00_c433 - 1)
+;; 1b:54c7:op HIGH(ram_00_c433 - 1)
+
+;; 1b:54de:op LOW(ram_00_c432)
+;; 1b:54e2:op HIGH(ram_00_c432)
+
+;; 1b:54f3:op LOW(ram_00_c433 - 1)
+;; 1b:54f7:op HIGH(ram_00_c433 - 1)
 
 ;; 1b:5683:op LOW(call_00_2490)
 ;; 1b:5685:op HIGH(call_00_2490)
@@ -8560,6 +9256,9 @@
 
 1b:6a8c call_1b_6a8c
 
+;; 1b:6ad7:op LOW(ram_00_c9aa)
+;; 1b:6adb:op HIGH(ram_00_c9aa)
+
 1b:6b7a call_1b_6b7a
 1b:6b7a .code:00be
 
@@ -8635,6 +9334,9 @@
 1c:4335 call_1c_4335
 1c:4335 .code:001d
 
+;; 1c:4344:op LOW(ram_00_c957)
+;; 1c:4348:op HIGH(ram_00_c957)
+
 1c:4352 call_1c_4352
 1c:4352 .code:0067
 ;; 1c:4383:op rRAMB
@@ -8694,6 +9396,15 @@
 ;; 1c:4a4d:op _SRAM_FILE_CHANGED_BANK
 ;; 1c:4a59:op _SRAM_CURRENT_FILE
 ;; 1c:4a5d:op _SRAM_CURRENT_FILE_BANK
+
+;; 1c:4ae7:op LOW(ram_00_c556)
+;; 1c:4aeb:op HIGH(ram_00_c556)
+
+;; 1c:4b86:op LOW(ram_00_c556)
+;; 1c:4b8a:op HIGH(ram_00_c556)
+
+;; 1c:4be9:op LOW(ram_00_c556)
+;; 1c:4bed:op HIGH(ram_00_c556)
 
 1c:4c11 data_empty_string_2
 1c:4c11 .text:0009
@@ -9517,6 +10228,9 @@
 1d:40ea call_1d_40ea
 1d:40ea .code:010c
 
+;; 1d:4137:op LOW(ram_00_c46e)
+;; 1d:413b:op HIGH(ram_00_c46e)
+
 1d:41f6 data_1d_41f6
 1d:41f6 .text:0007
 1d:41fd data_1d_41fd
@@ -9536,7 +10250,16 @@
 1d:423d call_1d_423d
 1d:423d .code:0046
 
+;; 1d:424a:op LOW(CHANNEL_GROOVES_1)
+;; 1d:424e:op HIGH(CHANNEL_GROOVES_1)
+
+;; 1d:425f:op LOW(PLAYING_GROOVE_ROWS)
+;; 1d:4263:op HIGH(PLAYING_GROOVE_ROWS)
+
 1d:4283 call_1d_4283
+
+;; 1d:42b2:op LOW(ram_00_c9d5)
+;; 1d:42b6:op HIGH(ram_00_c9d5)
 
 1d:4382 data_1d_4382
 1d:4382 .text:0003
@@ -9568,9 +10291,33 @@
 
 ;; 1d:457b:op _SELECT_CURSOR_MODE
 
+;; 1d:45dc:op LOW(ram_00_c9d5)
+;; 1d:45e0:op HIGH(ram_00_c9d5)
+
+;; 1d:45f3:op LOW(ram_00_c9d5)
+;; 1d:45f7:op HIGH(ram_00_c9d5)
+
 ;; 1d:4631:op _SELECT_CURSOR_MODE
 
+;; 1d:469e:op LOW(ram_00_c9d5)
+;; 1d:46a2:op HIGH(ram_00_c9d5)
+
+;; 1d:46b6:op LOW(ram_00_c9d5)
+;; 1d:46ba:op HIGH(ram_00_c9d5)
+
 ;; 1d:46e2:op _SELECT_CURSOR_MODE
+
+;; 1d:475a:op LOW(ram_00_c9d5)
+;; 1d:475e:op HIGH(ram_00_c9d5)
+
+;; 1d:4766:op LOW(ram_00_c9d5)
+;; 1d:476a:op HIGH(ram_00_c9d5)
+
+;; 1d:479c:op LOW(ram_00_c9d5)
+;; 1d:47a0:op HIGH(ram_00_c9d5)
+
+;; 1d:47eb:op LOW(ram_00_c9d5)
+;; 1d:47ef:op HIGH(ram_00_c9d5)
 
 ;; 1d:48df:op _NORMAL_CURSOR_MODE
 
@@ -9635,6 +10382,9 @@
 1d:4d5f call_1d_4d5f
 1d:4d5f .code:0029
 
+;; 1d:4d6d:op LOW(ram_00_c9d5)
+;; 1d:4d71:op HIGH(ram_00_c9d5)
+
 1d:4d88 call_1d_4d88
 1d:4d88 .code:016f
 
@@ -9649,11 +10399,23 @@
 1d:532a call_1d_532a
 1d:532a .code:0372
 
+;; 1d:5339:op LOW(ram_00_caa3)
+;; 1d:533d:op HIGH(ram_00_caa3)
+
+;; 1d:5419:op LOW(ram_00_c9f3)
+;; 1d:541d:op HIGH(ram_00_c9f3)
+
 1d:569c call_1d_569c
 1d:569c .code:0028
 
+;; 1d:56a3:op LOW(ram_00_ca93)
+;; 1d:56a7:op HIGH(ram_00_ca93)
+
 1d:56c4 jump_table_1d_56c4
 1d:56c4 .code:021d
+
+;; 1d:584b:op LOW(ram_00_c9f3)
+;; 1d:584f:op HIGH(ram_00_c9f3)
 
 1d:58e1 call_increment_synth_phase_value
 ;; 1d:58e1 Add 1 to a value, capping out at 0x1f and cycling back to 0x00.
@@ -9669,11 +10431,32 @@
 1d:58ed call_1d_58ed
 1d:58ed .code:02d7
 
+;; 1d:5957:op LOW(ram_00_ca33)
+;; 1d:595b:op HIGH(ram_00_ca33)
+
+;; 1d:5b08:op LOW(ram_00_cab7)
+;; 1d:5b0c:op HIGH(ram_00_cab7)
+
+;; 1d:5b19:op LOW(ram_00_caf7)
+;; 1d:5b1d:op HIGH(ram_00_caf7)
+
 1d:5bc4 call_1d_5bc4
 1d:5bc4 .code:0296
 
+;; 1d:5c33:op LOW(ram_00_ca33)
+;; 1d:5c37:op HIGH(ram_00_ca33)
+
+;; 1d:5c40:op LOW(ram_00_ca33)
+;; 1d:5c44:op HIGH(ram_00_ca33)
+
+;; 1d:5c79:op LOW(ram_00_ca33)
+;; 1d:5c7d:op HIGH(ram_00_ca33)
+
 1d:5e5a call_1d_5e5a
 1d:5e5a .code:00ad
+
+;; 1d:5eda:op LOW(ram_00_ca33)
+;; 1d:5ede:op HIGH(ram_00_ca33)
 
 1d:5f07 call_1d_5f07
 1d:5f07 .code:0029
@@ -9681,13 +10464,35 @@
 1d:5f30 call_1d_5f30
 1d:5f30 .code:0067
 
+;; 1d:5f5d:op LOW(ram_00_ca33)
+;; 1d:5f61:op HIGH(ram_00_ca33)
+
 1d:5f97 call_1d_5f97
 1d:5f97 .code:00a5
+
 ;; 1d:5fb9 First frame of last synth
 ;; 1d:5fb9:op _SRAM_WAVE_FRAMES + (_SYNTHS - 1) * _SYNTH_FRAMES * _SYNTH_FRAME_SIZE
 
+;; 1d:5ff0:op LOW(ram_00_c9f3)
+;; 1d:5ff4:op HIGH(ram_00_c9f3)
+
+;; 1d:601e:op LOW(ram_00_c9f3)
+;; 1d:6022:op HIGH(ram_00_c9f3)
+
 1d:603c call_1d_603c
 1d:603c .code:0072
+
+;; 1d:604d:op LOW(ram_00_ca83)
+;; 1d:6051:op HIGH(ram_00_ca83)
+
+;; 1d:605f:op LOW(ram_00_ca73)
+;; 1d:6063:op HIGH(ram_00_ca73)
+
+;; 1d:6071:op LOW(ram_00_ca53)
+;; 1d:6075:op HIGH(ram_00_ca53)
+
+;; 1d:6083:op LOW(ram_00_ca63)
+;; 1d:6087:op HIGH(ram_00_ca63)
 
 1d:60ae call_1d_60ae
 1d:60ae .code:003e
@@ -10473,6 +11278,9 @@
 1f:4ab3 call_1f_4ab3
 1f:4ab3 .code:0045
 
+;; 1f:4ad7:op LOW(ram_00_c46e)
+;; 1f:4adb:op HIGH(ram_00_c46e)
+
 1f:4af8 call_1f_4af8
 1f:4af8 .code:0094
 ;; 1f:4b0f:op _SRAM_TABLE_TRANSPOSE
@@ -10489,6 +11297,10 @@
 
 1f:4bbb call_1f_4bbb
 1f:4bbb .code:00ad
+
+;; 1f:4bc2:op LOW(ram_00_c450)
+;; 1f:4bc6:op HIGH(ram_00_c450)
+
 ;; 1f:4be9:op _SRAM_CHAIN_ALLOC
 ;; 1f:4bf8:op _SRAM_CHAIN_ALLOC_BANK
 
@@ -10522,8 +11334,14 @@
 1f:4e9f call_1f_4e9f
 1f:4e9f .code:0018
 
+;; 1f:4ea9:op LOW(ram_00_c47e)
+;; 1f:4ead:op HIGH(ram_00_c47e)
+
 1f:4eb7 call_1f_4eb7
 1f:4eb7 .code:0012
+
+;; 1f:4ebb:op LOW(ram_00_c47e)
+;; 1f:4ebf:op HIGH(ram_00_c47e)
 
 1f:4ec9 call_read_instrument_alloc
 ;; 1f:4ec9 Read whether an instrument is allocated or not.
@@ -10886,11 +11704,32 @@
 1f:642a call_1f_642a
 1f:642a .code:0052
 
+;; 1f:6443:op LOW(PLAYING_PHRASES)
+;; 1f:6447:op HIGH(PLAYING_PHRASES)
+
+;; 1f:6458:op LOW(PLAYING_PHRASE_ROWS)
+;; 1f:645c:op HIGH(PLAYING_PHRASE_ROWS)
+
 1f:647c data_1f_647c
 1f:647c .data:001e
 
 1f:649a call_1f_649a
 1f:649a .code:0157
+
+;; 1f:64bb:op LOW(ARE_CHANNELS_PLAYING)
+;; 1f:64bf:op HIGH(ARE_CHANNELS_PLAYING)
+
+;; 1f:64ca:op LOW(PLAYING_CHAINS)
+;; 1f:64ce:op HIGH(PLAYING_CHAINS)
+
+;; 1f:64e2:op LOW(PLAYING_PHRASES)
+;; 1f:64e6:op HIGH(PLAYING_PHRASES)
+
+;; 1f:64fa:op LOW(PLAYING_CHAIN_ROWS)
+;; 1f:64fe:op HIGH(PLAYING_CHAIN_ROWS)
+
+;; 1f:6514:op LOW(PLAYING_SONG_ROWS)
+;; 1f:6518:op HIGH(PLAYING_SONG_ROWS)
 
 ;; 1f:654a:op LOW(call_read_chain_phrase)
 ;; 1f:654c:op HIGH(call_read_chain_phrase)
@@ -10984,6 +11823,9 @@
 1f:6ad6 call_1f_6ad6
 1f:6ad6 .code:00d6
 
+;; 1f:6b06:op LOW(ram_00_c90b)
+;; 1f:6b0a:op HIGH(ram_00_c90b)
+
 1f:6bac call_1f_6bac
 1f:6bac .code:0016
 
@@ -10996,6 +11838,9 @@
 1f:6c2c .text:0004
 
 1f:6c30 call_1f_6c30
+
+;; 1f:6c69:op LOW(ram_00_c90b)
+;; 1f:6c6d:op HIGH(ram_00_c90b)
 
 1f:6cd7 call_1f_6cd7
 1f:6cd7 .code:01a6
@@ -11140,6 +11985,8 @@
 
 ; Memory
 
+00:c000 ram_00_0000
+
 00:c0a0 MOD_PU1_FLAG
 ;; 00:c0a0 The high byte enables mute/pan on the pulse 1 channel
 00:c0a1 MOD_PU2_FLAG
@@ -11157,11 +12004,33 @@
 00:c0a7 MOD_NOI_TYPE
 ;; 00:c0a7 Sets mute (0), left pan (1), or right pan (2) for the noise channel
 
+00:c0a8 ram_00_c0a8
+
+00:c0bc ram_00_c0bc
+
+00:c0c4 ram_00_c0c4
+
+00:c0c8 ram_00_c0c8
+
 00:c0cc CURRENT_NOTES
 00:c0cc CURRENT_PU1_NOTE
 00:c0cd CURRENT_PU2_NOTE
 00:c0ce CURRENT_WAV_NOTE
 00:c0cf CURRENT_NOI_NOTE
+
+00:c0d0 ram_00_c0d0
+00:c0d1 ram_00_c0d1
+00:c0d2 ram_00_c0d2
+00:c0d3 ram_00_c0d3
+
+00:c0d5 ram_00_c0d5
+00:c0d6 ram_00_c0d6
+00:c0d7 ram_00_c0d7
+00:c0d8 ram_00_c0d8
+
+00:c0da ram_00_c0da
+
+00:c0dc ram_00_c0dc
 
 00:c0e0 ARE_CHANNELS_PLAYING
 00:c0e0 IS_PU1_CHANNEL_PLAYING
@@ -11169,11 +12038,48 @@
 00:c0e2 IS_WAV_CHANNEL_PLAYING
 00:c0e3 IS_NOI_CHANNEL_PLAYING
 
+00:c0e4 ram_00_c0e4
+00:c0e5 ram_00_c0e5
+00:c0e6 ram_00_c0e6
+00:c0e7 ram_00_c0e7
+
+00:c0e8 ram_00_c0e8
+00:c0e9 ram_00_c0e9
+00:c0ea ram_00_c0ea
+00:c0eb ram_00_c0eb
+
+00:c0ec ram_00_c0ec
+
+00:c0f0 ram_00_c0f0
+00:c0f1 ram_00_c0f1
+00:c0f2 ram_00_c0f2
+00:c0f3 ram_00_c0f3
+
+00:c0f4 ram_00_c0f4
+00:c0f5 ram_00_c0f5
+00:c0f6 ram_00_c0f6
+00:c0f7 ram_00_c0f7
+
+00:c0f8 ram_00_c0f8
+
+00:c0f9 ram_00_c0f9
+
+00:c0fc ram_00_c0fc
+
 00:c100 LIVE_NEXT_CHAIN_PHRASES
 00:c100 LIVE_NEXT_PU1_CHAIN_PHRASE
 00:c101 LIVE_NEXT_PU2_CHAIN_PHRASE
 00:c102 LIVE_NEXT_WAV_CHAIN_PHRASE
 00:c103 LIVE_NEXT_NOI_CHAIN_PHRASE
+
+00:c108 ram_00_c108
+
+00:c10a ram_00_c10a
+
+00:c10c ram_00_c10c
+
+00:c10e PLAYING_TABLE_TRANSPOSE_ADDRESS_LOW
+00:c10f PLAYING_TABLE_TRANSPOSE_ADDRESS_HIGH
 
 00:c110 PLAYING_PHRASE_NOTE_ADDRESSES
 00:c110 PLAYING_PU1_PHRASE_NOTE_ADDRESS_LOW
@@ -11185,11 +12091,20 @@
 00:c116 PLAYING_NOI_PHRASE_NOTE_ADDRESS_LOW
 00:c117 PLAYING_NOI_PHRASE_NOTE_ADDRESS_HIGH
 
-00:c10e PLAYING_TABLE_TRANSPOSE_ADDRESS_LOW
-00:c10f PLAYING_TABLE_TRANSPOSE_ADDRESS_HIGH
+00:c118 ram_00_c118
+
+00:c11a ram_00_c11a
+
+00:c11c ram_00_c11c
 
 00:c11e PLAYING_TABLE_CMD_1_ADDRESS_LOW
 00:c11f PLAYING_TABLE_CMD_1_ADDRESS_HIGH
+
+00:c120 ram_00_c120
+
+00:c122 ram_00_c122
+
+00:c124 ram_00_c124
 
 00:c126 PLAYING_TABLE_CMD_2_ADDRESS_LOW
 00:c127 PLAYING_TABLE_CMD_2_ADDRESS_HIGH
@@ -11204,8 +12119,12 @@
 00:c12e PLAYING_NOI_PHRASE_CMD_VALUE_ADDRESS_LOW
 00:c12f PLAYING_NOI_PHRASE_CMD_VALUE_ADDRESS_HIGH
 
+00:c130 ram_00_c130
+
 00:c136 PLAYING_TABLE_CMD_VALUE_1_ADDRESS_LOW
 00:c137 PLAYING_TABLE_CMD_VALUE_1_ADDRESS_HIGH
+
+00:c138 ram_00_c138
 
 00:c13e PLAYING_TABLE_CMD_VALUE_2_ADDRESS_LOW
 00:c13f PLAYING_TABLE_CMD_VALUE_2_ADDRESS_HIGH
@@ -11219,6 +12138,16 @@
 00:c145 PLAYING_WAV_PHRASE_INSTRUMENT_ADDRESS_HIGH
 00:c146 PLAYING_NOI_PHRASE_INSTRUMENT_ADDRESS_LOW
 00:c147 PLAYING_NOI_PHRASE_INSTRUMENT_ADDRESS_HIGH
+
+00:c148 ram_00_c148
+00:c149 ram_00_c149
+00:c14a ram_00_c14a
+00:c14b ram_00_c14b
+
+00:c14c ram_00_c14c
+00:c14d ram_00_c14d
+00:c14e ram_00_c14e
+00:c14f ram_00_c14f
 
 00:c150 CHANNEL_GROOVES_1
 00:c150 PU1_GROOVE_1
@@ -11241,6 +12170,11 @@
 00:c159 PLAYING_PU2_GROOVE_ROW
 00:c15a PLAYING_WAV_GROOVE_ROW
 00:c15b PLAYING_NOI_GROOVE_ROW
+
+00:c15c ram_00_c15c
+00:c15d ram_00_c15d
+00:c15e ram_00_c15e
+00:c15f ram_00_c15f
 
 00:c160 NOTE_COUNTDOWNS
 00:c160 PU1_NOTE_COUNTDOWN
@@ -11280,11 +12214,27 @@
 00:c172 PLAYING_WAV_CHAIN
 00:c173 PLAYING_NOI_CHAIN
 
+00:c174 ram_00_c174
+
+00:c175 ram_00_c175
+
+00:c176 ram_00_c176
+
+00:c178 ram_00_c178
+
 00:c17c PLAYING_CHAIN_ROWS
 00:c17c PLAYING_PU1_CHAIN_ROW
 00:c17d PLAYING_PU2_CHAIN_ROW
 00:c17e PLAYING_WAV_CHAIN_ROW
 00:c17f PLAYING_NOI_CHAIN_ROW
+
+00:c180 ram_00_c180
+
+00:c1a0 ram_00_c1a0
+
+00:c1c0 ram_00_c1c0
+
+00:c1e0 ram_00_c1e0
 
 00:c200 PLAYING_SONG_ROWS
 00:c200 PLAYING_PU1_SONG_ROW
@@ -11316,11 +12266,221 @@
 00:c212 CURRENT_WAV_INSTR
 00:c213 CURRENT_NOI_INSTR
 
+00:c214 ram_00_c214
+
+00:c218 ram_00_c218
+00:c219 ram_00_c219
+00:c21a ram_00_c21a
+00:c21b ram_00_c21b
+
+00:c21c ram_00_c21c
+00:c21d ram_00_c21d
+00:c21e ram_00_c21e
+00:c21f ram_00_c21f
+
+00:c220 ram_00_c220
+00:c221 ram_00_c221
+00:c222 ram_00_c222
+00:c223 ram_00_c223
+
+00:c224 ram_00_c224
+
+00:c230 ram_00_c230
+
+00:c23c ram_00_c23c
+
+00:c248 ram_00_c248
+
+00:c24a ram_00_c24a
+
+00:c24c ram_00_c24c
+
+00:c250 ram_00_c250
+
+00:c2d0 ram_00_c2d0
+00:c2d1 ram_00_c2d1
+00:c2d2 ram_00_c2d2
+00:c2d3 ram_00_c2d3
+
+00:c2d4 ram_00_c2d4
+
+00:c2d5 ram_00_c2d5
+
+00:c2d8 ram_00_c2d8
+
+00:c2d9 ram_00_c2d9
+
+00:c2da ram_00_c2da
+
+00:c2db ram_00_c2db
+
+00:c2dc ram_00_c2dc
+
+00:c2dd ram_00_c2dd
+
+00:c2e0 ram_00_c2e0
+
+00:c2e1 ram_00_c2e1
+
+00:c2e3 ram_00_c2e3
+
+00:c2e4 ram_00_c2e4
+
+00:c2e7 ram_00_c2e7
+
+00:c2e8 ram_00_c2e8
+
+00:c2e9 ram_00_c2e9
+
+00:c2ea ram_00_c2ea
+
+00:c2eb ram_00_c2eb
+
+00:c2ec ram_00_c2ec
+
+00:c2ed ram_00_c2ed
+
+00:c2ee ram_00_c2ee
+
+00:c2ef ram_00_c2ef
+
+00:c2f0 ram_00_c2f0
+
 00:c2fc LIVE_NEXT_SONG_ROWS
 00:c2fc LIVE_NEXT_PU1_SONG_ROW
 00:c2fd LIVE_NEXT_PU2_SONG_ROW
 00:c2fe LIVE_NEXT_WAV_SONG_ROW
 00:c2ff LIVE_NEXT_NOI_SONG_ROW
+
+00:c300 ram_00_c300
+
+00:c304 ram_00_c304
+
+00:c308 ram_00_c308
+00:c309 ram_00_c309
+00:c30a ram_00_c30a
+00:c30b ram_00_c30b
+
+00:c30c ram_00_c30c
+00:c30d ram_00_c30d
+00:c30e ram_00_c30e
+00:c30f ram_00_c30f
+
+00:c310 ram_00_c310
+00:c311 ram_00_c311
+00:c312 ram_00_c312
+00:c313 ram_00_c313
+
+00:c314 ram_00_c314
+00:c315 ram_00_c315
+00:c316 ram_00_c316
+00:c317 ram_00_c317
+
+00:c318 ram_00_c318
+00:c319 ram_00_c319
+00:c31a ram_00_c31a
+00:c31b ram_00_c31b
+
+00:c31c ram_00_c31c
+00:c31d ram_00_c31d
+00:c31e ram_00_c31e
+00:c31f ram_00_c31f
+
+00:c320 ram_00_c320
+
+00:c321 ram_00_c321
+
+00:c324 ram_00_c324
+
+00:c325 ram_00_c325
+
+00:c326 ram_00_c326
+
+00:c327 ram_00_c327
+
+00:c328 ram_00_c328
+00:c329 ram_00_c329
+00:c32a ram_00_c32a
+00:c32b ram_00_c32b
+
+00:c32c ram_00_c32c
+00:c32d ram_00_c32d
+00:c32e ram_00_c32e
+00:c32f ram_00_c32f
+
+00:c330 ram_00_c330
+00:c331 ram_00_c331
+00:c332 ram_00_c332
+00:c333 ram_00_c333
+
+00:c334 ram_00_c334
+00:c335 ram_00_c335
+00:c336 ram_00_c336
+00:c337 ram_00_c337
+
+00:c338 ram_00_c338
+00:c339 ram_00_c339
+00:c33a ram_00_c33a
+00:c33b ram_00_c33b
+
+00:c33c ram_00_c33c
+
+00:c33f ram_00_c33f
+
+00:c340 ram_00_c340
+00:c341 ram_00_c341
+00:c342 ram_00_c342
+00:c343 ram_00_c343
+
+00:c344 ram_00_c344
+
+00:c345 ram_00_c345
+
+00:c347 ram_00_c347
+
+00:c348 ram_00_c348
+00:c349 ram_00_c349
+00:c34a ram_00_c34a
+00:c34b ram_00_c34b
+
+00:c34c ram_00_c34c
+00:c34d ram_00_c34d
+00:c34e ram_00_c34e
+00:c34f ram_00_c34f
+
+00:c350 ram_00_c350
+
+00:c352 ram_00_c352
+
+00:c353 ram_00_c353
+
+00:c354 ram_00_c354
+
+00:c355 ram_00_c355
+
+00:c356 ram_00_c356
+
+00:c358 ram_00_c358
+
+00:c35a ram_00_c35a
+
+00:c35c ram_00_c35c
+00:c35d ram_00_c35d
+00:c35e ram_00_c35e
+00:c35f ram_00_c35f
+
+00:c360 ram_00_c360
+00:c361 ram_00_c361
+00:c362 ram_00_c362
+00:c363 ram_00_c363
+
+00:c364 ram_00_c364
+
+00:c365 ram_00_c365
+
+00:c369 ram_00_c369
+
+00:c36a ram_00_c36a
 
 00:c36b CHANNEL_GROOVES_2
 00:c36b PU1_GROOVE_2
@@ -11328,11 +12488,27 @@
 00:c36d WAV_GROOVE_2
 00:c36e NOI_GROOVE_2
 
+00:c36f ram_00_c36f
+
+00:c370 ram_00_c370
+
+00:c371 ram_00_c371
+
+00:c375 ram_00_c375
+
+00:c395 ram_00_c395
+
 00:c3b5 CHANNEL_GROOVES_3
 00:c3b5 PU1_GROOVE_3
 00:c3b6 PU2_GROOVE_3
 00:c3b7 WAV_GROOVE_3
 00:c3b8 NOI_GROOVE_3
+
+00:c3f9 ram_00_c3f9
+
+00:c3fa ram_00_c3fa
+
+00:c3fb ram_00_c3fb
 
 00:c3fc CURRENT_TRANSPOSES
 00:c3fc CURRENT_PU1_TRANSPOSE
@@ -11340,10 +12516,20 @@
 00:c3fe CURRENT_WAV_TRANSPOSE
 00:c3ff CURRENT_NOI_TRANSPOSE
 
+00:c400 ram_00_c400
+
+00:c401 ram_00_c401
+
 00:c402 CURRENT_SCREEN
 
 00:c403 DMG_SOUND_ON
 ;; 00:c403 Indicates if sound was on at startup for DMG
+
+00:c404 ram_00_c404
+
+00:c405 ram_00_c405
+
+00:c406 ram_00_c406
 
 00:c407 KEY_DELAY_COUNTER
 ;; 00:c407 Counts down key delay while a button is pressed
@@ -11374,6 +12560,8 @@
 00:c412 SELECTION_SCREEN
 ;; 00:c412 The screen of the current clipboard selection.
 
+00:c413 ram_00_c413
+
 00:c414 CURSOR_MODE
 
 00:c415 CURRENT_PHRASE
@@ -11390,6 +12578,13 @@
 00:c41e SONG_CURSOR_COL
 00:c41f SONG_CURSOR_ROW
 
+00:c420 ram_00_c420
+00:c421 ram_00_c421
+00:c422 ram_00_c422
+00:c423 ram_00_c423
+
+00:c424 ram_00_c424
+
 00:c428 INSTR_CURSOR_ROW
 00:c429 INSTR_CURSOR_COL
 00:c42a SPEECH_CURSOR_ROW
@@ -11402,13 +12597,37 @@
 00:c42e KEYBOARD_CURSOR_COL
 00:c42f KEYBOARD_CURSOR_ROW
 
+00:c430 ram_00_c430
+00:c431 ram_00_c431
+00:c432 ram_00_c432
+00:c433 ram_00_c433
+
+00:c434 ram_00_c434
+00:c435 ram_00_c435
+00:c436 ram_00_c436
+00:c437 ram_00_c437
+
 00:c43b SAMPLE_NOTE_STRING
 ;; 00:c43b A string containing the values for the current sample note.
+
+00:c43c ram_00_c43c
+00:c43d ram_00_c43d
+00:c43e ram_00_c43e
+00:c43f ram_00_c43f
+
+00:c440 ram_00_c440
+
+00:c441 ram_00_c441
 
 00:c442 CURRENT_SYNTH_SCREEN
 00:c443 SYNTH_CURSOR_POS
 
+00:c444 ram_00_c444
+
 00:c445 SONG_TRANSPOSE
+
+00:c446 ram_00_c446
+
 00:c447 DISPLAY_SONG_TRANSPOSE
 
 00:c448 SRAM_TABLE_CMDS_LOW
@@ -11429,6 +12648,11 @@
 00:c44f DEFAULT_NOI_CMD
 ;; 00:c44f The default command to use for empty noise channel rows
 
+00:c450 ram_00_c450
+00:c451 ram_00_c451
+00:c452 ram_00_c452
+00:c453 ram_00_c453
+
 00:c454 DEFAULT_CHAIN_PHRASES
 00:c454 DEFAULT_PU1_CHAIN_PHRASE
 ;; 00:c454 The default phrase number to use for empty rows on the chain screen for the pulse 1 channel
@@ -11438,6 +12662,8 @@
 ;; 00:c456 The default phrase number to use for empty rows on the chain screen for the wave channel
 00:c457 DEFAULT_NOI_CHAIN_PHRASE
 ;; 00:c457 The default phrase number to use for empty rows on the chain screen for the noise channel
+
+00:c458 ram_00_c458
 
 00:c468 CURSOR_BUTTON_HOLD
 
@@ -11451,9 +12677,129 @@
 00:c46c DEFAULT_NOI_INSTR
 ;; 00:c46c The default instrument number to use for empty rows on the noise phrase screen
 
+00:c46d ram_00_c46d
+
+00:c46e ram_00_c46e
+
+00:c47e ram_00_c47e
+
+00:c48e ram_00_c48e
+
+00:c49e ram_00_c49e
+
+00:c4ae ram_00_c4ae
+
+00:c4be ram_00_c4be
+
+00:c4ce ram_00_c4ce
+
+00:c4cf ram_00_c4cf
+
+00:c4d0 ram_00_c4d0
+00:c4d1 ram_00_c4d1
+00:c4d2 ram_00_c4d2
+00:c4d3 ram_00_c4d3
+
+00:c4d4 ram_00_c4d4
+00:c4d5 ram_00_c4d5
+00:c4d6 ram_00_c4d6
+00:c4d7 ram_00_c4d7
+
+00:c4d8 ram_00_c4d8
+00:c4d9 ram_00_c4d9
+00:c4da ram_00_c4da
+00:c4db ram_00_c4db
+
+00:c4dc ram_00_c4dc
+00:c4dd ram_00_c4dd
+00:c4de ram_00_c4de
+00:c4df ram_00_c4df
+
+00:c4e0 ram_00_c4e0
+00:c4e1 ram_00_c4e1
+00:c4e2 ram_00_c4e2
+00:c4e3 ram_00_c4e3
+
+00:c4e4 ram_00_c4e4
+00:c4e5 ram_00_c4e5
+00:c4e6 ram_00_c4e6
+00:c4e7 ram_00_c4e7
+
+00:c4e8 ram_00_c4e8
+00:c4e9 ram_00_c4e9
+00:c4ea ram_00_c4ea
+00:c4eb ram_00_c4eb
+
+00:c4ec ram_00_c4ec
+00:c4ed ram_00_c4ed
+00:c4ee ram_00_c4ee
+00:c4ef ram_00_c4ef
+
+00:c4f0 ram_00_c4f0
+00:c4f1 ram_00_c4f1
+00:c4f2 ram_00_c4f2
+00:c4f3 ram_00_c4f3
+
+00:c4f4 ram_00_c4f4
+00:c4f5 ram_00_c4f5
+00:c4f6 ram_00_c4f6
+00:c4f7 ram_00_c4f7
+
+00:c4f8 ram_00_c4f8
+00:c4f9 ram_00_c4f9
+00:c4fa ram_00_c4fa
+00:c4fb ram_00_c4fb
+
+00:c4fc ram_00_c4fc
+00:c4fd ram_00_c4fd
+00:c4fe ram_00_c4fe
+00:c4ff ram_00_c4ff
+
+00:c500 ram_00_c500
+
+00:c501 ram_00_c501
+
+00:c502 ram_00_c502
+
+00:c522 ram_00_c522
+
+00:c523 ram_00_c523
+
+00:c524 ram_00_c524
+
+00:c525 ram_00_c525
+
+00:c526 ram_00_c526
+
+00:c528 ram_00_c528
+
+00:c529 ram_00_c529
+
 00:c52a TEMPO
 
+00:c52b ram_00_c52b
+
+00:c52c ram_00_c52c
+
+00:c52d ram_00_c52d
+
+00:c52f ram_00_c52f
+
 00:c530 CURRENT_PALETTE_NUM
+
+00:c531 ram_00_c531
+
+00:c532 ram_00_c532
+
+00:c533 ram_00_c533
+
+00:c553 ram_00_c553
+
+00:c554 ram_00_c554
+
+00:c556 ram_00_c556
+
+00:c563 ram_00_c563
 
 00:c565 BG_MAP_ATTR_SOURCE_LOW
 ;; 00:c565 The source from which to pull background map attributes.
@@ -11467,8 +12813,19 @@
 ;; 00:c569 The background palette to apply to bytes when writing selected tiles.
 00:c56a BG_MAP_ATTR_SELECTED_PALETTE_HIGH
 
+00:c56b ram_00_c56b
+
+00:c56c ram_00_c56c
+00:c56d ram_00_c56d
+00:c56e ram_00_c56e
+00:c56f ram_00_c56f
+
 00:c570 CURRENT_KEY_PRESS_COUNT
 00:c571 TOTAL_KEY_PRESS_COUNT
+
+00:c572 ram_00_c572
+
+00:c573 ram_00_c573
 
 00:c574 BG_MAP_ATTR_TARGET
 00:c574 BG_MAP_ATTR_TARGET_LOW
@@ -11481,10 +12838,53 @@
 
 00:c577 CURRENT_INSTRUMENT_1
 
+00:c578 ram_00_c578
+
+00:c579 ram_00_c579
+
+00:c57a ram_00_c57a
+
+00:c675 ram_00_c675
+
 00:c676 GBC_BG_ATTR_ROW
 ;; 00:c676 A row of background attributes used on GBC before being copied to VRAM.
 
+00:c68a ram_00_c68a
+
+00:c68b ram_00_c68b
+
+00:c68d ram_00_c68d
+
+00:c68e ram_00_c68e
+
+00:c68f ram_00_c68f
+
+00:c690 ram_00_c690
+
+00:c691 ram_00_c691
+
+00:c692 ram_00_c692
+
 00:c693 PLAYING_SYNTH_FRAME
+
+00:c694 ram_00_c694
+00:c695 ram_00_c695
+00:c696 ram_00_c696
+00:c697 ram_00_c697
+
+00:c699 ram_00_c699
+
+00:c69a ram_00_c69a
+
+00:c69b ram_00_c69b
+
+00:c69c ram_00_c69c
+
+00:c69e ram_00_c69e
+
+00:c69f ram_00_c69f
+
+00:c6a7 ram_00_c6a7
 
 00:c6a8 HELP_BANNER
 ;; 00:c6a8 The current help banner string.
@@ -11494,8 +12894,73 @@
 00:c7a9 LAST_READ_HELP_BANNER_ADDRESS
 ;; 00:c7a9 The address of the last read help banner byte.
 
+00:c7ab ram_00_c7ab
+
+00:c7ac ram_00_c7ac
+
 00:c7ae IS_HANDLING_EXCEPTION
 ;; 00:c7ae Set to 1 when handling an exception
+
+00:c7af ram_00_c7af
+
+00:c7b0 ram_00_c7b0
+00:c7b1 ram_00_c7b1
+00:c7b2 ram_00_c7b2
+00:c7b3 ram_00_c7b3
+
+00:c7b4 ram_00_c7b4
+00:c7b5 ram_00_c7b5
+00:c7b6 ram_00_c7b6
+00:c7b7 ram_00_c7b7
+
+00:c7b8 ram_00_c7b8
+00:c7b9 ram_00_c7b9
+00:c7ba ram_00_c7ba
+00:c7bb ram_00_c7bb
+
+00:c7bc ram_00_c7bc
+00:c7bd ram_00_c7bd
+00:c7be ram_00_c7be
+00:c7bf ram_00_c7bf
+
+00:c7c0 ram_00_c7c0
+00:c7c1 ram_00_c7c1
+00:c7c2 ram_00_c7c2
+00:c7c3 ram_00_c7c3
+
+00:c7c4 ram_00_c7c4
+
+00:c7c5 ram_00_c7c5
+
+00:c8c1 ram_00_c8c1
+
+00:c8c2 ram_00_c8c2
+
+00:c8c3 ram_00_c8c3
+
+00:c8c4 ram_00_c8c4
+00:c8c5 ram_00_c8c5
+00:c8c6 ram_00_c8c6
+00:c8c7 ram_00_c8c7
+
+00:c8c8 ram_00_c8c8
+00:c8c9 ram_00_c8c9
+00:c8ca ram_00_c8ca
+00:c8cb ram_00_c8cb
+
+00:c8cc ram_00_c8cc
+
+00:c8cd ram_00_c8cd
+
+00:c8d9 ram_00_c8d9
+
+00:c8da ram_00_c8da
+
+00:c8db ram_00_c8db
+
+00:c8dc ram_00_c8dc
+
+00:c8dd ram_00_c8dd
 
 00:c8de CURRENT_CHANNEL_CHAIN_ROW_ADDRESS
 ;; 00:c8de The address of the currently playing chain for the current channel
@@ -11506,11 +12971,34 @@
 00:c8e2 CURRENT_CHANNEL_NOTE_COUNTDOWN_ADDRESS
 ;; 00:c8e2 The address of the currently playing note countdown for the current channel
 
+00:c8e4 ram_00_c8e4
+
+00:c8e6 ram_00_c8e6
+
+00:c8e8 ram_00_c8e8
+
+00:c8ee ram_00_c8ee
+
 00:c8ea CURRENT_CHANNEL_PLAYING_PHRASE_ADDRESS
 ;; 00:c8ea The address of the currently playing phrase for the current channel
 
 00:c8ec CURRENT_CHANNEL_CURRENT_NOTE_ADDRESS
 ;; 00:c8ec The address of the currently playing note for the current channel
+
+00:c8f0 ram_00_c8f0
+00:c8f1 ram_00_c8f1
+00:c8f2 ram_00_c8f2
+00:c8f3 ram_00_c8f3
+
+00:c8f4 ram_00_c8f4
+00:c8f5 ram_00_c8f5
+00:c8f6 ram_00_c8f6
+00:c8f7 ram_00_c8f7
+
+00:c8f8 ram_00_c8f8
+00:c8f9 ram_00_c8f9
+00:c8fa ram_00_c8fa
+00:c8fc ram_00_c8fc
 
 00:c8fd CURRENT_SCREEN_COL
 00:c8fe CURRENT_SCREEN_ROW
@@ -11522,6 +13010,12 @@
 00:c901 SCREEN_MOVE_DIRECTION
 ;; 00:c901 The direction to move the screen in, if any.
 
+00:c902 ram_00_c902
+
+00:c903 ram_00_c903
+
+00:c904 ram_00_c904
+
 00:c905 DEFAULT_NOTES
 00:c905 DEFAULT_PU1_NOTE
 ;; 00:c905 The default note to use for empty pulse 1 channel rows on the phrase screen
@@ -11531,6 +13025,18 @@
 ;; 00:c907 The default note to use for empty wave channel rows on the phrase screen
 00:c908 DEFAULT_NOI_NOTE
 ;; 00:c908 The default note to use for empty noise channel rows on the phrase screen
+
+00:c909 ram_00_c909
+
+00:c90a ram_00_c90a
+
+00:c90b ram_00_c90b
+
+00:c91b ram_00_c91b
+
+00:c92b ram_00_c92b
+
+00:c92c ram_00_c92c
 
 00:c92d TABLE_CURSOR_COL
 00:c92e TABLE_CURSOR_ROW
@@ -11542,14 +13048,86 @@
 00:c931 HELP_PAGE
 00:c932 HELP_CURSOR_ROW
 
+00:c933 ram_00_c933
+
+00:c934 ram_00_c934
+
 00:c935 WORD_CURSOR_ROW
 00:c936 WORD_CURSOR_COL
+
+00:c937 ram_00_c937
+
+00:c939 ram_00_c939
+
+00:c93a ram_00_c93a
+
+00:c93b ram_00_c93b
 
 00:c943 DEFAULT_TSP
 ;; 00:c943 The default transpose value to use for empty rows on the chain screen
 
+00:c944 ram_00_c944
+
+00:c945 ram_00_c945
+
+00:c946 ram_00_c946
+
+00:c948 ram_00_c948
+00:c949 ram_00_c949
+00:c94a ram_00_c94a
+00:c94b ram_00_c94b
+
+00:c94c ram_00_c94c
+00:c94d ram_00_c94d
+00:c94e ram_00_c94e
+00:c94f ram_00_c94f
+
+00:c950 ram_00_c950
+00:c951 ram_00_c951
+00:c952 ram_00_c952
+00:c953 ram_00_c953
+
+00:c954 ram_00_c954
+00:c955 ram_00_c955
+00:c956 ram_00_c956
+00:c957 ram_00_c957
+
+00:c977 ram_00_c977
+
+00:c978 ram_00_c978
+00:c979 ram_00_c979
+00:c97a ram_00_c97a
+00:c97b ram_00_c97b
+
+00:c97c ram_00_c97c
+00:c97d ram_00_c97d
+00:c97e ram_00_c97e
+00:c97f ram_00_c97f
+
+00:c980 ram_00_c980
+
+00:c981 ram_00_c981
+
+00:c982 ram_00_c982
+
+00:c984 ram_00_c984
+
+00:c985 ram_00_c985
+
+00:c98d ram_00_c98d
+
+00:c98e ram_00_c98e
+
 00:c990 FILE_SCREEN_CURSOR_COL
 00:c991 FILE_SCREEN_MAX_CURSOR_ROW
+
+00:c992 ram_00_c992
+
+00:c993 ram_00_c993
+
+00:c994 ram_00_c994
+
+00:c995 ram_00_c995
 
 00:c996 IS_SELECTING_FILE
 
@@ -11558,12 +13136,200 @@
 00:c998 FILE_SCREEN_ACTION_TYPE
 ;; 00:c998 The current file screen action type - see file action type constants
 
+00:c999 ram_00_c999
+
 00:c99a RESTRICT_FILE_CURSOR
 ;; 00:c99a Whether to restrict the file cursor to the current/empty file
+
+00:c99b ram_00_c99b
 
 00:c99f CURRENT_INSTRUMENT_2
 ;; 00:c99f A copy of the current instrument.
 ;; 00:c99f This is used exclusively in bank 0x1c.
+
+00:c9a0 ram_00_c9a0
+00:c9a1 ram_00_c9a1
+00:c9a2 ram_00_c9a2
+00:c9a3 ram_00_c9a3
+
+00:c9a4 ram_00_c9a4
+00:c9a5 ram_00_c9a5
+00:c9a6 ram_00_c9a6
+00:c9a7 ram_00_c9a7
+
+00:c9a8 ram_00_c9a8
+00:c9a9 ram_00_c9a9
+00:c9aa ram_00_c9aa
+00:c9ab ram_00_c9ab
+
+00:c9b2 ram_00_c9b2
+
+00:c9b3 ram_00_c9b3
+
+00:c9b4 ram_00_c9b4
+00:c9b5 ram_00_c9b5
+00:c9b6 ram_00_c9b6
+00:c9b7 ram_00_c9b7
+
+00:c9b8 ram_00_c9b8
+00:c9b9 ram_00_c9b9
+00:c9ba ram_00_c9ba
+00:c9bb ram_00_c9bb
+
+00:c9bc ram_00_c9bc
+00:c9bd ram_00_c9bd
+00:c9be ram_00_c9be
+00:c9bf ram_00_c9bf
+
+00:c9c0 ram_00_c9c0
+00:c9c1 ram_00_c9c1
+00:c9c2 ram_00_c9c2
+00:c9c3 ram_00_c9c3
+
+00:c9c4 ram_00_c9c4
+00:c9c5 ram_00_c9c5
+00:c9c6 ram_00_c9c6
+00:c9c7 ram_00_c9c7
+
+00:c9c8 ram_00_c9c8
+00:c9c9 ram_00_c9c9
+00:c9ca ram_00_c9ca
+00:c9cb ram_00_c9cb
+
+00:c9cc ram_00_c9cc
+
+00:c9cd ram_00_c9cd
+
+00:c9d1 ram_00_c9d1
+
+00:c9d3 ram_00_c9d3
+
+00:c9d4 ram_00_c9d4
+
+00:c9d5 ram_00_c9d5
+
+00:c9e5 ram_00_c9e5
+
+00:c9e7 ram_00_c9e7
+
+00:c9e8 ram_00_c9e8
+
+00:c9e9 ram_00_c9e9
+
+00:c9ea ram_00_c9ea
+
+00:c9eb ram_00_c9eb
+
+00:c9ec ram_00_c9ec
+
+00:c9ed ram_00_c9ed
+
+00:c9ee ram_00_c9ee
+
+00:c9ef ram_00_c9ef
+
+00:c9f0 ram_00_c9f0
+
+00:c9f1 ram_00_c9f1
+
+00:c9f3 ram_00_c9f3
+
+00:ca33 ram_00_ca33
+
+00:ca53 ram_00_ca53
+
+00:ca63 ram_00_ca63
+
+00:ca73 ram_00_ca73
+
+00:ca83 ram_00_ca83
+
+00:ca93 ram_00_ca93
+
+00:caa3 ram_00_caa3
+
+00:cab5 ram_00_cab5
+
+00:cab7 ram_00_cab7
+
+00:caf7 ram_00_caf7
+
+00:cb37 ram_00_cb37
+
+00:cb39 ram_00_cb39
+
+00:cb3b ram_00_cb3b
+
+00:cb3d ram_00_cb3d
+
+00:cb3f ram_00_cb3f
+
+00:cb5f ram_00_cb5f
+
+00:cb60 ram_00_cb60
+00:cb61 ram_00_cb61
+00:cb62 ram_00_cb62
+00:cb63 ram_00_cb63
+
+00:cb64 ram_00_cb64
+00:cb65 ram_00_cb65
+00:cb66 ram_00_cb66
+00:cb67 ram_00_cb67
+
+00:cb68 ram_00_cb68
+00:cb69 ram_00_cb69
+00:cb6a ram_00_cb6a
+00:cb6b ram_00_cb6b
+
+00:cb6c ram_00_cb6c
+00:cb6d ram_00_cb6d
+00:cb6e ram_00_cb6e
+00:cb6f ram_00_cb6f
+
+00:cb70 ram_00_cb70
+00:cb71 ram_00_cb71
+00:cb72 ram_00_cb72
+00:cb73 ram_00_cb73
+
+00:cb74 ram_00_cb74
+00:cb75 ram_00_cb75
+00:cb76 ram_00_cb76
+00:cb77 ram_00_cb77
+
+00:cb78 ram_00_cb78
+00:cb79 ram_00_cb79
+00:cb7a ram_00_cb7a
+00:cb7b ram_00_cb7b
+
+00:cb7c ram_00_cb7c
+00:cb7d ram_00_cb7d
+00:cb7e ram_00_cb7e
+00:cb7f ram_00_cb7f
+
+00:cb80 ram_00_cb80
+
+00:cb90 ram_00_cb90
+00:cb91 ram_00_cb91
+00:cb92 ram_00_cb92
+00:cb93 ram_00_cb93
+
+00:cb94 ram_00_cb94
+
+00:cb95 ram_00_cb95
+
+00:cb96 ram_00_cb96
+
+00:cb98 ram_00_cb98
+00:cb99 ram_00_cb99
+00:cb9a ram_00_cb9a
+00:cb9b ram_00_cb9b
+
+00:cb9c ram_00_cb9c
+00:cb9d ram_00_cb9d
+00:cb9e ram_00_cb9e
+00:cb9f ram_00_cb9f
+
+00:cba0 ram_00_cba0
 
 00:cba1 ENABLE_OSCILLOSCOPE
 00:cba2 OSCILLOSCOPE_DRAW_TYPE
@@ -11573,6 +13339,35 @@
 00:cba3 OSCILLOSCOPE_GRAPHICAL_DATA_1
 00:cbab OSCILLOSCOPE_GRAPHICAL_DATA_2
 00:cbb3 OSCILLOSCOPE_GRAPHICAL_DATA_3
+
+00:cbbb ram_00_cbbb
+
+00:cbbc ram_00_cbbc
+00:cbbd ram_00_cbbd
+00:cbbe ram_00_cbbe
+00:cbbf ram_00_cbbf
+
+00:cbc0 ram_00_cbc0
+00:cbc1 ram_00_cbc1
+00:cbc2 ram_00_cbc2
+00:cbc3 ram_00_cbc3
+
+00:cbc4 ram_00_cbc4
+00:cbc5 ram_00_cbc5
+00:cbc6 ram_00_cbc6
+00:cbc7 ram_00_cbc7
+
+00:cbc8 ram_00_cbc8
+00:cbc9 ram_00_cbc9
+00:cbca ram_00_cbca
+00:cbcb ram_00_cbcb
+
+00:cbcc ram_00_cbcc
+00:cbcd ram_00_cbcd
+00:cbce ram_00_cbce
+00:cbcf ram_00_cbcf
+
+00:cbd0 ram_00_cbd0
 
 00:cbd1 BACKUP_CURSOR_MODES
 00:cbd1 BACKUP_CURSOR_MODE
@@ -11587,6 +13382,8 @@
 ;; 00:cbd5 A backup of the last used SELECTION_END_COL, used when cancelling a selection.
 00:cbd6 BACKUP_SELECTION_END_ROW
 ;; 00:cbd6 A backup of the last used SELECTION_END_ROW, used when cancelling a selection.
+
+00:cbd7 ram_00_cbd7
 
 00:cbd8 CPU
 ;; 00:cbd8 gbdk 2.95 libc/gb/crt0.s:__cpu
@@ -11612,6 +13409,9 @@
 
 00:cbe0 FONT_CURRENT
 ;; 00:cbe0 gbdk 2.95 libc/gb/font.ms:font_current
+
+00:cbe1 ram_00_cbe1
+
 00:cbe3 FONT_FIRST_FREE_TILE
 ;; 00:cbe3 gbdk 2.95 libc/gb/font.ms:font_first_free_tile
 ;; 00:cbe3 Cached copy of first free tile.
@@ -11637,8 +13437,14 @@
 00:cbfb BG_COLOUR
 ;; 00:cbfb gbdk 2.95 libc/gb/font.ms:.bg_colour
 
+00:cd28 ram_00_cd28
+
+00:cd94 ram_00_cd94
+
 00:ce00 KEY_BUFFER
 ;; 00:ce00 A buffer of the last pressed keys (up to 0xceff)
+
+00:cf28 ram_00_cf28
 
 00:ff80 REFRESH_OAM
 ;; 00:ff80 gbdk 2.95 libc/gb/global.s:refresh_OAM
