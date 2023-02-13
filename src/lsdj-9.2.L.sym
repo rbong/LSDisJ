@@ -8885,8 +8885,11 @@
 
 1b:575c .data:0026
 
-1b:5782 call_1b_5782
+1b:5782 call_save_sync
+;; 1b:5782 Save the current sync value to SRAM.
+;; 1b:5782 Registers used: A, DE, HL
 1b:5782 .code:0014
+
 ;; 1b:5788:op _SRAM_SYNC
 ;; 1b:578c:op _SRAM_SYNC_BANK
 
@@ -13280,7 +13283,7 @@
 00:cb63 ram_00_cb63
 
 00:cb64 ram_00_cb64
-00:cb65 ram_00_cb65
+00:cb65 SYNC
 00:cb66 ram_00_cb66
 00:cb67 ram_00_cb67
 
