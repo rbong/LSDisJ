@@ -9012,7 +9012,9 @@
 1b:5b5e .data_na_string
 1b:5b5e .text:0004
 
-1b:5b62 call_1b_5b62
+1b:5b62 call_draw_prelisten
+;; 1b:5b62 Draws prelisten.
+;; 1b:5b62 Registers used: A, DE, HL
 1b:5b62 .code:0018
 
 1b:5b7a call_1b_5b7a
