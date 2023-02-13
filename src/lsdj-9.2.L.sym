@@ -3815,10 +3815,18 @@
 
 ;; 02:5ea3 Return
 
-02:5ea4 data_02_5ea4
+02:5ea4 data_noise_note_data
+;; 02:5ea4 Lookup of notes to actual noise note data.
 02:5ea4 .data:0078
 
-02:5f1c call_02_5f1c
+02:5f1c call_write_noise_note_data
+;; 02:5f1c Write noise channel data based on given note.
+;; 02:5f1c Entry conditions: A = note
+;; 02:5f1c Exit conditions: noise data written to rNR43
+;; 02:5f1c Registers used: A, HL
+
+02:5f24 .jump_write
+;; 02:5f25:op rNR43
 
 02:5f28 call_02_5f28
 
