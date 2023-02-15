@@ -5531,9 +5531,9 @@
 ;; 04:42c0:op LOW(DEFAULT_INSTRS)
 ;; 04:42c4:op HIGH(DEFAULT_INSTRS)
 
-;; 04:42d0:op LOW(call_1f_4a64)
-;; 04:42d2:op HIGH(call_1f_4a64)
-;; 04:42d7:op BANK(call_1f_4a64)
+;; 04:42d0:op LOW(call_add_new_phrase_instrument)
+;; 04:42d2:op HIGH(call_add_new_phrase_instrument)
+;; 04:42d7:op BANK(call_add_new_phrase_instrument)
 
 ;; 04:42f1:op LOW(DEFAULT_INSTRS)
 ;; 04:42f5:op HIGH(DEFAULT_INSTRS)
@@ -5910,9 +5910,9 @@
 04:5535 call_04_5535
 04:5535 .code:0073
 
-;; 04:5550:op LOW(call_1f_4a64)
-;; 04:5552:op HIGH(call_1f_4a64)
-;; 04:5557:op BANK(call_1f_4a64)
+;; 04:5550:op LOW(call_add_new_phrase_instrument)
+;; 04:5552:op HIGH(call_add_new_phrase_instrument)
+;; 04:5557:op BANK(call_add_new_phrase_instrument)
 
 ;; 04:5577:op call_restore_backup_selection
 ;; 04:557b:op BANK(call_restore_backup_selection)
@@ -6013,9 +6013,9 @@
 ;; 04:5dac:op LOW(DEFAULT_NOTES)
 ;; 04:5db0:op HIGH(DEFAULT_NOTES)
 
-;; 04:5dd9:op LOW(call_1f_4a64)
-;; 04:5ddb:op HIGH(call_1f_4a64)
-;; 04:5de0:op BANK(call_1f_4a64)
+;; 04:5dd9:op LOW(call_add_new_phrase_instrument)
+;; 04:5ddb:op HIGH(call_add_new_phrase_instrument)
+;; 04:5de0:op BANK(call_add_new_phrase_instrument)
 
 ;; 04:5e3f:op LOW(DEFAULT_CMDS)
 ;; 04:5e43:op HIGH(DEFAULT_CMDS)
@@ -11370,12 +11370,42 @@
 1f:4a25 call_1f_4a25
 1f:4a25 .code:003f
 
-1f:4a64 call_1f_4a64
+1f:4a64 call_add_new_phrase_instrument
+;; 1f:4a64 Allocate and initialize a new instrument and write it to the current phrase.
+;; 1f:4a64 If phrases are remining, does nothing.
+;; 1f:4a64
+;; 1f:4a64 Entry conditions:
+;; 1f:4a64   PHRASE_CURSOR_ROW must be set.
+;; 1f:4a64   CURRENT_PHRASE must be set.
+;; 1f:4a64
+;; 1f:4a64 Registers used: A, DE, HL
+;; 1f:4a64
+;; 1f:4a64 Result: E = instrument or $ff if out of memory
 1f:4a64 .code:004f
 
+;; 1f:4a67 Initialize loop
+
+1f:4a6b .jump_check_instrument
+
+;; 1f:4a6e:op _INSTRUMENTS
+;; 1f:4a70 No instruments remaining
+
+;; 1f:4a73 Allocate instrument
+
+;; 1f:4a7b Check if instrument was allocated
+
+;; 1f:4a80 Write instrument to phrase
 ;; 1f:4a80:op LOW(call_write_phrase_instrument)
 ;; 1f:4a82:op HIGH(call_write_phrase_instrument)
 ;; 1f:4a98:op BANK(call_write_phrase_instrument)
+
+;; 1f:4aa1 Set return value to instrument
+
+1f:4aa7 .jump_incremnt_instrument
+
+1f:4aad .jump_out_of_memory
+
+1f:4aaf .jump_return
 
 1f:4ab3 call_1f_4ab3
 1f:4ab3 .code:0045
